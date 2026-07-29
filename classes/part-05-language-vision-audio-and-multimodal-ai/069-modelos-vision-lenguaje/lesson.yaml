@@ -1,0 +1,20 @@
+id: 069
+number: 69
+title: Modelos visión-lenguaje
+part: '05'
+level: avanzado
+estimated_hours: 6
+lab_kind: attention
+keywords:
+- CLIP
+- VLM
+- alineamiento
+- grounding
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 068

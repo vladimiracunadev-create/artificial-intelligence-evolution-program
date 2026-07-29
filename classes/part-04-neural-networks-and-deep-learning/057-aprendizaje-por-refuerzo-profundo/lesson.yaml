@@ -1,0 +1,20 @@
+id: '057'
+number: 57
+title: Aprendizaje por refuerzo profundo
+part: '04'
+level: intermedio-avanzado
+estimated_hours: 6
+lab_kind: robotics
+keywords:
+- DQN
+- policy gradient
+- PPO
+- recompensa
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '056'

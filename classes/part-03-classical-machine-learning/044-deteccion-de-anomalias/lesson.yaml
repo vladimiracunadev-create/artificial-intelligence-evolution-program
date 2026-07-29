@@ -1,0 +1,20 @@
+id: '044'
+number: 44
+title: Detección de anomalías
+part: '03'
+level: intermedio
+estimated_hours: 6
+lab_kind: ml
+keywords:
+- anomalías
+- aislamiento
+- densidad
+- umbrales
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '043'

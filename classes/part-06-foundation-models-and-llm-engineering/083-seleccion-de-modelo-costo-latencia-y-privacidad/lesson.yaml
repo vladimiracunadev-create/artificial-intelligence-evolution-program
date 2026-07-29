@@ -1,0 +1,20 @@
+id: 083
+number: 83
+title: Selección de modelo, costo, latencia y privacidad
+part: '06'
+level: avanzado
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- benchmark
+- costo
+- latencia
+- privacidad
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 082

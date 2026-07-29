@@ -1,0 +1,20 @@
+id: 019
+number: 19
+title: Lógica proposicional e inferencia
+part: '01'
+level: fundamentos
+estimated_hours: 4
+lab_kind: logic
+keywords:
+- proposiciones
+- CNF
+- resolución
+- inferencia
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 018

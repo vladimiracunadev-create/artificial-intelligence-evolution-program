@@ -1,0 +1,19 @@
+id: '001'
+number: 1
+title: Qué es inteligencia artificial y qué no es
+part: '00'
+level: fundamentos
+estimated_hours: 4
+lab_kind: frontier
+keywords:
+- IA estrecha
+- IA general
+- automatización
+- autonomía
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites: []

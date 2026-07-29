@@ -1,0 +1,37 @@
+version: '2026-07-29'
+topics:
+- id: mcp
+  name: Model Context Protocol
+  category: context-and-tools
+  maturity: standard
+  reviewed: '2026-07-29'
+  source: https://modelcontextprotocol.io/docs/getting-started/intro
+  reason: Conecta aplicaciones de IA con tools, resources y prompts.
+- id: a2a
+  name: Agent2Agent Protocol 1.0
+  category: agent-interoperability
+  maturity: standard
+  reviewed: '2026-07-29'
+  source: https://a2a-protocol.org/latest/
+  reason: Permite descubrimiento y comunicación entre agentes de distintos proveedores.
+- id: agent-skills
+  name: Agent Skills
+  category: portable-capabilities
+  maturity: current
+  reviewed: '2026-07-29'
+  source: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+  reason: Empaqueta instrucciones, metadata, scripts y recursos reutilizables.
+- id: durable-agents
+  name: Durable agent execution
+  category: orchestration
+  maturity: current
+  reviewed: '2026-07-29'
+  source: https://docs.langchain.com/oss/python/langgraph/overview
+  reason: Persistencia, streaming, interrupciones y human-in-the-loop.
+- id: agent-evals
+  name: Trajectory and tool-use evaluation
+  category: evaluation
+  maturity: emerging
+  reviewed: '2026-07-29'
+  source: https://openai.github.io/openai-agents-python/tracing/
+  reason: Evalúa decisiones, llamadas a herramientas, handoffs y guardrails.

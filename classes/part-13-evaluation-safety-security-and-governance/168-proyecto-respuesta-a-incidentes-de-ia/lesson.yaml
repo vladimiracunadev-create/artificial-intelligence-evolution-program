@@ -1,0 +1,20 @@
+id: '168'
+number: 168
+title: 'Proyecto: respuesta a incidentes de IA'
+part: '13'
+level: experto
+estimated_hours: 10
+lab_kind: capstone
+keywords:
+- incident
+- containment
+- evidence
+- recovery
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '167'

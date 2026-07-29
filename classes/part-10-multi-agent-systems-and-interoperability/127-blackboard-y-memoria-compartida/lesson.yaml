@@ -1,0 +1,20 @@
+id: '127'
+number: 127
+title: Blackboard y memoria compartida
+part: '10'
+level: experto
+estimated_hours: 6
+lab_kind: multiagent
+keywords:
+- blackboard
+- shared memory
+- coordination
+- conflicts
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '126'

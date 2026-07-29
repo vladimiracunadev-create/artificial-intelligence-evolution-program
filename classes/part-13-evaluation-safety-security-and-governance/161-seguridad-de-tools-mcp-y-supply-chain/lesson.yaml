@@ -1,0 +1,20 @@
+id: '161'
+number: 161
+title: Seguridad de tools, MCP y supply chain
+part: '13'
+level: experto
+estimated_hours: 6
+lab_kind: safety
+keywords:
+- tools
+- MCP
+- supply chain
+- permissions
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '160'

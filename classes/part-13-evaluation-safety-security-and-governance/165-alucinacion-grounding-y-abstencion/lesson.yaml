@@ -1,0 +1,20 @@
+id: '165'
+number: 165
+title: Alucinación, grounding y abstención
+part: '13'
+level: experto
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- hallucination
+- grounding
+- abstention
+- evidence
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '164'

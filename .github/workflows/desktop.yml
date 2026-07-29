@@ -1,0 +1,24 @@
+name: Desktop build
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyinstaller
+      - run: pyinstaller --noconfirm --onefile --windowed --name AI-Evolution-Program --add-data "site;site" apps/desktop/main.py
+      - name: Verify executable exists
+        run: |
+          if (-not (Test-Path "dist/AI-Evolution-Program.exe")) { exit 1 }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: AI-Evolution-Program-windows
+          path: dist/AI-Evolution-Program.exe
+          if-no-files-found: error

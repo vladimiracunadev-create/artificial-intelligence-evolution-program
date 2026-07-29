@@ -1,0 +1,34 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b17">
+  <meta name="description" content="Programa evolutivo de inteligencia artificial: de la IA simbólica a los sistemas agénticos.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>Artificial Intelligence Evolution Program</title>
+</head>
+<body>
+  <header class="hero">
+    <span class="eyebrow">Programa evolutivo · 2026</span>
+    <h1>De la IA simbólica a los <span class="gradient">sistemas agénticos</span></h1>
+    <p class="lead">180 clases para entender la evolución completa de la inteligencia artificial, implementar sus ideas centrales y separar evidencia, prototipo y operación real.</p>
+    <div class="stats">
+      <div class="stat"><strong>15</strong>partes</div>
+      <div class="stat"><strong>180</strong>clases</div>
+      <div class="stat"><strong>540</strong>notebooks</div>
+      <div class="stat"><strong id="progress">0/180</strong>progreso local</div>
+    </div>
+  </header>
+  <section class="controls">
+    <input id="search" type="search" placeholder="Buscar tema, protocolo o concepto…">
+    <select id="kind"><option value="">Todos los laboratorios</option></select>
+  </section>
+  <main id="catalog"></main>
+  <footer>MIT · Sin rastreo · El progreso permanece en tu navegador.</footer>
+  <script src="assets/app.js"></script>
+  <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("service-worker.js");</script>
+</body>
+</html>

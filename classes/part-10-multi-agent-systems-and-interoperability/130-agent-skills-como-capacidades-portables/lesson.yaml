@@ -1,0 +1,20 @@
+id: '130'
+number: 130
+title: Agent Skills como capacidades portables
+part: '10'
+level: experto
+estimated_hours: 6
+lab_kind: agent
+keywords:
+- Agent Skills
+- instructions
+- scripts
+- portability
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '129'

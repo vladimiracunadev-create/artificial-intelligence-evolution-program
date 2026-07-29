@@ -1,0 +1,75 @@
+version: 1.0.0
+policy: no_silent_synthetic_fallback
+datasets:
+- id: uci-adult
+  name: Adult
+  domain: tabular
+  source: https://archive.ics.uci.edu/dataset/2/adult
+  license: CC BY 4.0 según ficha UCI
+  use: clasificación, fairness y costo de error
+- id: uci-wine-quality
+  name: Wine Quality
+  domain: tabular
+  source: https://archive.ics.uci.edu/dataset/186/wine+quality
+  license: CC BY 4.0 según ficha UCI
+  use: regresión, clasificación y calibración
+- id: cifar-10
+  name: CIFAR-10
+  domain: vision
+  source: https://www.cs.toronto.edu/~kriz/cifar.html
+  license: verificar términos de la fuente
+  use: CNN, representación y aprendizaje autosupervisado
+- id: fashion-mnist
+  name: Fashion-MNIST
+  domain: vision-generative
+  source: https://github.com/zalandoresearch/fashion-mnist
+  license: MIT para el repositorio; verificar datos
+  use: clasificación, VAE, GAN y difusión
+- id: ag-news
+  name: AG News
+  domain: text
+  source: https://huggingface.co/datasets/fancyzhx/ag_news
+  license: verificar dataset card antes de uso
+  use: clasificación, transformers y fine-tuning
+- id: imdb
+  name: IMDb Large Movie Review
+  domain: text
+  source: https://ai.stanford.edu/~amaas/data/sentiment/
+  license: verificar términos de la fuente
+  use: sentimiento, RNN y transformers
+- id: speech-commands
+  name: Speech Commands
+  domain: audio
+  source: https://www.tensorflow.org/datasets/catalog/speech_commands
+  license: CC BY 4.0 según catálogo
+  use: clasificación de audio y edge AI
+- id: common-voice
+  name: Common Voice
+  domain: speech
+  source: https://commonvoice.mozilla.org/en/datasets
+  license: verificar versión y condiciones al descargar
+  use: ASR, diversidad lingüística y evaluación por grupos
+- id: cora
+  name: Cora
+  domain: graphs
+  source: https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.Planetoid.html
+  license: verificar fuente original
+  use: GNN y grafos de conocimiento
+- id: swe-bench
+  name: SWE-bench
+  domain: agents-code
+  source: https://www.swebench.com/
+  license: verificar repositorio y datos de la versión usada
+  use: evaluación de agentes de programación
+- id: webarena
+  name: WebArena
+  domain: agents-web
+  source: https://webarena.dev/
+  license: verificar repositorio y sitios de prueba
+  use: evaluación de agentes de navegador
+- id: mmlu
+  name: MMLU
+  domain: llm-evaluation
+  source: https://github.com/hendrycks/test
+  license: MIT para el repositorio; revisar cada fuente de preguntas
+  use: evaluación de conocimiento y límites de benchmarks

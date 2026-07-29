@@ -1,0 +1,20 @@
+id: '050'
+number: 50
+title: MLP y backpropagation
+part: '04'
+level: intermedio-avanzado
+estimated_hours: 6
+lab_kind: neural
+keywords:
+- MLP
+- backpropagation
+- gradiente
+- pérdida
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 049

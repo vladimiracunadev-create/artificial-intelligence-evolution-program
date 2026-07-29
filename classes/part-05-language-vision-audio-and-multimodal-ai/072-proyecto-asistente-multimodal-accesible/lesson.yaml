@@ -1,0 +1,20 @@
+id: '072'
+number: 72
+title: 'Proyecto: asistente multimodal accesible'
+part: '05'
+level: avanzado
+estimated_hours: 10
+lab_kind: capstone
+keywords:
+- texto
+- imagen
+- audio
+- accesibilidad
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '071'

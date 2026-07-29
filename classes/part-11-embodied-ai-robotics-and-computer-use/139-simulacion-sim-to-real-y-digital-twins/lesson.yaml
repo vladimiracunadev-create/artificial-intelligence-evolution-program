@@ -1,0 +1,20 @@
+id: '139'
+number: 139
+title: Simulación, sim-to-real y digital twins
+part: '11'
+level: experto
+estimated_hours: 6
+lab_kind: robotics
+keywords:
+- simulation
+- sim-to-real
+- digital twin
+- domain randomization
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '138'

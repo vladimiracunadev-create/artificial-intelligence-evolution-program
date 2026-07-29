@@ -1,0 +1,20 @@
+id: '046'
+number: 46
+title: Sistemas de recomendación
+part: '03'
+level: intermedio
+estimated_hours: 6
+lab_kind: retrieval
+keywords:
+- filtrado colaborativo
+- contenido
+- ranking
+- cold-start
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '045'

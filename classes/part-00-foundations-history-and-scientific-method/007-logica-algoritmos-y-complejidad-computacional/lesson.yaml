@@ -1,0 +1,20 @@
+id: '007'
+number: 7
+title: Lógica, algoritmos y complejidad computacional
+part: '00'
+level: fundamentos
+estimated_hours: 4
+lab_kind: logic
+keywords:
+- lógica
+- algoritmos
+- complejidad
+- decidibilidad
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '006'

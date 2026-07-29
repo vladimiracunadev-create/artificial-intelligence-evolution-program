@@ -1,0 +1,20 @@
+id: '073'
+number: 73
+title: Tokenización moderna y vocabularios
+part: '06'
+level: avanzado
+estimated_hours: 6
+lab_kind: llm
+keywords:
+- BPE
+- SentencePiece
+- tokens
+- vocabulario
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '072'

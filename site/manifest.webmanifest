@@ -1,0 +1,9 @@
+{
+  "name": "Artificial Intelligence Evolution Program",
+  "short_name": "AI Evolution",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#070b17",
+  "theme_color": "#070b17",
+  "icons": []
+}

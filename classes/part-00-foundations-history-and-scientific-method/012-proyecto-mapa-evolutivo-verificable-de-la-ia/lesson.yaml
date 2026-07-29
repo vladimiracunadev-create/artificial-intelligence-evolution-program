@@ -1,0 +1,20 @@
+id: '012'
+number: 12
+title: 'Proyecto: mapa evolutivo verificable de la IA'
+part: '00'
+level: fundamentos
+estimated_hours: 10
+lab_kind: capstone
+keywords:
+- timeline
+- evidencia
+- fuentes
+- taxonomía
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '011'

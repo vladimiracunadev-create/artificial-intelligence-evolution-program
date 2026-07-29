@@ -1,0 +1,20 @@
+id: 068
+number: 68
+title: Síntesis de voz y clonación responsable
+part: '05'
+level: avanzado
+estimated_hours: 6
+lab_kind: generation
+keywords:
+- TTS
+- voz
+- consentimiento
+- watermark
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '067'

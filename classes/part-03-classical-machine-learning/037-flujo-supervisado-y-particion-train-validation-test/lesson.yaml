@@ -1,0 +1,20 @@
+id: '037'
+number: 37
+title: Flujo supervisado y partición train-validation-test
+part: '03'
+level: intermedio
+estimated_hours: 6
+lab_kind: ml
+keywords:
+- supervisado
+- split
+- fuga
+- baseline
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '036'

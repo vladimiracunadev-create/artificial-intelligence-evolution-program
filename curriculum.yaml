@@ -1,0 +1,2833 @@
+name: Artificial Intelligence Evolution Program
+version: 0.1.0
+updated: '2026-07-29'
+language: es
+part_count: 15
+lesson_count: 180
+notebook_count: 540
+parts:
+- id: '00'
+  slug: foundations-history-and-scientific-method
+  title: Fundamentos, historia y método científico
+  level: fundamentos
+  weeks: 3–4
+  description: Construye el mapa del campo, su historia, el vocabulario técnico y el método experimental
+    que se utilizará en todo el programa.
+  lessons:
+  - id: '001'
+    number: 1
+    title: Qué es inteligencia artificial y qué no es
+    path: classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es
+    lab_kind: frontier
+    keywords:
+    - IA estrecha
+    - IA general
+    - automatización
+    - autonomía
+    estimated_hours: 4
+    summary: Estudia qué es inteligencia artificial y qué no es mediante un laboratorio frontier reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '002'
+    number: 2
+    title: 'De Turing a Dartmouth: nacimiento formal del campo'
+    path: classes/part-00-foundations-history-and-scientific-method/002-de-turing-a-dartmouth-nacimiento-formal-del-campo
+    lab_kind: frontier
+    keywords:
+    - Turing
+    - Dartmouth
+    - historia
+    - hitos
+    estimated_hours: 4
+    summary: 'Estudia de turing a dartmouth: nacimiento formal del campo mediante un laboratorio frontier
+      reproducible, evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '003'
+    number: 3
+    title: Inviernos, resurgimientos y ciclos de expectativas
+    path: classes/part-00-foundations-history-and-scientific-method/003-inviernos-resurgimientos-y-ciclos-de-expectativas
+    lab_kind: evaluation
+    keywords:
+    - AI winters
+    - expectativas
+    - evidencia
+    - mercado
+    estimated_hours: 4
+    summary: Estudia inviernos, resurgimientos y ciclos de expectativas mediante un laboratorio evaluation
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '004'
+    number: 4
+    title: Agentes racionales, entornos y medidas de desempeño
+    path: classes/part-00-foundations-history-and-scientific-method/004-agentes-racionales-entornos-y-medidas-de-desempeno
+    lab_kind: agent
+    keywords:
+    - PEAS
+    - racionalidad
+    - entorno
+    - desempeño
+    estimated_hours: 4
+    summary: Estudia agentes racionales, entornos y medidas de desempeño mediante un laboratorio agent
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '005'
+    number: 5
+    title: Vectores, matrices y geometría para IA
+    path: classes/part-00-foundations-history-and-scientific-method/005-vectores-matrices-y-geometria-para-ia
+    lab_kind: optimization
+    keywords:
+    - vectores
+    - matrices
+    - producto punto
+    - distancia
+    estimated_hours: 4
+    summary: Estudia vectores, matrices y geometría para ia mediante un laboratorio optimization reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '006'
+    number: 6
+    title: Probabilidad, incertidumbre y estadística básica
+    path: classes/part-00-foundations-history-and-scientific-method/006-probabilidad-incertidumbre-y-estadistica-basica
+    lab_kind: probability
+    keywords:
+    - probabilidad
+    - Bayes
+    - distribuciones
+    - incertidumbre
+    estimated_hours: 4
+    summary: Estudia probabilidad, incertidumbre y estadística básica mediante un laboratorio probability
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '007'
+    number: 7
+    title: Lógica, algoritmos y complejidad computacional
+    path: classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional
+    lab_kind: logic
+    keywords:
+    - lógica
+    - algoritmos
+    - complejidad
+    - decidibilidad
+    estimated_hours: 4
+    summary: Estudia lógica, algoritmos y complejidad computacional mediante un laboratorio logic reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 008
+    number: 8
+    title: Datos, evidencia, hipótesis y falsabilidad
+    path: classes/part-00-foundations-history-and-scientific-method/008-datos-evidencia-hipotesis-y-falsabilidad
+    lab_kind: evaluation
+    keywords:
+    - datos
+    - hipótesis
+    - falsabilidad
+    - reproducibilidad
+    estimated_hours: 4
+    summary: Estudia datos, evidencia, hipótesis y falsabilidad mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 009
+    number: 9
+    title: Entornos Python, Git y experimentos reproducibles
+    path: classes/part-00-foundations-history-and-scientific-method/009-entornos-python-git-y-experimentos-reproducibles
+    lab_kind: observability
+    keywords:
+    - Python
+    - Git
+    - semillas
+    - entornos
+    estimated_hours: 4
+    summary: Estudia entornos python, git y experimentos reproducibles mediante un laboratorio observability
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '010'
+    number: 10
+    title: Cómo leer papers, benchmarks y claims de IA
+    path: classes/part-00-foundations-history-and-scientific-method/010-como-leer-papers-benchmarks-y-claims-de-ia
+    lab_kind: evaluation
+    keywords:
+    - papers
+    - benchmarks
+    - claims
+    - replicación
+    estimated_hours: 4
+    summary: Estudia cómo leer papers, benchmarks y claims de ia mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '011'
+    number: 11
+    title: Ética desde el diseño y límites de automatización
+    path: classes/part-00-foundations-history-and-scientific-method/011-etica-desde-el-diseno-y-limites-de-automatizacion
+    lab_kind: safety
+    keywords:
+    - ética
+    - impacto
+    - límites
+    - supervisión
+    estimated_hours: 4
+    summary: Estudia ética desde el diseño y límites de automatización mediante un laboratorio safety
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '012'
+    number: 12
+    title: 'Proyecto: mapa evolutivo verificable de la IA'
+    path: classes/part-00-foundations-history-and-scientific-method/012-proyecto-mapa-evolutivo-verificable-de-la-ia
+    lab_kind: capstone
+    keywords:
+    - timeline
+    - evidencia
+    - fuentes
+    - taxonomía
+    estimated_hours: 10
+    summary: 'Estudia proyecto: mapa evolutivo verificable de la ia mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '01'
+  slug: symbolic-ai-search-logic-and-planning
+  title: IA simbólica, búsqueda, lógica y planificación
+  level: fundamentos
+  weeks: 4–5
+  description: 'Recorre la primera gran tradición de la IA: representar problemas de forma explícita y
+    resolverlos mediante búsqueda, reglas, restricciones y planes.'
+  lessons:
+  - id: '013'
+    number: 13
+    title: Espacios de estados y formulación de problemas
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas
+    lab_kind: search
+    keywords:
+    - estado
+    - acciones
+    - objetivo
+    - costo
+    estimated_hours: 4
+    summary: Estudia espacios de estados y formulación de problemas mediante un laboratorio search reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '014'
+    number: 14
+    title: Búsqueda en anchura y profundidad
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad
+    lab_kind: search
+    keywords:
+    - BFS
+    - DFS
+    - frontera
+    - visitados
+    estimated_hours: 4
+    summary: Estudia búsqueda en anchura y profundidad mediante un laboratorio search reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '015'
+    number: 15
+    title: Costo uniforme, búsqueda voraz y A*
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/015-costo-uniforme-busqueda-voraz-y-a
+    lab_kind: search
+    keywords:
+    - UCS
+    - greedy
+    - A*
+    - heurística
+    estimated_hours: 4
+    summary: Estudia costo uniforme, búsqueda voraz y a* mediante un laboratorio search reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '016'
+    number: 16
+    title: Diseño y validación de heurísticas
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas
+    lab_kind: search
+    keywords:
+    - admisibilidad
+    - consistencia
+    - dominancia
+    - costo
+    estimated_hours: 4
+    summary: Estudia diseño y validación de heurísticas mediante un laboratorio search reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '017'
+    number: 17
+    title: 'Juegos: minimax y poda alfa-beta'
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta
+    lab_kind: search
+    keywords:
+    - minimax
+    - alfa-beta
+    - adversarial
+    - utilidad
+    estimated_hours: 4
+    summary: 'Estudia juegos: minimax y poda alfa-beta mediante un laboratorio search reproducible, evidencia
+      estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 018
+    number: 18
+    title: Problemas de satisfacción de restricciones
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/018-problemas-de-satisfaccion-de-restricciones
+    lab_kind: logic
+    keywords:
+    - CSP
+    - backtracking
+    - consistencia
+    - restricciones
+    estimated_hours: 4
+    summary: Estudia problemas de satisfacción de restricciones mediante un laboratorio logic reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 019
+    number: 19
+    title: Lógica proposicional e inferencia
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/019-logica-proposicional-e-inferencia
+    lab_kind: logic
+    keywords:
+    - proposiciones
+    - CNF
+    - resolución
+    - inferencia
+    estimated_hours: 4
+    summary: Estudia lógica proposicional e inferencia mediante un laboratorio logic reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '020'
+    number: 20
+    title: Lógica de primer orden y unificación
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/020-logica-de-primer-orden-y-unificacion
+    lab_kind: logic
+    keywords:
+    - predicados
+    - cuantificadores
+    - unificación
+    - sustitución
+    estimated_hours: 4
+    summary: Estudia lógica de primer orden y unificación mediante un laboratorio logic reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '021'
+    number: 21
+    title: Representación del conocimiento y ontologías
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/021-representacion-del-conocimiento-y-ontologias
+    lab_kind: logic
+    keywords:
+    - ontologías
+    - taxonomías
+    - relaciones
+    - inferencia
+    estimated_hours: 4
+    summary: Estudia representación del conocimiento y ontologías mediante un laboratorio logic reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '022'
+    number: 22
+    title: Sistemas expertos y motores de reglas
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/022-sistemas-expertos-y-motores-de-reglas
+    lab_kind: logic
+    keywords:
+    - reglas
+    - encadenamiento
+    - explicación
+    - conocimiento
+    estimated_hours: 4
+    summary: Estudia sistemas expertos y motores de reglas mediante un laboratorio logic reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '023'
+    number: 23
+    title: Planificación clásica con STRIPS y PDDL
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/023-planificacion-clasica-con-strips-y-pddl
+    lab_kind: workflow
+    keywords:
+    - STRIPS
+    - PDDL
+    - precondiciones
+    - efectos
+    estimated_hours: 4
+    summary: Estudia planificación clásica con strips y pddl mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '024'
+    number: 24
+    title: 'Proyecto: asistente neuro-simbólico explicable'
+    path: classes/part-01-symbolic-ai-search-logic-and-planning/024-proyecto-asistente-neuro-simbolico-explicable
+    lab_kind: capstone
+    keywords:
+    - símbolos
+    - reglas
+    - explicación
+    - integración
+    estimated_hours: 10
+    summary: 'Estudia proyecto: asistente neuro-simbólico explicable mediante un laboratorio capstone
+      reproducible, evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '02'
+  slug: probabilistic-evolutionary-and-decision-ai
+  title: IA probabilística, evolutiva y de decisión
+  level: intermedio
+  weeks: 4–5
+  description: Introduce decisiones bajo incertidumbre, modelos temporales, simulación, lógica difusa
+    y métodos de búsqueda inspirados en la naturaleza.
+  lessons:
+  - id: '025'
+    number: 25
+    title: Razonamiento con incertidumbre
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/025-razonamiento-con-incertidumbre
+    lab_kind: probability
+    keywords:
+    - incertidumbre
+    - evidencia
+    - creencias
+    - riesgo
+    estimated_hours: 6
+    summary: Estudia razonamiento con incertidumbre mediante un laboratorio probability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '026'
+    number: 26
+    title: Teorema de Bayes y actualización de creencias
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/026-teorema-de-bayes-y-actualizacion-de-creencias
+    lab_kind: probability
+    keywords:
+    - Bayes
+    - prior
+    - likelihood
+    - posterior
+    estimated_hours: 6
+    summary: Estudia teorema de bayes y actualización de creencias mediante un laboratorio probability
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '027'
+    number: 27
+    title: Redes bayesianas e independencia condicional
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional
+    lab_kind: probability
+    keywords:
+    - DAG
+    - inferencia
+    - independencia
+    - factores
+    estimated_hours: 6
+    summary: Estudia redes bayesianas e independencia condicional mediante un laboratorio probability
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 028
+    number: 28
+    title: Modelos ocultos de Markov
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/028-modelos-ocultos-de-markov
+    lab_kind: probability
+    keywords:
+    - HMM
+    - transición
+    - emisión
+    - Viterbi
+    estimated_hours: 6
+    summary: Estudia modelos ocultos de markov mediante un laboratorio probability reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 029
+    number: 29
+    title: Procesos de decisión de Markov
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov
+    lab_kind: workflow
+    keywords:
+    - MDP
+    - estados
+    - acciones
+    - recompensa
+    - política
+    estimated_hours: 6
+    summary: Estudia procesos de decisión de markov mediante un laboratorio workflow reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '030'
+    number: 30
+    title: Teoría de decisión y utilidad esperada
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada
+    lab_kind: probability
+    keywords:
+    - utilidad
+    - riesgo
+    - decisión
+    - preferencias
+    estimated_hours: 6
+    summary: Estudia teoría de decisión y utilidad esperada mediante un laboratorio probability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '031'
+    number: 31
+    title: Métodos Monte Carlo y simulación
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion
+    lab_kind: probability
+    keywords:
+    - Monte Carlo
+    - muestreo
+    - estimación
+    - varianza
+    estimated_hours: 6
+    summary: Estudia métodos monte carlo y simulación mediante un laboratorio probability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '032'
+    number: 32
+    title: Lógica difusa y control aproximado
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/032-logica-difusa-y-control-aproximado
+    lab_kind: logic
+    keywords:
+    - fuzzy
+    - membresía
+    - reglas
+    - control
+    estimated_hours: 6
+    summary: Estudia lógica difusa y control aproximado mediante un laboratorio logic reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '033'
+    number: 33
+    title: Algoritmos genéticos
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/033-algoritmos-geneticos
+    lab_kind: optimization
+    keywords:
+    - población
+    - mutación
+    - cruce
+    - selección
+    estimated_hours: 6
+    summary: Estudia algoritmos genéticos mediante un laboratorio optimization reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '034'
+    number: 34
+    title: Optimización por enjambre y colonia
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/034-optimizacion-por-enjambre-y-colonia
+    lab_kind: optimization
+    keywords:
+    - PSO
+    - ACO
+    - metaheurística
+    - exploración
+    estimated_hours: 6
+    summary: Estudia optimización por enjambre y colonia mediante un laboratorio optimization reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '035'
+    number: 35
+    title: Programación probabilística y causalidad
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad
+    lab_kind: probability
+    keywords:
+    - causalidad
+    - intervención
+    - modelos
+    - inferencia
+    estimated_hours: 6
+    summary: Estudia programación probabilística y causalidad mediante un laboratorio probability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '036'
+    number: 36
+    title: 'Proyecto: sistema híbrido para decisiones'
+    path: classes/part-02-probabilistic-evolutionary-and-decision-ai/036-proyecto-sistema-hibrido-para-decisiones
+    lab_kind: capstone
+    keywords:
+    - Bayes
+    - reglas
+    - optimización
+    - trazabilidad
+    estimated_hours: 10
+    summary: 'Estudia proyecto: sistema híbrido para decisiones mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '03'
+  slug: classical-machine-learning
+  title: Machine learning clásico
+  level: intermedio
+  weeks: 5–6
+  description: Cubre el aprendizaje a partir de datos antes de las redes profundas, con énfasis en baselines,
+    validación, interpretabilidad y costo de error.
+  lessons:
+  - id: '037'
+    number: 37
+    title: Flujo supervisado y partición train-validation-test
+    path: classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test
+    lab_kind: ml
+    keywords:
+    - supervisado
+    - split
+    - fuga
+    - baseline
+    estimated_hours: 6
+    summary: Estudia flujo supervisado y partición train-validation-test mediante un laboratorio ml reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 038
+    number: 38
+    title: Regresión lineal, regularización y diagnóstico
+    path: classes/part-03-classical-machine-learning/038-regresion-lineal-regularizacion-y-diagnostico
+    lab_kind: ml
+    keywords:
+    - regresión
+    - L1
+    - L2
+    - residuos
+    estimated_hours: 6
+    summary: Estudia regresión lineal, regularización y diagnóstico mediante un laboratorio ml reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 039
+    number: 39
+    title: Clasificación logística y umbrales
+    path: classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales
+    lab_kind: ml
+    keywords:
+    - logística
+    - probabilidades
+    - umbral
+    - calibración
+    estimated_hours: 6
+    summary: Estudia clasificación logística y umbrales mediante un laboratorio ml reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '040'
+    number: 40
+    title: Árboles de decisión y reglas interpretables
+    path: classes/part-03-classical-machine-learning/040-arboles-de-decision-y-reglas-interpretables
+    lab_kind: ml
+    keywords:
+    - árboles
+    - impureza
+    - poda
+    - reglas
+    estimated_hours: 6
+    summary: Estudia árboles de decisión y reglas interpretables mediante un laboratorio ml reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '041'
+    number: 41
+    title: Random Forest, boosting y ensembles
+    path: classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles
+    lab_kind: ml
+    keywords:
+    - ensembles
+    - bagging
+    - boosting
+    - diversidad
+    estimated_hours: 6
+    summary: Estudia random forest, boosting y ensembles mediante un laboratorio ml reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '042'
+    number: 42
+    title: Ingeniería y selección de características
+    path: classes/part-03-classical-machine-learning/042-ingenieria-y-seleccion-de-caracteristicas
+    lab_kind: ml
+    keywords:
+    - features
+    - encoding
+    - selección
+    - pipelines
+    estimated_hours: 6
+    summary: Estudia ingeniería y selección de características mediante un laboratorio ml reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '043'
+    number: 43
+    title: Clustering y reducción de dimensionalidad
+    path: classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad
+    lab_kind: ml
+    keywords:
+    - KMeans
+    - DBSCAN
+    - PCA
+    - embeddings
+    estimated_hours: 6
+    summary: Estudia clustering y reducción de dimensionalidad mediante un laboratorio ml reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '044'
+    number: 44
+    title: Detección de anomalías
+    path: classes/part-03-classical-machine-learning/044-deteccion-de-anomalias
+    lab_kind: ml
+    keywords:
+    - anomalías
+    - aislamiento
+    - densidad
+    - umbrales
+    estimated_hours: 6
+    summary: Estudia detección de anomalías mediante un laboratorio ml reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '045'
+    number: 45
+    title: Series temporales y backtesting
+    path: classes/part-03-classical-machine-learning/045-series-temporales-y-backtesting
+    lab_kind: ml
+    keywords:
+    - series
+    - ventana
+    - backtesting
+    - forecasting
+    estimated_hours: 6
+    summary: Estudia series temporales y backtesting mediante un laboratorio ml reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '046'
+    number: 46
+    title: Sistemas de recomendación
+    path: classes/part-03-classical-machine-learning/046-sistemas-de-recomendacion
+    lab_kind: retrieval
+    keywords:
+    - filtrado colaborativo
+    - contenido
+    - ranking
+    - cold-start
+    estimated_hours: 6
+    summary: Estudia sistemas de recomendación mediante un laboratorio retrieval reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '047'
+    number: 47
+    title: Métricas, calibración, sesgo y costo de error
+    path: classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error
+    lab_kind: evaluation
+    keywords:
+    - métricas
+    - calibración
+    - fairness
+    - costo
+    estimated_hours: 6
+    summary: Estudia métricas, calibración, sesgo y costo de error mediante un laboratorio evaluation
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 048
+    number: 48
+    title: 'Proyecto: producto ML reproducible'
+    path: classes/part-03-classical-machine-learning/048-proyecto-producto-ml-reproducible
+    lab_kind: capstone
+    keywords:
+    - pipeline
+    - baseline
+    - validación
+    - serving
+    estimated_hours: 10
+    summary: 'Estudia proyecto: producto ml reproducible mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '04'
+  slug: neural-networks-and-deep-learning
+  title: Redes neuronales y deep learning
+  level: intermedio-avanzado
+  weeks: 6–8
+  description: Explica la transición desde el perceptrón a arquitecturas profundas. La especialización
+    práctica completa vive en neural-network-training-labs.
+  lessons:
+  - id: 049
+    number: 49
+    title: Perceptrón y límites de separabilidad
+    path: classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad
+    lab_kind: neural
+    keywords:
+    - perceptrón
+    - separabilidad
+    - pesos
+    - sesgo
+    estimated_hours: 6
+    summary: Estudia perceptrón y límites de separabilidad mediante un laboratorio neural reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '050'
+    number: 50
+    title: MLP y backpropagation
+    path: classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation
+    lab_kind: neural
+    keywords:
+    - MLP
+    - backpropagation
+    - gradiente
+    - pérdida
+    estimated_hours: 6
+    summary: Estudia mlp y backpropagation mediante un laboratorio neural reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '051'
+    number: 51
+    title: Activaciones, inicialización y normalización
+    path: classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion
+    lab_kind: neural
+    keywords:
+    - ReLU
+    - GELU
+    - inicialización
+    - normalización
+    estimated_hours: 6
+    summary: Estudia activaciones, inicialización y normalización mediante un laboratorio neural reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '052'
+    number: 52
+    title: Optimizadores, regularización y schedulers
+    path: classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers
+    lab_kind: optimization
+    keywords:
+    - SGD
+    - AdamW
+    - dropout
+    - scheduler
+    estimated_hours: 6
+    summary: Estudia optimizadores, regularización y schedulers mediante un laboratorio optimization reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '053'
+    number: 53
+    title: CNN y aprendizaje espacial
+    path: classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial
+    lab_kind: perception
+    keywords:
+    - convolución
+    - pooling
+    - receptive field
+    - visión
+    estimated_hours: 6
+    summary: Estudia cnn y aprendizaje espacial mediante un laboratorio perception reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '054'
+    number: 54
+    title: RNN, LSTM y secuencias
+    path: classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias
+    lab_kind: neural
+    keywords:
+    - RNN
+    - LSTM
+    - estado
+    - secuencia
+    estimated_hours: 6
+    summary: Estudia rnn, lstm y secuencias mediante un laboratorio neural reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '055'
+    number: 55
+    title: Atención y arquitectura Transformer
+    path: classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer
+    lab_kind: attention
+    keywords:
+    - self-attention
+    - multi-head
+    - positional
+    - transformer
+    estimated_hours: 6
+    summary: Estudia atención y arquitectura transformer mediante un laboratorio attention reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '056'
+    number: 56
+    title: Graph Neural Networks
+    path: classes/part-04-neural-networks-and-deep-learning/056-graph-neural-networks
+    lab_kind: neural
+    keywords:
+    - grafos
+    - mensajes
+    - GCN
+    - GAT
+    estimated_hours: 6
+    summary: Estudia graph neural networks mediante un laboratorio neural reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '057'
+    number: 57
+    title: Aprendizaje por refuerzo profundo
+    path: classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo
+    lab_kind: robotics
+    keywords:
+    - DQN
+    - policy gradient
+    - PPO
+    - recompensa
+    estimated_hours: 6
+    summary: Estudia aprendizaje por refuerzo profundo mediante un laboratorio robotics reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 058
+    number: 58
+    title: Autoencoders, GAN y difusión
+    path: classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion
+    lab_kind: generation
+    keywords:
+    - autoencoder
+    - GAN
+    - difusión
+    - latente
+    estimated_hours: 6
+    summary: Estudia autoencoders, gan y difusión mediante un laboratorio generation reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 059
+    number: 59
+    title: Transferencia, fine-tuning y destilación
+    path: classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion
+    lab_kind: neural
+    keywords:
+    - transfer
+    - fine-tuning
+    - distillation
+    - PEFT
+    estimated_hours: 6
+    summary: Estudia transferencia, fine-tuning y destilación mediante un laboratorio neural reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '060'
+    number: 60
+    title: 'Proyecto: modelo trazable de extremo a extremo'
+    path: classes/part-04-neural-networks-and-deep-learning/060-proyecto-modelo-trazable-de-extremo-a-extremo
+    lab_kind: capstone
+    keywords:
+    - dataset card
+    - model card
+    - registro
+    - despliegue
+    estimated_hours: 10
+    summary: 'Estudia proyecto: modelo trazable de extremo a extremo mediante un laboratorio capstone
+      reproducible, evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '05'
+  slug: language-vision-audio-and-multimodal-ai
+  title: Lenguaje, visión, audio e IA multimodal
+  level: avanzado
+  weeks: 5–6
+  description: Estudia cómo los sistemas perciben y combinan texto, imágenes, documentos, voz, audio y
+    señales temporales.
+  lessons:
+  - id: '061'
+    number: 61
+    title: Clasificación y representación visual
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual
+    lab_kind: perception
+    keywords:
+    - visión
+    - features
+    - clasificación
+    - augmentación
+    estimated_hours: 6
+    summary: Estudia clasificación y representación visual mediante un laboratorio perception reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '062'
+    number: 62
+    title: Detección, segmentación y pose
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose
+    lab_kind: perception
+    keywords:
+    - detección
+    - segmentación
+    - pose
+    - tracking
+    estimated_hours: 6
+    summary: Estudia detección, segmentación y pose mediante un laboratorio perception reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '063'
+    number: 63
+    title: OCR y comprensión de documentos
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/063-ocr-y-comprension-de-documentos
+    lab_kind: perception
+    keywords:
+    - OCR
+    - layout
+    - tablas
+    - documentos
+    estimated_hours: 6
+    summary: Estudia ocr y comprensión de documentos mediante un laboratorio perception reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '064'
+    number: 64
+    title: Tokenización y representación del lenguaje
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje
+    lab_kind: llm
+    keywords:
+    - tokens
+    - vocabulario
+    - subwords
+    - embeddings
+    estimated_hours: 6
+    summary: Estudia tokenización y representación del lenguaje mediante un laboratorio llm reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '065'
+    number: 65
+    title: Clasificación, extracción y generación de texto
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto
+    lab_kind: llm
+    keywords:
+    - NLP
+    - NER
+    - clasificación
+    - generación
+    estimated_hours: 6
+    summary: Estudia clasificación, extracción y generación de texto mediante un laboratorio llm reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '066'
+    number: 66
+    title: Embeddings semánticos y similitud
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud
+    lab_kind: retrieval
+    keywords:
+    - embeddings
+    - similitud
+    - clustering
+    - búsqueda
+    estimated_hours: 6
+    summary: Estudia embeddings semánticos y similitud mediante un laboratorio retrieval reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '067'
+    number: 67
+    title: Reconocimiento automático del habla
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/067-reconocimiento-automatico-del-habla
+    lab_kind: perception
+    keywords:
+    - ASR
+    - espectrograma
+    - transcripción
+    - WER
+    estimated_hours: 6
+    summary: Estudia reconocimiento automático del habla mediante un laboratorio perception reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 068
+    number: 68
+    title: Síntesis de voz y clonación responsable
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/068-sintesis-de-voz-y-clonacion-responsable
+    lab_kind: generation
+    keywords:
+    - TTS
+    - voz
+    - consentimiento
+    - watermark
+    estimated_hours: 6
+    summary: Estudia síntesis de voz y clonación responsable mediante un laboratorio generation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 069
+    number: 69
+    title: Modelos visión-lenguaje
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje
+    lab_kind: attention
+    keywords:
+    - CLIP
+    - VLM
+    - alineamiento
+    - grounding
+    estimated_hours: 6
+    summary: Estudia modelos visión-lenguaje mediante un laboratorio attention reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '070'
+    number: 70
+    title: Fusión multimodal y representación conjunta
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta
+    lab_kind: attention
+    keywords:
+    - fusión
+    - cross-attention
+    - modalidades
+    - alineamiento
+    estimated_hours: 6
+    summary: Estudia fusión multimodal y representación conjunta mediante un laboratorio attention reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '071'
+    number: 71
+    title: Sensores, series y percepción en el borde
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/071-sensores-series-y-percepcion-en-el-borde
+    lab_kind: robotics
+    keywords:
+    - sensores
+    - edge
+    - latencia
+    - fusión
+    estimated_hours: 6
+    summary: Estudia sensores, series y percepción en el borde mediante un laboratorio robotics reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '072'
+    number: 72
+    title: 'Proyecto: asistente multimodal accesible'
+    path: classes/part-05-language-vision-audio-and-multimodal-ai/072-proyecto-asistente-multimodal-accesible
+    lab_kind: capstone
+    keywords:
+    - texto
+    - imagen
+    - audio
+    - accesibilidad
+    estimated_hours: 10
+    summary: 'Estudia proyecto: asistente multimodal accesible mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '06'
+  slug: foundation-models-and-llm-engineering
+  title: Modelos fundacionales e ingeniería de LLM
+  level: avanzado
+  weeks: 6–7
+  description: 'Descompone los modelos fundacionales: preentrenamiento, alineamiento, adaptación eficiente,
+    prompting, serving, costos y selección responsable.'
+  lessons:
+  - id: '073'
+    number: 73
+    title: Tokenización moderna y vocabularios
+    path: classes/part-06-foundation-models-and-llm-engineering/073-tokenizacion-moderna-y-vocabularios
+    lab_kind: llm
+    keywords:
+    - BPE
+    - SentencePiece
+    - tokens
+    - vocabulario
+    estimated_hours: 6
+    summary: Estudia tokenización moderna y vocabularios mediante un laboratorio llm reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '074'
+    number: 74
+    title: Objetivos de preentrenamiento
+    path: classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento
+    lab_kind: llm
+    keywords:
+    - causal LM
+    - masked LM
+    - next-token
+    - datos
+    estimated_hours: 6
+    summary: Estudia objetivos de preentrenamiento mediante un laboratorio llm reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '075'
+    number: 75
+    title: Escalamiento, cómputo y leyes empíricas
+    path: classes/part-06-foundation-models-and-llm-engineering/075-escalamiento-computo-y-leyes-empiricas
+    lab_kind: evaluation
+    keywords:
+    - scaling laws
+    - compute
+    - datos
+    - parámetros
+    estimated_hours: 6
+    summary: Estudia escalamiento, cómputo y leyes empíricas mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '076'
+    number: 76
+    title: Instruction tuning y datos de instrucciones
+    path: classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones
+    lab_kind: llm
+    keywords:
+    - instruction tuning
+    - SFT
+    - datasets
+    - calidad
+    estimated_hours: 6
+    summary: Estudia instruction tuning y datos de instrucciones mediante un laboratorio llm reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '077'
+    number: 77
+    title: LoRA, QLoRA y adaptación eficiente
+    path: classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente
+    lab_kind: neural
+    keywords:
+    - LoRA
+    - QLoRA
+    - PEFT
+    - cuantización
+    estimated_hours: 6
+    summary: Estudia lora, qlora y adaptación eficiente mediante un laboratorio neural reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 078
+    number: 78
+    title: RLHF, RLAIF y DPO
+    path: classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo
+    lab_kind: probability
+    keywords:
+    - preferencias
+    - reward model
+    - RLHF
+    - DPO
+    estimated_hours: 6
+    summary: Estudia rlhf, rlaif y dpo mediante un laboratorio probability reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 079
+    number: 79
+    title: Prompting, contexto y resultados estructurados
+    path: classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados
+    lab_kind: llm
+    keywords:
+    - prompting
+    - contexto
+    - JSON schema
+    - constraints
+    estimated_hours: 6
+    summary: Estudia prompting, contexto y resultados estructurados mediante un laboratorio llm reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 080
+    number: 80
+    title: Tool calling y ejecución controlada
+    path: classes/part-06-foundation-models-and-llm-engineering/080-tool-calling-y-ejecucion-controlada
+    lab_kind: agent
+    keywords:
+    - tool calling
+    - funciones
+    - permisos
+    - validación
+    estimated_hours: 6
+    summary: Estudia tool calling y ejecución controlada mediante un laboratorio agent reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 081
+    number: 81
+    title: Serving, batching y cachés
+    path: classes/part-06-foundation-models-and-llm-engineering/081-serving-batching-y-caches
+    lab_kind: observability
+    keywords:
+    - serving
+    - batching
+    - KV cache
+    - throughput
+    estimated_hours: 6
+    summary: Estudia serving, batching y cachés mediante un laboratorio observability reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 082
+    number: 82
+    title: Cuantización e inferencia local
+    path: classes/part-06-foundation-models-and-llm-engineering/082-cuantizacion-e-inferencia-local
+    lab_kind: neural
+    keywords:
+    - cuantización
+    - GGUF
+    - ONNX
+    - local
+    estimated_hours: 6
+    summary: Estudia cuantización e inferencia local mediante un laboratorio neural reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 083
+    number: 83
+    title: Selección de modelo, costo, latencia y privacidad
+    path: classes/part-06-foundation-models-and-llm-engineering/083-seleccion-de-modelo-costo-latencia-y-privacidad
+    lab_kind: evaluation
+    keywords:
+    - benchmark
+    - costo
+    - latencia
+    - privacidad
+    estimated_hours: 6
+    summary: Estudia selección de modelo, costo, latencia y privacidad mediante un laboratorio evaluation
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 084
+    number: 84
+    title: 'Proyecto: servicio LLM con contratos y evals'
+    path: classes/part-06-foundation-models-and-llm-engineering/084-proyecto-servicio-llm-con-contratos-y-evals
+    lab_kind: capstone
+    keywords:
+    - LLM
+    - API
+    - evals
+    - observabilidad
+    estimated_hours: 10
+    summary: 'Estudia proyecto: servicio llm con contratos y evals mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '07'
+  slug: generative-ai-across-media
+  title: IA generativa para texto, imagen, audio, video y 3D
+  level: avanzado
+  weeks: 5–6
+  description: Cubre la generación multimodal y sus pipelines creativos, incluyendo control, procedencia,
+    consentimiento y evaluación de calidad.
+  lessons:
+  - id: 085
+    number: 85
+    title: Espacios latentes y autoencoders variacionales
+    path: classes/part-07-generative-ai-across-media/085-espacios-latentes-y-autoencoders-variacionales
+    lab_kind: generation
+    keywords:
+    - VAE
+    - latente
+    - reconstrucción
+    - muestreo
+    estimated_hours: 6
+    summary: Estudia espacios latentes y autoencoders variacionales mediante un laboratorio generation
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 086
+    number: 86
+    title: GAN y entrenamiento adversarial
+    path: classes/part-07-generative-ai-across-media/086-gan-y-entrenamiento-adversarial
+    lab_kind: generation
+    keywords:
+    - GAN
+    - discriminador
+    - generador
+    - estabilidad
+    estimated_hours: 6
+    summary: Estudia gan y entrenamiento adversarial mediante un laboratorio generation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 087
+    number: 87
+    title: Modelos de difusión
+    path: classes/part-07-generative-ai-across-media/087-modelos-de-difusion
+    lab_kind: generation
+    keywords:
+    - DDPM
+    - denoising
+    - scheduler
+    - sampling
+    estimated_hours: 6
+    summary: Estudia modelos de difusión mediante un laboratorio generation reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 088
+    number: 88
+    title: Texto a imagen y condicionamiento
+    path: classes/part-07-generative-ai-across-media/088-texto-a-imagen-y-condicionamiento
+    lab_kind: generation
+    keywords:
+    - text-to-image
+    - conditioning
+    - guidance
+    - prompt
+    estimated_hours: 6
+    summary: Estudia texto a imagen y condicionamiento mediante un laboratorio generation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 089
+    number: 89
+    title: Control estructural y edición generativa
+    path: classes/part-07-generative-ai-across-media/089-control-estructural-y-edicion-generativa
+    lab_kind: generation
+    keywords:
+    - inpainting
+    - control
+    - pose
+    - depth
+    estimated_hours: 6
+    summary: Estudia control estructural y edición generativa mediante un laboratorio generation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 090
+    number: 90
+    title: Generación musical y de audio
+    path: classes/part-07-generative-ai-across-media/090-generacion-musical-y-de-audio
+    lab_kind: generation
+    keywords:
+    - audio
+    - música
+    - codecs
+    - difusión
+    estimated_hours: 6
+    summary: Estudia generación musical y de audio mediante un laboratorio generation reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 091
+    number: 91
+    title: Síntesis de voz y derechos de identidad
+    path: classes/part-07-generative-ai-across-media/091-sintesis-de-voz-y-derechos-de-identidad
+    lab_kind: safety
+    keywords:
+    - TTS
+    - identidad
+    - consentimiento
+    - abuso
+    estimated_hours: 6
+    summary: Estudia síntesis de voz y derechos de identidad mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 092
+    number: 92
+    title: Generación y edición de video
+    path: classes/part-07-generative-ai-across-media/092-generacion-y-edicion-de-video
+    lab_kind: generation
+    keywords:
+    - video
+    - temporalidad
+    - consistencia
+    - edición
+    estimated_hours: 6
+    summary: Estudia generación y edición de video mediante un laboratorio generation reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 093
+    number: 93
+    title: Generación 3D y mundos sintéticos
+    path: classes/part-07-generative-ai-across-media/093-generacion-3d-y-mundos-sinteticos
+    lab_kind: generation
+    keywords:
+    - 3D
+    - NeRF
+    - gaussian splatting
+    - assets
+    estimated_hours: 6
+    summary: Estudia generación 3d y mundos sintéticos mediante un laboratorio generation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 094
+    number: 94
+    title: 'Datos sintéticos: utilidad y contaminación'
+    path: classes/part-07-generative-ai-across-media/094-datos-sinteticos-utilidad-y-contaminacion
+    lab_kind: evaluation
+    keywords:
+    - synthetic data
+    - leakage
+    - collapse
+    - calidad
+    estimated_hours: 6
+    summary: 'Estudia datos sintéticos: utilidad y contaminación mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 095
+    number: 95
+    title: Procedencia, marcas y autenticidad
+    path: classes/part-07-generative-ai-across-media/095-procedencia-marcas-y-autenticidad
+    lab_kind: safety
+    keywords:
+    - C2PA
+    - watermark
+    - provenance
+    - autenticidad
+    estimated_hours: 6
+    summary: Estudia procedencia, marcas y autenticidad mediante un laboratorio safety reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 096
+    number: 96
+    title: 'Proyecto: pipeline creativo trazable'
+    path: classes/part-07-generative-ai-across-media/096-proyecto-pipeline-creativo-trazable
+    lab_kind: capstone
+    keywords:
+    - multimedia
+    - provenance
+    - evaluación
+    - publicación
+    estimated_hours: 10
+    summary: 'Estudia proyecto: pipeline creativo trazable mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: 08
+  slug: retrieval-context-memory-and-knowledge
+  title: Recuperación, contexto, memoria y conocimiento
+  level: avanzado
+  weeks: 5–6
+  description: Construye sistemas que conectan modelos con conocimiento verificable mediante búsqueda,
+    RAG, grafos, memoria y evaluación de atribución.
+  lessons:
+  - id: 097
+    number: 97
+    title: Embeddings y búsqueda vectorial
+    path: classes/part-08-retrieval-context-memory-and-knowledge/097-embeddings-y-busqueda-vectorial
+    lab_kind: retrieval
+    keywords:
+    - embeddings
+    - vector search
+    - cosine
+    - índices
+    estimated_hours: 6
+    summary: Estudia embeddings y búsqueda vectorial mediante un laboratorio retrieval reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 098
+    number: 98
+    title: Segmentación, metadatos y ventanas
+    path: classes/part-08-retrieval-context-memory-and-knowledge/098-segmentacion-metadatos-y-ventanas
+    lab_kind: retrieval
+    keywords:
+    - chunking
+    - metadata
+    - overlap
+    - estructura
+    estimated_hours: 6
+    summary: Estudia segmentación, metadatos y ventanas mediante un laboratorio retrieval reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: 099
+    number: 99
+    title: Búsqueda léxica y BM25
+    path: classes/part-08-retrieval-context-memory-and-knowledge/099-busqueda-lexica-y-bm25
+    lab_kind: retrieval
+    keywords:
+    - BM25
+    - inverted index
+    - sparse
+    - tokens
+    estimated_hours: 6
+    summary: Estudia búsqueda léxica y bm25 mediante un laboratorio retrieval reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '100'
+    number: 100
+    title: Búsqueda híbrida y fusión de rankings
+    path: classes/part-08-retrieval-context-memory-and-knowledge/100-busqueda-hibrida-y-fusion-de-rankings
+    lab_kind: retrieval
+    keywords:
+    - hybrid
+    - RRF
+    - sparse
+    - dense
+    estimated_hours: 6
+    summary: Estudia búsqueda híbrida y fusión de rankings mediante un laboratorio retrieval reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '101'
+    number: 101
+    title: Re-ranking y filtros de evidencia
+    path: classes/part-08-retrieval-context-memory-and-knowledge/101-re-ranking-y-filtros-de-evidencia
+    lab_kind: retrieval
+    keywords:
+    - reranking
+    - cross-encoder
+    - filtros
+    - calidad
+    estimated_hours: 6
+    summary: Estudia re-ranking y filtros de evidencia mediante un laboratorio retrieval reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '102'
+    number: 102
+    title: RAG básico con citas
+    path: classes/part-08-retrieval-context-memory-and-knowledge/102-rag-basico-con-citas
+    lab_kind: retrieval
+    keywords:
+    - RAG
+    - citas
+    - grounding
+    - corpus
+    estimated_hours: 6
+    summary: Estudia rag básico con citas mediante un laboratorio retrieval reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '103'
+    number: 103
+    title: Transformación y descomposición de consultas
+    path: classes/part-08-retrieval-context-memory-and-knowledge/103-transformacion-y-descomposicion-de-consultas
+    lab_kind: workflow
+    keywords:
+    - query rewrite
+    - decomposition
+    - routing
+    - retrieval
+    estimated_hours: 6
+    summary: Estudia transformación y descomposición de consultas mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '104'
+    number: 104
+    title: Knowledge graphs y GraphRAG
+    path: classes/part-08-retrieval-context-memory-and-knowledge/104-knowledge-graphs-y-graphrag
+    lab_kind: logic
+    keywords:
+    - knowledge graph
+    - entidades
+    - relaciones
+    - GraphRAG
+    estimated_hours: 6
+    summary: Estudia knowledge graphs y graphrag mediante un laboratorio logic reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '105'
+    number: 105
+    title: Memoria de corto y largo plazo
+    path: classes/part-08-retrieval-context-memory-and-knowledge/105-memoria-de-corto-y-largo-plazo
+    lab_kind: agent
+    keywords:
+    - memory
+    - thread
+    - store
+    - episodic
+    - semantic
+    estimated_hours: 6
+    summary: Estudia memoria de corto y largo plazo mediante un laboratorio agent reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '106'
+    number: 106
+    title: Compresión de contexto y cachés semánticos
+    path: classes/part-08-retrieval-context-memory-and-knowledge/106-compresion-de-contexto-y-caches-semanticos
+    lab_kind: retrieval
+    keywords:
+    - compression
+    - cache
+    - context
+    - budget
+    estimated_hours: 6
+    summary: Estudia compresión de contexto y cachés semánticos mediante un laboratorio retrieval reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '107'
+    number: 107
+    title: Evaluación de fidelidad, cobertura y atribución
+    path: classes/part-08-retrieval-context-memory-and-knowledge/107-evaluacion-de-fidelidad-cobertura-y-atribucion
+    lab_kind: evaluation
+    keywords:
+    - faithfulness
+    - recall
+    - attribution
+    - citations
+    estimated_hours: 6
+    summary: Estudia evaluación de fidelidad, cobertura y atribución mediante un laboratorio evaluation
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '108'
+    number: 108
+    title: 'Proyecto: RAG productivo y auditable'
+    path: classes/part-08-retrieval-context-memory-and-knowledge/108-proyecto-rag-productivo-y-auditable
+    lab_kind: capstone
+    keywords:
+    - RAG
+    - evals
+    - observabilidad
+    - seguridad
+    estimated_hours: 10
+    summary: 'Estudia proyecto: rag productivo y auditable mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: 09
+  slug: ai-agent-engineering
+  title: Ingeniería de agentes de IA
+  level: avanzado
+  weeks: 6–7
+  description: Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de elegir
+    herramientas, mantener estado, pedir aprobación y demostrar resultados.
+  lessons:
+  - id: '109'
+    number: 109
+    title: De modelo y automatización a agente
+    path: classes/part-09-ai-agent-engineering/109-de-modelo-y-automatizacion-a-agente
+    lab_kind: agent
+    keywords:
+    - modelo
+    - workflow
+    - autonomía
+    - objetivos
+    estimated_hours: 6
+    summary: Estudia de modelo y automatización a agente mediante un laboratorio agent reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '110'
+    number: 110
+    title: 'Anatomía: instrucciones, herramientas, estado y salida'
+    path: classes/part-09-ai-agent-engineering/110-anatomia-instrucciones-herramientas-estado-y-salida
+    lab_kind: agent
+    keywords:
+    - instructions
+    - tools
+    - state
+    - output
+    estimated_hours: 6
+    summary: 'Estudia anatomía: instrucciones, herramientas, estado y salida mediante un laboratorio agent
+      reproducible, evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '111'
+    number: 111
+    title: Ciclo ReAct y observación del entorno
+    path: classes/part-09-ai-agent-engineering/111-ciclo-react-y-observacion-del-entorno
+    lab_kind: agent
+    keywords:
+    - ReAct
+    - thought-action
+    - observation
+    - loop
+    estimated_hours: 6
+    summary: Estudia ciclo react y observación del entorno mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '112'
+    number: 112
+    title: Planificación y descomposición de tareas
+    path: classes/part-09-ai-agent-engineering/112-planificacion-y-descomposicion-de-tareas
+    lab_kind: workflow
+    keywords:
+    - planning
+    - decomposition
+    - milestones
+    - stop
+    estimated_hours: 6
+    summary: Estudia planificación y descomposición de tareas mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '113'
+    number: 113
+    title: Herramientas tipadas y efectos laterales
+    path: classes/part-09-ai-agent-engineering/113-herramientas-tipadas-y-efectos-laterales
+    lab_kind: agent
+    keywords:
+    - tool schema
+    - side effects
+    - idempotencia
+    - errores
+    estimated_hours: 6
+    summary: Estudia herramientas tipadas y efectos laterales mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '114'
+    number: 114
+    title: Prompt, recurso, tool, skill, workflow y agente
+    path: classes/part-09-ai-agent-engineering/114-prompt-recurso-tool-skill-workflow-y-agente
+    lab_kind: agent
+    keywords:
+    - prompt
+    - resource
+    - tool
+    - skill
+    - agent
+    estimated_hours: 6
+    summary: Estudia prompt, recurso, tool, skill, workflow y agente mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '115'
+    number: 115
+    title: Memoria, contexto y continuidad
+    path: classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad
+    lab_kind: agent
+    keywords:
+    - memory
+    - context
+    - checkpoints
+    - identity
+    estimated_hours: 6
+    summary: Estudia memoria, contexto y continuidad mediante un laboratorio agent reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '116'
+    number: 116
+    title: Permisos, sandbox y mínimo privilegio
+    path: classes/part-09-ai-agent-engineering/116-permisos-sandbox-y-minimo-privilegio
+    lab_kind: safety
+    keywords:
+    - permissions
+    - sandbox
+    - least privilege
+    - secrets
+    estimated_hours: 6
+    summary: Estudia permisos, sandbox y mínimo privilegio mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '117'
+    number: 117
+    title: Human-in-the-loop y aprobaciones
+    path: classes/part-09-ai-agent-engineering/117-human-in-the-loop-y-aprobaciones
+    lab_kind: workflow
+    keywords:
+    - HITL
+    - approval
+    - interrupt
+    - resume
+    estimated_hours: 6
+    summary: Estudia human-in-the-loop y aprobaciones mediante un laboratorio workflow reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '118'
+    number: 118
+    title: Presupuestos de pasos, tokens, costo y tiempo
+    path: classes/part-09-ai-agent-engineering/118-presupuestos-de-pasos-tokens-costo-y-tiempo
+    lab_kind: observability
+    keywords:
+    - budget
+    - tokens
+    - cost
+    - timeout
+    estimated_hours: 6
+    summary: Estudia presupuestos de pasos, tokens, costo y tiempo mediante un laboratorio observability
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '119'
+    number: 119
+    title: Evaluación y depuración de agentes
+    path: classes/part-09-ai-agent-engineering/119-evaluacion-y-depuracion-de-agentes
+    lab_kind: evaluation
+    keywords:
+    - trajectory
+    - tool calls
+    - success
+    - regression
+    estimated_hours: 6
+    summary: Estudia evaluación y depuración de agentes mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '120'
+    number: 120
+    title: 'Proyecto: agente individual operativo'
+    path: classes/part-09-ai-agent-engineering/120-proyecto-agente-individual-operativo
+    lab_kind: capstone
+    keywords:
+    - agent
+    - tools
+    - memory
+    - approval
+    - evals
+    estimated_hours: 10
+    summary: 'Estudia proyecto: agente individual operativo mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '10'
+  slug: multi-agent-systems-and-interoperability
+  title: Sistemas multiagente e interoperabilidad
+  level: experto
+  weeks: 6–7
+  description: Diseña equipos de agentes con contratos, delegación, protocolos, persistencia y coordinación
+    entre runtimes y proveedores.
+  lessons:
+  - id: '121'
+    number: 121
+    title: Workflow, subagente y sistema multiagente
+    path: classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente
+    lab_kind: multiagent
+    keywords:
+    - workflow
+    - subagent
+    - multi-agent
+    - delegation
+    estimated_hours: 6
+    summary: Estudia workflow, subagente y sistema multiagente mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '122'
+    number: 122
+    title: Router y especialistas
+    path: classes/part-10-multi-agent-systems-and-interoperability/122-router-y-especialistas
+    lab_kind: multiagent
+    keywords:
+    - router
+    - specialists
+    - classification
+    - dispatch
+    estimated_hours: 6
+    summary: Estudia router y especialistas mediante un laboratorio multiagent reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '123'
+    number: 123
+    title: Handoffs y transferencia de contexto
+    path: classes/part-10-multi-agent-systems-and-interoperability/123-handoffs-y-transferencia-de-contexto
+    lab_kind: multiagent
+    keywords:
+    - handoff
+    - context
+    - ownership
+    - escalation
+    estimated_hours: 6
+    summary: Estudia handoffs y transferencia de contexto mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '124'
+    number: 124
+    title: Supervisor-workers
+    path: classes/part-10-multi-agent-systems-and-interoperability/124-supervisor-workers
+    lab_kind: multiagent
+    keywords:
+    - supervisor
+    - workers
+    - tasks
+    - consolidation
+    estimated_hours: 6
+    summary: Estudia supervisor-workers mediante un laboratorio multiagent reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '125'
+    number: 125
+    title: Paralelismo, fan-out y map-reduce
+    path: classes/part-10-multi-agent-systems-and-interoperability/125-paralelismo-fan-out-y-map-reduce
+    lab_kind: multiagent
+    keywords:
+    - parallel
+    - fan-out
+    - map-reduce
+    - merge
+    estimated_hours: 6
+    summary: Estudia paralelismo, fan-out y map-reduce mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '126'
+    number: 126
+    title: Crítica, revisión y debate controlado
+    path: classes/part-10-multi-agent-systems-and-interoperability/126-critica-revision-y-debate-controlado
+    lab_kind: multiagent
+    keywords:
+    - critic
+    - reviewer
+    - debate
+    - convergence
+    estimated_hours: 6
+    summary: Estudia crítica, revisión y debate controlado mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '127'
+    number: 127
+    title: Blackboard y memoria compartida
+    path: classes/part-10-multi-agent-systems-and-interoperability/127-blackboard-y-memoria-compartida
+    lab_kind: multiagent
+    keywords:
+    - blackboard
+    - shared memory
+    - coordination
+    - conflicts
+    estimated_hours: 6
+    summary: Estudia blackboard y memoria compartida mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '128'
+    number: 128
+    title: Contratos de roles, capacidades y resultados
+    path: classes/part-10-multi-agent-systems-and-interoperability/128-contratos-de-roles-capacidades-y-resultados
+    lab_kind: multiagent
+    keywords:
+    - role
+    - capabilities
+    - schemas
+    - SLA
+    estimated_hours: 6
+    summary: Estudia contratos de roles, capacidades y resultados mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '129'
+    number: 129
+    title: 'MCP: tools, resources y prompts'
+    path: classes/part-10-multi-agent-systems-and-interoperability/129-mcp-tools-resources-y-prompts
+    lab_kind: workflow
+    keywords:
+    - MCP
+    - tools
+    - resources
+    - prompts
+    estimated_hours: 6
+    summary: 'Estudia mcp: tools, resources y prompts mediante un laboratorio workflow reproducible, evidencia
+      estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '130'
+    number: 130
+    title: Agent Skills como capacidades portables
+    path: classes/part-10-multi-agent-systems-and-interoperability/130-agent-skills-como-capacidades-portables
+    lab_kind: agent
+    keywords:
+    - Agent Skills
+    - instructions
+    - scripts
+    - portability
+    estimated_hours: 6
+    summary: Estudia agent skills como capacidades portables mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '131'
+    number: 131
+    title: A2A, descubrimiento e interoperabilidad
+    path: classes/part-10-multi-agent-systems-and-interoperability/131-a2a-descubrimiento-e-interoperabilidad
+    lab_kind: multiagent
+    keywords:
+    - A2A
+    - discovery
+    - agent card
+    - tasks
+    estimated_hours: 6
+    summary: Estudia a2a, descubrimiento e interoperabilidad mediante un laboratorio multiagent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '132'
+    number: 132
+    title: 'Proyecto: sistema multiagente durable'
+    path: classes/part-10-multi-agent-systems-and-interoperability/132-proyecto-sistema-multiagente-durable
+    lab_kind: capstone
+    keywords:
+    - multi-agent
+    - protocol
+    - persistence
+    - HITL
+    estimated_hours: 10
+    summary: 'Estudia proyecto: sistema multiagente durable mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '11'
+  slug: embodied-ai-robotics-and-computer-use
+  title: IA encarnada, robótica y uso de computadores
+  level: experto
+  weeks: 5–6
+  description: Lleva la toma de decisiones al mundo físico y a interfaces digitales, con sensores, control,
+    simulación, navegación y acciones verificables.
+  lessons:
+  - id: '133'
+    number: 133
+    title: Arquitectura percepción-planificación-acción
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/133-arquitectura-percepcion-planificacion-accion
+    lab_kind: robotics
+    keywords:
+    - perception
+    - planning
+    - action
+    - feedback
+    estimated_hours: 6
+    summary: Estudia arquitectura percepción-planificación-acción mediante un laboratorio robotics reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '134'
+    number: 134
+    title: Sensores, actuadores y fusión
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/134-sensores-actuadores-y-fusion
+    lab_kind: robotics
+    keywords:
+    - sensors
+    - actuators
+    - fusion
+    - calibration
+    estimated_hours: 6
+    summary: Estudia sensores, actuadores y fusión mediante un laboratorio robotics reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '135'
+    number: 135
+    title: Localización, mapeo y SLAM
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/135-localizacion-mapeo-y-slam
+    lab_kind: robotics
+    keywords:
+    - localization
+    - mapping
+    - SLAM
+    - uncertainty
+    estimated_hours: 6
+    summary: Estudia localización, mapeo y slam mediante un laboratorio robotics reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '136'
+    number: 136
+    title: Planificación de movimiento y navegación
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/136-planificacion-de-movimiento-y-navegacion
+    lab_kind: search
+    keywords:
+    - path planning
+    - navigation
+    - obstacles
+    - A*
+    estimated_hours: 6
+    summary: Estudia planificación de movimiento y navegación mediante un laboratorio search reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '137'
+    number: 137
+    title: Control clásico y control aprendido
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/137-control-clasico-y-control-aprendido
+    lab_kind: robotics
+    keywords:
+    - PID
+    - control
+    - policy
+    - stability
+    estimated_hours: 6
+    summary: Estudia control clásico y control aprendido mediante un laboratorio robotics reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '138'
+    number: 138
+    title: Aprendizaje por imitación
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/138-aprendizaje-por-imitacion
+    lab_kind: robotics
+    keywords:
+    - imitation
+    - demonstrations
+    - behavior cloning
+    - DAgger
+    estimated_hours: 6
+    summary: Estudia aprendizaje por imitación mediante un laboratorio robotics reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '139'
+    number: 139
+    title: Simulación, sim-to-real y digital twins
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/139-simulacion-sim-to-real-y-digital-twins
+    lab_kind: robotics
+    keywords:
+    - simulation
+    - sim-to-real
+    - digital twin
+    - domain randomization
+    estimated_hours: 6
+    summary: Estudia simulación, sim-to-real y digital twins mediante un laboratorio robotics reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '140'
+    number: 140
+    title: Robots colaborativos y seguridad física
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/140-robots-colaborativos-y-seguridad-fisica
+    lab_kind: safety
+    keywords:
+    - cobot
+    - safety
+    - fail-safe
+    - human
+    estimated_hours: 6
+    summary: Estudia robots colaborativos y seguridad física mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '141'
+    number: 141
+    title: Computer use basado en visión
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/141-computer-use-basado-en-vision
+    lab_kind: robotics
+    keywords:
+    - computer use
+    - screenshot
+    - coordinates
+    - verification
+    estimated_hours: 6
+    summary: Estudia computer use basado en visión mediante un laboratorio robotics reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '142'
+    number: 142
+    title: Agentes de navegador
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/142-agentes-de-navegador
+    lab_kind: agent
+    keywords:
+    - browser
+    - DOM
+    - navigation
+    - forms
+    estimated_hours: 6
+    summary: Estudia agentes de navegador mediante un laboratorio agent reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '143'
+    number: 143
+    title: Automatización de escritorio y RPA agéntica
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/143-automatizacion-de-escritorio-y-rpa-agentica
+    lab_kind: workflow
+    keywords:
+    - desktop
+    - RPA
+    - Playwright
+    - evidence
+    estimated_hours: 6
+    summary: Estudia automatización de escritorio y rpa agéntica mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '144'
+    number: 144
+    title: 'Proyecto: agente que actúa con límites'
+    path: classes/part-11-embodied-ai-robotics-and-computer-use/144-proyecto-agente-que-actua-con-limites
+    lab_kind: capstone
+    keywords:
+    - embodied
+    - computer use
+    - approval
+    - evidence
+    estimated_hours: 10
+    summary: 'Estudia proyecto: agente que actúa con límites mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '12'
+  slug: ai-engineering-mlops-llmops-and-agentops
+  title: Ingeniería de IA, MLOps, LLMOps y AgentOps
+  level: experto
+  weeks: 6–7
+  description: Industrializa datos, modelos y agentes mediante CI/CD, registros, serving, observabilidad,
+    control de costos, recuperación y operación segura.
+  lessons:
+  - id: '145'
+    number: 145
+    title: Ciclo de vida de datos, modelos y agentes
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/145-ciclo-de-vida-de-datos-modelos-y-agentes
+    lab_kind: workflow
+    keywords:
+    - lifecycle
+    - data
+    - model
+    - agent
+    estimated_hours: 6
+    summary: Estudia ciclo de vida de datos, modelos y agentes mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '146'
+    number: 146
+    title: Experimentos, semillas y trazabilidad
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/146-experimentos-semillas-y-trazabilidad
+    lab_kind: observability
+    keywords:
+    - experiments
+    - seeds
+    - lineage
+    - artifacts
+    estimated_hours: 6
+    summary: Estudia experimentos, semillas y trazabilidad mediante un laboratorio observability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '147'
+    number: 147
+    title: Registro y promoción champion-challenger
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/147-registro-y-promocion-champion-challenger
+    lab_kind: workflow
+    keywords:
+    - registry
+    - version
+    - champion
+    - challenger
+    estimated_hours: 6
+    summary: Estudia registro y promoción champion-challenger mediante un laboratorio workflow reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '148'
+    number: 148
+    title: CI/CD y pruebas para sistemas de IA
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ci-cd-y-pruebas-para-sistemas-de-ia
+    lab_kind: evaluation
+    keywords:
+    - CI
+    - tests
+    - validation
+    - contracts
+    estimated_hours: 6
+    summary: Estudia ci/cd y pruebas para sistemas de ia mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '149'
+    number: 149
+    title: Serving online, batch y streaming
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-serving-online-batch-y-streaming
+    lab_kind: observability
+    keywords:
+    - serving
+    - batch
+    - streaming
+    - API
+    estimated_hours: 6
+    summary: Estudia serving online, batch y streaming mediante un laboratorio observability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '150'
+    number: 150
+    title: 'Observabilidad: logs, métricas y trazas'
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas
+    lab_kind: observability
+    keywords:
+    - logs
+    - metrics
+    - traces
+    - OTel
+    estimated_hours: 6
+    summary: 'Estudia observabilidad: logs, métricas y trazas mediante un laboratorio observability reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '151'
+    number: 151
+    title: Deriva, feedback y evaluación continua
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-deriva-feedback-y-evaluacion-continua
+    lab_kind: evaluation
+    keywords:
+    - drift
+    - feedback
+    - continuous eval
+    - monitoring
+    estimated_hours: 6
+    summary: Estudia deriva, feedback y evaluación continua mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '152'
+    number: 152
+    title: LLMOps y gestión de prompts
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/152-llmops-y-gestion-de-prompts
+    lab_kind: observability
+    keywords:
+    - LLMOps
+    - prompts
+    - versions
+    - evals
+    estimated_hours: 6
+    summary: Estudia llmops y gestión de prompts mediante un laboratorio observability reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '153'
+    number: 153
+    title: AgentOps y análisis de trayectorias
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-agentops-y-analisis-de-trayectorias
+    lab_kind: observability
+    keywords:
+    - AgentOps
+    - trajectories
+    - tools
+    - traces
+    estimated_hours: 6
+    summary: Estudia agentops y análisis de trayectorias mediante un laboratorio observability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '154'
+    number: 154
+    title: Costo, latencia, caching y capacidad
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-costo-latencia-caching-y-capacidad
+    lab_kind: observability
+    keywords:
+    - cost
+    - latency
+    - cache
+    - capacity
+    estimated_hours: 6
+    summary: Estudia costo, latencia, caching y capacidad mediante un laboratorio observability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '155'
+    number: 155
+    title: Resiliencia, idempotencia, rollback y recuperación
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-resiliencia-idempotencia-rollback-y-recuperacion
+    lab_kind: workflow
+    keywords:
+    - resilience
+    - idempotency
+    - rollback
+    - recovery
+    estimated_hours: 6
+    summary: Estudia resiliencia, idempotencia, rollback y recuperación mediante un laboratorio workflow
+      reproducible, evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '156'
+    number: 156
+    title: 'Proyecto: plataforma de IA observable'
+    path: classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-proyecto-plataforma-de-ia-observable
+    lab_kind: capstone
+    keywords:
+    - platform
+    - observability
+    - release
+    - SLO
+    estimated_hours: 10
+    summary: 'Estudia proyecto: plataforma de ia observable mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '13'
+  slug: evaluation-safety-security-and-governance
+  title: Evaluación, seguridad y gobernanza
+  level: experto
+  weeks: 6–7
+  description: Evalúa capacidades y riesgos, protege herramientas y datos, responde incidentes y establece
+    controles técnicos, humanos y regulatorios.
+  lessons:
+  - id: '157'
+    number: 157
+    title: Diseño de evaluaciones y criterios de éxito
+    path: classes/part-13-evaluation-safety-security-and-governance/157-diseno-de-evaluaciones-y-criterios-de-exito
+    lab_kind: evaluation
+    keywords:
+    - evals
+    - rubric
+    - success
+    - benchmark
+    estimated_hours: 6
+    summary: Estudia diseño de evaluaciones y criterios de éxito mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '158'
+    number: 158
+    title: Golden datasets, regresión y LLM-as-judge
+    path: classes/part-13-evaluation-safety-security-and-governance/158-golden-datasets-regresion-y-llm-as-judge
+    lab_kind: evaluation
+    keywords:
+    - golden set
+    - regression
+    - judge
+    - agreement
+    estimated_hours: 6
+    summary: Estudia golden datasets, regresión y llm-as-judge mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '159'
+    number: 159
+    title: Red teaming y abuso
+    path: classes/part-13-evaluation-safety-security-and-governance/159-red-teaming-y-abuso
+    lab_kind: safety
+    keywords:
+    - red team
+    - misuse
+    - adversarial
+    - threat model
+    estimated_hours: 6
+    summary: Estudia red teaming y abuso mediante un laboratorio safety reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '160'
+    number: 160
+    title: Prompt injection e instrucciones no confiables
+    path: classes/part-13-evaluation-safety-security-and-governance/160-prompt-injection-e-instrucciones-no-confiables
+    lab_kind: safety
+    keywords:
+    - prompt injection
+    - untrusted input
+    - hierarchy
+    - isolation
+    estimated_hours: 6
+    summary: Estudia prompt injection e instrucciones no confiables mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '161'
+    number: 161
+    title: Seguridad de tools, MCP y supply chain
+    path: classes/part-13-evaluation-safety-security-and-governance/161-seguridad-de-tools-mcp-y-supply-chain
+    lab_kind: safety
+    keywords:
+    - tools
+    - MCP
+    - supply chain
+    - permissions
+    estimated_hours: 6
+    summary: Estudia seguridad de tools, mcp y supply chain mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '162'
+    number: 162
+    title: Privacidad, secretos y minimización de datos
+    path: classes/part-13-evaluation-safety-security-and-governance/162-privacidad-secretos-y-minimizacion-de-datos
+    lab_kind: safety
+    keywords:
+    - privacy
+    - secrets
+    - minimization
+    - retention
+    estimated_hours: 6
+    summary: Estudia privacidad, secretos y minimización de datos mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '163'
+    number: 163
+    title: Sesgo, fairness y grupos afectados
+    path: classes/part-13-evaluation-safety-security-and-governance/163-sesgo-fairness-y-grupos-afectados
+    lab_kind: evaluation
+    keywords:
+    - bias
+    - fairness
+    - subgroups
+    - harms
+    estimated_hours: 6
+    summary: Estudia sesgo, fairness y grupos afectados mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '164'
+    number: 164
+    title: Explicabilidad, incertidumbre y calibración
+    path: classes/part-13-evaluation-safety-security-and-governance/164-explicabilidad-incertidumbre-y-calibracion
+    lab_kind: evaluation
+    keywords:
+    - explainability
+    - uncertainty
+    - calibration
+    - confidence
+    estimated_hours: 6
+    summary: Estudia explicabilidad, incertidumbre y calibración mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '165'
+    number: 165
+    title: Alucinación, grounding y abstención
+    path: classes/part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion
+    lab_kind: evaluation
+    keywords:
+    - hallucination
+    - grounding
+    - abstention
+    - evidence
+    estimated_hours: 6
+    summary: Estudia alucinación, grounding y abstención mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '166'
+    number: 166
+    title: Gobernanza, roles y gestión de riesgo
+    path: classes/part-13-evaluation-safety-security-and-governance/166-gobernanza-roles-y-gestion-de-riesgo
+    lab_kind: safety
+    keywords:
+    - governance
+    - roles
+    - risk
+    - controls
+    estimated_hours: 6
+    summary: Estudia gobernanza, roles y gestión de riesgo mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '167'
+    number: 167
+    title: Normativa, auditoría y evidencia
+    path: classes/part-13-evaluation-safety-security-and-governance/167-normativa-auditoria-y-evidencia
+    lab_kind: safety
+    keywords:
+    - AI Act
+    - audit
+    - evidence
+    - compliance
+    estimated_hours: 6
+    summary: Estudia normativa, auditoría y evidencia mediante un laboratorio safety reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: stable
+  - id: '168'
+    number: 168
+    title: 'Proyecto: respuesta a incidentes de IA'
+    path: classes/part-13-evaluation-safety-security-and-governance/168-proyecto-respuesta-a-incidentes-de-ia
+    lab_kind: capstone
+    keywords:
+    - incident
+    - containment
+    - evidence
+    - recovery
+    estimated_hours: 10
+    summary: 'Estudia proyecto: respuesta a incidentes de ia mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: stable
+- id: '14'
+  slug: frontier-research-and-capstones
+  title: Frontera, investigación y proyectos integradores
+  level: frontera
+  weeks: 8–12
+  description: Integra todo el programa y mantiene una zona explícita para temas emergentes, distinguiendo
+    evidencia consolidada de prototipos y expectativas.
+  lessons:
+  - id: '169'
+    number: 169
+    title: IA neuro-simbólica
+    path: classes/part-14-frontier-research-and-capstones/169-ia-neuro-simbolica
+    lab_kind: frontier
+    keywords:
+    - neuro-symbolic
+    - logic
+    - neural
+    - reasoning
+    estimated_hours: 6
+    summary: Estudia ia neuro-simbólica mediante un laboratorio frontier reproducible, evidencia estructurada
+      y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '170'
+    number: 170
+    title: Causal AI y descubrimiento científico
+    path: classes/part-14-frontier-research-and-capstones/170-causal-ai-y-descubrimiento-cientifico
+    lab_kind: probability
+    keywords:
+    - causal
+    - interventions
+    - science
+    - discovery
+    estimated_hours: 6
+    summary: Estudia causal ai y descubrimiento científico mediante un laboratorio probability reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '171'
+    number: 171
+    title: World models y simulación interna
+    path: classes/part-14-frontier-research-and-capstones/171-world-models-y-simulacion-interna
+    lab_kind: frontier
+    keywords:
+    - world models
+    - simulation
+    - planning
+    - latent
+    estimated_hours: 6
+    summary: Estudia world models y simulación interna mediante un laboratorio frontier reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '172'
+    number: 172
+    title: Razonamiento y cómputo en tiempo de inferencia
+    path: classes/part-14-frontier-research-and-capstones/172-razonamiento-y-computo-en-tiempo-de-inferencia
+    lab_kind: frontier
+    keywords:
+    - reasoning
+    - test-time compute
+    - verification
+    - search
+    estimated_hours: 6
+    summary: Estudia razonamiento y cómputo en tiempo de inferencia mediante un laboratorio frontier reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '173'
+    number: 173
+    title: Aprendizaje continuo y adaptación
+    path: classes/part-14-frontier-research-and-capstones/173-aprendizaje-continuo-y-adaptacion
+    lab_kind: frontier
+    keywords:
+    - continual learning
+    - adaptation
+    - forgetting
+    - memory
+    estimated_hours: 6
+    summary: Estudia aprendizaje continuo y adaptación mediante un laboratorio frontier reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '174'
+    number: 174
+    title: Privacidad diferencial y aprendizaje federado
+    path: classes/part-14-frontier-research-and-capstones/174-privacidad-diferencial-y-aprendizaje-federado
+    lab_kind: safety
+    keywords:
+    - differential privacy
+    - federated
+    - secure aggregation
+    - leakage
+    estimated_hours: 6
+    summary: Estudia privacidad diferencial y aprendizaje federado mediante un laboratorio safety reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '175'
+    number: 175
+    title: IA para programación y modernización
+    path: classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion
+    lab_kind: agent
+    keywords:
+    - coding agents
+    - tests
+    - migration
+    - legacy
+    estimated_hours: 6
+    summary: Estudia ia para programación y modernización mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '176'
+    number: 176
+    title: IA para ciberseguridad y defensa
+    path: classes/part-14-frontier-research-and-capstones/176-ia-para-ciberseguridad-y-defensa
+    lab_kind: safety
+    keywords:
+    - cybersecurity
+    - detection
+    - response
+    - dual-use
+    estimated_hours: 6
+    summary: Estudia ia para ciberseguridad y defensa mediante un laboratorio safety reproducible, evidencia
+      estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '177'
+    number: 177
+    title: IA para educación y aprendizaje adaptativo
+    path: classes/part-14-frontier-research-and-capstones/177-ia-para-educacion-y-aprendizaje-adaptativo
+    lab_kind: agent
+    keywords:
+    - education
+    - tutoring
+    - assessment
+    - pedagogy
+    estimated_hours: 6
+    summary: Estudia ia para educación y aprendizaje adaptativo mediante un laboratorio agent reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '178'
+    number: 178
+    title: IA para ciencia, clima y salud responsable
+    path: classes/part-14-frontier-research-and-capstones/178-ia-para-ciencia-clima-y-salud-responsable
+    lab_kind: evaluation
+    keywords:
+    - science
+    - climate
+    - health
+    - validation
+    estimated_hours: 6
+    summary: Estudia ia para ciencia, clima y salud responsable mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '179'
+    number: 179
+    title: Cómo vigilar la frontera sin perseguir modas
+    path: classes/part-14-frontier-research-and-capstones/179-como-vigilar-la-frontera-sin-perseguir-modas
+    lab_kind: evaluation
+    keywords:
+    - frontier
+    - evidence
+    - maturity
+    - hype
+    estimated_hours: 6
+    summary: Estudia cómo vigilar la frontera sin perseguir modas mediante un laboratorio evaluation reproducible,
+      evidencia estructurada y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '180'
+    number: 180
+    title: 'Capstone final: sistema de IA evolutivo'
+    path: classes/part-14-frontier-research-and-capstones/180-capstone-final-sistema-de-ia-evolutivo
+    lab_kind: capstone
+    keywords:
+    - portfolio
+    - system
+    - agents
+    - safety
+    - operations
+    estimated_hours: 10
+    summary: 'Estudia capstone final: sistema de ia evolutivo mediante un laboratorio capstone reproducible,
+      evidencia estructurada y análisis de límites.'
+    status: EXECUTABLE_CORE
+    maturity: frontier

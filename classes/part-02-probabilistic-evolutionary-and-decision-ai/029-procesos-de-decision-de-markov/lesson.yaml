@@ -1,0 +1,21 @@
+id: 029
+number: 29
+title: Procesos de decisión de Markov
+part: '02'
+level: intermedio
+estimated_hours: 6
+lab_kind: workflow
+keywords:
+- MDP
+- estados
+- acciones
+- recompensa
+- política
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 028

@@ -1,0 +1,20 @@
+id: '047'
+number: 47
+title: Métricas, calibración, sesgo y costo de error
+part: '03'
+level: intermedio
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- métricas
+- calibración
+- fairness
+- costo
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '046'

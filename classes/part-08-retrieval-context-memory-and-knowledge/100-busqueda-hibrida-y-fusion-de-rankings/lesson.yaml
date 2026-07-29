@@ -1,0 +1,20 @@
+id: '100'
+number: 100
+title: Búsqueda híbrida y fusión de rankings
+part: 08
+level: avanzado
+estimated_hours: 6
+lab_kind: retrieval
+keywords:
+- hybrid
+- RRF
+- sparse
+- dense
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 099

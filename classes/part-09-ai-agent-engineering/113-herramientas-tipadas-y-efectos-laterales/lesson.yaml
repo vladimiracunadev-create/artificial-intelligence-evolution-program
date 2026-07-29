@@ -1,0 +1,20 @@
+id: '113'
+number: 113
+title: Herramientas tipadas y efectos laterales
+part: 09
+level: avanzado
+estimated_hours: 6
+lab_kind: agent
+keywords:
+- tool schema
+- side effects
+- idempotencia
+- errores
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '112'

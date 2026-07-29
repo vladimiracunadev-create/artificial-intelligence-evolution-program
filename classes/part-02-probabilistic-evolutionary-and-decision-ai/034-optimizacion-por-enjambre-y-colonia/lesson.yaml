@@ -1,0 +1,20 @@
+id: '034'
+number: 34
+title: Optimización por enjambre y colonia
+part: '02'
+level: intermedio
+estimated_hours: 6
+lab_kind: optimization
+keywords:
+- PSO
+- ACO
+- metaheurística
+- exploración
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '033'

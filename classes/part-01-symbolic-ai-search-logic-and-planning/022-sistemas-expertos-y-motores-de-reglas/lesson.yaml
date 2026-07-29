@@ -1,0 +1,20 @@
+id: '022'
+number: 22
+title: Sistemas expertos y motores de reglas
+part: '01'
+level: fundamentos
+estimated_hours: 4
+lab_kind: logic
+keywords:
+- reglas
+- encadenamiento
+- explicación
+- conocimiento
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '021'

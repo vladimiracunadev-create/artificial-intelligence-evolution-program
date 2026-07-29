@@ -1,0 +1,20 @@
+id: 078
+number: 78
+title: RLHF, RLAIF y DPO
+part: '06'
+level: avanzado
+estimated_hours: 6
+lab_kind: probability
+keywords:
+- preferencias
+- reward model
+- RLHF
+- DPO
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '077'

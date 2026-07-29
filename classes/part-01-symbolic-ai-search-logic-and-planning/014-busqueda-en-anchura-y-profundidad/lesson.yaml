@@ -1,0 +1,20 @@
+id: '014'
+number: 14
+title: Búsqueda en anchura y profundidad
+part: '01'
+level: fundamentos
+estimated_hours: 4
+lab_kind: search
+keywords:
+- BFS
+- DFS
+- frontera
+- visitados
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '013'

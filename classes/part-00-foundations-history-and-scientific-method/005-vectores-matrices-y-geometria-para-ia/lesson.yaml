@@ -1,0 +1,20 @@
+id: '005'
+number: 5
+title: Vectores, matrices y geometría para IA
+part: '00'
+level: fundamentos
+estimated_hours: 4
+lab_kind: optimization
+keywords:
+- vectores
+- matrices
+- producto punto
+- distancia
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '004'

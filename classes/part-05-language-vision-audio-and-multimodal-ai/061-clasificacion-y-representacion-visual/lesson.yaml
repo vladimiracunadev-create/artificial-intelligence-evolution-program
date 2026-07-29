@@ -1,0 +1,20 @@
+id: '061'
+number: 61
+title: Clasificación y representación visual
+part: '05'
+level: avanzado
+estimated_hours: 6
+lab_kind: perception
+keywords:
+- visión
+- features
+- clasificación
+- augmentación
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '060'

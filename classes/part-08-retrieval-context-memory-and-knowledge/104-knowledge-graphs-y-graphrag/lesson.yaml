@@ -1,0 +1,20 @@
+id: '104'
+number: 104
+title: Knowledge graphs y GraphRAG
+part: 08
+level: avanzado
+estimated_hours: 6
+lab_kind: logic
+keywords:
+- knowledge graph
+- entidades
+- relaciones
+- GraphRAG
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '103'

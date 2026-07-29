@@ -1,0 +1,20 @@
+id: '006'
+number: 6
+title: Probabilidad, incertidumbre y estadística básica
+part: '00'
+level: fundamentos
+estimated_hours: 4
+lab_kind: probability
+keywords:
+- probabilidad
+- Bayes
+- distribuciones
+- incertidumbre
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '005'

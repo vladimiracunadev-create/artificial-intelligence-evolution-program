@@ -1,0 +1,20 @@
+id: '119'
+number: 119
+title: Evaluación y depuración de agentes
+part: 09
+level: avanzado
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- trajectory
+- tool calls
+- success
+- regression
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '118'

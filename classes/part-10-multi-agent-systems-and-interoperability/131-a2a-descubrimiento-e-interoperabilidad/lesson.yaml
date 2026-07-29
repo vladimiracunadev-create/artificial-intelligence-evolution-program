@@ -1,0 +1,20 @@
+id: '131'
+number: 131
+title: A2A, descubrimiento e interoperabilidad
+part: '10'
+level: experto
+estimated_hours: 6
+lab_kind: multiagent
+keywords:
+- A2A
+- discovery
+- agent card
+- tasks
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '130'

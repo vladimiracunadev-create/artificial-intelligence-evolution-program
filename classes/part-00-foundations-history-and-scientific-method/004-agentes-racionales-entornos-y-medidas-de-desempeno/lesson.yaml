@@ -1,0 +1,20 @@
+id: '004'
+number: 4
+title: Agentes racionales, entornos y medidas de desempeño
+part: '00'
+level: fundamentos
+estimated_hours: 4
+lab_kind: agent
+keywords:
+- PEAS
+- racionalidad
+- entorno
+- desempeño
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '003'

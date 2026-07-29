@@ -1,0 +1,22 @@
+version: 1.0.0
+specializations:
+- id: python-data-science
+  name: Python Data Science Program
+  repository: https://github.com/vladimiracunadev-create/python-data-science-program
+  role: Profundización en Python, ML clásico, estadística, MLOps e ingeniería de datos.
+  recommended_after: '03'
+- id: neural-network-training
+  name: Neural Network Training Labs
+  repository: https://github.com/vladimiracunadev-create/neural-network-training-labs
+  role: Especialización ejecutable en entrenamiento, evaluación y despliegue de redes neuronales.
+  recommended_after: '04'
+- id: langgraph-realworld
+  name: LangGraph Realworld
+  repository: https://github.com/vladimiracunadev-create/langgraph-realworld
+  role: Casos empresariales para estudiar orquestación agéntica aplicada.
+  recommended_after: '10'
+- id: claude-skills-toolkit
+  name: Claude Skills Toolkit
+  repository: https://github.com/vladimiracunadev-create/claude-skills-toolkit
+  role: Skills operativos reutilizables; ejemplo de capacidad empaquetada distinta de un agente.
+  recommended_after: 09

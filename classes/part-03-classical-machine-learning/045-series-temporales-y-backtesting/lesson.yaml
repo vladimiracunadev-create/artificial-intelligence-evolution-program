@@ -1,0 +1,20 @@
+id: '045'
+number: 45
+title: Series temporales y backtesting
+part: '03'
+level: intermedio
+estimated_hours: 6
+lab_kind: ml
+keywords:
+- series
+- ventana
+- backtesting
+- forecasting
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '044'
