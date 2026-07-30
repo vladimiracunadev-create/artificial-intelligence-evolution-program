@@ -1,4 +1,4 @@
-# Guía del estudiante
+# 🎒 Guía del estudiante
 
 1. Lee README y theory.
 2. Ejecuta `lab.py`.

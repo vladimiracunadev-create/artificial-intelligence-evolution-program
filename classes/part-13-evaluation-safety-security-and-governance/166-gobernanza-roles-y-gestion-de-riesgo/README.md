@@ -7,13 +7,13 @@
 **Nivel:** experto · **Horas estimadas:** 6  
 **Laboratorio:** `safety` · **Estado:** `EXECUTABLE_CORE`
 
-## Propósito
+## 🎯 Propósito
 
 Comprender **gobernanza, roles y gestión de riesgo** dentro de la evolución de la inteligencia
 artificial, implementar un experimento mínimo verificable y distinguir qué parte
 constituye evidencia frente a una afirmación todavía no comprobada.
 
-## Resultados de aprendizaje
+## 📚 Resultados de aprendizaje
 
 Al finalizar podrás:
 
@@ -23,11 +23,11 @@ Al finalizar podrás:
 4. Comparar el enfoque con la etapa anterior de la ruta de aprendizaje.
 5. Producir una evidencia reproducible y una conclusión que no exceda los datos.
 
-## Conceptos centrales
+## 🧩 Conceptos centrales
 
 `governance`, `roles`, `risk`, `controls`
 
-## Laboratorio
+## 🧪 Laboratorio
 
 ```bash
 python lab.py
@@ -37,7 +37,7 @@ El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
 decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
-### Evidencia esperada
+### 🔍 Evidencia esperada
 
 - tipo de laboratorio y semilla;
 - entradas o decisiones observables;
@@ -45,13 +45,13 @@ propio, pero los motores didácticos se prueban como una biblioteca común.
 - lista `evidence` con hechos que pueden inspeccionarse;
 - lista `limitations` que impide presentar la demo como producción.
 
-## Notebooks
+## 📓 Notebooks
 
 - `notebook.ipynb`: recorrido guiado.
 - `notebook_student.ipynb`: ejercicio sin resolver.
 - `notebook_solution.ipynb`: solución de referencia y validación del contrato.
 
-## Evaluación
+## 📝 Evaluación
 
 | Criterio | Peso |
 |---|---:|
@@ -62,7 +62,7 @@ propio, pero los motores didácticos se prueban como una biblioteca común.
 
 Consulta [assessment.md](assessment.md) para preguntas y criterio de aceptación.
 
-## Errores comunes
+## ⚠️ Errores comunes
 
 | Síntoma | Causa probable | Corrección |
 |---|---|---|
@@ -71,7 +71,7 @@ Consulta [assessment.md](assessment.md) para preguntas y criterio de aceptación
 | Se promete uso real | Se extrapoló desde una demo educativa | Declara entorno, datos, límites y revisión humana |
 | Se copia una métrica aislada | No existe baseline ni costo de error | Añade comparación y criterio de decisión |
 
-## Preguntas frecuentes
+## ❓ Preguntas frecuentes
 
 **¿Debo usar una API comercial?**  
 No. El núcleo funciona localmente. Las extensiones LIVE se documentan por separado.
@@ -83,9 +83,19 @@ seguridad, observabilidad, pruebas y operación.
 **¿Dónde profundizo?**  
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
-## Referencias
+## 🔗 Referencias
 
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 - [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+
+---
+
+## ⬅️ Clase anterior
+
+[165 — Alucinación, grounding y abstención](../../part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion/README.md)
+
+## ➡️ Siguiente clase
+
+[167 — Normativa, auditoría y evidencia](../../part-13-evaluation-safety-security-and-governance/167-normativa-auditoria-y-evidencia/README.md)

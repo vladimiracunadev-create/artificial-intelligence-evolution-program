@@ -1,12 +1,41 @@
 
-# Parte 09 — Ingeniería de agentes de IA
+# 🤖 Parte 09 — Ingeniería de agentes de IA
 
 **Nivel:** avanzado · **Duración sugerida:** 6–7 semanas ·
 **Clases:** 12
 
 Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de elegir herramientas, mantener estado, pedir aprobación y demostrar resultados.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L109["109<br/>De modelo y<br/>automatización a agente"]
+    L110["110<br/>Anatomía: instrucciones, herramientas,<br/>estado y salida"]
+    L111["111<br/>Ciclo ReAct y<br/>observación del entorno"]
+    L112["112<br/>Planificación y descomposición<br/>de tareas"]
+    L113["113<br/>Herramientas tipadas y<br/>efectos laterales"]
+    L114["114<br/>Prompt, recurso, tool,<br/>skill, workflow y<br/>agente"]
+    L115["115<br/>Memoria, contexto y<br/>continuidad"]
+    L116["116<br/>Permisos, sandbox y<br/>mínimo privilegio"]
+    L117["117<br/>Human-in-the-loop y aprobaciones"]
+    L118["118<br/>Presupuestos de pasos,<br/>tokens, costo y<br/>tiempo"]
+    L119["119<br/>Evaluación y depuración<br/>de agentes"]
+    L120["120<br/>Proyecto: agente individual<br/>operativo"]
+    L109 --> L110
+    L110 --> L111
+    L111 --> L112
+    L112 --> L113
+    L113 --> L114
+    L114 --> L115
+    L115 --> L116
+    L116 --> L117
+    L117 --> L118
+    L118 --> L119
+    L119 --> L120
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de
 | 119 | [Evaluación y depuración de agentes](119-evaluacion-y-depuracion-de-agentes/README.md) | `evaluation` | 6 |
 | 120 | [Proyecto: agente individual operativo](120-proyecto-agente-individual-operativo/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 08 — Recuperación, contexto, memoria y conocimiento](../part-08-retrieval-context-memory-and-knowledge/README.md) · [🏠 Volver al programa](../../README.md) · [➡️ Parte 10 — Sistemas multiagente e interoperabilidad](../part-10-multi-agent-systems-and-interoperability/README.md)

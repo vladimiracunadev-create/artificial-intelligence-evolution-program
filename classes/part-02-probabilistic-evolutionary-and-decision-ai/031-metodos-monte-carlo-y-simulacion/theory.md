@@ -1,11 +1,11 @@
 
 # Teoría — Métodos Monte Carlo y simulación
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **IA probabilística, evolutiva y de decisión**. Introduce decisiones bajo incertidumbre, modelos temporales, simulación, lógica difusa y métodos de búsqueda inspirados en la naturaleza.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Métodos Monte Carlo y simulación` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **IA probabilística, evolutiva y de decisión**. Introdu
 
 Conceptos guía: **Monte Carlo, muestreo, estimación, varianza**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **Monte Carlo, muestreo, estimación, varianza**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [Causality — Judea Pearl](https://bayes.cs.ucla.edu/BOOK-2K/)
 - [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
 - [Probabilistic Machine Learning — Kevin Murphy](https://probml.github.io/pml-book/)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

@@ -1,4 +1,4 @@
-# Guía rápida para evaluación técnica
+# ⏱️ Guía rápida para evaluación técnica
 
 Este repositorio demuestra:
 
@@ -9,7 +9,7 @@ Este repositorio demuestra:
 - pruebas de estructura, notebooks, CLI, PWA y aplicación local;
 - documentación de seguridad, evaluación, datos y límites.
 
-## Ruta de 10 minutos
+## 🚀 Ruta de 10 minutos
 
 1. `README.md`
 2. `docs/ARCHITECTURE.md`

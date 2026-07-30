@@ -1,4 +1,4 @@
-# Protocolo de experimento
+# 🔬 Protocolo de experimento
 
 1. Registra objetivo, baseline y criterio de éxito.
 2. Fija versiones, semilla y configuración.

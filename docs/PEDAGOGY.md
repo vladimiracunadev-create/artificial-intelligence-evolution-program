@@ -1,4 +1,4 @@
-# Estándar pedagógico
+# 🎓 Estándar pedagógico
 
 Cada clase incluye:
 
@@ -13,7 +13,7 @@ Cada clase incluye:
 9. errores comunes y FAQ;
 10. límites de aplicación.
 
-## Evidencia antes que volumen
+## 🔍 Evidencia antes que volumen
 
 Una clase no se considera completa por tener muchos archivos. Debe poder
 responder qué aprende el estudiante, qué ejecuta, qué entrega y cómo se verifica.

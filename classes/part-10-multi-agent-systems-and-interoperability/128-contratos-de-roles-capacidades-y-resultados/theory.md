@@ -1,11 +1,11 @@
 
 # Teoría — Contratos de roles, capacidades y resultados
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Sistemas multiagente e interoperabilidad**. Diseña equipos de agentes con contratos, delegación, protocolos, persistencia y coordinación entre runtimes y proveedores.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Contratos de roles, capacidades y resultados` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Sistemas multiagente e interoperabilidad**. Diseña equ
 
 Conceptos guía: **role, capabilities, schemas, SLA**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,16 +33,20 @@ Conceptos guía: **role, capabilities, schemas, SLA**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)
 - [Agent2Agent Protocol](https://a2a-protocol.org/latest/)
 - [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 - [LangGraph Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

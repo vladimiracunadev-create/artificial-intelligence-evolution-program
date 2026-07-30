@@ -1,6 +1,22 @@
-# Arquitectura
+# 🏗️ Arquitectura
 
-## Capas
+## 🗺️ Vista general
+
+```mermaid
+flowchart TD
+    CUR[("📄 curriculum.yaml<br/>fuente única de verdad")] --> CLASSES["📚 classes/<br/>contenido + notebooks + entrypoints"]
+    CUR --> SRC["🐍 src/ai_evolution/<br/>catálogo · CLI · validación · 20 motores"]
+    CUR --> SITE["🌐 site/<br/>PWA generada del catálogo"]
+    SRC --> LABS["🧪 labs.py<br/>motores didácticos compartidos"]
+    CLASSES -->|"lab.py llama a"| LABS
+    SITE --> CATALOG[("📦 site/data/catalog.json")]
+    CUR -.->|"generate_site.py"| CATALOG
+    DESK["🖥️ apps/desktop/<br/>visor local"] --> SITE
+    FRONT["🔭 frontier/<br/>conocimiento fechado"] --> CLASSES
+    SPEC["🔗 specializations/<br/>rutas de profundización"] --> CLASSES
+```
+
+## 🧱 Capas
 
 ```text
 curriculum.yaml
@@ -13,7 +29,7 @@ curriculum.yaml
       └── specializations/         enlaces versionables a programas profundos
 ```
 
-## Decisiones
+## ⚖️ Decisiones
 
 1. `curriculum.yaml` es la fuente única de conteos y rutas.
 2. Cada clase es autocontenida, pero no duplica algoritmos centrales.
@@ -23,7 +39,7 @@ curriculum.yaml
 6. El sitio consume `site/data/catalog.json`, derivado del currículo.
 7. La frontera se revisa por fecha y no modifica hechos históricos.
 
-## Frontera entre repositorios
+## 🗺️ Frontera entre repositorios
 
 - Este programa enseña el mapa completo.
 - Python Data Science profundiza datos, estadística y ML.

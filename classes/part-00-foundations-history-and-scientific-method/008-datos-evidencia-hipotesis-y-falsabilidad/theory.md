@@ -1,11 +1,11 @@
 
 # Teoría — Datos, evidencia, hipótesis y falsabilidad
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Fundamentos, historia y método científico**. Construye el mapa del campo, su historia, el vocabulario técnico y el método experimental que se utilizará en todo el programa.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Datos, evidencia, hipótesis y falsabilidad` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Fundamentos, historia y método científico**. Construy
 
 Conceptos guía: **datos, hipótesis, falsabilidad, reproducibilidad**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **datos, hipótesis, falsabilidad, reproducibilidad**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [Computing Machinery and Intelligence — Turing, 1950](https://doi.org/10.1093/mind/LIX.236.433)
 - [A Proposal for the Dartmouth Summer Research Project on AI](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf)
 - [Artificial Intelligence: A Modern Approach](https://aima.cs.berkeley.edu/)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

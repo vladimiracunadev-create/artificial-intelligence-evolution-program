@@ -1,6 +1,6 @@
-# Instalación
+# 📦 Instalación
 
-## Núcleo
+## ⚙️ Núcleo
 
 ```bash
 python -m venv .venv
@@ -9,26 +9,26 @@ pip install -e .
 ai-evolution validate
 ```
 
-## Desarrollo
+## 🛠️ Desarrollo
 
 ```bash
 pip install -e ".[dev,docs,assets]"
 python -m unittest discover -s tests -v
 ```
 
-## Web
+## 🌐 Web
 
 ```bash
 python -m http.server 8080
 ```
 
-## Escritorio
+## 🖥️ Escritorio
 
 ```bash
 python apps/desktop/main.py
 ```
 
-## Docker
+## 🐳 Docker
 
 ```bash
 docker compose up --build

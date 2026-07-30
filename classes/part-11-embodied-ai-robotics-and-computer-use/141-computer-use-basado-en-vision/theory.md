@@ -1,11 +1,11 @@
 
 # Teoría — Computer use basado en visión
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **IA encarnada, robótica y uso de computadores**. Lleva la toma de decisiones al mundo físico y a interfaces digitales, con sensores, control, simulación, navegación y acciones verificables.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Computer use basado en visión` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **IA encarnada, robótica y uso de computadores**. Lleva 
 
 Conceptos guía: **computer use, screenshot, coordinates, verification**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **computer use, screenshot, coordinates, verification**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [ROS 2 Documentation](https://docs.ros.org/en/rolling/)
 - [Gymnasium Documentation](https://gymnasium.farama.org/)
 - [Sutton and Barto — Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

@@ -1,11 +1,11 @@
 
 # Teoría — RAG básico con citas
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Recuperación, contexto, memoria y conocimiento**. Construye sistemas que conectan modelos con conocimiento verificable mediante búsqueda, RAG, grafos, memoria y evaluación de atribución.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `RAG básico con citas` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Recuperación, contexto, memoria y conocimiento**. Cons
 
 Conceptos guía: **RAG, citas, grounding, corpus**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **RAG, citas, grounding, corpus**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401)
 - [FAISS](https://faiss.ai/)
 - [GraphRAG](https://microsoft.github.io/graphrag/)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

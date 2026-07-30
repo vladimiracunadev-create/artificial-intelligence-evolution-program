@@ -1,11 +1,11 @@
 
 # Teoría — Human-in-the-loop y aprobaciones
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Ingeniería de agentes de IA**. Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de elegir herramientas, mantener estado, pedir aprobación y demostrar resultados.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Human-in-the-loop y aprobaciones` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Ingeniería de agentes de IA**. Diferencia agentes de p
 
 Conceptos guía: **HITL, approval, interrupt, resume**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **HITL, approval, interrupt, resume**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629)
 - [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
 - [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

@@ -1,4 +1,4 @@
-# Glosario esencial
+# 📖 Glosario esencial
 
 - **Agente:** sistema que decide acciones para cumplir un objetivo.
 - **Baseline:** referencia mínima contra la que se compara una mejora.

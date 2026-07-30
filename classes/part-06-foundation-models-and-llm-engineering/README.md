@@ -1,12 +1,41 @@
 
-# Parte 06 — Modelos fundacionales e ingeniería de LLM
+# ⚙️ Parte 06 — Modelos fundacionales e ingeniería de LLM
 
 **Nivel:** avanzado · **Duración sugerida:** 6–7 semanas ·
 **Clases:** 12
 
 Descompone los modelos fundacionales: preentrenamiento, alineamiento, adaptación eficiente, prompting, serving, costos y selección responsable.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L073["073<br/>Tokenización moderna y<br/>vocabularios"]
+    L074["074<br/>Objetivos de preentrenamiento"]
+    L075["075<br/>Escalamiento, cómputo y<br/>leyes empíricas"]
+    L076["076<br/>Instruction tuning y<br/>datos de instrucciones"]
+    L077["077<br/>LoRA, QLoRA y<br/>adaptación eficiente"]
+    L078["078<br/>RLHF, RLAIF y<br/>DPO"]
+    L079["079<br/>Prompting, contexto y<br/>resultados estructurados"]
+    L080["080<br/>Tool calling y<br/>ejecución controlada"]
+    L081["081<br/>Serving, batching y<br/>cachés"]
+    L082["082<br/>Cuantización e inferencia<br/>local"]
+    L083["083<br/>Selección de modelo,<br/>costo, latencia y<br/>privacidad"]
+    L084["084<br/>Proyecto: servicio LLM<br/>con contratos y<br/>evals"]
+    L073 --> L074
+    L074 --> L075
+    L075 --> L076
+    L076 --> L077
+    L077 --> L078
+    L078 --> L079
+    L079 --> L080
+    L080 --> L081
+    L081 --> L082
+    L082 --> L083
+    L083 --> L084
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Descompone los modelos fundacionales: preentrenamiento, alineamiento, adaptació
 | 083 | [Selección de modelo, costo, latencia y privacidad](083-seleccion-de-modelo-costo-latencia-y-privacidad/README.md) | `evaluation` | 6 |
 | 084 | [Proyecto: servicio LLM con contratos y evals](084-proyecto-servicio-llm-con-contratos-y-evals/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 05 — Lenguaje, visión, audio e IA multimodal](../part-05-language-vision-audio-and-multimodal-ai/README.md) · [🏠 Volver al programa](../../README.md) · [➡️ Parte 07 — IA generativa para texto, imagen, audio, video y 3D](../part-07-generative-ai-across-media/README.md)

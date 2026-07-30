@@ -1,4 +1,4 @@
-# Guía del instructor
+# 👩‍🏫 Guía del instructor
 
 Sesión sugerida de 90 minutos:
 

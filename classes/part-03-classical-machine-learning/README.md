@@ -1,12 +1,41 @@
 
-# Parte 03 — Machine learning clásico
+# 📊 Parte 03 — Machine learning clásico
 
 **Nivel:** intermedio · **Duración sugerida:** 5–6 semanas ·
 **Clases:** 12
 
 Cubre el aprendizaje a partir de datos antes de las redes profundas, con énfasis en baselines, validación, interpretabilidad y costo de error.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L037["037<br/>Flujo supervisado y<br/>partición train-validation-test"]
+    L038["038<br/>Regresión lineal, regularización<br/>y diagnóstico"]
+    L039["039<br/>Clasificación logística y<br/>umbrales"]
+    L040["040<br/>Árboles de decisión<br/>y reglas interpretables"]
+    L041["041<br/>Random Forest, boosting<br/>y ensembles"]
+    L042["042<br/>Ingeniería y selección<br/>de características"]
+    L043["043<br/>Clustering y reducción<br/>de dimensionalidad"]
+    L044["044<br/>Detección de anomalías"]
+    L045["045<br/>Series temporales y<br/>backtesting"]
+    L046["046<br/>Sistemas de recomendación"]
+    L047["047<br/>Métricas, calibración, sesgo<br/>y costo de<br/>error"]
+    L048["048<br/>Proyecto: producto ML<br/>reproducible"]
+    L037 --> L038
+    L038 --> L039
+    L039 --> L040
+    L040 --> L041
+    L041 --> L042
+    L042 --> L043
+    L043 --> L044
+    L044 --> L045
+    L045 --> L046
+    L046 --> L047
+    L047 --> L048
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Cubre el aprendizaje a partir de datos antes de las redes profundas, con énfasi
 | 047 | [Métricas, calibración, sesgo y costo de error](047-metricas-calibracion-sesgo-y-costo-de-error/README.md) | `evaluation` | 6 |
 | 048 | [Proyecto: producto ML reproducible](048-proyecto-producto-ml-reproducible/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 02 — IA probabilística, evolutiva y de decisión](../part-02-probabilistic-evolutionary-and-decision-ai/README.md) · [🏠 Volver al programa](../../README.md) · [➡️ Parte 04 — Redes neuronales y deep learning](../part-04-neural-networks-and-deep-learning/README.md)

@@ -1,4 +1,4 @@
-# Changelog
+# 📜 Changelog
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 

@@ -1,11 +1,11 @@
 
 # Teoría — Privacidad, secretos y minimización de datos
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Evaluación, seguridad y gobernanza**. Evalúa capacidades y riesgos, protege herramientas y datos, responde incidentes y establece controles técnicos, humanos y regulatorios.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Privacidad, secretos y minimización de datos` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Evaluación, seguridad y gobernanza**. Evalúa capacida
 
 Conceptos guía: **privacy, secrets, minimization, retention**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,16 +33,20 @@ Conceptos guía: **privacy, secrets, minimization, retention**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 - [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

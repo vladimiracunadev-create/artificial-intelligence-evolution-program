@@ -1,4 +1,4 @@
-# Código de conducta
+# 🤝 Código de conducta
 
 Este proyecto exige colaboración respetuosa, crítica basada en evidencia y
 reconocimiento de límites. No se toleran acoso, discriminación, publicación de

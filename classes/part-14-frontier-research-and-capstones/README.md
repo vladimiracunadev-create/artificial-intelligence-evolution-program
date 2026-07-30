@@ -1,12 +1,41 @@
 
-# Parte 14 — Frontera, investigación y proyectos integradores
+# 🔭 Parte 14 — Frontera, investigación y proyectos integradores
 
 **Nivel:** frontera · **Duración sugerida:** 8–12 semanas ·
 **Clases:** 12
 
 Integra todo el programa y mantiene una zona explícita para temas emergentes, distinguiendo evidencia consolidada de prototipos y expectativas.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L169["169<br/>IA neuro-simbólica"]
+    L170["170<br/>Causal AI y<br/>descubrimiento científico"]
+    L171["171<br/>World models y<br/>simulación interna"]
+    L172["172<br/>Razonamiento y cómputo<br/>en tiempo de<br/>inferencia"]
+    L173["173<br/>Aprendizaje continuo y<br/>adaptación"]
+    L174["174<br/>Privacidad diferencial y<br/>aprendizaje federado"]
+    L175["175<br/>IA para programación<br/>y modernización"]
+    L176["176<br/>IA para ciberseguridad<br/>y defensa"]
+    L177["177<br/>IA para educación<br/>y aprendizaje adaptativo"]
+    L178["178<br/>IA para ciencia,<br/>clima y salud<br/>responsable"]
+    L179["179<br/>Cómo vigilar la<br/>frontera sin perseguir<br/>modas"]
+    L180["180<br/>Capstone final: sistema<br/>de IA evolutivo"]
+    L169 --> L170
+    L170 --> L171
+    L171 --> L172
+    L172 --> L173
+    L173 --> L174
+    L174 --> L175
+    L175 --> L176
+    L176 --> L177
+    L177 --> L178
+    L178 --> L179
+    L179 --> L180
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Integra todo el programa y mantiene una zona explícita para temas emergentes, d
 | 179 | [Cómo vigilar la frontera sin perseguir modas](179-como-vigilar-la-frontera-sin-perseguir-modas/README.md) | `evaluation` | 6 |
 | 180 | [Capstone final: sistema de IA evolutivo](180-capstone-final-sistema-de-ia-evolutivo/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 13 — Evaluación, seguridad y gobernanza](../part-13-evaluation-safety-security-and-governance/README.md) · [🏠 Volver al programa](../../README.md)

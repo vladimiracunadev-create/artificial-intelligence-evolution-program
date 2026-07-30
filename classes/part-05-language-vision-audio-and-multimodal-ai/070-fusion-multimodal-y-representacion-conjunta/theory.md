@@ -1,11 +1,11 @@
 
 # Teoría — Fusión multimodal y representación conjunta
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Lenguaje, visión, audio e IA multimodal**. Estudia cómo los sistemas perciben y combinan texto, imágenes, documentos, voz, audio y señales temporales.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Fusión multimodal y representación conjunta` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Lenguaje, visión, audio e IA multimodal**. Estudia có
 
 Conceptos guía: **fusión, cross-attention, modalidades, alineamiento**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **fusión, cross-attention, modalidades, alineamiento**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [Hugging Face Tasks](https://huggingface.co/tasks)
 - [OpenCV Documentation](https://docs.opencv.org/)
 - [Common Voice](https://commonvoice.mozilla.org/en/datasets)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

@@ -1,4 +1,4 @@
-# Decisiones descartadas o pausadas
+# 🪦 Decisiones descartadas o pausadas
 
 - **Fusionar el programa con neural-network-training-labs:** descartado; redes neuronales son una especialización, no toda la IA.
 - **Copiar las 232 clases de Python Data Science:** descartado; se enlaza la especialización.

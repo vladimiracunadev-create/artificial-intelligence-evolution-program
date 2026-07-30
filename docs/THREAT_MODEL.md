@@ -1,11 +1,11 @@
-# Threat model
+# 🛡️ Threat model
 
-## Activos
+## 💎 Activos
 
 Credenciales, datos de usuario, herramientas con efectos laterales, memoria,
 historial de acciones, artefactos y decisiones.
 
-## Amenazas
+## ⚠️ Amenazas
 
 - prompt injection desde contenido recuperado;
 - tool calls con exceso de permisos;
@@ -17,7 +17,7 @@ historial de acciones, artefactos y decisiones.
 - handoff sin filtrar contexto;
 - benchmark contaminado o manipulado.
 
-## Controles mínimos
+## 🔒 Controles mínimos
 
 Allowlist, sandbox, separación lectura/escritura, validación de schemas,
 aprobaciones, límites de pasos/costo, trazas redactadas, idempotencia,

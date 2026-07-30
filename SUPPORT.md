@@ -1,4 +1,4 @@
-# Soporte
+# 🆘 Soporte
 
 - Preguntas de contenido: abre una discusión con el ID de clase.
 - Errores reproducibles: incluye sistema operativo, Python, comando y salida.

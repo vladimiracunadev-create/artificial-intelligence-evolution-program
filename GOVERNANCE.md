@@ -1,13 +1,13 @@
-# Gobernanza del currículo
+# ⚖️ Gobernanza del currículo
 
-## Fuentes de verdad
+## 📌 Fuentes de verdad
 
 - `curriculum.yaml`: partes, clases, rutas y contratos.
 - `frontier/current-topics.yaml`: temas cambiantes y fecha de revisión.
 - `datasets/catalog.yaml`: procedencia y licencia declarada.
 - `CHANGELOG.md`: historia de releases.
 
-## Madurez
+## 🌱 Madurez
 
 - `historical`: importante para comprender la evolución.
 - `stable`: base técnica consolidada.

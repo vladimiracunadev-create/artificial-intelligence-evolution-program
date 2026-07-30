@@ -1,11 +1,11 @@
 
 # Teoría — Series temporales y backtesting
 
-## Ubicación en el mapa de la IA
+## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase pertenece a **Machine learning clásico**. Cubre el aprendizaje a partir de datos antes de las redes profundas, con énfasis en baselines, validación, interpretabilidad y costo de error.
 
-## Modelo mental
+## 🧠 Modelo mental
 
 `Series temporales y backtesting` se estudia como un sistema con:
 
@@ -17,7 +17,15 @@ Esta clase pertenece a **Machine learning clásico**. Cubre el aprendizaje a par
 
 Conceptos guía: **series, ventana, backtesting, forecasting**.
 
-## Preguntas técnicas
+```mermaid
+flowchart LR
+    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
+    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
+    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
+    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+```
+
+## 🔧 Preguntas técnicas
 
 - ¿Cuál es el estado o entrada mínima?
 - ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
@@ -25,15 +33,19 @@ Conceptos guía: **series, ventana, backtesting, forecasting**.
 - ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
 - ¿Cómo se interrumpe, revierte o audita el proceso?
 
-## Del aprendizaje a la operación
+## 🚀 Del aprendizaje a la operación
 
 El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
 real deben añadirse contratos de entrada y salida, validación de datos, manejo de
 errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
 al riesgo.
 
-## Referencias primarias o técnicas
+## 🔗 Referencias primarias o técnicas
 
 - [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
 - [An Introduction to Statistical Learning](https://www.statlearning.com/)
 - [Python Data Science Program](https://github.com/vladimiracunadev-create/python-data-science-program)
+
+---
+
+> [⬅️ Volver a la clase](README.md) · [📝 Evaluación](assessment.md) · [📚 Índice de la parte](../README.md)

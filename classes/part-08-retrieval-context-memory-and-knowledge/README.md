@@ -1,12 +1,41 @@
 
-# Parte 08 — Recuperación, contexto, memoria y conocimiento
+# 🔎 Parte 08 — Recuperación, contexto, memoria y conocimiento
 
 **Nivel:** avanzado · **Duración sugerida:** 5–6 semanas ·
 **Clases:** 12
 
 Construye sistemas que conectan modelos con conocimiento verificable mediante búsqueda, RAG, grafos, memoria y evaluación de atribución.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L097["097<br/>Embeddings y búsqueda<br/>vectorial"]
+    L098["098<br/>Segmentación, metadatos y<br/>ventanas"]
+    L099["099<br/>Búsqueda léxica y<br/>BM25"]
+    L100["100<br/>Búsqueda híbrida y<br/>fusión de rankings"]
+    L101["101<br/>Re-ranking y filtros<br/>de evidencia"]
+    L102["102<br/>RAG básico con<br/>citas"]
+    L103["103<br/>Transformación y descomposición<br/>de consultas"]
+    L104["104<br/>Knowledge graphs y<br/>GraphRAG"]
+    L105["105<br/>Memoria de corto<br/>y largo plazo"]
+    L106["106<br/>Compresión de contexto<br/>y cachés semánticos"]
+    L107["107<br/>Evaluación de fidelidad,<br/>cobertura y atribución"]
+    L108["108<br/>Proyecto: RAG productivo<br/>y auditable"]
+    L097 --> L098
+    L098 --> L099
+    L099 --> L100
+    L100 --> L101
+    L101 --> L102
+    L102 --> L103
+    L103 --> L104
+    L104 --> L105
+    L105 --> L106
+    L106 --> L107
+    L107 --> L108
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Construye sistemas que conectan modelos con conocimiento verificable mediante b�
 | 107 | [Evaluación de fidelidad, cobertura y atribución](107-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md) | `evaluation` | 6 |
 | 108 | [Proyecto: RAG productivo y auditable](108-proyecto-rag-productivo-y-auditable/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 07 — IA generativa para texto, imagen, audio, video y 3D](../part-07-generative-ai-across-media/README.md) · [🏠 Volver al programa](../../README.md) · [➡️ Parte 09 — Ingeniería de agentes de IA](../part-09-ai-agent-engineering/README.md)

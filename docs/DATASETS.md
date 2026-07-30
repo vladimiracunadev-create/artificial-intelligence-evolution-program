@@ -1,4 +1,4 @@
-# Política de datasets
+# 🗃️ Política de datasets
 
 - No se guardan datasets grandes en Git.
 - No se generan datos sintéticos para ocultar una descarga fallida.

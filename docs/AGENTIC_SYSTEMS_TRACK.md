@@ -1,12 +1,12 @@
-# Especialización en sistemas agénticos
+# 🤖 Especialización en sistemas agénticos
 
-## Idea central
+## 💡 Idea central
 
 Los agentes no reemplazan las etapas previas de la IA. Integran modelos,
 algoritmos, herramientas, memoria, conocimiento, reglas y supervisión para
 perseguir objetivos dentro de un entorno.
 
-## Taxonomía obligatoria
+## 🧩 Taxonomía obligatoria
 
 | Elemento | Responsabilidad |
 |---|---|
@@ -19,7 +19,7 @@ perseguir objetivos dentro de un entorno.
 | Agente | decide acciones para cumplir una misión |
 | Sistema multiagente | coordina varios agentes con contratos |
 
-## Contenidos
+## 📚 Contenidos
 
 - Parte 09: agente individual.
 - Parte 10: coordinación e interoperabilidad.
@@ -27,7 +27,7 @@ perseguir objetivos dentro de un entorno.
 - Parte 12: AgentOps y operación.
 - Parte 13: evals, seguridad y gobernanza.
 
-## Criterio de promoción
+## ✅ Criterio de promoción
 
 Un ejemplo se denomina agente solo si existe objetivo, ciclo de decisión,
 herramientas o acciones, estado observable, criterio de parada y evidencia.

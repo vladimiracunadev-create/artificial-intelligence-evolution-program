@@ -1,12 +1,41 @@
 
-# Parte 02 — IA probabilística, evolutiva y de decisión
+# 🎲 Parte 02 — IA probabilística, evolutiva y de decisión
 
 **Nivel:** intermedio · **Duración sugerida:** 4–5 semanas ·
 **Clases:** 12
 
 Introduce decisiones bajo incertidumbre, modelos temporales, simulación, lógica difusa y métodos de búsqueda inspirados en la naturaleza.
 
-## Clases
+## 🧭 Secuencia de la parte
+
+```mermaid
+flowchart LR
+    L025["025<br/>Razonamiento con incertidumbre"]
+    L026["026<br/>Teorema de Bayes<br/>y actualización de<br/>creencias"]
+    L027["027<br/>Redes bayesianas e<br/>independencia condicional"]
+    L028["028<br/>Modelos ocultos de<br/>Markov"]
+    L029["029<br/>Procesos de decisión<br/>de Markov"]
+    L030["030<br/>Teoría de decisión<br/>y utilidad esperada"]
+    L031["031<br/>Métodos Monte Carlo<br/>y simulación"]
+    L032["032<br/>Lógica difusa y<br/>control aproximado"]
+    L033["033<br/>Algoritmos genéticos"]
+    L034["034<br/>Optimización por enjambre<br/>y colonia"]
+    L035["035<br/>Programación probabilística y<br/>causalidad"]
+    L036["036<br/>Proyecto: sistema híbrido<br/>para decisiones"]
+    L025 --> L026
+    L026 --> L027
+    L027 --> L028
+    L028 --> L029
+    L029 --> L030
+    L030 --> L031
+    L031 --> L032
+    L032 --> L033
+    L033 --> L034
+    L034 --> L035
+    L035 --> L036
+```
+
+## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
@@ -23,11 +52,11 @@ Introduce decisiones bajo incertidumbre, modelos temporales, simulación, lógic
 | 035 | [Programación probabilística y causalidad](035-programacion-probabilistica-y-causalidad/README.md) | `probability` | 6 |
 | 036 | [Proyecto: sistema híbrido para decisiones](036-proyecto-sistema-hibrido-para-decisiones/README.md) | `capstone` | 10 |
 
-## Evaluación de la parte
+## 📝 Evaluación de la parte
 
 - 40 % laboratorios y notebooks.
 - 25 % explicaciones y comparación de enfoques.
 - 20 % evaluación de riesgos y limitaciones.
 - 15 % mini-proyecto o integración.
 
-[← Volver al programa](../../README.md)
+[⬅️ Parte 01 — IA simbólica, búsqueda, lógica y planificación](../part-01-symbolic-ai-search-logic-and-planning/README.md) · [🏠 Volver al programa](../../README.md) · [➡️ Parte 03 — Machine learning clásico](../part-03-classical-machine-learning/README.md)
