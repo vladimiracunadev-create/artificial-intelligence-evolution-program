@@ -27,6 +27,154 @@ Al finalizar podrás:
 
 `prompt`, `resource`, `tool`, `skill`, `agent`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+A medida que los sistemas con LLM maduraron, la palabra "agente" empezó a usarse para
+cualquier cosa con un prompt, y esa confusión tiene costo real: elegir la abstracción
+equivocada multiplica el precio, el riesgo o la fragilidad del sistema. El Model Context
+Protocol (MCP) formalizó tres primitivas (prompts, resources, tools) precisamente para
+separar responsabilidades, y la práctica de ingeniería añadió skills, workflows y agentes
+como niveles de composición. Esta clase ordena la taxonomía sobre la que se montan la
+memoria (115), los permisos (116) y el proyecto integrador (120).
+
+## 📖 Fundamentos
+
+### 🔤 Las seis abstracciones, definidas por su contrato
+
+- **Prompt:** texto parametrizable que configura una invocación del modelo (plantilla +
+  variables). No ejecuta nada; **quien decide usarlo es el usuario o el sistema**, no el
+  modelo. En MCP, los prompts son plantillas expuestas por el servidor y elegidas por el
+  usuario (*user-controlled*).
+- **Recurso (resource):** datos de solo lectura direccionables por URI (un archivo, un
+  esquema de base de datos, un log). Aporta contexto; no tiene efectos. En MCP es la
+  aplicación quien decide qué recursos entran al contexto (*application-controlled*).
+- **Tool:** función tipada invocable **por decisión del modelo** durante la generación
+  (*model-controlled*), con JSON Schema y efectos declarados (clase 113). Es la única
+  primitiva con capacidad de modificar el mundo.
+- **Skill:** paquete de conocimiento procedimental — instrucciones, ejemplos, scripts y
+  recursos empaquetados para una tarea recurrente ("cómo generar el informe mensual").
+  No es código que corre solo: es experiencia reutilizable que el modelo carga cuando la
+  tarea coincide. Se distingue del prompt por su alcance (procedimiento completo, a
+  menudo con archivos auxiliares) y del tool por no ser una función tipada.
+- **Workflow:** grafo de pasos **escrito por el ingeniero** donde modelo, tools y
+  lógica clásica ocupan casillas (clase 109). El control de flujo es del código.
+- **Agente:** bucle donde **el modelo decide** qué tool invocar, en qué orden y cuándo
+  parar (clases 109-111). El control de flujo es del modelo, dentro de límites.
+
+### 🎛️ El eje que ordena todo: quién controla qué
+
+La taxonomía deja de ser un glosario cuando se lee sobre dos ejes:
+
+```text
+Eje 1 — ¿Quién decide su uso?
+  usuario/aplicación:  prompt, resource
+  ingeniero (código):  workflow
+  modelo (runtime):    tool, skill (cargarla), agente (todo el bucle)
+
+Eje 2 — ¿Puede causar efectos?
+  nunca:               prompt, resource, skill (por sí misma)
+  los que declare:     tool
+  los de sus tools:    workflow, agente
+```
+
+Corolario de seguridad: los permisos (clase 116) se aplican sobre tools, porque es la
+única primitiva con efectos propios; workflows y agentes heredan el riesgo de las tools
+que contienen, más el riesgo de *composición* (orden y argumentos elegidos en runtime
+en el caso del agente).
+
+### 🧬 Composición: cómo se combinan
+
+Las abstracciones se anidan: un prompt configura al modelo; los recursos le dan
+contexto; las tools le dan manos; una skill le da el procedimiento probado; el workflow
+fija la secuencia cuando se conoce; el agente la improvisa cuando no. Un sistema real
+mezcla varias: p. ej., un agente de soporte usa una skill ("política de reembolsos"),
+recursos (historial del cliente), tools (`refund_order`, `send_email`) y puede invocar
+un workflow determinista para el caso estándar, reservando su autonomía para los casos
+fuera de guion.
+
+### 🧭 Regla de selección (de menor a mayor costo/riesgo)
+
+1. ¿Basta configurar la llamada? → **prompt**.
+2. ¿Falta información estática? → **resource**.
+3. ¿Hay que ejecutar algo puntual? → **tool** (workflow de un paso).
+4. ¿La tarea es recurrente con procedimiento conocido? → **skill** (+ tools).
+5. ¿Los pasos y su orden se conocen a priori? → **workflow**.
+6. ¿Ninguna de las anteriores? → **agente**, con presupuesto y permisos desde el día uno.
+
+## 🧮 Ejemplo trabajado
+
+Misma necesidad, seis materializaciones. Necesidad: *"responder tickets de soporte sobre
+facturación"*.
+
+| Abstracción | Materialización | Quién decide | Efectos |
+|---|---|---|---|
+| Prompt | plantilla "responde cortésmente usando {{politica}} y {{ticket}}" | usuario/app | ninguno |
+| Resource | `billing://policies/2026.md` + historial del cliente | aplicación | ninguno |
+| Tool | `lookup_invoice(customer_id, month)` tipada con schema | modelo | lectura |
+| Skill | paquete "gestión de disputas": pasos, umbrales, plantillas de respuesta | modelo (la carga) | ninguno propio |
+| Workflow | clasificar → si "duplicado": reembolso automático → notificar | ingeniero | los de sus tools |
+| Agente | bucle que investiga el caso raro: consulta facturas, cruza pagos, propone resolución y pide aprobación | modelo | los de sus tools + composición |
+
+El punto didáctico: el 80 % de los tickets (casos estándar) los resuelve el workflow con
+costo fijo y auditoría trivial; el agente se reserva para el 20 % no estandarizable, y
+aun ahí termina en un hito de aprobación (clase 117). Dimensionar al revés — un agente
+para todo — multiplica costo y varianza sin ganar capacidad donde no hacía falta.
+
+## 📊 Propiedades y comparación
+
+| Propiedad | Prompt | Resource | Tool | Skill | Workflow | Agente |
+|---|---|---|---|---|---|---|
+| Control de uso | usuario/app | aplicación | modelo | modelo | ingeniero | modelo |
+| Efectos propios | no | no | sí (declarados) | no | vía tools | vía tools |
+| Estado entre usos | no | el dato | no | no | el del grafo | el del bucle |
+| Costo marginal | mínimo | mínimo | por llamada | carga de contexto | fijo y predecible | variable |
+| Auditoría | trivial | trivial | log de llamadas | qué skill se usó | por nodo | trayectoria completa |
+| Falla típica | ambigüedad | dato obsoleto | mal schema/descripción | procedimiento desactualizado | rigidez | pérdida de rumbo/costo |
+
+```mermaid
+flowchart TD
+    N["Necesidad"] --> Q1{"¿Basta configurar\nla llamada?"}
+    Q1 -- "sí" --> PR["Prompt"]
+    Q1 -- "no" --> Q2{"¿Falta información\nestática?"}
+    Q2 -- "sí" --> RE["Resource (URI, solo lectura)"]
+    Q2 -- "no" --> Q3{"¿Ejecutar una\nacción puntual?"}
+    Q3 -- "sí" --> TO["Tool tipada\n(efectos declarados)"]
+    Q3 -- "no" --> Q4{"¿Procedimiento\nrecurrente conocido?"}
+    Q4 -- "sí" --> SK["Skill\n(+ tools que necesite)"]
+    Q4 -- "no" --> Q5{"¿Pasos y orden\nconocidos a priori?"}
+    Q5 -- "sí" --> WF["Workflow\n(grafo del ingeniero)"]
+    Q5 -- "no" --> AG["Agente\n(bucle del modelo)"]
+    AG --> LIM["+ presupuesto (118)\n+ permisos (116)\n+ aprobaciones (117)"]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Todo lo que usa un LLM es un agente."** Un clasificador con prompt es un modelo;
+   un pipeline fijo es un workflow. Llamarlo agente infla expectativas y oculta que su
+   auditoría es mucho más simple.
+2. **"Skill y tool son lo mismo."** La tool es una función tipada con efectos; la skill
+   es conocimiento procedimental que orienta al modelo (y puede usar tools). Confundirlas
+   lleva a "skills" que ejecutan efectos sin pasar por la matriz de permisos.
+3. **"Los prompts los elige el modelo."** En MCP los prompts son *user-controlled* y los
+   resources *application-controlled*; solo las tools son *model-controlled*. Ese
+   reparto de control es una decisión de seguridad, no un tecnicismo.
+4. **"El agente sustituye al workflow."** Conviven: el workflow cubre el caso estándar
+   con costo fijo; el agente, la cola larga. Los sistemas maduros *degradan* trayectorias
+   de agente estabilizadas a workflows.
+5. **"Un resource es inofensivo por ser de solo lectura."** No tiene efectos, pero sí
+   riesgo de entrada: un resource con contenido no confiable puede inyectar
+   instrucciones al contexto (OWASP LLM01). Solo lectura ≠ solo datos confiables.
+
+## 🚀 Del aprendizaje a la operación
+
+El laboratorio ejercita el nivel "agente" con tools puras; un sistema real combina las
+seis abstracciones y exige gobernarlas: catálogo versionado de prompts y skills (qué
+versión respondió qué), inventario de tools con su clase de efecto y permisos (116),
+resources con control de acceso y procedencia, y métricas por abstracción para decidir
+promociones (workflow → agente) y degradaciones (agente → workflow) con datos (119).
+MCP aporta el protocolo para exponer prompts, resources y tools entre procesos; la
+disciplina de clasificar y auditar sigue siendo del equipo.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +233,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629)
-- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
-- [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Model Context Protocol — especificación oficial (prompts, resources y tools como primitivas con control distinto)](https://modelcontextprotocol.io/)
+- [Anthropic Engineering — "Building effective agents" (workflows vs agentes, patrones de composición)](https://www.anthropic.com/engineering/building-effective-agents)
+- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle que define el nivel agente)](https://arxiv.org/abs/2210.03629)
+- [Schick et al. (2023), "Toolformer", arXiv:2302.04761 (la tool como primitiva model-controlled)](https://arxiv.org/abs/2302.04761)
+- [OWASP Top 10 for LLM Applications (LLM01: contenido de resources como vector de inyección)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [LangGraph — Overview (materialización de workflows y agentes como grafos)](https://docs.langchain.com/oss/python/langgraph/overview)
 
 ---
 

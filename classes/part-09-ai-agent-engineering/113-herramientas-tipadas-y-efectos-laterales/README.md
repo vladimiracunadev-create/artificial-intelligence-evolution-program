@@ -27,6 +27,180 @@ Al finalizar podrás:
 
 `tool schema`, `side effects`, `idempotencia`, `errores`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Las herramientas son el punto donde el texto del modelo se convierte en efectos sobre el
+mundo, y por eso su diseño es la decisión de ingeniería más consecuente de un agente.
+Toolformer (2023) demostró que los modelos pueden aprender *cuándo* invocar APIs; el
+function calling y el Model Context Protocol (MCP) estandarizaron *cómo* declararlas con
+JSON Schema. Esta clase toma el bucle ReAct (111) y el plan (112) y les da manos seguras;
+los permisos (116) y las aprobaciones (117) se apoyan directamente en la clasificación de
+efectos que se define aquí.
+
+## 📖 Fundamentos
+
+### 📝 Herramienta tipada: contrato en tres partes
+
+Una herramienta bien definida es un contrato con tres componentes:
+
+1. **Descripción semántica:** qué hace, cuándo usarla y cuándo NO — es lo que el modelo
+   lee para decidir. Una descripción ambigua produce invocaciones erróneas aunque el
+   schema sea perfecto.
+2. **Schema de entrada (JSON Schema):** tipos, campos obligatorios, rangos y enums. El
+   runtime lo valida ANTES de ejecutar: un argumento inválido se rechaza con error
+   estructurado, nunca se "interpreta".
+3. **Contrato de salida y de error:** qué devuelve en éxito y qué forma tienen los
+   fallos. El error es parte de la interfaz: el agente lo observará y decidirá con él.
+
+```json
+{
+  "name": "transfer_inventory",
+  "description": "Mueve unidades de un almacén a otro. NO crea stock: falla si origin no tiene unidades suficientes.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "sku":     {"type": "string", "pattern": "^[A-Z]{3}-[0-9]{4}$"},
+      "units":   {"type": "integer", "minimum": 1, "maximum": 1000},
+      "origin":  {"type": "string", "enum": ["central", "norte", "sur"]},
+      "dest":    {"type": "string", "enum": ["central", "norte", "sur"]},
+      "dry_run": {"type": "boolean", "default": true}
+    },
+    "required": ["sku", "units", "origin", "dest"]
+  }
+}
+```
+
+### 💥 Taxonomía de efectos laterales
+
+- **Pura / solo lectura:** no modifica nada (`sum`, `status`, `search`). Reintentable
+  sin riesgo; candidata a ejecutarse sin aprobación.
+- **Escritura reversible:** modifica estado con vuelta atrás razonable (crear rama,
+  editar archivo versionado). Exige registro para poder revertir.
+- **Escritura irreversible:** no hay deshacer completo (enviar un correo, borrar sin
+  papelera, ejecutar un pago). Candidata obligada a aprobación humana (clase 117).
+- **Efecto externo distribuido:** toca sistemas de terceros con sus propios estados
+  (APIs de pago, mensajería). Además de irreversible, puede ser no consultable.
+
+### 🔁 Idempotencia: la propiedad que salva reintentos
+
+Una operación es **idempotente** si ejecutarla N veces produce el mismo estado que
+ejecutarla una: `f(f(x)) = f(x)`. Importa porque los agentes **reintentan**: un timeout
+no dice si la operación se aplicó, y el modelo puede repetir una llamada por error de
+razonamiento.
+
+- Idempotentes: `set_price(sku, 10)`, `delete_by_id(42)`, `upsert(key, value)`.
+- No idempotentes: `add_units(sku, +5)`, `append(line)`, `send_email(...)`.
+
+Técnica estándar: **clave de idempotencia** — el llamador envía un identificador único
+por operación lógica (`idempotency_key`); el servidor registra las claves aplicadas y
+convierte los duplicados en no-ops que devuelven el resultado original (así funcionan
+las APIs de pago serias).
+
+### 🧪 Dry-run: ensayar el efecto sin producirlo
+
+Un parámetro `dry_run: true` hace que la herramienta valide argumentos, compruebe
+precondiciones y devuelva **qué haría** (diff, plan de cambios, costo) sin aplicar
+nada. Patrón operativo para efectos de riesgo: el agente ejecuta primero el dry-run,
+la observación resultante se evalúa (o se muestra a un humano, clase 117), y solo
+entonces se repite con `dry_run: false`. El valor didáctico: convierte un efecto
+irreversible en dos pasos, uno observable y uno autorizado.
+
+### 🚨 Errores como parte del contrato
+
+Un error útil para un agente es estructurado y accionable:
+`{"error": {"code": "INSUFFICIENT_STOCK", "available": 3, "requested": 10}}` permite al
+siguiente thought decidir (reducir unidades, elegir otro origen, escalar). `"error 500"`
+no permite nada. Regla: cada herramienta declara sus códigos de error posibles igual
+que declara su schema; los errores silenciosos o genéricos ciegan el bucle de la 111.
+
+## 🧮 Ejemplo trabajado
+
+Transferencia de 10 unidades `ABC-1234` de `central` a `norte`, con stock real de 3.
+
+```text
+Paso 1  Action: transfer_inventory(sku="ABC-1234", units=10,
+                                   origin="central", dest="norte", dry_run=true)
+        Obs:    {"would_apply": false,
+                 "error": {"code": "INSUFFICIENT_STOCK", "available": 3, "requested": 10}}
+        → el dry-run detectó la precondición violada SIN tocar el inventario.
+
+Paso 2  Thought: hay 3 disponibles; el objetivo permite transferencia parcial.
+        Action: transfer_inventory(..., units=3, dry_run=true)
+        Obs:    {"would_apply": true, "resulting": {"central": 0, "norte": 3}}
+
+Paso 3  Action: transfer_inventory(..., units=3, dry_run=false,
+                                   idempotency_key="tx-2026-07-30-ABC-1234-a")
+        Obs:    {"applied": true, "resulting": {"central": 0, "norte": 3}}
+
+Paso 4  (timeout de red simulado → el agente reintenta la MISMA llamada
+         con la MISMA idempotency_key)
+        Obs:    {"applied": false, "duplicate_of": "tx-2026-07-30-ABC-1234-a",
+                 "resulting": {"central": 0, "norte": 3}}
+        → sin la clave, el reintento habría movido 3 unidades DOS veces.
+```
+
+Cuatro mecanismos cooperando: schema (rechazaría `units=0` o un almacén inexistente),
+dry-run (ensayo observable), error estructurado (el código `INSUFFICIENT_STOCK` guio el
+replanteo) y clave de idempotencia (el reintento fue inofensivo).
+
+## 📊 Propiedades y comparación
+
+| Propiedad | Tool sin tipar (texto libre) | Tool tipada | Tool tipada + dry-run + idempotencia |
+|---|---|---|---|
+| Validación previa de argumentos | no (parsear y rezar) | sí (JSON Schema) | sí |
+| Reintento seguro | no | solo si es pura | sí (clave de idempotencia) |
+| Ensayo sin efecto | no | no | sí (`dry_run`) |
+| Error accionable para el bucle | raro | si se diseñó | sí, por contrato |
+| Costo de implementación | mínimo | medio | medio-alto |
+| Apta para efectos irreversibles | nunca | con aprobación | con aprobación + auditoría |
+
+```mermaid
+flowchart TD
+    A["Action del agente:\ntool + argumentos"] --> V{"¿Argumentos válidos\nsegún JSON Schema?"}
+    V -- "no" --> E1["Error estructurado:\ncampo, motivo, valor"]
+    V -- "sí" --> C{"¿Clase de efecto?"}
+    C -- "pura / lectura" --> X["Ejecutar"]
+    C -- "escritura" --> D{"¿dry_run?"}
+    D -- "sí" --> S["Simular: devolver\nqué haría (diff/plan)"]
+    D -- "no" --> K{"¿idempotency_key\nya aplicada?"}
+    K -- "sí" --> N["No-op: devolver\nresultado original"]
+    K -- "no" --> P{"¿Irreversible?"}
+    P -- "sí" --> H["Aprobación humana\n(clase 117)"]
+    P -- "no" --> X
+    H -- "aprobada" --> X
+    X --> O["Observation al contexto\n(éxito o error accionable)"]
+    E1 --> O
+    S --> O
+    N --> O
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El schema garantiza la invocación correcta."** El schema valida la *forma*; la
+   *pertinencia* (qué herramienta y cuándo) depende de la descripción semántica y del
+   razonamiento del modelo. Ambas partes del contrato importan.
+2. **"Reintentar es siempre seguro."** Solo con operaciones puras o idempotentes. Un
+   reintento de `send_email` tras un timeout puede enviar dos correos: el timeout no
+   informa de si el efecto se aplicó.
+3. **"Idempotente significa sin efectos."** `delete_by_id(42)` tiene un efecto claro;
+   lo idempotente es que repetirla no lo multiplica. Pura ⊂ idempotente, no al revés.
+4. **"Dry-run es para depurar en desarrollo."** En agentes es un mecanismo de runtime:
+   produce la observación que permite evaluar (o aprobar) un efecto antes de causarlo.
+5. **"Los errores hay que ocultarlos al modelo para no confundirlo."** Al contrario:
+   el error estructurado es la observación que permite replantear. Ocultarlo produce
+   agentes que repiten la misma llamada fallida o alucinan que funcionó.
+
+## 🚀 Del aprendizaje a la operación
+
+El laboratorio usa dos herramientas puras donde nada puede salir mal; el mundo real
+añade estado compartido, concurrencia y sistemas de terceros. Falta para operar:
+registro append-only de cada invocación con argumentos y resultado (auditoría, clase
+119), clasificación de cada herramienta en la matriz de permisos (clase 116), política
+de reintentos con backoff y claves de idempotencia persistidas, y aprobación humana
+cableada a la clase de efecto — no a la buena voluntad del prompt (clase 117). MCP
+estandariza la declaración de herramientas entre procesos; la clasificación de efectos
+sigue siendo responsabilidad del ingeniero.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +259,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629)
-- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
-- [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761 (paper seminal de uso de herramientas por LLMs)](https://arxiv.org/abs/2302.04761)
+- [JSON Schema — especificación oficial (validación de argumentos de herramientas)](https://json-schema.org/specification)
+- [Model Context Protocol — especificación (declaración estándar de tools entre procesos)](https://modelcontextprotocol.io/)
+- [Anthropic Engineering — "Building effective agents" (apéndice: prompt engineering de tools)](https://www.anthropic.com/engineering/building-effective-agents)
+- [RFC 9110 — HTTP Semantics, §9.2.2 "Idempotent Methods" (definición normativa de idempotencia)](https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods)
+- [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: herramientas con más efecto del necesario)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
 ---
 
