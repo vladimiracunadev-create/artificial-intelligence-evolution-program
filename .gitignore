@@ -10,3 +10,4 @@ runs/
 data/raw/
 docs/generated/*.pdf
 docs/generated/*.pptx
+.claude/scheduled_tasks.lock
