@@ -27,6 +27,147 @@ Al finalizar podrás:
 
 `multimedia`, `provenance`, `evaluación`, `publicación`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Este proyecto integra la parte 07 completa: la generación multimedia (clases 085–093)
+aporta las etapas creativas, la clase 094 aporta la disciplina sobre datos sintéticos
+y la 095 aporta procedencia y marcas. El resultado —un pipeline donde cada activo
+publicado puede responder "quién, con qué modelo, con qué semilla y a partir de qué"—
+es el patrón que exigen los marcos de gobernanza (NIST AI RMF, C2PA) y el que
+reutilizarás en las partes siguientes para pipelines de recuperación y agentes.
+
+## 📖 Fundamentos
+
+### 🧱 Diseño por etapas con contratos JSON
+
+Un pipeline creativo trazable es una secuencia de etapas donde cada una consume y
+produce un **contrato JSON explícito**. Contrato mínimo por etapa:
+
+```text
+{
+  "stage": "texto|imagen|edición|...",
+  "model": "nombre",  "version": "x.y",
+  "seed": 42,
+  "prompt_o_params": "...",
+  "input_hash":  "hash de la salida de la etapa anterior",
+  "output_hash": "hash de la salida propia",
+  "timestamp": "ISO-8601",
+  "licencia_y_consentimiento": {"fuente": "...", "licencia": "..."}
+}
+```
+
+Tres decisiones de diseño sostienen la trazabilidad:
+
+1. **Determinismo declarado:** modelo + versión + semilla + parámetros registrados.
+   No garantiza reproducción bit a bit entre hardwares, pero sí auditabilidad: se sabe
+   exactamente qué se pidió y con qué configuración.
+2. **Hashes encadenados:** el `input_hash` de la etapa n debe ser igual al
+   `output_hash` de la etapa n−1. Así, el manifiesto final encadena todo el linaje,
+   al estilo de la cadena de manifiestos C2PA.
+3. **Registro append-only:** los manifiestos de etapa no se editan; una re-ejecución
+   crea entradas nuevas. Corregir borrando historia destruye la evidencia.
+
+### 📋 Registro de procedencia por etapa
+
+Cada etapa registra: **modelo y versión** (¿qué generador?), **semilla** (¿qué
+muestra del espacio de salidas?), **prompt/parámetros** (¿qué se pidió?), **hash de
+entrada y de salida** (¿sobre qué bytes exactos?). Con eso, el manifiesto final es
+verificable con el mismo algoritmo de la clase 095: recalcular hashes y recorrer la
+cadena. Si el pipeline usa datos sintéticos como insumo (clase 094), el manifiesto
+debe declararlo: fracción sintética, generador de origen y protocolo de utilidad
+aplicado (TSTR), para no contaminar silenciosamente entrenamientos futuros.
+
+### 📐 Evaluación y gobernanza
+
+- **Utilidad:** ¿el activo cumple la especificación creativa? Métricas automáticas
+  cuando existan (p. ej. similitud prompt–imagen) + revisión humana registrada.
+- **Autenticidad verificable:** la cadena de hashes cierra y, si se publica, el
+  manifiesto viaja con el activo (C2PA / Content Credentials).
+- **Gobernanza:** consentimiento y licencia de cada insumo (¿el material de la etapa 1
+  permitía uso derivado?), atribución, y un mapa de riesgos al estilo NIST AI RMF:
+  identificar (¿qué puede salir mal?), medir (¿con qué métrica?), gestionar (¿quién
+  aprueba la publicación?).
+
+## 🧮 Ejemplo trabajado
+
+Pipeline de 3 etapas: **texto → imagen → edición**. Usamos un hash simulado de 8 bits
+(didáctico, no criptográfico): `h(s) = suma de los códigos de los caracteres mod 256`,
+en hexadecimal.
+
+```text
+Etapa 1 (texto):    salida  s1 = "un faro al amanecer"
+                    h(s1) = 0xF4            → output_hash = F4
+
+Etapa 2 (imagen):   input_hash = F4  ✔ (coincide con la etapa 1)
+                    salida  s2 = "IMG[faro,amanecer,seed=7]"
+                    h(s2) = 0xE6            → output_hash = E6
+
+Etapa 3 (edición):  input_hash = E6  ✔
+                    salida  s3 = "IMG[faro,amanecer,seed=7]+recorte"
+                    h(s3) = 0x05            → output_hash = 05
+
+Manifiesto final:   cadena F4 → E6 → 05   → VERIFICA
+```
+
+Ahora alguien "retoca" la etapa 2 sin registrarlo: regenera con `seed=8`. La nueva
+salida s2' produce `h(s2') = 0xE7 ≠ E6`. Al verificar:
+
+```text
+Etapa 3 declara input_hash = E6, pero h(s2') = E7  → CADENA ROTA en 2→3
+```
+
+La verificación no dice *qué* cambió ni *por qué* —solo que los bytes que la etapa 3
+declaró consumir ya no existen. Ese es exactamente el comportamiento del hard binding
+C2PA: detecta la alteración, no la repara. Un hash real (SHA-256) hace además
+computacionalmente inviable fabricar una s2' con el mismo hash.
+
+## 📊 Propiedades y comparación
+
+| Enfoque de pipeline | Reproducibilidad | Detección de alteraciones | Costo operativo | Riesgo principal |
+|---|---|---|---|---|
+| Ad hoc (sin registro) | ninguna | ninguna | cero | imposible auditar o corregir |
+| Log de texto libre | baja (ambigua) | ninguna | bajo | el log se edita sin dejar rastro |
+| Contratos JSON + hashes encadenados | alta (auditable) | sí (cadena rota) | medio | disciplina de registro por etapa |
+| C2PA firmado end-to-end | alta + no repudio | sí, con garantía criptográfica | alto (PKI) | gestión de certificados |
+
+```mermaid
+flowchart LR
+    P["prompt inicial"] --> E1["Etapa 1: texto<br/>modelo, versión, seed"]
+    E1 -->|"output_hash h1"| E2["Etapa 2: imagen<br/>input_hash = h1"]
+    E2 -->|"output_hash h2"| E3["Etapa 3: edición<br/>input_hash = h2"]
+    E3 -->|"output_hash h3"| M["Manifiesto final<br/>h1 → h2 → h3"]
+    M --> V{"verificación"}
+    V -->|"cadena cierra"| OK["publicar con<br/>Content Credentials"]
+    V -->|"hash no coincide"| KO["cadena rota:<br/>no publicar"]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Registrar la semilla garantiza reproducir el mismo activo."** La semilla fija la
+   muestra *dado* modelo, versión, hardware y librerías; un cambio de versión del
+   modelo produce otra salida con la misma semilla. Por eso el contrato registra ambos.
+2. **"La cadena de hashes protege el contenido."** Solo lo *vincula*: detecta
+   alteraciones a posteriori. La protección (quién puede escribir en el registro)
+   es un problema de control de acceso, no de hashing.
+3. **"Trazabilidad = burocracia que se añade al final."** Un manifiesto reconstruido
+   retrospectivamente no es evidencia: la procedencia solo vale si se registra en el
+   momento de la generación, dentro del pipeline.
+4. **"Si cada etapa es de un proveedor confiable, el pipeline es confiable."** La
+   confianza no compone automáticamente: el eslabón sin registrar (una edición manual
+   entre etapas) rompe el linaje aunque todas las etapas firmadas sean honestas.
+5. **"El proyecto es sobre generar contenido bonito."** El entregable evaluable es el
+   *manifiesto verificable*; la calidad creativa sin trazabilidad no aprueba la parte
+   de gobernanza.
+
+## 🚀 Del aprendizaje a la operación
+
+Para llevar este patrón a producción faltan: hashes criptográficos reales (SHA-256) y
+firmas con una PKI gestionada en lugar del hash didáctico de 8 bits; un almacén de
+manifiestos append-only con control de acceso; integración C2PA real en los formatos
+de salida (JPEG, MP4) con Content Credentials; revisión legal de licencias y
+consentimiento por jurisdicción; y un proceso de aprobación humana previo a la
+publicación alineado con NIST AI RMF (govern–map–measure–manage).
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +226,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114)
-- [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
-- [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
-- [C2PA Specification](https://c2pa.org/specifications/specifications/2.2/index.html)
+- C2PA. *Content Credentials: C2PA Technical Specification 2.2*. [c2pa.org/specifications/specifications/2.2/index.html](https://c2pa.org/specifications/specifications/2.2/index.html)
+- NIST. *AI Risk Management Framework (AI RMF 1.0)*. [nist.gov/itl/ai-risk-management-framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- Ho, J., Jain, A. y Abbeel, P. (2020). *Denoising Diffusion Probabilistic Models*. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
+- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
+- Content Credentials: [contentcredentials.org](https://contentcredentials.org/)
 
 ---
 
