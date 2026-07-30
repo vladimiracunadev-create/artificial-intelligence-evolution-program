@@ -27,6 +27,155 @@ Al finalizar podrás:
 
 `faithfulness`, `recall`, `attribution`, `citations`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Un pipeline RAG tiene dos componentes que fallan de formas distintas: el retriever puede
+traer contexto equivocado y el generador puede desviarse del contexto correcto. La
+evaluación clásica de IR (precision/recall, clase 099) mide lo primero; la evaluación de
+generación clásica (BLEU, ROUGE) no mide lo segundo. Esta clase presenta el marco que
+llenó ese hueco —métricas de fidelidad y atribución, con RAGAS como referencia— y el
+patrón *LLM-as-judge* que las hace computables sin anotación humana exhaustiva. Es el
+prerrequisito del proyecto auditable de la clase 108: sin estas métricas, "funciona
+bien" es una opinión.
+
+## 📖 Fundamentos
+
+### 🧭 Qué se evalúa y contra qué
+
+Una interacción RAG tiene cuatro elementos: pregunta `q`, contexto recuperado `C`,
+respuesta generada `a`, y (en evaluación) la referencia *ground truth* `g`. Cada métrica
+compara un par distinto — confundirlos es el error más común:
+
+| Métrica (RAGAS, [arXiv:2309.15217](https://arxiv.org/abs/2309.15217)) | Compara | Pregunta que responde | ¿Necesita ground truth? |
+|---|---|---|---|
+| **Faithfulness** | `a` vs `C` | ¿la respuesta se sostiene en el contexto? | no |
+| **Answer relevancy** | `a` vs `q` | ¿responde a lo que se preguntó? | no |
+| **Context precision** | `C` vs `q`/`g` | ¿lo recuperado es relevante (y bien ordenado)? | idealmente |
+| **Context recall** | `C` vs `g` | ¿el contexto cubre lo necesario para responder? | sí |
+
+### 📏 Fidelidad (faithfulness)
+
+Se computa en dos pasos con un LLM evaluador (*LLM-as-judge*):
+
+```text
+1. Descomponer a en afirmaciones atómicas s1..sn   (claims)
+2. Para cada si: ¿C la implica? (entailment sí/no)
+faithfulness = |afirmaciones implicadas| / n
+```
+
+Fidelidad baja = alucinación **respecto al contexto** (aunque el dato sea cierto en el
+mundo). Es la métrica que no requiere referencia y por eso puede monitorearse en
+producción sobre tráfico real.
+
+### 🎯 Cobertura del retriever (context precision / recall)
+
+- **Context recall**: fracción de las afirmaciones de la referencia `g` que el contexto
+  recuperado respalda. Recall bajo = el retriever no trajo lo necesario; ningún
+  generador lo compensa (clase 101: re-rankear no crea recall).
+- **Context precision**: fracción del contexto que es realmente relevante, ponderando
+  el orden (los pasajes útiles deben estar arriba). Precision baja = ruido que paga
+  tokens y degrada la atención.
+
+### 🔗 Atribución (citas verificables)
+
+La atribución evalúa el vínculo afirmación→cita. El marco AIS
+([arXiv:2112.12870](https://arxiv.org/abs/2112.12870)) define el criterio riguroso:
+una cita es válida si el pasaje citado **implica** la afirmación ("attributable to
+identified sources"). Sobre respuestas con citas (clase 102) se miden, siguiendo ALCE
+([arXiv:2305.14627](https://arxiv.org/abs/2305.14627)):
+
+- **Citation recall**: ¿cada afirmación tiene alguna cita que la respalda?
+- **Citation precision**: ¿cada cita emitida respalda de verdad su afirmación?
+
+### ⚖️ LLM-as-judge: potencia y sospecha
+
+Usar un LLM para juzgar entailment escala a miles de ejemplos, pero el juez tiene sesgos
+conocidos (posición, verbosidad, autopreferencia) y varianza. Regla del programa: el
+juez se **calibra** contra una muestra anotada por humanos (¿qué % de acuerdo?) antes de
+confiar en sus números, y se re-calibra al cambiar de modelo juez o de dominio.
+
+## 🧮 Ejemplo trabajado
+
+Caso completo, calculado a mano:
+
+```text
+q: "¿Cuándo se inauguró el museo y quién lo diseñó?"
+C: [1] "El museo se inauguró en octubre de 1997."
+   [2] "El edificio fue diseñado por Frank Gehry."
+g: "Se inauguró en octubre de 1997 y lo diseñó Frank Gehry."
+
+a: "El museo, diseñado por Frank Gehry [2], se inauguró en 1997 [1] y recibió
+    un millón de visitantes en su primer año."
+
+Afirmaciones de a:      ¿implicada por C?    ¿cita correcta?
+  s1 diseñado por Gehry        SÍ            [2] la respalda → ✓
+  s2 se inauguró en 1997       SÍ            [1] la respalda → ✓
+  s3 un millón de visitantes   NO            sin cita        → ✗
+
+faithfulness      = 2/3 ≈ 0.67     (s3 no está en el contexto)
+citation recall   = 2/3 ≈ 0.67     (s3 carece de cita que la respalde)
+citation precision= 2/2 = 1.00     (las citas emitidas son correctas)
+context recall    = 2/2 = 1.00     (todo lo que g necesita está en C)
+context precision = 2/2 = 1.00     (ambos pasajes son relevantes)
+```
+
+Diagnóstico: el retriever hizo su trabajo perfecto; el fallo es exclusivamente del
+generador (s3 salió de la memoria paramétrica). Sin descomponer por métrica, solo se
+vería "la respuesta tiene algo mal" sin saber qué componente arreglar.
+
+## 📊 Propiedades y comparación
+
+```mermaid
+flowchart TD
+    Q[pregunta q] --> RET[Retriever]
+    RET --> C[contexto C]
+    C --> GEN[Generador]
+    GEN --> A[respuesta a con citas]
+    G[ground truth g] -.-> CR["context recall: ¿C cubre g?"]
+    C --> CR
+    Q --> CP["context precision: ¿C es relevante y está bien ordenado?"]
+    C --> CP
+    C --> F["faithfulness: claims de a implicados por C"]
+    A --> F
+    A --> AT["citation precision/recall (AIS/ALCE)"]
+    Q --> AR["answer relevancy: ¿a responde q?"]
+    A --> AR
+    CR & CP -->|fallo aquí = retriever| DIAG[diagnóstico por componente]
+    F & AT & AR -->|fallo aquí = generador| DIAG
+```
+
+La tabla de la sección de fundamentos resume qué compara cada métrica; el diagrama
+muestra la propiedad clave del marco: **cada métrica apunta a un componente**, y por eso
+el conjunto es diagnóstico, no solo un número agregado.
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Fidelidad = veracidad"**. Fidelidad es coherencia con el contexto recuperado. Una
+   respuesta puede ser fiel a un contexto erróneo (fidelidad 1.0, verdad 0) o infiel
+   pero cierta (el modelo corrigió al corpus con su memoria — sigue siendo un fallo
+   de RAG porque rompe la trazabilidad).
+2. **Promediar todo en un solo score**. Un 0.8 global puede ser retriever perfecto +
+   generador alucinando, o al revés; sin métricas por componente no hay acción
+   correctiva posible.
+3. **Evaluar solo con casos que tienen respuesta**. Un conjunto de evaluación sin
+   preguntas *sin* respuesta en el corpus no mide la capacidad de rechazar — y el
+   rechazo correcto es parte del contrato (clase 102).
+4. **Confiar en el juez sin calibrarlo**. El acuerdo juez-humano varía por dominio e
+   idioma; un juez no calibrado produce métricas precisas y sistemáticamente sesgadas.
+5. **Optimizar citation recall forzando citas**. Instruir "cita siempre algo" sube el
+   recall de citas y hunde su precisión: aparecen citas decorativas que no implican la
+   afirmación. Las dos se reportan juntas o ninguna vale.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este núcleo y una evaluación operativa faltan: un conjunto de evaluación propio y
+versionado (100-500 preguntas del dominio con referencias revisadas, incluyendo
+preguntas sin respuesta y adversariales), la calibración documentada del juez contra
+anotación humana, la integración en CI (una regresión de fidelidad bloquea el despliegue
+igual que un test roto), el monitoreo en producción con faithfulness muestreado sobre
+tráfico real, y el presupuesto: evaluar con LLM-juez cuesta dinero por ejecución y ese
+coste condiciona cuántas veces se corre.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +234,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401)
-- [FAISS](https://faiss.ai/)
-- [GraphRAG](https://microsoft.github.io/graphrag/)
+- Es, S. et al. (2023). *RAGAS: Automated Evaluation of Retrieval Augmented Generation*. [arXiv:2309.15217](https://arxiv.org/abs/2309.15217)
+- Rashkin, H. et al. (2021). *Measuring Attribution in Natural Language Generation Models* (AIS). [arXiv:2112.12870](https://arxiv.org/abs/2112.12870)
+- Gao, T. et al. (2023). *Enabling Large Language Models to Generate Text with Citations* (ALCE). [arXiv:2305.14627](https://arxiv.org/abs/2305.14627)
+- Zheng, L. et al. (2023). *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. [arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
+- Documentación oficial de RAGAS: [https://docs.ragas.io/](https://docs.ragas.io/)
 
 ---
 

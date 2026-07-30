@@ -27,6 +27,154 @@ Al finalizar podrás:
 
 `memory`, `thread`, `store`, `episodic`, `semantic`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Un LLM es amnésico por construcción: cada llamada parte de cero y solo "recuerda" lo que
+cabe en su ventana de contexto. La memoria de los sistemas de IA no está en el modelo
+sino **alrededor** de él: es ingeniería de recuperación aplicada al propio historial del
+sistema. Esta clase toma la taxonomía de la psicología cognitiva (Tulving: memoria
+episódica, semántica, procedimental), la traduce a arquitectura de software, y prepara
+el terreno de los agentes con estado persistente (parte 09) — Generative Agents y MemGPT
+demostraron que la gestión de memoria es lo que separa un chatbot de un agente coherente
+en el tiempo.
+
+## 📖 Fundamentos
+
+### ⏱️ Memoria de corto plazo: la ventana de contexto
+
+La memoria de corto plazo de un sistema LLM es el **hilo actual** (*thread*): los
+mensajes que se reenvían en cada llamada. Propiedades: capacidad finita (la ventana),
+coste lineal en tokens por llamada, y desaparece al cerrar el hilo. Gestionarla es
+decidir **qué se reenvía**: todo el historial (caro y eventualmente imposible), una
+ventana deslizante de los últimos n turnos (barato, olvida lo antiguo), o un resumen
+acumulado más los turnos recientes.
+
+### 🗄️ Memoria de largo plazo: el store
+
+La memoria de largo plazo es un **almacén externo** (*store*) que sobrevive a los hilos,
+con dos operaciones: **escribir** (qué merece persistir, con qué esquema) y **leer**
+(recuperar lo relevante para el turno actual — exactamente el retrieval de las clases
+097-101, aplicado sobre los recuerdos). Taxonomía funcional, heredada de la psicología
+cognitiva:
+
+- **Episódica** — eventos con tiempo y contexto: "el 12 de mayo el usuario reportó el
+  bug X y lo resolvimos con Y". Soporta preguntas sobre el pasado y aprendizaje por
+  ejemplos (few-shot desde experiencias propias).
+- **Semántica** — hechos estables destilados de los episodios: "el usuario prefiere
+  respuestas breves", "el proyecto usa PostgreSQL". Es la que se consulta en casi todos
+  los turnos; se representa como perfil estructurado o colección de hechos indexados.
+- **Procedimental** — cómo actuar: las instrucciones del sistema, reglas aprendidas
+  ("nunca desplegar en viernes"). Modificarla cambia el comportamiento en todos los
+  hilos futuros; es la más delicada.
+
+### 🔁 Compactación: de episodios a semántica
+
+El puente entre corto y largo plazo es la **compactación** (*consolidación*): cuando el
+hilo crece o termina, un LLM resume lo ocurrido, extrae hechos estables y los escribe al
+store. Decisiones críticas:
+
+```text
+compactar(hilo):
+  resumen   ← LLM("resume decisiones, hechos y pendientes": hilo)
+  hechos    ← LLM("extrae hechos estables sobre el usuario/dominio": hilo)
+  para cada hecho:
+      si contradice el store → política: ¿sobrescribir, versionar, preguntar?
+      si no → upsert(store, hecho, {fuente: hilo_id, fecha})
+  hilo ← [resumen] + últimos_n_turnos          # el hilo se acorta, no se pierde todo
+```
+
+- La compactación es **con pérdida**: lo que el resumen omite deja de existir para el
+  sistema. Qué se pierde es una decisión de diseño, no un accidente.
+- El **olvido** es una función, no un fallo: memoria que caduca (TTL), se sobrescribe
+  (el hecho nuevo reemplaza al viejo) o decae por falta de uso evita que el store
+  acumule contradicciones y ruido.
+
+## 🧮 Ejemplo trabajado
+
+Hilo de soporte técnico con presupuesto de contexto de 4 000 tokens:
+
+```text
+Estado: 12 turnos, ~5 200 tokens → excede el presupuesto.
+
+Compactación:
+  resumen (180 tokens): "Usuaria Ana, error 502 en el despliegue del servicio pagos
+    tras actualizar a v2.3.1; causa: variable DB_POOL sin migrar; pendiente: verificar
+    en staging."
+  hechos → memoria semántica:
+    {usuario: Ana, rol: DevOps}                        {fuente: hilo-88, 2026-07-30}
+    {servicio: pagos, versión: v2.3.1}                 {fuente: hilo-88, 2026-07-30}
+  episodio → memoria episódica:
+    "2026-07-30: error 502 resuelto migrando DB_POOL"
+
+Hilo nuevo = resumen (180) + últimos 4 turnos (~900) ≈ 1 080 tokens  (de 5 200)
+
+Turno siguiente: "¿me confirmas lo de staging?"
+  lectura del store: nada nuevo necesario — el pendiente está en el resumen → responde.
+Tres semanas después, otro hilo: "otra vez un 502 en pagos"
+  lectura episódica por similitud: recupera el episodio del 30-07 → propone revisar
+  DB_POOL antes de diagnosticar de cero.
+```
+
+La compresión fue 5 200 → 1 080 tokens (~79 %) y el sistema conservó exactamente lo que
+las consultas posteriores necesitaron. Si el resumen hubiera omitido "pendiente:
+staging", la primera pregunta habría fallado: la calidad de la compactación **es** la
+calidad de la memoria.
+
+## 📊 Propiedades y comparación
+
+| Dimensión | Corto plazo (thread) | Episódica (store) | Semántica (store) | Procedimental |
+|---|---|---|---|---|
+| Contenido | turnos del hilo actual | eventos con fecha y contexto | hechos estables destilados | reglas e instrucciones |
+| Alcance | un hilo | entre hilos | entre hilos | global |
+| Escritura | automática (append) | al cerrar hilo / por evento | por compactación o explícita | deliberada, con revisión |
+| Lectura | se reenvía entera/resumida | por similitud o fecha | en casi cada turno | en cada llamada (system) |
+| Riesgo dominante | desbordar la ventana | crecer sin límite | hechos obsoletos o contradictorios | corromper el comportamiento global |
+
+```mermaid
+flowchart LR
+    subgraph Hilo[Corto plazo: hilo actual]
+        T["turnos recientes + resumen"]
+    end
+    T -->|"compactación (LLM):<br/>resumir + extraer hechos"| S
+    subgraph S[Largo plazo: store]
+        E["Episódica:<br/>eventos fechados"]
+        M["Semántica:<br/>hechos estables"]
+        P["Procedimental:<br/>reglas"]
+    end
+    Q[Turno nuevo] -->|retrieval sobre el store| S
+    S -->|"recuerdos relevantes<br/>al contexto"| T
+    E -.->|consolidación| M
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El modelo recuerda la conversación"**. No: el modelo es sin estado; recuerda el
+   *sistema* que reenvía el historial en cada llamada. Confundirlos lleva a "memorias"
+   que desaparecen al cambiar de hilo.
+2. **"Contexto más largo elimina la necesidad de memoria"**. Una ventana de 1M tokens
+   sigue siendo un hilo: cara por llamada, sin persistencia entre hilos, y con atención
+   degradada en el medio (arXiv:2307.03172). La memoria de largo plazo es selección,
+   no capacidad.
+3. **Guardarlo todo**. Un store sin criterio de escritura ni olvido acumula hechos
+   obsoletos y contradicciones; la recuperación devuelve ruido con confianza. Escribir
+   poco y estable supera a escribir todo.
+4. **Compactar sin política de conflictos**. Si el hecho nuevo ("prefiere respuestas
+   detalladas") contradice al almacenado ("prefiere brevedad") y el upsert sobrescribe a
+   ciegas, la memoria oscila con el último humor del usuario.
+5. **Tratar la memoria procedimental como una más**. Un hecho episódico erróneo afecta
+   una respuesta; una regla procedimental errónea corrompe todos los hilos futuros. Su
+   escritura exige revisión (humana o con validación) proporcional a ese radio de daño.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este núcleo y una memoria en producción faltan: aislamiento por usuario y por
+tenant (la memoria de uno no puede filtrarse al hilo de otro), cumplimiento del derecho
+de supresión (borrar de verdad, incluidos los resúmenes derivados), cifrado y control de
+acceso del store, evaluación de la compactación (¿qué preguntas posteriores fallan por
+información perdida?), límites de crecimiento con TTL y decaimiento, y trazabilidad de
+qué recuerdo influyó en qué respuesta — sin eso, depurar un agente con memoria es
+imposible.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +233,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401)
-- [FAISS](https://faiss.ai/)
-- [GraphRAG](https://microsoft.github.io/graphrag/)
+- Park, J. S. et al. (2023). *Generative Agents: Interactive Simulacra of Human Behavior*. [arXiv:2304.03442](https://arxiv.org/abs/2304.03442)
+- Packer, C. et al. (2023). *MemGPT: Towards LLMs as Operating Systems*. [arXiv:2310.08560](https://arxiv.org/abs/2310.08560)
+- Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
+- Documentación de LangGraph, *Memory*: [https://langchain-ai.github.io/langgraph/concepts/memory/](https://langchain-ai.github.io/langgraph/concepts/memory/)
+- Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 2 (agentes y estado interno). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
 
 ---
 

@@ -27,6 +27,150 @@ Al finalizar podrás:
 
 `query rewrite`, `decomposition`, `routing`, `retrieval`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Las clases 097-102 asumen que la consulta del usuario es una buena consulta de
+recuperación. Casi nunca lo es: es ambigua, coloquial, multi-hop o depende del historial
+de la conversación. Esta clase inserta una capa de **transformación de consultas** entre
+el usuario y el retriever — la misma idea que la expansión de consultas de la IR clásica,
+pero ejecutada ahora por un LLM. Es el precedente directo del *agentic RAG*: cuando la
+transformación se vuelve iterativa y decide qué buscar a continuación, el pipeline se
+convierte en agente (parte 09).
+
+## 📖 Fundamentos
+
+### ✍️ Reescritura (query rewriting)
+
+El primer problema es el desajuste entre cómo pregunta el usuario y cómo está escrito el
+corpus. Un LLM reescribe la consulta antes de recuperar: resolver correferencias con el
+historial ("¿y en 2023?" → "ingresos de la empresa X en 2023"), eliminar cortesías y
+ruido, expandir siglas. El esquema *rewrite-retrieve-read*
+([arXiv:2305.14283](https://arxiv.org/abs/2305.14283)) demostró que entrenar/ajustar el
+reescritor mejora el resultado final más que tocar el retriever.
+
+### 🔀 Multi-query y fusión
+
+Una sola formulación puede caer en una región pobre del espacio de embeddings. La técnica
+**multi-query** genera `m` paráfrasis de la consulta, recupera con cada una y **fusiona**
+los rankings (típicamente con RRF, clase 100):
+
+```text
+q → LLM → {q1, q2, q3}          # paráfrasis con vocabulario distinto
+top-k(q1) ∪ top-k(q2) ∪ top-k(q3) → RRF → top-k final
+```
+
+Aumenta el recall a cambio de `m` recuperaciones y el coste de generar las variantes.
+
+### 📄 HyDE: documentos hipotéticos
+
+**HyDE** (*Hypothetical Document Embeddings*,
+[arXiv:2212.10496](https://arxiv.org/abs/2212.10496)) ataca la asimetría
+pregunta-documento: una pregunta corta y un pasaje de respuesta viven en regiones
+distintas del espacio vectorial. En lugar de embeber la pregunta, se pide al LLM que
+**escriba una respuesta hipotética** (que puede contener errores factuales) y se embebe
+ese texto: lo que importa no es su veracidad sino su **forma** — se parece a los
+documentos reales que responden la pregunta, y el vecindario del embedding captura eso.
+
+```text
+HyDE(q):
+  h ← LLM("escribe un pasaje que responda: " + q)   # hipotético, puede ser falso
+  v ← E(h)                                          # embedding del pasaje, no de q
+  return top-k del índice para v                    # documentos reales similares a h
+```
+
+### 🧩 Descomposición y step-back
+
+- **Descomposición**: una pregunta multi-hop ("¿qué director dirigió la película más
+  taquillera del estudio que produjo Alien?") se divide en sub-preguntas secuenciales,
+  cada una recuperable por separado; la respuesta de una alimenta la siguiente. Es la
+  aplicación a retrieval del *least-to-most prompting*
+  ([arXiv:2205.10625](https://arxiv.org/abs/2205.10625)).
+- **Step-back prompting** ([arXiv:2310.06117](https://arxiv.org/abs/2310.06117)):
+  antes de la pregunta específica se formula su versión más general ("¿qué principios
+  regulan X?") y se recupera para ambas; el contexto de principios generales mejora el
+  razonamiento sobre el caso concreto.
+
+### 🚦 Enrutamiento (routing)
+
+Con varias fuentes (índice vectorial, base SQL, grafo, API), un **router** —un
+clasificador o un LLM con salida estructurada— decide a qué fuente(s) va cada consulta
+y con qué técnica. El router es un punto único de fallo: si clasifica mal, todo lo
+posterior recupera en el lugar equivocado.
+
+## 🧮 Ejemplo trabajado
+
+Descomposición de una consulta multi-hop:
+
+```text
+Q: "¿Qué edad tenía el fundador de la empresa que compró Instagram
+    cuando lanzó su primer producto?"
+
+Paso 1: "¿Qué empresa compró Instagram?"           → recupera → "Facebook (2012)"
+Paso 2: "¿Quién fundó Facebook?"                   → recupera → "Mark Zuckerberg"
+Paso 3: "¿Cuándo lanzó Zuckerberg su primer producto (Facebook)?" → "2004"
+Paso 4: "¿En qué año nació Zuckerberg?"            → recupera → "1984"
+Síntesis: 2004 − 1984 = 20 años.
+```
+
+Con la consulta original sin descomponer, el retriever busca un único pasaje que
+contenga *toda* la cadena — que probablemente no existe en el corpus. La descomposición
+convierte una pregunta sin documento soporte en cuatro preguntas con soporte directo.
+El coste: 4 recuperaciones + 4 llamadas al LLM, y los errores se **propagan** — si el
+paso 1 devuelve la empresa equivocada, todo lo demás es coherentemente erróneo.
+
+## 📊 Propiedades y comparación
+
+| Técnica | Ataca | Coste extra | Riesgo | Cuándo usarla |
+|---|---|---|---|---|
+| Rewriting | consultas mal formuladas / correferencia | 1 llamada LLM | sobre-reescribir la intención | conversacional, siempre barato |
+| Multi-query + RRF | vocabulario / recall | m llamadas + m búsquedas | variantes redundantes | recall bajo con consulta única |
+| HyDE | asimetría pregunta-documento | 1 llamada + 1 búsqueda | el hipotético desvía el tema | zero-shot, corpus técnico |
+| Descomposición | preguntas multi-hop | n pasos secuenciales | propagación de errores | la respuesta cruza documentos |
+| Step-back | falta de contexto general | 1 llamada + 2 búsquedas | contexto genérico irrelevante | preguntas específicas con principios detrás |
+| Routing | múltiples fuentes | 1 clasificación | enrutar mal (fallo total) | arquitecturas con varias fuentes |
+
+```mermaid
+flowchart TD
+    U[Consulta del usuario] --> RW["Rewriting: correferencias,<br/>limpieza, expansión"]
+    RW --> RT{Router}
+    RT -->|factual simple| DIR[Búsqueda directa]
+    RT -->|recall bajo| MQ["Multi-query → RRF"]
+    RT -->|zero-shot / asimetría| HY["HyDE: embeber respuesta hipotética"]
+    RT -->|multi-hop| DE["Descomposición:<br/>sub-preguntas secuenciales"]
+    DIR --> K[top-k final]
+    MQ --> K
+    HY --> K
+    DE --> K
+    K --> G["Generación con citas (clase 102)"]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"HyDE necesita que el LLM sepa la respuesta"**. No: el documento hipotético puede
+   ser factualmente falso y funcionar, porque lo que se aprovecha es su forma y
+   vocabulario, no su contenido. Falla cuando el hipotético se desvía de tema, no
+   cuando se equivoca en datos.
+2. **Aplicar todas las técnicas a la vez**. Cada capa añade latencia, coste y varianza.
+   Se parte de la búsqueda directa medida (baseline) y se añade una técnica solo si una
+   métrica lo justifica.
+3. **Descomponer preguntas simples**. Una pregunta de un salto descompuesta en tres
+   sub-preguntas multiplica el coste y las oportunidades de error sin ganancia.
+4. **Ignorar la propagación de errores**. En descomposición secuencial el error del
+   paso 1 contamina todo; los pasos deben validar sus premisas o el sistema debe poder
+   retroceder.
+5. **Router opaco**. Si no se registra qué ruta tomó cada consulta, los fallos de
+   recuperación son indiagnosticables: no se sabe si falló la técnica o la elección de
+   técnica.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este núcleo y una capa de consultas operativa faltan: un conjunto de consultas
+reales etiquetadas para medir qué técnica aporta y a qué coste (la mayoría de las
+consultas de producción son simples y no necesitan nada), presupuestos de latencia por
+ruta (multi-query y descomposición multiplican llamadas), *fallbacks* cuando el LLM
+reescritor falla o devuelve formato inválido, y registro por consulta de la ruta elegida
+y las sub-consultas generadas para poder auditar y mejorar el router con datos.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +229,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Retrieval-Augmented Generation](https://arxiv.org/abs/2005.11401)
-- [FAISS](https://faiss.ai/)
-- [GraphRAG](https://microsoft.github.io/graphrag/)
+- Gao, L. et al. (2022). *Precise Zero-Shot Dense Retrieval without Relevance Labels* (HyDE). [arXiv:2212.10496](https://arxiv.org/abs/2212.10496)
+- Ma, X. et al. (2023). *Query Rewriting for Retrieval-Augmented Large Language Models*. [arXiv:2305.14283](https://arxiv.org/abs/2305.14283)
+- Zheng, H. et al. (2023). *Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models*. [arXiv:2310.06117](https://arxiv.org/abs/2310.06117)
+- Zhou, D. et al. (2022). *Least-to-Most Prompting Enables Complex Reasoning in Large Language Models*. [arXiv:2205.10625](https://arxiv.org/abs/2205.10625)
+- Cormack, G., Clarke, C. & Buettcher, S. (2009). *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods*. SIGIR '09. [DOI 10.1145/1571941.1572114](https://doi.org/10.1145/1571941.1572114)
+- Documentación de LangChain, *MultiQueryRetriever*: [https://python.langchain.com/docs/how_to/MultiQueryRetriever/](https://python.langchain.com/docs/how_to/MultiQueryRetriever/)
 
 ---
 
