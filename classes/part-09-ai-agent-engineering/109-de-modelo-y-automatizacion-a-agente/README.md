@@ -27,6 +27,155 @@ Al finalizar podrás:
 
 `modelo`, `workflow`, `autonomía`, `objetivos`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Esta clase abre la ingeniería de agentes: hasta la parte 08 el modelo de lenguaje era una
+función que se llama una vez (o dentro de un pipeline RAG fijo); aquí se convierte en el
+componente de decisión de un sistema que **elige sus propios pasos** para alcanzar un
+objetivo. La distinción modelo → workflow → agente que se establece aquí gobierna todas las
+clases siguientes: anatomía (110), ciclo ReAct (111), planificación (112) y los controles de
+seguridad, presupuesto y evaluación que un sistema autónomo exige (116-119).
+
+## 📖 Fundamentos
+
+### 🤖 Definición operativa de agente
+
+AIMA (cap. 2) define agente como *cualquier entidad que percibe su entorno mediante sensores
+y actúa sobre él mediante actuadores*, evaluada por una **medida de desempeño** sobre las
+consecuencias de sus acciones. Trasladado a sistemas con LLM, la definición operativa que
+usa este programa es:
+
+```text
+agente = LLM que, en un bucle, decide QUÉ acción ejecutar a continuación
+         (incluida la de terminar), observa el resultado real de esa acción
+         y usa esa observación para decidir el siguiente paso,
+         al servicio de un objetivo declarado y bajo límites explícitos.
+```
+
+Los cuatro componentes son necesarios: **objetivo** (qué cuenta como éxito), **acciones**
+(herramientas con efectos verificables), **observación** (el entorno responde y esa
+respuesta entra al contexto) y **bucle de decisión** (el control de flujo lo elige el
+modelo, no un grafo escrito a mano).
+
+### 📊 Los tres regímenes: modelo, workflow, agente
+
+- **Modelo (llamada única):** entrada → LLM → salida. No hay acciones ni entorno. El control
+  de flujo es trivial: una invocación. Ejemplos: clasificar un ticket, resumir un documento.
+- **Workflow (automatización orquestada):** el LLM ocupa casillas dentro de un grafo de
+  pasos **escrito por el ingeniero**: cadenas (prompt chaining), enrutamiento (routing),
+  paralelización, evaluador-optimizador. El orden y las ramas están decididos de antemano;
+  el modelo rellena contenido, no decide la estructura. Anthropic (*Building effective
+  agents*) recomienda este régimen siempre que el problema lo permita: es más barato,
+  más predecible y más fácil de depurar.
+- **Agente:** el LLM decide dinámicamente qué herramienta invocar, con qué argumentos,
+  cuántas veces y cuándo detenerse. La trayectoria no está escrita en ningún grafo: emerge
+  de la interacción con el entorno. Se justifica cuando el número de pasos y su orden **no
+  se conocen a priori** (depurar un error, investigar una pregunta abierta, operar una UI).
+
+### 🎚️ Espectro de autonomía
+
+La autonomía no es binaria; es un dial con al menos estos niveles:
+
+```text
+L0  Modelo puro               sin acciones; solo texto
+L1  Workflow con LLM          pasos fijos; el modelo rellena casillas
+L2  Router                    el modelo elige UNA rama de un menú cerrado
+L3  Agente acotado            bucle libre, pero con herramientas de solo lectura
+                              o bajo aprobación humana para cada efecto
+L4  Agente con efectos        ejecuta acciones que modifican el entorno,
+                              con presupuesto, permisos y auditoría
+L5  Autonomía extendida       objetivos de largo plazo, memoria persistente,
+                              delegación en sub-agentes (parte de investigación abierta)
+```
+
+Cada nivel añade capacidad y, simétricamente, superficie de fallo: a mayor autonomía, más
+importan los límites (presupuestos, clase 118; permisos, clase 116; aprobaciones, clase 117).
+
+### 🧭 Racionalidad limitada por el objetivo declarado
+
+Un agente es **racional** si maximiza su medida de desempeño dada la evidencia disponible
+(AIMA). En agentes LLM la medida de desempeño es el objetivo declarado en las instrucciones,
+y ahí vive el riesgo central: un objetivo mal especificado se optimiza literalmente
+("cierra todos los tickets" → cerrarlos sin resolverlos). Por eso la definición operativa
+exige objetivo **verificable** — un predicado sobre el estado del entorno, no una frase
+ambigua — y condición de parada explícita.
+
+## 🧮 Ejemplo trabajado
+
+El laboratorio ejecuta el caso mínimo que ya es agente y no workflow. Objetivo declarado:
+*"verificar estado y sumar 7 + 5"* — éxito ⇔ `healthy == true` y `sum == 12` en el estado
+final. Herramientas: `status()` y `sum(left, right)`.
+
+| Paso | Decisión (acción) | Observación del entorno | Estado del objetivo |
+|---|---|---|---|
+| 1 | `status()` | `{"service": "demo", "healthy": true}` | healthy ✓, sum pendiente |
+| 2 | `sum(left=7, right=5)` | `12` | healthy ✓, sum ✓ |
+| 3 | **terminar** (ambas condiciones verificadas) | — | éxito |
+
+Dos propiedades separan esto de un script: (a) la condición de parada se evalúa contra
+**observaciones**, no contra "ya ejecuté mis pasos" — si `status()` devolviera
+`healthy: false`, el bucle no terminaría en éxito; (b) cada elemento de `trace` conserva
+la acción con sus argumentos y la observación literal, de modo que un tercero puede
+auditar por qué el agente concluyó lo que concluyó. La limitación declarada por el
+laboratorio ("el plan es determinista") marca exactamente lo que falta para el caso
+general: aquí la política de decisión está cableada; en un agente LLM la elige el modelo
+en cada iteración, con la incertidumbre que eso introduce.
+
+## 📊 Propiedades y comparación
+
+| Propiedad | Modelo (1 llamada) | Workflow | Agente |
+|---|---|---|---|
+| Control de flujo | trivial | grafo escrito a mano | lo decide el modelo por iteración |
+| Pasos conocidos a priori | sí (uno) | sí | no |
+| Costo por tarea | mínimo y fijo | acotado y predecible | variable, requiere presupuesto |
+| Depuración | comparar entrada/salida | inspeccionar cada nodo | reconstruir la trayectoria completa |
+| Riesgo operacional | bajo | medio (efectos previstos) | alto (efectos elegidos en runtime) |
+| Cuándo elegirlo | tarea de un paso | proceso repetible y estable | pasos y orden desconocidos a priori |
+
+```mermaid
+flowchart TD
+    T["Tarea nueva"] --> Q1{"¿Basta una llamada\nal modelo?"}
+    Q1 -- "sí" --> M["Modelo: prompt + salida\nestructurada"]
+    Q1 -- "no" --> Q2{"¿Los pasos y su orden\nse conocen a priori?"}
+    Q2 -- "sí" --> W["Workflow: chaining, routing,\nparalelización, evaluador"]
+    Q2 -- "no" --> A["Agente: bucle\ndecidir → actuar → observar"]
+    A --> G["Límites obligatorios:\npresupuesto + permisos + parada"]
+    W -. "si una rama explota\nen complejidad" .-> A
+    A -. "si la trayectoria se vuelve\nsiempre la misma" .-> W
+```
+
+Las flechas punteadas importan: un agente cuya trayectoria se estabiliza debe *degradarse*
+a workflow (más barato y predecible), y un workflow con ramas explosivas puede ceder esa
+rama a un agente.
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Le puse herramientas al modelo, ya es un agente."** Sin bucle de decisión sobre
+   observaciones no hay agencia: una llamada con function calling que ejecuta una tool y
+   devuelve texto es un modelo con acceso a funciones (L1-L2 del espectro).
+2. **"Agente es mejor que workflow."** Es más caro, más lento y más difícil de auditar.
+   La recomendación de la literatura de ingeniería (Anthropic, 2024) es explícita: usar la
+   solución más simple que resuelva la tarea, y eso casi siempre es un workflow.
+3. **"El agente entiende el objetivo."** El agente optimiza el texto del objetivo tal como
+   quedó escrito. Si el éxito no es un predicado verificable sobre el entorno, el sistema
+   puede declarar victoria sin haberla conseguido.
+4. **"La autonomía elimina la supervisión."** Es al revés: cada nivel del espectro añade
+   requisitos de control (límites de pasos, permisos, aprobación humana). Autonomía sin
+   contención no es un nivel superior; es un incidente pendiente.
+5. **"El bucle termina solo."** La terminación es una decisión de diseño: condición de éxito
+   verificable + presupuesto máximo de pasos. Sin ambas, el agente puede iterar
+   indefinidamente o detenerse antes de tiempo sin que nadie lo note.
+
+## 🚀 Del aprendizaje a la operación
+
+El laboratorio usa una política determinista y dos herramientas puras; un agente real
+sustituye esa política por un LLM (no determinista, falible) y herramientas con efectos
+sobre sistemas vivos. El salto exige: telemetría de cada iteración del bucle (clase 118),
+matriz de permisos por herramienta (clase 116), aprobación humana para acciones
+irreversibles (clase 117) y un conjunto de evaluación de trayectorias que detecte
+regresiones cuando cambie el modelo o el prompt (clase 119). Sin esas cuatro piezas, el
+espectro de autonomía se recorre solo de palabra.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +234,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629)
-- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
-- [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Russell y Norvig — *Artificial Intelligence: A Modern Approach* (4e), cap. 2 "Intelligent Agents" (agente, entorno, medida de desempeño, racionalidad)](https://aima.cs.berkeley.edu/)
+- [Anthropic Engineering — "Building effective agents" (workflows vs agents, cuándo usar cada uno)](https://www.anthropic.com/engineering/building-effective-agents)
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
+- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761](https://arxiv.org/abs/2302.04761)
+- [Anthropic — documentación oficial de agentes y herramientas](https://docs.claude.com)
+- [LangGraph — Overview (grafos de control para workflows y agentes)](https://docs.langchain.com/oss/python/langgraph/overview)
 
 ---
 

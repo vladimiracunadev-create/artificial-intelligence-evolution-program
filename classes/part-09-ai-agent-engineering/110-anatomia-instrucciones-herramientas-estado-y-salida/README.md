@@ -27,6 +27,155 @@ Al finalizar podrás:
 
 `instructions`, `tools`, `state`, `output`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+La clase anterior definió *qué* es un agente; esta define *de qué está hecho*. Toda
+implementación seria — desde un script con function calling hasta los SDK de agentes de
+Anthropic, OpenAI o LangGraph — se descompone en las mismas cuatro piezas: instrucciones,
+herramientas, estado y salida estructurada. Dominar esta anatomía es prerequisito para el
+ciclo ReAct (111), los contratos de herramientas (113) y la taxonomía de artefactos (114):
+cada una de esas clases profundiza en una pieza de las que aquí se nombran.
+
+## 📖 Fundamentos
+
+### 📜 Instrucciones: la política del agente
+
+Las instrucciones (system prompt) definen la **política**: objetivo, restricciones, estilo
+de decisión y condiciones de parada. No son decoración; son la especificación ejecutable
+del comportamiento. Una instrucción operativa tiene cuatro bloques:
+
+```text
+1. ROL Y OBJETIVO    qué es el agente y qué cuenta como éxito (predicado verificable)
+2. RESTRICCIONES     qué no puede hacer nunca, qué requiere aprobación
+3. PROCEDIMIENTO     heurísticas de decisión: cuándo usar cada herramienta,
+                     cuándo pedir ayuda, cuándo rendirse
+4. FORMATO DE SALIDA contrato del resultado final (esquema, campos obligatorios)
+```
+
+Regla práctica: todo lo que el ingeniero no escriba en las instrucciones queda a criterio
+del modelo, y ese criterio cambia con cada versión del modelo.
+
+### 🔧 Herramientas: el repertorio de acciones
+
+Una herramienta es una función expuesta al modelo con un **contrato**: nombre, descripción,
+esquema de parámetros (JSON Schema) y tipo de retorno. El modelo no ejecuta nada: **emite
+una intención de llamada** (`{"tool": "sum", "args": {"left": 7, "right": 5}}`) y el
+runtime la valida, la ejecuta y devuelve la observación. Esta separación intención/ejecución
+es la que permite interponer validación, permisos y aprobaciones. Dos categorías con
+tratamiento distinto:
+
+- **Lectura** (consultar, buscar, medir): reintentables, componibles, baratas de autorizar.
+- **Efecto** (escribir, enviar, borrar): modifican el entorno; exigen idempotencia o
+  confirmación (clase 113) y permisos explícitos (clase 116).
+
+### 🗃️ Estado: lo que el agente sabe en el paso t
+
+El estado de un agente LLM tiene tres capas con vidas distintas:
+
+```text
+contexto de la conversación   la ventana del modelo: instrucciones + historial
+                              de acciones y observaciones (volátil, cara, limitada)
+estado de la tarea            variables estructuradas del run: plan, progreso,
+                              presupuesto restante, resultados intermedios
+memoria persistente           lo que sobrevive entre runs: archivos, bases de
+                              datos, notas (clase 115)
+```
+
+El error de diseño más común es confundir las capas: meter todo al contexto (se agota la
+ventana y el costo crece por token) o no registrar el estado de la tarea (imposible
+reanudar ni auditar). El estado estructurado del run es, además, la fuente para los
+checkpoints y la observabilidad.
+
+### 📤 Salida estructurada: el contrato de resultado
+
+Un agente cuyo producto final es prosa libre no se puede componer ni verificar
+mecánicamente. La salida estructurada fija un esquema — el laboratorio usa
+`{kind, seed, result, evidence, limitations}` — con dos campos que este programa trata
+como obligatorios:
+
+- **`evidence`:** hechos inspeccionables que sostienen la conclusión (qué se observó).
+- **`limitations`:** qué NO demuestra el resultado (frontera de validez).
+
+La validación del esquema debe ser mecánica (parseo + verificación de claves y tipos), y
+el fallo de validación debe tratarse como cualquier otro error observado: se reintenta o
+se reporta, nunca se acepta en silencio.
+
+### 🔩 Cómo encajan las piezas
+
+En cada iteración del bucle: las **instrucciones** condicionan la decisión; el modelo lee
+el **estado** (contexto + tarea) y emite una intención sobre el repertorio de
+**herramientas**; el runtime ejecuta y anexa la observación al estado; al terminar, el
+agente materializa la **salida estructurada**. Cualquier framework de agentes es una
+implementación opinada de este esqueleto.
+
+## 🧮 Ejemplo trabajado
+
+Anatomía completa del agente del laboratorio, pieza por pieza:
+
+| Pieza | Valor concreto en el laboratorio |
+|---|---|
+| Instrucciones (implícitas en el runner) | objetivo "verificar estado y sumar 7 + 5"; parar cuando ambas condiciones se verifiquen |
+| Herramientas | `status()` → dict de salud (lectura); `sum(left, right)` → entero (pura) |
+| Estado de la tarea | `trace` acumulada + condiciones verificadas (`healthy`, `sum`) |
+| Salida estructurada | `{kind: "agent", seed, result: {objective, trace, final}, evidence, limitations}` |
+
+Ejecución paso a paso: el estado inicial es `{healthy: ?, sum: ?}`. Iteración 1: la
+política elige `status()` (condición pendiente más barata); observación
+`{"healthy": true}`; el estado pasa a `{healthy: ✓, sum: ?}`. Iteración 2: elige
+`sum(7, 5)`; observación `12`; estado `{healthy: ✓, sum: ✓}`. La condición de parada se
+cumple y el runner materializa `final: {healthy: true, sum: 12}` más las dos listas del
+contrato. Verificación mecánica de la salida: claves `{kind, seed, result, evidence,
+limitations}` presentes, `evidence` no vacía, cada elemento de `trace` con la forma
+`{action: {tool, args}, observation}` — todo comprobable con cinco `assert`.
+
+## 📊 Propiedades y comparación
+
+| Pieza | Quién la controla | Cuándo cambia | Fallo típico si falta |
+|---|---|---|---|
+| Instrucciones | ingeniero (versionadas) | por release | comportamiento a criterio del modelo |
+| Herramientas | ingeniero (contratos) | por release | el agente "alucina" capacidades que no tiene |
+| Estado del run | runtime | cada iteración | no se puede reanudar, auditar ni cobrar |
+| Contexto | runtime + política de resumen | cada iteración | desborde de ventana, costo creciente |
+| Salida estructurada | contrato compartido | por release | resultado no componible ni verificable |
+
+```mermaid
+flowchart LR
+    I["📜 Instrucciones\n(política)"] --> LLM["LLM\ndecide"]
+    S["🗃️ Estado\ncontexto + tarea"] --> LLM
+    LLM -- "intención de llamada\n{tool, args}" --> RT["Runtime\nvalida y ejecuta"]
+    RT -- "observación" --> S
+    T["🔧 Herramientas\ncontratos JSON Schema"] --> RT
+    LLM -- "condición de parada" --> O["📤 Salida estructurada\nresult + evidence + limitations"]
+    RT -. "permisos y aprobaciones\nse interponen aquí" .-> T
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El modelo ejecuta las herramientas."** No: emite intenciones; el runtime ejecuta.
+   Confundirlo lleva a diseñar sin punto de interposición para validar o denegar llamadas.
+2. **"Más contexto es más estado."** El contexto es una capa del estado, volátil y cara.
+   El estado de la tarea (plan, progreso, presupuesto) debe vivir estructurado fuera de la
+   ventana, o el agente no es reanudable.
+3. **"Las instrucciones son un texto motivacional."** Son la política versionable del
+   sistema. Un cambio de una frase puede alterar qué herramientas se usan y cuándo se
+   detiene el bucle; se revisan y testean como código.
+4. **"La salida estructurada es formateo."** Es el contrato que permite componer el agente
+   con otros sistemas y verificar éxito mecánicamente. Sin esquema no hay evals de
+   resultado (clase 119).
+5. **"Una herramienta más siempre suma."** Cada herramienta amplía la superficie de error
+   y de decisión del modelo. Repertorios grandes y solapados degradan la selección; el
+   criterio es un repertorio mínimo con contratos nítidos.
+
+## 🚀 Del aprendizaje a la operación
+
+En el laboratorio las cuatro piezas caben en un archivo; en producción cada una se vuelve
+un artefacto gestionado: instrucciones versionadas con revisión y tests de regresión,
+herramientas con contratos publicados y control de permisos por entorno, estado con
+persistencia transaccional y checkpoints reanudables, y salida validada contra esquema en
+la frontera de cada consumidor. Falta además lo transversal: telemetría por iteración,
+límites de presupuesto y un registro de auditoría que una instrucciones + versión del
+modelo + traza con cada resultado emitido.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +234,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629)
-- [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/)
-- [LangGraph Overview](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Anthropic Engineering — "Building effective agents" (bloques de construcción: augmented LLM, tools, memoria)](https://www.anthropic.com/engineering/building-effective-agents)
+- [Anthropic — documentación oficial: agentes, tool use y salida estructurada](https://docs.claude.com)
+- [Model Context Protocol — especificación (contratos de tools, resources y prompts)](https://modelcontextprotocol.io/)
+- [JSON Schema — especificación oficial (validación de parámetros y salidas)](https://json-schema.org/specification)
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
+- [Russell y Norvig — *AIMA* (4e), cap. 2 (estructura de agentes: programa + arquitectura)](https://aima.cs.berkeley.edu/)
 
 ---
 
