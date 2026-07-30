@@ -14,7 +14,6 @@ from .labs import RUNNERS
 
 REQUIRED_LESSON_FILES = {
     "README.md",
-    "theory.md",
     "assessment.md",
     "lesson.yaml",
     "lab.py",

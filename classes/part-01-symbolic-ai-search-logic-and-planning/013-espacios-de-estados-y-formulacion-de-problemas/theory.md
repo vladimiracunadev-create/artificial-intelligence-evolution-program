@@ -1,50 +1,129 @@
-
 # Teoría — Espacios de estados y formulación de problemas
 
 ## 🗺️ Ubicación en el mapa de la IA
 
-Esta clase pertenece a **IA simbólica, búsqueda, lógica y planificación**. Recorre la primera gran tradición de la IA: representar problemas de forma explícita y resolverlos mediante búsqueda, reglas, restricciones y planes.
+La formulación de problemas como espacios de estados es la puerta de entrada a la IA simbólica: fue el marco con el que Newell y Simon plantearon el *General Problem Solver* y el que organiza los capítulos de búsqueda de AIMA. Precede a todos los algoritmos de búsqueda (BFS, DFS, A*, minimax) porque ninguno puede ejecutarse sin un problema bien formulado. Habilita después la planificación clásica (STRIPS/PDDL), donde los estados se describen con lógica en lugar de enumerarse, y sigue vigente en aprendizaje por refuerzo, donde el MDP es un espacio de estados con transiciones estocásticas.
 
-## 🧠 Modelo mental
+## 📖 Fundamentos
 
-`Espacios de estados y formulación de problemas` se estudia como un sistema con:
+### 🧩 Los cinco componentes de un problema de búsqueda
 
-1. **representación:** qué información existe y cómo se codifica;
-2. **operación:** qué transformación, inferencia o decisión se ejecuta;
-3. **criterio:** cómo se determina si el resultado es mejor que un baseline;
-4. **evidencia:** qué artefactos permiten revisar la conclusión;
-5. **límites:** cuándo el método deja de ser apropiado.
+Un **problema de búsqueda** bien formulado (AIMA 4e, cap. 3) se define con cinco componentes:
 
-Conceptos guía: **estado, acciones, objetivo, costo**.
+1. **Estado inicial** `s0`: la situación de partida.
+2. **Acciones** `ACTIONS(s)`: el conjunto finito de acciones aplicables en el estado `s`.
+3. **Modelo de transición** `RESULT(s, a)`: el estado que resulta de ejecutar la acción `a` en `s`. También llamado función sucesora.
+4. **Test de objetivo** `IS-GOAL(s)`: predicado que decide si `s` es un estado meta (puede haber varios).
+5. **Costo de acción** `c(s, a, s') >= 0`: el costo de dar ese paso. El costo de un camino es la suma de los costos de sus acciones.
 
-```mermaid
-flowchart LR
-    R["🗂️ Representación<br/>qué información existe<br/>y cómo se codifica"] --> O["⚙️ Operación<br/>qué transformación o<br/>decisión se ejecuta"]
-    O --> C["📏 Criterio<br/>cómo se compara<br/>contra un baseline"]
-    C --> E["🔍 Evidencia<br/>artefactos que permiten<br/>revisar la conclusión"]
-    E --> L["🚧 Límites<br/>cuándo el método<br/>deja de ser apropiado"]
+El **espacio de estados** es el grafo dirigido implícito cuyos vértices son todos los estados alcanzables desde `s0` y cuyas aristas son las transiciones. Una **solución** es un camino de `s0` a un estado objetivo; una **solución óptima** es la de costo mínimo.
+
+```text
+PROBLEMA = (s0, ACTIONS, RESULT, IS-GOAL, c)
+
+función SOLUCION-VALIDA(problema, [a1, ..., an]):
+    s ← problema.s0
+    costo ← 0
+    para cada acción ai:
+        si ai ∉ ACTIONS(s): devolver INVÁLIDA
+        costo ← costo + c(s, ai, RESULT(s, ai))
+        s ← RESULT(s, ai)
+    devolver IS-GOAL(s), costo
 ```
 
-## 🔧 Preguntas técnicas
+### 🔍 Estado ≠ nodo
 
-- ¿Cuál es el estado o entrada mínima?
-- ¿Qué decisiones son deterministas y cuáles dependen de datos o modelo?
-- ¿Qué información podría filtrarse o perderse?
-- ¿Qué baseline permite saber si el aumento de complejidad aporta valor?
-- ¿Cómo se interrumpe, revierte o audita el proceso?
+Distinción crucial que la implementación debe respetar:
+
+- Un **estado** es una configuración del mundo (p. ej. la disposición de fichas del 8-puzzle).
+- Un **nodo** de búsqueda es una estructura de datos: contiene un estado, un puntero al nodo padre, la acción que lo generó y el costo acumulado `g(n)`. Dos nodos distintos pueden contener el mismo estado (alcanzado por caminos distintos).
+
+Reconstruir la solución consiste en seguir los punteros padre desde el nodo objetivo hasta la raíz.
+
+### 📐 Abstracción y granularidad
+
+Formular es **abstraer**: decidir qué detalles del mundo entran en el estado. En el problema de viajar de Arad a Bucarest (el mapa de Rumania de AIMA), el estado es solo "ciudad actual"; se descartan clima, combustible y hora. Una abstracción es **válida** si toda solución abstracta puede expandirse a una solución del mundo real, y es **útil** si las acciones abstractas son más fáciles de ejecutar que el problema original. Elegir mal la granularidad es el error de diseño más caro: un estado demasiado fino explota combinatoriamente; uno demasiado grueso pierde soluciones.
+
+### 📈 Tamaño del espacio y factor de ramificación
+
+Dos números gobiernan la dificultad:
+
+- **Factor de ramificación** `b`: número medio de acciones aplicables por estado.
+- **Profundidad** `d`: longitud de la solución más corta.
+
+El árbol de búsqueda tiene O(b^d) nodos. Ejemplos clásicos de tamaño de espacio de estados:
+
+| Problema | Estados | Observación |
+|---|---:|---|
+| 8-puzzle | 9!/2 = 181 440 | resoluble por fuerza bruta |
+| 15-puzzle | 16!/2 ≈ 1,05 × 10¹³ | exige heurísticas |
+| Cubo de Rubik 3×3 | ≈ 4,3 × 10¹⁹ | resuelto con IDA* + bases de patrones |
+| Ajedrez (posiciones) | ≈ 10⁴⁴ (estimación de Shannon) | intratable de forma exacta |
+
+Por eso el espacio de estados casi nunca se materializa: se **genera bajo demanda** con `ACTIONS` y `RESULT`.
+
+## 🧮 Ejemplo trabajado
+
+Formulación completa del **problema de las jarras** (jarra de 4 L y jarra de 3 L, grifo ilimitado; objetivo: exactamente 2 L en la jarra de 4 L):
+
+- **Estado:** par `(x, y)` con `0 ≤ x ≤ 4`, `0 ≤ y ≤ 3`. Espacio: 5 × 4 = 20 estados.
+- **Estado inicial:** `(0, 0)`.
+- **Acciones:** llenar4, llenar3, vaciar4, vaciar3, verter4→3, verter3→4.
+- **Test de objetivo:** `x = 2`.
+- **Costo:** 1 por acción (minimizar número de pasos).
+
+Traza de una solución óptima (6 pasos), aplicando `RESULT` a mano:
+
+```text
+(0,0) --llenar3-->   (0,3)
+(0,3) --verter3→4--> (3,0)
+(3,0) --llenar3-->   (3,3)
+(3,3) --verter3→4--> (4,2)   # solo cabe 1 L más en la jarra de 4
+(4,2) --vaciar4-->   (0,2)
+(0,2) --verter3→4--> (2,0)   ✔ IS-GOAL: x = 2
+```
+
+Cada línea es verificable aplicando la definición de la acción. Nótese que el estado `(4,2)` codifica todo lo necesario: no hace falta recordar el historial para decidir las acciones siguientes (la formulación es markoviana).
+
+## 📊 Propiedades y comparación
+
+| Criterio de formulación | Estado atómico (esta clase) | Estado factorizado (CSP, clase 018) | Estado estructurado (STRIPS, clase 023) |
+|---|---|---|---|
+| Representación | caja negra indivisible | vector de variables con dominios | conjunto de literales lógicos |
+| Acciones | enumeradas por función | asignaciones de variables | operadores con precondiciones/efectos |
+| Ventaja | máxima generalidad | propagación de restricciones | acciones descritas sin enumerar estados |
+| Desventaja | el algoritmo no "ve" dentro del estado | solo problemas de asignación | requiere modelado lógico |
+| Algoritmos típicos | BFS, DFS, A* | backtracking, AC-3 | GraphPlan, Fast Downward |
+
+```mermaid
+flowchart TD
+    W["🌍 Mundo real<br/>(infinitos detalles)"] -->|abstracción| F["📋 Formulación<br/>(s0, ACTIONS, RESULT, IS-GOAL, c)"]
+    F --> G["🕸️ Espacio de estados<br/>grafo implícito"]
+    G -->|"ACTIONS(s) + RESULT(s,a)"| E["🌱 Generación bajo demanda<br/>de sucesores"]
+    E --> B{"IS-GOAL(s)?"}
+    B -- no --> E
+    B -- sí --> P["🧵 Reconstrucción del camino<br/>vía punteros padre"]
+    P --> V["✅ Solución = secuencia de acciones<br/>con costo Σ c(s,a,s')"]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El espacio de estados es una estructura de datos que se construye entera."** Falso: es un grafo *implícito*; se explora generando sucesores bajo demanda. Materializarlo es imposible ya para el 15-puzzle.
+2. **Confundir estado con nodo.** El estado describe el mundo; el nodo añade padre, acción y costo acumulado. Ignorar la diferencia impide detectar estados repetidos y reconstruir la solución.
+3. **Meter el historial dentro del estado sin necesidad.** Si el objetivo y las acciones solo dependen de la configuración actual, incluir "cómo llegué aquí" multiplica el espacio sin ganar nada.
+4. **Suponer que el objetivo es un estado único.** `IS-GOAL` es un predicado: en las jarras, cualquier `(2, y)` sirve; en ajedrez, "jaque mate" describe muchísimas posiciones distintas.
+5. **Olvidar el costo y optimizar "número de pasos" por defecto.** Si las acciones tienen costos distintos (peajes, tiempo), la solución con menos pasos puede no ser la óptima; la formulación debe declarar `c` explícitamente.
 
 ## 🚀 Del aprendizaje a la operación
 
-El laboratorio demuestra un mecanismo reducido. Para elevarlo a una aplicación
-real deben añadirse contratos de entrada y salida, validación de datos, manejo de
-errores, permisos, trazas, evaluación de regresión y revisión humana proporcional
-al riesgo.
+En un sistema real (logística, verificación de software, robótica), la formulación no viene dada: hay que extraerla de requisitos ambiguos y validarla con expertos del dominio. Faltan además: pruebas de que `RESULT` es fiel al sistema real (simulador validado o telemetría), manejo de acciones que fallan o tienen efectos no deterministas (lo que exige MDPs o planificación con contingencias), y monitoreo de que la abstracción sigue siendo válida cuando el entorno cambia. Un modelo de transición equivocado produce planes "óptimos" que fracasan al ejecutarse, y ese error no lo detecta ningún algoritmo de búsqueda.
 
-## 🔗 Referencias primarias o técnicas
+## 🔗 Referencias
 
-- [AIMA — Search and logical agents](https://aima.cs.berkeley.edu/)
-- [PDDL — Planning Domain Definition Language](https://planning.wiki/ref/pddl)
-- [Stanford Encyclopedia of Philosophy — Logic and AI](https://plato.stanford.edu/entries/logic-ai/)
+- Russell, S. y Norvig, P. (2021). *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 3 "Solving Problems by Searching". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- Newell, A. y Simon, H. A. (1976). "Computer Science as Empirical Inquiry: Symbols and Search". *Communications of the ACM*, 19(3). [https://doi.org/10.1145/360018.360022](https://doi.org/10.1145/360018.360022)
+- Nilsson, N. J. (1980). *Principles of Artificial Intelligence*. Morgan Kaufmann — caps. 1-2 sobre representación por espacios de estados.
+- Stanford Encyclopedia of Philosophy — "Logic and Artificial Intelligence". [https://plato.stanford.edu/entries/logic-ai/](https://plato.stanford.edu/entries/logic-ai/)
 
 ---
 

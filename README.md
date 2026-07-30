@@ -137,8 +137,7 @@ Abre `http://localhost:8080/site/`.
 
 ```text
 classes/part-XX-slug/NNN-topic/
-├── README.md
-├── theory.md
+├── README.md        ← incluye la teoría completa de la clase
 ├── assessment.md
 ├── lesson.yaml
 ├── lab.py

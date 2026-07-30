@@ -47,9 +47,9 @@ propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ## 📓 Notebooks
 
-- `notebook.ipynb`: recorrido guiado.
-- `notebook_student.ipynb`: ejercicio sin resolver.
-- `notebook_solution.ipynb`: solución de referencia y validación del contrato.
+- [📓 `notebook.ipynb`](notebook.ipynb): recorrido guiado con la materia resumida.
+- [✍️ `notebook_student.ipynb`](notebook_student.ipynb): ejercicios para resolver.
+- [✅ `notebook_solution.ipynb`](notebook_solution.ipynb): solución de referencia explicada.
 
 ## 📝 Evaluación
 

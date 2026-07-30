@@ -27,6 +27,145 @@ Al finalizar podrás:
 
 `vectores`, `matrices`, `producto punto`, `distancia`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+El álgebra lineal es el idioma nativo de la IA moderna: datos, parámetros, activaciones y
+gradientes son vectores y matrices, y casi todo modelo — de la regresión lineal al
+transformer — es una composición de productos matriciales y no linealidades. Esta clase da
+la base geométrica que reaparecerá en embeddings y similitud (búsqueda semántica), en
+descenso de gradiente (parte de optimización) y en la mecánica de atención de los LLM.
+
+## 📖 Fundamentos
+
+### 📐 Vectores: tres lecturas del mismo objeto
+
+Un vector **x** ∈ ℝⁿ admite tres interpretaciones intercambiables:
+
+1. **Lista de números:** `x = [x₁, ..., xₙ]` — la vista del programador (array).
+2. **Punto/flecha en el espacio:** la vista geométrica — dirección y magnitud.
+3. **Objeto representado:** en IA, una fila de datos, una imagen aplanada, un embedding de
+   palabra. La apuesta central del deep learning es que la *semántica* puede codificarse
+   como *geometría*: cosas parecidas → vectores cercanos.
+
+Operaciones básicas (componente a componente): suma `x + y`, escalado `αx`. Con ellas se
+definen **combinaciones lineales** `α₁x₁ + ... + αₖxₖ`, y de ahí los conceptos de
+independencia lineal, base y dimensión.
+
+### 🎯 Producto punto, norma y ángulo
+
+```text
+producto punto:   x · y = Σᵢ xᵢ yᵢ
+norma euclídea:   ‖x‖ = √(x · x)
+coseno:           cos θ = (x · y) / (‖x‖ ‖y‖)
+distancia:        d(x, y) = ‖x − y‖
+```
+
+El producto punto mide *alineación*: positivo si apuntan en direcciones similares, cero si
+son ortogonales, negativo si se oponen. De él derivan las dos medidas de similitud
+dominantes en IA: **similitud coseno** (ignora magnitud, estándar en embeddings de texto) y
+**distancia euclídea** (sensible a magnitud, estándar en clustering). Una neurona artificial
+computa exactamente `w · x + b`: su "detección" es un producto punto entre la entrada y un
+patrón aprendido.
+
+### 🔲 Matrices como transformaciones lineales
+
+Una matriz A ∈ ℝᵐˣⁿ es una función lineal ℝⁿ → ℝᵐ: `y = Ax`. Leerla como transformación
+(no como tabla) es el salto conceptual clave:
+
+- Las **columnas de A** son las imágenes de los vectores de la base canónica: dicen a dónde
+  va cada eje.
+- La composición de transformaciones es el **producto de matrices**: `B(Ax) = (BA)x`.
+  No conmuta: rotar y luego estirar ≠ estirar y luego rotar.
+- Una capa densa de red neuronal es `h = g(Wx + b)`: transformación lineal W, traslación b,
+  no linealidad g. Sin g, apilar capas colapsa a una sola matriz (composición de lineales
+  es lineal) — por eso las activaciones no lineales son imprescindibles.
+
+Dimensiones: `(m×n)·(n×k) → (m×k)`; el índice interior debe coincidir. La mayoría de bugs
+de shape en NumPy/PyTorch son violaciones de esta regla.
+
+### 🧭 Nociones geométricas que reaparecen en IA
+
+- **Proyección** de x sobre u (unitario): `proj_u(x) = (x·u)u` — base de PCA y de "cuánto
+  de este concepto hay en este embedding".
+- **Hiperplano** `w·x + b = 0`: frontera de decisión de un clasificador lineal; w es su
+  normal. Separabilidad lineal = existe un hiperplano que separa las clases (la limitación
+  XOR del perceptrón es exactamente esto).
+- **Maldición de la dimensionalidad:** en dimensión alta, las distancias euclídeas se
+  concentran y los volúmenes se vacían; la similitud coseno y las estructuras de índice
+  aproximado (ANN) existen en parte por esto.
+
+## 🧮 Ejemplo trabajado
+
+Similitud entre tres "documentos" representados como vectores de conteo sobre el
+vocabulario `[ia, datos, fútbol]`:
+
+```text
+d₁ = [2, 3, 0]   (habla de IA y datos)
+d₂ = [1, 2, 0]   (habla de IA y datos, más corto)
+d₃ = [0, 1, 4]   (habla sobre todo de fútbol)
+```
+
+Paso a paso para (d₁, d₂):
+
+```text
+d₁ · d₂ = 2·1 + 3·2 + 0·0 = 8
+‖d₁‖ = √(4+9+0) = √13 ≈ 3.606
+‖d₂‖ = √(1+4+0) = √5  ≈ 2.236
+cos(d₁,d₂) = 8 / (3.606·2.236) ≈ 8/8.062 ≈ 0.992   → casi idénticos en tema
+```
+
+Para (d₁, d₃): `d₁·d₃ = 0+3+0 = 3`, `‖d₃‖ = √17 ≈ 4.123`,
+`cos ≈ 3/(3.606·4.123) ≈ 0.202` → temas distintos.
+
+Obsérvese que la distancia euclídea `‖d₁−d₂‖ = ‖[1,1,0]‖ = √2 ≈ 1.41` es *mayor* que cero
+aunque los documentos traten exactamente lo mismo: el coseno corrige la diferencia de
+longitud. Este es el motivo por el que los motores de embeddings usan coseno por defecto.
+
+## 📊 Propiedades y comparación
+
+| Medida | Fórmula | Sensible a magnitud | Rango | Uso típico en IA |
+|---|---|---|---|---|
+| Producto punto | Σ xᵢyᵢ | Sí | (−∞, ∞) | Capas densas, atención (QKᵀ) |
+| Similitud coseno | x·y/(‖x‖‖y‖) | No | [−1, 1] | Embeddings, búsqueda semántica |
+| Distancia euclídea | ‖x−y‖ | Sí | [0, ∞) | k-means, k-NN en dimensión baja |
+| Distancia Manhattan | Σ\|xᵢ−yᵢ\| | Sí | [0, ∞) | Datos dispersos, robustez a outliers |
+
+```mermaid
+flowchart LR
+    X["Entrada x ∈ ℝⁿ<br/>(imagen, texto tokenizado,<br/>fila de tabla)"] --> W1["Transformación lineal<br/>W₁x + b₁"]
+    W1 --> G1["No linealidad g<br/>(ReLU, GELU...)"]
+    G1 --> W2["Transformación lineal<br/>W₂h + b₂"]
+    W2 --> OUT["Salida: logits / embedding"]
+    OUT --> SIM["Comparación geométrica<br/>producto punto o coseno"]
+    P["Patrones aprendidos<br/>(filas de W = detectores)"] -.-> W1
+    note["Sin g, W₂W₁ colapsa<br/>a UNA sola matriz"] -.-> G1
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El producto de matrices es componente a componente."** Ese es el producto de Hadamard;
+   el producto matricial estándar es composición de transformaciones (filas por columnas)
+   y no conmuta.
+2. **"Coseno y euclídea dan el mismo ranking."** Solo si todos los vectores tienen la misma
+   norma; con normas distintas los rankings divergen (ver ejemplo trabajado).
+3. **"Más capas lineales = más capacidad."** Sin no linealidad entre ellas, cualquier
+   pila de capas lineales equivale a una sola transformación lineal.
+4. **"La intuición de 2D/3D escala a dimensión 768."** En dimensión alta casi todos los
+   vectores aleatorios son casi ortogonales y las distancias se concentran; hay que razonar
+   con álgebra, no con dibujos.
+5. **"Un embedding cercano implica significado idéntico."** Cercanía geométrica refleja
+   coocurrencia estadística en los datos de entrenamiento; puede codificar sesgos o
+   asociaciones espurias, no sinonimia garantizada.
+
+## 🚀 Del aprendizaje a la operación
+
+En sistemas reales, esta base se convierte en: elegir métrica de similitud y normalización
+coherentes en *todo* el pipeline (indexar con coseno y consultar con euclídea es un bug
+clásico de RAG); vigilar shapes y convenciones fila/columna entre bibliotecas; usar
+operaciones vectorizadas (BLAS/GPU) en lugar de bucles Python — una diferencia de órdenes
+de magnitud; y validar que la geometría del embedding realmente separa las clases del
+dominio propio antes de construir encima.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -47,9 +186,9 @@ propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ## 📓 Notebooks
 
-- `notebook.ipynb`: recorrido guiado.
-- `notebook_student.ipynb`: ejercicio sin resolver.
-- `notebook_solution.ipynb`: solución de referencia y validación del contrato.
+- [📓 `notebook.ipynb`](notebook.ipynb): recorrido guiado con la materia resumida.
+- [✍️ `notebook_student.ipynb`](notebook_student.ipynb): ejercicios para resolver.
+- [✅ `notebook_solution.ipynb`](notebook_solution.ipynb): solución de referencia explicada.
 
 ## 📝 Evaluación
 
@@ -85,9 +224,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Computing Machinery and Intelligence — Turing, 1950](https://doi.org/10.1093/mind/LIX.236.433)
-- [A Proposal for the Dartmouth Summer Research Project on AI](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf)
-- [Artificial Intelligence: A Modern Approach](https://aima.cs.berkeley.edu/)
+- [Deisenroth, Faisal & Ong. *Mathematics for Machine Learning*, caps. 2-3 (PDF oficial gratuito)](https://mml-book.github.io/)
+- [Goodfellow, Bengio & Courville. *Deep Learning*, cap. 2: Linear Algebra](https://www.deeplearningbook.org/)
+- [3Blue1Brown. *Essence of Linear Algebra* (serie visual)](https://www.3blue1brown.com/topics/linear-algebra)
+- [Strang, G. MIT OCW 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
+- [NumPy: documentación oficial de álgebra lineal](https://numpy.org/doc/stable/reference/routines.linalg.html)
 
 ---
 

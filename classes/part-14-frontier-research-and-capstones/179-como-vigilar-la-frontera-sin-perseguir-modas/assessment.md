@@ -28,4 +28,4 @@ Amplía el resultado del laboratorio con una clave `student_extension` que inclu
 
 ---
 
-> [⬅️ Volver a la clase](README.md) · [📖 Teoría](theory.md) · [📚 Índice de la parte](../README.md)
+> [⬅️ Volver a la clase](README.md) · [📚 Índice de la parte](../README.md)
