@@ -27,6 +27,143 @@ Al finalizar podrás:
 
 `handoff`, `context`, `ownership`, `escalation`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+El *handoff* resuelve la limitación del router (122): allí la decisión de a quién va la
+tarea se toma *antes* de empezar; aquí un agente que ya está trabajando descubre que
+otro debe continuar, y transfiere la conversación con su contexto. Es el mecanismo
+central de frameworks como OpenAI Swarm/Agents SDK y de los traspasos humanos en
+soporte, y prepara los protocolos entre organizaciones (A2A, clase 131), donde el
+contexto viaja como artefactos explícitos entre sistemas que no comparten memoria.
+
+## 📖 Fundamentos
+
+### 🤝 Qué es un handoff
+
+**Handoff**: transferencia de la *propiedad* (ownership) de una tarea en curso de un
+agente A a un agente B, junto con el contexto mínimo suficiente para que B continúe sin
+repetir trabajo ni re-preguntar al usuario. A diferencia del router, ocurre en medio de
+la ejecución y lo inicia el propio agente al reconocer un límite de su competencia.
+
+Tres elementos definen un handoff correcto:
+
+1. **Ownership**: en todo momento exactamente un agente es dueño de la tarea. El
+   traspaso es atómico: A deja de actuar cuando B acepta. Dos dueños simultáneos
+   producen respuestas duplicadas o contradictorias; cero dueños, tareas huérfanas.
+2. **Payload de contexto**: lo que viaja. No es "todo el historial": es una
+   *destilación* con contrato — objetivo, estado, hechos verificados, trabajo hecho,
+   trabajo pendiente y restricciones.
+3. **Política de aceptación**: B puede aceptar, rechazar (devuelve a A o a un
+   coordinador) o escalar. Sin política de rechazo, un handoff mal dirigido se pierde.
+
+### 📦 El payload: contexto explícito con esquema
+
+En un proceso único el contexto se comparte gratis; entre agentes hay que
+serializarlo. Un esquema mínimo de payload JSON:
+
+```json
+{
+  "task_id": "TCK-4812",
+  "from_agent": "triage",
+  "to_agent": "security",
+  "reason": "hallazgo fuera de mi ámbito: posible CVE en dependencia",
+  "goal": "evaluar impacto del CVE-2024-3094 en el servicio de pagos",
+  "state": {
+    "verified_facts": ["xz 5.6.0 presente en la imagen base",
+                        "servicio expuesto solo en red interna"],
+    "work_done": ["inventario de dependencias", "ticket clasificado"],
+    "work_remaining": ["confirmar explotabilidad", "proponer mitigación"],
+    "constraints": ["no desplegar cambios hasta aprobación", "SLA: 4h"]
+  },
+  "artifacts": [{"kind": "sbom", "uri": "reports/sbom-pagos.json"}],
+  "handoff_at": "2026-07-30T14:12:00Z"
+}
+```
+
+Reglas de diseño: separar **hechos verificados** de hipótesis (B no debe re-verificar
+lo verificado ni fiarse de lo no verificado); referenciar artefactos grandes por URI en
+lugar de incrustarlos; incluir `reason` para auditar por qué se transfirió; y versionar
+el esquema, porque A y B pueden evolucionar por separado.
+
+### 🪜 Escalada como caso especial
+
+La **escalada** es un handoff hacia un nivel de mayor autoridad o capacidad (agente
+senior, humano). Añade dos campos al contrato: *urgencia* y *qué decisión se pide*.
+La escalada a humano (HITL) es la válvula de seguridad de todo sistema multiagente:
+si la cadena de handoffs supera un límite (p. ej. 3 saltos) o entra en ciclo
+(A→B→A→B…), un coordinador debe cortar y escalar.
+
+## 🧮 Ejemplo trabajado
+
+Ticket real de soporte con dos handoffs:
+
+```text
+t0  usuario → triage: "el pago falla desde ayer con error 502"
+t1  triage verifica: servicio pagos degradado, no es error de usuario.
+t2  HANDOFF triage → infra
+    payload: goal="restaurar pagos", verified_facts=["502 desde 09:31",
+    "deploy v2.41 a las 09:28"], work_done=["descartado error de cliente"],
+    work_remaining=["correlacionar con deploy"], constraints=["SLA 4h"]
+t3  infra correlaciona y confirma regresión en v2.41; el rollback exige
+    aprobación de negocio → fuera de su autoridad.
+t4  ESCALADA infra → humano de guardia
+    payload añade: urgency="alta", decision_requested="aprobar rollback a v2.40"
+t5  humano aprueba; infra ejecuta; ownership vuelve a triage para cerrar.
+```
+
+Cuenta de contexto: el historial completo en t2 son ~3 000 tokens; el payload
+destilado, ~250. El handoff transfiere el 8 % del texto pero el 100 % de lo
+accionable. Lo que se pierde (el tono del usuario, los callejones sin salida de
+triage) es exactamente lo que B no necesita — y si lo necesitara, el artefacto
+`transcript` puede viajar por URI.
+
+## 📊 Propiedades y comparación
+
+| Mecanismo | Cuándo se decide | Quién decide | Contexto transferido | Riesgo típico |
+|---|---|---|---|---|
+| Router (122) | Antes de ejecutar | Clasificador | El necesario para empezar | Ruteo erróneo inicial |
+| Handoff | Durante la ejecución | El agente en curso | Destilado del trabajo hecho | Pérdida de contexto |
+| Escalada | Durante, al topar límite | El agente o coordinador | Destilado + decisión pedida | Escalar tarde |
+| Subagente (121) | Durante, como llamada | El padre (que espera) | Especificación de subtarea | El padre se bloquea |
+
+```mermaid
+sequenceDiagram
+    participant U as Usuario
+    participant T as Agente triage
+    participant S as Agente infra
+    participant H as Humano de guardia
+    U->>T: "el pago falla (502)"
+    T->>T: verifica hechos
+    T->>S: handoff {goal, verified_facts, work_done, constraints}
+    Note over T,S: ownership pasa a infra (atómico)
+    S->>S: correlaciona con deploy v2.41
+    S->>H: escalada {urgency: alta, decision: aprobar rollback}
+    H-->>S: aprobado
+    S->>T: devolución {resolución, evidencia}
+    T->>U: cierre del ticket
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Transferir contexto = copiar todo el historial."** Copiarlo todo satura la
+   ventana de B y entierra lo accionable; el payload es una destilación con esquema.
+2. **Handoff sin transferencia de ownership.** Si A sigue respondiendo tras el
+   traspaso, el usuario recibe dos voces; el traspaso debe ser atómico y registrado.
+3. **Mezclar hechos verificados con hipótesis.** B hereda como cierto lo que A solo
+   sospechaba; el esquema debe separarlos explícitamente.
+4. **Sin política de rechazo ni límite de saltos.** Handoffs mal dirigidos rebotan en
+   ciclos A→B→A; se necesita contador de saltos y corte con escalada.
+5. **Confundir handoff con subagente.** El subagente devuelve el control al padre; en
+   el handoff el control *no vuelve* — B es el nuevo dueño ante el usuario.
+
+## 🚀 Del aprendizaje a la operación
+
+Para operar handoffs reales faltan: persistencia del payload (si B cae, la tarea debe
+recuperarse de un almacén, no de la memoria de A); idempotencia y deduplicación (el
+mismo handoff entregado dos veces no debe duplicar trabajo); métricas de cadena
+(saltos por tarea, tiempo en cada dueño, tasa de rechazo); y compatibilidad de esquema
+entre versiones de agentes desplegadas a la vez.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +222,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)
-- [Agent2Agent Protocol](https://a2a-protocol.org/latest/)
-- [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
-- [LangGraph Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+- [Anthropic — Building effective agents (2024)](https://www.anthropic.com/engineering/building-effective-agents): delegación y coordinación con la mínima complejidad necesaria.
+- [OpenAI Agents SDK — Handoffs](https://openai.github.io/openai-agents-python/handoffs/): implementación de referencia del patrón handoff entre agentes.
+- [A2A Protocol](https://a2a-protocol.org/latest/): transferencia de tareas y artefactos entre agentes de distintos proveedores.
+- [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): conversaciones multiagente con traspaso de turno programable.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009, caps. de comunicación y cooperación: actos de habla y protocolos de interacción.
 
 ---
 

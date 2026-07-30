@@ -27,6 +27,137 @@ Al finalizar podrás:
 
 `blackboard`, `shared memory`, `coordination`, `conflicts`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+El blackboard es la arquitectura multiagente más antigua que sigue viva: nació en los
+años 70 con Hearsay-II (comprensión de habla) y HASP, décadas antes de los LLM. Frente
+al control central de supervisor-workers (124) y a los mensajes punto a punto de los
+handoffs (123), propone coordinación *indirecta*: los especialistas no se hablan entre
+sí, colaboran leyendo y escribiendo sobre una memoria común. Hoy reaparece en los
+sistemas agénticos como estado compartido (el *state* de LangGraph, archivos de
+trabajo, scratchpads persistentes).
+
+## 📖 Fundamentos
+
+### 🧑‍🏫 La metáfora y los tres componentes
+
+Varios expertos frente a una pizarra resuelven un problema que ninguno puede resolver
+solo: cada uno escribe cuando ve algo que aportar, y lo escrito dispara las
+contribuciones de los demás. Formalmente (Nii, 1986):
+
+1. **Blackboard**: memoria compartida y estructurada, normalmente jerárquica (niveles
+   de abstracción: en Hearsay-II, señal → sílabas → palabras → frases). Contiene
+   *hipótesis* con atributos: autor, nivel, confianza, timestamp.
+2. **Fuentes de conocimiento (KS)**: especialistas con un par
+   `(condición de activación, acción)`: "si aparece una hipótesis de tipo X en el
+   nivel Y, puedo producir Z". No se conocen entre sí — solo conocen el blackboard.
+3. **Control**: decide qué KS activa cuando varias son aplicables (agenda con
+   prioridades). Es la pieza que evita el caos: sin ella, todas las KS escribirían a
+   la vez.
+
+### 🔄 El ciclo de ejecución
+
+```text
+repetir hasta solución o presupuesto:
+  1. cambios en el blackboard → se evalúan las condiciones de las KS
+  2. KS aplicables entran en la agenda con una prioridad (heurística de control)
+  3. el control elige UNA (o pocas) y la ejecuta
+  4. la KS lee lo pertinente, computa y ESCRIBE nuevas hipótesis (no borra las ajenas)
+  5. el nuevo estado re-dispara el ciclo  →  la solución se construye incrementalmente
+```
+
+El flujo de control es **oportunista**: no hay plan fijo; la secuencia emerge de qué
+hipótesis aparecen. Es la diferencia esencial con supervisor-workers, donde la
+descomposición se decide de antemano.
+
+### ⚔️ Conflictos y consistencia
+
+La memoria compartida introduce los problemas clásicos de concurrencia, en versión
+epistémica:
+
+- **Conflicto de escritura**: dos KS proponen hipótesis incompatibles (la palabra es
+  "peso" vs "beso"). Resolución: ambas coexisten con confianza; niveles superiores
+  desempatan con más contexto — el blackboard acumula alternativas, no las pisa.
+- **Lectura obsoleta**: una KS computó sobre un estado que otra ya refinó. Mitigación:
+  versionado de hipótesis y re-validación antes de escribir.
+- **Deadlock epistémico**: nadie tiene condición activable (el sistema "se queda sin
+  ideas"). Mitigación: KS de relajación o escalada a humano.
+- En sistemas LLM se añade el **límite de ventana**: el blackboard crece y no cabe en
+  el contexto de cada agente; hacen falta vistas (resúmenes por nivel) en lugar del
+  volcado completo.
+
+## 🧮 Ejemplo trabajado
+
+Diagnóstico de un incidente con blackboard de 3 niveles (síntomas → hipótesis → causa)
+y 3 KS: `logs` (síntomas desde logs), `metrics` (síntomas desde métricas), `causal`
+(correlaciona síntomas en hipótesis de causa).
+
+```text
+t1  KS logs escribe:    s1 = "errores 502 desde 09:31" (conf 0.9, nivel síntoma)
+t2  KS metrics escribe: s2 = "latencia p99 ×8 desde 09:30" (conf 0.85, síntoma)
+t3  condición de KS causal se activa (≥2 síntomas correlacionados en el tiempo)
+    escribe: h1 = "saturación del pool de conexiones" (conf 0.6, nivel hipótesis)
+t4  KS logs (re-disparada por h1) busca evidencia dirigida:
+    escribe: s3 = "pool exhausted en logs de la BD" (conf 0.95)
+t5  KS causal refina: h1 sube a conf 0.9; escribe causa raíz al nivel superior
+    control: umbral de solución alcanzado (conf ≥ 0.85 en nivel causa) → fin
+```
+
+Obsérvese t4: la hipótesis de una KS *dirigió* la búsqueda de otra sin que nadie las
+coordinara explícitamente — eso es coordinación indirecta (estigmergia, como las
+feromonas de las hormigas). Y en t3-t5 las hipótesis alternativas que hubiera
+("deploy defectuoso", conf 0.4) siguen en la pizarra: si h1 se hubiera refutado, el
+control habría vuelto a ellas.
+
+## 📊 Propiedades y comparación
+
+| Propiedad | Blackboard | Supervisor-workers (124) | Mensajería punto a punto (123) |
+|---|---|---|---|
+| Coordinación | Indirecta, por el medio | Directa, jerárquica | Directa, por pares |
+| Plan | Emergente (oportunista) | Descompuesto a priori | Encadenado por traspaso |
+| Acoplamiento entre agentes | Mínimo (no se conocen) | Medio (contrato con supervisor) | Alto (esquema por par) |
+| Añadir un especialista | Trivial (nueva KS) | Tocar al supervisor | Tocar a los pares |
+| Trazabilidad | Historia completa en el medio | Traza en árbol | Cadena de mensajes |
+| Riesgo típico | Caos sin control / medio saturado | Cuello de botella supervisor | Pérdida de contexto |
+| Ideal para | Problemas mal estructurados, evidencia incremental | Tareas descomponibles | Flujos con dueño claro |
+
+```mermaid
+flowchart TD
+    subgraph BB[Blackboard: hipótesis con autor, nivel, confianza, versión]
+        L1[Nivel 1: síntomas] --> L2[Nivel 2: hipótesis] --> L3[Nivel 3: causa raíz]
+    end
+    KS1[KS logs] -- escribe/lee --> BB
+    KS2[KS metrics] -- escribe/lee --> BB
+    KS3[KS causal] -- escribe/lee --> BB
+    CTRL[Control: agenda +
+prioridades + umbral de fin] -- activa una KS por ciclo --> KS1 & KS2 & KS3
+    BB -. cambios disparan condiciones .-> CTRL
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Memoria compartida = contexto compartido gratis."** En LLM cada lectura del
+   blackboard se re-tokeniza en cada agente; el medio compartido no elimina el coste,
+   lo estructura.
+2. **Dejar que las KS borren o pisen hipótesis ajenas.** El blackboard acumula
+   alternativas con confianza; sobrescribir destruye la capacidad de retroceder.
+3. **Blackboard sin control.** Sin agenda ni prioridades todas las KS escriben a la
+   vez y el medio se llena de ruido; el control es un componente, no un adorno.
+4. **Confundir blackboard con un log de chat.** El chat es secuencial y sin estructura;
+   el blackboard tiene niveles, tipos y confianzas que hacen las condiciones de
+   activación computables.
+5. **Ignorar la obsolescencia.** Una hipótesis leída puede haber sido refinada al
+   escribir la respuesta; sin versionado, los agentes razonan sobre estados muertos.
+
+## 🚀 Del aprendizaje a la operación
+
+Un blackboard operativo exige: un almacén real con transacciones y versionado (no un
+dict en memoria) que sobreviva reinicios (enlaza con la clase 132); control de acceso
+por KS (quién puede escribir en qué nivel); vistas resumidas por agente para no
+desbordar ventanas; poda y archivado del medio (crece sin límite); y métricas de
+convergencia — ciclos sin progreso de confianza son la señal de deadlock epistémico
+que debe escalar a humano.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +216,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)
-- [Agent2Agent Protocol](https://a2a-protocol.org/latest/)
-- [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
-- [LangGraph Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+- [Nii, H. P., *The Blackboard Model of Problem Solving and the Evolution of Blackboard Architectures*, AI Magazine 7(2), 1986](https://doi.org/10.1609/aimag.v7i2.537): el survey clásico de la arquitectura.
+- [Erman et al., *The Hearsay-II Speech-Understanding System*, ACM Computing Surveys 12(2), 1980](https://doi.org/10.1145/356810.356816): el sistema que originó el patrón.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: coordinación indirecta y entornos compartidos.
+- [LangGraph — Graph API (estado compartido)](https://docs.langchain.com/oss/python/langgraph/graph-api): el *state* tipado como blackboard moderno entre nodos.
+- [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): memoria y artefactos compartidos entre lead y subagentes.
 
 ---
 

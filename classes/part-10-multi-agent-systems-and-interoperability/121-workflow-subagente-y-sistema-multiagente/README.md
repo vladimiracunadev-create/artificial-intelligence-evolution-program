@@ -27,6 +27,147 @@ Al finalizar podrás:
 
 `workflow`, `subagent`, `multi-agent`, `delegation`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Esta clase abre la Parte 10 y define su vocabulario base. En la Parte 9 construiste un
+agente individual (bucle percibir → decidir → actuar con herramientas); aquí clasificas
+las arquitecturas que aparecen cuando una sola instancia de LLM ya no basta: workflows
+orquestados por código, subagentes delegados y sistemas multiagente propiamente dichos.
+Distinguirlos con precisión es el prerrequisito de todo lo que sigue: router (122),
+handoffs (123), supervisor-workers (124) y los protocolos de interoperabilidad (129-131).
+
+## 📖 Fundamentos
+
+### 🧱 Tres arquitecturas, tres contratos de control
+
+**Workflow**: sistema donde el *código* define el flujo de control. Los pasos —incluidas
+las llamadas al LLM— están encadenados por lógica predeterminada (secuencia, ramas,
+reintentos). El LLM rellena pasos; no decide qué paso viene después. Anthropic
+("Building effective agents", 2024) reserva el término *agente* para sistemas donde el
+LLM "dirige dinámicamente sus propios procesos y uso de herramientas".
+
+**Subagente**: un agente (o llamada LLM con contexto propio) invocado *por otro agente*
+como si fuera una herramienta. La relación es jerárquica y síncrona en su contrato:
+el llamador formula una tarea, el subagente trabaja con su propia ventana de contexto
+y devuelve un resultado resumido. El llamador conserva la propiedad de la conversación.
+
+**Sistema multiagente**: varios agentes con objetivos, contextos y bucles de decisión
+propios que se coordinan mediante mensajes o memoria compartida. Ningún componente ve
+todo el estado; la coordinación (quién hace qué, cuándo termina, cómo se resuelven
+conflictos) es un problema de diseño explícito — el objeto de estudio clásico de
+Wooldridge, *An Introduction to MultiAgent Systems* (2.ª ed., Wiley, 2009).
+
+### 🔁 Delegación: la operación común
+
+Las tres arquitecturas comparten una primitiva: **delegación** — transferir una subtarea
+con (a) una especificación, (b) un presupuesto (tokens, pasos, tiempo) y (c) un contrato
+de retorno. Difieren en *quién* delega y *quién* controla el flujo:
+
+```text
+                 ¿Quién decide el siguiente paso?   ¿Cuántos contextos LLM?
+workflow         el código (grafo fijo)             1..n, sin autonomía
+subagente        el agente padre                    padre + hijos aislados
+multiagente      cada agente, negociando            n contextos autónomos
+```
+
+### 🚫 Cuándo NO usar multiagente
+
+La guía de Anthropic es explícita: *"busca la solución más simple posible y solo
+incrementa la complejidad cuando sea necesario"*. Señales de que un multiagente es
+sobre-ingeniería:
+
+1. **La tarea es descomponible de forma fija** → un workflow con prompts encadenados
+   es más barato, más depurable y determinista.
+2. **Solo necesitas aislar contexto** (p. ej. búsquedas largas que ensucian la ventana)
+   → basta un subagente.
+3. **No hay paralelismo real ni especialización de herramientas** → n agentes añaden
+   latencia y coste sin beneficio.
+4. **Dominios de escritura fuertemente acoplados** (editar el mismo código a la vez):
+   Anthropic reporta en su sistema de investigación multiagente que la coordinación
+   entre agentes que escriben sobre el mismo artefacto sigue siendo un problema abierto.
+5. **Coste**: el sistema multiagente de Anthropic consume ≈ **15×** los tokens de un
+   chat simple; solo se justifica si el valor de la tarea lo cubre.
+
+El argumento a favor, cuando aplica: paralelismo de exploración (búsqueda amplia),
+separación de contextos que exceden una ventana, y especialización de permisos y
+herramientas por rol. AutoGen (Wu et al., arXiv:2308.08155) formaliza esto como
+*conversaciones* entre agentes conversables y programables.
+
+## 🧮 Ejemplo trabajado
+
+Tarea: "evaluar si el repositorio `demo` está listo para publicarse".
+
+**Como workflow** (control en el código): `lint → tests → docs → informe`. 4 llamadas
+LLM fijas. Si `tests` falla, el código decide reintentar. Coste ≈ 4 × (600 tokens
+entrada + 300 salida) ≈ 3 600 tokens.
+
+**Como subagentes**: un agente evaluador delega "revisar seguridad" a un subagente con
+su propio contexto (lee 20 archivos, ~30 000 tokens) y recibe solo el resumen
+(300 tokens). La ventana del padre queda protegida: paga 300, no 30 000.
+
+**Como multiagente** (lo que ejecuta `run_lab("multiagent")`): tres workers
+(`quality`, `security`, `documentation`) producen contratos comparables
+`{agent, score, finding}` y un supervisor consolida:
+
+```text
+quality: 0.8   security: 0.6   documentation: 0.9
+overall = (0.8 + 0.6 + 0.9) / 3 = 2.3 / 3 ≈ 0.7667
+decisión = "mejorar seguridad"  (mínimo por debajo del umbral 0.7)
+```
+
+Nota la decisión de diseño: el supervisor conserva los *hallazgos*, no solo el
+promedio. Un promedio de 0.7667 ocultaría que seguridad está en 0.6.
+
+## 📊 Propiedades y comparación
+
+| Propiedad | Workflow | Subagente | Multiagente |
+|---|---|---|---|
+| Control de flujo | Código (determinista) | Agente padre | Distribuido/negociado |
+| Contextos LLM | Compartido o por paso | Aislados, jerárquicos | Aislados, autónomos |
+| Depuración | Fácil (traza lineal) | Media (árbol de llamadas) | Difícil (no determinista) |
+| Coste en tokens | Bajo (≈1×) | Medio (≈3-4×) | Alto (≈15× según Anthropic) |
+| Paralelismo | Solo el planificado | Fan-out del padre | Nativo |
+| Caso ideal | Tarea descomponible fija | Aislar contexto/permisos | Exploración amplia paralela |
+
+```mermaid
+flowchart TD
+    A[Tarea nueva] --> B{¿Descomposición fija
+y conocida?}
+    B -- sí --> W[Workflow:
+prompts encadenados]
+    B -- no --> C{¿Basta un contexto
+con herramientas?}
+    C -- sí --> S[Agente único]
+    C -- no --> D{¿Solo necesitas aislar
+contexto o permisos?}
+    D -- sí --> SA[Agente + subagentes]
+    D -- no --> E{¿Paralelismo real y valor
+que cubra ~15x tokens?}
+    E -- sí --> MA[Sistema multiagente]
+    E -- no --> W
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Más agentes = más inteligencia."** Falso: n agentes con el mismo modelo no saben
+   más que uno; ganan paralelismo y aislamiento de contexto, y pagan coordinación.
+2. **Llamar "multiagente" a un workflow con varios prompts.** Si el código fija el
+   orden y nadie decide dinámicamente, es un workflow: más barato de operar y depurar.
+3. **Creer que el subagente comparte memoria con el padre.** Su valor es justo el
+   contrario: contexto aislado; solo viaja lo que el contrato de retorno especifica.
+4. **Ignorar el coste de coordinación.** Todo mensaje entre agentes es re-tokenizado
+   y re-procesado; el estado compartido implícito de un proceso único desaparece.
+5. **Extrapolar la demo local a producción.** Los workers del laboratorio son funciones
+   deterministas; con LLM reales aparecen fallos parciales, divergencia y no determinismo.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este laboratorio y un sistema real faltan: workers que son LLM con herramientas y
+fallos parciales (reintentos, timeouts, resultados vacíos); trazabilidad por agente
+(spans anidados, coste por rol); presupuestos de tokens con corte duro; evaluación del
+sistema completo y no solo de cada agente; y una decisión de negocio explícita de que
+el valor marginal justifica ~15× el coste de un agente único.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +226,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)
-- [Agent2Agent Protocol](https://a2a-protocol.org/latest/)
-- [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
-- [LangGraph Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+- [Anthropic — Building effective agents (2024)](https://www.anthropic.com/engineering/building-effective-agents): taxonomía workflow vs. agente y el principio de simplicidad.
+- [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): datos reales de coste (~15×) y lecciones de orquestador-workers.
+- [Wu et al., *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): framework seminal de agentes conversables.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: fundamento clásico pre-LLM de agencia y coordinación.
+- [LangGraph — Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs): implementación de subagentes como grafos anidados.
 
 ---
 
