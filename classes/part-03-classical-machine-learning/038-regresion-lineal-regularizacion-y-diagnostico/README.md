@@ -27,6 +27,153 @@ Al finalizar podrás:
 
 `regresión`, `L1`, `L2`, `residuos`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+La regresión lineal (Legendre 1805, Gauss 1809, formalizada por Galton y Pearson a fines
+del s. XIX) es el modelo supervisado más antiguo y sigue siendo el punto de partida
+obligado: es el baseline interpretable contra el que se justifica cualquier modelo más
+complejo. Introduce tres ideas que atraviesan todo el ML moderno — mínimos cuadrados como
+optimización de una pérdida, regularización como control de capacidad, y diagnóstico de
+residuos como auditoría del modelo — y es el ancestro directo de la regresión logística
+(clase 039) y de cada capa lineal de una red neuronal (parte 04).
+
+## 📖 Fundamentos
+
+### 📐 El modelo y la pérdida
+
+El modelo lineal supone que el target es una combinación lineal de las features más ruido:
+
+```text
+y = β₀ + β₁x₁ + ... + β_d x_d + ε,     ε ~ ruido de media 0
+```
+
+Los **mínimos cuadrados ordinarios (OLS)** eligen los coeficientes que minimizan la suma
+de cuadrados de los residuos:
+
+```text
+RSS(β) = Σᵢ (yᵢ − ŷᵢ)²  con  ŷᵢ = β₀ + Σⱼ βⱼ xᵢⱼ
+```
+
+En forma matricial, con `X` de tamaño n×(d+1) (columna de unos incluida), la solución
+cerrada es la **ecuación normal**:
+
+```text
+β̂ = (XᵀX)⁻¹ Xᵀ y
+```
+
+Para el caso simple (una feature) hay fórmulas directas:
+`β̂₁ = Σ(xᵢ−x̄)(yᵢ−ȳ) / Σ(xᵢ−x̄)²` y `β̂₀ = ȳ − β̂₁ x̄`. La calidad del ajuste se resume
+con `R² = 1 − RSS/TSS`, la fracción de varianza del target explicada por el modelo.
+
+### 🎛️ Regularización: ridge (L2) y lasso (L1)
+
+Cuando hay muchas features, colinealidad o pocos datos, `XᵀX` se vuelve casi singular y
+los coeficientes OLS explotan en magnitud y varianza. La regularización añade a la pérdida
+una penalización sobre el tamaño de los coeficientes (nunca sobre β₀):
+
+```text
+Ridge:  min RSS(β) + λ Σⱼ βⱼ²      → encoge todos los coeficientes, no anula ninguno
+Lasso:  min RSS(β) + λ Σⱼ |βⱼ|     → puede anular coeficientes: selección de variables
+```
+
+- λ = 0 recupera OLS; λ → ∞ colapsa los coeficientes hacia 0 (el modelo tiende a predecir la media).
+- λ se elige por validación (o k-fold), nunca sobre el test.
+- Ridge tiene solución cerrada `β̂ = (XᵀX + λI)⁻¹ Xᵀy`; lasso requiere optimización
+  iterativa (descenso por coordenadas) porque |β| no es diferenciable en 0.
+- La geometría explica la diferencia: la bola L1 tiene esquinas sobre los ejes, y el
+  óptimo restringido cae con probabilidad positiva en una esquina (coeficiente = 0);
+  la bola L2 es esférica y solo encoge.
+- **Escalar las features es obligatorio** antes de regularizar: la penalización es la
+  misma para todos los coeficientes, y sus magnitudes dependen de las unidades.
+
+En términos del compromiso sesgo-varianza: OLS es insesgado pero puede tener varianza
+enorme; la regularización acepta un poco de sesgo a cambio de mucha menos varianza, y el
+error total (sesgo² + varianza + ruido) suele bajar.
+
+### 🩺 Diagnóstico de residuos
+
+El residuo `eᵢ = yᵢ − ŷᵢ` es la ventana a los supuestos del modelo. Se inspecciona el
+gráfico residuos vs. predicciones y el Q-Q plot:
+
+| Patrón en los residuos | Supuesto violado | Acción típica |
+|---|---|---|
+| Curva (forma de U) | Linealidad | Términos polinómicos, transformar features |
+| Abanico (varianza crece) | Homocedasticidad | Transformar y (log), mínimos cuadrados ponderados |
+| Rachas correlacionadas | Independencia | Modelos de series (clase 045) |
+| Colas pesadas en Q-Q | Normalidad del ruido | Pérdidas robustas (Huber), revisar outliers |
+| Puntos aislados con residuo enorme | Outliers / leverage | Investigar el dato antes de borrarlo |
+
+Un R² alto con residuos estructurados es un modelo equivocado que memoriza la tendencia;
+un R² modesto con residuos aleatorios puede ser el modelo correcto para un fenómeno ruidoso.
+
+## 🧮 Ejemplo trabajado
+
+Cinco observaciones: horas de estudio x = [1, 2, 3, 4, 5], nota y = [2, 4, 5, 4, 6].
+
+```text
+x̄ = 3,  ȳ = 4.2
+Σ(xᵢ−x̄)(yᵢ−ȳ) = (−2)(−2.2) + (−1)(−0.2) + 0(0.8) + 1(−0.2) + 2(1.8) = 4.4 − 0.2 + 0 − 0.2 + 3.6 = 8.0
+Σ(xᵢ−x̄)² = 4 + 1 + 0 + 1 + 4 = 10
+β̂₁ = 8.0 / 10 = 0.8        β̂₀ = 4.2 − 0.8·3 = 1.8
+```
+
+Modelo: `ŷ = 1.8 + 0.8x`. Predicciones: [2.6, 3.4, 4.2, 5.0, 5.8];
+residuos: [−0.6, 0.6, 0.8, −1.0, 0.2]; RSS = 0.36+0.36+0.64+1.00+0.04 = 2.4;
+TSS = Σ(yᵢ−ȳ)² = 4.84+0.04+0.64+0.04+3.24 = 8.8 → **R² = 1 − 2.4/8.8 ≈ 0.727**.
+
+Versión ridge del coeficiente (con x e y centrados, sin intercepto penalizado):
+`β̂₁(λ) = Σxᵢyᵢ / (Σxᵢ² + λ) = 8/(10+λ)`. Con λ=2: β̂₁ = 0.667 — el coeficiente se
+encoge hacia 0 y la recta se aplana: menos varianza, algo más de sesgo.
+
+## 📊 Propiedades y comparación
+
+| Método | Solución | Coeficientes nulos | Colinealidad | Hiperparámetro | Cuándo preferirlo |
+|---|---|---|---|---|---|
+| OLS | Cerrada, O(nd² + d³) | No | Frágil | Ninguno | n ≫ d, features poco correlacionadas |
+| Ridge (L2) | Cerrada con λI | No (solo encoge) | Estable | λ por CV | Muchas features correlacionadas |
+| Lasso (L1) | Iterativa | Sí (sparse) | Elige 1 del grupo | λ por CV | Se busca selección de variables |
+| Elastic Net | Iterativa | Sí | Reparte en el grupo | λ, α por CV | Grupos de features correlacionadas |
+
+```mermaid
+flowchart TD
+    A["Datos train escalados"] --> B["Ajustar OLS"]
+    B --> C{"¿Coeficientes inestables<br/>o val ≪ train?"}
+    C -- "No" --> D["Diagnóstico de residuos"]
+    C -- "Sí: varianza alta" --> E["Regularizar: ridge/lasso<br/>barrer λ en validación"]
+    E --> D
+    D --> F{"¿Residuos con estructura?"}
+    F -- "Curva" --> G["Términos no lineales"]
+    F -- "Abanico" --> H["Transformar y / ponderar"]
+    F -- "Aleatorios" --> I["Modelo aceptado:<br/>medir una vez en test"]
+    G --> B
+    H --> B
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"R² alto = buen modelo."** R² solo mide varianza explicada en los datos usados; sube
+   siempre al añadir features (por eso existe R² ajustado) y no detecta residuos
+   estructurados ni sobreajuste. Se valida fuera de muestra.
+2. **"Los coeficientes indican importancia causal."** Un coeficiente mide asociación
+   condicional al resto de las features, con signo que puede invertirse por colinealidad o
+   confusores. Regresión ≠ causalidad (eso exige diseño, clase 035).
+3. **"Regularizar sin escalar."** La penalización castiga por igual a un coeficiente en
+   metros y a otro en milímetros; sin estandarizar, λ castiga arbitrariamente según unidades.
+4. **"Lasso encontró LAS variables verdaderas."** Con features correlacionadas lasso elige
+   una casi al azar y anula las demás; la selección es inestable entre re-muestreos.
+5. **"Más datos siempre arreglan la colinealidad."** La colinealidad exacta (una feature
+   combinación lineal de otras) hace `XᵀX` singular sin importar n; hay que eliminar o
+   combinar features, o regularizar.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este núcleo y un uso real median: la elección de λ con validación cruzada anidada
+(para no contaminar la estimación de error), intervalos de confianza o bootstrap sobre los
+coeficientes antes de interpretar signos, pruebas de estabilidad del modelo ante re-muestreo,
+monitoreo de drift de las features en producción (un modelo lineal extrapola linealmente
+fuera del rango visto, y lo hace en silencio), y la documentación de las transformaciones
+exactas para reproducir la predicción en el sistema de serving.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
-- [An Introduction to Statistical Learning](https://www.statlearning.com/)
-- [Python Data Science Program](https://github.com/vladimiracunadev-create/python-data-science-program)
+- [James, Witten, Hastie, Tibshirani — *An Introduction to Statistical Learning* (2e), cap. 3 (regresión lineal) y 6 (regularización), PDF oficial](https://www.statlearning.com/)
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 3 "Linear Methods for Regression", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
+- [Tibshirani (1996), "Regression Shrinkage and Selection via the Lasso", JRSS B. DOI 10.1111/j.2517-6161.1996.tb02080.x](https://doi.org/10.1111/j.2517-6161.1996.tb02080.x)
+- [Hoerl & Kennard (1970), "Ridge Regression: Biased Estimation for Nonorthogonal Problems", Technometrics. DOI 10.1080/00401706.1970.10488634](https://doi.org/10.1080/00401706.1970.10488634)
+- [scikit-learn User Guide — Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
 
 ---
 

@@ -27,6 +27,155 @@ Al finalizar podrás:
 
 `ensembles`, `bagging`, `boosting`, `diversidad`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Los ensembles resuelven la debilidad central del árbol de la clase anterior — su varianza —
+combinando muchos modelos imperfectos: bagging y random forest (Breiman, 1996 y 2001) los
+promedian en paralelo; boosting (Freund & Schapire 1997; Friedman 2001) los encadena en
+secuencia. Sus descendientes de gradiente (XGBoost, LightGBM) siguen siendo el estado del
+arte en datos tabulares, compitiendo de igual a igual con las redes profundas de la
+parte 04. La idea de que "muchos débiles coordinados superan a uno fuerte" reaparece luego
+en mixture-of-experts y en las votaciones de self-consistency de los LLM.
+
+## 📖 Fundamentos
+
+### 🎲 Por qué promediar reduce varianza
+
+Si B estimadores tienen cada uno varianza σ² y correlación media ρ entre sí, la varianza
+del promedio es:
+
+```text
+Var(promedio) = ρσ² + (1−ρ)σ²/B
+```
+
+Con B → ∞ el segundo término desaparece, pero el primero **no**: el techo de mejora lo
+pone la correlación entre los modelos. Todo el diseño de un ensemble por promedio consiste
+en fabricar modelos individualmente decentes y mutuamente **descorrelacionados**.
+
+### 👜 Bagging y random forest
+
+- **Bagging (bootstrap aggregating):** entrenar B árboles profundos, cada uno sobre una
+  muestra bootstrap (n ejemplos con reemplazo; cada muestra deja fuera ≈ 36.8 % de los
+  datos, pues (1−1/n)ⁿ → e⁻¹ ≈ 0.368). Predicción: voto mayoritario (clasificación) o
+  media (regresión).
+- **Random forest = bagging + descorrelación extra:** en cada nodo, el árbol solo puede
+  elegir el split entre un subconjunto aleatorio de `m` features (típico: m = √d en
+  clasificación, d/3 en regresión). Esto evita que todos los árboles empiecen por la misma
+  feature dominante, bajando ρ.
+- **Error OOB (out-of-bag):** cada ejemplo se evalúa con los árboles que no lo vieron en
+  su bootstrap (~37 % de ellos): una validación "gratis" casi equivalente a
+  cross-validation.
+- Aumentar B nunca sobreajusta por sí mismo (solo estabiliza el promedio); el costo es
+  cómputo y memoria.
+
+### 🚀 Boosting: sumar correctores en secuencia
+
+Boosting construye un modelo aditivo por etapas, donde cada modelo nuevo corrige los
+errores del acumulado:
+
+```text
+F_M(x) = F₀ + Σ_{m=1..M} ν · h_m(x)     h_m: árbol pequeño (stump o profundidad 2-4)
+```
+
+- **AdaBoost (1997):** re-pondera ejemplos; los mal clasificados pesan más en la ronda
+  siguiente. El peso de cada árbol es `αₘ = ½·ln((1−errₘ)/errₘ)` y los pesos de los
+  ejemplos fallados se multiplican por `e^{αₘ}`. Equivale a minimizar la pérdida
+  exponencial por etapas.
+- **Gradient boosting (2001):** generaliza a cualquier pérdida diferenciable: en cada
+  etapa se ajusta un árbol a los **pseudo-residuos** (gradiente negativo de la pérdida
+  respecto de la predicción actual). Con pérdida cuadrática el pseudo-residuo es
+  literalmente el residuo `y − F(x)`.
+- El *learning rate* ν (0.01-0.3) encoge cada aporte; ν pequeño + más árboles suele
+  generalizar mejor. A diferencia del forest, **boosting sí sobreajusta** con M grande:
+  M se elige con early stopping en validación.
+
+En términos del compromiso sesgo-varianza: bagging ataca la **varianza** (promedia modelos
+de bajo sesgo), boosting ataca el **sesgo** (suma modelos débiles que se especializan en
+lo que falta) controlando la varianza con ν, la profundidad del débil y el submuestreo.
+
+## 🧮 Ejemplo trabajado
+
+**Voto de mayoría:** 5 clasificadores independientes, cada uno con accuracy 0.7. El
+ensemble por mayoría acierta si aciertan al menos 3:
+
+```text
+P(3 de 5) = C(5,3)·0.7³·0.3² = 10·0.343·0.09  = 0.3087
+P(4 de 5) = C(5,4)·0.7⁴·0.3¹ =  5·0.2401·0.3  = 0.3602
+P(5 de 5) = 0.7⁵                              = 0.1681
+P(mayoría acierta) = 0.3087 + 0.3602 + 0.1681 ≈ 0.837
+```
+
+Cinco modelos del 70 % → ensemble del 83.7 %, **si los errores son independientes**. Si
+los cinco fueran clones (ρ = 1) el ensemble seguiría en 0.7: la diversidad lo es todo.
+
+**Una ronda de AdaBoost:** 10 ejemplos con peso 1/10; el stump h₁ falla en 2 →
+err₁ = 0.2 y α₁ = ½·ln(0.8/0.2) = ½·ln 4 ≈ 0.693. Los 2 fallados multiplican su peso por
+e^0.693 ≈ 2 (pasan a 0.2) y los 8 acertados por e^−0.693 ≈ 0.5 (pasan a 0.05); la suma es
+2·0.2 + 8·0.05 = 0.8 y tras renormalizar cada fallado pesa 0.25 y cada acertado 0.0625.
+La ronda 2 queda obligada a ocuparse de los casos difíciles.
+
+## 📊 Propiedades y comparación
+
+| Aspecto | Árbol único | Random forest | AdaBoost | Gradient boosting |
+|---|---|---|---|---|
+| Ataca principalmente | — | Varianza | Sesgo | Sesgo (pérdida flexible) |
+| Entrenamiento | 1 árbol | Paralelo (B árboles) | Secuencial | Secuencial |
+| Sobreajuste al crecer B/M | — | No (satura) | Sí (moderado) | Sí (exige early stopping) |
+| Ruido de etiqueta | Media | Baja | Alta (re-pondera errores) | Media (según pérdida) |
+| Hiperparámetros clave | profundidad, α | B, m features/nodo | M, profundidad del débil | M, ν, profundidad, submuestreo |
+| Interpretabilidad | Alta (pequeño) | Baja (importancias) | Baja | Baja |
+| Validación interna | — | OOB gratis | No | Early stopping en val |
+
+```mermaid
+flowchart TD
+    subgraph RF["Random forest (paralelo: baja la varianza)"]
+        D["Datos train"] --> B1["Bootstrap 1 + m features/nodo → árbol 1"]
+        D --> B2["Bootstrap 2 + m features/nodo → árbol 2"]
+        D --> B3["... → árbol B"]
+        B1 --> V["Voto mayoritario / promedio"]
+        B2 --> V
+        B3 --> V
+        V --> OOB["Error OOB con los árboles<br/>que no vieron cada ejemplo"]
+    end
+    subgraph GB["Gradient boosting (secuencial: baja el sesgo)"]
+        F0["F₀ = constante (media/log-odds)"] --> R1["pseudo-residuos<br/>−∂L/∂F"]
+        R1 --> H1["árbol pequeño h₁"]
+        H1 --> F1["F₁ = F₀ + ν·h₁"]
+        F1 --> R2["nuevos pseudo-residuos"]
+        R2 --> H2["h₂ ..."]
+        H2 --> FM["F_M — parar cuando la pérdida<br/>de validación deja de bajar"]
+    end
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Más árboles en el forest terminarán sobreajustando."** No: B solo estabiliza el
+   promedio; el error converge a un límite fijado por ρ y la calidad de cada árbol. Lo que
+   sí sobreajusta es M en boosting.
+2. **"El ensemble siempre supera a sus miembros."** Solo si los miembros son mejores que
+   el azar y sus errores están (parcialmente) descorrelacionados. Promediar clones no
+   aporta nada; promediar modelos malos promedia basura.
+3. **"Random forest y boosting son intercambiables."** Atacan errores opuestos: forest
+   promedia modelos de bajo sesgo para bajar varianza; boosting encadena modelos de alto
+   sesgo para bajarlo. Con etiquetas ruidosas el forest suele ser más robusto; con señal
+   compleja y datos limpios, el boosting suele ganar.
+4. **"La importancia de features del forest es fiable."** Hereda los sesgos del árbol
+   (cardinalidad, correlación); la importancia por permutación en OOB/validación es
+   preferible, y ninguna implica causalidad.
+5. **"Las probabilidades del boosting son probabilidades."** Los scores de boosting suelen
+   estar descalibrados (demasiado extremos AdaBoost, depende de la pérdida en GB); antes de
+   aplicar umbrales por costo hay que calibrar (clase 039 y 047).
+
+## 🚀 Del aprendizaje a la operación
+
+Para operar un ensemble real faltan: búsqueda de hiperparámetros con presupuesto explícito
+(ν, M, profundidad interactúan; early stopping en validación separada), calibración de
+probabilidades antes de decidir con umbrales, importancia por permutación y ejemplos
+contrafactuales para explicar decisiones (obligatorio en dominios regulados), control del
+costo de inferencia (500 árboles × profundidad 12 tienen latencia y memoria reales), y
+monitoreo de drift: el ensemble extrapola constante fuera del rango visto, igual que sus
+árboles.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +234,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
-- [An Introduction to Statistical Learning](https://www.statlearning.com/)
-- [Python Data Science Program](https://github.com/vladimiracunadev-create/python-data-science-program)
+- [Breiman (2001), "Random Forests", *Machine Learning* 45. DOI 10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324)
+- [Breiman (1996), "Bagging Predictors", *Machine Learning* 24. DOI 10.1007/BF00058655](https://doi.org/10.1007/BF00058655)
+- [Freund & Schapire (1997), "A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting", JCSS. DOI 10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504)
+- [Friedman (2001), "Greedy Function Approximation: A Gradient Boosting Machine", *Annals of Statistics* 29(5). DOI 10.1214/aos/1013203451](https://doi.org/10.1214/aos/1013203451)
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 10 (boosting) y 15 (random forests), PDF oficial](https://hastie.su.domains/ElemStatLearn/)
+- [scikit-learn User Guide — Ensembles: bagging, forests, AdaBoost, gradient boosting](https://scikit-learn.org/stable/modules/ensemble.html)
 
 ---
 
