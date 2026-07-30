@@ -1,4 +1,13 @@
 
+const REPO_URL = "https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program";
+// En local (http.server desde la raíz del repo) los archivos están junto al sitio;
+// en GitHub Pages solo se despliega site/, así que las clases viven en el repo.
+const LOCAL = ["localhost", "127.0.0.1"].includes(location.hostname);
+
+function lessonUrl(lesson) {
+  return LOCAL ? `../${lesson.path}/README.md` : `${REPO_URL}/blob/main/${lesson.path}/README.md`;
+}
+
 const state = {
   catalog: null,
   done: new Set(JSON.parse(localStorage.getItem("ai-evolution-progress") || "[]")),
@@ -24,7 +33,7 @@ function card(lesson) {
       <p>${lesson.summary}</p>
       <div class="tags">${lesson.keywords.slice(0, 4).map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
       <div class="actions">
-        <a href="../${lesson.path}/README.md">Abrir clase</a>
+        <a href="${lessonUrl(lesson)}" rel="noopener">Abrir clase</a>
         <label><input class="done" type="checkbox" data-id="${lesson.id}" ${checked}> completada</label>
       </div>
     </article>`;

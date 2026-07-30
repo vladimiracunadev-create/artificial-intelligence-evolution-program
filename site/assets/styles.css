@@ -30,6 +30,18 @@ h1 { max-width: 1000px; font-size: clamp(2.5rem, 6vw, 5.6rem); line-height: .98;
 .stats { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
 .stat { min-width: 150px; padding: 1rem 1.2rem; background: #10172ccc; border: 1px solid var(--border); border-radius: 16px; }
 .stat strong { display: block; font-size: 1.65rem; }
+.cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+.btn {
+  display: inline-block;
+  padding: .75rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: linear-gradient(90deg, var(--violet), var(--cyan)); color: #070b17; }
+.btn-ghost { border: 1px solid var(--border); color: var(--text); background: var(--panel); }
 .controls {
   position: sticky;
   top: 0;

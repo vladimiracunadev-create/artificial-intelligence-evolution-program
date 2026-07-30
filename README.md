@@ -10,13 +10,22 @@ de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilid
 machine learning, redes neuronales, modelos fundacionales, IA generativa, RAG,
 agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
+[![CI](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/ci.yml)
+[![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
+[![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
+
 [![Version](https://img.shields.io/badge/version-0.1.0-orange?style=for-the-badge)](CHANGELOG.md)
-[![Classes](https://img.shields.io/badge/classes-180-7c5cff?style=for-the-badge)](classes/)
+[![Classes](https://img.shields.io/badge/classes-180%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Notebooks](https://img.shields.io/badge/notebooks-540-2e8b57?style=for-the-badge)](classes/)
-[![Python](https://img.shields.io/badge/python-3.11%2B-3776ab?style=for-the-badge)](pyproject.toml)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
 
-[🌐 Sitio de estudio](site/index.html) · [🧭 Ruta](docs/LEARNING_PATH.md) ·
+[![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
+[![Jupyter](https://img.shields.io/badge/Jupyter-540%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
+[![Docker](https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white)](compose.yaml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
+
+[🌐 **Sitio de estudio (vivo)**](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/) ·
+[🧭 Ruta](docs/LEARNING_PATH.md) ·
 [🤖 Especialización en agentes](docs/AGENTIC_SYSTEMS_TRACK.md) ·
 [🏗️ Arquitectura](docs/ARCHITECTURE.md) · [🗺️ Roadmap](ROADMAP.md)
 
@@ -31,7 +40,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 > `claude-skills-toolkit` aparecen como rutas oficiales de profundización, sin copiar
 > ni falsear su contenido.
 
-## Estado verificable
+## ✅ Estado verificable
 
 | Superficie | Estado |
 |---|---|
@@ -45,7 +54,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | CI | ✅ estructura, notebooks, tests, compilación y seguridad básica |
 | GPU / APIs pagadas | ⚪ extensiones opcionales; no se finge ejecución en CI |
 
-## Qué hace diferente a este programa
+## 🌟 Qué hace diferente a este programa
 
 - Presenta los agentes como una etapa de la evolución de la IA, no como el inicio.
 - Mantiene un **núcleo estable** y una **frontera revisable** con fecha y fuente.
@@ -54,27 +63,49 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 - Usa código local y determinista para enseñar contratos antes de depender de APIs.
 - No declara “producción” sin evidencia operativa, métricas y revisión humana.
 
-## Partes del programa
+## 🧬 El mapa evolutivo
+
+```mermaid
+flowchart LR
+    A["📜 00 Fundamentos<br/>e historia"] --> B["♟️ 01 IA simbólica<br/>y búsqueda"]
+    B --> C["🎲 02 Probabilística<br/>y evolutiva"]
+    C --> D["📊 03 ML<br/>clásico"]
+    D --> E["🧠 04 Deep<br/>learning"]
+    E --> F["👁️ 05 Lenguaje, visión<br/>y multimodal"]
+    F --> G["⚙️ 06 Modelos<br/>fundacionales"]
+    G --> H["🎨 07 IA<br/>generativa"]
+    G --> I["🔎 08 RAG, memoria<br/>y conocimiento"]
+    H --> J["🤖 09 Agentes"]
+    I --> J
+    J --> K["🕸️ 10 Multiagentes<br/>e interop"]
+    K --> L["🦾 11 Robótica y<br/>computer use"]
+    K --> M["🛠️ 12 MLOps, LLMOps<br/>y AgentOps"]
+    L --> N["🛡️ 13 Evaluación, seguridad<br/>y gobernanza"]
+    M --> N
+    N --> O["🔭 14 Frontera<br/>y capstones"]
+```
+
+## 🗂️ Partes del programa
 
 | # | Parte | Clases | Nivel | Duración |
 |---:|---|---:|---|---|
-| 00 | [Fundamentos, historia y método científico](classes/part-00-foundations-history-and-scientific-method/README.md) | 12 | fundamentos | 3–4 |
-| 01 | [IA simbólica, búsqueda, lógica y planificación](classes/part-01-symbolic-ai-search-logic-and-planning/README.md) | 12 | fundamentos | 4–5 |
-| 02 | [IA probabilística, evolutiva y de decisión](classes/part-02-probabilistic-evolutionary-and-decision-ai/README.md) | 12 | intermedio | 4–5 |
-| 03 | [Machine learning clásico](classes/part-03-classical-machine-learning/README.md) | 12 | intermedio | 5–6 |
-| 04 | [Redes neuronales y deep learning](classes/part-04-neural-networks-and-deep-learning/README.md) | 12 | intermedio-avanzado | 6–8 |
-| 05 | [Lenguaje, visión, audio e IA multimodal](classes/part-05-language-vision-audio-and-multimodal-ai/README.md) | 12 | avanzado | 5–6 |
-| 06 | [Modelos fundacionales e ingeniería de LLM](classes/part-06-foundation-models-and-llm-engineering/README.md) | 12 | avanzado | 6–7 |
-| 07 | [IA generativa para texto, imagen, audio, video y 3D](classes/part-07-generative-ai-across-media/README.md) | 12 | avanzado | 5–6 |
-| 08 | [Recuperación, contexto, memoria y conocimiento](classes/part-08-retrieval-context-memory-and-knowledge/README.md) | 12 | avanzado | 5–6 |
-| 09 | [Ingeniería de agentes de IA](classes/part-09-ai-agent-engineering/README.md) | 12 | avanzado | 6–7 |
-| 10 | [Sistemas multiagente e interoperabilidad](classes/part-10-multi-agent-systems-and-interoperability/README.md) | 12 | experto | 6–7 |
-| 11 | [IA encarnada, robótica y uso de computadores](classes/part-11-embodied-ai-robotics-and-computer-use/README.md) | 12 | experto | 5–6 |
-| 12 | [Ingeniería de IA, MLOps, LLMOps y AgentOps](classes/part-12-ai-engineering-mlops-llmops-and-agentops/README.md) | 12 | experto | 6–7 |
-| 13 | [Evaluación, seguridad y gobernanza](classes/part-13-evaluation-safety-security-and-governance/README.md) | 12 | experto | 6–7 |
-| 14 | [Frontera, investigación y proyectos integradores](classes/part-14-frontier-research-and-capstones/README.md) | 12 | frontera | 8–12 |
+| 00 | [📜 Fundamentos, historia y método científico](classes/part-00-foundations-history-and-scientific-method/README.md) | 12 | fundamentos | 3–4 |
+| 01 | [♟️ IA simbólica, búsqueda, lógica y planificación](classes/part-01-symbolic-ai-search-logic-and-planning/README.md) | 12 | fundamentos | 4–5 |
+| 02 | [🎲 IA probabilística, evolutiva y de decisión](classes/part-02-probabilistic-evolutionary-and-decision-ai/README.md) | 12 | intermedio | 4–5 |
+| 03 | [📊 Machine learning clásico](classes/part-03-classical-machine-learning/README.md) | 12 | intermedio | 5–6 |
+| 04 | [🧠 Redes neuronales y deep learning](classes/part-04-neural-networks-and-deep-learning/README.md) | 12 | intermedio-avanzado | 6–8 |
+| 05 | [👁️ Lenguaje, visión, audio e IA multimodal](classes/part-05-language-vision-audio-and-multimodal-ai/README.md) | 12 | avanzado | 5–6 |
+| 06 | [⚙️ Modelos fundacionales e ingeniería de LLM](classes/part-06-foundation-models-and-llm-engineering/README.md) | 12 | avanzado | 6–7 |
+| 07 | [🎨 IA generativa para texto, imagen, audio, video y 3D](classes/part-07-generative-ai-across-media/README.md) | 12 | avanzado | 5–6 |
+| 08 | [🔎 Recuperación, contexto, memoria y conocimiento](classes/part-08-retrieval-context-memory-and-knowledge/README.md) | 12 | avanzado | 5–6 |
+| 09 | [🤖 Ingeniería de agentes de IA](classes/part-09-ai-agent-engineering/README.md) | 12 | avanzado | 6–7 |
+| 10 | [🕸️ Sistemas multiagente e interoperabilidad](classes/part-10-multi-agent-systems-and-interoperability/README.md) | 12 | experto | 6–7 |
+| 11 | [🦾 IA encarnada, robótica y uso de computadores](classes/part-11-embodied-ai-robotics-and-computer-use/README.md) | 12 | experto | 5–6 |
+| 12 | [🛠️ Ingeniería de IA, MLOps, LLMOps y AgentOps](classes/part-12-ai-engineering-mlops-llmops-and-agentops/README.md) | 12 | experto | 6–7 |
+| 13 | [🛡️ Evaluación, seguridad y gobernanza](classes/part-13-evaluation-safety-security-and-governance/README.md) | 12 | experto | 6–7 |
+| 14 | [🔭 Frontera, investigación y proyectos integradores](classes/part-14-frontier-research-and-capstones/README.md) | 12 | frontera | 8–12 |
 
-## Inicio rápido
+## 🚀 Inicio rápido
 
 ```bash
 python -m venv .venv
@@ -102,7 +133,7 @@ python -m http.server 8080
 
 Abre `http://localhost:8080/site/`.
 
-## Contrato de una clase
+## 📦 Contrato de una clase
 
 ```text
 classes/part-XX-slug/NNN-topic/
@@ -116,7 +147,7 @@ classes/part-XX-slug/NNN-topic/
 └── notebook_solution.ipynb
 ```
 
-## Especializaciones conectadas
+## 🔗 Especializaciones conectadas
 
 | Especialización | Rol |
 |---|---|
@@ -125,7 +156,7 @@ classes/part-XX-slug/NNN-topic/
 | [LangGraph Realworld](https://github.com/vladimiracunadev-create/langgraph-realworld) | Casos empresariales de orquestación |
 | [Claude Skills Toolkit](https://github.com/vladimiracunadev-create/claude-skills-toolkit) | Skills operativos reutilizables |
 
-## Límites honestos
+## ⚖️ Límites honestos
 
 - Los laboratorios base priorizan ejecución reproducible con Python estándar.
 - Los entrenamientos grandes, robots físicos y APIs comerciales requieren entornos externos.
@@ -133,7 +164,7 @@ classes/part-XX-slug/NNN-topic/
 - La carpeta `frontier/` registra tecnología emergente; no la presenta como conocimiento estable.
 - Las licencias de datasets deben revisarse nuevamente al descargar una versión concreta.
 
-## Calidad
+## 🧪 Calidad
 
 ```bash
 python -m unittest discover -s tests -v
@@ -141,7 +172,7 @@ python -m compileall -q src scripts classes apps
 python scripts/validate_repository.py --strict
 ```
 
-## Licencia
+## 📄 Licencia
 
 Código y documentación original bajo [MIT](LICENSE). Datasets, papers, modelos y
 servicios externos conservan sus propias licencias y términos.
