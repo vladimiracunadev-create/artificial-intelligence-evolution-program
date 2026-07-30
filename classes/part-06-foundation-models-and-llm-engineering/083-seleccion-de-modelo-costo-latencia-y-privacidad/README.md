@@ -27,6 +27,146 @@ Al finalizar podrás:
 
 `benchmark`, `costo`, `latencia`, `privacidad`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Las clases 073–082 explican *cómo funcionan* los LLM; esta explica *cuál usar*. La
+selección de modelo es la decisión de ingeniería más frecuente en la práctica: casi
+nadie entrena modelos, todos eligen entre APIs frontera, modelos abiertos servidos
+en infraestructura propia y modelos locales cuantizados. Es una decisión
+multiobjetivo — calidad, costo, latencia, privacidad — que debe tomarse con evals
+propios y números, no con rankings ajenos; y prepara directamente el proyecto de la
+clase 084.
+
+## 📖 Fundamentos
+
+### 💰 El modelo de costo
+
+Las APIs cobran por token, con entrada y salida a precios distintos (la salida suele
+costar 3–5× más). Costo mensual estimado:
+
+```text
+costo = R · [ (T_in / 1000) · p_in + (T_out / 1000) · p_out ]
+  R = requests/mes;  T_in, T_out = tokens medios;  p = precio por 1k tokens
+
+Palancas de reducción: caché de prompts (prefijos repetidos con descuento),
+batch API (lotes asíncronos más baratos), modelos más pequeños para
+subtareas fáciles (enrutamiento), y recortar T_in (el prompt de sistema
+se paga en CADA request).
+```
+
+Para infraestructura propia el costo es de otra naturaleza: GPUs (compradas o por
+hora) + ingeniería de serving + operación. Es mayormente **fijo**: conviene con
+volumen alto y sostenido; el punto de equilibrio se calcula, no se intuye.
+
+### ⏱️ Latencia: TTFT, TPOT y percentiles
+
+De la clase 081: **TTFT** (tiempo al primer token) domina la experiencia en chat
+con streaming; **TPOT** (tiempo por token) domina la duración total de respuestas
+largas; latencia total ≈ TTFT + TPOT × tokens_salida. Reglas de decisión:
+
+- UX conversacional: optimizar TTFT (p99, no promedio) y usar streaming.
+- Pipelines batch: optimizar throughput y costo; la latencia individual da igual.
+- Tiempo real estricto (autocompletado, voz): modelos pequeños, posiblemente
+  locales; ningún modelo frontera remoto cumple decenas de ms.
+
+### 🔒 Privacidad y gobernanza
+
+Preguntas que fuerzan la arquitectura: ¿pueden los datos salir de la organización o
+del país (residencia de datos)? ¿el proveedor entrena con tus datos (leer el
+contrato, no el marketing)? ¿hay datos regulados (salud, financieros, menores)?
+Espectro de opciones: API pública < API con acuerdo empresarial (sin retención /
+sin entrenamiento) < nube privada/VPC < on-premise < local en el dispositivo. Cada
+paso hacia la derecha gana control y pierde comodidad/calidad frontera.
+
+### 📊 Evaluar con TUS datos, no con leaderboards
+
+Los benchmarks públicos (MMLU, arena de preferencias, HELM) sirven para preseleccionar,
+pero sufren contaminación (el test estaba en el corpus), saturación y desalineación
+con tu tarea. Método honesto:
+
+```text
+1. Construir un golden set propio (50–500 casos reales, con respuesta esperada
+   o rúbrica).
+2. Definir métrica ANTES de mirar salidas (exactitud, adherencia a esquema,
+   rúbrica con LLM-judge auditado por humanos).
+3. Medir 2–4 candidatos con el MISMO prompt adaptado de buena fe a cada uno.
+4. Registrar calidad + costo/1000 requests + TTFT/TPOT p50 y p99.
+5. Decidir con la matriz completa; re-evaluar en cada cambio de modelo o prompt.
+```
+
+## 🧮 Ejemplo trabajado
+
+Caso: clasificar 300 000 correos/mes en 12 categorías. T_in = 800 tokens,
+T_out = 30. Tres candidatos (precios ilustrativos por 1k tokens):
+
+```text
+                       calidad(golden)  p_in     p_out    TTFT p50
+A: frontera grande         96,1 %       $0,003   $0,015    900 ms
+B: modelo medio            94,8 %       $0,0008  $0,004    450 ms
+C: 8B local Q4 (GPU propia) 91,2 %      costo fijo ≈ $600/mes  120 ms
+
+Costo mensual API:
+A: 300k · (0,8·0,003 + 0,03·0,015) = 300k · 0,00285 = $855/mes
+B: 300k · (0,8·0,0008 + 0,03·0,004) = 300k · 0,00076 = $228/mes
+
+Decisión razonada: B pierde 1,3 puntos de calidad y cuesta 3,7× menos que A.
+¿Vale 1,3 puntos $627/mes? Depende del costo del error: si un correo mal
+clasificado cuesta minutos de una persona, B gana; si dispara acciones legales,
+A gana. C solo entra si los correos no pueden salir de la organización: la
+privacidad actúa como RESTRICCIÓN dura, no como preferencia.
+Híbrido frecuente: enrutar el 80 % fácil a B y escalar el 20 % dudoso
+(confianza baja) a A → calidad ≈ A a costo ≈ B.
+```
+
+## 📊 Propiedades y comparación
+
+| Criterio | API frontera | API modelo medio | Abierto en GPU propia | Local cuantizado |
+|---|---|---|---|---|
+| Calidad tope | Máxima | Alta | Alta (según modelo) | Media |
+| Costo estructura | Variable puro | Variable puro | Fijo + operación | Fijo (hardware) |
+| TTFT típico | Cientos de ms + red | Menor | Controlable | Mínimo (sin red) |
+| Privacidad | Contractual | Contractual | Alta | Total |
+| Esfuerzo de ingeniería | Mínimo | Mínimo | Alto | Medio |
+| Riesgo característico | Cambios de precio/modelo | Igual | Operar GPUs 24/7 | Calidad insuficiente |
+
+```mermaid
+flowchart TD
+    A[Requisitos del caso] --> B{Datos pueden salir?}
+    B -->|No| C[On-premise / local cuantizado]
+    B -->|Si| D{Volumen alto y sostenido?}
+    D -->|Si| E[Comparar API vs GPU propia: punto de equilibrio]
+    D -->|No| F[API gestionada]
+    C --> G[Eval con golden set propio]
+    E --> G
+    F --> G
+    G --> H{Cumple calidad y p99?}
+    H -->|Si| I[Elegir y monitorear + enrutamiento opcional]
+    H -->|No| J[Cambiar candidato o rebajar alcance]
+    J --> G
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El mejor modelo del leaderboard es el mejor para mí."** Los rankings miden
+   otras tareas, con posible contaminación; tu golden set manda.
+2. **"Comparar precio por token basta."** Modelos distintos usan tokenizadores
+   distintos y generan longitudes distintas: compara **costo por tarea resuelta**.
+3. **"La latencia es una sola cifra."** TTFT y TPOT tienen palancas distintas, y
+   el p99 — no el promedio — es lo que sufren tus usuarios.
+4. **"Local siempre es más barato."** El costo de operar hardware y de la calidad
+   perdida puede superar con creces la factura de la API a volúmenes bajos.
+5. **"Se decide una vez."** Precios, modelos y tu tráfico cambian en meses; la
+   selección es un proceso con re-evaluación periódica, no un evento.
+
+## 🚀 Del aprendizaje a la operación
+
+Falta entre este análisis y producción: automatizar la matriz de decisión como
+suite de evals ejecutable (calidad + costo + latencia por release), abstracción
+multi-proveedor para poder migrar sin reescribir, monitoreo de deriva de calidad
+tras cada cambio de versión del proveedor, contratos revisados por legal en
+privacidad y retención, y presupuestos con alertas — el gasto por token es la
+factura sorpresa clásica de esta industria.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-- [LoRA](https://arxiv.org/abs/2106.09685)
-- [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)
+- Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM): <https://arxiv.org/abs/2211.09110>
+- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (costo entrenamiento vs inferencia): <https://arxiv.org/abs/2203.15556>
+- Documentación oficial de Claude (modelos, precios y capacidades): <https://docs.claude.com>
+- Documentación oficial de vLLM (serving de modelos abiertos): <https://docs.vllm.ai>
+- Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*: <https://arxiv.org/abs/2306.05685>
 
 ---
 

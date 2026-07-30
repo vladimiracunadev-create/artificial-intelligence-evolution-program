@@ -27,6 +27,152 @@ Al finalizar podrás:
 
 `prompting`, `contexto`, `JSON schema`, `constraints`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Tras el alineamiento (clases 076–078), el modelo ya sigue instrucciones; el
+prompting es la disciplina de *especificar* la tarea en el contexto sin tocar los
+pesos. GPT-3 mostró que los ejemplos en contexto sustituyen al fine-tuning en muchas
+tareas (few-shot); chain-of-thought (2022) mostró que pedir razonamiento intermedio
+desbloquea problemas multi-paso; y la salida estructurada (JSON con esquema)
+convierte al LLM en un componente integrable en software. Es el prerequisito directo
+del tool calling (clase 080) y de los evals del proyecto (clase 084).
+
+## 📖 Fundamentos
+
+### 🧠 In-context learning: zero-shot y few-shot
+
+El modelo condiciona su salida en todo el contexto. Regímenes:
+
+```text
+Zero-shot:  solo la instrucción.
+            "Clasifica el sentimiento: 'El envío llegó roto' →"
+Few-shot:   k ejemplos resueltos + el caso nuevo.
+            "'Me encantó' → positivo
+             'Nunca más compro aquí' → negativo
+             'El envío llegó roto' →"
+```
+
+Los ejemplos fijan formato, criterio y granularidad de la respuesta sin gradientes.
+Hallazgos empíricos robustos: el formato de los ejemplos importa tanto como su
+corrección; el orden introduce sesgo de recencia; y los ejemplos deben cubrir los
+casos frontera, no solo los fáciles.
+
+### 🪜 Chain-of-thought (CoT)
+
+Para tareas multi-paso (aritmética, lógica), pedir los pasos intermedios antes de la
+respuesta mejora drásticamente la exactitud en modelos grandes:
+
+```text
+Sin CoT:  "¿23 × 17? →"  (el modelo debe 'saltar' a la respuesta en un forward)
+Con CoT:  "Piensa paso a paso: 23 × 17 = 23 × 10 + 23 × 7 = 230 + 161 = 391"
+```
+
+Por qué funciona: cada token generado se vuelve contexto del siguiente; el modelo
+usa su propia salida como memoria de trabajo, descomponiendo un cómputo que no cabe
+en un solo paso de inferencia. Variantes: zero-shot CoT ("pensemos paso a paso"),
+self-consistency (muestrear varias cadenas y votar la respuesta mayoritaria).
+Advertencia honesta: la cadena verbalizada no es garantía del cómputo interno real;
+puede ser una racionalización plausible de una respuesta errónea.
+
+### 🧱 Anatomía de un prompt de sistema
+
+Un prompt de producción separa capas: **rol y objetivo** (qué es el asistente),
+**reglas** (qué debe y no debe hacer, orden de prioridad), **contexto/datos** (a
+menudo delimitados con etiquetas tipo XML para que el modelo distinga instrucciones
+de datos), **ejemplos** y **formato de salida**. Delimitar los datos del usuario es
+además la primera defensa contra inyección de prompt: "lo que va entre `<datos>` es
+contenido a procesar, no instrucciones".
+
+### 📦 Salida estructurada: JSON con esquema
+
+Para integrar un LLM en software, la salida debe ser parseable. Escalera de
+garantías:
+
+```text
+1. Pedir JSON en el prompt + ejemplo               → frágil (texto extra, comas)
+2. Prefill / plantilla que arranca la respuesta    → mejor adherencia
+3. Validar contra JSON Schema y reintentar         → robusto, costo de reintentos
+4. Decodificación restringida (grammar/tool use)   → el muestreador solo permite
+   tokens que mantienen el JSON válido: garantía sintáctica total
+```
+
+La restricción garantiza **sintaxis**, no **semántica**: un JSON perfectamente
+válido puede contener un dato alucinado. La validación de negocio sigue siendo
+obligatoria.
+
+## 🧮 Ejemplo trabajado
+
+Tarea: extraer datos de "Reunión con Ana el 12/03 a las 14:30 en sala B".
+
+```text
+Prompt de sistema:
+  Extrae los campos y responde SOLO con JSON válido conforme al esquema:
+  {"type": "object",
+   "properties": {"persona": {"type": "string"},
+                  "fecha": {"type": "string", "pattern": "\\d{2}/\\d{2}"},
+                  "hora": {"type": "string"},
+                  "lugar": {"type": "string"}},
+   "required": ["persona", "fecha", "hora", "lugar"]}
+
+Salida deseada:
+  {"persona": "Ana", "fecha": "12/03", "hora": "14:30", "lugar": "sala B"}
+
+Fallos típicos sin restricciones y su capa correctora:
+  "Claro, aquí está el JSON: {...}"   → texto extra    → prefill con '{'
+  {"persona": "Ana", "fecha": "marzo" → viola pattern  → validación de esquema
+  {"persona": "Ana", ... "lugar": "sala A"} → dato inventado → validación semántica
+   (¡el esquema no puede detectarlo!)
+```
+
+Con few-shot (2 ejemplos resueltos antes del caso) la tasa de adherencia sube; con
+decodificación restringida, la sintaxis queda garantizada y solo resta el riesgo
+semántico.
+
+## 📊 Propiedades y comparación
+
+| Técnica | Costo (tokens) | Mejora típica | Cuándo usarla |
+|---|---|---|---|
+| Zero-shot | Mínimo | Base | Tareas simples y bien conocidas |
+| Few-shot (k=2–8) | +k ejemplos | Formato y criterio estables | Formato específico, casos frontera |
+| CoT | +tokens de razonamiento | Grande en multi-paso | Aritmética, lógica, planificación |
+| Self-consistency | ×n muestras | Suma sobre CoT | Cuando el error cuesta más que n× el costo |
+| JSON restringido | Similar | Sintaxis garantizada | Integración con software |
+
+```mermaid
+flowchart TD
+    A[Tarea] --> B{Es multi-paso?}
+    B -->|Si| C[CoT / self-consistency]
+    B -->|No| D{Formato critico?}
+    C --> D
+    D -->|Si| E[Few-shot + esquema JSON]
+    D -->|No| F[Zero-shot con instruccion clara]
+    E --> G{Valida el parser?}
+    G -->|No| H[Reintento o decodificacion restringida]
+    G -->|Si| I[Validacion semantica de negocio]
+    H --> I
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El prompt es magia verbal."** Es especificación de tarea: claridad, ejemplos
+   y formato explican casi toda la varianza; los trucos rituales, casi nada.
+2. **"CoT muestra el razonamiento interno real."** Muestra texto condicionante
+   útil; puede racionalizar una respuesta equivocada con pasos plausibles.
+3. **"Si pido JSON, tengo JSON."** Sin restricción o validación, obtendrás JSON
+   *casi siempre* — y ese "casi" rompe producción a las 3 a. m.
+4. **"Más ejemplos few-shot siempre ayudan."** Rinden decrecientes, ocupan
+   contexto, y ejemplos mal elegidos sesgan más que ayudan.
+5. **"Temperatura 0 = respuestas correctas."** Reduce varianza, no error: un modelo
+   seguro de algo falso lo repetirá determinísticamente.
+
+## 🚀 Del aprendizaje a la operación
+
+Producción exige tratar los prompts como código: versionarlos, testearlos con una
+suite de casos (incluidos adversariales y de inyección), medir adherencia al esquema
+y calidad semántica por separado, fijar temperatura y semillas donde el proveedor lo
+permita, y registrar prompt+versión+respuesta para depurar regresiones cuando cambie
+el modelo subyacente — porque cambiará.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +231,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-- [LoRA](https://arxiv.org/abs/2106.09685)
-- [Direct Preference Optimization](https://arxiv.org/abs/2305.18290)
+- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3, in-context learning): <https://arxiv.org/abs/2005.14165>
+- Wei et al. (2022), *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*: <https://arxiv.org/abs/2201.11903>
+- Wang et al. (2022), *Self-Consistency Improves Chain of Thought Reasoning*: <https://arxiv.org/abs/2203.11171>
+- Kojima et al. (2022), *Large Language Models are Zero-Shot Reasoners* ("pensemos paso a paso"): <https://arxiv.org/abs/2205.11916>
+- Documentación oficial de Claude (prompting y salidas estructuradas): <https://docs.claude.com>
+- Especificación JSON Schema: <https://json-schema.org>
 
 ---
 
