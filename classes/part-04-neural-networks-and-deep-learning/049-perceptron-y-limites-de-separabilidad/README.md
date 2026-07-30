@@ -27,6 +27,136 @@ Al finalizar podrás:
 
 `perceptrón`, `separabilidad`, `pesos`, `sesgo`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+El perceptrón (Rosenblatt, 1958) es la primera máquina de aprendizaje conexionista:
+en lugar de programar reglas simbólicas, ajusta pesos a partir de ejemplos. Su límite
+—solo resuelve problemas linealmente separables, como demostraron Minsky y Papert en
+1969 con XOR— provocó el primer "invierno" de las redes neuronales y motiva directamente
+la clase siguiente: capas ocultas y backpropagation rompen esa barrera.
+
+## 📖 Fundamentos
+
+### 🧠 De la neurona biológica al modelo matemático
+
+Una neurona artificial recibe entradas x = (x₁, …, xₙ), las pondera con pesos
+w = (w₁, …, wₙ), suma un sesgo b y aplica una función de activación. El perceptrón
+usa la función escalón:
+
+```text
+z = w · x + b = Σᵢ wᵢ·xᵢ + b
+ŷ = 1  si z ≥ 0
+ŷ = 0  si z < 0
+```
+
+Geométricamente, `w · x + b = 0` define un hiperplano: una recta en 2D, un plano en 3D.
+El perceptrón clasifica según el lado del hiperplano en que cae cada punto. El sesgo b
+desplaza el hiperplano fuera del origen; sin él, la frontera pasaría siempre por (0, 0).
+
+### 🔁 Regla de aprendizaje del perceptrón
+
+El algoritmo de Rosenblatt recorre los ejemplos y corrige solo cuando se equivoca:
+
+```text
+para cada época:
+    para cada ejemplo (x, y):
+        ŷ = escalón(w · x + b)
+        si ŷ ≠ y:
+            w ← w + η · (y − ŷ) · x
+            b ← b + η · (y − ŷ)
+```
+
+Con η (tasa de aprendizaje) > 0, la corrección empuja el hiperplano hacia el ejemplo
+mal clasificado: si y = 1 y ŷ = 0, suma x a los pesos (acerca la frontera); si y = 0 y
+ŷ = 1, resta x. El **teorema de convergencia del perceptrón** (Novikoff, 1962) garantiza
+que si los datos son linealmente separables con margen γ > 0, el algoritmo converge en
+un número finito de actualizaciones, acotado por (R/γ)², donde R es el radio de los datos.
+
+### 🚧 Separabilidad lineal y el problema XOR
+
+Un conjunto es **linealmente separable** si existe un hiperplano que deja todas las
+instancias positivas a un lado y las negativas al otro. XOR no lo es. Prueba por
+contradicción con las cuatro entradas booleanas (y = 1 para (0,1) y (1,0)):
+
+```text
+(0,0) → 0:  b < 0
+(0,1) → 1:  w₂ + b ≥ 0
+(1,0) → 1:  w₁ + b ≥ 0
+(1,1) → 0:  w₁ + w₂ + b < 0
+
+Sumando las filas 2 y 3:  w₁ + w₂ + 2b ≥ 0  →  w₁ + w₂ + b ≥ −b > 0
+Contradicción con la fila 4. No existe (w₁, w₂, b) que satisfaga las cuatro.
+```
+
+Minsky y Papert (*Perceptrons*, 1969) formalizaron esta y otras limitaciones (paridad,
+conectividad), lo que redujo drásticamente la financiación del conexionismo hasta que
+el MLP con backpropagation (clase 050) mostró que **componer** unidades no lineales
+en capas resuelve XOR y mucho más.
+
+## 🧮 Ejemplo trabajado
+
+Entrenamos un perceptrón para la función AND con w = (0, 0), b = 0, η = 1 y regla
+escalón(z ≥ 0 → 1). Primeras dos épocas (solo se muestran los pasos con actualización):
+
+| Paso | x | y | z = w·x+b | ŷ | error (y−ŷ) | w nuevo | b nuevo |
+|---|---|---:|---:|---:|---:|---|---:|
+| 1.1 | (0,0) | 0 | 0 | 1 | −1 | (0,0) | −1 |
+| 1.4 | (1,1) | 1 | −1 | 0 | +1 | (1,1) | 0 |
+| 2.1 | (0,0) | 0 | 0 | 1 | −1 | (1,1) | −1 |
+| 2.2 | (0,1) | 0 | 0 | 1 | −1 | (1,0) | −2 |
+| 2.4 | (1,1) | 1 | −1 | 0 | +1 | (2,1) | −1 |
+
+Continuando el mismo procedimiento, el algoritmo converge en la época 6 con
+**w = (2, 1), b = −3**: comprueba que 2x₁ + x₂ − 3 ≥ 0 solo para (1,1). La frontera
+de decisión es la recta 2x₁ + x₂ = 3. Si repites el proceso con XOR, las
+actualizaciones ciclan indefinidamente: no hay hiperplano que encontrar.
+
+## 📊 Propiedades y comparación
+
+| Modelo | Frontera | Salida | Entrenamiento | Converge si… |
+|---|---|---|---|---|
+| Perceptrón | lineal | binaria dura (0/1) | regla de error, online | datos separables (garantía finita) |
+| Regresión logística | lineal | probabilidad σ(z) | descenso de gradiente sobre pérdida convexa | siempre (mínimo global) |
+| SVM lineal | lineal de margen máximo | binaria + margen | optimización convexa | siempre |
+| MLP (clase 050) | no lineal | flexible | backpropagation, no convexo | sin garantía global |
+
+```mermaid
+flowchart LR
+    X1["x1"] -->|w1| S["Σ  z = w·x + b"]
+    X2["x2"] -->|w2| S
+    B["sesgo b"] --> S
+    S --> A{"z ≥ 0"}
+    A -->|sí| Y1["ŷ = 1"]
+    A -->|no| Y0["ŷ = 0"]
+    Y1 --> E["¿ŷ = y?"]
+    Y0 --> E
+    E -->|no| U["w ← w + η(y−ŷ)x"]
+    U --> S
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El perceptrón minimiza una función de pérdida diferenciable."** No: la regla de
+   Rosenblatt es una corrección por error con salida escalón, no descenso de gradiente
+   sobre una pérdida suave (eso es la regresión logística o ADALINE).
+2. **"Si el perceptrón no converge, hay que entrenar más épocas."** Si los datos no son
+   linealmente separables, ninguna cantidad de épocas ayuda: el algoritmo cicla.
+3. **"XOR demostró que las redes neuronales no sirven."** Demostró que *una capa* no
+   basta; un MLP con una capa oculta de 2 neuronas resuelve XOR exactamente.
+4. **"El sesgo b es opcional."** Sin sesgo, la frontera pasa por el origen y problemas
+   triviales (p. ej. AND) pueden volverse irresolubles según la codificación.
+5. **"Más features siempre ayudan a separar."** Proyectar a dimensiones altas puede
+   lograr separabilidad, pero también memorización sin generalización: separar el
+   conjunto de entrenamiento no implica clasificar bien datos nuevos.
+
+## 🚀 Del aprendizaje a la operación
+
+Entre este núcleo educativo y un clasificador real faltan: features numéricas
+estandarizadas (no entradas booleanas de juguete), validación con datos separados
+del entrenamiento, una pérdida calibrada en probabilidad si la decisión tiene costos
+asimétricos, y monitoreo de deriva de datos. Hoy nadie despliega un perceptrón puro,
+pero su regla de actualización sobrevive en cada capa lineal de una red moderna.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +215,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Deep Learning Book](https://www.deeplearningbook.org/)
-- [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
-- [Neural Network Training Labs](https://github.com/vladimiracunadev-create/neural-network-training-labs)
+- Rosenblatt, F. (1958). *The perceptron: a probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6). [doi:10.1037/h0042519](https://doi.org/10.1037/h0042519)
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 6 (Deep Feedforward Networks). [deeplearningbook.org/contents/mlp.html](https://www.deeplearningbook.org/contents/mlp.html)
+- Bishop, C. (2006). *Pattern Recognition and Machine Learning*, cap. 4 (Linear Models for Classification). [PDF oficial gratuito](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/)
+- Documentación de PyTorch: [`torch.nn.Linear`](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html)
 
 ---
 
