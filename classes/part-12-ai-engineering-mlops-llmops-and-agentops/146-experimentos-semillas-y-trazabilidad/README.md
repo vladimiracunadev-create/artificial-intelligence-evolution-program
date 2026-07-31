@@ -27,6 +27,146 @@ Al finalizar podrás:
 
 `experiments`, `seeds`, `lineage`, `artifacts`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+La ciencia experimental exige que un resultado sea reproducible; el ML industrial lo exige
+dos veces: para creer una métrica y para depurar producción. Esta clase toma el ciclo de
+vida de la clase 145 y lo hace **auditable**: tracking de experimentos, semillas, linaje de
+artefactos. Es el prerequisito del registro champion-challenger (147) y del CI/CD (148):
+no se puede promover ni probar lo que no se puede reproducir.
+
+## 📖 Fundamentos
+
+### 🎲 Fuentes de no determinismo
+
+Un entrenamiento «igual» puede producir modelos distintos por:
+
+1. **Semillas no fijadas**: inicialización de pesos, shuffling de batches, dropout,
+   muestreo de negativos.
+2. **Paralelismo**: reducciones en punto flotante no asociativas (`(a+b)+c ≠ a+(b+c)`
+   en float32); kernels no deterministas de GPU (p. ej. atomics en cuDNN).
+3. **Entorno**: versiones de librerías, drivers, hardware distinto.
+4. **Datos**: el «mismo» dataset leído de una tabla viva que cambió entre corridas.
+
+Fijar la semilla controla (1); (2) exige flags de determinismo (con costo de velocidad);
+(3) exige congelar el entorno (lockfiles, contenedores); (4) exige **snapshots
+versionados**. La reproducibilidad práctica se declara por niveles: *repetible* (misma
+máquina, mismos bits), *reproducible* (otro entorno, misma conclusión estadística),
+*replicable* (otros datos del mismo dominio, mismo hallazgo).
+
+### 📋 Tracking de experimentos
+
+Un experimento es una función `f(código, datos, configuración, azar) → métricas +
+artefactos`. El tracking registra **todas** las entradas y salidas para poder comparar y
+reproducir. El modelo mental de MLflow (equivalente en W&B o Neptune):
+
+```text
+experimento  (agrupador: "churn-2026")
+ └── run     (una ejecución)
+      ├── params    : lr=0.05, depth=6, seed=42, dataset=ds-2025-12
+      ├── metrics   : auc=0.831, logloss=0.412   (con historia por paso)
+      ├── tags      : git_commit=a1b2c3, autor, propósito
+      └── artifacts : modelo serializado, curvas, reporte de evaluación
+```
+
+Regla práctica: los `params` deben bastar para **relanzar** el run; las `metrics` deben
+bastar para **decidir** entre runs; los `artifacts` deben bastar para **desplegar** sin
+reentrenar.
+
+### 🧬 Linaje (lineage)
+
+El linaje responde «¿de qué proviene este artefacto?» como un grafo dirigido acíclico:
+
+```text
+datos_crudos ──▶ ds-2025-12 ──▶ features_v3 ──▶ run_0042 ──▶ churn-v7
+                    ▲                               ▲
+              reglas_valid v2                 commit a1b2c3 + seed 42
+```
+
+Cada nodo lleva una identidad estable — un **hash de contenido** (p. ej. SHA-256 del
+fichero o de las estadísticas del dataset) — y cada arista, la operación que lo produjo.
+Con esto, dos preguntas se vuelven consultas: *impacto* («si cambia `features_v3`, ¿qué
+modelos quedan obsoletos?», aristas hacia adelante) y *procedencia* («¿qué datos vio
+`churn-v7`?», aristas hacia atrás).
+
+### 🔁 Protocolo mínimo de experimento honesto
+
+1. Fija y registra la semilla **antes** de mirar resultados.
+2. Congela el snapshot de datos y registra su hash.
+3. Registra commit de código y entorno (versiones exactas).
+4. Corre con ≥ 3 semillas si vas a comparar métodos: reporta media ± desviación, no el
+   mejor run (eso es *seed picking*, una forma de sobreajuste al azar).
+5. Decide el criterio de comparación antes de correr (métrica, dataset de evaluación,
+   umbral de mejora mínima).
+
+## 🧮 Ejemplo trabajado
+
+Comparamos dos configuraciones de un clasificador con 3 semillas cada una (AUC en
+validación):
+
+```text
+config A (lr=0.10): seeds 1,2,3 → 0.812, 0.804, 0.808   media 0.808  desv ≈ 0.004
+config B (lr=0.05): seeds 1,2,3 → 0.815, 0.799, 0.802   media 0.805  desv ≈ 0.009
+```
+
+Lectura incorrecta: «B gana porque su mejor run (0.815) supera todo lo de A».
+Lectura correcta: la media de A (0.808) supera la de B (0.805), y la diferencia
+(0.003) es **menor que la variación entre semillas de B** (±0.009): con 3 semillas no
+hay evidencia para preferir ninguna; el «0.815» es ruido de semilla. Decisión honesta:
+o más semillas, o declarar empate y elegir por otro criterio (costo, simplicidad).
+Registro mínimo del run ganador si se promoviera A:
+
+```text
+params : lr=0.10, seed={1,2,3}, dataset=ds-2025-12 (hash 9f3a…), commit a1b2c3
+metrics: auc_media=0.808, auc_desv=0.004
+```
+
+## 📊 Propiedades y comparación
+
+| Práctica | Qué garantiza | Qué NO garantiza | Costo |
+|---|---|---|---|
+| Fijar semilla | repetibilidad del azar propio | determinismo de GPU/paralelismo | nulo |
+| Flags deterministas | mismos bits en mismo hardware | velocidad (puede caer 10-30 %) | medio |
+| Snapshot + hash de datos | mismas entradas | que los datos sean correctos | almacenamiento |
+| Lockfile/contenedor | mismo entorno | mismo hardware numérico | mantenimiento |
+| Multi-semilla + media±desv | conclusión robusta al azar | significancia con n=3 | 3-5× cómputo |
+| Tracking (MLflow) | comparabilidad y auditoría | que registres lo importante | disciplina |
+
+```mermaid
+flowchart TD
+  A[datos crudos] -->|hash 9f3a| B[snapshot ds-2025-12]
+  C[commit a1b2c3] --> D[run_0042]
+  B --> D
+  E[config lr, depth, seed] --> D
+  D -->|params+metrics+artifacts| F[(tracking server)]
+  D --> G[modelo churn-v7]
+  G -->|procedencia: hacia atrás| B
+  B -->|impacto: hacia adelante| G
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **«Fijé la semilla, luego es reproducible.»** La semilla no controla paralelismo,
+   versiones de librerías ni datos vivos; es necesaria, no suficiente.
+2. **«Reporto mi mejor run.»** Elegir la mejor semilla infla la métrica; lo comparable
+   es media ± desviación sobre semillas preestablecidas.
+3. **«El linaje es el historial de git.»** Git versiona código; el linaje une código con
+   datos, configuración y artefactos. Un commit sin hash de dataset no reproduce nada.
+4. **«Tracking = guardar métricas.»** Sin params, commit, entorno y artefactos, las
+   métricas son incomparables e irreproducibles: números huérfanos.
+5. **«Determinismo bit a bit siempre.»** A veces basta reproducibilidad estadística
+   (misma conclusión); exigir bits idénticos en GPU puede costar rendimiento sin
+   cambiar ninguna decisión.
+
+## 🚀 Del aprendizaje a la operación
+
+El laboratorio registra un flujo determinista con semilla explícita; una plataforma real
+añade un tracking server multiusuario (MLflow, W&B), versionado de datos a escala (DVC,
+lakeFS, Delta), convenciones de nombres obligatorias y retención de artefactos con costo
+de almacenamiento real. La disciplina que no se automatiza se pierde: los campos que el
+pipeline no registra automáticamente acaban vacíos, por eso el tracking se integra en el
+código de entrenamiento, no en la memoria del equipo.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +225,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [MLflow Documentation](https://mlflow.org/docs/latest/)
-- [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
-- [Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+- [MLflow Documentation — Tracking y conceptos](https://mlflow.org/docs/latest/)
+- [Pineau et al. (2021), "Improving Reproducibility in Machine Learning Research", JMLR (arXiv:2003.12206)](https://arxiv.org/abs/2003.12206)
+- [Google, "Rules of Machine Learning" — reglas sobre pipelines y métricas](https://developers.google.com/machine-learning/guides/rules-of-ml)
+- [DVC Documentation — versionado de datos](https://dvc.org/doc)
+- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
+- [PyTorch — Reproducibility notes](https://pytorch.org/docs/stable/notes/randomness.html)
 
 ---
 

@@ -27,6 +27,147 @@ Al finalizar podrás:
 
 `drift`, `feedback`, `continuous eval`, `monitoring`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Un modelo se entrena sobre una fotografía del mundo, y el mundo sigue moviéndose: la
+**deriva** es la razón por la que todo sistema de ML se degrada por defecto. Esta clase
+conecta la observabilidad (150) con la acción: detectar el cambio (PSI, monitoreo por
+segmento), cerrar el bucle de feedback con etiquetas reales y evaluar continuamente. Es
+el disparador del reentrenamiento (CT, clase 148) y de la decisión champion-challenger
+(147).
+
+## 📖 Fundamentos
+
+### 🌪️ Taxonomía de la deriva
+
+Con entrada `X`, objetivo `Y` y modelo que aproxima `P(Y|X)`:
+
+- **Deriva de datos (covariate shift)**: cambia `P(X)`; la relación `P(Y|X)` se
+  mantiene. Ej.: llegan más usuarios jóvenes; el modelo acierta en cada segmento, pero
+  opera fuera de su zona densa de entrenamiento.
+- **Deriva de etiquetas (prior shift)**: cambia `P(Y)`. Ej.: la tasa base de fraude sube
+  del 0.3 % al 1 % — la calibración del umbral queda obsoleta.
+- **Deriva de concepto (concept drift)**: cambia `P(Y|X)` — la *regla del mundo*. Ej.:
+  tras una crisis, el mismo perfil de cliente ahora sí impaga. Es la más grave: el
+  modelo está objetivamente equivocado aunque las entradas parezcan normales.
+
+La forma temporal importa: súbita (cambio de app), gradual (hábitos), recurrente
+(estacionalidad — que NO es deriva a corregir sino patrón a modelar).
+
+### 📐 PSI: Population Stability Index
+
+Métrica clásica (scoring bancario) para comparar la distribución esperada `p` (baseline,
+p. ej. entrenamiento) con la actual `q` sobre `B` bins:
+
+```text
+PSI = Σ_{i=1..B} (q_i − p_i) · ln(q_i / p_i)
+```
+
+Cada término es ≥ 0 (si `q_i > p_i`, ambos factores positivos; si `q_i < p_i`, ambos
+negativos), así que PSI ≥ 0 y solo es 0 con distribuciones idénticas por bin. Es
+simétrica y equivale a la suma de las divergencias KL en ambos sentidos. Convención de
+la industria (regla empírica, no teorema): **< 0.10** estable; **0.10–0.25** cambio
+moderado, investigar; **> 0.25** cambio mayor, actuar. Precauciones: elegir bins sobre
+el baseline (deciles típicos), suavizar bins vacíos (q_i = 0 rompe el logaritmo), y
+recordar que el PSI depende del binning y del tamaño muestral.
+
+### 🔁 Feedback y evaluación continua
+
+Detectar deriva de `X` es fácil; saber si el **desempeño** cayó exige etiquetas reales,
+que llegan con retardo (el impago se conoce a 90 días) o sesgadas (solo ves el resultado
+de los créditos que aprobaste — *selective labels*). El bucle honesto:
+
+1. **Proxies inmediatos**: tasa de fallback, distribución de scores, acuerdo con un
+   modelo de referencia, quejas de usuarios.
+2. **Etiquetas diferidas**: unir predicciones con resultados cuando maduran
+   (evaluación retrospectiva por cohortes).
+3. **Muestreo etiquetado**: presupuesto fijo de revisión humana continua (o LLM-judge
+   calibrado con humanos) sobre una muestra aleatoria — no solo sobre los casos raros.
+4. **Política de acción escrita**: qué PSI o qué caída de métrica dispara alerta,
+   revisión, reentrenamiento o rollback. Detección sin política es un dashboard que
+   nadie mira.
+
+### 🧩 Dónde medir
+
+Deriva por feature (PSI/KS por columna), deriva del score (distribución de salidas del
+modelo — barata y sorprendentemente sensible), y desempeño por **segmento** (una métrica
+global estable puede esconder un segmento en caída, cf. clase 147).
+
+## 🧮 Ejemplo trabajado
+
+Feature `monto_compra` binned en cuartiles del baseline de entrenamiento (p = 25 % cada
+bin, por construcción). Distribución del último mes:
+
+```text
+bin          p (train)   q (mes)    (q−p)      ln(q/p)     término
+Q1 bajo      0.25        0.15       −0.10      ln(0.60)=−0.511   0.0511
+Q2           0.25        0.20       −0.05      ln(0.80)=−0.223   0.0112
+Q3           0.25        0.30       +0.05      ln(1.20)=+0.182   0.0091
+Q4 alto      0.25        0.35       +0.10      ln(1.40)=+0.336   0.0336
+                                                        PSI  ≈  0.105
+```
+
+Lectura: PSI ≈ 0.105 cae en la banda 0.10–0.25 → **cambio moderado: investigar**. La
+masa migró hacia montos altos (Q4: 25 %→35 %). Investigación: ¿inflación?, ¿campaña de
+productos premium?, ¿bug que duplica montos? La acción depende de la causa: si es un
+cambio real y persistente del mundo, reentrenar con datos recientes; si es un bug de
+ingesta, corregirlo (reentrenar aprendería el error). El PSI **detecta**, no diagnostica:
+convierte «algo cambió» en «esto cambió, así, en esta feature».
+
+## 📊 Propiedades y comparación
+
+| Método | Tipo de dato | Detecta | Necesita etiquetas | Nota |
+|---|---|---|---|---|
+| PSI | numérico binned / categórico | cambio de distribución | no | estándar bancario; umbrales 0.10/0.25 |
+| Test KS | numérico continuo | diferencia de CDFs | no | con n grande, significativo ante cambios triviales |
+| Divergencia JS | distribuciones | cambio simétrico y acotado [0, ln2] | no | robusta a bins vacíos |
+| Deriva del score | salidas del modelo | efecto agregado de cambios en X | no | primera alarma barata |
+| Métrica con etiquetas diferidas | pred + resultado | caída real de desempeño | sí (con retardo) | la única verdad de fondo |
+| Evals muestreadas (humano/juez) | casos individuales | degradación cualitativa | sí (muestra) | clave en LLMs sin etiqueta natural |
+
+```mermaid
+flowchart TD
+  A[predicciones + features en producción] --> B[PSI / KS por feature y score]
+  B -->|PSI < 0.10| C[estable: seguir]
+  B -->|0.10 - 0.25| D[investigar causa]
+  B -->|> 0.25| E[actuar]
+  D --> F{¿causa?}
+  F -->|bug de datos| G[corregir ingesta — NO reentrenar]
+  F -->|cambio real| H[reentrenar con datos recientes]
+  A --> I[unir con etiquetas diferidas]
+  I --> J[evaluación por cohortes y segmentos]
+  J -->|caída confirmada| H
+  H --> K[challenger → regla de promoción 147]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **«Detecté deriva de X, el modelo está roto.»** Covariate shift no implica caída de
+   desempeño: la regla `P(Y|X)` puede seguir válida. La deriva de datos es una alarma
+   temprana, no un veredicto.
+2. **«Sin deriva de X, el modelo está bien.»** El concept drift cambia `P(Y|X)` sin
+   mover necesariamente `P(X)`: entradas idénticas, mundo distinto. Solo las etiquetas
+   lo confirman.
+3. **«Reentrenar arregla toda deriva.»** Si la causa es un bug de ingesta, reentrenar
+   aprende el bug; si es estacional, un modelo con features de calendario supera al
+   reentrenamiento reactivo.
+4. **«PSI > 0.25 en alguna feature = reentrenar ya.»** El umbral es convención, depende
+   del binning y de la importancia de la feature en el modelo; una feature irrelevante
+   puede derivar sin efecto alguno.
+5. **«Las etiquetas de producción llegan limpias.»** Llegan tarde y sesgadas (solo
+   observas el resultado de lo que aprobaste); la evaluación por cohortes y el muestreo
+   aleatorio existen para corregir ese sesgo.
+
+## 🚀 Del aprendizaje a la operación
+
+El laboratorio calcula deriva sobre distribuciones simuladas; en producción se añaden
+ventanas deslizantes con estacionalidad, cientos de features monitoreadas (control de
+falsas alarmas por comparaciones múltiples), herramientas como Evidently o los monitores
+de las plataformas cloud, y el bucle organizativo: quién investiga una alerta de PSI,
+con qué presupuesto de etiquetado continuo y qué autoridad para disparar el
+reentrenamiento. El costo real del sistema no es calcular PSI: es mantener el bucle de
+etiquetas vivo.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,9 +226,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [MLflow Documentation](https://mlflow.org/docs/latest/)
-- [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
-- [Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+- [Gama et al. (2014), "A Survey on Concept Drift Adaptation", ACM Computing Surveys](https://doi.org/10.1145/2523813)
+- [Evidently AI Documentation — monitoreo de deriva](https://docs.evidentlyai.com/)
+- [Huyen, *Designing Machine Learning Systems* — cap. de distribution shifts y monitoreo](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+- [Breck et al. (2017), "The ML Test Score", IEEE Big Data — tests de monitoreo](https://research.google/pubs/pub46555/)
+- [Google, "Rules of Machine Learning" — reglas de monitoreo (parte III)](https://developers.google.com/machine-learning/guides/rules-of-ml)
 
 ---
 
