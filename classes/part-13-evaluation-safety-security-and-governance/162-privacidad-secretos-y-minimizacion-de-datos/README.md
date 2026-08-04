@@ -27,6 +27,152 @@ Al finalizar podrás:
 
 `privacy`, `secrets`, `minimization`, `retention`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Los modelos aprenden de datos, y esos datos pueden contener información personal o secretos. Carlini
+et al. (arXiv:2012.07805) demostraron en 2020 que un LLM puede *memorizar* y regurgitar cadenas
+literales de su corpus —incluidos datos personales— con solo consultarlo. Esto convirtió la
+privacidad de una nota legal en un problema técnico medible: qué recuerda un modelo, qué expone un
+sistema de IA en contexto, y cómo minimizar ambos. Es la base técnica de la normativa (GDPR, EU AI
+Act) que se verá en la clase 167.
+
+## 📖 Fundamentos
+
+### 🧠 Memorización y extracción
+
+Un modelo **memoriza** cuando reproduce literalmente secuencias de su corpus en lugar de
+generalizar patrones. Carlini et al. mostraron un **ataque de extracción de datos de
+entrenamiento**: generando muchas muestras y puntuándolas por confianza del modelo, se recuperan
+cadenas memorizadas (correos, teléfonos, claves) presentes una sola vez en el corpus. Hallazgos
+clave:
+
+- La memorización **crece con el tamaño del modelo** y con la **repetición** del dato en el corpus.
+- Los datos únicos o poco frecuentes son los más *identificables* si se extraen: un secuencia
+  singular apunta a una persona concreta.
+- La memorización no es un bug ocasional: es una propiedad estadística esperable del entrenamiento.
+
+Definición útil: una secuencia es **k-eidética memorizada** si el modelo la reproduce y aparecía en
+≤ k documentos del corpus; cuanto menor k, mayor el riesgo de privacidad.
+
+### 🔑 Secretos en el ciclo de vida de la IA
+
+Los secretos (API keys, tokens, contraseñas, PII) pueden filtrarse en cuatro puntos:
+
+```text
+1. Entrenamiento/fine-tuning : el secreto está en el corpus -> memorización
+2. Contexto/RAG              : se inyecta PII innecesaria en el prompt -> exposición en logs
+3. Prompts y logs            : se registran entradas con datos sensibles -> fuga por observabilidad
+4. Salida                    : el modelo repite un secreto que vio en contexto o memorizó
+```
+
+Un error frecuente es concentrarse solo en el punto 1; en la práctica los puntos 2 y 3 (logs de
+prompts con PII) son la fuga más común y la más fácil de evitar.
+
+### ✂️ Minimización de datos
+
+**Minimización** es el principio de recolectar, procesar y retener el *mínimo* de datos personales
+necesario para la finalidad. Se descompone en:
+
+- **Minimización de recolección**: no pidas ni ingieras lo que no necesitas.
+- **Minimización de propósito**: usa el dato solo para el fin declarado.
+- **Minimización de retención**: bórralo cuando ya no sirve (política de retención con plazos).
+- **Minimización en contexto**: pasa al modelo solo los campos necesarios de un registro, no el
+  registro completo.
+
+### 🛡️ Técnicas de protección
+
+```text
+Técnica                 Qué hace                                  Límite
+Redacción/masking       elimina o sustituye PII antes de procesar depende de detectar toda la PII
+Seudonimización         reemplaza identificadores por tokens      reversible si se guarda el mapa
+Anonimización           rompe el vínculo con la persona           difícil de garantizar (re-identificación)
+Tokenización de secretos vault + referencia, nunca el valor       requiere infraestructura
+Privacidad diferencial  ruido calibrado con garantía (epsilon)    coste en utilidad; complejo
+Retención y borrado     TTL y derecho de supresión                requiere trazabilidad del dato
+```
+
+La **privacidad diferencial (DP)** ofrece una garantía formal: un parámetro epsilon acota cuánto
+puede cambiar la salida por incluir o excluir el dato de una persona; menor epsilon = más privacidad
+y menos utilidad. Es la única técnica con garantía matemática, pero cuesta utilidad y es compleja de
+aplicar bien.
+
+### 📉 Medir la fuga
+
+- **Tasa de memorización**: fracción de secuencias canario (insertadas a propósito) que el modelo
+  reproduce. Los **canarios** son cadenas únicas plantadas en el corpus para auditar memorización.
+- **Detección de PII en logs**: escaneo de prompts/salidas contra patrones y clasificadores.
+- **Exposición en contexto**: cuántos campos sensibles innecesarios llegan al modelo por petición.
+
+## 🧮 Ejemplo trabajado
+
+Auditamos memorización con canarios en un modelo fine-tuneado.
+
+1. **Diseño**: insertamos 100 canarios únicos (formato `CANARY-<uuid>-<número de 9 dígitos>`) en el
+   corpus de fine-tuning, cada uno repetido un número controlado de veces: 40 aparecen 1 vez, 40
+   aparecen 10 veces, 20 aparecen 100 veces.
+2. **Prueba de extracción**: damos el prefijo `CANARY-<uuid>-` y medimos si el modelo completa los
+   9 dígitos correctos (con muestreo).
+
+```text
+Repeticiones   canarios   completados correctamente   tasa
+1x                40               2                    5.0 %
+10x               40              14                   35.0 %
+100x              20              17                   85.0 %
+```
+
+3. **Lectura**: la memorización crece fuerte con la repetición (5 % → 85 %), confirmando el
+   hallazgo de Carlini. La minimización aquí sería deduplicar el corpus: bajar los datos sensibles a
+   ≤ 1 aparición reduce drásticamente la extracción.
+4. **Riesgo de privacidad**: los canarios 1x son los más peligrosos si fueran PII real —aunque su
+   tasa es baja (5 %), cada acierto identifica a una persona única. Tasa baja ≠ riesgo bajo cuando el
+   dato es identificable.
+5. **Acción**: deduplicar y filtrar PII antes del entrenamiento, y —para datos que deben quedar—
+   evaluar privacidad diferencial con un presupuesto epsilon; documentar la tasa residual, no ocultarla.
+
+## 📊 Propiedades y comparación
+
+| Punto de fuga | Probabilidad práctica | Coste de mitigación | Mitigación principal |
+|---|---|---|---|
+| Memorización (entrenamiento) | media | alto (re-entrenar) | dedup + filtrado PII + DP |
+| PII innecesaria en contexto | alta | bajo | minimización en contexto |
+| Logs de prompts con PII | muy alta | bajo | redacción antes de loguear + retención |
+| Secreto repetido en salida | media | medio | no meter secretos en contexto, tokenizar |
+
+```mermaid
+flowchart TD
+    A[Dato entra al sistema] --> B{Es necesario para la finalidad?}
+    B -- no --> C[No recolectar / descartar]
+    B -- si --> D[Minimizar: solo campos necesarios]
+    D --> E{Contiene PII o secretos?}
+    E -- si --> F[Redactar / seudonimizar / tokenizar]
+    E -- no --> G[Procesar]
+    F --> G
+    G --> H[Registrar sin PII + aplicar retencion TTL]
+    H --> I[Auditar memorizacion con canarios + escaneo de logs]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"El modelo no puede filtrar lo que no entiende"**. Sí puede: reproduce cadenas literales
+   memorizadas sin "comprenderlas"; la extracción no requiere razonamiento del modelo.
+2. **"Solo importa lo que hay en el corpus de entrenamiento"**. Las fugas más frecuentes ocurren en
+   contexto y logs (puntos 2 y 3), no en el entrenamiento; son también las más baratas de evitar.
+3. **"Tasa de memorización baja = seguro"**. Un solo dato único extraído identifica a una persona;
+   el riesgo depende de identificabilidad, no solo de la tasa.
+4. **"Anonimizar es trivial"**. La re-identificación por combinación de cuasi-identificadores
+   (código postal + edad + género) puede revertir una anonimización mal hecha.
+5. **"La privacidad diferencial es gratis"**. Impone un coste de utilidad medible; un epsilon muy
+   pequeño protege más pero degrada el modelo o las estadísticas.
+
+## 🚀 Del aprendizaje a la operación
+
+En operación: filtrado y deduplicación de PII antes del entrenamiento, redacción de PII antes de
+loguear prompts, minimización estricta de campos que llegan al contexto, tokenización de secretos en
+un vault (nunca en el prompt), políticas de retención con TTL y soporte del derecho de supresión,
+auditoría periódica de memorización con canarios, y —cuando aplique— presupuesto de privacidad
+diferencial documentado. La normativa (GDPR, EU AI Act; clase 167) convierte varias de estas
+prácticas en obligación legal. Esta clase solo establece los conceptos y la medición manual.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +231,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
-- [MITRE ATLAS](https://atlas.mitre.org/)
-- [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [Carlini et al. (2021), *Extracting Training Data from Large Language Models*, arXiv:2012.07805](https://arxiv.org/abs/2012.07805)
+- [Carlini et al. (2022), *Quantifying Memorization Across Neural Language Models*, arXiv:2202.07646](https://arxiv.org/abs/2202.07646)
+- [Dwork & Roth (2014), *The Algorithmic Foundations of Differential Privacy* — DOI:10.1561/0400000042](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf)
+- [Reglamento (UE) 2016/679 (GDPR) — art. 5: minimización de datos](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
+- [OWASP Top 10 for LLM Applications — LLM06: Sensitive Information Disclosure](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
 ---
 

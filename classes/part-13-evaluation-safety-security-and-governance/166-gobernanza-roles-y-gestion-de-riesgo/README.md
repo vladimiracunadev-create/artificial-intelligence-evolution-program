@@ -27,6 +27,146 @@ Al finalizar podrás:
 
 `governance`, `roles`, `risk`, `controls`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Las clases anteriores dieron técnicas (evaluar, red team, fairness, calibración); la gobernanza es
+lo que convierte técnicas sueltas en un sistema de gestión con responsables, decisiones y evidencia.
+El NIST AI Risk Management Framework (2023) y el modelo de las tres líneas de defensa —importado de
+la gestión de riesgo financiero— son el andamiaje estándar para responder "¿quién responde por este
+sistema y cómo se decide desplegarlo?". Es el puente entre ingeniería y cumplimiento (clase 167).
+
+## 📖 Fundamentos
+
+### 🏛️ Qué es la gobernanza de IA
+
+**Gobernanza** es el conjunto de roles, procesos y decisiones que aseguran que un sistema de IA se
+construye, despliega y opera de forma alineada con los valores, las políticas y la ley de la
+organización. No es documentación: es *quién decide qué, con qué evidencia y con qué autoridad para
+detener*. Sin poder de veto real, la gobernanza es teatro.
+
+### 🧭 NIST AI RMF: las cuatro funciones
+
+El NIST AI RMF organiza la gestión de riesgo en cuatro funciones continuas (no fases secuenciales):
+
+```text
+GOVERN   : cultura, roles, políticas y rendición de cuentas (la función transversal)
+MAP      : contextualizar el sistema y sus riesgos (uso previsto, partes afectadas, impactos)
+MEASURE  : evaluar y cuantificar los riesgos con métodos (evals, fairness, red team, calibración)
+MANAGE   : priorizar, tratar y monitorear los riesgos (mitigar, aceptar, transferir, evitar)
+```
+
+GOVERN envuelve a las otras tres: define quién ejecuta MAP/MEASURE/MANAGE y quién rinde cuentas.
+El RMF es voluntario y agnóstico de tecnología; su valor es dar un vocabulario común y trazable.
+
+Complementa con las características de un sistema de IA *confiable* que el RMF nombra: válido y
+fiable, seguro, seguro frente a ataques y resiliente, explicable e interpretable, con privacidad
+mejorada, justo con sesgos gestionados, y responsable y transparente.
+
+### 🛡️ Las tres líneas de defensa
+
+Modelo de gobernanza que separa quién *asume* el riesgo de quién lo *vigila* y de quién lo *audita*:
+
+```text
+1ª línea: los DUEÑOS del riesgo       -> equipos de producto/ingeniería que construyen y operan
+                                         (implementan controles y viven con el riesgo)
+2ª línea: SUPERVISIÓN del riesgo      -> riesgo, seguridad, privacidad, ética, legal
+                                         (define políticas, revisa, reta, no construye)
+3ª línea: ASEGURAMIENTO independiente -> auditoría interna
+                                         (verifica que 1ª y 2ª funcionan; reporta al órgano de gobierno)
+```
+
+La clave es la **independencia creciente**: la 2ª línea no depende de quien construye, y la 3ª no
+depende de la 2ª. Un red team dentro del equipo de producto es 1ª línea; solo es aseguramiento si es
+independiente. Confundir las líneas (que quien construye se autoaudite) anula el control.
+
+### 📊 Gestión de riesgo: identificar, evaluar, tratar
+
+```text
+1. Identificar : catálogo de riesgos (daño, seguridad, sesgo, privacidad, legal, reputacional)
+2. Evaluar     : probabilidad x impacto -> nivel de riesgo (matriz de riesgo)
+3. Tratar      : mitigar / aceptar / transferir / evitar (las 4 respuestas)
+4. Monitorear  : riesgo residual, indicadores, reevaluación periódica
+```
+
+El **riesgo residual** es el que queda tras las mitigaciones; se **acepta explícitamente** por
+alguien con autoridad (risk owner), no se ignora. Un riesgo aceptado y documentado es gobernanza;
+uno ignorado es negligencia.
+
+## 🧮 Ejemplo trabajado: matriz de riesgo y decisión de despliegue
+
+Sistema de scoring de CV. Catalogamos tres riesgos con probabilidad (P) e impacto (I) en escala 1-5.
+
+```text
+Riesgo                              P    I    P*I   nivel
+R1 sesgo de género en el ranking    4    5     20   crítico
+R2 alucinación en el resumen        3    2      6   medio
+R3 fuga de PII del CV en logs       2    5     10   alto
+```
+
+1. **Priorización**: R1 (20) > R3 (10) > R2 (6). Se trata primero lo crítico.
+2. **Tratamiento**:
+   - R1 → *mitigar*: medir disparate impact por grupo (clase 163), umbral DI ≥ 0.8, revisión humana
+     de los rankings. Riesgo residual tras mitigar: P baja de 4 a 2 → P*I = 10 (alto). No se elimina.
+   - R3 → *mitigar*: redacción de PII antes de loguear (clase 162). Residual P*I = 5 (medio).
+   - R2 → *aceptar*: bajo impacto; se documenta y monitorea.
+3. **Asignación por líneas**: el equipo de producto (1ª) implementa las mitigaciones; riesgo/legal
+   (2ª) define el umbral DI y revisa la evidencia; auditoría interna (3ª) verifica que la revisión
+   humana realmente ocurre.
+4. **Decisión de despliegue (GOVERN)**: el riesgo residual de R1 sigue siendo *alto*. El risk owner
+   con autoridad decide: despliegue **condicionado** a revisión humana obligatoria y reevaluación a
+   30 días, con aceptación firmada del riesgo residual. La decisión y su evidencia quedan registradas.
+5. **Lectura honesta**: la gobernanza no hizo el sistema "seguro"; hizo la decisión *explícita,
+   trazable y con un responsable* — que es lo auditable cuando algo falle (clase 168).
+
+## 📊 Propiedades y comparación
+
+| Elemento | Qué aporta | Riesgo si falta |
+|---|---|---|
+| GOVERN (NIST) | responsables y autoridad para detener | decisiones sin dueño |
+| MAP/MEASURE/MANAGE | proceso repetible de riesgo | mitigaciones ad hoc |
+| 3 líneas de defensa | separación construir/vigilar/auditar | autoauditoría, conflicto de interés |
+| Matriz de riesgo | priorización trazable | tratar lo urgente, no lo importante |
+| Aceptación de residual | responsabilidad explícita | riesgo ignorado = negligencia |
+
+```mermaid
+flowchart TD
+    G[GOVERN: roles, politicas, autoridad para detener] --> M1[MAP: contexto y riesgos]
+    M1 --> M2[MEASURE: evals, fairness, red team, calibracion]
+    M2 --> M3[MANAGE: mitigar / aceptar / transferir / evitar]
+    M3 --> RES[Riesgo residual]
+    RES --> DEC{Aceptable para el risk owner?}
+    DEC -- si --> DEP[Desplegar con aceptacion firmada y monitoreo]
+    DEC -- no --> M3
+    subgraph Lineas[Tres lineas de defensa]
+        L1[1a: producto - dueno del riesgo]
+        L2[2a: riesgo/legal - supervision]
+        L3[3a: auditoria - aseguramiento independiente]
+    end
+    G -.asigna.-> Lineas
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Gobernanza = escribir políticas"**. Sin autoridad real para detener un despliegue, las
+   políticas son teatro; la gobernanza se define por sus decisiones y su poder de veto.
+2. **"Las cuatro funciones del NIST son fases secuenciales"**. Son continuas y GOVERN es
+   transversal; MEASURE y MANAGE se repiten durante toda la vida del sistema.
+3. **"El equipo que construye puede auditarse a sí mismo"**. Rompe la independencia de la 3ª línea;
+   el aseguramiento debe ser independiente de quien asume y de quien supervisa el riesgo.
+4. **"Un riesgo residual bajo significa cero riesgo"**. Siempre queda residual; la gobernanza exige
+   *aceptarlo explícitamente* con un responsable, no declararlo inexistente.
+5. **"El NIST AI RMF es obligatorio / certifica"**. Es un marco voluntario y agnóstico; da
+   vocabulario y estructura, no una certificación ni cumplimiento legal por sí mismo (clase 167).
+
+## 🚀 Del aprendizaje a la operación
+
+En operación: definir roles y risk owners con autoridad para detener, instrumentar MAP/MEASURE/
+MANAGE con las técnicas de las clases 157-165 como evidencia, separar las tres líneas con
+independencia real, mantener un registro de riesgos con aceptaciones firmadas y reevaluación
+periódica, y conectar la salida (riesgo residual, incidentes) con el cumplimiento normativo (clase
+167) y la respuesta a incidentes (clase 168). Esta clase solo establece el marco y una decisión de
+despliegue trabajada a mano.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
-- [MITRE ATLAS](https://atlas.mitre.org/)
-- [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework)
+- [NIST AI RMF 1.0 — documento completo (NIST AI 100-1, PDF)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf)
+- [IIA (2020), *The IIA's Three Lines Model* (tres líneas de defensa)](https://www.theiia.org/en/content/position-papers/2020/the-iia-three-lines-model-an-update-of-the-three-lines-of-defense/)
+- [ISO/IEC 23894:2023 — Gestión del riesgo de la IA](https://www.iso.org/standard/77304.html)
+- [ISO 31000:2018 — Gestión del riesgo (principios y directrices)](https://www.iso.org/standard/65694.html)
 
 ---
 

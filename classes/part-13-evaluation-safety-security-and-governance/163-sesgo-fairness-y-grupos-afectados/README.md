@@ -27,6 +27,144 @@ Al finalizar podrás:
 
 `bias`, `fairness`, `subgroups`, `harms`
 
+## 🗺️ Ubicación en el mapa de la IA
+
+Cuando un modelo decide sobre personas —crédito, contratación, libertad condicional, moderación—
+la pregunta deja de ser solo "¿acierta?" y pasa a "¿acierta de forma equitativa entre grupos?".
+Kleinberg, Mullainathan y Raghavan (arXiv:1609.05807) demostraron en 2016 un resultado de
+imposibilidad: varias definiciones intuitivas de "justo" no pueden satisfacerse a la vez salvo en
+casos degenerados. La equidad, por tanto, no es un interruptor que se activa: es un conjunto de
+criterios en tensión que exige elegir explícitamente cuál priorizar y por qué.
+
+## 📖 Fundamentos
+
+### ⚖️ Sesgo y sus fuentes
+
+**Sesgo** (en el sentido de fairness) es una diferencia sistemática de comportamiento del modelo
+entre grupos definidos por atributos protegidos (género, etnia, edad…). Fuentes:
+
+- **Sesgo histórico**: los datos reflejan desigualdades del mundo real (menos préstamos aprobados a
+  un grupo históricamente excluido). El modelo aprende y perpetúa el patrón.
+- **Sesgo de representación**: un grupo está subrepresentado en el dataset; el modelo rinde peor con él.
+- **Sesgo de medición**: la etiqueta o las features son proxies imperfectos y sesgados (usar
+  "arrestos" como proxy de "delito" hereda el sesgo policial).
+- **Sesgo de agregación**: un único modelo para grupos heterogéneos ajusta al grupo mayoritario.
+
+### 📏 Definiciones de equidad (grupo)
+
+Notación: `Y` = etiqueta real (1 = positivo), `Ŷ` = predicción, `A` = grupo protegido.
+
+```text
+Paridad demográfica     P(Ŷ=1 | A=a) igual para todo a
+                        (misma tasa de resultado positivo entre grupos)
+Igualdad de oportunidad P(Ŷ=1 | Y=1, A=a) igual para todo a
+                        (mismo recall / TPR entre grupos)
+Equalized odds          TPR y FPR iguales entre grupos
+Calibración por grupo   P(Y=1 | score=s, A=a) igual para todo a
+                        (un score significa lo mismo en cada grupo)
+```
+
+### 🚫 El teorema de imposibilidad (Kleinberg et al.)
+
+Kleinberg et al. probaron que, salvo casos triviales (predicción perfecta o tasas base idénticas
+entre grupos), **no se pueden satisfacer simultáneamente** tres condiciones deseables:
+calibración por grupo, igualdad de la tasa de falsos positivos y de falsos negativos. Corolario
+práctico: cuando las **tasas base** (`P(Y=1)`) difieren entre grupos —lo habitual—, hay que
+elegir qué criterio de equidad priorizar; optimizar uno degrada otro. No existe el modelo "justo"
+sin especificar *según qué definición*.
+
+### 📊 Disparate impact
+
+El **disparate impact** mide la desproporción de resultados positivos entre el grupo desfavorecido
+y el favorecido:
+
+```text
+DI = P(Ŷ=1 | A = desfavorecido) / P(Ŷ=1 | A = favorecido)
+```
+
+La **regla del 80 %** (four-fifths rule, EEOC de EE. UU.) considera indicio de impacto adverso un
+DI < 0.80. Es un umbral legal orientativo, no una garantía de equidad ni de su ausencia.
+
+### 🔧 Dónde intervenir
+
+```text
+Pre-procesado   : reponderar/reetiquetar datos para equilibrar grupos
+In-procesado    : añadir una restricción de equidad a la función objetivo
+Post-procesado  : ajustar umbrales por grupo para igualar el criterio elegido
+```
+
+Cada punto tiene trade-offs: post-procesar por umbral distinto por grupo puede chocar con
+requisitos legales de trato igual; el punto de intervención es también una decisión de gobernanza.
+
+## 🧮 Ejemplo trabajado
+
+Modelo de aprobación de crédito evaluado sobre dos grupos, A y B.
+
+```text
+Grupo A: 500 personas, aprobadas (Ŷ=1) = 200
+Grupo B: 500 personas, aprobadas (Ŷ=1) = 120
+```
+
+1. **Tasas de resultado positivo**: A = 200/500 = 0.40; B = 120/500 = 0.24.
+2. **Disparate impact** (B es el desfavorecido): DI = 0.24 / 0.40 = **0.60**.
+3. **Regla del 80 %**: 0.60 < 0.80 → **indicio de impacto adverso** contra B.
+4. **¿Es injusto?** Depende de la tasa base. Añadimos la etiqueta real (quién realmente paga):
+
+```text
+                aprobados   solvencia real (Y=1)   TPR = P(Ŷ=1|Y=1)
+Grupo A            200            250 solventes      180/250 = 0.72
+Grupo B            120            150 solventes       96/150 = 0.64
+```
+
+5. **Igualdad de oportunidad**: TPR_A = 0.72 vs TPR_B = 0.64 → el modelo aprueba a un solvente de B
+   con menos frecuencia que a uno de A. Hay disparidad tanto en resultado (DI) como en oportunidad.
+6. **Tensión**: si sube el umbral de aprobación para B a igualar TPR, cambia su FPR y puede romper
+   calibración —exactamente la imposibilidad de Kleinberg. La decisión (qué criterio priorizar) es
+   normativa, no técnica, y debe documentarse con las partes afectadas.
+
+## 📊 Propiedades y comparación
+
+| Criterio | Qué iguala | Cuándo es apropiado | Choca con |
+|---|---|---|---|
+| Paridad demográfica | tasa de positivos | reparto de un bien escaso | precisión si tasas base difieren |
+| Igualdad de oportunidad | TPR (recall) | no perder verdaderos positivos | paridad demográfica |
+| Equalized odds | TPR y FPR | costo simétrico de errores | calibración (Kleinberg) |
+| Calibración por grupo | significado del score | scores usados como probabilidad | equalized odds (Kleinberg) |
+
+```mermaid
+flowchart TD
+    A[Definir grupos protegidos y tasas base] --> B{Tasas base iguales entre grupos?}
+    B -- si --> C[Criterios compatibles: caso raro]
+    B -- no --> D[Imposibilidad de Kleinberg: elegir UN criterio]
+    D --> E[Medir DI, TPR y FPR por grupo]
+    E --> F{DI < 0.80 o disparidad de TPR?}
+    F -- si --> G[Intervenir: pre / in / post-procesado]
+    F -- no --> H[Documentar y monitorear en el tiempo]
+    G --> I[Registrar el criterio elegido y su justificacion]
+```
+
+## ⚠️ Errores conceptuales frecuentes
+
+1. **"Quitar el atributo protegido hace justo al modelo"** (*fairness through unawareness*). Los
+   proxies (código postal, nombre, historial) reconstruyen el atributo; ignorarlo no lo elimina.
+2. **"Existe una métrica de equidad correcta"**. Kleinberg et al. prueban que las principales son
+   incompatibles cuando difieren las tasas base; hay que elegir y justificar, no descubrir "la" justa.
+3. **"DI ≥ 0.80 significa que el modelo es justo"**. La regla del 80 % es un umbral legal
+   orientativo; puede cumplirse y aun así haber disparidad de oportunidad o calibración.
+4. **"El sesgo está en el algoritmo"**. La mayor parte del sesgo entra por los *datos* (histórico,
+   medición, representación); cambiar de modelo sin tocar los datos rara vez lo corrige.
+5. **"Igualar tasas siempre es lo correcto"**. Igualar paridad demográfica cuando las tasas base
+   difieren legítimamente puede introducir otros daños; el criterio se elige por contexto y valores.
+
+## 🚀 Del aprendizaje a la operación
+
+En operación: definir grupos protegidos y el criterio de equidad *priorizado* con las partes
+afectadas y legal, medir DI/TPR/FPR/calibración por subgrupo de forma continua (no una vez),
+auditar interseccionalidad (combinaciones de atributos), documentar la elección y sus trade-offs en
+la model card (clase 167), y monitorear drift porque la equidad medida hoy puede degradarse mañana.
+Esta clase solo establece las definiciones, el teorema de imposibilidad y el cálculo manual del
+disparate impact.
+
 ## 🧪 Laboratorio
 
 ```bash
@@ -85,10 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)
-- [MITRE ATLAS](https://atlas.mitre.org/)
-- [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [Kleinberg, Mullainathan & Raghavan (2016), *Inherent Trade-Offs in the Fair Determination of Risk Scores*, arXiv:1609.05807](https://arxiv.org/abs/1609.05807)
+- [Hardt, Price & Srebro (2016), *Equality of Opportunity in Supervised Learning*, arXiv:1610.02413](https://arxiv.org/abs/1610.02413)
+- [Barocas, Hardt & Narayanan, *Fairness and Machine Learning* (libro abierto)](https://fairmlbook.org/)
+- [Mehrabi et al. (2021), *A Survey on Bias and Fairness in Machine Learning*, arXiv:1908.09635](https://arxiv.org/abs/1908.09635)
+- [U.S. EEOC — Uniform Guidelines on Employee Selection Procedures (regla del 80 %)](https://www.eeoc.gov/laws/guidance/questions-and-answers-clarify-and-provide-common-interpretation-uniform-guidelines)
 
 ---
 
