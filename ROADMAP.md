@@ -9,8 +9,13 @@
 - [x] Tests de estructura, contratos y motores.
 - [x] Catálogo de datasets, especializaciones y frontera.
 
-## 🎓 0.2 — Profundización pedagógica
+## ✅ 0.2 — Profundización pedagógica (entregado)
 
+- [x] Materia completa en las 180 clases (fundamentos, ejemplos trabajados,
+      diagramas y referencias primarias) dentro del README de cada clase.
+- [x] 540 notebooks con ejercicios y soluciones verificadas por ejecución.
+- [x] Sitio de GitHub Pages con las 180 clases navegables en HTML.
+- [x] PDFs por parte y programa completo en docs/pdf/.
 - [ ] Añadir rúbricas automáticas por familia de laboratorios.
 - [ ] Incorporar quizzes pre/post y exportación de progreso.
 - [ ] Ejecutar en CI una muestra rotativa de notebooks.

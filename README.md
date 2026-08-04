@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.1.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-180%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Notebooks](https://img.shields.io/badge/notebooks-540-2e8b57?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
@@ -132,6 +132,21 @@ python -m http.server 8080
 ```
 
 Abre `http://localhost:8080/site/`.
+
+## 📕 PDFs del programa
+
+El mismo contenido de las clases, listo para imprimir o leer offline
+(generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
+
+- [📕 Programa completo (~1 100 páginas)](docs/pdf/programa-completo.pdf)
+- Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
+  [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·
+  [04](docs/pdf/parte-04.pdf) · [05](docs/pdf/parte-05.pdf) ·
+  [06](docs/pdf/parte-06.pdf) · [07](docs/pdf/parte-07.pdf) ·
+  [08](docs/pdf/parte-08.pdf) · [09](docs/pdf/parte-09.pdf) ·
+  [10](docs/pdf/parte-10.pdf) · [11](docs/pdf/parte-11.pdf) ·
+  [12](docs/pdf/parte-12.pdf) · [13](docs/pdf/parte-13.pdf) ·
+  [14](docs/pdf/parte-14.pdf)
 
 ## 📦 Contrato de una clase
 
