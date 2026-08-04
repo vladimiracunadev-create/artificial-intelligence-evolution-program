@@ -12,3 +12,7 @@ docs/generated/*.pdf
 docs/generated/*.pptx
 .claude/scheduled_tasks.lock
 site/classes/
+apps/android/www/
+apps/android/android/
+apps/android/node_modules/
+apps/android/package-lock.json

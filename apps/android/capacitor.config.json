@@ -1,0 +1,11 @@
+{
+  "appId": "dev.vladimiracuna.aievolution",
+  "appName": "AI Evolution Program",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
