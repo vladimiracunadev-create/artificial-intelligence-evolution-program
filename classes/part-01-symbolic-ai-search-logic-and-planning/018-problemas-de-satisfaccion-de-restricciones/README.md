@@ -210,8 +210,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 6 "Constraint Satisfaction Problems". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Mackworth, A. K. (1977). "Consistency in Networks of Relations". *Artificial Intelligence*, 8(1). [https://doi.org/10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8)
-- Minton, S. et al. (1992). "Minimizing conflicts: a heuristic repair method for constraint satisfaction and scheduling problems". *Artificial Intelligence*, 58(1-3). [https://doi.org/10.1016/0004-3702(92)90007-K](https://doi.org/10.1016/0004-3702(92)90007-K)
+- Mackworth, A. K. (1977). "Consistency in Networks of Relations". *Artificial Intelligence*, 8(1). [https://doi.org/10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702%2877%2990007-8)
+- Minton, S. et al. (1992). "Minimizing conflicts: a heuristic repair method for constraint satisfaction and scheduling problems". *Artificial Intelligence*, 58(1-3). [https://doi.org/10.1016/0004-3702(92)90007-K](https://doi.org/10.1016/0004-3702%2892%2990007-K)
 - Rossi, F., van Beek, P. y Walsh, T. (eds.) (2006). *Handbook of Constraint Programming*. Elsevier.
 - MiniZinc — lenguaje de modelado de restricciones: [https://www.minizinc.org/](https://www.minizinc.org/)
 

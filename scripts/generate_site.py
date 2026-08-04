@@ -73,6 +73,12 @@ def rewrite_class_links(text: str, lesson_path: str) -> str:
     # evaluación integrada en la misma página
     text = text.replace("(assessment.md)", "(#evaluacion)")
     text = text.replace("(README.md)", "(#top)")
+    # cualquier otra referencia relativa a archivos del repo → blob de GitHub
+    text = re.sub(
+        r"\((?:\.\./)+((?:frontier|datasets|docs|specializations|src|scripts)/[^)\s]*)\)",
+        rf"({REPO_URL}/blob/main/\1)",
+        text,
+    )
     return text
 
 

@@ -250,7 +250,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 "Model Assessment and Selection", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [Brier (1950), "Verification of Forecasts Expressed in Terms of Probability", *Monthly Weather Review*. DOI 10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2](https://doi.org/10.1175/1520-0493(1950)078%3C0001:VOFEIT%3E2.0.CO;2)
+- [Brier (1950), "Verification of Forecasts Expressed in Terms of Probability", *Monthly Weather Review*. DOI 10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2](https://doi.org/10.1175/1520-0493%281950%29078%3C0001:VOFEIT%3E2.0.CO;2)
 - [Hardt, Price & Srebro (2016), "Equality of Opportunity in Supervised Learning", NeurIPS. arXiv:1610.02413](https://arxiv.org/abs/1610.02413)
 - [Kleinberg, Mullainathan & Raghavan (2016), "Inherent Trade-Offs in the Fair Determination of Risk Scores". arXiv:1609.05807](https://arxiv.org/abs/1609.05807)
 - [Chouldechova (2017), "Fair Prediction with Disparate Impact", *Big Data* 5(2). DOI 10.1089/big.2016.0047](https://doi.org/10.1089/big.2016.0047)

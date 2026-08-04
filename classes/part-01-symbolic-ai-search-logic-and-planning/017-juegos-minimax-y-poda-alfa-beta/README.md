@@ -202,9 +202,9 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 5 "Adversarial Search and Games". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Knuth, D. E. y Moore, R. W. (1975). "An Analysis of Alpha-Beta Pruning". *Artificial Intelligence*, 6(4). [https://doi.org/10.1016/0004-3702(75)90019-3](https://doi.org/10.1016/0004-3702(75)90019-3)
+- Knuth, D. E. y Moore, R. W. (1975). "An Analysis of Alpha-Beta Pruning". *Artificial Intelligence*, 6(4). [https://doi.org/10.1016/0004-3702(75)90019-3](https://doi.org/10.1016/0004-3702%2875%2990019-3)
 - Shannon, C. E. (1950). "Programming a Computer for Playing Chess". *Philosophical Magazine*, 41(314) — el paper fundacional del ajedrez computacional.
-- Campbell, M., Hoane, A. J. y Hsu, F. (2002). "Deep Blue". *Artificial Intelligence*, 134(1-2). [https://doi.org/10.1016/S0004-3702(01)00129-1](https://doi.org/10.1016/S0004-3702(01)00129-1)
+- Campbell, M., Hoane, A. J. y Hsu, F. (2002). "Deep Blue". *Artificial Intelligence*, 134(1-2). [https://doi.org/10.1016/S0004-3702(01)00129-1](https://doi.org/10.1016/S0004-3702%2801%2900129-1)
 - Silver, D. et al. (2016). "Mastering the game of Go with deep neural networks and tree search". *Nature*, 529. [https://doi.org/10.1038/nature16961](https://doi.org/10.1038/nature16961)
 
 ---

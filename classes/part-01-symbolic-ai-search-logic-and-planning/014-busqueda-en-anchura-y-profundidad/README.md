@@ -203,7 +203,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 - Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.3-3.4 "Search Algorithms / Uninformed Search Strategies". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
 - Moore, E. F. (1959). "The shortest path through a maze". *Proceedings of the International Symposium on the Theory of Switching* — origen de BFS para caminos mínimos.
-- Korf, R. E. (1985). "Depth-first iterative-deepening: An optimal admissible tree search". *Artificial Intelligence*, 27(1). [https://doi.org/10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702(85)90084-0)
+- Korf, R. E. (1985). "Depth-first iterative-deepening: An optimal admissible tree search". *Artificial Intelligence*, 27(1). [https://doi.org/10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702%2885%2990084-0)
 - Cormen, T. H. et al. (2022). *Introduction to Algorithms* (4.ª ed.), cap. 20 "Elementary Graph Algorithms" — BFS/DFS con análisis formal.
 
 ---
