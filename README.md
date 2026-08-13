@@ -17,6 +17,8 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Version](https://img.shields.io/badge/version-0.2.1-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-180%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Notebooks](https://img.shields.io/badge/notebooks-540-2e8b57?style=for-the-badge)](classes/)
+[![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
+[![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
@@ -28,7 +30,17 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [🧭 Ruta](docs/LEARNING_PATH.md) ·
 [🤖 Especialización en agentes](docs/AGENTIC_SYSTEMS_TRACK.md) ·
 [📖 Glosario](docs/GLOSSARY.md) ·
-[🏗️ Arquitectura](docs/ARCHITECTURE.md) · [🗺️ Roadmap](ROADMAP.md)
+[📕 PDFs](docs/pdf/) ·
+[🏗️ Arquitectura](docs/ARCHITECTURE.md) ·
+[🗺️ Roadmap](ROADMAP.md) ·
+[🤝 Contribuir](CONTRIBUTING.md) ·
+[🔐 Seguridad](SECURITY.md)
+
+<br>
+
+| 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 🧰 Motores didácticos | 📕 PDFs |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **180** | **540** | **180** | **15** | **20** | **16** |
 
 </div>
 
@@ -86,24 +98,76 @@ flowchart LR
     N --> O["🔭 14 Frontera<br/>y capstones"]
 ```
 
-## 🗂️ Partes del programa
+## 🗂️ Las 15 partes, en 6 etapas evolutivas
+
+Cada parte tiene su **propio README** con la secuencia de sus 12 clases. Las
+etapas siguen la evolución histórica del campo: lo que cada una enseña es el
+prerrequisito real de la siguiente.
+
+### 🟢 Etapa 1 — Fundamentos e IA clásica
+
+La base que el resto del programa asume: método científico, búsqueda, lógica e
+incertidumbre. **Salida: leer el campo con criterio, no con hype.**
 
 | # | Parte | Clases | Nivel | Duración |
 |---:|---|---:|---|---|
 | 00 | [📜 Fundamentos, historia y método científico](classes/part-00-foundations-history-and-scientific-method/README.md) | 12 | fundamentos | 3–4 |
 | 01 | [♟️ IA simbólica, búsqueda, lógica y planificación](classes/part-01-symbolic-ai-search-logic-and-planning/README.md) | 12 | fundamentos | 4–5 |
 | 02 | [🎲 IA probabilística, evolutiva y de decisión](classes/part-02-probabilistic-evolutionary-and-decision-ai/README.md) | 12 | intermedio | 4–5 |
+
+### 🔵 Etapa 2 — Aprendizaje automático y percepción
+
+De las reglas escritas a los patrones aprendidos, y de los vectores a los
+sentidos. **Salida: entrenar, diagnosticar y evaluar modelos con evidencia.**
+
+| # | Parte | Clases | Nivel | Duración |
+|---:|---|---:|---|---|
 | 03 | [📊 Machine learning clásico](classes/part-03-classical-machine-learning/README.md) | 12 | intermedio | 5–6 |
 | 04 | [🧠 Redes neuronales y deep learning](classes/part-04-neural-networks-and-deep-learning/README.md) | 12 | intermedio-avanzado | 6–8 |
 | 05 | [👁️ Lenguaje, visión, audio e IA multimodal](classes/part-05-language-vision-audio-and-multimodal-ai/README.md) | 12 | avanzado | 5–6 |
+
+### 🟣 Etapa 3 — Modelos fundacionales, generativa y conocimiento
+
+El giro de 2020s: modelos preentrenados adaptables, generación en todos los
+medios y sistemas que citan evidencia. **Salida: construir servicios LLM con
+contratos, RAG auditable y memoria.**
+
+| # | Parte | Clases | Nivel | Duración |
+|---:|---|---:|---|---|
 | 06 | [⚙️ Modelos fundacionales e ingeniería de LLM](classes/part-06-foundation-models-and-llm-engineering/README.md) | 12 | avanzado | 6–7 |
 | 07 | [🎨 IA generativa para texto, imagen, audio, video y 3D](classes/part-07-generative-ai-across-media/README.md) | 12 | avanzado | 5–6 |
 | 08 | [🔎 Recuperación, contexto, memoria y conocimiento](classes/part-08-retrieval-context-memory-and-knowledge/README.md) | 12 | avanzado | 5–6 |
+
+### 🟠 Etapa 4 — Agentes: del modelo que responde al sistema que actúa
+
+El modelo se convierte en componente de decisión de un sistema con
+herramientas, permisos y presupuesto. **Salida: dominar las ingenierías de
+agentes (harness, loop, graph, context) y la orquestación multiagente.**
+
+| # | Parte | Clases | Nivel | Duración |
+|---:|---|---:|---|---|
 | 09 | [🤖 Ingeniería de agentes de IA](classes/part-09-ai-agent-engineering/README.md) | 12 | avanzado | 6–7 |
 | 10 | [🕸️ Sistemas multiagente e interoperabilidad](classes/part-10-multi-agent-systems-and-interoperability/README.md) | 12 | experto | 6–7 |
 | 11 | [🦾 IA encarnada, robótica y uso de computadores](classes/part-11-embodied-ai-robotics-and-computer-use/README.md) | 12 | experto | 5–6 |
+
+### 🔴 Etapa 5 — Operación, evaluación y gobernanza
+
+Lo que separa la demo del sistema en producción: observabilidad, evals como
+gate, seguridad y cumplimiento. **Salida: operar IA con evidencia y responder
+por ella.**
+
+| # | Parte | Clases | Nivel | Duración |
+|---:|---|---:|---|---|
 | 12 | [🛠️ Ingeniería de IA, MLOps, LLMOps y AgentOps](classes/part-12-ai-engineering-mlops-llmops-and-agentops/README.md) | 12 | experto | 6–7 |
 | 13 | [🛡️ Evaluación, seguridad y gobernanza](classes/part-13-evaluation-safety-security-and-governance/README.md) | 12 | experto | 6–7 |
+
+### ⚫ Etapa 6 — Frontera y capstones
+
+Investigación abierta con fecha y fuente, y el proyecto integrador que une las
+14 partes anteriores. **Salida: vigilar la frontera sin perseguir modas.**
+
+| # | Parte | Clases | Nivel | Duración |
+|---:|---|---:|---|---|
 | 14 | [🔭 Frontera, investigación y proyectos integradores](classes/part-14-frontier-research-and-capstones/README.md) | 12 | frontera | 8–12 |
 
 ## 🚀 Inicio rápido
@@ -171,13 +235,42 @@ classes/part-XX-slug/NNN-topic/
 | [LangGraph Realworld](https://github.com/vladimiracunadev-create/langgraph-realworld) | Casos empresariales de orquestación |
 | [Claude Skills Toolkit](https://github.com/vladimiracunadev-create/claude-skills-toolkit) | Skills operativos reutilizables |
 
-## ⚖️ Límites honestos
+## ⚖️ Qué es y qué no es este programa
 
-- Los laboratorios base priorizan ejecución reproducible con Python estándar.
-- Los entrenamientos grandes, robots físicos y APIs comerciales requieren entornos externos.
-- Un caso educativo no equivale a certificación clínica, financiera, legal o de seguridad.
-- La carpeta `frontier/` registra tecnología emergente; no la presenta como conocimiento estable.
-- Las licencias de datasets deben revisarse nuevamente al descargar una versión concreta.
+<table>
+<tr>
+<td valign="top" width="50%">
+
+### ✅ Lo que sí es
+
+- 🧬 un **mapa evolutivo completo** de la IA: 180 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
+- 🧪 material **ejecutable y verificable**: 540 notebooks, 180 laboratorios locales deterministas y contratos JSON con `evidence` y `limitations`;
+- 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 16 PDFs imprimibles;
+- 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
+- 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.
+
+</td>
+<td valign="top" width="50%">
+
+### ❌ Lo que no es
+
+- 🚫 una certificación: completar clases no acredita competencia clínica, financiera, legal ni de seguridad;
+- 🚫 un curso de una sola API: los laboratorios base corren con Python estándar, sin claves ni servicios pagados;
+- 🚫 entrenamiento a gran escala: los entrenamientos grandes, robots físicos y APIs comerciales exigen entornos externos;
+- 🚫 conocimiento congelado: la carpeta `frontier/` registra lo emergente con fecha y fuente, sin presentarlo como estable;
+- 🚫 un sustituto de la verificación: las licencias de datasets se revisan de nuevo al descargar cada versión concreta.
+
+</td>
+</tr>
+</table>
+
+## 💡 Idea fuerza
+
+> El valor de este programa no está en acumular técnicas de IA, sino en
+> **recorrer su evolución con evidencia**: cada clase produce un resultado
+> reproducible, declara sus límites, y prepara exactamente lo que la siguiente
+> etapa asume. Los agentes no son el inicio de la historia — son el capítulo
+> que solo se entiende con los trece anteriores.
 
 ## 🧪 Calidad
 
@@ -191,3 +284,27 @@ python scripts/validate_repository.py --strict
 
 Código y documentación original bajo [MIT](LICENSE). Datasets, papers, modelos y
 servicios externos conservan sus propias licencias y términos.
+
+---
+
+<div align="center">
+
+**Hecho para quien quiere entender la IA completa, no solo la última ola.**
+
+[⬆️ Empezar por la clase 001](classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es/README.md) ·
+[🌐 Sitio de estudio](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/) ·
+[📖 Glosario](docs/GLOSSARY.md) ·
+[📕 Programa completo en PDF](docs/pdf/programa-completo.pdf) ·
+[🗺️ Roadmap](ROADMAP.md)
+
+<br>
+
+**¿Te resulta útil? ⭐ Dale una estrella al repo.**
+
+[![GitHub stars](https://img.shields.io/github/stars/vladimiracunadev-create/artificial-intelligence-evolution-program?style=social)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/vladimiracunadev-create/artificial-intelligence-evolution-program?style=social)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/network/members)
+[![Follow](https://img.shields.io/github/followers/vladimiracunadev-create?style=social&label=Follow)](https://github.com/vladimiracunadev-create)
+
+Hecho con 🧠 y ☕ por [Vladimir Acuña](https://github.com/vladimiracunadev-create)
+
+</div>
