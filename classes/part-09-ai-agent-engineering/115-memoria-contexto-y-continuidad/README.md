@@ -76,6 +76,17 @@ regla práctica del presupuesto de contexto:
              + recuperado bajo demanda (efímero)
 ```
 
+Esta práctica tiene hoy nombre de disciplina: **context engineering** — decidir qué
+tokens *ganan* un lugar en la ventana en cada paso. La formulación de Anthropic la
+resume: encontrar el **menor conjunto de tokens de alta señal** que maximice la
+probabilidad del resultado deseado. El desplazamiento respecto del prompt engineering es
+de alcance, no de técnica: el prompt es una llamada; el contexto es todo lo que el modelo
+ve en *cada* llamada de una tarea larga (instrucciones, tools, recuperado, historial,
+memoria). El *context rot* dejó además de ser anécdota: ya existen benchmarks que lo miden
+bajo crecimiento controlado de contexto (p. ej. LOCA-bench), y la conclusión operativa es
+estable — la ventaja competitiva no está en ventanas más grandes sino en curar mejor lo
+que entra.
+
 ### 🔖 Continuidad e identidad
 
 **Continuidad** es que la tarea sobreviva a la interrupción (crash, límite de sesión,
@@ -239,6 +250,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Lewis et al. (2020), "Retrieval-Augmented Generation", arXiv:2005.11401 (recuperación selectiva hacia el contexto)](https://arxiv.org/abs/2005.11401)
 - [LangGraph — Persistence (checkpoints y reanudación de grafos con estado)](https://docs.langchain.com/oss/python/langgraph/persistence)
 - [OWASP Top 10 for LLM Applications (envenenamiento de memoria como riesgo persistente)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- ["LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth", arXiv:2602.07962 (medición del context rot)](https://arxiv.org/abs/2602.07962)
 
 ---
 

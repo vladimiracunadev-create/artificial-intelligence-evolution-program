@@ -85,6 +85,36 @@ aceptar solo si: tests nuevos pasan Y tests previos siguen pasando
 La calidad del sistema depende menos del modelo que del **harness**: qué contexto se
 recupera, qué tests existen, cómo se limita el radio de la edición. Sin tests, el
 bucle degenera en "parece correcto", que es precisamente lo que no se puede auditar.
+La industria llamó a esta capa **harness engineering** (OpenAI, 2026); la ecuación
+*Agente = Modelo + Harness* que introduce la clase 110 tiene aquí su caso de uso más
+maduro.
+
+### 📋 Spec-driven development: la especificación como contrato
+
+Cuando el agente de código es capaz de ejecutar el bucle completo, el cuello de botella
+se desplaza a la *entrada*: ¿qué le pedimos exactamente? **Spec-driven development
+(SDD)** responde convirtiendo la especificación en el artefacto principal del trabajo:
+
+```text
+1. SPEC      qué debe hacer el cambio, con criterios de aceptación VERIFICABLES
+             (idealmente: tests que hoy fallan y deberán pasar)
+2. PLAN      el agente propone descomposición y archivos afectados; el humano revisa
+             ANTES de que exista código
+3. IMPLEMENT el agente ejecuta el plan unidad por unidad, verificando cada una
+4. VERIFY    la spec se re-evalúa completa: criterios de aceptación + regresiones
+```
+
+Tres observaciones para no comprar el término sin crítica. Primera: SDD es un
+subconjunto de context engineering — la spec es el contexto de más alta señal que
+existe, porque define éxito de forma verificable (compárese con `FAIL_TO_PASS` de
+SWE-bench: un benchmark de agentes *es* una spec ejecutable). Segunda: la objeción
+"¿no es waterfall con IA?" es parcialmente justa; SDD funciona cuando la spec puede
+escribirse antes (correcciones, migraciones, features acotadas) y estorba en
+exploración genuina, donde el bucle iterativo de la sección anterior es el flujo
+correcto. Tercera: la spec desactualizada es deuda nueva — si el código diverge de la
+spec y nadie la corrige, el próximo agente implementará contra un contrato falso. La
+modernización de legado (siguiente sección) es SDD en su forma extrema: los tests de
+caracterización *son* la spec, extraída del comportamiento real.
 
 ### 🏚️ Modernización de legado
 
@@ -229,6 +259,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Li, Y. et al. (2022). *Competition-level code generation with AlphaCode*. Science 378(6624). [DOI 10.1126/science.abq1158](https://doi.org/10.1126/science.abq1158)
 - Feathers, M. (2004). *Working Effectively with Legacy Code*. Prentice Hall. [Ficha editorial](https://www.oreilly.com/library/view/working-effectively-with/0131177052/)
 - Austin, J. et al. (2021). *Program Synthesis with Large Language Models* (MBPP). [arXiv:2108.07732](https://arxiv.org/abs/2108.07732)
+- OpenAI (2026). *Harness engineering: leveraging Codex in an agent-first world*. [openai.com/index/harness-engineering](https://openai.com/index/harness-engineering/)
+- GitHub — *Spec Kit* (toolkit de spec-driven development para agentes de código). [github.com/github/spec-kit](https://github.com/github/spec-kit)
 
 ---
 

@@ -36,6 +36,31 @@ objetivo. La distinción modelo → workflow → agente que se establece aquí g
 clases siguientes: anatomía (110), ciclo ReAct (111), planificación (112) y los controles de
 seguridad, presupuesto y evaluación que un sistema autónomo exige (116-119).
 
+## 🧰 El mapa de las ingenierías de IA
+
+Entre 2024 y 2026 la industria consolidó, bajo el paraguas de **agent engineering**, un
+conjunto de sub-disciplinas con nombre propio. Este programa las enseña todas, en muchos
+casos antes de que tuvieran nombre; esta tabla traduce el vocabulario 2026 al temario para
+que puedas conversar con la industria sin perderte:
+
+| Disciplina (término 2026) | Qué diseña | Dónde se enseña aquí |
+|---|---|---|
+| **Prompt engineering** | La instrucción de una llamada individual | Parte 06 · clase 152 (gestión y versionado) |
+| **Context engineering** | Qué tokens entran a la ventana en cada paso: el menor conjunto de alta señal | Clases 106, 115, 118 |
+| **Harness engineering** | La capa determinista que valida, autoriza, ejecuta y registra cada acción propuesta por el modelo (**Agente = Modelo + Harness**) | Clases 110, 113, 116-118 |
+| **Loop engineering** | El bucle decidir → actuar → observar → verificar y sus condiciones de parada | Clases 111-112 |
+| **Graph / flow engineering** | El control de flujo como grafo explícito de estados con aristas condicionales, en vez de bucle imperativo | Clases 121-125 |
+| **Memory engineering** | Qué se persiste entre sesiones, cómo se recupera y cómo se mide | Clases 105, 115, 127 |
+| **Eval engineering** | Evaluaciones como gate de despliegue (*evaluation-driven development*) | Clases 119, 151, 157-158 |
+| **Spec-driven development** | Especificaciones ejecutables como contrato entre humano y agente de código | Clases 110, 175 |
+| **AgentOps** | Observabilidad, gobernanza, registros de skills y personas de agente en operación | Parte 12 · clases 150, 166 |
+
+Dos advertencias. Primera: los nombres cambian más rápido que las prácticas — "harness",
+"loop" y "graph engineering" describen capas de un mismo sistema, no tecnologías rivales.
+Segunda: la ecuación **Agente = Modelo + Harness** implica que la mayoría de los fallos de
+producción no son fallos del modelo sino del arnés que lo rodea; por eso este programa
+dedica más clases al arnés (110-119) que al modelo.
+
 ## 📖 Fundamentos
 
 ### 🤖 Definición operativa de agente
@@ -240,6 +265,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761](https://arxiv.org/abs/2302.04761)
 - [Anthropic — documentación oficial de agentes y herramientas](https://docs.claude.com)
 - [LangGraph — Overview (grafos de control para workflows y agentes)](https://docs.langchain.com/oss/python/langgraph/overview)
+- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/)
+- [Anthropic Engineering — "Effective context engineering for AI agents"](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 
 ---
 

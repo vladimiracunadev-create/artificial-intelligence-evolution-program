@@ -108,6 +108,26 @@ el **estado** (contexto + tarea) y emite una intención sobre el repertorio de
 agente materializa la **salida estructurada**. Cualquier framework de agentes es una
 implementación opinada de este esqueleto.
 
+### 🛡️ El harness: la pieza que envuelve a las otras cuatro
+
+La industria bautizó en 2025-2026 como **harness engineering** al diseño de la capa
+determinista que rodea al modelo: el runtime que valida cada intención de llamada contra
+su contrato, la autoriza contra la matriz de permisos, la ejecuta, registra la observación
+y decide qué entra de vuelta al contexto. La ecuación de trabajo es:
+
+```text
+Agente = Modelo + Harness
+```
+
+y su corolario, confirmado por la experiencia de producción: la mayoría de los agentes no
+fallan porque el modelo sea débil, sino porque el harness es frágil, inseguro o
+impredecible. Esta clase describe la anatomía del harness sin nombrarlo; las clases 113
+(contratos), 116 (permisos), 117 (aprobaciones) y 118 (presupuestos) construyen sus
+componentes uno a uno. Dos principios de diseño de la literatura reciente: construir sobre
+herramientas y formatos que el modelo ya conoce (menos instrucción, menos error), y
+**retirar supuestos del harness a medida que mejora la capacidad del modelo** — un harness
+diseñado para un modelo de 2024 sobre-restringe a uno de 2026.
+
 ## 🧮 Ejemplo trabajado
 
 Anatomía completa del agente del laboratorio, pieza por pieza:
@@ -240,6 +260,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [JSON Schema — especificación oficial (validación de parámetros y salidas)](https://json-schema.org/specification)
 - [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
 - [Russell y Norvig — *AIMA* (4e), cap. 2 (estructura de agentes: programa + arquitectura)](https://aima.cs.berkeley.edu/)
+- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/)
+- ["Harness Engineering for Agentic AI Coding Tools: An Exploratory Study", arXiv:2602.14690](https://arxiv.org/abs/2602.14690)
 
 ---
 

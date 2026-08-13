@@ -51,7 +51,10 @@ prioridad: lo que cambia la respuesta > lo que la decora
 ```
 
 La pregunta de diseño no es "¿cuánto cabe?" sino "¿qué aporta cada token a la calidad
-de la respuesta?" — y medirla (clase 107) es lo único que legitima recortar.
+de la respuesta?" — y medirla (clase 107) es lo único que legitima recortar. Esta
+pregunta es el núcleo de lo que la industria llama hoy **context engineering** (el menor
+conjunto de tokens de alta señal por llamada); la clase 115 la retoma para el caso
+agéntico, donde el contexto además crece con cada iteración del bucle.
 
 ### 🗜️ Compresión de contexto
 

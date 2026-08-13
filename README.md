@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.2.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.1-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-180%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Notebooks](https://img.shields.io/badge/notebooks-540-2e8b57?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
@@ -27,6 +27,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [🌐 **Sitio de estudio (vivo)**](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/) ·
 [🧭 Ruta](docs/LEARNING_PATH.md) ·
 [🤖 Especialización en agentes](docs/AGENTIC_SYSTEMS_TRACK.md) ·
+[📖 Glosario](docs/GLOSSARY.md) ·
 [🏗️ Arquitectura](docs/ARCHITECTURE.md) · [🗺️ Roadmap](ROADMAP.md)
 
 </div>

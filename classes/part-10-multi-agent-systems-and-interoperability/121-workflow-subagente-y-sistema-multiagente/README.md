@@ -93,6 +93,51 @@ separación de contextos que exceden una ventana, y especialización de permisos
 herramientas por rol. AutoGen (Wu et al., arXiv:2308.08155) formaliza esto como
 *conversaciones* entre agentes conversables y programables.
 
+### 📇 El catálogo canónico de patrones agénticos
+
+La industria converge en dos catálogos que conviene saber nombrar, porque son el
+vocabulario de entrevistas, papers y documentación de frameworks. Las clases 122-127 los
+enseñan uno a uno; esta tabla es el diccionario:
+
+| Patrón (nombre canónico) | Fuente | Clase de este programa |
+|---|---|---|
+| Prompt chaining | Anthropic (workflow) | 121 (workflow) |
+| Routing | Anthropic (workflow) | 122 — router y especialistas |
+| Parallelization | Anthropic (workflow) | 125 — fan-out y map-reduce |
+| Orchestrator-workers | Anthropic (workflow) | 124 — supervisor-workers |
+| Evaluator-optimizer | Anthropic (workflow) | 126 — crítica y revisión |
+| Reflection | Ng (patrón agéntico) | 126 — crítica, revisión y debate |
+| Tool use | Ng (patrón agéntico) | 113 — herramientas tipadas |
+| Planning | Ng (patrón agéntico) | 112 — planificación y descomposición |
+| Multi-agent collaboration | Ng (patrón agéntico) | 121-128 (esta parte completa) |
+
+### 🕸️ Graph engineering: el flujo como grafo explícito
+
+Hay una cuarta forma de organizar el control que no aparece en la tabla de tres
+arquitecturas porque las atraviesa: **graph engineering** (también *flow engineering*) —
+formalizar el sistema como un **grafo de estados explícito** en vez de como bucle
+imperativo. Sus elementos:
+
+```text
+nodos     agentes o funciones (llamadas LLM, tools, código puro)
+aristas   transiciones de control — incluidas ARISTAS CONDICIONALES
+          (la siguiente arista se elige en runtime según el estado)
+estado    un objeto TIPADO y compartido que fluye por las aristas
+extras    checkpointing (persistencia y reanudación, clase 115),
+          puntos de interrupción para aprobación humana (clase 117),
+          fan-out/fan-in nativos (clase 125)
+```
+
+La diferencia con el workflow clásico: el grafo no es un guion rígido — las aristas
+condicionales le devuelven al modelo decisión *local* (qué rama tomar) mientras el
+ingeniero conserva la decisión *global* (qué ramas existen). La diferencia con el agente
+puro: la trayectoria posible está acotada por construcción, lo que hace el sistema
+auditable, testeable por nodo y reanudable. LangGraph, el ADK de Google y CrewAI Flows
+implementan exactamente esta abstracción; el proyecto de la clase 132 (sistema
+multiagente durable) la ejercita con checkpoints. Regla de decisión: bucle libre cuando
+la trayectoria es genuinamente impredecible; grafo cuando puedes enumerar los estados
+legales — y en producción casi siempre puedes.
+
 ## 🧮 Ejemplo trabajado
 
 Tarea: "evaluar si el repositorio `demo` está listo para publicarse".
@@ -231,6 +276,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Wu et al., *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): framework seminal de agentes conversables.
 - Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: fundamento clásico pre-LLM de agencia y coordinación.
 - [LangGraph — Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs): implementación de subagentes como grafos anidados.
+- [LangGraph — Overview](https://docs.langchain.com/oss/python/langgraph/overview): grafos de estados con aristas condicionales, checkpointing e interrupciones (graph engineering como abstracción de primera clase).
+- [Andrew Ng — Agentic Design Patterns (The Batch, deeplearning.ai)](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/): los cuatro patrones — Reflection, Tool use, Planning, Multi-agent collaboration.
 
 ---
 

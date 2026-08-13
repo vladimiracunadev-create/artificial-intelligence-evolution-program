@@ -89,6 +89,19 @@ compactar(hilo):
   (el hecho nuevo reemplaza al viejo) o decae por falta de uso evita que el store
   acumule contradicciones y ruido.
 
+### 📏 Memory engineering: de heurística a disciplina medible
+
+Hacia 2026 la memoria de agentes dejó de ser un cajón de heurísticas y se convirtió en
+**memory engineering**: una práctica con benchmarks estandarizados que permiten comparar
+arquitecturas de memoria *distintas* (grafo de hechos, vector store, resumen jerárquico,
+archivos planos) sobre el mismo conjunto de evaluación — preguntas cuya respuesta exige
+recordar información de sesiones anteriores, actualizar hechos que cambiaron y abstenerse
+cuando el recuerdo no existe (p. ej. LongMemEval). La consecuencia práctica para esta
+clase: cualquier decisión de diseño del store (esquema, política de olvido, umbral de
+compactación) debe justificarse con una métrica sobre un conjunto de recuerdo, no con la
+intuición de que "recordar más es mejor" — recordar de más introduce contradicciones y
+contexto muerto que degradan la respuesta tanto como olvidar de menos.
+
 ## 🧮 Ejemplo trabajado
 
 Hilo de soporte técnico con presupuesto de contexto de 4 000 tokens:
@@ -238,6 +251,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
 - Documentación de LangGraph, *Memory*: [https://langchain-ai.github.io/langgraph/concepts/memory/](https://langchain-ai.github.io/langgraph/concepts/memory/)
 - Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 2 (agentes y estado interno). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- Wu, D. et al. (2024). *LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory*. [arXiv:2410.10813](https://arxiv.org/abs/2410.10813)
+- Mem0 — *State of AI Agent Memory 2026* (panorama de benchmarks y arquitecturas de memoria): [https://mem0.ai/blog/state-of-ai-agent-memory-2026](https://mem0.ai/blog/state-of-ai-agent-memory-2026)
 
 ---
 

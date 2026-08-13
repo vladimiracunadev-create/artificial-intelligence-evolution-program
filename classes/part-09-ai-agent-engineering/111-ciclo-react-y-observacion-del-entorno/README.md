@@ -98,6 +98,28 @@ trayectoria (motiva planificación y replanteo, clase 112); y las observaciones 
 contienen texto de terceros son un vector de inyección de instrucciones (motiva
 permisos y sandboxing, clase 116; OWASP LLM01).
 
+### 🔁 Loop engineering: el bucle como objeto de diseño
+
+En 2026 la industria dio nombre a lo que esta clase enseña: **loop engineering** —
+diseñar el bucle, no solo el prompt. El término se popularizó a partir de un debate
+público entre practicantes (Steinberger, Cherny, Karpathy) y del post de Addy Osmani que
+formalizó una arquitectura de cinco partes para bucles de agentes de código:
+
+```text
+1. DESCUBRIMIENTO    el agente explora el entorno antes de actuar (leer, buscar, medir)
+2. DESCOMPOSICIÓN    la tarea se parte en unidades verificables
+3. ORQUESTACIÓN      qué se hace en secuencia, qué en paralelo, qué se delega
+4. VERIFICACIÓN      cada unidad se comprueba contra el entorno (tests, ejecución)
+   antes de continuar — el equivalente industrial de "éxito ⇔ predicado observado"
+5. MEMORIA           lo aprendido persiste entre iteraciones y sesiones (clase 115)
+```
+
+Nótese que ReAct ya contiene 1, 3 y 4 en miniatura (actuar → observar → decidir); loop
+engineering lo extiende a tareas largas donde el bucle ingenuo degenera: contexto que
+crece sin límite, verificación pospuesta al final, y ausencia de memoria entre sesiones.
+La clase 112 (planificación) cubre la descomposición y la 121 muestra la alternativa:
+cuando el bucle se formaliza como grafo explícito de estados (*graph engineering*).
+
 ## 🧮 Ejemplo trabajado
 
 Traza completa de 3 pasos sobre el laboratorio `agent` (objetivo: *"verificar estado y
@@ -240,6 +262,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic Engineering — "Building effective agents" (el bucle agéntico en la práctica)](https://www.anthropic.com/engineering/building-effective-agents)
 - [Russell y Norvig — *AIMA* (4e), cap. 2 (agente, percepción, entorno, ciclo percibir-actuar)](https://aima.cs.berkeley.edu/)
 - [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection: observaciones como vector de ataque)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Addy Osmani — "Loop Engineering" (arquitectura de cinco partes para bucles de agentes, 2026)](https://addyo.substack.com/p/loop-engineering)
 
 ---
 

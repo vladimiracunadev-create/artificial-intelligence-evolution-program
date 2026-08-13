@@ -99,6 +99,21 @@ fallback), no sobre causas internas (CPU alta). Cada alerta debe ser accionable 
 a un runbook; las señales de calidad de IA (score de evals muestreadas, deriva) suelen
 alertar a revisión humana, no paginar a las 3 a.m.
 
+### 🚪 El gateway de IA: observabilidad y gobernanza en un solo punto
+
+En la empresa, las tres señales convergen en un patrón arquitectónico que maduró en
+2025-2026: el **AI gateway** — un proxy único por el que pasan todas las llamadas a
+modelos y agentes. Al concentrar el tráfico, el gateway obtiene gratis lo que costaría
+instrumentar servicio a servicio: trazas y costos por equipo/modelo/agente, límites de
+tasa y presupuesto, y enrutamiento con fallback entre proveedores. Sobre esa base se
+apilan capas de gobernanza que ya son productos estándar: **registros** de qué modelos,
+APIs y skills están autorizados (descubrimiento incluido: qué IA está usando la
+organización *sin* permiso — shadow AI), y **agent personas** — la identidad operativa
+de cada agente que ata su descripción de rol a su modelo, herramientas y guardrails
+concretos, de modo que "qué puede hacer este agente" sea una configuración auditable y
+no una promesa del prompt. Es el mismo principio de mínimo privilegio de la clase 116,
+elevado de un agente a la flota completa.
+
 ## 🧮 Ejemplo trabajado
 
 Presupuesto de latencia de un endpoint RAG con SLO p95 ≤ 2 000 ms. Medición de una

@@ -102,7 +102,10 @@ y romper otras (las mejoras rara vez son uniformes). El eval se ejecuta ANTES de
 desplegar el cambio, como los tests en CI: se compara tasa de éxito global Y por
 categoría de tarea, costo por éxito, y violaciones. Los rechazos humanos de la 117 y
 los incidentes reales se destilan continuamente en tareas nuevas del eval — el
-conjunto crece con cada fallo que duela.
+conjunto crece con cada fallo que duela. Esta práctica es lo que la industria llama
+**evaluation-driven development (EDD)**: el eval en CI como *gate* de despliegue — si
+no se puede medir, no se despliega. El estándar 2026 invierte el orden clásico: el eval
+se escribe (o se amplía) *antes* del cambio, exactamente como TDD hizo con los tests.
 
 ## 🧮 Ejemplo trabajado
 

@@ -2,6 +2,25 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 0.2.1 — 2026-08-13
+
+- Actualización al vocabulario 2026 de ingenierías de IA: mapa de disciplinas
+  (harness, loop, context, graph/flow, memory, eval engineering, SDD, AgentOps)
+  en la clase 109 con correspondencia clase a clase.
+- Harness engineering y la ecuación Agente = Modelo + Harness (clase 110);
+  loop engineering con la arquitectura de cinco partes (clase 111).
+- Context engineering como disciplina, context rot medible y LOCA-bench
+  (clases 106 y 115); memory engineering y benchmarks de memoria (clase 105).
+- Graph engineering (grafo explícito de estados) y catálogo canónico de
+  patrones agénticos Ng/Anthropic (clase 121).
+- Spec-driven development como contrato humano-agente (clase 175);
+  evaluation-driven development nombrado (clase 119); AI gateways, registros
+  y agent personas (clase 150).
+- Glosario del programa reescrito: ~120 términos organizados por parte con
+  enlace a la clase donde se desarrollan, enlazado desde el README raíz.
+- Versión unificada en 0.2.1 (curriculum.yaml y ai_evolution.__version__
+  arrastraban 0.1.0 frente a pyproject/README en 0.2.0).
+
 ## 0.2.0 — 2026-08-01
 
 - Materia completa en las 180 clases: fundamentos, ejemplo trabajado a mano,
