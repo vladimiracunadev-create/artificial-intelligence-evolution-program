@@ -1,0 +1,20 @@
+id: '111'
+number: 111
+title: 'Proyecto: RAG productivo y auditable'
+part: 08
+level: avanzado
+estimated_hours: 10
+lab_kind: capstone
+keywords:
+- RAG
+- evals
+- observabilidad
+- seguridad
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '110'

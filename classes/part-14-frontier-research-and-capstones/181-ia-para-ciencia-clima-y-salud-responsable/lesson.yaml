@@ -1,0 +1,20 @@
+id: '181'
+number: 181
+title: IA para ciencia, clima y salud responsable
+part: '14'
+level: frontera
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- science
+- climate
+- health
+- validation
+status: EXECUTABLE_CORE
+maturity: frontier
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '180'

@@ -1,0 +1,20 @@
+id: '109'
+number: 109
+title: Compresión de contexto y cachés semánticos
+part: 08
+level: avanzado
+estimated_hours: 6
+lab_kind: retrieval
+keywords:
+- compression
+- cache
+- context
+- budget
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '108'

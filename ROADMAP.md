@@ -2,8 +2,8 @@
 
 ## ✅ Entregado en 0.1.0
 
-- [x] 15 partes y 180 clases.
-- [x] 540 notebooks válidos.
+- [x] 15 partes y 183 clases.
+- [x] 549 notebooks válidos.
 - [x] Laboratorios ejecutables con Python estándar.
 - [x] CLI, PWA, visor de escritorio y Docker.
 - [x] Tests de estructura, contratos y motores.
@@ -11,10 +11,10 @@
 
 ## ✅ 0.2 — Profundización pedagógica (entregado)
 
-- [x] Materia completa en las 180 clases (fundamentos, ejemplos trabajados,
+- [x] Materia completa en las 183 clases (fundamentos, ejemplos trabajados,
       diagramas y referencias primarias) dentro del README de cada clase.
-- [x] 540 notebooks con ejercicios y soluciones verificadas por ejecución.
-- [x] Sitio de GitHub Pages con las 180 clases navegables en HTML.
+- [x] 549 notebooks con ejercicios y soluciones verificadas por ejecución.
+- [x] Sitio de GitHub Pages con las 183 clases navegables en HTML.
 - [x] PDFs por parte y programa completo en docs/pdf/.
 - [ ] Añadir rúbricas automáticas por familia de laboratorios.
 - [ ] Incorporar quizzes pre/post y exportación de progreso.

@@ -1,0 +1,20 @@
+id: '175'
+number: 175
+title: Razonamiento y cómputo en tiempo de inferencia
+part: '14'
+level: frontera
+estimated_hours: 6
+lab_kind: frontier
+keywords:
+- reasoning
+- test-time compute
+- verification
+- search
+status: EXECUTABLE_CORE
+maturity: frontier
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '174'

@@ -10,21 +10,18 @@ Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de
 
 ```mermaid
 flowchart LR
-    L109["109<br/>De modelo y<br/>automatización a agente"]
-    L110["110<br/>Anatomía: instrucciones, herramientas,<br/>estado y salida"]
-    L111["111<br/>Ciclo ReAct y<br/>observación del entorno"]
-    L112["112<br/>Planificación y descomposición<br/>de tareas"]
-    L113["113<br/>Herramientas tipadas y<br/>efectos laterales"]
-    L114["114<br/>Prompt, recurso, tool,<br/>skill, workflow y<br/>agente"]
-    L115["115<br/>Memoria, contexto y<br/>continuidad"]
-    L116["116<br/>Permisos, sandbox y<br/>mínimo privilegio"]
-    L117["117<br/>Human-in-the-loop y aprobaciones"]
-    L118["118<br/>Presupuestos de pasos,<br/>tokens, costo y<br/>tiempo"]
-    L119["119<br/>Evaluación y depuración<br/>de agentes"]
-    L120["120<br/>Proyecto: agente individual<br/>operativo"]
-    L109 --> L110
-    L110 --> L111
-    L111 --> L112
+    L112["112<br/>De modelo y<br/>automatización a agente"]
+    L113["113<br/>Anatomía: instrucciones, herramientas,<br/>estado y salida"]
+    L114["114<br/>Ciclo ReAct y<br/>observación del entorno"]
+    L115["115<br/>Planificación y descomposición<br/>de tareas"]
+    L116["116<br/>Herramientas tipadas y<br/>efectos laterales"]
+    L117["117<br/>Prompt, recurso, tool,<br/>skill, workflow y<br/>agente"]
+    L118["118<br/>Memoria, contexto y<br/>continuidad"]
+    L119["119<br/>Permisos, sandbox y<br/>mínimo privilegio"]
+    L120["120<br/>Human-in-the-loop y aprobaciones"]
+    L121["121<br/>Presupuestos de pasos,<br/>tokens, costo y<br/>tiempo"]
+    L122["122<br/>Evaluación y depuración<br/>de agentes"]
+    L123["123<br/>Proyecto: agente individual<br/>operativo"]
     L112 --> L113
     L113 --> L114
     L114 --> L115
@@ -33,24 +30,27 @@ flowchart LR
     L117 --> L118
     L118 --> L119
     L119 --> L120
+    L120 --> L121
+    L121 --> L122
+    L122 --> L123
 ```
 
 ## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
-| 109 | [De modelo y automatización a agente](109-de-modelo-y-automatizacion-a-agente/README.md) | `agent` | 6 |
-| 110 | [Anatomía: instrucciones, herramientas, estado y salida](110-anatomia-instrucciones-herramientas-estado-y-salida/README.md) | `agent` | 6 |
-| 111 | [Ciclo ReAct y observación del entorno](111-ciclo-react-y-observacion-del-entorno/README.md) | `agent` | 6 |
-| 112 | [Planificación y descomposición de tareas](112-planificacion-y-descomposicion-de-tareas/README.md) | `workflow` | 6 |
-| 113 | [Herramientas tipadas y efectos laterales](113-herramientas-tipadas-y-efectos-laterales/README.md) | `agent` | 6 |
-| 114 | [Prompt, recurso, tool, skill, workflow y agente](114-prompt-recurso-tool-skill-workflow-y-agente/README.md) | `agent` | 6 |
-| 115 | [Memoria, contexto y continuidad](115-memoria-contexto-y-continuidad/README.md) | `agent` | 6 |
-| 116 | [Permisos, sandbox y mínimo privilegio](116-permisos-sandbox-y-minimo-privilegio/README.md) | `safety` | 6 |
-| 117 | [Human-in-the-loop y aprobaciones](117-human-in-the-loop-y-aprobaciones/README.md) | `workflow` | 6 |
-| 118 | [Presupuestos de pasos, tokens, costo y tiempo](118-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md) | `observability` | 6 |
-| 119 | [Evaluación y depuración de agentes](119-evaluacion-y-depuracion-de-agentes/README.md) | `evaluation` | 6 |
-| 120 | [Proyecto: agente individual operativo](120-proyecto-agente-individual-operativo/README.md) | `capstone` | 10 |
+| 112 | [De modelo y automatización a agente](112-de-modelo-y-automatizacion-a-agente/README.md) | `agent` | 6 |
+| 113 | [Anatomía: instrucciones, herramientas, estado y salida](113-anatomia-instrucciones-herramientas-estado-y-salida/README.md) | `agent` | 6 |
+| 114 | [Ciclo ReAct y observación del entorno](114-ciclo-react-y-observacion-del-entorno/README.md) | `agent` | 6 |
+| 115 | [Planificación y descomposición de tareas](115-planificacion-y-descomposicion-de-tareas/README.md) | `workflow` | 6 |
+| 116 | [Herramientas tipadas y efectos laterales](116-herramientas-tipadas-y-efectos-laterales/README.md) | `agent` | 6 |
+| 117 | [Prompt, recurso, tool, skill, workflow y agente](117-prompt-recurso-tool-skill-workflow-y-agente/README.md) | `agent` | 6 |
+| 118 | [Memoria, contexto y continuidad](118-memoria-contexto-y-continuidad/README.md) | `agent` | 6 |
+| 119 | [Permisos, sandbox y mínimo privilegio](119-permisos-sandbox-y-minimo-privilegio/README.md) | `safety` | 6 |
+| 120 | [Human-in-the-loop y aprobaciones](120-human-in-the-loop-y-aprobaciones/README.md) | `workflow` | 6 |
+| 121 | [Presupuestos de pasos, tokens, costo y tiempo](121-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md) | `observability` | 6 |
+| 122 | [Evaluación y depuración de agentes](122-evaluacion-y-depuracion-de-agentes/README.md) | `evaluation` | 6 |
+| 123 | [Proyecto: agente individual operativo](123-proyecto-agente-individual-operativo/README.md) | `capstone` | 10 |
 
 ## 📝 Evaluación de la parte
 

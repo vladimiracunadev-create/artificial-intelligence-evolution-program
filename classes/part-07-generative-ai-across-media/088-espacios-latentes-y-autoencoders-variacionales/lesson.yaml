@@ -1,0 +1,20 @@
+id: 088
+number: 88
+title: Espacios latentes y autoencoders variacionales
+part: '07'
+level: avanzado
+estimated_hours: 6
+lab_kind: generation
+keywords:
+- VAE
+- latente
+- reconstrucción
+- muestreo
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 087

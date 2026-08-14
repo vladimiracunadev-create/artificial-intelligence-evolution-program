@@ -1,0 +1,20 @@
+id: '176'
+number: 176
+title: Aprendizaje continuo y adaptación
+part: '14'
+level: frontera
+estimated_hours: 6
+lab_kind: frontier
+keywords:
+- continual learning
+- adaptation
+- forgetting
+- memory
+status: EXECUTABLE_CORE
+maturity: frontier
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '175'

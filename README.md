@@ -3,7 +3,7 @@
 
 # 🧠 Artificial Intelligence Evolution Program
 
-## **15 partes · 180 clases · 540 notebooks · de la IA simbólica a los sistemas agénticos**
+## **15 partes · 183 clases · 549 notebooks · de la IA simbólica a los sistemas agénticos**
 
 **Programa evolutivo y verificable para comprender e implementar la historia completa
 de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilidad,
@@ -14,15 +14,15 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.2.1-orange?style=for-the-badge)](CHANGELOG.md)
-[![Classes](https://img.shields.io/badge/classes-180%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
-[![Notebooks](https://img.shields.io/badge/notebooks-540-2e8b57?style=for-the-badge)](classes/)
+[![Version](https://img.shields.io/badge/version-0.3.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
+[![Notebooks](https://img.shields.io/badge/notebooks-549-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Jupyter](https://img.shields.io/badge/Jupyter-540%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-549%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
 [![Docker](https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white)](compose.yaml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
 
@@ -40,7 +40,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 🧰 Motores didácticos | 📕 PDFs |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **180** | **540** | **180** | **15** | **20** | **16** |
+| **183** | **549** | **183** | **15** | **20** | **16** |
 
 </div>
 
@@ -57,9 +57,9 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | Superficie | Estado |
 |---|---|
-| Currículo | ✅ 180/180 clases documentadas |
-| Notebooks | ✅ 180 recorridos + 180 estudiantes + 180 soluciones |
-| Laboratorios | ✅ 180 entrypoints que reutilizan 20 motores didácticos ejecutables |
+| Currículo | ✅ 183/183 clases documentadas |
+| Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
+| Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress` |
 | Sitio | ✅ PWA estática, búsqueda, filtros y progreso local |
@@ -100,9 +100,9 @@ flowchart LR
 
 ## 🗂️ Las 15 partes, en 6 etapas evolutivas
 
-Cada parte tiene su **propio README** con la secuencia de sus 12 clases. Las
-etapas siguen la evolución histórica del campo: lo que cada una enseña es el
-prerrequisito real de la siguiente.
+Cada parte tiene su **propio README** con la secuencia de sus clases —12 en
+todas, salvo la parte 06 que tiene 15. Las etapas siguen la evolución histórica
+del campo: lo que cada una enseña es el prerrequisito real de la siguiente.
 
 ### 🟢 Etapa 1 — Fundamentos e IA clásica
 
@@ -129,12 +129,12 @@ sentidos. **Salida: entrenar, diagnosticar y evaluar modelos con evidencia.**
 ### 🟣 Etapa 3 — Modelos fundacionales, generativa y conocimiento
 
 El giro de 2020s: modelos preentrenados adaptables, generación en todos los
-medios y sistemas que citan evidencia. **Salida: construir servicios LLM con
-contratos, RAG auditable y memoria.**
+medios y sistemas que citan evidencia. **Salida: dimensionar el hardware que los
+sostiene y construir servicios LLM con contratos, RAG auditable y memoria.**
 
 | # | Parte | Clases | Nivel | Duración |
 |---:|---|---:|---|---|
-| 06 | [⚙️ Modelos fundacionales e ingeniería de LLM](classes/part-06-foundation-models-and-llm-engineering/README.md) | 12 | avanzado | 6–7 |
+| 06 | [⚙️ Modelos fundacionales e ingeniería de LLM](classes/part-06-foundation-models-and-llm-engineering/README.md) | 15 | avanzado | 6–7 |
 | 07 | [🎨 IA generativa para texto, imagen, audio, video y 3D](classes/part-07-generative-ai-across-media/README.md) | 12 | avanzado | 5–6 |
 | 08 | [🔎 Recuperación, contexto, memoria y conocimiento](classes/part-08-retrieval-context-memory-and-knowledge/README.md) | 12 | avanzado | 5–6 |
 
@@ -203,7 +203,7 @@ Abre `http://localhost:8080/site/`.
 El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
-- [📕 Programa completo (~1 100 páginas)](docs/pdf/programa-completo.pdf)
+- [📕 Programa completo (~1 135 páginas)](docs/pdf/programa-completo.pdf)
 - Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
   [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·
   [04](docs/pdf/parte-04.pdf) · [05](docs/pdf/parte-05.pdf) ·
@@ -243,8 +243,8 @@ classes/part-XX-slug/NNN-topic/
 
 ### ✅ Lo que sí es
 
-- 🧬 un **mapa evolutivo completo** de la IA: 180 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
-- 🧪 material **ejecutable y verificable**: 540 notebooks, 180 laboratorios locales deterministas y contratos JSON con `evidence` y `limitations`;
+- 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
+- 🧪 material **ejecutable y verificable**: 549 notebooks, 183 laboratorios locales deterministas y contratos JSON con `evidence` y `limitations`;
 - 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 16 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
 - 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.

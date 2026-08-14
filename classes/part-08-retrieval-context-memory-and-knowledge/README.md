@@ -10,21 +10,18 @@ Construye sistemas que conectan modelos con conocimiento verificable mediante b�
 
 ```mermaid
 flowchart LR
-    L097["097<br/>Embeddings y búsqueda<br/>vectorial"]
-    L098["098<br/>Segmentación, metadatos y<br/>ventanas"]
-    L099["099<br/>Búsqueda léxica y<br/>BM25"]
-    L100["100<br/>Búsqueda híbrida y<br/>fusión de rankings"]
-    L101["101<br/>Re-ranking y filtros<br/>de evidencia"]
-    L102["102<br/>RAG básico con<br/>citas"]
-    L103["103<br/>Transformación y descomposición<br/>de consultas"]
-    L104["104<br/>Knowledge graphs y<br/>GraphRAG"]
-    L105["105<br/>Memoria de corto<br/>y largo plazo"]
-    L106["106<br/>Compresión de contexto<br/>y cachés semánticos"]
-    L107["107<br/>Evaluación de fidelidad,<br/>cobertura y atribución"]
-    L108["108<br/>Proyecto: RAG productivo<br/>y auditable"]
-    L097 --> L098
-    L098 --> L099
-    L099 --> L100
+    L100["100<br/>Embeddings y búsqueda<br/>vectorial"]
+    L101["101<br/>Segmentación, metadatos y<br/>ventanas"]
+    L102["102<br/>Búsqueda léxica y<br/>BM25"]
+    L103["103<br/>Búsqueda híbrida y<br/>fusión de rankings"]
+    L104["104<br/>Re-ranking y filtros<br/>de evidencia"]
+    L105["105<br/>RAG básico con<br/>citas"]
+    L106["106<br/>Transformación y descomposición<br/>de consultas"]
+    L107["107<br/>Knowledge graphs y<br/>GraphRAG"]
+    L108["108<br/>Memoria de corto<br/>y largo plazo"]
+    L109["109<br/>Compresión de contexto<br/>y cachés semánticos"]
+    L110["110<br/>Evaluación de fidelidad,<br/>cobertura y atribución"]
+    L111["111<br/>Proyecto: RAG productivo<br/>y auditable"]
     L100 --> L101
     L101 --> L102
     L102 --> L103
@@ -33,24 +30,27 @@ flowchart LR
     L105 --> L106
     L106 --> L107
     L107 --> L108
+    L108 --> L109
+    L109 --> L110
+    L110 --> L111
 ```
 
 ## 📚 Clases
 
 | ID | Tema | Laboratorio | Horas |
 |---:|---|---|---:|
-| 097 | [Embeddings y búsqueda vectorial](097-embeddings-y-busqueda-vectorial/README.md) | `retrieval` | 6 |
-| 098 | [Segmentación, metadatos y ventanas](098-segmentacion-metadatos-y-ventanas/README.md) | `retrieval` | 6 |
-| 099 | [Búsqueda léxica y BM25](099-busqueda-lexica-y-bm25/README.md) | `retrieval` | 6 |
-| 100 | [Búsqueda híbrida y fusión de rankings](100-busqueda-hibrida-y-fusion-de-rankings/README.md) | `retrieval` | 6 |
-| 101 | [Re-ranking y filtros de evidencia](101-re-ranking-y-filtros-de-evidencia/README.md) | `retrieval` | 6 |
-| 102 | [RAG básico con citas](102-rag-basico-con-citas/README.md) | `retrieval` | 6 |
-| 103 | [Transformación y descomposición de consultas](103-transformacion-y-descomposicion-de-consultas/README.md) | `workflow` | 6 |
-| 104 | [Knowledge graphs y GraphRAG](104-knowledge-graphs-y-graphrag/README.md) | `logic` | 6 |
-| 105 | [Memoria de corto y largo plazo](105-memoria-de-corto-y-largo-plazo/README.md) | `agent` | 6 |
-| 106 | [Compresión de contexto y cachés semánticos](106-compresion-de-contexto-y-caches-semanticos/README.md) | `retrieval` | 6 |
-| 107 | [Evaluación de fidelidad, cobertura y atribución](107-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md) | `evaluation` | 6 |
-| 108 | [Proyecto: RAG productivo y auditable](108-proyecto-rag-productivo-y-auditable/README.md) | `capstone` | 10 |
+| 100 | [Embeddings y búsqueda vectorial](100-embeddings-y-busqueda-vectorial/README.md) | `retrieval` | 6 |
+| 101 | [Segmentación, metadatos y ventanas](101-segmentacion-metadatos-y-ventanas/README.md) | `retrieval` | 6 |
+| 102 | [Búsqueda léxica y BM25](102-busqueda-lexica-y-bm25/README.md) | `retrieval` | 6 |
+| 103 | [Búsqueda híbrida y fusión de rankings](103-busqueda-hibrida-y-fusion-de-rankings/README.md) | `retrieval` | 6 |
+| 104 | [Re-ranking y filtros de evidencia](104-re-ranking-y-filtros-de-evidencia/README.md) | `retrieval` | 6 |
+| 105 | [RAG básico con citas](105-rag-basico-con-citas/README.md) | `retrieval` | 6 |
+| 106 | [Transformación y descomposición de consultas](106-transformacion-y-descomposicion-de-consultas/README.md) | `workflow` | 6 |
+| 107 | [Knowledge graphs y GraphRAG](107-knowledge-graphs-y-graphrag/README.md) | `logic` | 6 |
+| 108 | [Memoria de corto y largo plazo](108-memoria-de-corto-y-largo-plazo/README.md) | `agent` | 6 |
+| 109 | [Compresión de contexto y cachés semánticos](109-compresion-de-contexto-y-caches-semanticos/README.md) | `retrieval` | 6 |
+| 110 | [Evaluación de fidelidad, cobertura y atribución](110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md) | `evaluation` | 6 |
+| 111 | [Proyecto: RAG productivo y auditable](111-proyecto-rag-productivo-y-auditable/README.md) | `capstone` | 10 |
 
 ## 📝 Evaluación de la parte
 

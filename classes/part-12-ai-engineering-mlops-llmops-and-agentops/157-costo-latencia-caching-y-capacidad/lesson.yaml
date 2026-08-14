@@ -1,0 +1,20 @@
+id: '157'
+number: 157
+title: Costo, latencia, caching y capacidad
+part: '12'
+level: experto
+estimated_hours: 6
+lab_kind: observability
+keywords:
+- cost
+- latency
+- cache
+- capacity
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '156'

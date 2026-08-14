@@ -1,0 +1,20 @@
+id: '170'
+number: 170
+title: Normativa, auditoría y evidencia
+part: '13'
+level: experto
+estimated_hours: 6
+lab_kind: safety
+keywords:
+- AI Act
+- audit
+- evidence
+- compliance
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '169'

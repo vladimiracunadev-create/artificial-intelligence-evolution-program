@@ -1,0 +1,20 @@
+id: 093
+number: 93
+title: Generación musical y de audio
+part: '07'
+level: avanzado
+estimated_hours: 6
+lab_kind: generation
+keywords:
+- audio
+- música
+- codecs
+- difusión
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 092

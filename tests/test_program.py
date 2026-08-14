@@ -19,7 +19,7 @@ class CurriculumTests(unittest.TestCase):
     def test_counts(self):
         curriculum = load_curriculum()
         self.assertEqual(len(curriculum["parts"]), 15)
-        self.assertEqual(len(lessons()), 180)
+        self.assertEqual(len(lessons()), 183)
 
     def test_unique_ids_and_paths(self):
         all_lessons = lessons()
@@ -33,7 +33,7 @@ class CurriculumTests(unittest.TestCase):
     def test_repository_contract(self):
         result = validate_repository(strict=True)
         self.assertTrue(result["ok"], result["errors"][:10])
-        self.assertEqual(result["notebooks"], 540)
+        self.assertEqual(result["notebooks"], 549)
 
 
 class LabTests(unittest.TestCase):

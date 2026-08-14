@@ -161,7 +161,7 @@ def main() -> None:
 
     cover = (
         '<div class="portada"><h1>🧠 Artificial Intelligence Evolution Program</h1>'
-        '<p class="sub">15 partes · 180 clases · de la IA simbólica a los sistemas agénticos</p>'
+        '<p class="sub">15 partes · 183 clases · de la IA simbólica a los sistemas agénticos</p>'
         '<p class="sub">Programa completo — materia, ejemplos trabajados y evaluaciones</p></div>'
     )
     general = html_page("AI Evolution Program — completo", cover + "".join(all_bodies))

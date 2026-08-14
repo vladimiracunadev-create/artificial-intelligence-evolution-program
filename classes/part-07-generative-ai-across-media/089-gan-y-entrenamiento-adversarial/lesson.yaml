@@ -1,0 +1,20 @@
+id: 089
+number: 89
+title: GAN y entrenamiento adversarial
+part: '07'
+level: avanzado
+estimated_hours: 6
+lab_kind: generation
+keywords:
+- GAN
+- discriminador
+- generador
+- estabilidad
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- 088

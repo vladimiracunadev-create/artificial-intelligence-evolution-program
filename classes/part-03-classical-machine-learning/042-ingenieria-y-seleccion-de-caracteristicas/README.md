@@ -98,7 +98,7 @@ Target encoding con suavizado (k = 10) para la feature `ciudad` prediciendo impa
 
 | Ciudad | n_c | impagos | ȳ_c | enc = (n·ȳ_c + 10·0.10)/(n+10) |
 |---|---|---|---|---|
-| A | 90 | 18 | 0.20 | (90·0.20 + 1)/(100) = 0.19 |
+| A | 90 | 18 | 0.20 | (90·0.20 + 1)/(103) = 0.19 |
 | B | 40 | 2 | 0.05 | (40·0.05 + 1)/50 = 0.06 |
 | C | 2 | 2 | 1.00 | (2·1.00 + 1)/12 = 0.25 |
 
@@ -169,7 +169,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("ml")`. Esta
-decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

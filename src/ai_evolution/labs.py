@@ -1,5 +1,5 @@
 
-"""Motores didácticos deterministas para las 180 clases.
+"""Motores didácticos deterministas para las 183 clases.
 
 Cada motor enseña un contrato o patrón pequeño. No pretende sustituir frameworks
 industriales ni entrenamientos a gran escala.

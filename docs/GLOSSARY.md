@@ -20,43 +20,43 @@ enlaza a la clase donde se desarrolla. La primera sección reúne las **ingenier
 
 Disciplinas con nombre propio que la industria consolidó alrededor de los agentes. El
 mapa completo, con su correspondencia clase a clase, está en la
-[clase 109](../classes/part-09-ai-agent-engineering/109-de-modelo-y-automatizacion-a-agente/README.md).
+[clase 112](../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md).
 
 - **Agent engineering:** disciplina paraguas — diseñar, construir, evaluar y operar
   agentes de forma fiable en producción. Cubre las demás entradas de esta sección.
 - **Agent persona:** identidad operativa de un agente en un gateway empresarial: su rol
   atado a modelo, herramientas y guardrails como configuración auditable
-  ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas/README.md)).
+  ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)).
 - **Context engineering:** decidir qué tokens *ganan* lugar en la ventana en cada paso:
   el menor conjunto de alta señal que maximiza el resultado
-  ([clase 106](../classes/part-08-retrieval-context-memory-and-knowledge/106-compresion-de-contexto-y-caches-semanticos/README.md),
-  [115](../classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad/README.md)).
+  ([clase 109](../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md),
+  [118](../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)).
 - **Context rot:** degradación de la atención del modelo sobre información enterrada en
   contextos largos; hoy medible con benchmarks dedicados
-  ([clase 115](../classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad/README.md)).
+  ([clase 118](../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)).
 - **Evaluation-driven development (EDD):** el eval en CI como *gate* de despliegue; el
   eval se escribe antes del cambio, como TDD hizo con los tests
-  ([clase 119](../classes/part-09-ai-agent-engineering/119-evaluacion-y-depuracion-de-agentes/README.md)).
+  ([clase 122](../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)).
 - **Graph / flow engineering:** formalizar el sistema como grafo explícito de estados —
   nodos, aristas condicionales, estado tipado, checkpoints — en vez de bucle imperativo
-  ([clase 121](../classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente/README.md)).
+  ([clase 124](../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)).
 - **Harness engineering:** diseñar la capa determinista que valida, autoriza, ejecuta y
   registra cada acción propuesta por el modelo. Ecuación: **Agente = Modelo + Harness**
-  ([clase 110](../classes/part-09-ai-agent-engineering/110-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
+  ([clase 113](../classes/part-09-ai-agent-engineering/113-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
 - **Loop engineering:** diseñar el bucle — descubrimiento, descomposición, orquestación,
   verificación, memoria — y no solo el prompt
-  ([clase 111](../classes/part-09-ai-agent-engineering/111-ciclo-react-y-observacion-del-entorno/README.md)).
+  ([clase 114](../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)).
 - **Memory engineering:** decidir qué persiste entre sesiones, cómo se recupera y cómo
   se mide, con benchmarks estandarizados de recuerdo
-  ([clase 105](../classes/part-08-retrieval-context-memory-and-knowledge/105-memoria-de-corto-y-largo-plazo/README.md)).
+  ([clase 108](../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md)).
 - **Patrones agénticos:** catálogo canónico de la industria — Reflection, Tool use,
   Planning, Multi-agent (Ng) y los cinco workflows de Anthropic
-  ([clase 121](../classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente/README.md)).
+  ([clase 124](../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)).
 - **Prompt engineering:** diseñar la instrucción de una llamada individual
   ([clase 079](../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md)).
 - **Spec-driven development (SDD):** la especificación con criterios de aceptación
   verificables como contrato entre humano y agente de código
-  ([clase 175](../classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion/README.md)).
+  ([clase 178](../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)).
 
 ## 🧭 Fundamentos y método (parte 00)
 
@@ -179,187 +179,215 @@ mapa completo, con su correspondencia clase a clase, está en la
 
 ## ⚙️ Modelos fundacionales y LLM engineering (parte 06)
 
+- **Ancho de banda de memoria:** bytes por segundo entre la HBM y las unidades de
+  cálculo; con lote 1 es lo único que fija los tokens/s
+  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)).
+- **Cadena de valor del cómputo:** las cuatro capas —fabricación y HBM, aceleradores,
+  infraestructura y modelos— de las que depende cualquier despliegue
+  ([clase 083](../classes/part-06-foundation-models-and-llm-engineering/083-ecosistema-del-computo-fabricantes-nubes-y-laboratorios/README.md)).
+- **CUDA / ROCm:** las pilas de software que hacen (o dejan de hacer) portable un
+  modelo entre fabricantes de acelerador; el foso real de la industria
+  ([clase 083](../classes/part-06-foundation-models-and-llm-engineering/083-ecosistema-del-computo-fabricantes-nubes-y-laboratorios/README.md)).
+- **HBM:** memoria apilada de alto ancho de banda del acelerador — la "VRAM" que
+  limita qué modelo cabe y a qué velocidad
+  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)).
 - **Instruction tuning:** ajuste con pares instrucción-respuesta para seguir órdenes
   ([clase 076](../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md)).
+- **Intensidad aritmética:** FLOPs ejecutados por byte leído de memoria; decide si una
+  carga está limitada por cómputo o por memoria
+  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)).
 - **Leyes de escalamiento:** relaciones empíricas entre cómputo, datos y calidad
   ([clase 075](../classes/part-06-foundation-models-and-llm-engineering/075-escalamiento-computo-y-leyes-empiricas/README.md)).
 - **LoRA / QLoRA:** adaptación eficiente con matrices de bajo rango
   ([clase 077](../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)).
+- **MFU / MBU:** fracción del pico de cómputo (*model FLOPs utilization*) o del ancho de
+  banda (*model bandwidth utilization*) realmente aprovechada; la métrica honesta frente
+  al "100 % de utilización" que reporta el driver
+  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)).
+- **Memoria unificada:** un único pool físico compartido por CPU y GPU; iguala la
+  capacidad de la VRAM pero no su ancho de banda
+  ([clase 082](../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md)).
 - **Modelo fundacional:** modelo preentrenado a gran escala adaptable a múltiples tareas
   ([clase 074](../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)).
+- **Presupuesto de memoria:** `pesos + KV cache + activaciones + overhead` más margen;
+  la cuenta que decide en qué máquina cabe un despliegue
+  ([clase 082](../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md)).
 - **Prompting estructurado:** instrucciones + contexto + contrato de salida
   ([clase 079](../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md)).
 - **Cuantización:** reducir la precisión numérica para inferencia local barata
-  ([clase 082](../classes/part-06-foundation-models-and-llm-engineering/082-cuantizacion-e-inferencia-local/README.md)).
+  ([clase 085](../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)).
 - **RLHF / DPO:** alineación con preferencias humanas
   ([clase 078](../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)).
+- **Roofline:** modelo que acota el rendimiento a `min(pico_FLOPS, I × ancho_de_banda)`
+  y sitúa el punto de codo a partir del cual una carga deja de estar limitada por memoria
+  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)).
 - **Serving / batching:** infraestructura de inferencia con caches y lotes
-  ([clase 081](../classes/part-06-foundation-models-and-llm-engineering/081-serving-batching-y-caches/README.md)).
+  ([clase 084](../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)).
 - **Tool calling:** el modelo emite intenciones de llamada que un runtime ejecuta
   ([clase 080](../classes/part-06-foundation-models-and-llm-engineering/080-tool-calling-y-ejecucion-controlada/README.md)).
 
 ## 🎨 IA generativa (parte 07)
 
 - **Datos sintéticos:** datos generados; útiles y a la vez riesgo de contaminación
-  ([clase 094](../classes/part-07-generative-ai-across-media/094-datos-sinteticos-utilidad-y-contaminacion/README.md)).
+  ([clase 097](../classes/part-07-generative-ai-across-media/097-datos-sinteticos-utilidad-y-contaminacion/README.md)).
 - **Espacio latente:** representación comprimida donde se interpola y edita
-  ([clase 085](../classes/part-07-generative-ai-across-media/085-espacios-latentes-y-autoencoders-variacionales/README.md)).
+  ([clase 088](../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md)).
 - **GAN:** generador y discriminador en entrenamiento adversarial
-  ([clase 086](../classes/part-07-generative-ai-across-media/086-gan-y-entrenamiento-adversarial/README.md)).
+  ([clase 089](../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md)).
 - **Modelo de difusión:** generación por des-ruido; el estándar de imagen
-  ([clase 087](../classes/part-07-generative-ai-across-media/087-modelos-de-difusion/README.md)).
+  ([clase 090](../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md)).
 - **Procedencia / watermarking:** marcas y metadatos de autenticidad del contenido
-  generado ([clase 095](../classes/part-07-generative-ai-across-media/095-procedencia-marcas-y-autenticidad/README.md)).
+  generado ([clase 098](../classes/part-07-generative-ai-across-media/098-procedencia-marcas-y-autenticidad/README.md)).
 - **Text-to-image / condicionamiento:** guiar la generación con texto u otras señales
-  ([clase 088](../classes/part-07-generative-ai-across-media/088-texto-a-imagen-y-condicionamiento/README.md)).
+  ([clase 091](../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)).
 
 ## 🔎 Recuperación, contexto, memoria y conocimiento (parte 08)
 
 - **BM25:** ranking léxico clásico; complemento del vectorial
-  ([clase 099](../classes/part-08-retrieval-context-memory-and-knowledge/099-busqueda-lexica-y-bm25/README.md)).
+  ([clase 102](../classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md)).
 - **Búsqueda híbrida:** fusión de rankings léxico y vectorial
-  ([clase 100](../classes/part-08-retrieval-context-memory-and-knowledge/100-busqueda-hibrida-y-fusion-de-rankings/README.md)).
+  ([clase 103](../classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md)).
 - **Chunking:** segmentación de documentos con metadatos y ventanas
-  ([clase 098](../classes/part-08-retrieval-context-memory-and-knowledge/098-segmentacion-metadatos-y-ventanas/README.md)).
+  ([clase 101](../classes/part-08-retrieval-context-memory-and-knowledge/101-segmentacion-metadatos-y-ventanas/README.md)).
 - **Compactación:** resumir con pérdida lo viejo del contexto conservando el rumbo
-  ([clase 105](../classes/part-08-retrieval-context-memory-and-knowledge/105-memoria-de-corto-y-largo-plazo/README.md),
-  [115](../classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad/README.md)).
+  ([clase 108](../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md),
+  [118](../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)).
 - **GraphRAG / knowledge graph:** recuperación sobre grafos de entidades y relaciones
-  ([clase 104](../classes/part-08-retrieval-context-memory-and-knowledge/104-knowledge-graphs-y-graphrag/README.md)).
+  ([clase 107](../classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag/README.md)).
 - **Memoria episódica / semántica / procedimental:** qué pasó / hechos destilados / cómo
-  actuar ([clase 105](../classes/part-08-retrieval-context-memory-and-knowledge/105-memoria-de-corto-y-largo-plazo/README.md)).
+  actuar ([clase 108](../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md)).
 - **RAG:** generación aumentada con recuperación de evidencia citable
-  ([clase 102](../classes/part-08-retrieval-context-memory-and-knowledge/102-rag-basico-con-citas/README.md)).
+  ([clase 105](../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md)).
 - **Re-ranking:** reordenar candidatos con un modelo más caro y preciso
-  ([clase 101](../classes/part-08-retrieval-context-memory-and-knowledge/101-re-ranking-y-filtros-de-evidencia/README.md)).
+  ([clase 104](../classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia/README.md)).
 - **Caché semántico:** reutilizar respuestas de consultas equivalentes
-  ([clase 106](../classes/part-08-retrieval-context-memory-and-knowledge/106-compresion-de-contexto-y-caches-semanticos/README.md)).
+  ([clase 109](../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)).
 
 ## 🤖 Ingeniería de agentes (parte 09)
 
 - **Agente:** LLM que, en un bucle, decide qué acción ejecutar, observa el resultado real
   y decide el siguiente paso bajo límites explícitos
-  ([clase 109](../classes/part-09-ai-agent-engineering/109-de-modelo-y-automatizacion-a-agente/README.md)).
+  ([clase 112](../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md)).
 - **Checkpoint:** instantánea del estado del bucle para reanudar sin repetir efectos
-  ([clase 115](../classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad/README.md)).
+  ([clase 118](../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)).
 - **Ciclo ReAct:** thought → action → observation; la observación ancla al mundo real
-  ([clase 111](../classes/part-09-ai-agent-engineering/111-ciclo-react-y-observacion-del-entorno/README.md)).
+  ([clase 114](../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)).
 - **Espectro de autonomía:** dial L0-L5, de modelo puro a autonomía extendida
-  ([clase 109](../classes/part-09-ai-agent-engineering/109-de-modelo-y-automatizacion-a-agente/README.md)).
+  ([clase 112](../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md)).
 - **Guardrail:** control que valida o limita entradas, salidas o acciones
-  ([clase 116](../classes/part-09-ai-agent-engineering/116-permisos-sandbox-y-minimo-privilegio/README.md)).
+  ([clase 119](../classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio/README.md)).
 - **Harness:** capa determinista que valida, autoriza, ejecuta y registra las acciones
-  del modelo ([clase 110](../classes/part-09-ai-agent-engineering/110-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
+  del modelo ([clase 113](../classes/part-09-ai-agent-engineering/113-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
 - **Human-in-the-loop:** aprobación humana interpuesta ante acciones de riesgo
-  ([clase 117](../classes/part-09-ai-agent-engineering/117-human-in-the-loop-y-aprobaciones/README.md)).
+  ([clase 120](../classes/part-09-ai-agent-engineering/120-human-in-the-loop-y-aprobaciones/README.md)).
 - **Idempotencia:** ejecutar dos veces produce el mismo efecto que una; requisito para
-  reintentos seguros ([clase 113](../classes/part-09-ai-agent-engineering/113-herramientas-tipadas-y-efectos-laterales/README.md)).
+  reintentos seguros ([clase 116](../classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales/README.md)).
 - **Mínimo privilegio:** cada herramienta con los permisos estrictamente necesarios
-  ([clase 116](../classes/part-09-ai-agent-engineering/116-permisos-sandbox-y-minimo-privilegio/README.md)).
+  ([clase 119](../classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio/README.md)).
 - **Presupuesto:** límites duros de pasos, tokens, costo y tiempo por tarea
-  ([clase 118](../classes/part-09-ai-agent-engineering/118-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md)).
+  ([clase 121](../classes/part-09-ai-agent-engineering/121-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md)).
 - **Salida estructurada:** contrato de resultado con `evidence` y `limitations`
-  obligatorios ([clase 110](../classes/part-09-ai-agent-engineering/110-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
+  obligatorios ([clase 113](../classes/part-09-ai-agent-engineering/113-anatomia-instrucciones-herramientas-estado-y-salida/README.md)).
 - **Tool:** operación invocable con contrato (nombre, esquema, retorno); lectura o efecto
-  ([clase 113](../classes/part-09-ai-agent-engineering/113-herramientas-tipadas-y-efectos-laterales/README.md)).
+  ([clase 116](../classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales/README.md)).
 - **Trayectoria:** secuencia auditable de decisiones y observaciones de un run
-  ([clase 119](../classes/part-09-ai-agent-engineering/119-evaluacion-y-depuracion-de-agentes/README.md)).
+  ([clase 122](../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)).
 
 ## 🕸️ Sistemas multiagente e interoperabilidad (parte 10)
 
 - **A2A:** protocolo de descubrimiento e interoperabilidad entre agentes
-  ([clase 131](../classes/part-10-multi-agent-systems-and-interoperability/131-a2a-descubrimiento-e-interoperabilidad/README.md)).
+  ([clase 134](../classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad/README.md)).
 - **Blackboard:** memoria compartida donde los agentes leen y publican
-  ([clase 127](../classes/part-10-multi-agent-systems-and-interoperability/127-blackboard-y-memoria-compartida/README.md)).
+  ([clase 130](../classes/part-10-multi-agent-systems-and-interoperability/130-blackboard-y-memoria-compartida/README.md)).
 - **Fan-out / map-reduce:** paralelizar subtareas y consolidar resultados
-  ([clase 125](../classes/part-10-multi-agent-systems-and-interoperability/125-paralelismo-fan-out-y-map-reduce/README.md)).
+  ([clase 128](../classes/part-10-multi-agent-systems-and-interoperability/128-paralelismo-fan-out-y-map-reduce/README.md)).
 - **Handoff:** transferencia de responsabilidad y contexto entre agentes
-  ([clase 123](../classes/part-10-multi-agent-systems-and-interoperability/123-handoffs-y-transferencia-de-contexto/README.md)).
+  ([clase 126](../classes/part-10-multi-agent-systems-and-interoperability/126-handoffs-y-transferencia-de-contexto/README.md)).
 - **MCP:** Model Context Protocol — contratos estándar de tools, resources y prompts
-  ([clase 129](../classes/part-10-multi-agent-systems-and-interoperability/129-mcp-tools-resources-y-prompts/README.md)).
+  ([clase 132](../classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md)).
 - **Router:** clasificador que dirige cada tarea al especialista adecuado
-  ([clase 122](../classes/part-10-multi-agent-systems-and-interoperability/122-router-y-especialistas/README.md)).
+  ([clase 125](../classes/part-10-multi-agent-systems-and-interoperability/125-router-y-especialistas/README.md)).
 - **Skill:** instrucciones y recursos portables que empaquetan una capacidad
-  ([clase 130](../classes/part-10-multi-agent-systems-and-interoperability/130-agent-skills-como-capacidades-portables/README.md)).
+  ([clase 133](../classes/part-10-multi-agent-systems-and-interoperability/133-agent-skills-como-capacidades-portables/README.md)).
 - **Subagente:** agente invocado por otro como herramienta, con contexto aislado y
-  retorno resumido ([clase 121](../classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente/README.md)).
+  retorno resumido ([clase 124](../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)).
 - **Supervisor-workers:** orquestador que delega en trabajadores y consolida
-  ([clase 124](../classes/part-10-multi-agent-systems-and-interoperability/124-supervisor-workers/README.md)).
+  ([clase 127](../classes/part-10-multi-agent-systems-and-interoperability/127-supervisor-workers/README.md)).
 - **Workflow:** secuencia de pasos definida por código donde el LLM rellena casillas
-  ([clase 121](../classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente/README.md)).
+  ([clase 124](../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)).
 
 ## 🦾 IA encarnada, robótica y computer use (parte 11)
 
 - **Computer use:** agente que opera interfaces gráficas por visión y acciones de
-  teclado/ratón ([clase 141](../classes/part-11-embodied-ai-robotics-and-computer-use/141-computer-use-basado-en-vision/README.md)).
+  teclado/ratón ([clase 144](../classes/part-11-embodied-ai-robotics-and-computer-use/144-computer-use-basado-en-vision/README.md)).
 - **Digital twin / sim-to-real:** entrenar en simulación y transferir al mundo físico
-  ([clase 139](../classes/part-11-embodied-ai-robotics-and-computer-use/139-simulacion-sim-to-real-y-digital-twins/README.md)).
+  ([clase 142](../classes/part-11-embodied-ai-robotics-and-computer-use/142-simulacion-sim-to-real-y-digital-twins/README.md)).
 - **Percepción-planificación-acción:** la arquitectura clásica de robótica
-  ([clase 133](../classes/part-11-embodied-ai-robotics-and-computer-use/133-arquitectura-percepcion-planificacion-accion/README.md)).
+  ([clase 136](../classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion/README.md)).
 - **RPA agéntica:** automatización de escritorio con decisión del modelo
-  ([clase 143](../classes/part-11-embodied-ai-robotics-and-computer-use/143-automatizacion-de-escritorio-y-rpa-agentica/README.md)).
+  ([clase 146](../classes/part-11-embodied-ai-robotics-and-computer-use/146-automatizacion-de-escritorio-y-rpa-agentica/README.md)).
 - **SLAM:** localización y mapeo simultáneos
-  ([clase 135](../classes/part-11-embodied-ai-robotics-and-computer-use/135-localizacion-mapeo-y-slam/README.md)).
+  ([clase 138](../classes/part-11-embodied-ai-robotics-and-computer-use/138-localizacion-mapeo-y-slam/README.md)).
 
 ## ⚙️ MLOps, LLMOps y AgentOps (parte 12)
 
 - **AgentOps:** operación de agentes — análisis de trayectorias, costos por rol,
-  incidentes ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-agentops-y-analisis-de-trayectorias/README.md)).
+  incidentes ([clase 156](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias/README.md)).
 - **AI gateway:** proxy único de acceso a modelos y agentes: trazas, costos, límites,
-  registros y personas ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas/README.md)).
+  registros y personas ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)).
 - **Champion-challenger:** promoción de modelos por comparación controlada
-  ([clase 147](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/147-registro-y-promocion-champion-challenger/README.md)).
+  ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-registro-y-promocion-champion-challenger/README.md)).
 - **Deriva (drift):** cambio en los datos o el comportamiento que degrada el sistema
-  ([clase 151](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-deriva-feedback-y-evaluacion-continua/README.md)).
+  ([clase 154](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-deriva-feedback-y-evaluacion-continua/README.md)).
 - **Observabilidad:** inferir el estado interno desde logs, métricas y trazas
-  ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas/README.md)).
+  ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)).
 - **OpenTelemetry / span:** estándar de trazas; cada span es una operación medida
-  ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas/README.md)).
+  ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)).
 - **Rollback:** volver a un estado bueno conocido tras un despliegue fallido
-  ([clase 155](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-resiliencia-idempotencia-rollback-y-recuperacion/README.md)).
+  ([clase 158](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/158-resiliencia-idempotencia-rollback-y-recuperacion/README.md)).
 - **SLO:** objetivo de nivel de servicio medible (latencia, error, fallback)
-  ([clase 150](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas/README.md)).
+  ([clase 153](../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)).
 
 ## 🛡️ Evaluación, seguridad y gobernanza (parte 13)
 
 - **Abstención:** que el sistema diga "no sé" cuando la evidencia no alcanza
-  ([clase 165](../classes/part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion/README.md)).
+  ([clase 168](../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)).
 - **Alucinación:** afirmación fluida sin anclaje en evidencia
-  ([clase 165](../classes/part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion/README.md)).
+  ([clase 168](../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)).
 - **Eval:** prueba estructurada de comportamiento con criterio de éxito ejecutable
-  ([clase 157](../classes/part-13-evaluation-safety-security-and-governance/157-diseno-de-evaluaciones-y-criterios-de-exito/README.md)).
+  ([clase 160](../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)).
 - **Fairness:** análisis de sesgo por grupos afectados
-  ([clase 163](../classes/part-13-evaluation-safety-security-and-governance/163-sesgo-fairness-y-grupos-afectados/README.md)).
+  ([clase 166](../classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados/README.md)).
 - **Golden dataset:** conjunto curado de referencia para regresión
-  ([clase 158](../classes/part-13-evaluation-safety-security-and-governance/158-golden-datasets-regresion-y-llm-as-judge/README.md)).
+  ([clase 161](../classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge/README.md)).
 - **Grounding:** anclar cada afirmación a una observación o fuente verificable
-  ([clase 165](../classes/part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion/README.md)).
+  ([clase 168](../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)).
 - **LLM-as-judge:** usar un LLM con rúbrica como evaluador; requiere calibración humana
-  ([clase 158](../classes/part-13-evaluation-safety-security-and-governance/158-golden-datasets-regresion-y-llm-as-judge/README.md)).
+  ([clase 161](../classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge/README.md)).
 - **Prompt injection:** instrucciones maliciosas dentro de datos observados
-  ([clase 160](../classes/part-13-evaluation-safety-security-and-governance/160-prompt-injection-e-instrucciones-no-confiables/README.md)).
+  ([clase 163](../classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md)).
 - **Red teaming:** ataque deliberado y sistemático para encontrar fallos antes que el
-  adversario ([clase 159](../classes/part-13-evaluation-safety-security-and-governance/159-red-teaming-y-abuso/README.md)).
+  adversario ([clase 162](../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md)).
 - **Supply chain de tools:** riesgo de herramientas y servidores MCP de terceros
-  ([clase 161](../classes/part-13-evaluation-safety-security-and-governance/161-seguridad-de-tools-mcp-y-supply-chain/README.md)).
+  ([clase 164](../classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md)).
 
 ## 🔭 Frontera (parte 14)
 
 - **Aprendizaje continuo:** adaptarse sin olvidar catastróficamente
-  ([clase 173](../classes/part-14-frontier-research-and-capstones/173-aprendizaje-continuo-y-adaptacion/README.md)).
+  ([clase 176](../classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion/README.md)).
 - **Causal AI:** descubrimiento y uso de estructura causal
-  ([clase 170](../classes/part-14-frontier-research-and-capstones/170-causal-ai-y-descubrimiento-cientifico/README.md)).
+  ([clase 173](../classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico/README.md)).
 - **Cómputo en tiempo de inferencia:** razonar más muestreando/verificando más
-  ([clase 172](../classes/part-14-frontier-research-and-capstones/172-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)).
+  ([clase 175](../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)).
 - **IA neuro-simbólica:** combinar aprendizaje neuronal con razonamiento simbólico
-  ([clase 169](../classes/part-14-frontier-research-and-capstones/169-ia-neuro-simbolica/README.md)).
+  ([clase 172](../classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica/README.md)).
 - **pass@k:** probabilidad de que alguna de k muestras pase todos los tests
-  ([clase 175](../classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion/README.md)).
+  ([clase 178](../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)).
 - **Privacidad diferencial / federado:** aprender sin centralizar ni exponer datos
-  individuales ([clase 174](../classes/part-14-frontier-research-and-capstones/174-privacidad-diferencial-y-aprendizaje-federado/README.md)).
+  individuales ([clase 177](../classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado/README.md)).
 - **SWE-bench:** benchmark de agentes de código sobre issues reales de GitHub
-  ([clase 175](../classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion/README.md)).
+  ([clase 178](../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)).
 - **Tests de caracterización:** tests que fijan el comportamiento actual antes de migrar
-  legado ([clase 175](../classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion/README.md)).
+  legado ([clase 178](../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)).
 - **World model:** modelo interno del entorno que permite simular antes de actuar
-  ([clase 171](../classes/part-14-frontier-research-and-capstones/171-world-models-y-simulacion-interna/README.md)).
+  ([clase 174](../classes/part-14-frontier-research-and-capstones/174-world-models-y-simulacion-interna/README.md)).

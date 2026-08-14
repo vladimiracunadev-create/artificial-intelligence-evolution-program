@@ -1,6 +1,6 @@
 # 📱 App Android
 
-Empaqueta el sitio completo del programa (index + 180 clases + 15 partes en HTML)
+Empaqueta el sitio completo del programa (index + 183 clases + 15 partes en HTML)
 como aplicación Android con Capacitor. El contenido viaja embebido en el APK y
 funciona offline; los diagramas mermaid requieren conexión (se renderizan desde CDN).
 

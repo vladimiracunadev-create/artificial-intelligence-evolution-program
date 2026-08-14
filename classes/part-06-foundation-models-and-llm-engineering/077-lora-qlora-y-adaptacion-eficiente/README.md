@@ -35,7 +35,7 @@ fine-tuning) democratizó la adaptación: LoRA (2021) entrena <1 % de parámetro
 calidad comparable, y QLoRA (2023) lo combina con cuantización de 4 bits para
 ajustar un 65B en una sola GPU de 48 GB. Es la técnica que hace ejecutable en la
 práctica el instruction tuning de la clase anterior y conecta con la cuantización de
-inferencia de la clase 082.
+inferencia de la clase 085.
 
 ## 📖 Fundamentos
 
@@ -164,7 +164,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("neural")`. Esta
-decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

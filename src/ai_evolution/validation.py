@@ -34,8 +34,8 @@ def validate_repository(*, strict: bool = False) -> dict[str, Any]:
         errors.append("IDs de clases duplicados")
     if len(curriculum["parts"]) != 15:
         errors.append(f"se esperaban 15 partes y hay {len(curriculum['parts'])}")
-    if len(lessons) != 180:
-        errors.append(f"se esperaban 180 clases y hay {len(lessons)}")
+    if len(lessons) != 183:
+        errors.append(f"se esperaban 183 clases y hay {len(lessons)}")
 
     for item in lessons:
         folder = REPO_ROOT / item["path"]

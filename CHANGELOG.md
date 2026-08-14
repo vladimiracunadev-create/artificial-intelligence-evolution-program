@@ -2,6 +2,35 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 0.3.0 — 2026-08-14
+
+- **Tres clases nuevas de hardware en la parte 06**, el hueco que el programa
+  arrastraba desde el inicio: se enseñaba a elegir y servir modelos sin explicar
+  la máquina que fija el techo.
+  - `081 Aceleradores, memoria y el límite real del cómputo`: jerarquía de
+    memoria, intensidad aritmética y modelo roofline; por qué el decode con lote
+    1 usa el 0,34 % del pico de cómputo de una H100; densa vs dispersa; MFU/MBU.
+  - `082 Dimensionar hardware: de la laptop al clúster`: la ecuación
+    `pesos + KV cache + activaciones + overhead`, bytes por parámetro por
+    formato, coste real del fine-tuning frente a QLoRA, y los tres escalones de
+    máquina — con IA local (llama.cpp, Ollama, LM Studio, MLX) como opción de
+    primera clase.
+  - `083 El ecosistema del cómputo: fabricantes, nubes y laboratorios`: las
+    cuatro capas de la cadena de valor, CUDA como foso de software, apuestas
+    alternativas (TPU, Trainium, MTIA, Maia, Groq, Cerebras), controles de
+    exportación y residencia de datos, y el protocolo de cinco preguntas para
+    leer una cifra de rendimiento.
+- **Renumeración**: las clases 081–180 pasaron a 084–183 para abrir los tres
+  huecos en su lugar pedagógico (antes de serving y cuantización). Las
+  referencias de las versiones anteriores de este changelog conservan la
+  numeración vigente entonces: para traducirlas, súmales 3 si son ≥ 081.
+- Programa: **183 clases · 549 notebooks · 15 partes**; la parte 06 pasa de 12 a
+  15 clases.
+- Glosario ampliado con 8 términos de hardware (ancho de banda de memoria,
+  cadena de valor del cómputo, CUDA/ROCm, HBM, intensidad aritmética, MFU/MBU,
+  memoria unificada, presupuesto de memoria, roofline).
+- Sitio, PDFs, catálogo JSON y app Android regenerados sobre la numeración nueva.
+
 ## 0.2.1 — 2026-08-13
 
 - Actualización al vocabulario 2026 de ingenierías de IA: mapa de disciplinas

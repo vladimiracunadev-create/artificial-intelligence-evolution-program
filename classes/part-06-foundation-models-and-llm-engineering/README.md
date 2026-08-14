@@ -2,9 +2,9 @@
 # ⚙️ Parte 06 — Modelos fundacionales e ingeniería de LLM
 
 **Nivel:** avanzado · **Duración sugerida:** 6–7 semanas ·
-**Clases:** 12
+**Clases:** 15
 
-Descompone los modelos fundacionales: preentrenamiento, alineamiento, adaptación eficiente, prompting, serving, costos y selección responsable.
+Descompone los modelos fundacionales: preentrenamiento, alineamiento, adaptación eficiente, prompting, hardware, serving, costos y selección responsable.
 
 ## 🧭 Secuencia de la parte
 
@@ -18,10 +18,13 @@ flowchart LR
     L078["078<br/>RLHF, RLAIF y<br/>DPO"]
     L079["079<br/>Prompting, contexto y<br/>resultados estructurados"]
     L080["080<br/>Tool calling y<br/>ejecución controlada"]
-    L081["081<br/>Serving, batching y<br/>cachés"]
-    L082["082<br/>Cuantización e inferencia<br/>local"]
-    L083["083<br/>Selección de modelo,<br/>costo, latencia y<br/>privacidad"]
-    L084["084<br/>Proyecto: servicio LLM<br/>con contratos y<br/>evals"]
+    L081["081<br/>Aceleradores, memoria y<br/>el límite real del<br/>cómputo"]
+    L082["082<br/>Dimensionar hardware:<br/>de la laptop al<br/>clúster"]
+    L083["083<br/>El ecosistema del<br/>cómputo: fabricantes,<br/>nubes y laboratorios"]
+    L084["084<br/>Serving, batching y<br/>cachés"]
+    L085["085<br/>Cuantización e inferencia<br/>local"]
+    L086["086<br/>Selección de modelo,<br/>costo, latencia y<br/>privacidad"]
+    L087["087<br/>Proyecto: servicio LLM<br/>con contratos y<br/>evals"]
     L073 --> L074
     L074 --> L075
     L075 --> L076
@@ -33,6 +36,9 @@ flowchart LR
     L081 --> L082
     L082 --> L083
     L083 --> L084
+    L084 --> L085
+    L085 --> L086
+    L086 --> L087
 ```
 
 ## 📚 Clases
@@ -47,10 +53,13 @@ flowchart LR
 | 078 | [RLHF, RLAIF y DPO](078-rlhf-rlaif-y-dpo/README.md) | `probability` | 6 |
 | 079 | [Prompting, contexto y resultados estructurados](079-prompting-contexto-y-resultados-estructurados/README.md) | `llm` | 6 |
 | 080 | [Tool calling y ejecución controlada](080-tool-calling-y-ejecucion-controlada/README.md) | `agent` | 6 |
-| 081 | [Serving, batching y cachés](081-serving-batching-y-caches/README.md) | `observability` | 6 |
-| 082 | [Cuantización e inferencia local](082-cuantizacion-e-inferencia-local/README.md) | `neural` | 6 |
-| 083 | [Selección de modelo, costo, latencia y privacidad](083-seleccion-de-modelo-costo-latencia-y-privacidad/README.md) | `evaluation` | 6 |
-| 084 | [Proyecto: servicio LLM con contratos y evals](084-proyecto-servicio-llm-con-contratos-y-evals/README.md) | `capstone` | 10 |
+| 081 | [Aceleradores, memoria y el límite real del cómputo](081-aceleradores-memoria-y-el-limite-real-del-computo/README.md) | `observability` | 6 |
+| 082 | [Dimensionar hardware: de la laptop al clúster](082-dimensionar-hardware-de-la-laptop-al-cluster/README.md) | `evaluation` | 6 |
+| 083 | [El ecosistema del cómputo: fabricantes, nubes y laboratorios](083-ecosistema-del-computo-fabricantes-nubes-y-laboratorios/README.md) | `frontier` | 6 |
+| 084 | [Serving, batching y cachés](084-serving-batching-y-caches/README.md) | `observability` | 6 |
+| 085 | [Cuantización e inferencia local](085-cuantizacion-e-inferencia-local/README.md) | `neural` | 6 |
+| 086 | [Selección de modelo, costo, latencia y privacidad](086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md) | `evaluation` | 6 |
+| 087 | [Proyecto: servicio LLM con contratos y evals](087-proyecto-servicio-llm-con-contratos-y-evals/README.md) | `capstone` | 10 |
 
 ## 📝 Evaluación de la parte
 

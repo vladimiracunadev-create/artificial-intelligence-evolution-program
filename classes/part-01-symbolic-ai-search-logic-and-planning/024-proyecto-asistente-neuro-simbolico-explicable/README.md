@@ -146,7 +146,7 @@ flowchart TD
 
 ## 🚀 Del aprendizaje a la operación
 
-El capstone integra tres funciones locales deterministas; un asistente neuro-simbólico real sustituye el retrieval por embeddings y un LLM (con lo que la interfaz neuro→simbólica se vuelve el punto crítico a evaluar: precisión de extracción de hechos, calibración de confianzas), añade persistencia y autenticación, registra las trazas de explicación como telemetría auditable (parte de observabilidad, clase 165+), somete la base de reglas al ciclo de vida de la clase 022 (versionado, regresión) y define SLOs para el circuito humano del gate — quién revisa, en cuánto tiempo, con qué criterios. Nada de eso existe aquí, y el JSON del laboratorio lo declara en `limitations`: esa honestidad es exactamente el hábito que el proyecto evalúa.
+El capstone integra tres funciones locales deterministas; un asistente neuro-simbólico real sustituye el retrieval por embeddings y un LLM (con lo que la interfaz neuro→simbólica se vuelve el punto crítico a evaluar: precisión de extracción de hechos, calibración de confianzas), añade persistencia y autenticación, registra las trazas de explicación como telemetría auditable (parte de observabilidad, clase 168+), somete la base de reglas al ciclo de vida de la clase 022 (versionado, regresión) y define SLOs para el circuito humano del gate — quién revisa, en cuánto tiempo, con qué criterios. Nada de eso existe aquí, y el JSON del laboratorio lo declara en `limitations`: esa honestidad es exactamente el hábito que el proyecto evalúa.
 
 ## 🧪 Laboratorio
 
@@ -155,7 +155,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("capstone")`. Esta
-decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

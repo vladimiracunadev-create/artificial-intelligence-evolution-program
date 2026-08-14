@@ -1,7 +1,7 @@
 
 # 080 — Tool calling y ejecución controlada
 
-> [← Clase anterior](../../../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md) · [Índice de la parte](../README.md) · [Clase siguiente →](../../../classes/part-06-foundation-models-and-llm-engineering/081-serving-batching-y-caches/README.md)
+> [← Clase anterior](../../../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md) · [Índice de la parte](../README.md) · [Clase siguiente →](../../../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)
 
 **Parte:** 06 — Modelos fundacionales e ingeniería de LLM  
 **Nivel:** avanzado · **Horas estimadas:** 6  
@@ -181,7 +181,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("agent")`. Esta
-decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -246,4 +246,4 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## ➡️ Siguiente clase
 
-[081 — Serving, batching y cachés](../../part-06-foundation-models-and-llm-engineering/081-serving-batching-y-caches/README.md)
+[081 — Aceleradores, memoria y el límite real del cómputo](../../part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md)

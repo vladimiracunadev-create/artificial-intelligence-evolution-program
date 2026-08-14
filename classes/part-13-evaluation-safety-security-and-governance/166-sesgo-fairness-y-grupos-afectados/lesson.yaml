@@ -1,0 +1,20 @@
+id: '166'
+number: 166
+title: Sesgo, fairness y grupos afectados
+part: '13'
+level: experto
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- bias
+- fairness
+- subgroups
+- harms
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '165'

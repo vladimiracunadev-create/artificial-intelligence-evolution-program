@@ -1,0 +1,20 @@
+id: '082'
+number: 82
+title: 'Dimensionar hardware: de la laptop al clúster'
+part: '06'
+level: avanzado
+estimated_hours: 6
+lab_kind: evaluation
+keywords:
+- presupuesto de memoria
+- VRAM
+- memoria unificada
+- dimensionamiento
+status: EXECUTABLE_CORE
+maturity: stable
+artifacts:
+- lab_result.json
+- student_extension
+- risk_and_limitations.md
+prerequisites:
+- '081'

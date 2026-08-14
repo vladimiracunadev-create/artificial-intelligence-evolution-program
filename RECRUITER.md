@@ -2,7 +2,7 @@
 
 Este repositorio demuestra:
 
-- diseño curricular de 180 clases en 15 partes;
+- diseño curricular de 183 clases en 15 partes;
 - comprensión de la evolución completa de la IA;
 - separación entre modelos, tools, skills, workflows y agentes;
 - 20 motores didácticos reutilizables con contratos uniformes;

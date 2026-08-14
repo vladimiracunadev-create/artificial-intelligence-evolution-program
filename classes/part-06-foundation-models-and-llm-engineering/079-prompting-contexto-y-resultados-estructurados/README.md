@@ -35,7 +35,7 @@ pesos. GPT-3 mostró que los ejemplos en contexto sustituyen al fine-tuning en m
 tareas (few-shot); chain-of-thought (2022) mostró que pedir razonamiento intermedio
 desbloquea problemas multi-paso; y la salida estructurada (JSON con esquema)
 convierte al LLM en un componente integrable en software. Es el prerequisito directo
-del tool calling (clase 080) y de los evals del proyecto (clase 084).
+del tool calling (clase 080) y de los evals del proyecto (clase 087).
 
 ## 📖 Fundamentos
 
@@ -180,7 +180,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("llm")`. Esta
-decisión evita 180 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

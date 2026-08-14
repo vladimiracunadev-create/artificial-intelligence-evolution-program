@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install PyYAML markdown
           python scripts/generate_site.py
-          test -s site/classes/180.html
+          test -s site/classes/183.html
       - name: Preparar proyecto Capacitor
         working-directory: apps/android
         run: |
@@ -42,8 +42,8 @@ jobs:
           test -s "$APK"
           COUNT=$(unzip -l "$APK" "assets/public/classes/*.html" | grep -c '\.html' || true)
           echo "Paginas HTML dentro del APK: $COUNT"
-          if [ "$COUNT" -ne 195 ]; then
-            echo "ERROR: el APK no contiene las 195 paginas de clases"
+          if [ "$COUNT" -ne 198 ]; then
+            echo "ERROR: el APK no contiene las 198 paginas de clases"
             exit 1
           fi
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

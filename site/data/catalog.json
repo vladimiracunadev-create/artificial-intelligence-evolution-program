@@ -1,6 +1,6 @@
 {
-  "version": "0.2.1",
-  "lesson_count": 180,
+  "version": "0.3.0",
+  "lesson_count": 183,
   "parts": [
     {
       "id": "00",
@@ -1434,8 +1434,59 @@
         {
           "id": "081",
           "number": 81,
+          "title": "Aceleradores, memoria y el límite real del cómputo",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo",
+          "lab_kind": "observability",
+          "keywords": [
+            "intensidad aritmética",
+            "ancho de banda",
+            "roofline",
+            "HBM"
+          ],
+          "estimated_hours": 6,
+          "summary": "Estudia aceleradores, memoria y el límite real del cómputo mediante un laboratorio observability reproducible, evidencia estructurada y análisis de límites.",
+          "status": "EXECUTABLE_CORE",
+          "maturity": "stable"
+        },
+        {
+          "id": "082",
+          "number": 82,
+          "title": "Dimensionar hardware: de la laptop al clúster",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster",
+          "lab_kind": "evaluation",
+          "keywords": [
+            "presupuesto de memoria",
+            "VRAM",
+            "memoria unificada",
+            "dimensionamiento"
+          ],
+          "estimated_hours": 6,
+          "summary": "Estudia dimensionar hardware: de la laptop al clúster mediante un laboratorio evaluation reproducible, evidencia estructurada y análisis de límites.",
+          "status": "EXECUTABLE_CORE",
+          "maturity": "stable"
+        },
+        {
+          "id": "083",
+          "number": 83,
+          "title": "El ecosistema del cómputo: fabricantes, nubes y laboratorios",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/083-ecosistema-del-computo-fabricantes-nubes-y-laboratorios",
+          "lab_kind": "frontier",
+          "keywords": [
+            "cadena de valor",
+            "CUDA",
+            "concentración",
+            "dependencia"
+          ],
+          "estimated_hours": 6,
+          "summary": "Estudia el ecosistema del cómputo: fabricantes, nubes y laboratorios mediante un laboratorio frontier reproducible, evidencia estructurada y análisis de límites.",
+          "status": "EXECUTABLE_CORE",
+          "maturity": "stable"
+        },
+        {
+          "id": "084",
+          "number": 84,
           "title": "Serving, batching y cachés",
-          "path": "classes/part-06-foundation-models-and-llm-engineering/081-serving-batching-y-caches",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches",
           "lab_kind": "observability",
           "keywords": [
             "serving",
@@ -1449,10 +1500,10 @@
           "maturity": "stable"
         },
         {
-          "id": "082",
-          "number": 82,
+          "id": "085",
+          "number": 85,
           "title": "Cuantización e inferencia local",
-          "path": "classes/part-06-foundation-models-and-llm-engineering/082-cuantizacion-e-inferencia-local",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local",
           "lab_kind": "neural",
           "keywords": [
             "cuantización",
@@ -1466,10 +1517,10 @@
           "maturity": "stable"
         },
         {
-          "id": "083",
-          "number": 83,
+          "id": "086",
+          "number": 86,
           "title": "Selección de modelo, costo, latencia y privacidad",
-          "path": "classes/part-06-foundation-models-and-llm-engineering/083-seleccion-de-modelo-costo-latencia-y-privacidad",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad",
           "lab_kind": "evaluation",
           "keywords": [
             "benchmark",
@@ -1483,10 +1534,10 @@
           "maturity": "stable"
         },
         {
-          "id": "084",
-          "number": 84,
+          "id": "087",
+          "number": 87,
           "title": "Proyecto: servicio LLM con contratos y evals",
-          "path": "classes/part-06-foundation-models-and-llm-engineering/084-proyecto-servicio-llm-con-contratos-y-evals",
+          "path": "classes/part-06-foundation-models-and-llm-engineering/087-proyecto-servicio-llm-con-contratos-y-evals",
           "lab_kind": "capstone",
           "keywords": [
             "LLM",
@@ -1510,10 +1561,10 @@
       "description": "Cubre la generación multimodal y sus pipelines creativos, incluyendo control, procedencia, consentimiento y evaluación de calidad.",
       "lessons": [
         {
-          "id": "085",
-          "number": 85,
+          "id": "088",
+          "number": 88,
           "title": "Espacios latentes y autoencoders variacionales",
-          "path": "classes/part-07-generative-ai-across-media/085-espacios-latentes-y-autoencoders-variacionales",
+          "path": "classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales",
           "lab_kind": "generation",
           "keywords": [
             "VAE",
@@ -1527,10 +1578,10 @@
           "maturity": "stable"
         },
         {
-          "id": "086",
-          "number": 86,
+          "id": "089",
+          "number": 89,
           "title": "GAN y entrenamiento adversarial",
-          "path": "classes/part-07-generative-ai-across-media/086-gan-y-entrenamiento-adversarial",
+          "path": "classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial",
           "lab_kind": "generation",
           "keywords": [
             "GAN",
@@ -1544,10 +1595,10 @@
           "maturity": "stable"
         },
         {
-          "id": "087",
-          "number": 87,
+          "id": "090",
+          "number": 90,
           "title": "Modelos de difusión",
-          "path": "classes/part-07-generative-ai-across-media/087-modelos-de-difusion",
+          "path": "classes/part-07-generative-ai-across-media/090-modelos-de-difusion",
           "lab_kind": "generation",
           "keywords": [
             "DDPM",
@@ -1561,10 +1612,10 @@
           "maturity": "stable"
         },
         {
-          "id": "088",
-          "number": 88,
+          "id": "091",
+          "number": 91,
           "title": "Texto a imagen y condicionamiento",
-          "path": "classes/part-07-generative-ai-across-media/088-texto-a-imagen-y-condicionamiento",
+          "path": "classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento",
           "lab_kind": "generation",
           "keywords": [
             "text-to-image",
@@ -1578,10 +1629,10 @@
           "maturity": "stable"
         },
         {
-          "id": "089",
-          "number": 89,
+          "id": "092",
+          "number": 92,
           "title": "Control estructural y edición generativa",
-          "path": "classes/part-07-generative-ai-across-media/089-control-estructural-y-edicion-generativa",
+          "path": "classes/part-07-generative-ai-across-media/092-control-estructural-y-edicion-generativa",
           "lab_kind": "generation",
           "keywords": [
             "inpainting",
@@ -1595,10 +1646,10 @@
           "maturity": "stable"
         },
         {
-          "id": "090",
-          "number": 90,
+          "id": "093",
+          "number": 93,
           "title": "Generación musical y de audio",
-          "path": "classes/part-07-generative-ai-across-media/090-generacion-musical-y-de-audio",
+          "path": "classes/part-07-generative-ai-across-media/093-generacion-musical-y-de-audio",
           "lab_kind": "generation",
           "keywords": [
             "audio",
@@ -1612,10 +1663,10 @@
           "maturity": "stable"
         },
         {
-          "id": "091",
-          "number": 91,
+          "id": "094",
+          "number": 94,
           "title": "Síntesis de voz y derechos de identidad",
-          "path": "classes/part-07-generative-ai-across-media/091-sintesis-de-voz-y-derechos-de-identidad",
+          "path": "classes/part-07-generative-ai-across-media/094-sintesis-de-voz-y-derechos-de-identidad",
           "lab_kind": "safety",
           "keywords": [
             "TTS",
@@ -1629,10 +1680,10 @@
           "maturity": "stable"
         },
         {
-          "id": "092",
-          "number": 92,
+          "id": "095",
+          "number": 95,
           "title": "Generación y edición de video",
-          "path": "classes/part-07-generative-ai-across-media/092-generacion-y-edicion-de-video",
+          "path": "classes/part-07-generative-ai-across-media/095-generacion-y-edicion-de-video",
           "lab_kind": "generation",
           "keywords": [
             "video",
@@ -1646,10 +1697,10 @@
           "maturity": "stable"
         },
         {
-          "id": "093",
-          "number": 93,
+          "id": "096",
+          "number": 96,
           "title": "Generación 3D y mundos sintéticos",
-          "path": "classes/part-07-generative-ai-across-media/093-generacion-3d-y-mundos-sinteticos",
+          "path": "classes/part-07-generative-ai-across-media/096-generacion-3d-y-mundos-sinteticos",
           "lab_kind": "generation",
           "keywords": [
             "3D",
@@ -1663,10 +1714,10 @@
           "maturity": "stable"
         },
         {
-          "id": "094",
-          "number": 94,
+          "id": "097",
+          "number": 97,
           "title": "Datos sintéticos: utilidad y contaminación",
-          "path": "classes/part-07-generative-ai-across-media/094-datos-sinteticos-utilidad-y-contaminacion",
+          "path": "classes/part-07-generative-ai-across-media/097-datos-sinteticos-utilidad-y-contaminacion",
           "lab_kind": "evaluation",
           "keywords": [
             "synthetic data",
@@ -1680,10 +1731,10 @@
           "maturity": "stable"
         },
         {
-          "id": "095",
-          "number": 95,
+          "id": "098",
+          "number": 98,
           "title": "Procedencia, marcas y autenticidad",
-          "path": "classes/part-07-generative-ai-across-media/095-procedencia-marcas-y-autenticidad",
+          "path": "classes/part-07-generative-ai-across-media/098-procedencia-marcas-y-autenticidad",
           "lab_kind": "safety",
           "keywords": [
             "C2PA",
@@ -1697,10 +1748,10 @@
           "maturity": "stable"
         },
         {
-          "id": "096",
-          "number": 96,
+          "id": "099",
+          "number": 99,
           "title": "Proyecto: pipeline creativo trazable",
-          "path": "classes/part-07-generative-ai-across-media/096-proyecto-pipeline-creativo-trazable",
+          "path": "classes/part-07-generative-ai-across-media/099-proyecto-pipeline-creativo-trazable",
           "lab_kind": "capstone",
           "keywords": [
             "multimedia",
@@ -1724,10 +1775,10 @@
       "description": "Construye sistemas que conectan modelos con conocimiento verificable mediante búsqueda, RAG, grafos, memoria y evaluación de atribución.",
       "lessons": [
         {
-          "id": "097",
-          "number": 97,
+          "id": 100,
+          "number": 100,
           "title": "Embeddings y búsqueda vectorial",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/097-embeddings-y-busqueda-vectorial",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial",
           "lab_kind": "retrieval",
           "keywords": [
             "embeddings",
@@ -1741,10 +1792,10 @@
           "maturity": "stable"
         },
         {
-          "id": "098",
-          "number": 98,
+          "id": 101,
+          "number": 101,
           "title": "Segmentación, metadatos y ventanas",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/098-segmentacion-metadatos-y-ventanas",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/101-segmentacion-metadatos-y-ventanas",
           "lab_kind": "retrieval",
           "keywords": [
             "chunking",
@@ -1758,10 +1809,10 @@
           "maturity": "stable"
         },
         {
-          "id": "099",
-          "number": 99,
+          "id": 102,
+          "number": 102,
           "title": "Búsqueda léxica y BM25",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/099-busqueda-lexica-y-bm25",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25",
           "lab_kind": "retrieval",
           "keywords": [
             "BM25",
@@ -1775,10 +1826,10 @@
           "maturity": "stable"
         },
         {
-          "id": "100",
-          "number": 100,
+          "id": "103",
+          "number": 103,
           "title": "Búsqueda híbrida y fusión de rankings",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/100-busqueda-hibrida-y-fusion-de-rankings",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings",
           "lab_kind": "retrieval",
           "keywords": [
             "hybrid",
@@ -1792,10 +1843,10 @@
           "maturity": "stable"
         },
         {
-          "id": "101",
-          "number": 101,
+          "id": "104",
+          "number": 104,
           "title": "Re-ranking y filtros de evidencia",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/101-re-ranking-y-filtros-de-evidencia",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia",
           "lab_kind": "retrieval",
           "keywords": [
             "reranking",
@@ -1809,10 +1860,10 @@
           "maturity": "stable"
         },
         {
-          "id": "102",
-          "number": 102,
+          "id": "105",
+          "number": 105,
           "title": "RAG básico con citas",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/102-rag-basico-con-citas",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas",
           "lab_kind": "retrieval",
           "keywords": [
             "RAG",
@@ -1826,10 +1877,10 @@
           "maturity": "stable"
         },
         {
-          "id": "103",
-          "number": 103,
+          "id": "106",
+          "number": 106,
           "title": "Transformación y descomposición de consultas",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/103-transformacion-y-descomposicion-de-consultas",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/106-transformacion-y-descomposicion-de-consultas",
           "lab_kind": "workflow",
           "keywords": [
             "query rewrite",
@@ -1843,10 +1894,10 @@
           "maturity": "stable"
         },
         {
-          "id": "104",
-          "number": 104,
+          "id": "107",
+          "number": 107,
           "title": "Knowledge graphs y GraphRAG",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/104-knowledge-graphs-y-graphrag",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag",
           "lab_kind": "logic",
           "keywords": [
             "knowledge graph",
@@ -1860,10 +1911,10 @@
           "maturity": "stable"
         },
         {
-          "id": "105",
-          "number": 105,
+          "id": "108",
+          "number": 108,
           "title": "Memoria de corto y largo plazo",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/105-memoria-de-corto-y-largo-plazo",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo",
           "lab_kind": "agent",
           "keywords": [
             "memory",
@@ -1878,10 +1929,10 @@
           "maturity": "stable"
         },
         {
-          "id": "106",
-          "number": 106,
+          "id": "109",
+          "number": 109,
           "title": "Compresión de contexto y cachés semánticos",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/106-compresion-de-contexto-y-caches-semanticos",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos",
           "lab_kind": "retrieval",
           "keywords": [
             "compression",
@@ -1895,10 +1946,10 @@
           "maturity": "stable"
         },
         {
-          "id": "107",
-          "number": 107,
+          "id": "110",
+          "number": 110,
           "title": "Evaluación de fidelidad, cobertura y atribución",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/107-evaluacion-de-fidelidad-cobertura-y-atribucion",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion",
           "lab_kind": "evaluation",
           "keywords": [
             "faithfulness",
@@ -1912,10 +1963,10 @@
           "maturity": "stable"
         },
         {
-          "id": "108",
-          "number": 108,
+          "id": "111",
+          "number": 111,
           "title": "Proyecto: RAG productivo y auditable",
-          "path": "classes/part-08-retrieval-context-memory-and-knowledge/108-proyecto-rag-productivo-y-auditable",
+          "path": "classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable",
           "lab_kind": "capstone",
           "keywords": [
             "RAG",
@@ -1939,10 +1990,10 @@
       "description": "Diferencia agentes de prompts y automatizaciones, y construye agentes capaces de elegir herramientas, mantener estado, pedir aprobación y demostrar resultados.",
       "lessons": [
         {
-          "id": "109",
-          "number": 109,
+          "id": "112",
+          "number": 112,
           "title": "De modelo y automatización a agente",
-          "path": "classes/part-09-ai-agent-engineering/109-de-modelo-y-automatizacion-a-agente",
+          "path": "classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente",
           "lab_kind": "agent",
           "keywords": [
             "modelo",
@@ -1956,10 +2007,10 @@
           "maturity": "stable"
         },
         {
-          "id": "110",
-          "number": 110,
+          "id": "113",
+          "number": 113,
           "title": "Anatomía: instrucciones, herramientas, estado y salida",
-          "path": "classes/part-09-ai-agent-engineering/110-anatomia-instrucciones-herramientas-estado-y-salida",
+          "path": "classes/part-09-ai-agent-engineering/113-anatomia-instrucciones-herramientas-estado-y-salida",
           "lab_kind": "agent",
           "keywords": [
             "instructions",
@@ -1973,10 +2024,10 @@
           "maturity": "stable"
         },
         {
-          "id": "111",
-          "number": 111,
+          "id": "114",
+          "number": 114,
           "title": "Ciclo ReAct y observación del entorno",
-          "path": "classes/part-09-ai-agent-engineering/111-ciclo-react-y-observacion-del-entorno",
+          "path": "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno",
           "lab_kind": "agent",
           "keywords": [
             "ReAct",
@@ -1990,10 +2041,10 @@
           "maturity": "stable"
         },
         {
-          "id": "112",
-          "number": 112,
+          "id": "115",
+          "number": 115,
           "title": "Planificación y descomposición de tareas",
-          "path": "classes/part-09-ai-agent-engineering/112-planificacion-y-descomposicion-de-tareas",
+          "path": "classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas",
           "lab_kind": "workflow",
           "keywords": [
             "planning",
@@ -2007,10 +2058,10 @@
           "maturity": "stable"
         },
         {
-          "id": "113",
-          "number": 113,
+          "id": "116",
+          "number": 116,
           "title": "Herramientas tipadas y efectos laterales",
-          "path": "classes/part-09-ai-agent-engineering/113-herramientas-tipadas-y-efectos-laterales",
+          "path": "classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales",
           "lab_kind": "agent",
           "keywords": [
             "tool schema",
@@ -2024,10 +2075,10 @@
           "maturity": "stable"
         },
         {
-          "id": "114",
-          "number": 114,
+          "id": "117",
+          "number": 117,
           "title": "Prompt, recurso, tool, skill, workflow y agente",
-          "path": "classes/part-09-ai-agent-engineering/114-prompt-recurso-tool-skill-workflow-y-agente",
+          "path": "classes/part-09-ai-agent-engineering/117-prompt-recurso-tool-skill-workflow-y-agente",
           "lab_kind": "agent",
           "keywords": [
             "prompt",
@@ -2042,10 +2093,10 @@
           "maturity": "stable"
         },
         {
-          "id": "115",
-          "number": 115,
+          "id": "118",
+          "number": 118,
           "title": "Memoria, contexto y continuidad",
-          "path": "classes/part-09-ai-agent-engineering/115-memoria-contexto-y-continuidad",
+          "path": "classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad",
           "lab_kind": "agent",
           "keywords": [
             "memory",
@@ -2059,10 +2110,10 @@
           "maturity": "stable"
         },
         {
-          "id": "116",
-          "number": 116,
+          "id": "119",
+          "number": 119,
           "title": "Permisos, sandbox y mínimo privilegio",
-          "path": "classes/part-09-ai-agent-engineering/116-permisos-sandbox-y-minimo-privilegio",
+          "path": "classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio",
           "lab_kind": "safety",
           "keywords": [
             "permissions",
@@ -2076,10 +2127,10 @@
           "maturity": "stable"
         },
         {
-          "id": "117",
-          "number": 117,
+          "id": "120",
+          "number": 120,
           "title": "Human-in-the-loop y aprobaciones",
-          "path": "classes/part-09-ai-agent-engineering/117-human-in-the-loop-y-aprobaciones",
+          "path": "classes/part-09-ai-agent-engineering/120-human-in-the-loop-y-aprobaciones",
           "lab_kind": "workflow",
           "keywords": [
             "HITL",
@@ -2093,10 +2144,10 @@
           "maturity": "stable"
         },
         {
-          "id": "118",
-          "number": 118,
+          "id": "121",
+          "number": 121,
           "title": "Presupuestos de pasos, tokens, costo y tiempo",
-          "path": "classes/part-09-ai-agent-engineering/118-presupuestos-de-pasos-tokens-costo-y-tiempo",
+          "path": "classes/part-09-ai-agent-engineering/121-presupuestos-de-pasos-tokens-costo-y-tiempo",
           "lab_kind": "observability",
           "keywords": [
             "budget",
@@ -2110,10 +2161,10 @@
           "maturity": "stable"
         },
         {
-          "id": "119",
-          "number": 119,
+          "id": "122",
+          "number": 122,
           "title": "Evaluación y depuración de agentes",
-          "path": "classes/part-09-ai-agent-engineering/119-evaluacion-y-depuracion-de-agentes",
+          "path": "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes",
           "lab_kind": "evaluation",
           "keywords": [
             "trajectory",
@@ -2127,10 +2178,10 @@
           "maturity": "stable"
         },
         {
-          "id": "120",
-          "number": 120,
+          "id": "123",
+          "number": 123,
           "title": "Proyecto: agente individual operativo",
-          "path": "classes/part-09-ai-agent-engineering/120-proyecto-agente-individual-operativo",
+          "path": "classes/part-09-ai-agent-engineering/123-proyecto-agente-individual-operativo",
           "lab_kind": "capstone",
           "keywords": [
             "agent",
@@ -2155,10 +2206,10 @@
       "description": "Diseña equipos de agentes con contratos, delegación, protocolos, persistencia y coordinación entre runtimes y proveedores.",
       "lessons": [
         {
-          "id": "121",
-          "number": 121,
+          "id": "124",
+          "number": 124,
           "title": "Workflow, subagente y sistema multiagente",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/121-workflow-subagente-y-sistema-multiagente",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente",
           "lab_kind": "multiagent",
           "keywords": [
             "workflow",
@@ -2172,10 +2223,10 @@
           "maturity": "stable"
         },
         {
-          "id": "122",
-          "number": 122,
+          "id": "125",
+          "number": 125,
           "title": "Router y especialistas",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/122-router-y-especialistas",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/125-router-y-especialistas",
           "lab_kind": "multiagent",
           "keywords": [
             "router",
@@ -2189,10 +2240,10 @@
           "maturity": "stable"
         },
         {
-          "id": "123",
-          "number": 123,
+          "id": "126",
+          "number": 126,
           "title": "Handoffs y transferencia de contexto",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/123-handoffs-y-transferencia-de-contexto",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/126-handoffs-y-transferencia-de-contexto",
           "lab_kind": "multiagent",
           "keywords": [
             "handoff",
@@ -2206,10 +2257,10 @@
           "maturity": "stable"
         },
         {
-          "id": "124",
-          "number": 124,
+          "id": "127",
+          "number": 127,
           "title": "Supervisor-workers",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/124-supervisor-workers",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/127-supervisor-workers",
           "lab_kind": "multiagent",
           "keywords": [
             "supervisor",
@@ -2223,10 +2274,10 @@
           "maturity": "stable"
         },
         {
-          "id": "125",
-          "number": 125,
+          "id": "128",
+          "number": 128,
           "title": "Paralelismo, fan-out y map-reduce",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/125-paralelismo-fan-out-y-map-reduce",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/128-paralelismo-fan-out-y-map-reduce",
           "lab_kind": "multiagent",
           "keywords": [
             "parallel",
@@ -2240,10 +2291,10 @@
           "maturity": "stable"
         },
         {
-          "id": "126",
-          "number": 126,
+          "id": "129",
+          "number": 129,
           "title": "Crítica, revisión y debate controlado",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/126-critica-revision-y-debate-controlado",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/129-critica-revision-y-debate-controlado",
           "lab_kind": "multiagent",
           "keywords": [
             "critic",
@@ -2257,10 +2308,10 @@
           "maturity": "stable"
         },
         {
-          "id": "127",
-          "number": 127,
+          "id": "130",
+          "number": 130,
           "title": "Blackboard y memoria compartida",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/127-blackboard-y-memoria-compartida",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/130-blackboard-y-memoria-compartida",
           "lab_kind": "multiagent",
           "keywords": [
             "blackboard",
@@ -2274,10 +2325,10 @@
           "maturity": "stable"
         },
         {
-          "id": "128",
-          "number": 128,
+          "id": "131",
+          "number": 131,
           "title": "Contratos de roles, capacidades y resultados",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/128-contratos-de-roles-capacidades-y-resultados",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados",
           "lab_kind": "multiagent",
           "keywords": [
             "role",
@@ -2291,10 +2342,10 @@
           "maturity": "stable"
         },
         {
-          "id": "129",
-          "number": 129,
+          "id": "132",
+          "number": 132,
           "title": "MCP: tools, resources y prompts",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/129-mcp-tools-resources-y-prompts",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts",
           "lab_kind": "workflow",
           "keywords": [
             "MCP",
@@ -2308,10 +2359,10 @@
           "maturity": "stable"
         },
         {
-          "id": "130",
-          "number": 130,
+          "id": "133",
+          "number": 133,
           "title": "Agent Skills como capacidades portables",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/130-agent-skills-como-capacidades-portables",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/133-agent-skills-como-capacidades-portables",
           "lab_kind": "agent",
           "keywords": [
             "Agent Skills",
@@ -2325,10 +2376,10 @@
           "maturity": "stable"
         },
         {
-          "id": "131",
-          "number": 131,
+          "id": "134",
+          "number": 134,
           "title": "A2A, descubrimiento e interoperabilidad",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/131-a2a-descubrimiento-e-interoperabilidad",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad",
           "lab_kind": "multiagent",
           "keywords": [
             "A2A",
@@ -2342,10 +2393,10 @@
           "maturity": "stable"
         },
         {
-          "id": "132",
-          "number": 132,
+          "id": "135",
+          "number": 135,
           "title": "Proyecto: sistema multiagente durable",
-          "path": "classes/part-10-multi-agent-systems-and-interoperability/132-proyecto-sistema-multiagente-durable",
+          "path": "classes/part-10-multi-agent-systems-and-interoperability/135-proyecto-sistema-multiagente-durable",
           "lab_kind": "capstone",
           "keywords": [
             "multi-agent",
@@ -2369,10 +2420,10 @@
       "description": "Lleva la toma de decisiones al mundo físico y a interfaces digitales, con sensores, control, simulación, navegación y acciones verificables.",
       "lessons": [
         {
-          "id": "133",
-          "number": 133,
+          "id": "136",
+          "number": 136,
           "title": "Arquitectura percepción-planificación-acción",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/133-arquitectura-percepcion-planificacion-accion",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion",
           "lab_kind": "robotics",
           "keywords": [
             "perception",
@@ -2386,10 +2437,10 @@
           "maturity": "stable"
         },
         {
-          "id": "134",
-          "number": 134,
+          "id": "137",
+          "number": 137,
           "title": "Sensores, actuadores y fusión",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/134-sensores-actuadores-y-fusion",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/137-sensores-actuadores-y-fusion",
           "lab_kind": "robotics",
           "keywords": [
             "sensors",
@@ -2403,10 +2454,10 @@
           "maturity": "stable"
         },
         {
-          "id": "135",
-          "number": 135,
+          "id": "138",
+          "number": 138,
           "title": "Localización, mapeo y SLAM",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/135-localizacion-mapeo-y-slam",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/138-localizacion-mapeo-y-slam",
           "lab_kind": "robotics",
           "keywords": [
             "localization",
@@ -2420,10 +2471,10 @@
           "maturity": "stable"
         },
         {
-          "id": "136",
-          "number": 136,
+          "id": "139",
+          "number": 139,
           "title": "Planificación de movimiento y navegación",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/136-planificacion-de-movimiento-y-navegacion",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/139-planificacion-de-movimiento-y-navegacion",
           "lab_kind": "search",
           "keywords": [
             "path planning",
@@ -2437,10 +2488,10 @@
           "maturity": "stable"
         },
         {
-          "id": "137",
-          "number": 137,
+          "id": "140",
+          "number": 140,
           "title": "Control clásico y control aprendido",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/137-control-clasico-y-control-aprendido",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/140-control-clasico-y-control-aprendido",
           "lab_kind": "robotics",
           "keywords": [
             "PID",
@@ -2454,10 +2505,10 @@
           "maturity": "stable"
         },
         {
-          "id": "138",
-          "number": 138,
+          "id": "141",
+          "number": 141,
           "title": "Aprendizaje por imitación",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/138-aprendizaje-por-imitacion",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/141-aprendizaje-por-imitacion",
           "lab_kind": "robotics",
           "keywords": [
             "imitation",
@@ -2471,10 +2522,10 @@
           "maturity": "stable"
         },
         {
-          "id": "139",
-          "number": 139,
+          "id": "142",
+          "number": 142,
           "title": "Simulación, sim-to-real y digital twins",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/139-simulacion-sim-to-real-y-digital-twins",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/142-simulacion-sim-to-real-y-digital-twins",
           "lab_kind": "robotics",
           "keywords": [
             "simulation",
@@ -2488,10 +2539,10 @@
           "maturity": "stable"
         },
         {
-          "id": "140",
-          "number": 140,
+          "id": "143",
+          "number": 143,
           "title": "Robots colaborativos y seguridad física",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/140-robots-colaborativos-y-seguridad-fisica",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/143-robots-colaborativos-y-seguridad-fisica",
           "lab_kind": "safety",
           "keywords": [
             "cobot",
@@ -2505,10 +2556,10 @@
           "maturity": "stable"
         },
         {
-          "id": "141",
-          "number": 141,
+          "id": "144",
+          "number": 144,
           "title": "Computer use basado en visión",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/141-computer-use-basado-en-vision",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/144-computer-use-basado-en-vision",
           "lab_kind": "robotics",
           "keywords": [
             "computer use",
@@ -2522,10 +2573,10 @@
           "maturity": "stable"
         },
         {
-          "id": "142",
-          "number": 142,
+          "id": "145",
+          "number": 145,
           "title": "Agentes de navegador",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/142-agentes-de-navegador",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/145-agentes-de-navegador",
           "lab_kind": "agent",
           "keywords": [
             "browser",
@@ -2539,10 +2590,10 @@
           "maturity": "stable"
         },
         {
-          "id": "143",
-          "number": 143,
+          "id": "146",
+          "number": 146,
           "title": "Automatización de escritorio y RPA agéntica",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/143-automatizacion-de-escritorio-y-rpa-agentica",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/146-automatizacion-de-escritorio-y-rpa-agentica",
           "lab_kind": "workflow",
           "keywords": [
             "desktop",
@@ -2556,10 +2607,10 @@
           "maturity": "stable"
         },
         {
-          "id": "144",
-          "number": 144,
+          "id": "147",
+          "number": 147,
           "title": "Proyecto: agente que actúa con límites",
-          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/144-proyecto-agente-que-actua-con-limites",
+          "path": "classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites",
           "lab_kind": "capstone",
           "keywords": [
             "embodied",
@@ -2583,10 +2634,10 @@
       "description": "Industrializa datos, modelos y agentes mediante CI/CD, registros, serving, observabilidad, control de costos, recuperación y operación segura.",
       "lessons": [
         {
-          "id": "145",
-          "number": 145,
+          "id": "148",
+          "number": 148,
           "title": "Ciclo de vida de datos, modelos y agentes",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/145-ciclo-de-vida-de-datos-modelos-y-agentes",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ciclo-de-vida-de-datos-modelos-y-agentes",
           "lab_kind": "workflow",
           "keywords": [
             "lifecycle",
@@ -2600,10 +2651,10 @@
           "maturity": "stable"
         },
         {
-          "id": "146",
-          "number": 146,
+          "id": "149",
+          "number": 149,
           "title": "Experimentos, semillas y trazabilidad",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/146-experimentos-semillas-y-trazabilidad",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-experimentos-semillas-y-trazabilidad",
           "lab_kind": "observability",
           "keywords": [
             "experiments",
@@ -2617,10 +2668,10 @@
           "maturity": "stable"
         },
         {
-          "id": "147",
-          "number": 147,
+          "id": "150",
+          "number": 150,
           "title": "Registro y promoción champion-challenger",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/147-registro-y-promocion-champion-challenger",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-registro-y-promocion-champion-challenger",
           "lab_kind": "workflow",
           "keywords": [
             "registry",
@@ -2634,10 +2685,10 @@
           "maturity": "stable"
         },
         {
-          "id": "148",
-          "number": 148,
+          "id": "151",
+          "number": 151,
           "title": "CI/CD y pruebas para sistemas de IA",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ci-cd-y-pruebas-para-sistemas-de-ia",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-ci-cd-y-pruebas-para-sistemas-de-ia",
           "lab_kind": "evaluation",
           "keywords": [
             "CI",
@@ -2651,10 +2702,10 @@
           "maturity": "stable"
         },
         {
-          "id": "149",
-          "number": 149,
+          "id": "152",
+          "number": 152,
           "title": "Serving online, batch y streaming",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-serving-online-batch-y-streaming",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/152-serving-online-batch-y-streaming",
           "lab_kind": "observability",
           "keywords": [
             "serving",
@@ -2668,10 +2719,10 @@
           "maturity": "stable"
         },
         {
-          "id": "150",
-          "number": 150,
+          "id": "153",
+          "number": 153,
           "title": "Observabilidad: logs, métricas y trazas",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-observabilidad-logs-metricas-y-trazas",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas",
           "lab_kind": "observability",
           "keywords": [
             "logs",
@@ -2685,10 +2736,10 @@
           "maturity": "stable"
         },
         {
-          "id": "151",
-          "number": 151,
+          "id": "154",
+          "number": 154,
           "title": "Deriva, feedback y evaluación continua",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-deriva-feedback-y-evaluacion-continua",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-deriva-feedback-y-evaluacion-continua",
           "lab_kind": "evaluation",
           "keywords": [
             "drift",
@@ -2702,10 +2753,10 @@
           "maturity": "stable"
         },
         {
-          "id": "152",
-          "number": 152,
+          "id": "155",
+          "number": 155,
           "title": "LLMOps y gestión de prompts",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/152-llmops-y-gestion-de-prompts",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-llmops-y-gestion-de-prompts",
           "lab_kind": "observability",
           "keywords": [
             "LLMOps",
@@ -2719,10 +2770,10 @@
           "maturity": "stable"
         },
         {
-          "id": "153",
-          "number": 153,
+          "id": "156",
+          "number": 156,
           "title": "AgentOps y análisis de trayectorias",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-agentops-y-analisis-de-trayectorias",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias",
           "lab_kind": "observability",
           "keywords": [
             "AgentOps",
@@ -2736,10 +2787,10 @@
           "maturity": "stable"
         },
         {
-          "id": "154",
-          "number": 154,
+          "id": "157",
+          "number": 157,
           "title": "Costo, latencia, caching y capacidad",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-costo-latencia-caching-y-capacidad",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/157-costo-latencia-caching-y-capacidad",
           "lab_kind": "observability",
           "keywords": [
             "cost",
@@ -2753,10 +2804,10 @@
           "maturity": "stable"
         },
         {
-          "id": "155",
-          "number": 155,
+          "id": "158",
+          "number": 158,
           "title": "Resiliencia, idempotencia, rollback y recuperación",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-resiliencia-idempotencia-rollback-y-recuperacion",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/158-resiliencia-idempotencia-rollback-y-recuperacion",
           "lab_kind": "workflow",
           "keywords": [
             "resilience",
@@ -2770,10 +2821,10 @@
           "maturity": "stable"
         },
         {
-          "id": "156",
-          "number": 156,
+          "id": "159",
+          "number": 159,
           "title": "Proyecto: plataforma de IA observable",
-          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-proyecto-plataforma-de-ia-observable",
+          "path": "classes/part-12-ai-engineering-mlops-llmops-and-agentops/159-proyecto-plataforma-de-ia-observable",
           "lab_kind": "capstone",
           "keywords": [
             "platform",
@@ -2797,10 +2848,10 @@
       "description": "Evalúa capacidades y riesgos, protege herramientas y datos, responde incidentes y establece controles técnicos, humanos y regulatorios.",
       "lessons": [
         {
-          "id": "157",
-          "number": 157,
+          "id": "160",
+          "number": 160,
           "title": "Diseño de evaluaciones y criterios de éxito",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/157-diseno-de-evaluaciones-y-criterios-de-exito",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito",
           "lab_kind": "evaluation",
           "keywords": [
             "evals",
@@ -2814,10 +2865,10 @@
           "maturity": "stable"
         },
         {
-          "id": "158",
-          "number": 158,
+          "id": "161",
+          "number": 161,
           "title": "Golden datasets, regresión y LLM-as-judge",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/158-golden-datasets-regresion-y-llm-as-judge",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge",
           "lab_kind": "evaluation",
           "keywords": [
             "golden set",
@@ -2831,10 +2882,10 @@
           "maturity": "stable"
         },
         {
-          "id": "159",
-          "number": 159,
+          "id": "162",
+          "number": 162,
           "title": "Red teaming y abuso",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/159-red-teaming-y-abuso",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso",
           "lab_kind": "safety",
           "keywords": [
             "red team",
@@ -2848,10 +2899,10 @@
           "maturity": "stable"
         },
         {
-          "id": "160",
-          "number": 160,
+          "id": "163",
+          "number": 163,
           "title": "Prompt injection e instrucciones no confiables",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/160-prompt-injection-e-instrucciones-no-confiables",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables",
           "lab_kind": "safety",
           "keywords": [
             "prompt injection",
@@ -2865,10 +2916,10 @@
           "maturity": "stable"
         },
         {
-          "id": "161",
-          "number": 161,
+          "id": "164",
+          "number": 164,
           "title": "Seguridad de tools, MCP y supply chain",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/161-seguridad-de-tools-mcp-y-supply-chain",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain",
           "lab_kind": "safety",
           "keywords": [
             "tools",
@@ -2882,10 +2933,10 @@
           "maturity": "stable"
         },
         {
-          "id": "162",
-          "number": 162,
+          "id": "165",
+          "number": 165,
           "title": "Privacidad, secretos y minimización de datos",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/162-privacidad-secretos-y-minimizacion-de-datos",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/165-privacidad-secretos-y-minimizacion-de-datos",
           "lab_kind": "safety",
           "keywords": [
             "privacy",
@@ -2899,10 +2950,10 @@
           "maturity": "stable"
         },
         {
-          "id": "163",
-          "number": 163,
+          "id": "166",
+          "number": 166,
           "title": "Sesgo, fairness y grupos afectados",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/163-sesgo-fairness-y-grupos-afectados",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados",
           "lab_kind": "evaluation",
           "keywords": [
             "bias",
@@ -2916,10 +2967,10 @@
           "maturity": "stable"
         },
         {
-          "id": "164",
-          "number": 164,
+          "id": "167",
+          "number": 167,
           "title": "Explicabilidad, incertidumbre y calibración",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/164-explicabilidad-incertidumbre-y-calibracion",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion",
           "lab_kind": "evaluation",
           "keywords": [
             "explainability",
@@ -2933,10 +2984,10 @@
           "maturity": "stable"
         },
         {
-          "id": "165",
-          "number": 165,
+          "id": "168",
+          "number": 168,
           "title": "Alucinación, grounding y abstención",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/165-alucinacion-grounding-y-abstencion",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion",
           "lab_kind": "evaluation",
           "keywords": [
             "hallucination",
@@ -2950,10 +3001,10 @@
           "maturity": "stable"
         },
         {
-          "id": "166",
-          "number": 166,
+          "id": "169",
+          "number": 169,
           "title": "Gobernanza, roles y gestión de riesgo",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/166-gobernanza-roles-y-gestion-de-riesgo",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/169-gobernanza-roles-y-gestion-de-riesgo",
           "lab_kind": "safety",
           "keywords": [
             "governance",
@@ -2967,10 +3018,10 @@
           "maturity": "stable"
         },
         {
-          "id": "167",
-          "number": 167,
+          "id": "170",
+          "number": 170,
           "title": "Normativa, auditoría y evidencia",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/167-normativa-auditoria-y-evidencia",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia",
           "lab_kind": "safety",
           "keywords": [
             "AI Act",
@@ -2984,10 +3035,10 @@
           "maturity": "stable"
         },
         {
-          "id": "168",
-          "number": 168,
+          "id": "171",
+          "number": 171,
           "title": "Proyecto: respuesta a incidentes de IA",
-          "path": "classes/part-13-evaluation-safety-security-and-governance/168-proyecto-respuesta-a-incidentes-de-ia",
+          "path": "classes/part-13-evaluation-safety-security-and-governance/171-proyecto-respuesta-a-incidentes-de-ia",
           "lab_kind": "capstone",
           "keywords": [
             "incident",
@@ -3011,10 +3062,10 @@
       "description": "Integra todo el programa y mantiene una zona explícita para temas emergentes, distinguiendo evidencia consolidada de prototipos y expectativas.",
       "lessons": [
         {
-          "id": "169",
-          "number": 169,
+          "id": "172",
+          "number": 172,
           "title": "IA neuro-simbólica",
-          "path": "classes/part-14-frontier-research-and-capstones/169-ia-neuro-simbolica",
+          "path": "classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica",
           "lab_kind": "frontier",
           "keywords": [
             "neuro-symbolic",
@@ -3028,10 +3079,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "170",
-          "number": 170,
+          "id": "173",
+          "number": 173,
           "title": "Causal AI y descubrimiento científico",
-          "path": "classes/part-14-frontier-research-and-capstones/170-causal-ai-y-descubrimiento-cientifico",
+          "path": "classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico",
           "lab_kind": "probability",
           "keywords": [
             "causal",
@@ -3045,10 +3096,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "171",
-          "number": 171,
+          "id": "174",
+          "number": 174,
           "title": "World models y simulación interna",
-          "path": "classes/part-14-frontier-research-and-capstones/171-world-models-y-simulacion-interna",
+          "path": "classes/part-14-frontier-research-and-capstones/174-world-models-y-simulacion-interna",
           "lab_kind": "frontier",
           "keywords": [
             "world models",
@@ -3062,10 +3113,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "172",
-          "number": 172,
+          "id": "175",
+          "number": 175,
           "title": "Razonamiento y cómputo en tiempo de inferencia",
-          "path": "classes/part-14-frontier-research-and-capstones/172-razonamiento-y-computo-en-tiempo-de-inferencia",
+          "path": "classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia",
           "lab_kind": "frontier",
           "keywords": [
             "reasoning",
@@ -3079,10 +3130,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "173",
-          "number": 173,
+          "id": "176",
+          "number": 176,
           "title": "Aprendizaje continuo y adaptación",
-          "path": "classes/part-14-frontier-research-and-capstones/173-aprendizaje-continuo-y-adaptacion",
+          "path": "classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion",
           "lab_kind": "frontier",
           "keywords": [
             "continual learning",
@@ -3096,10 +3147,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "174",
-          "number": 174,
+          "id": "177",
+          "number": 177,
           "title": "Privacidad diferencial y aprendizaje federado",
-          "path": "classes/part-14-frontier-research-and-capstones/174-privacidad-diferencial-y-aprendizaje-federado",
+          "path": "classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado",
           "lab_kind": "safety",
           "keywords": [
             "differential privacy",
@@ -3113,10 +3164,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "175",
-          "number": 175,
+          "id": "178",
+          "number": 178,
           "title": "IA para programación y modernización",
-          "path": "classes/part-14-frontier-research-and-capstones/175-ia-para-programacion-y-modernizacion",
+          "path": "classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion",
           "lab_kind": "agent",
           "keywords": [
             "coding agents",
@@ -3130,10 +3181,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "176",
-          "number": 176,
+          "id": "179",
+          "number": 179,
           "title": "IA para ciberseguridad y defensa",
-          "path": "classes/part-14-frontier-research-and-capstones/176-ia-para-ciberseguridad-y-defensa",
+          "path": "classes/part-14-frontier-research-and-capstones/179-ia-para-ciberseguridad-y-defensa",
           "lab_kind": "safety",
           "keywords": [
             "cybersecurity",
@@ -3147,10 +3198,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "177",
-          "number": 177,
+          "id": "180",
+          "number": 180,
           "title": "IA para educación y aprendizaje adaptativo",
-          "path": "classes/part-14-frontier-research-and-capstones/177-ia-para-educacion-y-aprendizaje-adaptativo",
+          "path": "classes/part-14-frontier-research-and-capstones/180-ia-para-educacion-y-aprendizaje-adaptativo",
           "lab_kind": "agent",
           "keywords": [
             "education",
@@ -3164,10 +3215,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "178",
-          "number": 178,
+          "id": "181",
+          "number": 181,
           "title": "IA para ciencia, clima y salud responsable",
-          "path": "classes/part-14-frontier-research-and-capstones/178-ia-para-ciencia-clima-y-salud-responsable",
+          "path": "classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable",
           "lab_kind": "evaluation",
           "keywords": [
             "science",
@@ -3181,10 +3232,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "179",
-          "number": 179,
+          "id": "182",
+          "number": 182,
           "title": "Cómo vigilar la frontera sin perseguir modas",
-          "path": "classes/part-14-frontier-research-and-capstones/179-como-vigilar-la-frontera-sin-perseguir-modas",
+          "path": "classes/part-14-frontier-research-and-capstones/182-como-vigilar-la-frontera-sin-perseguir-modas",
           "lab_kind": "evaluation",
           "keywords": [
             "frontier",
@@ -3198,10 +3249,10 @@
           "maturity": "frontier"
         },
         {
-          "id": "180",
-          "number": 180,
+          "id": "183",
+          "number": 183,
           "title": "Capstone final: sistema de IA evolutivo",
-          "path": "classes/part-14-frontier-research-and-capstones/180-capstone-final-sistema-de-ia-evolutivo",
+          "path": "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo",
           "lab_kind": "capstone",
           "keywords": [
             "portfolio",
