@@ -3,6 +3,7 @@
   "catalog_updated": "2026-08-16",
   "papers": 16,
   "notebooks": 24,
+  "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
     "2. Problema anterior",
@@ -45,411 +46,411 @@
   "files": [
     {
       "path": "assessments/papers/P01_perceptron.md",
-      "sha256": "e02c3e3bb683a80df5020d0af07e5aeee1c0e2272d70d926a5f3664131902723"
+      "sha256_lf": "e2a1e15efbca71682134b94902ba733aaea7bdb89f2b6a780149950f838b7889"
     },
     {
       "path": "assessments/papers/P02_backpropagation.md",
-      "sha256": "5236b2e04280b9d404805bbac5bbd2d07f16e036ac5da9dae9bfee1fb17aeb0a"
+      "sha256_lf": "e767f5f0fd3bd5dc0d9fcc46f1592dcbce5aa0e274ae250fd813f6892d027d0c"
     },
     {
       "path": "assessments/papers/P03_lstm.md",
-      "sha256": "b98b0acd146d63e3a44ff0e8e0c36ea8df3eb118968a7026fe2435380d3abbd4"
+      "sha256_lf": "09d9b25b3fd536074c6e0e7bdcd1b4bb52ac5cbdebfbd015ae40163fe0148d1b"
     },
     {
       "path": "assessments/papers/P04_alexnet.md",
-      "sha256": "0907bd5c93c7003167e9fa1b7c276c1e29a818708ddbdb78a4532ba10ee1ee5d"
+      "sha256_lf": "74067228f9d1dd439520f395da16e7ea0c4cd9756934b9c0f9d1fd6f9fd5585d"
     },
     {
       "path": "assessments/papers/P05_word2vec.md",
-      "sha256": "b1618432a6a2588f40fbc56c2f73d7ddb3a24694cd619021a912105dadf80e61"
+      "sha256_lf": "59ad4a9fce990f279579467889485722e9631205c94da2dc7aeba0631ac2114d"
     },
     {
       "path": "assessments/papers/P06_seq2seq.md",
-      "sha256": "02ab4f723c49bd32bb2a8f9842788b4057ccd8c7f3282f23bc725b033852ba2c"
+      "sha256_lf": "9e2149f2150463fa8cf8885232a7655a5b5de3f69d61fd8675eca0a78801ea4e"
     },
     {
       "path": "assessments/papers/P07_attention_bahdanau.md",
-      "sha256": "b75e2418b2a25d4b434c6be1a98f90509a8b0ad500c03f1b1fce9b32f41d9c41"
+      "sha256_lf": "91492b154b2271c15976c0fc820db431b6e8190eb9b3b4a1ebbcb5680619738e"
     },
     {
       "path": "assessments/papers/P08_transformer.md",
-      "sha256": "e6ca5453aa1c49fb1afb01b604890a87b9e041e8f4911e0d922dbf99e528fa94"
+      "sha256_lf": "a9387400f60693b1a68e8c578ea3282da4aa261bf730a7f4f8c113b5cc3f17b6"
     },
     {
       "path": "assessments/papers/P09_bert.md",
-      "sha256": "848f66033bd5a239d30c6ed9435eff4ba2225c9817df7ac3cf704113fea0c2eb"
+      "sha256_lf": "a818caa93d0d299f29f6abe00e79af41caf12bd5a2f25a5529945a870b52019a"
     },
     {
       "path": "assessments/papers/P10_gpt3.md",
-      "sha256": "0ba7c6757ad5147c23ee71910ad56de76a3275edee238aa3ebf4c4c24dd598e9"
+      "sha256_lf": "f8960a84c05b36db68b40d2372a9c8febe4648f8523f4d9baebf9ea772e02394"
     },
     {
       "path": "assessments/papers/P11_rag.md",
-      "sha256": "bba2a4b082f585b4e60a761aca094e950089bafe02745fedfd10f7a57c789417"
+      "sha256_lf": "02e3ab0ed0feb7d289aa161e30d8a5c2a24dc707b2c50a95ae931f10800ffcb2"
     },
     {
       "path": "assessments/papers/P12_instructgpt_rlhf.md",
-      "sha256": "d85c187ac2b4539fe7a8fbc0131aff8b0e9741283bb96aeba893ca60985ed54b"
+      "sha256_lf": "2dd0c2e88f8296949d219ac490fc25bfb8374ecbf4e0c42026b51a83ee7aa097"
     },
     {
       "path": "assessments/papers/P13_react.md",
-      "sha256": "ddf5e0fe89164d525db9745f6086d5bcdf300e00c2c62a02990517cafebdd78f"
+      "sha256_lf": "20fa36fa1e17560f308f9cca48327f6605b75055c8f62ab5cd8ddddc3293b7c2"
     },
     {
       "path": "assessments/papers/P14_toolformer.md",
-      "sha256": "4512ab625ee57b3de024ef73434e5cd58746f95d30a24f7bf472aae707e80583"
+      "sha256_lf": "507660b9c20b6506eaf532fab125c941f27591eb42a5939cd9c063dde3c6bc4d"
     },
     {
       "path": "assessments/papers/P15_dpo.md",
-      "sha256": "f4195774798368938a17bced21950ec8881f8effa7e5ab510756dd789eaf87e8"
+      "sha256_lf": "c98ef54bc442342b573955cd3a50022c8b42e96a3665c7ac856ec5029e2b8ce7"
     },
     {
       "path": "assessments/papers/P16_agentic_systems.md",
-      "sha256": "9f117446453a59fac9ffbad4af9867d0d375c99ab698eb9ed5ba7f927090e50a"
+      "sha256_lf": "1020c95fbac02f1d54d026d7318c068a303cc8fa4222acf8c362a13db34df3c5"
     },
     {
       "path": "assessments/papers/README.md",
-      "sha256": "e68879abc506b5f95dc2616a71d1365f3a52373f0aaba71b92bec921b1ad8217"
+      "sha256_lf": "5eaf1bd6a47836c333e75187cd3f9614bbd0b5d70b20c7b2ec1dbde7c01f5008"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
-      "sha256": "9a35fc733f6490d7619fe22f13a6e9e7f9d6dfb96ea763d9dc01f4cc909de1dc"
+      "sha256_lf": "057f5956fec2b5c74f4e9763ba2f518fa594ce6bcc6974dd1f0b916b57b77e0b"
     },
     {
       "path": "instructor/papers/P02_backpropagation.md",
-      "sha256": "9b14c18eb17a7c73ba588c7846b2e8a410503aa967b8eb2d5e22b092c3c29e40"
+      "sha256_lf": "9a391a24e67275639c76070eac67a07fd9710ed060c337dc2e596f25febe065d"
     },
     {
       "path": "instructor/papers/P03_lstm.md",
-      "sha256": "5df2e83f103d8bce495fa9c2f758a66f3d63cc692bfb5836b5e60411b923ea98"
+      "sha256_lf": "c76e5220a9c31b0d27e6fd61823cf193149ce4745c266e5ccd3b46e173244488"
     },
     {
       "path": "instructor/papers/P04_alexnet.md",
-      "sha256": "ffde0cc862ce676646a39eb677ce7cfe72169aa443fd96df8b3420b7c876bc11"
+      "sha256_lf": "519b85ad55f7db186c44464dff584c38224a2087b420f8cde291ecfe11939cdb"
     },
     {
       "path": "instructor/papers/P05_word2vec.md",
-      "sha256": "14c1d4cc78e848ed653585c8585295be7791d0e844973b09b0eef5aed32cbbe1"
+      "sha256_lf": "eb49692aabea0904025edd6362e86d96b0ddf7b2b98c335c219c85e861979575"
     },
     {
       "path": "instructor/papers/P06_seq2seq.md",
-      "sha256": "53c801c44a2dbf4ebcf9b0015123bfa979e7e10811d2ca07acb93af758e17af3"
+      "sha256_lf": "058a148b972cc646669e6e1f5fe4edee4b79e3cf87aa70c0cbb2260145109da8"
     },
     {
       "path": "instructor/papers/P07_attention_bahdanau.md",
-      "sha256": "257a78af8a53851e685563d170bb87cb5dea9617c81dae8451406fbafce7ec14"
+      "sha256_lf": "eab994898487d285f169172beb61becdba9e84a274d4d8aceb9ad3bd48465872"
     },
     {
       "path": "instructor/papers/P08_transformer.md",
-      "sha256": "460aca67ae8066c34900cc8c070b05669eef90b7bba7cdbdf0d5f758ee011bbd"
+      "sha256_lf": "24e4e34209889984586776f722a1ea6df78186ba38bf956dd9564f765755f73d"
     },
     {
       "path": "instructor/papers/P09_bert.md",
-      "sha256": "0757cd3612145a85d56eee4edb95bd6f24e072df5173257749211dcf0c58be26"
+      "sha256_lf": "0b60e8014697f43353a7b4ec48313fd3fd0ae9f08010bcfa2a7e0ef4794ec4af"
     },
     {
       "path": "instructor/papers/P10_gpt3.md",
-      "sha256": "98b4008f15c543b3055962c0d1df5ae31e8a41ed42be6599537b5ca202c86c0d"
+      "sha256_lf": "a88b23a1287cd5bb3b6d9b31d5e1e972e13ed7dec431bf90ee2b1e38d4d49b82"
     },
     {
       "path": "instructor/papers/P11_rag.md",
-      "sha256": "341d02494dee11250c12bf1a39d84646bb9e8201c859f07b29a90425d5142c8a"
+      "sha256_lf": "ffd77df00013a792b9720c26f5596255d67ba599142fea1e6608e5988c7ea374"
     },
     {
       "path": "instructor/papers/P12_instructgpt_rlhf.md",
-      "sha256": "29e4d4b6607d9a1f280ba7785e54e9770400857f5af1e5114ef4a9d4a17d481e"
+      "sha256_lf": "956f79ea21971baf0734efa510149815e24ed458b1d19b9c548564f0d5716e31"
     },
     {
       "path": "instructor/papers/P13_react.md",
-      "sha256": "69f6ced7606cde47302054cc9c96645fefa8e22cea6683cbd933faf04949beb3"
+      "sha256_lf": "c28b6d7e681f5623ec186c352834ff085de5b9b88ef7bbdf346e0f7425380248"
     },
     {
       "path": "instructor/papers/P14_toolformer.md",
-      "sha256": "fe03003465777980447f5b7211f4e2cbba9a22aea1c2f7df18165a0a7f90bc72"
+      "sha256_lf": "19c1e5b1fcb63d8f697cc42c2c31ccfc43f3b65eb4e8d4554fd2a4182056db2f"
     },
     {
       "path": "instructor/papers/P15_dpo.md",
-      "sha256": "6b0ace6f9655dbc56be5b433387797a9e72ca1c1b30c39bf4201613eab3fb469"
+      "sha256_lf": "924249433aac2ce5f0acf4d5ec0a5a88af8b84c757dc56d4e5f521576b2bedb6"
     },
     {
       "path": "instructor/papers/P16_agentic_systems.md",
-      "sha256": "a39edeb98cbd19a3464e4d8736304b8f72930a0d82a93e0280b84c942aa82164"
+      "sha256_lf": "d523520f2172462f060abb57830559c148ee593c1ddca3fc136dcae827d3f075"
     },
     {
       "path": "instructor/papers/README.md",
-      "sha256": "2d6dff1761aca491329bba9ad9d087cdac817d17f957f6d80764a02438404a79"
+      "sha256_lf": "17dd4d9e9e5043b4c6787476672265897cfab0ebb3974562565eee7fde014efe"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
-      "sha256": "22e5df48c8ad3d6a946d50edd6de19f938f47b2a01170fc20d6be16f26330aba"
+      "sha256_lf": "a05846c361780253bf672cff6b743e1eeafbf472f3de098cd7c0bbdb4dcc8415"
     },
     {
       "path": "notebooks/papers/P02_backpropagation.ipynb",
-      "sha256": "f0ae4e16fce68cd0712edd056329a0b93697d04e6eb190754f777cafe67b7005"
+      "sha256_lf": "501af923d1047b8b8d4f3a64d1eddc3ab1fbe2e11c3f710cea7f4f17e9f53af1"
     },
     {
       "path": "notebooks/papers/P03_lstm.ipynb",
-      "sha256": "c7619881d6bc444d6c5f8082aaf80c552445f06c6b2b1814883e08555cf19ca3"
+      "sha256_lf": "e232234b80598d3489541227a4e203a079afe4d1c17120abd952220c0ec06425"
     },
     {
       "path": "notebooks/papers/P04_alexnet.ipynb",
-      "sha256": "2760b9c6a28932ffeefcaf88852fafdd80b7f05343807779e9eac7f812d9c7d7"
+      "sha256_lf": "50236a673d8b8ffdfe2a4e54aa5e257ad259a6c80b5c3e091cffb9e500a66e6d"
     },
     {
       "path": "notebooks/papers/P05_word2vec.ipynb",
-      "sha256": "1d262dc5c151321507635ee6c16716ea58f43f2e00d0c6da26fe1ab527f61044"
+      "sha256_lf": "2e3854f6930201593a72ab8dec78eb636c71c5aa64d41ebbb988a3495e5bac31"
     },
     {
       "path": "notebooks/papers/P06_seq2seq.ipynb",
-      "sha256": "df6404e3a76c164f338ce37755753e9baa1f883db36af196b9a002a32fb7f5f0"
+      "sha256_lf": "19a2fac1f6ee8e61efc388868fb204f9ac30ef18b9ef9fdcea74ec860ef763f1"
     },
     {
       "path": "notebooks/papers/P07_attention_bahdanau.ipynb",
-      "sha256": "1b36f7816c0785ff02909dddeed8448e9089c1d23560cb9e387b3f83b84893ad"
+      "sha256_lf": "8c8f34d46207c95dadb18311d5494fc83d0eeaef87414adfd189aa5bac373f4d"
     },
     {
       "path": "notebooks/papers/P08_transformer.ipynb",
-      "sha256": "e021b3e4f29fa36ee0f0d45c78fc0f3ec7665450fa6c80d9c91f9fc47a75c5aa"
+      "sha256_lf": "ead140f4c813b7ff39cc294952a66fb0d597e09a1475aae83b45e262366f9ceb"
     },
     {
       "path": "notebooks/papers/P09_bert.ipynb",
-      "sha256": "e043f3008a9ded3046d620f2225e6f2ad4e75e113fee8589d84d752206b42570"
+      "sha256_lf": "89870ee9d690a7aa32a59488c7f1c51b916d69b46ee1d2675da9640bc0944c27"
     },
     {
       "path": "notebooks/papers/P10_gpt3.ipynb",
-      "sha256": "8d6a641b8c8bffceb94739c97cf0ccda5ee9f7928791a586fc3bd700de898eff"
+      "sha256_lf": "05c126eb6d896694e5001c6e3f7b50ddbe935c4fbe07534191709114a34cab54"
     },
     {
       "path": "notebooks/papers/P11_rag.ipynb",
-      "sha256": "7f10fdd91721ac9b8e8b5eda99bd64f3cdacdc8f0e1d1140fba9fc091b452ffe"
+      "sha256_lf": "3a37e80fae8914b01208ec3e9a6e356699851346207ec7ed318c30ced16cf353"
     },
     {
       "path": "notebooks/papers/P12_instructgpt_rlhf.ipynb",
-      "sha256": "28789d2bd61d1f4f7bf514ba2283fa02c1c3f0e418ae213fca537a60ed39bf43"
+      "sha256_lf": "b6b92274d81bc40d60d6571d570eb28ea1ea39cf0415d1fb80d54d7511109f56"
     },
     {
       "path": "notebooks/papers/P13_react.ipynb",
-      "sha256": "914de430ef4abe0b49596d372b974086f8ee13c12e2c6fc8208567fb5133be11"
+      "sha256_lf": "f58d4951214dd590f5ec2fc88a1eaf8f208d24d7466ba29ad4eeea52bd3036c0"
     },
     {
       "path": "notebooks/papers/P14_toolformer.ipynb",
-      "sha256": "cc7d2ac0d4f621afa64d0a6b9989f88455efcf545f3d86fd41776d8893b3ad70"
+      "sha256_lf": "a6c2fdb0d5d74c30fc2ec14c73d6b0a503f160b1c7bc208421300ac683bdb7f0"
     },
     {
       "path": "notebooks/papers/P15_dpo.ipynb",
-      "sha256": "1f2e49f8d807a7f5d90f0c9dcf789a9d742bde338df12257edf19520cd9a0e6a"
+      "sha256_lf": "fe1bbf1be3e926733eb1d273aa59bcae6436e72a002bd310103a72c7b8f6450c"
     },
     {
       "path": "notebooks/papers/P16_agentic_systems.ipynb",
-      "sha256": "0e6361d5db2d7492689914655ae269d76017cd8860023633b329f2fd676ede07"
+      "sha256_lf": "43cc4f48f0e0fcd2412f8de9ca47b0b70c0eb3fdf9c013e66c1f6e42e81ee726"
     },
     {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
-      "sha256": "1ce4f643cfa98ed63c880b270f9841fa659f8a93c3d3c1310415a0a0c0201049"
+      "sha256_lf": "122e0fcf47ff9d7a5c8288450e39a7d4a5f486f1f0a607f79924c846666c4d5d"
     },
     {
       "path": "notebooks/papers/T02_qkv_scaled_dot_product.ipynb",
-      "sha256": "591ff05be68b6aee0e70648078d32e6ce6342159d5c203d26d43dc2b33104857"
+      "sha256_lf": "3559c74835b417c9a319e7a9999f4016184dcd9781375f6ecfacba5c119e88a5"
     },
     {
       "path": "notebooks/papers/T03_softmax_y_temperatura.ipynb",
-      "sha256": "79131e5e56b82f879009c27e7741c22540fd62053b4d1dcbb47b22433b2401d1"
+      "sha256_lf": "712a9720eed039b49da372d5727fd4790cf5761d1b3dcdaa040456216e27ed3c"
     },
     {
       "path": "notebooks/papers/T04_self_attention_y_mascara_causal.ipynb",
-      "sha256": "1d17bba6f812dca2cfa3e6f75f6a6bf2e6db92ba30568a3d5d6e460df5256bbc"
+      "sha256_lf": "64573de3c1649c9bd0ad2f742407044c6b81daf7d2eda02b90ab2a14ab3d0016"
     },
     {
       "path": "notebooks/papers/T05_multi_head_attention.ipynb",
-      "sha256": "bee9109163f5566f670df6b98e79307f76aa4191f8ba1cf61eb71304e2160a89"
+      "sha256_lf": "c98e90b87c021384b3e14adc40dc02d916c8cb05974cedeb9d7d161e2a23a551"
     },
     {
       "path": "notebooks/papers/T06_positional_encoding.ipynb",
-      "sha256": "0c3787eef032ba770b42cd4cda95c9857d22f8589a7ae1bede5e8bc4ba7a0d0c"
+      "sha256_lf": "54a6cc7757d19aafe792cbf473050fcba70c21e00f9b625ef81c8248ef8495aa"
     },
     {
       "path": "notebooks/papers/T07_residual_layernorm_ffn.ipynb",
-      "sha256": "d53339fe45882c549336a8fa547123d413e539c207e666c2b39c7292abb77caf"
+      "sha256_lf": "2860c901d37aa123fa8df4f2df6f882e58e640816967538ce8f80808fcaca2a6"
     },
     {
       "path": "notebooks/papers/T08_encoder_decoder_y_limites.ipynb",
-      "sha256": "015ac3823d734171875066a7767db89657a343d03cb01cdbaba0c6dbe1428c4e"
+      "sha256_lf": "fd1c0148f28915291cd471601c23a4b344bfc936e21309669692edc1d0f08ea8"
     },
     {
       "path": "papers/README.md",
-      "sha256": "d1b804936d3fb8d28f07403d4c277fe8d4af1ef35fd1b4c886cebab1960650d8"
+      "sha256_lf": "d1b804936d3fb8d28f07403d4c277fe8d4af1ef35fd1b4c886cebab1960650d8"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256": "c6d40106690ef840843f8dc3e82a7dd2fd4f88a26c2af2c472d172dab4174469"
+      "sha256_lf": "c6d40106690ef840843f8dc3e82a7dd2fd4f88a26c2af2c472d172dab4174469"
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256": "34f0cc6fe56df0ca5d09fc2ccaa3e766238effae002f0a9360afe74ed4c02b00"
+      "sha256_lf": "4d5d0c902849876eafea7757d3035d6cf24f0ce908eb851f838ecad082c0f731"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256": "8ba6c8b683fdd7b0161a544299f6f100298de87e05c322678e655ee786e18d14"
+      "sha256_lf": "8ba6c8b683fdd7b0161a544299f6f100298de87e05c322678e655ee786e18d14"
     },
     {
       "path": "papers/catalog/sources.yaml",
-      "sha256": "3b977b8203006c5c361d276bb07fa3e6ab3abbbebc3acfd35f3717517d9b8285"
+      "sha256_lf": "3b977b8203006c5c361d276bb07fa3e6ab3abbbebc3acfd35f3717517d9b8285"
     },
     {
       "path": "papers/foundational/P01_perceptron/README.md",
-      "sha256": "a251f5a3d462530d99afb25fdc4fb52ca79776070430b9ecc33960202889c86f"
+      "sha256_lf": "a251f5a3d462530d99afb25fdc4fb52ca79776070430b9ecc33960202889c86f"
     },
     {
       "path": "papers/foundational/P02_backpropagation/README.md",
-      "sha256": "00f970dca3525fbd79265cefa4ce3346f17efedf87b24105b2b9e4f0cc3e435a"
+      "sha256_lf": "00f970dca3525fbd79265cefa4ce3346f17efedf87b24105b2b9e4f0cc3e435a"
     },
     {
       "path": "papers/foundational/P03_lstm/README.md",
-      "sha256": "1ff53e2bb8ed90beee013231411cd6ce5b4ac22aa25b4ec8a74987da9652d8ea"
+      "sha256_lf": "1ff53e2bb8ed90beee013231411cd6ce5b4ac22aa25b4ec8a74987da9652d8ea"
     },
     {
       "path": "papers/foundational/P04_alexnet/README.md",
-      "sha256": "f8a20836c189a493eb112be0a217095a44066cc54482e8bc77634355cf23b7e8"
+      "sha256_lf": "f8a20836c189a493eb112be0a217095a44066cc54482e8bc77634355cf23b7e8"
     },
     {
       "path": "papers/foundational/P05_word2vec/README.md",
-      "sha256": "e4bd70dd13657ecacefad384dcdd2e6a9b094df0e662ba66c2896bb6493d4c47"
+      "sha256_lf": "e4bd70dd13657ecacefad384dcdd2e6a9b094df0e662ba66c2896bb6493d4c47"
     },
     {
       "path": "papers/foundational/P06_seq2seq/README.md",
-      "sha256": "de1ebc1f187b2d6cdd6b5c0d4056176cd213508ccd6b6bccdfb2d60bbde42939"
+      "sha256_lf": "de1ebc1f187b2d6cdd6b5c0d4056176cd213508ccd6b6bccdfb2d60bbde42939"
     },
     {
       "path": "papers/foundational/P07_attention_bahdanau/README.md",
-      "sha256": "950ff09f0967baed1429e34e3150227df6771b6e22a54ceead90549881c2af3e"
+      "sha256_lf": "950ff09f0967baed1429e34e3150227df6771b6e22a54ceead90549881c2af3e"
     },
     {
       "path": "papers/foundational/P08_transformer/README.md",
-      "sha256": "89601cbae25562379294a927126d6a98ee3d31491152e85709f630c80de9aa49"
+      "sha256_lf": "89601cbae25562379294a927126d6a98ee3d31491152e85709f630c80de9aa49"
     },
     {
       "path": "papers/foundational/P09_bert/README.md",
-      "sha256": "97bceceb19c267a69c1672e2ab3504e1284dbd00b7eb574d4350a618547c47ca"
+      "sha256_lf": "97bceceb19c267a69c1672e2ab3504e1284dbd00b7eb574d4350a618547c47ca"
     },
     {
       "path": "papers/foundational/P10_gpt3/README.md",
-      "sha256": "3ee0932f9203b063230d86204f76adc676fe515ff4c76aa3fd42b973a161cfad"
+      "sha256_lf": "3ee0932f9203b063230d86204f76adc676fe515ff4c76aa3fd42b973a161cfad"
     },
     {
       "path": "papers/foundational/P11_rag/README.md",
-      "sha256": "12b1d9904768458cd1399098d2a8191d18ddbcbd8d387bdb1a0c9a1b9720e11b"
+      "sha256_lf": "12b1d9904768458cd1399098d2a8191d18ddbcbd8d387bdb1a0c9a1b9720e11b"
     },
     {
       "path": "papers/foundational/P12_instructgpt_rlhf/README.md",
-      "sha256": "cb43c2425aaffacf22699cb10e87b13c04e0b29676f81558ffe650465360ee0d"
+      "sha256_lf": "cb43c2425aaffacf22699cb10e87b13c04e0b29676f81558ffe650465360ee0d"
     },
     {
       "path": "papers/foundational/P13_react/README.md",
-      "sha256": "30ab1c152eb07765a6e4e2b8ac4f0f1e8d4e4c01c9bb0f45182525d0302c2182"
+      "sha256_lf": "30ab1c152eb07765a6e4e2b8ac4f0f1e8d4e4c01c9bb0f45182525d0302c2182"
     },
     {
       "path": "papers/foundational/P14_toolformer/README.md",
-      "sha256": "855e745e59f122aa2cb4edda02869d1415736d76ef919ada9e82d00f45fd33e6"
+      "sha256_lf": "855e745e59f122aa2cb4edda02869d1415736d76ef919ada9e82d00f45fd33e6"
     },
     {
       "path": "papers/foundational/P15_dpo/README.md",
-      "sha256": "745590ba0aeb2077d65f96b6c4181d72f0d39024db9df060b8ba3f0d96833ea3"
+      "sha256_lf": "745590ba0aeb2077d65f96b6c4181d72f0d39024db9df060b8ba3f0d96833ea3"
     },
     {
       "path": "papers/foundational/P16_agentic_systems/README.md",
-      "sha256": "f3607b3155a448a459dbea4812e16d515cefbc216cf612dd486e293809e07f53"
+      "sha256_lf": "f3607b3155a448a459dbea4812e16d515cefbc216cf612dd486e293809e07f53"
     },
     {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
-      "sha256": "e08d4427d94da4680598c41b0fe17a622b7d70e87aa28e095ac3997ea85b6e3c"
+      "sha256_lf": "e08d4427d94da4680598c41b0fe17a622b7d70e87aa28e095ac3997ea85b6e3c"
     },
     {
       "path": "papers/guides/FUENTES_Y_VENUES.md",
-      "sha256": "18a4a566e7f07a0284606c7e5e289e42719712ca1a9a76b77b1ef31f241d7bf6"
+      "sha256_lf": "18a4a566e7f07a0284606c7e5e289e42719712ca1a9a76b77b1ef31f241d7bf6"
     },
     {
       "path": "papers/guides/GLOSARIO_PAPERS_IA.md",
-      "sha256": "2d3c9f63c46775be590ff06b701cb202af5025cf6b0f1fef5cd73c575bf021c6"
+      "sha256_lf": "2d3c9f63c46775be590ff06b701cb202af5025cf6b0f1fef5cd73c575bf021c6"
     },
     {
       "path": "papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md",
-      "sha256": "1011b91279c597e81809b84cef73d99cfbd3c767a9b421ddcd4804c009c25f4e"
+      "sha256_lf": "1011b91279c597e81809b84cef73d99cfbd3c767a9b421ddcd4804c009c25f4e"
     },
     {
       "path": "papers/guides/PLANTILLA_FICHA_PAPER.md",
-      "sha256": "974469494f703f80d2693204ce0f9412894aa016076ff365ac3d170b03c812b0"
+      "sha256_lf": "974469494f703f80d2693204ce0f9412894aa016076ff365ac3d170b03c812b0"
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256": "1821004df45aadba11979f357d3308d176d02b1d592d4c144de95a4f19ea4813"
+      "sha256_lf": "5c8d447c2d998f3212c28d1c64039963de107361898d468e4107401e048a8866"
     },
     {
       "path": "student/papers/P01_perceptron.md",
-      "sha256": "e8ed3593449f12d45cf4eca8a17de7d2beff19e88842af4e542ed7c6c8a90751"
+      "sha256_lf": "684c76aaa8ba29f47414a6b3306d723a6ac3e06aca17f62e0c3201db0c06921f"
     },
     {
       "path": "student/papers/P02_backpropagation.md",
-      "sha256": "6311d38692eb59970c96d4f41555508cfc122f7878ed3f1a425072e2ad8e23e7"
+      "sha256_lf": "ff31a5770323821a4d224935b57b145add001907c92d7b64c36a9e35e2d52b0c"
     },
     {
       "path": "student/papers/P03_lstm.md",
-      "sha256": "02d28fc0eba026ee12852b1b8688fbb114caca3608dec486b060f4582a2529b2"
+      "sha256_lf": "8a41085d8ebd0b6ca06da327eb9d7ca695e60b7088a9f418fda8c23fa486ef81"
     },
     {
       "path": "student/papers/P04_alexnet.md",
-      "sha256": "cd03eb4a9b049bbeaf1f34ff24b7725fb6316a01682ae00e212030f1e47198f4"
+      "sha256_lf": "54104a93169468014535976e7d7c325ee67e4a7c32119c08f317ebbf56595b71"
     },
     {
       "path": "student/papers/P05_word2vec.md",
-      "sha256": "a119e1f64285042dc767fef6fbcd6bf0b2bb7fa2172d85196103f024ac8c03ac"
+      "sha256_lf": "781345788138400a0d2510376fa2c4b7f18f849e06eeb68c0e084adcfb578d8a"
     },
     {
       "path": "student/papers/P06_seq2seq.md",
-      "sha256": "75894c298bc67799f04f4aaadc6c0c6dbe73395ef8c7b3cfb62ce2e8cce0b924"
+      "sha256_lf": "f54838aab7ab419059efa2759e4e5b5fb5d487d53652d94dcf53f937b2a77189"
     },
     {
       "path": "student/papers/P07_attention_bahdanau.md",
-      "sha256": "880115c4b3937b77589e9c29b1faa96f200760d39f2fdda6bc3c26e03c53c742"
+      "sha256_lf": "f1d06aa657c206ea04c481d9f2ad8c62335628b0c3f51c97b5a2f26436e19964"
     },
     {
       "path": "student/papers/P08_transformer.md",
-      "sha256": "380e9bf2e797115447f3fae605c829503d29c902efc2dd6f3987f73dc62cc9cc"
+      "sha256_lf": "cc6973e4877a819031609803d14edbe39b9f23fd3bf0512c3c2d2b6ff90daef7"
     },
     {
       "path": "student/papers/P09_bert.md",
-      "sha256": "7eaa478d262d85e603bb4752c1cc17e931653e1ce325cd999c1e89d8bdc8c739"
+      "sha256_lf": "66069a0f8591c485455bb3fa95c20c1005611c70fa46df6997b33ff65d5ac6dd"
     },
     {
       "path": "student/papers/P10_gpt3.md",
-      "sha256": "a4a9144e0edd42930e33be104ee80c5d49ef63dce0e4cf2851af6365d5823d1b"
+      "sha256_lf": "fa53af0bdb89b31368af44c3a39835b9de37eb83f03ca02fd41c72fb60afb9da"
     },
     {
       "path": "student/papers/P11_rag.md",
-      "sha256": "2d113bb81588ccca99b9601492ab8c39edf530d93a55be5400f20960c9608092"
+      "sha256_lf": "8ede8cf184651d06e553ce91ea5c4292733b63562e64bb5c3b347ac22361d247"
     },
     {
       "path": "student/papers/P12_instructgpt_rlhf.md",
-      "sha256": "db9709532f0dd1b4b8e624e62cfca754e99ae45a767f05b064a0e6154ede07ea"
+      "sha256_lf": "a52457915736d9728ba955545c03fdda46081a78dc720da9347ea911c802465c"
     },
     {
       "path": "student/papers/P13_react.md",
-      "sha256": "45dd3a6052148a25bf9bddd2ac42ec0493e2b29e6c623627a22fe04cd9b9681b"
+      "sha256_lf": "223871a51e2ea8de7bfd5238808ffd819e15bdd23ec2cb2a4e01d5e3fc2f4c54"
     },
     {
       "path": "student/papers/P14_toolformer.md",
-      "sha256": "4c06bffead2e50dd56302a48da059b53d22eb8ee468ee53753ece7b2382d03a2"
+      "sha256_lf": "6bca7086e78da917c3c50e93d0c3a0f81a3639714c6e1ff88d55e7a45293cac0"
     },
     {
       "path": "student/papers/P15_dpo.md",
-      "sha256": "96d23d859642a0fdd9eff4a23a1731f4a654bfca759df4c23ad62ff966c34d3d"
+      "sha256_lf": "70714d7498881a1c33c3dbacb843a7f0d11eccfe51bd0229fefcd7b31ec167b1"
     },
     {
       "path": "student/papers/P16_agentic_systems.md",
-      "sha256": "8d3a38b99c72add5f612e963ad467b6e117909de3a899905c558fcd615688046"
+      "sha256_lf": "87d9abb8e3cec7be9ccc24e9dbe2ff42f2f845456a4fb8659044791d754c7183"
     },
     {
       "path": "student/papers/README.md",
-      "sha256": "c777ecf5ee4581a81df70e4a63f6edbddba6f3e1b43d7e391e5da0d9692c6f1e"
+      "sha256_lf": "51e48840a2bdaeecd1b5fe6f97c2c87086c91f3b3123f9aeb62c37489aae33dd"
     }
   ]
 }

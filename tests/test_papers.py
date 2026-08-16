@@ -4,6 +4,7 @@ from __future__ import annotations
 import io
 import json
 import sys
+import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -115,7 +116,33 @@ class ContractTests(unittest.TestCase):
             target = ROOT / entry["path"]
             with self.subTest(file=entry["path"]):
                 self.assertTrue(target.exists())
-                self.assertEqual(sha256_of(target), entry["sha256"])
+                self.assertEqual(sha256_of(target), entry["sha256_lf"])
+
+    def test_hash_does_not_depend_on_the_operating_system(self):
+        """El mismo contenido en CRLF y en LF debe dar el mismo hash.
+
+        Sin esto el manifiesto pasa en Windows y falla en el CI de Linux —o al
+        revés— porque el checkout de git cambia los saltos de línea.
+        """
+        contenido = "# ficha\n\n## 1. Identificación\n\ntexto\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            lf = Path(tmp) / "lf.md"
+            crlf = Path(tmp) / "crlf.md"
+            lf.write_bytes(contenido.encode("utf-8"))
+            crlf.write_bytes(contenido.replace("\n", "\r\n").encode("utf-8"))
+            self.assertNotEqual(lf.read_bytes(), crlf.read_bytes())
+            self.assertEqual(sha256_of(lf), sha256_of(crlf))
+
+    def test_generated_artefacts_use_lf(self):
+        """Los artefactos generados se versionan con LF, no con el default del SO."""
+        objetivos = (
+            [ROOT / "papers" / "manifest.json", ROOT / "papers" / "catalog" / "PAPERS_INDEX.md"]
+            + sorted(NOTEBOOKS.glob("*.ipynb"))
+            + sorted((ROOT / "assessments" / "papers").glob("*.md"))
+        )
+        for path in objetivos:
+            with self.subTest(file=path.name):
+                self.assertNotIn(b"\r\n", path.read_bytes())
 
 
 class PaperLabTests(unittest.TestCase):

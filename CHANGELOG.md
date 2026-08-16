@@ -2,6 +2,28 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 0.4.2 — 2026-08-16
+
+- **Corrige el manifiesto del eje de papers, que dependía del sistema operativo.**
+  El CI de 0.4.1 falló en los nueve trabajos de la matriz —Linux, macOS y Windows, tres
+  versiones de Python— con 79 fallos, todos del mismo origen: los generadores escribían
+  los artefactos con el salto de línea por defecto (CRLF en Windows), git los versionaba
+  con LF y el hash del fichero crudo daba dos valores distintos para el mismo contenido.
+  El contrato pasaba en la máquina donde se generó y fallaba en todas las demás.
+  - `sha256_of()` normaliza CRLF a LF antes de hashear: el manifiesto certifica el
+    **contenido**, no el fichero en un sistema operativo concreto. La clave pasa de
+    `sha256` a **`sha256_lf`** para que nadie espere que `sha256sum` coincida sobre un
+    fichero en CRLF, y el propio manifiesto lo documenta en el campo `hash`.
+  - `scripts/generate_papers.py` y `scripts/generate_site.py` escriben siempre con LF
+    (`newline="\n"`), de modo que el mismo comando produce el mismo artefacto en
+    cualquier sistema.
+  - Nuevo `.gitattributes` que fija LF en el repositorio y marca los binarios para que no
+    se conviertan nunca.
+  - Dos pruebas nuevas que habrían atrapado el fallo antes del push:
+    `test_hash_does_not_depend_on_the_operating_system` comprueba que el mismo contenido
+    en CRLF y en LF da el mismo hash, y `test_generated_artefacts_use_lf` verifica que
+    ningún artefacto generado se versiona con CRLF.
+
 ## 0.4.1 — 2026-08-16
 
 - **El eje de papers se publica**, no solo se versiona:

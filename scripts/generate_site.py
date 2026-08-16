@@ -53,6 +53,15 @@ def render(md_text: str) -> str:
     return markdown.markdown(md_text, extensions=MD_EXTENSIONS)
 
 
+def write_lf(path: Path, content: str) -> None:
+    """Escribe siempre con LF, en cualquier sistema operativo.
+
+    Sin `newline="\\n"`, Python traduce a CRLF en Windows y el mismo comando
+    produce artefactos distintos según dónde se ejecutó.
+    """
+    path.write_text(content, encoding="utf-8", newline="\n")
+
+
 def rewrite_class_links(text: str, lesson_path: str) -> str:
     # clase → clase (nav superior y pie), mismo o distinto part
     text = re.sub(
@@ -100,14 +109,14 @@ def build_class_pages(curriculum: dict, out_dir: Path) -> int:
         # página de la parte
         part_md = (ROOT / "classes" / part_dir / "README.md").read_text(encoding="utf-8")
         part_md = rewrite_part_links(part_md, part_dir)
-        (out_dir / f"part-{part_id}.html").write_text(
+        write_lf(
+            out_dir / f"part-{part_id}.html",
             PAGE_TEMPLATE.format(
                 title=f"Parte {part_id} — {part['title']}",
                 description=part["description"][:150],
                 crumb=f"Parte {part_id}",
                 body=render(part_md),
             ),
-            encoding="utf-8",
         )
         count += 1
 
@@ -124,14 +133,14 @@ def build_class_pages(curriculum: dict, out_dir: Path) -> int:
                 "## 📝 Evaluación completa\n\n" + assessment.strip() + "\n"
             )
             md = rewrite_class_links(md, lesson["path"])
-            (out_dir / f"{lesson['id']}.html").write_text(
+            write_lf(
+                out_dir / f"{lesson['id']}.html",
                 PAGE_TEMPLATE.format(
                     title=f"{lesson['id']} — {lesson['title']}",
                     description=str(lesson.get("summary", lesson["title"]))[:150],
                     crumb=f"Clase {lesson['id']} · Parte {part_id}",
                     body=render(md),
                 ),
-                encoding="utf-8",
             )
             count += 1
     return count
@@ -190,14 +199,14 @@ def rewrite_paper_links(text: str, source_rel: str) -> str:
 
 def paper_page(source_rel: str, out_path: Path, title: str, crumb: str, description: str) -> None:
     md_text = rewrite_paper_links((ROOT / source_rel).read_text(encoding="utf-8"), source_rel)
-    out_path.write_text(
+    write_lf(
+        out_path,
         PAGE_TEMPLATE.format(
             title=title,
             description=description[:150],
             crumb=crumb,
             body=render(md_text),
         ),
-        encoding="utf-8",
     )
 
 
@@ -230,7 +239,8 @@ def build_paper_pages(out_dir: Path) -> int:
         pages += 1
 
     (ROOT / "site" / "data").mkdir(parents=True, exist_ok=True)
-    (ROOT / "site" / "data" / "papers.json").write_text(
+    write_lf(
+        ROOT / "site" / "data" / "papers.json",
         json.dumps({
             "updated": catalog["updated"],
             "paper_count": len(catalog["papers"]),
@@ -253,7 +263,6 @@ def build_paper_pages(out_dir: Path) -> int:
                 for item in catalog["papers"]
             ],
         }, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
     return pages
 
@@ -266,9 +275,9 @@ def main() -> None:
         "parts": curriculum["parts"],
     }
     (ROOT / "site" / "data").mkdir(parents=True, exist_ok=True)
-    (ROOT / "site" / "data" / "catalog.json").write_text(
+    write_lf(
+        ROOT / "site" / "data" / "catalog.json",
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
     out_dir = ROOT / "site" / "classes"
     out_dir.mkdir(parents=True, exist_ok=True)

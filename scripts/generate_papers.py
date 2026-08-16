@@ -2384,10 +2384,16 @@ DERIVED_READMES = {
 
 
 def write(path: Path, content: str, written: list[str]) -> None:
+    """Escribe siempre con LF, en cualquier sistema operativo.
+
+    Sin `newline="\\n"`, Python traduce a CRLF en Windows: el artefacto sería
+    distinto según dónde se generó y el manifiesto dejaría de cuadrar en CI.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     normalized = content if content.endswith("\n") else content + "\n"
-    if not path.exists() or path.read_text(encoding="utf-8") != normalized:
-        path.write_text(normalized, encoding="utf-8")
+    # se compara en bytes: `read_text(newline=...)` no existe antes de Python 3.13
+    if not path.exists() or path.read_bytes() != normalized.encode("utf-8"):
+        path.write_text(normalized, encoding="utf-8", newline="\n")
     written.append(path.relative_to(ROOT).as_posix())
 
 
@@ -2454,16 +2460,21 @@ def generate() -> list[str]:
         "catalog_updated": data["updated"],
         "papers": len(data["papers"]),
         "notebooks": len(data["papers"]) + len(TRANSFORMER_SPECS),
+        "hash": (
+            "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. "
+            "No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito "
+            "para que el manifiesto sea el mismo en Windows, Linux y macOS."
+        ),
         "contrato_ficha": list(FICHA_SECTIONS),
         "contrato_notebook": list(NOTEBOOK_SECTIONS),
         "files": [
-            {"path": rel, "sha256": sha256_of(ROOT / rel)}
+            {"path": rel, "sha256_lf": sha256_of(ROOT / rel)}
             for rel in sorted(set(manifest_files))
             if (ROOT / rel).exists()
         ],
     }
     (ROOT / "papers" / "manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
     )
     written.append("papers/manifest.json")
     return written

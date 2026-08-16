@@ -152,7 +152,18 @@ def find_paper(identifier: str | int) -> Paper:
 
 
 def sha256_of(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    """SHA-256 del contenido con los saltos de línea normalizados a LF.
+
+    El hash del fichero crudo **no sirve** como contrato multiplataforma: en
+    Windows los generadores escriben CRLF y en CI el checkout entrega LF, así que
+    el mismo contenido produciría dos hashes distintos y el manifiesto fallaría
+    en un sistema operativo y pasaría en otro.
+
+    Al normalizar, el manifiesto significa «este contenido», no «este fichero en
+    este sistema operativo». Por eso la clave del manifiesto es `sha256_lf` y no
+    `sha256`: `sha256sum fichero` NO coincidirá si el fichero está en CRLF.
+    """
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _markdown_sections(text: str) -> list[str]:
@@ -258,7 +269,7 @@ def validate_papers(*, strict: bool = False) -> dict[str, Any]:
             target = REPO_ROOT / entry["path"]
             if not target.exists():
                 errors.append(f"manifest: falta {entry['path']}")
-            elif sha256_of(target) != entry["sha256"]:
+            elif sha256_of(target) != entry["sha256_lf"]:
                 errors.append(f"manifest: SHA-256 desactualizado en {entry['path']}")
 
     return {

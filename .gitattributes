@@ -1,0 +1,30 @@
+# Saltos de línea normalizados a LF en todo el repositorio.
+#
+# Motivo concreto: `papers/manifest.json` guarda un hash por artefacto. Si el
+# checkout entrega CRLF en Windows y LF en el CI de Linux, el mismo contenido
+# produce dos hashes distintos y la verificación pasa en un sistema y falla en
+# otro. Aquí se fija el formato en disco; en `ai_evolution.papers.sha256_of` se
+# normaliza además el contenido antes de hashear, por si alguien clona con otra
+# configuración.
+
+* text=auto eol=lf
+
+# Formatos donde el salto de línea es parte del contrato de la herramienta
+*.py    text eol=lf
+*.ipynb text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.sh    text eol=lf
+
+# Binarios: nunca convertir
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pptx  binary
+*.zip   binary
+*.exe   binary
