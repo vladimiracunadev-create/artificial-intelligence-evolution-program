@@ -1,4 +1,4 @@
-version: '2026-07-29'
+version: '2026-08-16'
 topics:
 - id: mcp
   name: Model Context Protocol
@@ -35,3 +35,35 @@ topics:
   reviewed: '2026-07-29'
   source: https://openai.github.io/openai-agents-python/tracing/
   reason: Evalúa decisiones, llamadas a herramientas, handoffs y guardrails.
+
+# Investigacion posterior a la ruta ampliada del eje de papers.
+# Entra aqui, y no en papers/foundational/, porque no cumple todavia el criterio
+# de ascenso de prompts/VIGILANCIA_DE_FRONTERA.md (12 meses + replicacion +
+# errores comunes documentables). Se relee con fecha, no se cita como firme.
+- id: hybrid-attention-ssm
+  name: Arquitecturas hibridas atencion + espacios de estados
+  category: architecture
+  maturity: emerging
+  reviewed: '2026-08-16'
+  source: https://arxiv.org/abs/2403.19887
+  reason: >-
+    Alternar bloques de atencion y de SSM busca la memoria constante de Mamba
+    sin perder la recuperacion exacta de la atencion. Continua P20 y P21.
+- id: test-time-compute
+  name: Escalar computo en inferencia
+  category: reasoning
+  maturity: emerging
+  reviewed: '2026-08-16'
+  source: https://arxiv.org/abs/2408.03314
+  reason: >-
+    Asignar mas computo al responder puede rendir mas que agrandar el modelo.
+    Es la variable que las leyes de escalado de P19 no modelan y que P22 explota.
+- id: verifiable-rewards-beyond-code
+  name: Recompensas verificables fuera de matematicas y codigo
+  category: alignment
+  maturity: emerging
+  reviewed: '2026-08-16'
+  source: https://doi.org/10.1038/s41586-025-09422-z
+  reason: >-
+    P22 funciona porque la respuesta se puede comprobar. Extenderlo a dominios
+    sin verificador barato es la pregunta abierta que deja el paper.

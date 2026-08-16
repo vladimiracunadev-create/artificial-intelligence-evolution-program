@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **16 hitos · 24 notebooks ejecutables · de Rosenblatt (1958) a los sistemas agentic**
+## **22 hitos · 30 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -10,14 +10,15 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 
 [📇 Índice de papers](catalog/PAPERS_INDEX.md) ·
 [🗺️ Ruta y niveles](ROADMAP.md) ·
+[🧮 Anexos matemáticos](annexes/README.md) ·
 [🌐 Fuentes y venues](guides/FUENTES_Y_VENUES.md) ·
 [📖 Cómo leer un paper](guides/COMO_LEER_UN_PAPER_DE_IA.md) ·
 [🔁 5 pasadas](guides/METODO_DE_LECTURA_EN_5_PASADAS.md) ·
 [📚 Glosario](guides/GLOSARIO_PAPERS_IA.md)
 
-| 📄 Papers | 📓 Notebooks | 🧪 Motores | 🎓 Niveles | 🔗 Clases enlazadas |
-|:---:|:---:|:---:|:---:|:---:|
-| **16** | **24** | **16** | **L0–L5** | **22** |
+| 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **22** | **30** | **22** | **5** | **L0–L5** | **27** |
 
 </div>
 
@@ -35,38 +36,42 @@ implementación → experimento → interpretación → limitaciones → siguien
 ```
 
 La última flecha es la importante. **Cada paper existe porque el anterior dejó algo sin
-resolver.** El perceptrón no separa XOR → backpropagation entrena capas ocultas → el
-gradiente se desvanece en secuencias largas → la LSTM lo controla → un vector fijo no
-sostiene frases largas → la atención lo elimina → si la atención basta, sobra la recurrencia
-→ Transformer. Estudiado así, no hay nada que memorizar: hay una cadena que se sigue.
+resolver.** El perceptrón no separa XOR → backpropagation entrena capas ocultas → el gradiente
+se desvanece en secuencias largas → la LSTM lo controla → un vector fijo no sostiene frases
+largas → la atención lo elimina → si la atención basta, sobra la recurrencia → Transformer →
+…y la atención cuesta O(n²), que es de donde arranca Mamba doce años después.
 
 > [!IMPORTANT]
 > Este eje **no redistribuye papers**. Enlaza a la fuente primaria de cada uno, con autoría,
 > año, venue, URL y fecha de consulta. Los notebooks implementan **miniaturas** del mecanismo
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
-## 🧭 La ruta mínima
+## 🧭 Dos rutas
+
+El eje tiene dos bloques con propósitos distintos. **No se estudian igual.**
 
 ```mermaid
-flowchart LR
-    P01["🔵 P01 1958<br/>Perceptrón"] --> P02["🔵 P02 1986<br/>Backprop"]
-    P02 --> P03["🟢 P03 1997<br/>LSTM"]
-    P02 --> P04["🟢 P04 2012<br/>AlexNet"]
-    P03 --> P06["🟢 P06 2014<br/>Seq2Seq"]
-    P05["🟢 P05 2013<br/>Word2Vec"] --> P06
-    P06 --> P07["🟡 P07 2014<br/>Attention"]
-    P07 --> P08["🟡 P08 2017<br/>Transformer"]
-    P04 --> P08
-    P08 --> P09["🟠 P09 2018<br/>BERT"]
-    P08 --> P10["🟠 P10 2020<br/>GPT-3"]
-    P10 --> P11["🟠 P11 2020<br/>RAG"]
-    P10 --> P12["🔴 P12 2022<br/>InstructGPT"]
-    P11 --> P13["🔴 P13 2022<br/>ReAct"]
-    P13 --> P14["🔴 P14 2023<br/>Toolformer"]
-    P12 --> P15["🔴 P15 2023<br/>DPO"]
-    P14 --> P16["⚫ P16 2023+<br/>Agentic"]
-    P15 --> P16
+flowchart TD
+    subgraph MIN["🔗 RUTA MÍNIMA · P01–P16 · la cadena de dependencias"]
+        direction LR
+        A["🔵 1958-1986<br/>Perceptrón · Backprop"] --> B["🟢 1997-2014<br/>LSTM · AlexNet<br/>Word2Vec · Seq2Seq"]
+        B --> C["🟡 2014-2017<br/>Attention · Transformer"]
+        C --> D["🟠 2018-2020<br/>BERT · GPT-3 · RAG"]
+        D --> E["🔴 2022-2023<br/>InstructGPT · ReAct<br/>Toolformer · DPO"]
+        E --> F["⚫ 2023+<br/>Sistemas agentic"]
+    end
+    subgraph AMP["📚 RUTA AMPLIADA · P17–P22 · cobertura y continuación"]
+        direction LR
+        G["🎨 2020-2021<br/>Difusión · CLIP"] --> H["📊 2022<br/>Leyes de escalado"]
+        H --> I["⚡ 2023-2024<br/>Mamba · Mixtral"]
+        I --> J["🧠 2025<br/>DeepSeek-R1"]
+    end
+    MIN -.->|"se estudia primero,<br/>en orden"| AMP
 ```
+
+### 🔗 Ruta mínima — la cadena canónica
+
+Se estudia **en orden**: cada paper resuelve lo que el anterior dejó abierto.
 
 | # | Paper | Año | Nivel | Lo que desbloqueó |
 |---|---|---:|:---:|---|
@@ -87,6 +92,32 @@ flowchart LR
 | [P15](foundational/P15_dpo/README.md) | DPO | 2023 | L4 | Alineación sin modelo de recompensa ni RL |
 | [P16](foundational/P16_agentic_systems/README.md) | Sistemas agentic | 2023+ | L5 | El agente pasa de bucle a sistema |
 
+### 📚 Ruta ampliada — lo que la cadena mínima no cubre
+
+Ordenada por año. Aporta **generativa, multimodal y escalado** —que la cadena canónica no
+toca— y continúa la historia hasta 2025.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P17](foundational/P17_diffusion/README.md) | Difusión (DDPM) | 2020 | L3 | Generar es aprender a deshacer un ruido conocido |
+| [P18](foundational/P18_clip/README.md) | CLIP | 2021 | L3 | El texto se convierte en la etiqueta |
+| [P19](foundational/P19_scaling_laws/README.md) | Leyes de escalado (Chinchilla) | 2022 | L4 | A cómputo fijo hay un reparto óptimo |
+| [P20](foundational/P20_mamba/README.md) | Mamba | 2023 | L4 | Tiempo lineal y estado fijo, sin atención |
+| [P21](foundational/P21_moe/README.md) | Mixtral (MoE) | 2024 | L3 | Capacidad y cómputo se desacoplan |
+| [P22](foundational/P22_deepseek_r1/README.md) | DeepSeek-R1 | 2025 | L5 | El razonamiento se incentiva con refuerzo verificable |
+
+## ⏳ ¿Por qué el eje no llega a 2026?
+
+Porque el propio eje se lo prohíbe. El
+[criterio de ascenso](../prompts/VIGILANCIA_DE_FRONTERA.md) exige, entre otras cosas, **12 meses
+desde la publicación** y evidencia de que otros trabajos han construido encima. Con fecha de
+revisión **2026-08-16**, eso admite hasta mediados de 2025 — y ahí termina P22.
+
+Lo posterior no se omite: vive en [`frontier/current-topics.yaml`](../frontier/current-topics.yaml)
+con fecha y fuente, y asciende a `foundational/` cuando cumple los criterios. Un paper de hace
+tres meses puede ser excelente y aun así no tener todavía lo que hace falta para enseñarlo como
+hito: réplicas, consecuencias y errores comunes documentados.
+
 ## 🔬 Tratamiento especial: *Attention Is All You Need*
 
 El paper que sostiene casi todo lo que vino después se desmonta pieza por pieza en ocho
@@ -102,6 +133,41 @@ miniaturas independientes, además de su ficha completa:
 | [T06](../notebooks/papers/T06_positional_encoding.ipynb) | Codificación posicional |
 | [T07](../notebooks/papers/T07_residual_layernorm_ffn.ipynb) | Residual, layer norm y feed-forward |
 | [T08](../notebooks/papers/T08_encoder_decoder_y_limites.ipynb) | Encoder–decoder, complejidad y qué **no** dice el título |
+
+Y la ecuación 1 está desarrollada **con números, paso a paso**, en el
+[anexo A04](annexes/A04_ATENCION_PASO_A_PASO.md).
+
+## 🧮 Anexos matemáticos
+
+La sección 5 de cada ficha es deliberadamente corta: solo la matemática de **ese** paper. Las
+herramientas que reaparecen en todos se explican una vez, en un sitio, con ejemplo resuelto a
+mano y su error común:
+
+| Anexo | Cubre |
+|---|---|
+| [A01 · Álgebra y geometría](annexes/A01_ALGEBRA_Y_GEOMETRIA.md) | Producto escalar, norma, coseno, hiperplanos, matrices |
+| [A02 · Probabilidad y verosimilitud](annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md) | Softmax, entropía, KL, Bradley-Terry, gaussianas |
+| [A03 · Cálculo y gradientes](annexes/A03_CALCULO_Y_GRADIENTES.md) | Regla de la cadena, retropropagación, gradiente de política |
+| [A04 · La atención, paso a paso](annexes/A04_ATENCION_PASO_A_PASO.md) | La ecuación 1 con números, máscara, multi-cabeza |
+| [A05 · Complejidad, coste y escalado](annexes/A05_COMPLEJIDAD_Y_COSTE.md) | O(), memoria, FLOPs, 6ND, coste de inferencia |
+
+## 🔁 Ida y vuelta con las clases
+
+El circuito está cerrado en los dos sentidos:
+
+```mermaid
+flowchart LR
+    F["📜 ficha del paper<br/>sección 'clases del programa'"] -->|"ida"| C["🏫 clase del programa"]
+    C -->|"vuelta: bloque generado<br/>'Papers que fundamentan esta clase'"| F
+    F --> N["📓 miniatura ejecutable"]
+    F --> A["🧮 anexo matemático"]
+    C --> L["🧪 laboratorio de la clase"]
+```
+
+Las **27 clases** enlazadas llevan un bloque generado por
+[`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
+papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
+no puede desincronizarse: `--check` lo verifica en CI.
 
 ## 🚀 Cómo se usa
 
@@ -122,12 +188,12 @@ jupyter lab notebooks/papers/
 
 Sin código: el eje también se lee en el
 [sitio del programa](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/papers/)
-o en el [PDF imprimible de 155 páginas](../docs/pdf/papers-fundacionales.pdf)
+o en el [PDF imprimible](../docs/pdf/papers-fundacionales.pdf)
 (`python scripts/generate_pdfs.py --papers`).
 
-Empieza por [`P01_perceptron.ipynb`](../notebooks/papers/P01_perceptron.ipynb) y sigue el
-orden de la ruta. **Antes de ejecutar cada celda, escribe tu predicción** en la sección 7 —
-ese paso no es decorativo: es lo que se evalúa.
+Empieza por [`P01_perceptron.ipynb`](../notebooks/papers/P01_perceptron.ipynb) y sigue el orden
+de la ruta mínima. **Antes de ejecutar cada celda, escribe tu predicción** en la sección 7 — ese
+paso no es decorativo: es lo que se evalúa.
 
 ## 📦 Estructura del eje
 
@@ -135,40 +201,21 @@ ese paso no es decorativo: es lo que se evalúa.
 papers/
 ├── README.md                    ← este archivo
 ├── ROADMAP.md                   ← niveles L0–L5 y plan de estudio
-├── manifest.json                ← inventario con SHA-256 (generado)
+├── manifest.json                ← inventario con hash por artefacto (generado)
 ├── guides/                      ← cómo leer, 5 pasadas, plantilla, glosario, fuentes
+├── annexes/                     ← 5 anexos matemáticos con ejemplos resueltos
 ├── catalog/
 │   ├── papers.json              ← fuente de verdad estructurada
 │   ├── sources.yaml             ← venues y repositorios primarios
 │   └── PAPERS_INDEX.md          ← índice legible (generado)
 └── foundational/PXX_slug/       ← una ficha de 18 secciones por paper
 
-notebooks/papers/                ← 16 + 8 notebooks (generados)
+notebooks/papers/                ← 22 + 8 notebooks (generados)
 instructor/papers/               ← plan de sesión por paper (generado)
 student/papers/                  ← ficha de estudio y bitácora (generado)
 assessments/papers/              ← evaluación con rúbrica por paper (generado)
 prompts/                         ← prompts reutilizables del eje
 ```
-
-## 🔗 Cómo se conecta con el resto del programa
-
-El eje **no sustituye** a las 183 clases: las ancla en su origen documental.
-
-| Este eje | Clases del programa |
-|---|---|
-| P01, P02 | [049 Perceptrón](../classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad/README.md) · [050 MLP y backpropagation](../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md) |
-| P03, P06 | [054 RNN, LSTM y secuencias](../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md) |
-| P04 | [053 CNN y aprendizaje espacial](../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md) |
-| P05 | [066 Embeddings semánticos](../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md) |
-| P07, P08 | [055 Atención y arquitectura Transformer](../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md) |
-| P09, P10 | [074 Objetivos de preentrenamiento](../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md) |
-| P11 | [105 RAG básico con citas](../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md) |
-| P12, P15 | [078 RLHF, RLAIF y DPO](../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md) |
-| P13, P14 | [114 Ciclo ReAct](../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md) · [080 Tool calling](../classes/part-06-foundation-models-and-llm-engineering/080-tool-calling-y-ejecucion-controlada/README.md) |
-| P16 | [124 Workflow, subagente y multiagente](../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md) · [132 MCP](../classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md) |
-
-Y con la clase que enseña precisamente esta competencia:
-[010 · Cómo leer papers, benchmarks y claims de IA](../classes/part-00-foundations-history-and-scientific-method/010-como-leer-papers-benchmarks-y-claims-de-ia/README.md).
 
 ## ⚖️ Reglas del eje (verificadas automáticamente)
 
@@ -181,20 +228,21 @@ Y con la clase que enseña precisamente esta competencia:
 7. **Siempre distinguir** hecho documentado, simplificación didáctica, inferencia y práctica moderna.
 8. **Siempre registrar** URL, autoría, año, venue y fecha de consulta.
 9. **Sin APIs pagadas** como requisito de aprendizaje.
-10. **Sin redistribuir** material con restricciones de copyright.
+10. **Sin redistribuir** material con copyright.
 
 ## ✅ Verificación
 
 ```bash
 python scripts/generate_papers.py --check
+python scripts/link_papers_to_classes.py --check
 python -m unittest tests.test_papers -v
 python scripts/validate_repository.py --strict
 ```
 
-Se comprueba: JSON y YAML válidos, las 18 secciones de cada ficha en orden, los 17 momentos
-de cada notebook, `nbformat` correcto, que cada motor exista y sea determinista, que las
-clases enlazadas existan, ausencia de rutas absolutas y coherencia de los SHA-256 del
-manifiesto.
+Se comprueba: JSON y YAML válidos, las 18 secciones de cada ficha en orden, los 17 momentos de
+cada notebook, `nbformat` correcto, que cada motor exista y sea determinista, que las clases
+enlazadas existan **y enlacen de vuelta**, ausencia de rutas absolutas y coherencia de los hashes
+del manifiesto en cualquier sistema operativo.
 
 ---
 
@@ -203,6 +251,7 @@ manifiesto.
 [⬅️ Programa completo](../README.md) ·
 [🗺️ Ruta del eje](ROADMAP.md) ·
 [📇 Índice](catalog/PAPERS_INDEX.md) ·
+[🧮 Anexos](annexes/README.md) ·
 [👩‍🏫 Guías docentes](../instructor/papers/README.md) ·
 [🎒 Fichas de estudio](../student/papers/README.md) ·
 [📝 Evaluaciones](../assessments/papers/README.md) ·

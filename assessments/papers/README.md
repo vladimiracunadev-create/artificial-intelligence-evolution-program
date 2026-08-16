@@ -20,6 +20,12 @@ Cada evaluación mide contexto histórico, lectura crítica, interpretación mat
 | P14 · Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | [P14_toolformer.md](P14_toolformer.md) |
 | P15 · Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | [P15_dpo.md](P15_dpo.md) |
 | P16 · Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | [P16_agentic_systems.md](P16_agentic_systems.md) |
+| P17 · Modelos probabilísticos de difusión con eliminación de ruido | [P17_diffusion.md](P17_diffusion.md) |
+| P18 · Aprender modelos visuales transferibles con supervisión de lenguaje natural | [P18_clip.md](P18_clip.md) |
+| P19 · Entrenar modelos de lenguaje grandes con cómputo óptimo | [P19_scaling_laws.md](P19_scaling_laws.md) |
+| P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos | [P20_mamba.md](P20_mamba.md) |
+| P21 · Mixtral: mezcla dispersa de expertos | [P21_moe.md](P21_moe.md) |
+| P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | [P22_deepseek_r1.md](P22_deepseek_r1.md) |
 
 ---
 

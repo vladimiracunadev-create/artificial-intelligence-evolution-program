@@ -29,10 +29,13 @@ NOTEBOOKS = ROOT / "notebooks" / "papers"
 
 
 class CatalogTests(unittest.TestCase):
-    def test_catalog_is_valid_json_with_16_papers(self):
+    def test_catalog_is_valid_json_with_22_papers(self):
         data = load_papers()
-        self.assertEqual(len(data["papers"]), 16)
-        self.assertEqual(data["ruta_minima"], [item["id"] for item in data["papers"]])
+        self.assertEqual(len(data["papers"]), 22)
+        self.assertEqual(len(data["ruta_minima"]), 16)
+        self.assertEqual(len(data["ruta_ampliada"]), 6)
+        self.assertEqual(data["ruta_minima"] + data["ruta_ampliada"],
+                         [item["id"] for item in data["papers"]])
 
     def test_sources_yaml_parses(self):
         sources = load_sources()
@@ -53,9 +56,13 @@ class CatalogTests(unittest.TestCase):
         with self.assertRaises(KeyError):
             find_paper("P99")
 
-    def test_chronological_order(self):
-        years = [item.year for item in papers()]
-        self.assertEqual(years, sorted(years))
+    def test_chronological_order_within_each_route(self):
+        """Cada bloque va en orden; entre bloques NO, porque son rutas distintas."""
+        data = load_papers()
+        for bloque in ("ruta_minima", "ruta_ampliada"):
+            with self.subTest(bloque=bloque):
+                anios = [item["year"] for item in data["papers"] if item["id"] in data[bloque]]
+                self.assertEqual(anios, sorted(anios))
 
     def test_every_primary_source_has_url(self):
         for item in load_papers()["papers"]:
@@ -68,8 +75,8 @@ class ContractTests(unittest.TestCase):
     def test_repository_contract(self):
         result = validate_papers(strict=True)
         self.assertTrue(result["ok"], result["errors"][:10])
-        self.assertEqual(result["papers"], 16)
-        self.assertEqual(result["notebooks"], 24)
+        self.assertEqual(result["papers"], 22)
+        self.assertEqual(result["notebooks"], 30)
         self.assertEqual(result["notebooks_transformer"], 8)
 
     def test_every_ficha_has_the_18_sections_in_order(self):
@@ -110,8 +117,8 @@ class ContractTests(unittest.TestCase):
 
     def test_manifest_hashes_are_current(self):
         manifest = json.loads((ROOT / "papers" / "manifest.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["papers"], 16)
-        self.assertEqual(manifest["notebooks"], 24)
+        self.assertEqual(manifest["papers"], 22)
+        self.assertEqual(manifest["notebooks"], 30)
         for entry in manifest["files"]:
             target = ROOT / entry["path"]
             with self.subTest(file=entry["path"]):
@@ -203,6 +210,45 @@ class PaperLabTests(unittest.TestCase):
     def test_rag_ranks_the_right_document_first(self):
         result = run_paper_lab("rag", seed=2)["result"]
         self.assertEqual(result["ranking"][0]["doc"], "d4")
+
+    def test_new_engines_hold_their_pedagogical_claims(self):
+        """Las afirmaciones de los motores nuevos tienen que ser ciertas, no retóricas."""
+        ssm = run_paper_lab("ssm", seed=7)["result"]
+        self.assertGreater(ssm["selectivo"]["separacion"], ssm["invariante_en_el_tiempo"]["separacion"])
+
+        moe = run_paper_lab("moe", seed=7)["result"]
+        self.assertLess(moe["con_balanceo"]["cv"], moe["sin_balanceo"]["cv"])
+        self.assertAlmostEqual(moe["parametros"]["fraccion_activa"], 0.25, places=3)
+
+        rl = run_paper_lab("rl_reasoning", seed=7)["result"]["historia"]
+        self.assertGreater(rl[-1]["exactitud_esperada"], rl[0]["exactitud_esperada"])
+        self.assertGreater(rl[-1]["tokens_esperados"], rl[0]["tokens_esperados"])
+
+        clip = run_paper_lab("clip", seed=7)["result"]
+        self.assertGreater(clip["diagonal_media"]["despues"], clip["diagonal_media"]["antes"])
+
+        dif = run_paper_lab("diffusion", seed=7)["result"]["reconstruccion"]
+        self.assertLess(dif["error_con_epsilon_correcto"], 1e-9)
+
+        esc = run_paper_lab("scaling_laws", seed=7)["result"]
+        self.assertLess(esc["mejor"]["perdida"], esc["peor"]["perdida"])
+
+    def test_annexes_exist_and_are_linked(self):
+        anexos = sorted((ROOT / "papers" / "annexes").glob("A*.md"))
+        self.assertEqual(len(anexos), 5)
+        indice = (ROOT / "papers" / "annexes" / "README.md").read_text(encoding="utf-8")
+        for anexo in anexos:
+            self.assertIn(anexo.name, indice)
+
+    def test_classes_link_back_to_their_papers(self):
+        """El circuito se cierra: la ficha enlaza a la clase y la clase a la ficha."""
+        enlazadas = {ruta for item in load_papers()["papers"] for ruta in item["clases_del_programa"]}
+        self.assertGreaterEqual(len(enlazadas), 20)
+        for ruta in enlazadas:
+            with self.subTest(clase=ruta):
+                texto = (ROOT / ruta / "README.md").read_text(encoding="utf-8")
+                self.assertIn("<!-- papers:inicio -->", texto)
+                self.assertIn("papers/foundational/", texto)
 
     def test_agentic_escalates_instead_of_answering(self):
         result = run_paper_lab("agentic", seed=2)["result"]

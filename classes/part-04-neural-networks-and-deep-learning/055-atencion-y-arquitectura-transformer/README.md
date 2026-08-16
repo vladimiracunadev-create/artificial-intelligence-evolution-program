@@ -236,6 +236,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Rush, A. et al. *The Annotated Transformer* (implementación comentada línea a línea). [nlp.seas.harvard.edu/annotated-transformer](https://nlp.seas.harvard.edu/annotated-transformer/)
 - Jurafsky, D. y Martin, J. *Speech and Language Processing* (3.ª ed., borrador), cap. sobre Transformers. [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P07 · Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir](../../../papers/foundational/P07_attention_bahdanau/README.md) | 2014 | Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso. | [notebook](../../../notebooks/papers/P07_attention_bahdanau.ipynb) |
+| [P08 · La atención es todo lo que necesitas](../../../papers/foundational/P08_transformer/README.md) | 2017 | Elimina la recurrencia y la convolución del modelado de secuencias: todo el cómputo de una capa se paraleliza. | [notebook](../../../notebooks/papers/P08_transformer.ipynb) |
+| [P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos](../../../papers/foundational/P20_mamba/README.md) | 2023 | El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención. | [notebook](../../../notebooks/papers/P20_mamba.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

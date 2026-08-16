@@ -1083,6 +1083,415 @@ def _agentic(seed: int) -> dict[str, Any]:
 
 
 # --------------------------------------------------------------------------- #
+# P17 — Difusión / DDPM (Ho, Jain y Abbeel, 2020)
+# --------------------------------------------------------------------------- #
+
+
+def _diffusion(seed: int) -> dict[str, Any]:
+    """Añadir ruido es fácil y se conoce en forma cerrada; quitarlo es lo que se aprende."""
+    rng = random.Random(seed)
+    T = 20
+    betas = [1e-4 + (0.02 - 1e-4) * t / (T - 1) for t in range(T)]
+    alphas = [1 - b for b in betas]
+    alpha_barra, acumulado = [], 1.0
+    for a in alphas:
+        acumulado *= a
+        alpha_barra.append(acumulado)
+
+    x0 = [1.0, -0.5, 0.25, 0.75]                     # la "imagen" original
+    ruido = [rng.gauss(0, 1) for _ in x0]            # el ε que el modelo debe predecir
+
+    trayectoria = []
+    for t in (0, 4, 9, 14, 19):
+        ab = alpha_barra[t]
+        xt = [math.sqrt(ab) * a + math.sqrt(1 - ab) * e for a, e in zip(x0, ruido)]
+        snr = ab / (1 - ab)
+        trayectoria.append({
+            "t": t,
+            "alpha_barra": _round(ab, 4),
+            "snr": _round(snr, 4),
+            "x_t": [_round(v, 3) for v in xt],
+        })
+
+    # reconstrucción desde el paso más ruidoso, con el ε correcto y con uno erróneo
+    t = T - 1
+    ab = alpha_barra[t]
+    xt = [math.sqrt(ab) * a + math.sqrt(1 - ab) * e for a, e in zip(x0, ruido)]
+
+    def reconstruir(eps_pred: list[float]) -> list[float]:
+        return [(x - math.sqrt(1 - ab) * e) / math.sqrt(ab) for x, e in zip(xt, eps_pred)]
+
+    def error(rec: list[float]) -> float:
+        return sum((r - a) ** 2 for r, a in zip(rec, x0)) / len(x0)
+
+    correcto = reconstruir(ruido)
+    equivocado = reconstruir([e + 0.5 for e in ruido])
+    return _contract(
+        "diffusion",
+        seed,
+        {
+            "pasos": T,
+            "trayectoria_de_ruido": trayectoria,
+            "reconstruccion": {
+                "con_epsilon_correcto": [_round(v, 3) for v in correcto],
+                "error_con_epsilon_correcto": _round(error(correcto), 6),
+                "error_con_epsilon_desviado_0_5": _round(error(equivocado), 4),
+                "original": x0,
+            },
+        },
+        [
+            f"La SNR cae de {trayectoria[0]['snr']} a {trayectoria[-1]['snr']}: el proceso directo destruye la señal de forma controlada y conocida.",
+            "Con el ε correcto la reconstrucción es exacta: el problema generativo se reduce a **predecir el ruido**, no la imagen.",
+            f"Con ε desviado en 0,5 el error pasa de {error(correcto):.1e} a {error(equivocado):.3f}: en el paso más ruidoso, un pequeño error en ε se amplifica por 1/√ᾱ_t.",
+        ],
+        [
+            "Cuatro números no son una imagen y no hay U-Net: aquí el ε se conoce en vez de predecirse.",
+            "Falta el muestreo estocástico del proceso inverso paso a paso, que es lo que genera muestras nuevas.",
+            "El paper deriva la pérdida de una cota variacional; esta miniatura solo usa la forma cerrada del proceso directo.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P18 — CLIP / supervisión por lenguaje natural (Radford et al., 2021)
+# --------------------------------------------------------------------------- #
+
+
+def _clip(seed: int) -> dict[str, Any]:
+    """Contraste imagen-texto: el negativo de uno es el positivo de otro."""
+    rng = random.Random(seed)
+    dim = 12
+    conceptos = ["gato", "perro", "coche", "arbol"]
+    # "imagen" y "texto" parten de espacios distintos; el entrenamiento los alinea
+    img = {c: [rng.uniform(-1, 1) for _ in range(dim)] for c in conceptos}
+    txt = {c: [rng.uniform(-1, 1) for _ in range(dim)] for c in conceptos}
+    temperatura, lr = 0.07, 0.15
+
+    def matriz() -> list[list[float]]:
+        return [[_cosine(img[a], txt[b]) for b in conceptos] for a in conceptos]
+
+    antes = matriz()
+    for _ in range(400):                              # InfoNCE simétrico, por lotes completos
+        logits = [[_cosine(img[a], txt[b]) / temperatura for b in conceptos] for a in conceptos]
+        for i, a in enumerate(conceptos):
+            p = _softmax(logits[i])
+            for j, b in enumerate(conceptos):
+                objetivo = 1.0 if i == j else 0.0
+                escala = lr * (objetivo - p[j])
+                for d in range(dim):
+                    img[a][d] += escala * txt[b][d]
+                    txt[b][d] += escala * img[a][d]
+
+    despues = matriz()
+    diag_antes = sum(antes[i][i] for i in range(len(conceptos))) / len(conceptos)
+    diag_despues = sum(despues[i][i] for i in range(len(conceptos))) / len(conceptos)
+    fuera_despues = sum(despues[i][j] for i in range(len(conceptos)) for j in range(len(conceptos)) if i != j)
+    fuera_despues /= len(conceptos) * (len(conceptos) - 1)
+
+    # clasificación zero-shot: comparar la imagen contra los textos de las clases
+    aciertos = sum(1 for i, a in enumerate(conceptos)
+                   if max(range(len(conceptos)), key=lambda j: _cosine(img[a], txt[conceptos[j]])) == i)
+    return _contract(
+        "clip",
+        seed,
+        {
+            "conceptos": conceptos,
+            "matriz_antes": [[_round(v, 3) for v in fila] for fila in antes],
+            "matriz_despues": [[_round(v, 3) for v in fila] for fila in despues],
+            "diagonal_media": {"antes": _round(diag_antes, 3), "despues": _round(diag_despues, 3)},
+            "fuera_de_diagonal_media_despues": _round(fuera_despues, 3),
+            "zero_shot": f"{aciertos}/{len(conceptos)}",
+        },
+        [
+            f"La diagonal sube de {diag_antes:.3f} a {diag_despues:.3f} y lo de fuera baja a {fuera_despues:.3f}: los dos espacios quedan alineados.",
+            f"La clasificación zero-shot acierta {aciertos}/{len(conceptos)} comparando la imagen con el TEXTO de cada clase, sin clasificador entrenado.",
+            "Nadie etiquetó categorías: la supervisión es el emparejamiento imagen-texto que ya venía con los datos.",
+        ],
+        [
+            "Cuatro pares y vectores aleatorios no son 400 millones de pares de internet, ni hay codificadores de imagen o texto.",
+            "Con lotes de 4, el contraste es trivial: la dificultad del método real está en lotes enormes.",
+            "Zero-shot depende del texto de la clase (prompt engineering visual), y el paper documenta esa sensibilidad.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P19 — Leyes de escalado / Chinchilla (Hoffmann et al., 2022)
+# --------------------------------------------------------------------------- #
+
+
+def _scaling_laws(seed: int) -> dict[str, Any]:
+    """Con cómputo fijo, ¿más parámetros o más datos? La respuesta es un óptimo."""
+    E, A, B, alpha, beta = 1.69, 400.0, 400.0, 0.34, 0.28   # constantes DIDÁCTICAS
+
+    def perdida(N: float, D: float) -> float:
+        return E + A / (N ** alpha) + B / (D ** beta)
+
+    def computo(N: float, D: float) -> float:
+        return 6 * N * D                                     # FLOPs ≈ 6ND
+
+    presupuesto = 6 * (70e9) * (1.4e12)                      # orden de magnitud de referencia
+    candidatos = []
+    for exponente in range(9, 13):                           # N de 1e9 a 1e12
+        for mult in (1.0, 2.5, 5.0):
+            N = mult * 10 ** exponente
+            D = presupuesto / (6 * N)
+            if D < 1e9:
+                continue
+            candidatos.append({
+                "N_parametros": f"{N:.2e}",
+                "D_tokens": f"{D:.2e}",
+                "tokens_por_parametro": _round(D / N, 1),
+                "perdida": _round(perdida(N, D), 4),
+            })
+    mejor = min(candidatos, key=lambda c: c["perdida"])
+    peor = max(candidatos, key=lambda c: c["perdida"])
+    return _contract(
+        "scaling_laws",
+        seed,
+        {
+            "forma_parametrica": "L(N, D) = E + A/N^alpha + B/D^beta",
+            "constantes": {"E": E, "A": A, "B": B, "alpha": alpha, "beta": beta,
+                           "origen": "DIDÁCTICAS: los valores ajustados están en el paper"},
+            "presupuesto_flops": f"{presupuesto:.2e}",
+            "candidatos_a_igual_computo": candidatos,
+            "mejor": mejor,
+            "peor": peor,
+        },
+        [
+            f"A cómputo idéntico, la mejor asignación da pérdida {mejor['perdida']} y la peor {peor['perdida']}: la repartición importa tanto como el presupuesto.",
+            f"El óptimo de esta curva está en {mejor['tokens_por_parametro']} tokens por parámetro, no en 'el modelo más grande posible'.",
+            "Escalar parámetros sin escalar datos desperdicia cómputo: ese es el resultado que reordenó la industria.",
+        ],
+        [
+            "Las constantes son didácticas, no las ajustadas en el paper: la FORMA es lo transferible, no los números.",
+            "6ND es una aproximación de FLOPs de entrenamiento; ignora inferencia, que hoy domina el coste total.",
+            "La ley describe pérdida de preentrenamiento, no capacidad en tareas concretas ni utilidad.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P20 — Mamba / SSM selectivo (Gu y Dao, 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _ssm(seed: int) -> dict[str, Any]:
+    """Copia selectiva: recordar los tokens marcados e ignorar el relleno.
+
+    Compara un SSM **invariante en el tiempo** (los parámetros no dependen de la
+    entrada) con uno **selectivo** (la puerta es función del token). El primero
+    no puede razonar sobre el contenido; el segundo sí. Ese es exactamente el
+    argumento del paper.
+    """
+    rng = random.Random(seed)
+    dim = 8
+    longitud = 60
+    # cada token: (embedding, ¿es relevante?)
+    secuencia = []
+    for i in range(longitud):
+        relevante = i % 17 == 3                      # unos pocos tokens marcados
+        vec = [rng.uniform(-1, 1) for _ in range(dim)]
+        secuencia.append({"vec": vec, "relevante": relevante})
+    marcados = [t for t in secuencia if t["relevante"]]
+    relleno = [t for t in secuencia if not t["relevante"]]
+
+    def recorrer(selectivo: bool) -> list[float]:
+        estado = [0.0] * dim
+        for token in secuencia:
+            if selectivo:
+                # Δ depende de la ENTRADA: puerta abierta solo para lo relevante
+                g = 0.9 if token["relevante"] else 0.02
+            else:
+                # invariante en el tiempo: la misma puerta para todo token
+                g = 0.15
+            estado = [(1 - g) * s + g * v for s, v in zip(estado, token["vec"])]
+        return estado
+
+    def separacion(estado: list[float]) -> dict[str, float]:
+        sim_marcados = sum(_cosine(estado, t["vec"]) for t in marcados) / len(marcados)
+        sim_relleno = sum(_cosine(estado, t["vec"]) for t in relleno) / len(relleno)
+        return {
+            "cos_medio_marcados": _round(sim_marcados, 3),
+            "cos_medio_relleno": _round(sim_relleno, 3),
+            "separacion": _round(sim_marcados - sim_relleno, 3),
+        }
+
+    lti = separacion(recorrer(selectivo=False))
+    sel = separacion(recorrer(selectivo=True))
+
+    d, N = 512, 16
+    complejidad = [
+        {
+            "n": n,
+            "attention_ops": n * n * d,
+            "ssm_ops": n * d * N,
+            "attention_memoria_kv": n * d,
+            "ssm_memoria_estado": d * N,
+        }
+        for n in (1_000, 10_000, 100_000)
+    ]
+    return _contract(
+        "ssm",
+        seed,
+        {
+            "tokens": longitud,
+            "marcados": len(marcados),
+            "invariante_en_el_tiempo": lti,
+            "selectivo": sel,
+            "mejora_de_separacion": _round(sel["separacion"] - lti["separacion"], 3),
+            "complejidad": complejidad,
+        },
+        [
+            f"El SSM selectivo separa marcados de relleno en {sel['separacion']} frente a {lti['separacion']} del invariante.",
+            "Hacer que la puerta dependa del token es lo que permite razonar sobre el contenido: sin eso, el estado mezcla todo por igual.",
+            "La memoria del SSM es un estado de tamaño fijo (d·N); la de la atención crece con la secuencia (n·d).",
+        ],
+        [
+            "Las puertas están fijadas a mano (0,9 y 0,02) para aislar el mecanismo; en el paper se aprenden.",
+            "No hay algoritmo de escaneo paralelo consciente del hardware, que es la mitad de la contribución del artículo.",
+            "Una separación de cosenos en un juguete de 60 tokens no dice nada sobre calidad de modelado de lenguaje.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P21 — Mixtral / mezcla dispersa de expertos (Jiang et al., 2024)
+# --------------------------------------------------------------------------- #
+
+
+def _moe(seed: int) -> dict[str, Any]:
+    """Router top-2 sobre 8 expertos: capacidad total frente a cómputo activo."""
+    rng = random.Random(seed)
+    n_expertos, top_k, dim = 8, 2, 6
+    tokens = [[rng.uniform(-1, 1) for _ in range(dim)] for _ in range(400)]
+    router = [[rng.uniform(-1, 1) for _ in range(dim)] for _ in range(n_expertos)]
+
+    def enrutar(sesgo: list[float]) -> dict[str, Any]:
+        carga = [0] * n_expertos
+        for token in tokens:
+            puntuaciones = [_dot(token, w) + b for w, b in zip(router, sesgo)]
+            elegidos = sorted(range(n_expertos), key=lambda i: -puntuaciones[i])[:top_k]
+            for i in elegidos:
+                carga[i] += 1
+        media = sum(carga) / n_expertos
+        desv = (sum((c - media) ** 2 for c in carga) / n_expertos) ** 0.5
+        return {"carga": carga, "cv": _round(desv / media, 3)}
+
+    sin_balanceo = enrutar([0.0] * n_expertos)
+    # término auxiliar de balanceo: penaliza al experto sobrecargado
+    sesgo = [0.0] * n_expertos
+    for _ in range(60):
+        actual = enrutar(sesgo)
+        objetivo = sum(actual["carga"]) / n_expertos
+        sesgo = [b - 0.01 * (c - objetivo) / objetivo for b, c in zip(sesgo, actual["carga"])]
+    con_balanceo = enrutar(sesgo)
+
+    params_experto = 1_000_000
+    total = n_expertos * params_experto
+    activos = top_k * params_experto
+    return _contract(
+        "moe",
+        seed,
+        {
+            "expertos": n_expertos,
+            "expertos_por_token": top_k,
+            "parametros": {
+                "totales": total,
+                "activos_por_token": activos,
+                "fraccion_activa": _round(activos / total, 3),
+            },
+            "sin_balanceo": sin_balanceo,
+            "con_balanceo": con_balanceo,
+        },
+        [
+            f"Con {n_expertos} expertos y top-{top_k}, cada token usa el {activos / total:.0%} de los parámetros: capacidad total y cómputo activo se desacoplan.",
+            f"Sin término de balanceo el reparto es desigual (CV={sin_balanceo['cv']}); con él baja a CV={con_balanceo['cv']}.",
+            "El colapso del router —unos pocos expertos se lo llevan todo— es el fallo característico de esta arquitectura.",
+        ],
+        [
+            "El router es lineal y los 'expertos' no computan nada: solo se cuenta a quién se enruta.",
+            "No hay entrenamiento conjunto, ni capacidad por experto, ni comunicación entre dispositivos, que es donde está la dificultad real.",
+            "Menos parámetros activos no implica menos memoria: hay que cargar TODOS los expertos aunque solo se usen dos.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P22 — DeepSeek-R1 / razonamiento incentivado por RL (DeepSeek-AI, 2025)
+# --------------------------------------------------------------------------- #
+
+
+def _rl_reasoning(seed: int) -> dict[str, Any]:
+    """Recompensa por resultado verificable, sin trazas de razonamiento anotadas.
+
+    Tres estrategias con distinta exactitud y distinto coste. Nadie etiqueta cuál
+    es «la buena»: la política se desplaza sola porque solo la respuesta final se
+    puede comprobar.
+    """
+    rng = random.Random(seed)
+    estrategias = {
+        "responder_directo":      {"exactitud": 0.35, "tokens": 20},
+        "cadena_corta":           {"exactitud": 0.60, "tokens": 90},
+        "cadena_con_verificacion": {"exactitud": 0.82, "tokens": 240},
+    }
+    nombres = list(estrategias)
+    logits = {n: 0.0 for n in nombres}
+    lr, rollouts = 0.5, 40
+    historia = []
+
+    for iteracion in range(30):
+        probs = _softmax([logits[n] for n in nombres])
+        politica = dict(zip(nombres, probs))
+        recompensas = {n: [] for n in nombres}
+        for _ in range(rollouts):
+            u, acumulado, elegida = rng.random(), 0.0, nombres[-1]
+            for n, p in politica.items():
+                acumulado += p
+                if u <= acumulado:
+                    elegida = n
+                    break
+            # recompensa VERIFICABLE: 1 si la respuesta final es correcta
+            recompensas[elegida].append(1.0 if rng.random() < estrategias[elegida]["exactitud"] else 0.0)
+        planas = [r for lista in recompensas.values() for r in lista]
+        linea_base = sum(planas) / len(planas)
+        for n in nombres:                       # REINFORCE con línea base
+            if recompensas[n]:
+                ventaja = sum(recompensas[n]) / len(recompensas[n]) - linea_base
+                logits[n] += lr * ventaja
+        if iteracion % 10 == 0 or iteracion == 29:
+            probs = _softmax([logits[n] for n in nombres])
+            historia.append({
+                "iteracion": iteracion,
+                "politica": {n: _round(p, 3) for n, p in zip(nombres, probs)},
+                "exactitud_esperada": _round(sum(p * estrategias[n]["exactitud"] for n, p in zip(nombres, probs)), 3),
+                "tokens_esperados": int(sum(p * estrategias[n]["tokens"] for n, p in zip(nombres, probs))),
+            })
+
+    inicial, final = historia[0], historia[-1]
+    return _contract(
+        "rl_reasoning",
+        seed,
+        {
+            "estrategias": estrategias,
+            "historia": historia,
+            "sin_trazas_anotadas": True,
+            "senal_usada": "solo si la respuesta final es correcta",
+        },
+        [
+            f"La exactitud esperada sube de {inicial['exactitud_esperada']} a {final['exactitud_esperada']} sin una sola traza de razonamiento etiquetada.",
+            f"La política se desplaza hacia la estrategia que verifica: {final['politica']}.",
+            f"El coste crece a la vez: de {inicial['tokens_esperados']} a {final['tokens_esperados']} tokens por respuesta. Razonar más es razonar más caro.",
+        ],
+        [
+            "Tres estrategias discretas no son un modelo de lenguaje: no hay generación, ni tokens, ni contexto.",
+            "La exactitud de cada estrategia está fijada por diseño; en el paper emerge del entrenamiento.",
+            "La recompensa aquí es perfecta y barata. Fuera de dominios verificables (matemáticas, código) definirla es el problema abierto.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
 # registro
 # --------------------------------------------------------------------------- #
 
@@ -1104,6 +1513,12 @@ PAPER_RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "toolformer": _toolformer,
     "dpo": _dpo,
     "agentic": _agentic,
+    "diffusion": _diffusion,
+    "clip": _clip,
+    "scaling_laws": _scaling_laws,
+    "ssm": _ssm,
+    "moe": _moe,
+    "rl_reasoning": _rl_reasoning,
 }
 
 

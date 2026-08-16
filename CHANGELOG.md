@@ -16,6 +16,52 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.5.0 — 2026-08-16
+
+- **El eje de papers se amplía de 16 a 22 hitos y llega hasta 2025.** El eje se cortaba en 2023
+  sin que ninguna regla lo justificara: el propio criterio de ascenso admite hasta 12 meses
+  antes de la fecha de revisión. Se añaden dos cosas distintas —cobertura que faltaba y
+  continuación temporal— organizadas en **dos rutas**:
+  - **Ruta mínima (P01–P16)**, sin cambios: la cadena canónica donde cada paper resuelve lo que
+    el anterior dejó abierto. Se estudia en orden. **No se renumeró nada**, para no romper
+    enlaces, notebooks ni evaluaciones existentes.
+  - **Ruta ampliada (P17–P22)**, nueva y ordenada por año:
+    **P17 Difusión/DDPM** (Ho, Jain y Abbeel, 2020) cubre generativa, que el eje no tocaba;
+    **P18 CLIP** (Radford et al., 2021) cubre multimodal;
+    **P19 Leyes de escalado/Chinchilla** (Hoffmann et al., 2022) cubre la economía del cómputo;
+    **P20 Mamba** (Gu y Dao, 2023 · COLM 2024) ataca el O(n²) que dejó abierto el Transformer;
+    **P21 Mixtral** (Jiang et al., 2024) desacopla capacidad de cómputo;
+    **P22 DeepSeek-R1** (DeepSeek-AI, 2025 · **Nature** 645, 633–638) cierra en el primer LLM de
+    pesos abiertos publicado tras revisión por pares.
+  - Los seis papers se verificaron **contra sus fuentes primarias** antes de escribir las fichas:
+    título exacto, autoría, fecha de la v1 y afirmación central del resumen. Donde el resumen no
+    nombraba un detalle —el algoritmo de refuerzo de P22, por ejemplo— la ficha dice «verificar
+    en el cuerpo del artículo» en lugar de rellenarlo de memoria.
+- **6 motores deterministas nuevos** (`diffusion`, `clip`, `scaling_laws`, `ssm`, `moe`,
+  `rl_reasoning`), todos en Python estándar, y 6 notebooks con el contrato de 17 momentos.
+  Cada afirmación pedagógica de sus salidas está comprobada por un test: que el SSM selectivo
+  separe más que el invariante, que el balanceo baje el CV del router, que la política de RL
+  suba exactitud **y** coste, que la difusión reconstruya con error < 1e-9.
+- **5 anexos matemáticos** en [`papers/annexes/`](papers/annexes/README.md): álgebra y geometría,
+  probabilidad y verosimilitud, cálculo y gradientes, la atención paso a paso con números, y
+  complejidad/coste/escalado. Cada uno explica **qué es**, **por qué aparece**, **dónde se usa**,
+  trae un **ejemplo resuelto a mano** y termina en el **error común**. Existen porque la sección 5
+  de cada ficha es deliberadamente corta y las mismas herramientas reaparecen en todos los papers.
+- **Ida y vuelta con las clases.** Las fichas ya enlazaban hacia las clases; ahora
+  [`scripts/link_papers_to_classes.py`](scripts/link_papers_to_classes.py) inserta en las **27
+  clases enlazadas** un bloque generado con sus papers, el año, qué desbloqueó cada uno y su
+  notebook. Es idempotente, se regenera desde `papers.json` y `--check` lo verifica en CI, así
+  que no puede desincronizarse.
+- **Diagramas mermaid** en las seis fichas nuevas (proceso directo/inverso de difusión, el
+  contraste imagen-texto de CLIP, el reparto de presupuesto de Chinchilla, puerta fija frente a
+  selectiva en Mamba, el router top-2 de Mixtral, el bucle de recompensa verificable de
+  DeepSeek-R1), en el hub del eje y en el anexo de gradientes.
+- **Sitio**: 36 páginas del eje (antes 24), incluidas las de los anexos, y los enlaces de vuelta
+  de las clases resueltos a sus páginas correspondientes. 235 páginas totales, 0 enlaces rotos.
+- **Frontera**: tres entradas de investigación nuevas y fechadas —híbridos atención+SSM, escalar
+  cómputo en inferencia y recompensas verificables fuera de código— que documentan explícitamente
+  por qué **no** están en `foundational/`.
+
 ## 0.4.3 — 2026-08-16
 
 - **Reparación de coherencia**: la versión se declaraba en cinco sitios y decían

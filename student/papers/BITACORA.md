@@ -38,6 +38,12 @@ Pregunta que me quedó abierta:
 | P14 | | | ⬜ pendiente |
 | P15 | | | ⬜ pendiente |
 | P16 | | | ⬜ pendiente |
+| P17 | | | ⬜ pendiente |
+| P18 | | | ⬜ pendiente |
+| P19 | | | ⬜ pendiente |
+| P20 | | | ⬜ pendiente |
+| P21 | | | ⬜ pendiente |
+| P22 | | | ⬜ pendiente |
 
 ---
 

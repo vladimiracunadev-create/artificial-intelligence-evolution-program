@@ -8,9 +8,11 @@ test:
 
 papers:
 	python scripts/generate_papers.py
+	python scripts/link_papers_to_classes.py
 
 papers-check:
 	python scripts/generate_papers.py --check
+	python scripts/link_papers_to_classes.py --check
 
 pdf:
 	python scripts/generate_pdfs.py

@@ -1494,6 +1494,536 @@ SPECS: dict[str, dict[str, Any]] = {
 }
 
 
+SPECS.update({
+    "P17_diffusion": {
+        "intuicion": (
+            "Destruir es fácil y reversible si sabes exactamente cómo destruiste. Añadir ruido gaussiano "
+            "tiene fórmula cerrada; el modelo solo tiene que aprender a decir **cuánto ruido hay** en cada "
+            "paso. Generar es deshacer ese camino."
+        ),
+        "concepto": (
+            "```text\n"
+            "Proceso directo (conocido, sin aprender):\n"
+            "    x_t = √ᾱ_t · x₀ + √(1−ᾱ_t) · ε,     ε ~ N(0, I),   ᾱ_t = Π_s (1−β_s)\n\n"
+            "Reconstrucción a partir de ε:\n"
+            "    x₀ = (x_t − √(1−ᾱ_t)·ε) / √ᾱ_t\n\n"
+            "Pérdida (forma simplificada del paper):\n"
+            "    L = E ‖ ε − ε_θ(x_t, t) ‖²        ← se predice el RUIDO, no la imagen\n"
+            "```"
+        ),
+        "codigo_md": "El motor calcula la trayectoria de ruido y reconstruye desde el paso más ruidoso con el ε correcto.",
+        "codigo": (
+            "r = run_paper_lab('diffusion', seed=7)['result']\n"
+            "for fila in r['trayectoria_de_ruido']:\n"
+            "    print(f\"t={fila['t']:>2} · ᾱ={fila['alpha_barra']:.4f} · SNR={fila['snr']:>10.4f} · x_t={fila['x_t']}\")\n"
+            "show(r['reconstruccion'])"
+        ),
+        "prediccion": (
+            "1. ¿Qué le pasa a la SNR al avanzar t: baja lineal o exponencialmente?\n"
+            "2. Con el ε exacto, ¿el error de reconstrucción será 0, ~1e-15 o ~0,01?\n"
+            "3. ¿En qué paso —el poco ruidoso o el muy ruidoso— duele más equivocarse en ε?"
+        ),
+        "experimento": (
+            "import math\n"
+            "T = 20\n"
+            "betas = [1e-4 + (0.02 - 1e-4) * t / (T - 1) for t in range(T)]\n"
+            "ab, acum = [], 1.0\n"
+            "for b in betas:\n"
+            "    acum *= (1 - b)\n"
+            "    ab.append(acum)\n"
+            "print('amplificacion del error de epsilon = sqrt(1-ᾱ)/sqrt(ᾱ):')\n"
+            "for t in (0, 5, 10, 15, 19):\n"
+            "    print(f'  t={t:>2} → x{math.sqrt(1 - ab[t]) / math.sqrt(ab[t]):.2f}')"
+        ),
+        "salida": (
+            "El factor de amplificación crece con `t`. Un mismo error en ε apenas se nota al principio y "
+            "arruina la reconstrucción al final. **Por eso el muestreo va paso a paso** en vez de saltar del "
+            "ruido puro a la imagen de una vez."
+        ),
+        "comentario": (
+            "Fíjate en el cambio de marco: el problema generativo —difícil— se convirtió en un problema de "
+            "**regresión supervisada** —fácil—, porque el par (entrada ruidosa, ruido) se puede fabricar "
+            "gratis a partir de cualquier imagen. Ese truco es la contribución."
+        ),
+        "antipatron_md": "Anti-patrón: creer que el modelo predice la imagen limpia. Si predices x₀ directamente en un paso muy ruidoso, el objetivo es casi ruido puro.",
+        "antipatron": (
+            "print('En t=19, ᾱ≈0.006: x_t es casi todo ruido.')\n"
+            "print('Predecir x0 desde ahi es adivinar; predecir ε es una tarea bien condicionada')\n"
+            "print('porque ε es exactamente lo que domina la señal en ese punto.')"
+        ),
+        "correccion_md": "La parametrización correcta y su equivalencia:",
+        "correccion": (
+            "r = run_paper_lab('diffusion', seed=7)['result']['reconstruccion']\n"
+            "print('original                :', r['original'])\n"
+            "print('reconstruido desde ε    :', r['con_epsilon_correcto'])\n"
+            "print('error con ε correcto    :', r['error_con_epsilon_correcto'])\n"
+            "print('error con ε desviado 0.5:', r['error_con_epsilon_desviado_0_5'])"
+        ),
+        "desafio_guiado_md": "Cambia el planificador de β a uno coseno y compara cómo cae la SNR.",
+        "desafio_guiado": (
+            "import math\n"
+            "T = 20\n"
+            "lineal = [1e-4 + (0.02 - 1e-4) * t / (T - 1) for t in range(T)]\n"
+            "coseno = [min(0.999, 1 - math.cos((t + 1) / T * math.pi / 2) ** 2 / max(math.cos(t / T * math.pi / 2) ** 2, 1e-8)) for t in range(T)]\n"
+            "for nombre, betas in (('lineal', lineal), ('coseno', coseno)):\n"
+            "    acum = 1.0\n"
+            "    for b in betas:\n"
+            "        acum *= (1 - b)\n"
+            "    print(f'{nombre:<7} → ᾱ_final = {acum:.6f}')"
+        ),
+        "desafio_autonomo": (
+            "Implementa el muestreo inverso completo (DDPM ancestral) sobre datos 2D sintéticos con dos "
+            "modos, entrenando una red pequeña para predecir ε. Mide si las muestras cubren ambos modos o "
+            "colapsan en uno, y compáralo con lo que haría una GAN de tamaño similar."
+        ),
+        "evidencia": (
+            "Guarda la trayectoria de SNR, la tabla de amplificación del error por paso y tu explicación de "
+            "por qué se predice el ruido y no la imagen."
+        ),
+        "cierre": (
+            "La generación de imágenes ya tiene un objetivo estable y entrenable. Falta poder **decirle qué "
+            "generar** con palabras: eso exige un espacio compartido entre imagen y texto."
+        ),
+    },
+    "P18_clip": {
+        "intuicion": (
+            "En vez de enseñar «esto es un gato» con una etiqueta numérica, se enseña con la frase que ya "
+            "acompañaba a la foto en internet. El modelo aprende a acercar cada imagen a su texto y a "
+            "alejarla de los textos de las demás."
+        ),
+        "concepto": (
+            "```text\n"
+            "InfoNCE simétrico sobre un lote de N pares (imagen_i, texto_i):\n\n"
+            "    logits_ij = cos(I_i, T_j) / τ\n"
+            "    L = ½·CE(logits, diagonal)_filas + ½·CE(logits, diagonal)_columnas\n"
+            "```\n\n"
+            "La diagonal son los pares correctos; **todo lo demás del lote son negativos**. Por eso el "
+            "tamaño del lote es un hiperparámetro de primer orden: más lote, negativos más difíciles."
+        ),
+        "codigo_md": "El motor entrena el contraste sobre cuatro pares y mide la matriz de similitud antes y después.",
+        "codigo": (
+            "r = run_paper_lab('clip', seed=7)['result']\n"
+            "print('conceptos:', r['conceptos'])\n"
+            "print('\\nmatriz de similitud ANTES (filas=imagen, columnas=texto):')\n"
+            "for c, fila in zip(r['conceptos'], r['matriz_antes']):\n"
+            "    print(f'  {c:<7}', fila)\n"
+            "print('\\nDESPUES:')\n"
+            "for c, fila in zip(r['conceptos'], r['matriz_despues']):\n"
+            "    print(f'  {c:<7}', fila)\n"
+            "show(r['diagonal_media'])\n"
+            "print('zero-shot:', r['zero_shot'])"
+        ),
+        "prediccion": (
+            "1. ¿Qué debe pasarle a la diagonal de la matriz? ¿Y a lo de fuera de la diagonal?\n"
+            "2. Con 4 conceptos, ¿cuántos negativos tiene cada positivo?\n"
+            "3. ¿Por qué esto permite clasificar sin haber entrenado un clasificador?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('clip', seed=semilla)['result']\n"
+            "    d = r['diagonal_media']\n"
+            "    print(f\"semilla {semilla:>2} · diagonal {d['antes']:+.3f} → {d['despues']:+.3f} \"\n"
+            "          f\"· fuera {r['fuera_de_diagonal_media_despues']:+.3f} · zero-shot {r['zero_shot']}\")"
+        ),
+        "salida": (
+            "La diagonal sube y lo de fuera baja: los dos espacios quedan alineados. El zero-shot funciona "
+            "porque clasificar se reduce a **preguntar qué frase se parece más a esta imagen** — y las "
+            "frases se pueden escribir sobre la marcha, sin reentrenar nada."
+        ),
+        "comentario": (
+            "Ojo con el nombre «zero-shot»: no significa que el modelo no haya visto gatos. Significa que no "
+            "vio **este conjunto de etiquetas**. Con 400 millones de pares de internet, casi ninguna "
+            "categoría común es realmente nueva, y el propio paper discute ese matiz."
+        ),
+        "antipatron_md": "Anti-patrón: evaluar zero-shot con las mismas plantillas de texto que se ajustaron mirando el conjunto de test.",
+        "antipatron": (
+            "print('«a photo of a {clase}» vs «{clase}» vs «una foto de un {clase}, primer plano»')\n"
+            "print('La exactitud cambia varios puntos solo con la plantilla.')\n"
+            "print('Elegir la plantilla mirando el test convierte zero-shot en ajuste encubierto.')"
+        ),
+        "correccion_md": "El protocolo honesto separa el conjunto donde se eligen las plantillas del conjunto donde se reporta:",
+        "correccion": (
+            "protocolo = {\n"
+            "    'plantillas_elegidas_en': 'conjunto de validación separado',\n"
+            "    'resultado_reportado_en': 'test, una sola vez',\n"
+            "    'se_reporta': ['plantilla exacta', 'número de plantillas probadas', 'varianza entre ellas'],\n"
+            "}\n"
+            "show(protocolo)"
+        ),
+        "desafio_guiado_md": "Comprueba que la matriz es simétrica en su papel: el negativo de una fila es el positivo de otra columna.",
+        "desafio_guiado": (
+            "r = run_paper_lab('clip', seed=7)['result']\n"
+            "m = r['matriz_despues']\n"
+            "n = len(m)\n"
+            "diag = [m[i][i] for i in range(n)]\n"
+            "fuera = [m[i][j] for i in range(n) for j in range(n) if i != j]\n"
+            "print('mínimo de la diagonal :', min(diag))\n"
+            "print('máximo fuera de ella  :', max(fuera))\n"
+            "print('¿separación perfecta? :', min(diag) > max(fuera))"
+        ),
+        "desafio_autonomo": (
+            "Con un modelo CLIP abierto y ejecutable localmente, construye 20 categorías propias y mide la "
+            "exactitud zero-shot con tres plantillas distintas. Reporta media y varianza, y localiza una "
+            "categoría donde falle sistemáticamente; explica por qué."
+        ),
+        "evidencia": (
+            "Guarda las dos matrices de similitud, el resultado zero-shot y el protocolo de plantillas que "
+            "usarías para que el número sea creíble."
+        ),
+        "cierre": (
+            "Imagen y texto ya viven en el mismo espacio. La pregunta siguiente no es de arquitectura sino "
+            "de economía: dado un presupuesto de cómputo, ¿en qué conviene gastarlo?"
+        ),
+    },
+    "P19_scaling_laws": {
+        "intuicion": (
+            "Tienes un presupuesto fijo de cómputo. Puedes gastarlo en un modelo enorme entrenado con pocos "
+            "datos, o en uno mediano entrenado con muchos. No son equivalentes, y durante años la industria "
+            "eligió sistemáticamente mal."
+        ),
+        "concepto": (
+            "```text\n"
+            "Forma paramétrica ajustada empíricamente:\n"
+            "    L(N, D) = E + A/N^α + B/D^β\n\n"
+            "Restricción de presupuesto (aproximación estándar):\n"
+            "    C ≈ 6·N·D          N = parámetros, D = tokens, C = FLOPs de entrenamiento\n\n"
+            "El problema es: minimizar L(N, D) sujeto a 6ND = C\n"
+            "```\n\n"
+            "`E` es el error irreducible (la entropía del lenguaje). Los otros dos términos son lo que se "
+            "compra con parámetros y con datos respectivamente."
+        ),
+        "codigo_md": "El motor evalúa varias asignaciones **con el mismo cómputo** y encuentra el óptimo. Las constantes son didácticas: la forma es lo transferible.",
+        "codigo": (
+            "r = run_paper_lab('scaling_laws', seed=7)['result']\n"
+            "print('forma:', r['forma_parametrica'])\n"
+            "show(r['constantes'])\n"
+            "print('\\npresupuesto fijo:', r['presupuesto_flops'], 'FLOPs\\n')\n"
+            "for c in r['candidatos_a_igual_computo']:\n"
+            "    print(f\"N={c['N_parametros']} · D={c['D_tokens']} · {c['tokens_por_parametro']:>8} tok/param · L={c['perdida']}\")"
+        ),
+        "prediccion": (
+            "1. ¿La pérdida será igual en todas las asignaciones del mismo cómputo, o habrá un mínimo claro?\n"
+            "2. ¿El óptimo estará en «el modelo más grande posible»?\n"
+            "3. Si duplicas el presupuesto, ¿qué duplicarías: N, D, o ambos a medias?"
+        ),
+        "experimento": (
+            "E, A, B, alpha, beta = 1.69, 400.0, 400.0, 0.34, 0.28\n"
+            "def L(N, D):\n"
+            "    return E + A / N ** alpha + B / D ** beta\n"
+            "\n"
+            "for factor in (1, 2, 4, 8):\n"
+            "    C = factor * 6 * 70e9 * 1.4e12\n"
+            "    mejor = min(((N, C / (6 * N)) for N in (10 ** e * m for e in range(10, 13) for m in (1, 2, 5))),\n"
+            "                key=lambda nd: L(*nd))\n"
+            "    print(f'presupuesto x{factor}: N*={mejor[0]:.1e} D*={mejor[1]:.1e} '\n"
+            "          f'tok/param={mejor[1]/mejor[0]:.0f} L={L(*mejor):.4f}')"
+        ),
+        "salida": (
+            "Al crecer el presupuesto, **N y D crecen a la vez**: ninguna de las dos absorbe todo el "
+            "incremento. Ese es el resultado que reordenó la industria — antes se subía N y se dejaba D casi "
+            "fijo, gastando cómputo en parámetros que nunca llegaban a entrenarse bien."
+        ),
+        "comentario": (
+            "Las constantes de este notebook **son didácticas**, no las del paper: sirven para que la curva "
+            "tenga la forma correcta, no para citar un número. Si necesitas los valores ajustados, están en "
+            "el artículo. Confundir ambas cosas es exactamente lo que este eje entrena a no hacer."
+        ),
+        "antipatron_md": "Anti-patrón: extrapolar la ley fuera del rango donde se ajustó, o usarla para predecir *capacidades* en vez de pérdida.",
+        "antipatron": (
+            "print('L(N,D) predice PERDIDA DE PREENTRENAMIENTO.')\n"
+            "print('No predice: si el modelo razonará, si alucinará menos, ni si servirá para tu tarea.')\n"
+            "print('Tampoco cubre el coste de INFERENCIA, que hoy suele dominar el coste total.')"
+        ),
+        "correccion_md": "Lo que la ley sí autoriza a decir, y lo que no:",
+        "correccion": (
+            "afirmaciones = {\n"
+            "    'valido': ['a computo fijo existe un reparto optimo entre N y D',\n"
+            "               'los modelos de 2020-2021 estaban infraentrenados en datos'],\n"
+            "    'no_valido': ['un modelo con menor perdida es mejor para mi tarea',\n"
+            "                  'la ley se extrapola varios ordenes de magnitud',\n"
+            "                  'el modelo optimo para entrenar es el optimo para servir'],\n"
+            "}\n"
+            "show(afirmaciones)"
+        ),
+        "desafio_guiado_md": "Un modelo servido a millones de usuarios se entrena una vez y se ejecuta siempre. Calcula cuándo conviene un modelo más pequeño que el óptimo de entrenamiento.",
+        "desafio_guiado": (
+            "coste_entrenamiento = lambda N, D: 6 * N * D\n"
+            "coste_inferencia = lambda N, peticiones, tokens: 2 * N * peticiones * tokens\n"
+            "N_opt, D_opt = 7e10, 1.4e12\n"
+            "for peticiones in (1e6, 1e9, 1e12):\n"
+            "    e = coste_entrenamiento(N_opt, D_opt)\n"
+            "    i = coste_inferencia(N_opt, peticiones, 500)\n"
+            "    print(f'{peticiones:.0e} peticiones → entrenamiento {e:.2e} vs inferencia {i:.2e} '\n"
+            "          f\"({'inferencia domina' if i > e else 'entrenamiento domina'})\")"
+        ),
+        "desafio_autonomo": (
+            "Ajusta tu propia ley de escalado entrenando modelos diminutos (10K–10M parámetros) sobre un "
+            "corpus público, con varios presupuestos. Estima α y β y comprueba si tu óptimo predicho se "
+            "cumple en una configuración que no usaste para ajustar."
+        ),
+        "evidencia": (
+            "Guarda la tabla de asignaciones a igual cómputo, el óptimo encontrado y la lista de lo que la "
+            "ley **no** autoriza a afirmar."
+        ),
+        "cierre": (
+            "Ya sabemos cuánto gastar en cada cosa. La pregunta siguiente vuelve a la arquitectura: el coste "
+            "cuadrático de la atención sigue ahí, y alguien tenía que atacarlo."
+        ),
+    },
+    "P20_mamba": {
+        "intuicion": (
+            "Un RNN comprime el pasado en un estado fijo —barato pero olvida—; la atención guarda todo "
+            "—recuerda pero cuesta n²—. Mamba se queda con el estado fijo y añade lo que le faltaba: **la "
+            "puerta decide según lo que está leyendo**, no según una regla fija."
+        ),
+        "concepto": (
+            "```text\n"
+            "SSM invariante en el tiempo (S4 y anteriores):\n"
+            "    h_t = A·h_{t−1} + B·x_t          A, B FIJAS  →  se puede convertir en convolución\n\n"
+            "SSM selectivo (Mamba):\n"
+            "    h_t = A(x_t)·h_{t−1} + B(x_t)·x_t    A, B DEPENDEN DE LA ENTRADA\n"
+            "```\n\n"
+            "Ese cambio rompe la convolución eficiente —por eso hace falta un escaneo paralelo consciente "
+            "del hardware— pero es lo que permite **razonar sobre el contenido**: ignorar relleno y "
+            "retener lo relevante."
+        ),
+        "codigo_md": "El motor compara ambos en una tarea de copia selectiva: recordar tokens marcados entre relleno.",
+        "codigo": (
+            "r = run_paper_lab('ssm', seed=7)['result']\n"
+            "print('tokens:', r['tokens'], '· marcados:', r['marcados'], '\\n')\n"
+            "show(r['invariante_en_el_tiempo'])\n"
+            "show(r['selectivo'])\n"
+            "print('mejora de separacion:', r['mejora_de_separacion'])"
+        ),
+        "prediccion": (
+            "1. ¿Podrá el SSM invariante distinguir los tokens marcados del relleno?\n"
+            "2. ¿Qué le pasa a la memoria de la atención cuando n pasa de 1 000 a 100 000?\n"
+            "3. ¿Y a la del SSM?"
+        ),
+        "experimento": (
+            "for fila in r['complejidad']:\n"
+            "    print(f\"n={fila['n']:>7} · attn {fila['attention_ops']:>15,} ops / KV {fila['attention_memoria_kv']:>10,} \"\n"
+            "          f\"· ssm {fila['ssm_ops']:>12,} ops / estado {fila['ssm_memoria_estado']:>6,}\")"
+        ),
+        "salida": (
+            "La memoria del SSM es **constante**: `d·N` no depende de la longitud. La de la atención crece "
+            "linealmente con la secuencia (la caché KV) y su cómputo, cuadráticamente. Ese es el argumento "
+            "económico; el argumento de calidad es la separación que acabas de medir."
+        ),
+        "comentario": (
+            "El compromiso es real y conviene enunciarlo sin entusiasmo: un estado de tamaño fijo **es** una "
+            "compresión con pérdida. La atención puede volver a mirar cualquier token exacto; el SSM solo "
+            "tiene lo que decidió guardar. Por eso proliferaron los híbridos que alternan ambos bloques."
+        ),
+        "antipatron_md": "Anti-patrón: «Mamba sustituye al Transformer». Es una afirmación de arquitectura sin tarea, dato ni escala.",
+        "antipatron": (
+            "print('«Mamba sustituye al Transformer» ← ¿en qué tarea, a qué escala, con qué presupuesto?')\n"
+            "print('El paper reporta resultados hasta cierto tamaño y en ciertas modalidades.')\n"
+            "print('Extrapolar de ahi a «sustituye» es narrativa, no evidencia.')"
+        ),
+        "correccion_md": "Enunciado defendible, con sus condiciones:",
+        "correccion": (
+            "defendible = {\n"
+            "    'coste': 'tiempo lineal en la longitud y estado de memoria constante',\n"
+            "    'calidad': 'competitivo con Transformers de tamaño comparable en las tareas del paper',\n"
+            "    'mecanismo': 'la seleccion dependiente de la entrada es lo que da razonamiento sobre contenido',\n"
+            "    'coste_oculto': 'un estado fijo es compresion con perdida: no hay recuperacion exacta',\n"
+            "    'no_demostrado': 'paridad general con la atencion a cualquier escala y tarea',\n"
+            "}\n"
+            "show(defendible)"
+        ),
+        "desafio_guiado_md": "Sube la proporción de tokens marcados y observa cuándo la selección deja de ayudar.",
+        "desafio_guiado": (
+            "for cada in (17, 7, 3, 2):\n"
+            "    marcados = len([i for i in range(60) if i % cada == 3])\n"
+            "    print(f'1 de cada {cada:>2} tokens marcado → {marcados:>2}/60 relevantes '\n"
+            "          f\"({'seleccionar aporta poco' if marcados > 20 else 'seleccionar aporta mucho'})\")"
+        ),
+        "desafio_autonomo": (
+            "Implementa la tarea de copia selectiva del paper con longitudes crecientes y entrena dos "
+            "modelos de tamaño comparable: uno con puertas fijas y otro con puertas dependientes de la "
+            "entrada. Reporta exactitud frente a longitud y memoria máxima usada."
+        ),
+        "evidencia": (
+            "Guarda la separación de ambos modelos, la tabla de complejidad y tu enunciado defendible sobre "
+            "qué gana y qué pierde frente a la atención."
+        ),
+        "cierre": (
+            "Se puede abaratar el **eje de la secuencia**. Queda el otro eje: el de los parámetros, donde "
+            "cada token paga por todos aunque no los necesite."
+        ),
+    },
+    "P21_moe": {
+        "intuicion": (
+            "En un modelo denso, cada palabra que procesas paga la factura completa del modelo. En una "
+            "mezcla de expertos hay muchos especialistas pero solo se despiertan dos por token: capacidad de "
+            "biblioteca, coste de consulta."
+        ),
+        "concepto": (
+            "```text\n"
+            "Capa densa:         y = FFN(x)                      coste ∝ todos los parámetros\n"
+            "Capa MoE dispersa:  y = Σ_{i ∈ top-k} g_i(x)·E_i(x)  coste ∝ k expertos\n\n"
+            "    g(x) = softmax(top-k(x·W_router))\n"
+            "```\n\n"
+            "En el modelo del paper: 8 expertos, k=2, ≈47 000 M de parámetros totales y ≈13 000 M activos "
+            "por token."
+        ),
+        "codigo_md": "El motor enruta 400 tokens con un router top-2 sobre 8 expertos y mide el reparto de carga.",
+        "codigo": (
+            "r = run_paper_lab('moe', seed=7)['result']\n"
+            "show(r['parametros'])\n"
+            "print('\\ncarga sin balanceo:', r['sin_balanceo']['carga'], '· CV =', r['sin_balanceo']['cv'])\n"
+            "print('carga con balanceo:', r['con_balanceo']['carga'], '· CV =', r['con_balanceo']['cv'])"
+        ),
+        "prediccion": (
+            "1. ¿Repartirá el router los tokens de forma pareja entre los 8 expertos?\n"
+            "2. Si el 25 % de los parámetros está activo, ¿necesitas el 25 % de la memoria?\n"
+            "3. ¿Qué pasa si un experto no recibe ningún token durante el entrenamiento?"
+        ),
+        "experimento": (
+            "for expertos, k in ((8, 1), (8, 2), (8, 4), (64, 2)):\n"
+            "    fraccion = k / expertos\n"
+            "    print(f'{expertos:>2} expertos, top-{k} → {fraccion:>6.1%} de parámetros activos por token')"
+        ),
+        "salida": (
+            "El CV (coeficiente de variación de la carga) baja al añadir el término de balanceo. Sin él, unos "
+            "pocos expertos acaparan los tokens y el resto no recibe gradiente: **se entrena un modelo denso "
+            "caro disfrazado de disperso**. Ese colapso del router es el fallo característico."
+        ),
+        "comentario": (
+            "La trampa contable: «13 000 M activos» **no** significa que quepa en la memoria de 13 000 M. "
+            "Hay que cargar los 47 000 M porque cualquier token puede activar cualquier experto. MoE ahorra "
+            "**cómputo**, no **memoria** — y confundirlo lleva a dimensionar mal el hardware."
+        ),
+        "antipatron_md": "Anti-patrón: dimensionar la GPU por los parámetros activos.",
+        "antipatron": (
+            "activos_gb = 13e9 * 2 / 1e9\n"
+            "totales_gb = 47e9 * 2 / 1e9\n"
+            "print(f'Presupuesto por parametros ACTIVOS (fp16): {activos_gb:.0f} GB ← INCORRECTO')\n"
+            "print(f'Memoria realmente necesaria (todos)      : {totales_gb:.0f} GB')\n"
+            "print('Comprar una tarjeta por el primer numero es no poder cargar el modelo.')"
+        ),
+        "correccion_md": "Las dos cuentas separadas, que es como hay que presupuestar:",
+        "correccion": (
+            "presupuesto = {\n"
+            "    'memoria_pesos_fp16_GB': round(47e9 * 2 / 1e9),\n"
+            "    'computo_por_token_relativo': round(13 / 47, 3),\n"
+            "    'regla': 'MoE ahorra COMPUTO por token, no MEMORIA de pesos',\n"
+            "    'consecuencia': 'mejor throughput por FLOP, misma o mayor factura de VRAM',\n"
+            "}\n"
+            "show(presupuesto)"
+        ),
+        "desafio_guiado_md": "Comprueba cómo el desbalanceo se agrava al subir el número de expertos.",
+        "desafio_guiado": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('moe', seed=semilla)['result']\n"
+            "    print(f\"semilla {semilla:>2} · CV sin balanceo {r['sin_balanceo']['cv']:.3f} \"\n"
+            "          f\"→ con balanceo {r['con_balanceo']['cv']:.3f}\")"
+        ),
+        "desafio_autonomo": (
+            "Implementa una capa MoE real (expertos = pequeñas MLP) y entrénala en una tarea de "
+            "clasificación con clases desbalanceadas. Mide la especialización de cada experto y comprueba si "
+            "el término de balanceo la destruye o la ordena."
+        ),
+        "evidencia": (
+            "Guarda la tabla de fracción activa, el CV con y sin balanceo, y el presupuesto de memoria "
+            "correcto frente al incorrecto."
+        ),
+        "cierre": (
+            "Ya sabemos abaratar la secuencia y los parámetros. Queda dónde gastar el cómputo que sí "
+            "queremos gastar: y la respuesta de 2025 fue moverlo al momento de responder."
+        ),
+    },
+    "P22_deepseek_r1": {
+        "intuicion": (
+            "Para enseñar a razonar, la vía cara es que un humano escriba miles de razonamientos ejemplares. "
+            "La vía de este paper es no escribir ninguno: solo comprobar si la respuesta final es correcta, y "
+            "dejar que el modelo descubra por sí mismo que verificar antes de responder le renta."
+        ),
+        "concepto": (
+            "```text\n"
+            "RLHF (P12):  recompensa = preferencia humana aprendida     → subjetiva, hackeable\n"
+            "Aquí      :  recompensa = ¿la respuesta final es correcta? → objetiva, verificable\n"
+            "```\n\n"
+            "La señal no dice **cómo** razonar, solo **si acertaste**. El comportamiento de razonamiento "
+            "—reflexión, verificación, cambio de estrategia— aparece porque aumenta la probabilidad de "
+            "acertar, no porque nadie lo demostrara."
+        ),
+        "codigo_md": "El motor entrena una política sobre tres estrategias usando solo la corrección del resultado.",
+        "codigo": (
+            "r = run_paper_lab('rl_reasoning', seed=7)['result']\n"
+            "show(r['estrategias'])\n"
+            "print('\\nseñal usada:', r['senal_usada'])\n"
+            "for h in r['historia']:\n"
+            "    print(f\"it={h['iteracion']:>2} · política={h['politica']} \"\n"
+            "          f\"· exactitud={h['exactitud_esperada']} · tokens={h['tokens_esperados']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Hacia qué estrategia se desplazará la política?\n"
+            "2. ¿Qué le pasará al coste en tokens mientras sube la exactitud?\n"
+            "3. ¿Funcionaría esto en una tarea donde no se puede comprobar la respuesta?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    h = run_paper_lab('rl_reasoning', seed=semilla)['result']['historia']\n"
+            "    print(f\"semilla {semilla:>2} · exactitud {h[0]['exactitud_esperada']} → {h[-1]['exactitud_esperada']} \"\n"
+            "          f\"· tokens {h[0]['tokens_esperados']} → {h[-1]['tokens_esperados']}\")"
+        ),
+        "salida": (
+            "La exactitud sube y **el coste sube con ella**. Esa es la lectura completa: el razonamiento "
+            "largo no es gratis, se paga en tokens de inferencia. El cómputo se desplazó del entrenamiento "
+            "al momento de responder."
+        ),
+        "comentario": (
+            "El límite está en la palabra **verificable**. En matemáticas y código, comprobar la respuesta es "
+            "barato y objetivo. En redacción, diagnóstico o consejo legal no existe ese verificador, y ahí "
+            "el método no se traslada sin más. Es la pregunta abierta que este paper deja."
+        ),
+        "antipatron_md": "Anti-patrón: leer la traza de razonamiento como si fuera el proceso real del modelo. Es el mismo error que en ReAct, ahora con textos mucho más largos y convincentes.",
+        "antipatron": (
+            "print('Una traza larga y segura de si misma NO es una prueba de correccion.')\n"
+            "print('Se optimizo para que la RESPUESTA FINAL sea correcta;')\n"
+            "print('el texto intermedio es un medio, no un certificado auditado.')"
+        ),
+        "correccion_md": "Lo que sí se puede afirmar, y cómo se comprueba:",
+        "correccion": (
+            "auditoria = {\n"
+            "    'verificable': 'la respuesta final, contra la solucion conocida',\n"
+            "    'no_verificable_sin_trabajo_extra': 'que cada paso intermedio sea valido',\n"
+            "    'como_comprobarlo': ['ejecutar el codigo generado',\n"
+            "                          'comprobar el resultado numerico por otra via',\n"
+            "                          'muestrear N trazas y ver si concuerdan'],\n"
+            "    'coste': 'cada comprobacion extra es mas computo en inferencia',\n"
+            "}\n"
+            "show(auditoria)"
+        ),
+        "desafio_guiado_md": "Sube el coste de la estrategia que verifica y comprueba a partir de qué punto deja de compensar.",
+        "desafio_guiado": (
+            "estrategias = {'directo': (0.35, 20), 'cadena': (0.60, 90), 'verificacion': (0.82, 240)}\n"
+            "for presupuesto in (50, 120, 300):\n"
+            "    viables = {k: v for k, v in estrategias.items() if v[1] <= presupuesto}\n"
+            "    mejor = max(viables.items(), key=lambda kv: kv[1][0]) if viables else None\n"
+            "    print(f'presupuesto {presupuesto:>3} tokens → mejor viable: {mejor[0] if mejor else \"ninguna\"} '\n"
+            "          f'(exactitud {mejor[1][0] if mejor else 0})')"
+        ),
+        "desafio_autonomo": (
+            "Toma un modelo abierto pequeño y un conjunto de problemas aritméticos con solución conocida. "
+            "Muestrea k trazas por problema, quédate con las que llegan al resultado correcto y reentrena "
+            "sobre ellas. Mide exactitud y tokens por respuesta antes y después, y busca el punto donde "
+            "más cómputo deja de mejorar el resultado."
+        ),
+        "evidencia": (
+            "Guarda la curva exactitud/coste, la explicación de por qué la recompensa verificable evita el "
+            "reward hacking clásico, y el límite de dominios donde no existe verificador."
+        ),
+        "cierre": (
+            "Aquí termina la ruta ampliada, en 2025. Lo posterior no está consolidado: vive en "
+            "`frontier/current-topics.yaml` con fecha, y asciende solo cuando cumple los criterios."
+        ),
+    },
+})
+
+
 TRANSFORMER_SPECS: list[dict[str, Any]] = [
     {
         "id": "T01_recurrencia_vs_paralelismo",

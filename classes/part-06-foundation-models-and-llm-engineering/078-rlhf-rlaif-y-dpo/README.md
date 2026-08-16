@@ -230,6 +230,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Schulman et al. (2017), *Proximal Policy Optimization Algorithms* (PPO): <https://arxiv.org/abs/1707.06347>
 - Sutton y Barto, *Reinforcement Learning: An Introduction* (2.ª ed.): <http://incompleteideas.net/book/the-book-2nd.html>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P12 · Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana](../../../papers/foundational/P12_instructgpt_rlhf/README.md) | 2022 | El salto de «modelo que completa texto» a «asistente que sigue instrucciones»: alineación con preferencias humanas. | [notebook](../../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
+| [P15 · Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa](../../../papers/foundational/P15_dpo/README.md) | 2023 | Alinear un modelo con preferencias humanas sin modelo de recompensa explícito ni bucle de aprendizaje por refuerzo. | [notebook](../../../notebooks/papers/P15_dpo.ipynb) |
+| [P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo](../../../papers/foundational/P22_deepseek_r1/README.md) | 2025 | El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares. | [notebook](../../../notebooks/papers/P22_deepseek_r1.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

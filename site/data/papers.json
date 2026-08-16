@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-16",
-  "paper_count": 16,
+  "paper_count": 22,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -421,6 +421,155 @@
         "criterio de parada"
       ],
       "notebook": "notebooks/papers/P16_agentic_systems.ipynb"
+    },
+    {
+      "id": "P17",
+      "page": "P17_diffusion.html",
+      "titulo": "Modelos probabilísticos de difusión con eliminación de ruido",
+      "original": "Denoising Diffusion Probabilistic Models",
+      "autoria": [
+        "Jonathan Ho",
+        "Ajay Jain",
+        "Pieter Abbeel"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2006.11239 · NeurIPS 2020",
+      "nivel": "L3",
+      "motor": "diffusion",
+      "hito": "La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.",
+      "keywords": [
+        "difusión",
+        "DDPM",
+        "proceso directo",
+        "predicción de ruido",
+        "cota variacional",
+        "score matching"
+      ],
+      "notebook": "notebooks/papers/P17_diffusion.ipynb"
+    },
+    {
+      "id": "P18",
+      "page": "P18_clip.html",
+      "titulo": "Aprender modelos visuales transferibles con supervisión de lenguaje natural",
+      "original": "Learning Transferable Visual Models From Natural Language Supervision",
+      "autoria": [
+        "Alec Radford",
+        "Jong Wook Kim",
+        "Chris Hallacy",
+        "Aditya Ramesh",
+        "Gabriel Goh",
+        "y otros (OpenAI)"
+      ],
+      "anio": 2021,
+      "venue": "arXiv:2103.00020 · ICML 2021",
+      "nivel": "L3",
+      "motor": "clip",
+      "hito": "El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.",
+      "keywords": [
+        "CLIP",
+        "contrastivo",
+        "InfoNCE",
+        "zero-shot",
+        "multimodal",
+        "supervisión débil"
+      ],
+      "notebook": "notebooks/papers/P18_clip.ipynb"
+    },
+    {
+      "id": "P19",
+      "page": "P19_scaling_laws.html",
+      "titulo": "Entrenar modelos de lenguaje grandes con cómputo óptimo",
+      "original": "Training Compute-Optimal Large Language Models",
+      "autoria": [
+        "Jordan Hoffmann",
+        "Sebastian Borgeaud",
+        "Arthur Mensch",
+        "y otros (DeepMind)"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2203.15556 · NeurIPS 2022",
+      "nivel": "L4",
+      "motor": "scaling_laws",
+      "hito": "Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.",
+      "keywords": [
+        "leyes de escalado",
+        "cómputo óptimo",
+        "tokens por parámetro",
+        "FLOPs",
+        "infraentrenamiento"
+      ],
+      "notebook": "notebooks/papers/P19_scaling_laws.ipynb"
+    },
+    {
+      "id": "P20",
+      "page": "P20_mamba.html",
+      "titulo": "Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos",
+      "original": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "autoria": [
+        "Albert Gu",
+        "Tri Dao"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2312.00752 · COLM 2024 (Outstanding Paper Award)",
+      "nivel": "L4",
+      "motor": "ssm",
+      "hito": "El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención.",
+      "keywords": [
+        "SSM",
+        "selección",
+        "tiempo lineal",
+        "estado de tamaño fijo",
+        "escaneo paralelo",
+        "contexto largo"
+      ],
+      "notebook": "notebooks/papers/P20_mamba.ipynb"
+    },
+    {
+      "id": "P21",
+      "page": "P21_moe.html",
+      "titulo": "Mixtral: mezcla dispersa de expertos",
+      "original": "Mixtral of Experts",
+      "autoria": [
+        "Albert Q. Jiang",
+        "y otros (Mistral AI)"
+      ],
+      "anio": 2024,
+      "venue": "arXiv:2401.04088",
+      "nivel": "L3",
+      "motor": "moe",
+      "hito": "Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.",
+      "keywords": [
+        "mezcla de expertos",
+        "router",
+        "top-2",
+        "parámetros activos",
+        "balanceo de carga",
+        "Apache 2.0"
+      ],
+      "notebook": "notebooks/papers/P21_moe.ipynb"
+    },
+    {
+      "id": "P22",
+      "page": "P22_deepseek_r1.html",
+      "titulo": "DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo",
+      "original": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "autoria": [
+        "DeepSeek-AI"
+      ],
+      "anio": 2025,
+      "venue": "arXiv:2501.12948 · Nature 645, 633–638 (2025)",
+      "nivel": "L5",
+      "motor": "rl_reasoning",
+      "hito": "El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.",
+      "keywords": [
+        "razonamiento",
+        "refuerzo",
+        "recompensa verificable",
+        "cómputo en inferencia",
+        "destilación",
+        "pesos abiertos"
+      ],
+      "notebook": "notebooks/papers/P22_deepseek_r1.ipynb"
     }
   ]
 }

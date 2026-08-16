@@ -227,6 +227,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 10 (Sequence Modeling). [deeplearningbook.org/contents/rnn.html](https://www.deeplearningbook.org/contents/rnn.html)
 - Documentación de PyTorch: [`torch.nn.LSTM`](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P03 · Memoria larga de corto plazo](../../../papers/foundational/P03_lstm/README.md) | 1997 | Primera arquitectura recurrente capaz de mantener información a través de cientos de pasos sin que el gradiente se desvanezca. | [notebook](../../../notebooks/papers/P03_lstm.ipynb) |
+| [P06 · Aprendizaje de secuencia a secuencia con redes neuronales](../../../papers/foundational/P06_seq2seq/README.md) | 2014 | Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo. | [notebook](../../../notebooks/papers/P06_seq2seq.ipynb) |
+| [P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos](../../../papers/foundational/P20_mamba/README.md) | 2023 | El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención. | [notebook](../../../notebooks/papers/P20_mamba.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

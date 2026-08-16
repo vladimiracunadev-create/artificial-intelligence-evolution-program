@@ -246,6 +246,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Ramesh, A. et al. (2022). *Hierarchical Text-Conditional Image Generation with CLIP Latents* (DALL·E 2). [arXiv:2204.06125](https://arxiv.org/abs/2204.06125)
 - Documentación de Hugging Face Diffusers: [Stable Diffusion pipeline](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P17 · Modelos probabilísticos de difusión con eliminación de ruido](../../../papers/foundational/P17_diffusion/README.md) | 2020 | La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido. | [notebook](../../../notebooks/papers/P17_diffusion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

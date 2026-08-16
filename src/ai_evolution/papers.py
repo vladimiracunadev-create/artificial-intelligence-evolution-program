@@ -202,8 +202,16 @@ def validate_papers(*, strict: bool = False) -> dict[str, Any]:
     ids = [item["id"] for item in items]
     if len(ids) != len(set(ids)):
         errors.append("IDs de papers duplicados")
-    if ids != data["ruta_minima"]:
-        errors.append("`ruta_minima` no coincide con el orden de `papers`")
+    # El eje tiene dos bloques: la cadena canónica (P01–P16, en orden de
+    # dependencia) y la ampliación (P17–P22, en orden cronológico). Se validan
+    # juntos para que ningún paper quede fuera de una ruta.
+    rutas = list(data["ruta_minima"]) + list(data.get("ruta_ampliada", []))
+    if ids != rutas:
+        errors.append("`ruta_minima` + `ruta_ampliada` no coinciden con el orden de `papers`")
+    for bloque in ("ruta_minima", "ruta_ampliada"):
+        anios = [item["year"] for item in items if item["id"] in data.get(bloque, [])]
+        if anios != sorted(anios):
+            errors.append(f"`{bloque}` no está en orden cronológico")
 
     try:
         load_sources()

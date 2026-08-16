@@ -13,7 +13,24 @@
     "L4": "Reproducción parcial: replicar una figura, tabla o ablación a escala reducida.",
     "L5": "Investigación: leer la frontera con fecha y fuente, y proponer preguntas abiertas."
   },
-  "ruta_minima": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "P12", "P13", "P14", "P15", "P16"],
+  "ruta_minima": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "P14",
+    "P15",
+    "P16"
+  ],
   "papers": [
     {
       "id": "P01",
@@ -21,7 +38,9 @@
       "slug": "perceptron-rosenblatt-1958",
       "title": "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain",
       "title_es": "El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro",
-      "authors": ["Frank Rosenblatt"],
+      "authors": [
+        "Frank Rosenblatt"
+      ],
       "year": 1958,
       "venue": "Psychological Review, 65(6), 386–408",
       "venue_type": "revista",
@@ -31,17 +50,34 @@
       "hito": "Primera máquina que aprende sus propios pesos a partir de ejemplos en lugar de ejecutar reglas escritas por una persona.",
       "problema": "La IA de los años 50 programaba reglas a mano; no existía un procedimiento para que un sistema ajustara su comportamiento observando datos.",
       "propuesta": "Una unidad de decisión lineal con umbral y una regla de corrección de error que solo actúa cuando la predicción falla.",
-      "keywords": ["perceptrón", "clasificador lineal", "regla de aprendizaje", "separabilidad", "conexionismo"],
-      "anteriores": ["McCulloch y Pitts (1943), neurona lógica de umbral", "Hebb (1949), plasticidad sináptica"],
-      "posteriores": ["P02"],
+      "keywords": [
+        "perceptrón",
+        "clasificador lineal",
+        "regla de aprendizaje",
+        "separabilidad",
+        "conexionismo"
+      ],
+      "anteriores": [
+        "McCulloch y Pitts (1943), neurona lógica de umbral",
+        "Hebb (1949), plasticidad sináptica"
+      ],
+      "posteriores": [
+        "P02"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad"
       ],
       "fuentes_primarias": [
-        {"label": "DOI (Psychological Review)", "url": "https://doi.org/10.1037/h0042519"}
+        {
+          "label": "DOI (Psychological Review)",
+          "url": "https://doi.org/10.1037/h0042519"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Minsky y Papert, Perceptrons (MIT Press, 1969) — el análisis de límites", "url": "https://mitpress.mit.edu/9780262534772/perceptrons/"}
+        {
+          "label": "Minsky y Papert, Perceptrons (MIT Press, 1969) — el análisis de límites",
+          "url": "https://mitpress.mit.edu/9780262534772/perceptrons/"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -51,7 +87,11 @@
       "slug": "backpropagation-rumelhart-1986",
       "title": "Learning representations by back-propagating errors",
       "title_es": "Aprender representaciones retropropagando errores",
-      "authors": ["David E. Rumelhart", "Geoffrey E. Hinton", "Ronald J. Williams"],
+      "authors": [
+        "David E. Rumelhart",
+        "Geoffrey E. Hinton",
+        "Ronald J. Williams"
+      ],
       "year": 1986,
       "venue": "Nature, 323, 533–536",
       "venue_type": "revista",
@@ -61,17 +101,34 @@
       "hito": "Un procedimiento práctico para entrenar capas ocultas: la red descubre representaciones intermedias que nadie diseñó.",
       "problema": "Sin capas ocultas el perceptrón no resuelve XOR; con capas ocultas no se sabía cómo asignar el error a cada peso interno.",
       "propuesta": "Aplicar la regla de la cadena hacia atrás por el grafo de cómputo para obtener el gradiente de la pérdida respecto de cada peso.",
-      "keywords": ["retropropagación", "regla de la cadena", "capas ocultas", "gradiente", "representaciones internas"],
-      "anteriores": ["P01"],
-      "posteriores": ["P03", "P04"],
+      "keywords": [
+        "retropropagación",
+        "regla de la cadena",
+        "capas ocultas",
+        "gradiente",
+        "representaciones internas"
+      ],
+      "anteriores": [
+        "P01"
+      ],
+      "posteriores": [
+        "P03",
+        "P04"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation"
       ],
       "fuentes_primarias": [
-        {"label": "DOI (Nature)", "url": "https://doi.org/10.1038/323533a0"}
+        {
+          "label": "DOI (Nature)",
+          "url": "https://doi.org/10.1038/323533a0"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Linnainmaa (1970) y Werbos (1974): la diferenciación en modo reverso es anterior al paper de 1986", "url": "https://doi.org/10.1007/BF01931367"}
+        {
+          "label": "Linnainmaa (1970) y Werbos (1974): la diferenciación en modo reverso es anterior al paper de 1986",
+          "url": "https://doi.org/10.1007/BF01931367"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -81,7 +138,10 @@
       "slug": "lstm-hochreiter-schmidhuber-1997",
       "title": "Long Short-Term Memory",
       "title_es": "Memoria larga de corto plazo",
-      "authors": ["Sepp Hochreiter", "Jürgen Schmidhuber"],
+      "authors": [
+        "Sepp Hochreiter",
+        "Jürgen Schmidhuber"
+      ],
       "year": 1997,
       "venue": "Neural Computation, 9(8), 1735–1780",
       "venue_type": "revista",
@@ -91,17 +151,35 @@
       "hito": "Primera arquitectura recurrente capaz de mantener información a través de cientos de pasos sin que el gradiente se desvanezca.",
       "problema": "En un RNN el gradiente se multiplica en cada paso temporal: se desvanece o explota, y la red no aprende dependencias largas.",
       "propuesta": "Una celda con estado aditivo (carrusel de error constante) y puertas multiplicativas que deciden qué entra y qué sale.",
-      "keywords": ["LSTM", "gradiente desvaneciente", "puertas", "estado de celda", "dependencias largas"],
-      "anteriores": ["P02", "Elman (1990), redes recurrentes simples", "Hochreiter (1991), diagnóstico del gradiente desvaneciente"],
-      "posteriores": ["P06"],
+      "keywords": [
+        "LSTM",
+        "gradiente desvaneciente",
+        "puertas",
+        "estado de celda",
+        "dependencias largas"
+      ],
+      "anteriores": [
+        "P02",
+        "Elman (1990), redes recurrentes simples",
+        "Hochreiter (1991), diagnóstico del gradiente desvaneciente"
+      ],
+      "posteriores": [
+        "P06"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
       ],
       "fuentes_primarias": [
-        {"label": "DOI (Neural Computation)", "url": "https://doi.org/10.1162/neco.1997.9.8.1735"}
+        {
+          "label": "DOI (Neural Computation)",
+          "url": "https://doi.org/10.1162/neco.1997.9.8.1735"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Gers, Schmidhuber y Cummins (2000): la puerta de olvido NO está en el paper de 1997", "url": "https://doi.org/10.1162/089976600300015015"}
+        {
+          "label": "Gers, Schmidhuber y Cummins (2000): la puerta de olvido NO está en el paper de 1997",
+          "url": "https://doi.org/10.1162/089976600300015015"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -111,7 +189,11 @@
       "slug": "alexnet-krizhevsky-2012",
       "title": "ImageNet Classification with Deep Convolutional Neural Networks",
       "title_es": "Clasificación de ImageNet con redes neuronales convolucionales profundas",
-      "authors": ["Alex Krizhevsky", "Ilya Sutskever", "Geoffrey E. Hinton"],
+      "authors": [
+        "Alex Krizhevsky",
+        "Ilya Sutskever",
+        "Geoffrey E. Hinton"
+      ],
       "year": 2012,
       "venue": "NeurIPS (NIPS) 2012",
       "venue_type": "conferencia",
@@ -121,18 +203,39 @@
       "hito": "El resultado que convirtió el deep learning en la corriente principal: margen amplio sobre los métodos de visión hechos a mano.",
       "problema": "La visión por computador dependía de descriptores diseñados manualmente; escalar el aprendizaje de features a millones de imágenes era inviable.",
       "propuesta": "Una CNN profunda entrenada en GPU con ReLU, dropout, aumento de datos y solapamiento de pooling sobre ILSVRC-2012.",
-      "keywords": ["CNN", "ImageNet", "ReLU", "dropout", "GPU", "aumento de datos"],
-      "anteriores": ["P02", "LeCun et al. (1998), LeNet y convolución con retropropagación"],
-      "posteriores": ["P08"],
+      "keywords": [
+        "CNN",
+        "ImageNet",
+        "ReLU",
+        "dropout",
+        "GPU",
+        "aumento de datos"
+      ],
+      "anteriores": [
+        "P02",
+        "LeCun et al. (1998), LeNet y convolución con retropropagación"
+      ],
+      "posteriores": [
+        "P08"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial"
       ],
       "fuentes_primarias": [
-        {"label": "NeurIPS 2012 (proceedings)", "url": "https://papers.nips.cc/paper_files/paper/2012"},
-        {"label": "DOI (versión Communications of the ACM, 2017)", "url": "https://doi.org/10.1145/3065386"}
+        {
+          "label": "NeurIPS 2012 (proceedings)",
+          "url": "https://papers.nips.cc/paper_files/paper/2012"
+        },
+        {
+          "label": "DOI (versión Communications of the ACM, 2017)",
+          "url": "https://doi.org/10.1145/3065386"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Russakovsky et al. (2015), ImageNet Large Scale Visual Recognition Challenge", "url": "https://arxiv.org/abs/1409.0575"}
+        {
+          "label": "Russakovsky et al. (2015), ImageNet Large Scale Visual Recognition Challenge",
+          "url": "https://arxiv.org/abs/1409.0575"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -142,7 +245,12 @@
       "slug": "word2vec-mikolov-2013",
       "title": "Efficient Estimation of Word Representations in Vector Space",
       "title_es": "Estimación eficiente de representaciones de palabras en un espacio vectorial",
-      "authors": ["Tomas Mikolov", "Kai Chen", "Greg Corrado", "Jeffrey Dean"],
+      "authors": [
+        "Tomas Mikolov",
+        "Kai Chen",
+        "Greg Corrado",
+        "Jeffrey Dean"
+      ],
       "year": 2013,
       "venue": "arXiv:1301.3781 · ICLR 2013 (workshop)",
       "venue_type": "preprint + taller",
@@ -152,19 +260,41 @@
       "hito": "El significado distribucional se vuelve barato: vectores densos entrenables sobre miles de millones de palabras.",
       "problema": "Representar palabras como identificadores dispersos (one-hot) impide medir similitud; los modelos neuronales de lenguaje previos eran demasiado costosos.",
       "propuesta": "Dos arquitecturas log-lineales sin capa oculta —CBOW y skip-gram— que predicen contexto y producen vectores con estructura lineal.",
-      "keywords": ["embeddings", "skip-gram", "CBOW", "muestreo negativo", "hipótesis distribucional", "analogías"],
-      "anteriores": ["Bengio et al. (2003), modelo neuronal de lenguaje", "Harris (1954), hipótesis distribucional"],
-      "posteriores": ["P06", "P11"],
+      "keywords": [
+        "embeddings",
+        "skip-gram",
+        "CBOW",
+        "muestreo negativo",
+        "hipótesis distribucional",
+        "analogías"
+      ],
+      "anteriores": [
+        "Bengio et al. (2003), modelo neuronal de lenguaje",
+        "Harris (1954), hipótesis distribucional"
+      ],
+      "posteriores": [
+        "P06",
+        "P11"
+      ],
       "clases_del_programa": [
         "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud",
         "classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:1301.3781", "url": "https://arxiv.org/abs/1301.3781"},
-        {"label": "arXiv:1310.4546 (muestreo negativo y frases)", "url": "https://arxiv.org/abs/1310.4546"}
+        {
+          "label": "arXiv:1301.3781",
+          "url": "https://arxiv.org/abs/1301.3781"
+        },
+        {
+          "label": "arXiv:1310.4546 (muestreo negativo y frases)",
+          "url": "https://arxiv.org/abs/1310.4546"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Pennington et al. (2014), GloVe", "url": "https://aclanthology.org/D14-1162/"}
+        {
+          "label": "Pennington et al. (2014), GloVe",
+          "url": "https://aclanthology.org/D14-1162/"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -174,7 +304,11 @@
       "slug": "seq2seq-sutskever-2014",
       "title": "Sequence to Sequence Learning with Neural Networks",
       "title_es": "Aprendizaje de secuencia a secuencia con redes neuronales",
-      "authors": ["Ilya Sutskever", "Oriol Vinyals", "Quoc V. Le"],
+      "authors": [
+        "Ilya Sutskever",
+        "Oriol Vinyals",
+        "Quoc V. Le"
+      ],
       "year": 2014,
       "venue": "arXiv:1409.3215 · NeurIPS (NIPS) 2014",
       "venue_type": "preprint + conferencia",
@@ -184,17 +318,34 @@
       "hito": "Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo.",
       "problema": "Las redes profundas requerían entradas y salidas de dimensión fija; la traducción automática dependía de sistemas estadísticos con muchas piezas separadas.",
       "propuesta": "Un LSTM codifica la entrada en un vector de tamaño fijo y otro LSTM lo decodifica token a token; invertir la secuencia fuente mejora el resultado.",
-      "keywords": ["encoder-decoder", "vector de contexto", "traducción automática neuronal", "cuello de botella", "BLEU"],
-      "anteriores": ["P03", "Cho et al. (2014), RNN encoder–decoder y GRU"],
-      "posteriores": ["P07"],
+      "keywords": [
+        "encoder-decoder",
+        "vector de contexto",
+        "traducción automática neuronal",
+        "cuello de botella",
+        "BLEU"
+      ],
+      "anteriores": [
+        "P03",
+        "Cho et al. (2014), RNN encoder–decoder y GRU"
+      ],
+      "posteriores": [
+        "P07"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:1409.3215", "url": "https://arxiv.org/abs/1409.3215"}
+        {
+          "label": "arXiv:1409.3215",
+          "url": "https://arxiv.org/abs/1409.3215"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Cho et al. (2014), Learning Phrase Representations using RNN Encoder–Decoder", "url": "https://arxiv.org/abs/1406.1078"}
+        {
+          "label": "Cho et al. (2014), Learning Phrase Representations using RNN Encoder–Decoder",
+          "url": "https://arxiv.org/abs/1406.1078"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -204,7 +355,11 @@
       "slug": "attention-bahdanau-2014",
       "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
       "title_es": "Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir",
-      "authors": ["Dzmitry Bahdanau", "Kyunghyun Cho", "Yoshua Bengio"],
+      "authors": [
+        "Dzmitry Bahdanau",
+        "Kyunghyun Cho",
+        "Yoshua Bengio"
+      ],
       "year": 2014,
       "venue": "arXiv:1409.0473 · ICLR 2015",
       "venue_type": "preprint + conferencia",
@@ -214,18 +369,37 @@
       "hito": "Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso.",
       "problema": "Comprimir una frase entera en un vector fijo degrada la traducción de frases largas: es un cuello de botella de información.",
       "propuesta": "Un vector de contexto distinto por paso de salida, calculado como suma ponderada de los estados del codificador con pesos aprendidos (atención aditiva).",
-      "keywords": ["atención", "alineación", "vector de contexto dinámico", "softmax", "atención aditiva"],
-      "anteriores": ["P06"],
-      "posteriores": ["P08"],
+      "keywords": [
+        "atención",
+        "alineación",
+        "vector de contexto dinámico",
+        "softmax",
+        "atención aditiva"
+      ],
+      "anteriores": [
+        "P06"
+      ],
+      "posteriores": [
+        "P08"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:1409.0473", "url": "https://arxiv.org/abs/1409.0473"}
+        {
+          "label": "arXiv:1409.0473",
+          "url": "https://arxiv.org/abs/1409.0473"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Luong et al. (2015), atención multiplicativa y global/local", "url": "https://arxiv.org/abs/1508.04025"},
-        {"label": "Jain y Wallace (2019), Attention is not Explanation", "url": "https://arxiv.org/abs/1902.10186"}
+        {
+          "label": "Luong et al. (2015), atención multiplicativa y global/local",
+          "url": "https://arxiv.org/abs/1508.04025"
+        },
+        {
+          "label": "Jain y Wallace (2019), Attention is not Explanation",
+          "url": "https://arxiv.org/abs/1902.10186"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -235,7 +409,16 @@
       "slug": "transformer-vaswani-2017",
       "title": "Attention Is All You Need",
       "title_es": "La atención es todo lo que necesitas",
-      "authors": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Łukasz Kaiser", "Illia Polosukhin"],
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
       "year": 2017,
       "venue": "arXiv:1706.03762 · NeurIPS (NIPS) 2017",
       "venue_type": "preprint + conferencia",
@@ -245,20 +428,46 @@
       "hito": "Elimina la recurrencia y la convolución del modelado de secuencias: todo el cómputo de una capa se paraleliza.",
       "problema": "La recurrencia impone un cómputo secuencial en la longitud de la secuencia y camina O(n) pasos entre posiciones distantes; eso limita el entrenamiento a gran escala.",
       "propuesta": "Un encoder–decoder compuesto solo de self-attention multi-cabeza, redes feed-forward por posición, conexiones residuales, layer normalization y codificación posicional.",
-      "keywords": ["Transformer", "self-attention", "multi-head", "scaled dot-product", "codificación posicional", "máscara causal", "paralelización"],
-      "anteriores": ["P07", "P04"],
-      "posteriores": ["P09", "P10"],
+      "keywords": [
+        "Transformer",
+        "self-attention",
+        "multi-head",
+        "scaled dot-product",
+        "codificación posicional",
+        "máscara causal",
+        "paralelización"
+      ],
+      "anteriores": [
+        "P07",
+        "P04"
+      ],
+      "posteriores": [
+        "P09",
+        "P10"
+      ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer",
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:1706.03762", "url": "https://arxiv.org/abs/1706.03762"},
-        {"label": "NeurIPS 2017 (proceedings)", "url": "https://papers.nips.cc/paper_files/paper/2017"}
+        {
+          "label": "arXiv:1706.03762",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "label": "NeurIPS 2017 (proceedings)",
+          "url": "https://papers.nips.cc/paper_files/paper/2017"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Kaplan et al. (2020), leyes de escalado", "url": "https://arxiv.org/abs/2001.08361"},
-        {"label": "Hoffmann et al. (2022), Chinchilla: cómputo óptimo", "url": "https://arxiv.org/abs/2203.15556"}
+        {
+          "label": "Kaplan et al. (2020), leyes de escalado",
+          "url": "https://arxiv.org/abs/2001.08361"
+        },
+        {
+          "label": "Hoffmann et al. (2022), Chinchilla: cómputo óptimo",
+          "url": "https://arxiv.org/abs/2203.15556"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -268,7 +477,12 @@
       "slug": "bert-devlin-2018",
       "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
       "title_es": "BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje",
-      "authors": ["Jacob Devlin", "Ming-Wei Chang", "Kenton Lee", "Kristina Toutanova"],
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
       "year": 2018,
       "venue": "arXiv:1810.04805 · NAACL-HLT 2019",
       "venue_type": "preprint + conferencia",
@@ -278,18 +492,39 @@
       "hito": "Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño.",
       "problema": "Los modelos de lenguaje eran unidireccionales; para comprender una palabra hace falta el contexto de ambos lados, y entrenar bidireccionalmente con predicción del siguiente token es trivialmente degenerado.",
       "propuesta": "Modelado de lenguaje enmascarado (MLM) más predicción de la siguiente oración (NSP), y ajuste fino de todo el modelo por tarea.",
-      "keywords": ["BERT", "MLM", "bidireccional", "preentrenamiento", "fine-tuning", "GLUE"],
-      "anteriores": ["P08", "Peters et al. (2018), ELMo"],
-      "posteriores": ["P10"],
+      "keywords": [
+        "BERT",
+        "MLM",
+        "bidireccional",
+        "preentrenamiento",
+        "fine-tuning",
+        "GLUE"
+      ],
+      "anteriores": [
+        "P08",
+        "Peters et al. (2018), ELMo"
+      ],
+      "posteriores": [
+        "P10"
+      ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:1810.04805", "url": "https://arxiv.org/abs/1810.04805"},
-        {"label": "ACL Anthology (NAACL 2019)", "url": "https://aclanthology.org/N19-1423/"}
+        {
+          "label": "arXiv:1810.04805",
+          "url": "https://arxiv.org/abs/1810.04805"
+        },
+        {
+          "label": "ACL Anthology (NAACL 2019)",
+          "url": "https://aclanthology.org/N19-1423/"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Peters et al. (2018), ELMo", "url": "https://aclanthology.org/N18-1202/"}
+        {
+          "label": "Peters et al. (2018), ELMo",
+          "url": "https://aclanthology.org/N18-1202/"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -299,7 +534,13 @@
       "slug": "gpt3-brown-2020",
       "title": "Language Models are Few-Shot Learners",
       "title_es": "Los modelos de lenguaje son aprendices con pocos ejemplos",
-      "authors": ["Tom B. Brown", "Benjamin Mann", "Nick Ryder", "Melanie Subbiah", "y otros (OpenAI)"],
+      "authors": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "y otros (OpenAI)"
+      ],
       "year": 2020,
       "venue": "arXiv:2005.14165 · NeurIPS 2020",
       "venue_type": "preprint + conferencia",
@@ -309,19 +550,42 @@
       "hito": "El aprendizaje en contexto: la tarea se especifica en el prompt y el modelo se adapta sin actualizar ningún peso.",
       "problema": "El patrón de BERT exigía un conjunto etiquetado y un ajuste fino por cada tarea nueva; eso no escala a la variedad de tareas reales.",
       "propuesta": "Escalar un Transformer autorregresivo hasta 175 000 millones de parámetros y evaluar en modo zero-shot, one-shot y few-shot mediante condicionamiento en el prompt.",
-      "keywords": ["GPT-3", "aprendizaje en contexto", "few-shot", "escalado", "modelo autorregresivo", "prompt"],
-      "anteriores": ["P08", "P09", "Radford et al. (2018, 2019), GPT-1 y GPT-2"],
-      "posteriores": ["P11", "P12"],
+      "keywords": [
+        "GPT-3",
+        "aprendizaje en contexto",
+        "few-shot",
+        "escalado",
+        "modelo autorregresivo",
+        "prompt"
+      ],
+      "anteriores": [
+        "P08",
+        "P09",
+        "Radford et al. (2018, 2019), GPT-1 y GPT-2"
+      ],
+      "posteriores": [
+        "P11",
+        "P12"
+      ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento",
         "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2005.14165", "url": "https://arxiv.org/abs/2005.14165"}
+        {
+          "label": "arXiv:2005.14165",
+          "url": "https://arxiv.org/abs/2005.14165"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Kaplan et al. (2020), leyes de escalado", "url": "https://arxiv.org/abs/2001.08361"},
-        {"label": "Bender et al. (2021), riesgos de los modelos de lenguaje grandes", "url": "https://doi.org/10.1145/3442188.3445922"}
+        {
+          "label": "Kaplan et al. (2020), leyes de escalado",
+          "url": "https://arxiv.org/abs/2001.08361"
+        },
+        {
+          "label": "Bender et al. (2021), riesgos de los modelos de lenguaje grandes",
+          "url": "https://doi.org/10.1145/3442188.3445922"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -331,7 +595,13 @@
       "slug": "rag-lewis-2020",
       "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
       "title_es": "Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento",
-      "authors": ["Patrick Lewis", "Ethan Perez", "Aleksandra Piktus", "Fabio Petroni", "y otros"],
+      "authors": [
+        "Patrick Lewis",
+        "Ethan Perez",
+        "Aleksandra Piktus",
+        "Fabio Petroni",
+        "y otros"
+      ],
       "year": 2020,
       "venue": "arXiv:2005.11401 · NeurIPS 2020",
       "venue_type": "preprint + conferencia",
@@ -341,19 +611,38 @@
       "hito": "Separa el conocimiento (índice consultable y actualizable) del razonamiento (parámetros del modelo).",
       "problema": "Todo lo que un modelo sabe está congelado en sus pesos: no se puede actualizar sin reentrenar, ni auditar de dónde salió una afirmación.",
       "propuesta": "Combinar un recuperador denso (DPR) sobre un índice de Wikipedia con un generador seq2seq (BART), entrenados de forma conjunta.",
-      "keywords": ["RAG", "recuperación densa", "memoria no paramétrica", "citas", "atribución", "conocimiento actualizable"],
-      "anteriores": ["P05", "P10", "Karpukhin et al. (2020), DPR"],
-      "posteriores": ["P13"],
+      "keywords": [
+        "RAG",
+        "recuperación densa",
+        "memoria no paramétrica",
+        "citas",
+        "atribución",
+        "conocimiento actualizable"
+      ],
+      "anteriores": [
+        "P05",
+        "P10",
+        "Karpukhin et al. (2020), DPR"
+      ],
+      "posteriores": [
+        "P13"
+      ],
       "clases_del_programa": [
         "classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas",
         "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion",
         "classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2005.11401", "url": "https://arxiv.org/abs/2005.11401"}
+        {
+          "label": "arXiv:2005.11401",
+          "url": "https://arxiv.org/abs/2005.11401"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Karpukhin et al. (2020), Dense Passage Retrieval", "url": "https://arxiv.org/abs/2004.04906"}
+        {
+          "label": "Karpukhin et al. (2020), Dense Passage Retrieval",
+          "url": "https://arxiv.org/abs/2004.04906"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -363,7 +652,13 @@
       "slug": "instructgpt-ouyang-2022",
       "title": "Training language models to follow instructions with human feedback",
       "title_es": "Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana",
-      "authors": ["Long Ouyang", "Jeff Wu", "Xu Jiang", "Diogo Almeida", "y otros (OpenAI)"],
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "y otros (OpenAI)"
+      ],
       "year": 2022,
       "venue": "arXiv:2203.02155 · NeurIPS 2022",
       "venue_type": "preprint + conferencia",
@@ -373,18 +668,39 @@
       "hito": "El salto de «modelo que completa texto» a «asistente que sigue instrucciones»: alineación con preferencias humanas.",
       "problema": "Maximizar la verosimilitud del texto de internet no es lo mismo que ser útil, honesto e inocuo; el objetivo de entrenamiento está desalineado con la intención del usuario.",
       "propuesta": "Tres etapas: ajuste supervisado con demostraciones, modelo de recompensa entrenado con comparaciones humanas y optimización por PPO con penalización KL.",
-      "keywords": ["RLHF", "alineación", "modelo de recompensa", "PPO", "preferencias", "instrucciones"],
-      "anteriores": ["P10", "Christiano et al. (2017), aprendizaje por refuerzo con preferencias humanas"],
-      "posteriores": ["P15"],
+      "keywords": [
+        "RLHF",
+        "alineación",
+        "modelo de recompensa",
+        "PPO",
+        "preferencias",
+        "instrucciones"
+      ],
+      "anteriores": [
+        "P10",
+        "Christiano et al. (2017), aprendizaje por refuerzo con preferencias humanas"
+      ],
+      "posteriores": [
+        "P15"
+      ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2203.02155", "url": "https://arxiv.org/abs/2203.02155"}
+        {
+          "label": "arXiv:2203.02155",
+          "url": "https://arxiv.org/abs/2203.02155"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Christiano et al. (2017), Deep RL from Human Preferences", "url": "https://arxiv.org/abs/1706.03741"},
-        {"label": "Bai et al. (2022), Constitutional AI", "url": "https://arxiv.org/abs/2212.08073"}
+        {
+          "label": "Christiano et al. (2017), Deep RL from Human Preferences",
+          "url": "https://arxiv.org/abs/1706.03741"
+        },
+        {
+          "label": "Bai et al. (2022), Constitutional AI",
+          "url": "https://arxiv.org/abs/2212.08073"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -394,7 +710,15 @@
       "slug": "react-yao-2022",
       "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
       "title_es": "ReAct: sinergia entre razonar y actuar en modelos de lenguaje",
-      "authors": ["Shunyu Yao", "Jeffrey Zhao", "Dian Yu", "Nan Du", "Izhak Shafran", "Karthik Narasimhan", "Yuan Cao"],
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
       "year": 2022,
       "venue": "arXiv:2210.03629 · ICLR 2023",
       "venue_type": "preprint + conferencia",
@@ -404,18 +728,37 @@
       "hito": "El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa.",
       "problema": "El razonamiento en cadena (CoT) no consulta el mundo y alucina hechos; actuar sin razonar no descompone problemas de varios pasos.",
       "propuesta": "Intercalar trazas de pensamiento y acciones sobre un entorno, de modo que cada observación real condicione el siguiente razonamiento.",
-      "keywords": ["ReAct", "agente", "bucle pensamiento-acción-observación", "herramientas", "traza auditable"],
-      "anteriores": ["P10", "P11", "Wei et al. (2022), Chain-of-Thought"],
-      "posteriores": ["P14", "P16"],
+      "keywords": [
+        "ReAct",
+        "agente",
+        "bucle pensamiento-acción-observación",
+        "herramientas",
+        "traza auditable"
+      ],
+      "anteriores": [
+        "P10",
+        "P11",
+        "Wei et al. (2022), Chain-of-Thought"
+      ],
+      "posteriores": [
+        "P14",
+        "P16"
+      ],
       "clases_del_programa": [
         "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno",
         "classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2210.03629", "url": "https://arxiv.org/abs/2210.03629"}
+        {
+          "label": "arXiv:2210.03629",
+          "url": "https://arxiv.org/abs/2210.03629"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Wei et al. (2022), Chain-of-Thought Prompting", "url": "https://arxiv.org/abs/2201.11903"}
+        {
+          "label": "Wei et al. (2022), Chain-of-Thought Prompting",
+          "url": "https://arxiv.org/abs/2201.11903"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -425,7 +768,13 @@
       "slug": "toolformer-schick-2023",
       "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
       "title_es": "Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas",
-      "authors": ["Timo Schick", "Jane Dwivedi-Yu", "Roberto Dessì", "Roberta Raileanu", "y otros"],
+      "authors": [
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Roberto Dessì",
+        "Roberta Raileanu",
+        "y otros"
+      ],
       "year": 2023,
       "venue": "arXiv:2302.04761 · NeurIPS 2023",
       "venue_type": "preprint + conferencia",
@@ -435,18 +784,34 @@
       "hito": "El uso de herramientas se aprende de forma autosupervisada: el criterio de utilidad es la propia pérdida del modelo.",
       "problema": "Enseñar a un modelo a llamar APIs requería datos anotados por humanos, caros y limitados a las herramientas anotadas.",
       "propuesta": "Generar llamadas candidatas, ejecutarlas y conservar solo las que reducen la pérdida de predecir el texto siguiente; reentrenar con ese corpus filtrado.",
-      "keywords": ["Toolformer", "tool use", "autosupervisión", "filtrado por pérdida", "API calls"],
-      "anteriores": ["P13"],
-      "posteriores": ["P16"],
+      "keywords": [
+        "Toolformer",
+        "tool use",
+        "autosupervisión",
+        "filtrado por pérdida",
+        "API calls"
+      ],
+      "anteriores": [
+        "P13"
+      ],
+      "posteriores": [
+        "P16"
+      ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/080-tool-calling-y-ejecucion-controlada",
         "classes/part-09-ai-agent-engineering/113-anatomia-instrucciones-herramientas-estado-y-salida"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2302.04761", "url": "https://arxiv.org/abs/2302.04761"}
+        {
+          "label": "arXiv:2302.04761",
+          "url": "https://arxiv.org/abs/2302.04761"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Model Context Protocol: estandarización posterior del acceso a herramientas", "url": "https://modelcontextprotocol.io"}
+        {
+          "label": "Model Context Protocol: estandarización posterior del acceso a herramientas",
+          "url": "https://modelcontextprotocol.io"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -456,7 +821,14 @@
       "slug": "dpo-rafailov-2023",
       "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
       "title_es": "Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa",
-      "authors": ["Rafael Rafailov", "Archit Sharma", "Eric Mitchell", "Stefano Ermon", "Christopher D. Manning", "Chelsea Finn"],
+      "authors": [
+        "Rafael Rafailov",
+        "Archit Sharma",
+        "Eric Mitchell",
+        "Stefano Ermon",
+        "Christopher D. Manning",
+        "Chelsea Finn"
+      ],
       "year": 2023,
       "venue": "arXiv:2305.18290 · NeurIPS 2023",
       "venue_type": "preprint + conferencia",
@@ -466,17 +838,34 @@
       "hito": "Alinear un modelo con preferencias humanas sin modelo de recompensa explícito ni bucle de aprendizaje por refuerzo.",
       "problema": "El pipeline RLHF es frágil y caro: entrena un modelo extra, requiere muestreo on-policy y ajustar PPO es delicado.",
       "propuesta": "Derivar la solución óptima del objetivo RLHF con restricción KL y reescribirlo como una pérdida de clasificación binaria sobre pares de preferencias.",
-      "keywords": ["DPO", "preferencias", "recompensa implícita", "KL", "alineación", "pérdida de clasificación"],
-      "anteriores": ["P12"],
-      "posteriores": ["P16"],
+      "keywords": [
+        "DPO",
+        "preferencias",
+        "recompensa implícita",
+        "KL",
+        "alineación",
+        "pérdida de clasificación"
+      ],
+      "anteriores": [
+        "P12"
+      ],
+      "posteriores": [
+        "P16"
+      ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo"
       ],
       "fuentes_primarias": [
-        {"label": "arXiv:2305.18290", "url": "https://arxiv.org/abs/2305.18290"}
+        {
+          "label": "arXiv:2305.18290",
+          "url": "https://arxiv.org/abs/2305.18290"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Bradley y Terry (1952), modelo de comparaciones por pares", "url": "https://doi.org/10.2307/2334029"}
+        {
+          "label": "Bradley y Terry (1952), modelo de comparaciones por pares",
+          "url": "https://doi.org/10.2307/2334029"
+        }
       ],
       "consultado": "2026-08-16"
     },
@@ -486,7 +875,9 @@
       "slug": "sistemas-agentic-contemporaneos",
       "title": "Sistemas agentic contemporáneos (nodo de frontera, revisable)",
       "title_es": "Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad",
-      "authors": ["Varios (nodo compuesto)"],
+      "authors": [
+        "Varios (nodo compuesto)"
+      ],
       "year": 2023,
       "venue": "Conjunto de trabajos posteriores a ReAct — releer con fecha de consulta",
       "venue_type": "cluster revisable",
@@ -496,9 +887,23 @@
       "hito": "El agente deja de ser un bucle y pasa a ser un sistema: memoria, reflexión, planificación, presupuesto, múltiples agentes y protocolos de interoperabilidad.",
       "problema": "Un bucle ReAct sin memoria, sin criterio de parada ni presupuesto no sobrevive a tareas largas ni a fallos de herramienta.",
       "propuesta": "No hay una única propuesta: hay una familia de trabajos que añaden autocrítica, memoria episódica, currículo autónomo, orquestación multiagente y estándares de acceso a herramientas.",
-      "keywords": ["agentic", "reflexión", "memoria", "multiagente", "MCP", "presupuesto", "criterio de parada"],
-      "anteriores": ["P13", "P14", "P15"],
-      "posteriores": ["frontier/current-topics.yaml"],
+      "keywords": [
+        "agentic",
+        "reflexión",
+        "memoria",
+        "multiagente",
+        "MCP",
+        "presupuesto",
+        "criterio de parada"
+      ],
+      "anteriores": [
+        "P13",
+        "P14",
+        "P15"
+      ],
+      "posteriores": [
+        "frontier/current-topics.yaml"
+      ],
       "clases_del_programa": [
         "classes/part-09-ai-agent-engineering/117-prompt-recurso-tool-skill-workflow-y-agente",
         "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes",
@@ -507,16 +912,376 @@
         "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain"
       ],
       "fuentes_primarias": [
-        {"label": "Shinn et al. (2023), Reflexion", "url": "https://arxiv.org/abs/2303.11366"},
-        {"label": "Park et al. (2023), Generative Agents", "url": "https://arxiv.org/abs/2304.03442"},
-        {"label": "Wang et al. (2023), Voyager", "url": "https://arxiv.org/abs/2305.16291"},
-        {"label": "Wu et al. (2023), AutoGen", "url": "https://arxiv.org/abs/2308.08155"},
-        {"label": "Model Context Protocol (especificación)", "url": "https://modelcontextprotocol.io"}
+        {
+          "label": "Shinn et al. (2023), Reflexion",
+          "url": "https://arxiv.org/abs/2303.11366"
+        },
+        {
+          "label": "Park et al. (2023), Generative Agents",
+          "url": "https://arxiv.org/abs/2304.03442"
+        },
+        {
+          "label": "Wang et al. (2023), Voyager",
+          "url": "https://arxiv.org/abs/2305.16291"
+        },
+        {
+          "label": "Wu et al. (2023), AutoGen",
+          "url": "https://arxiv.org/abs/2308.08155"
+        },
+        {
+          "label": "Model Context Protocol (especificación)",
+          "url": "https://modelcontextprotocol.io"
+        }
       ],
       "lecturas_de_contexto": [
-        {"label": "Frontera revisable del propio programa", "url": "https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/blob/main/frontier/current-topics.yaml"}
+        {
+          "label": "Frontera revisable del propio programa",
+          "url": "https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/blob/main/frontier/current-topics.yaml"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P17",
+      "dir": "P17_diffusion",
+      "slug": "ddpm-ho-2020",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "title_es": "Modelos probabilísticos de difusión con eliminación de ruido",
+      "authors": [
+        "Jonathan Ho",
+        "Ajay Jain",
+        "Pieter Abbeel"
+      ],
+      "year": 2020,
+      "venue": "arXiv:2006.11239 · NeurIPS 2020",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "diffusion",
+      "hito": "La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.",
+      "problema": "Las GAN generaban imágenes de calidad pero eran inestables de entrenar y colapsaban la diversidad; los VAE eran estables y producían muestras borrosas.",
+      "propuesta": "Un proceso directo que añade ruido gaussiano en T pasos con forma cerrada, y una red que aprende a predecir ese ruido para invertirlo.",
+      "keywords": [
+        "difusión",
+        "DDPM",
+        "proceso directo",
+        "predicción de ruido",
+        "cota variacional",
+        "score matching"
+      ],
+      "anteriores": [
+        "Sohl-Dickstein et al. (2015), difusión no supervisada",
+        "VAE y GAN como líneas base"
+      ],
+      "posteriores": [
+        "P18",
+        "modelos de imagen y vídeo a gran escala"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/090-modelos-de-difusion",
+        "classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2006.11239",
+          "url": "https://arxiv.org/abs/2006.11239"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sohl-Dickstein et al. (2015), el antecedente directo",
+          "url": "https://arxiv.org/abs/1503.03585"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P18",
+      "dir": "P18_clip",
+      "slug": "clip-radford-2021",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "title_es": "Aprender modelos visuales transferibles con supervisión de lenguaje natural",
+      "authors": [
+        "Alec Radford",
+        "Jong Wook Kim",
+        "Chris Hallacy",
+        "Aditya Ramesh",
+        "Gabriel Goh",
+        "y otros (OpenAI)"
+      ],
+      "year": 2021,
+      "venue": "arXiv:2103.00020 · ICML 2021",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "clip",
+      "hito": "El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.",
+      "problema": "La visión dependía de conjuntos etiquetados con categorías fijas; cambiar de tarea exigía volver a anotar y volver a entrenar.",
+      "propuesta": "Entrenar de forma contrastiva sobre 400 millones de pares (imagen, texto) de internet, alineando ambos espacios, y clasificar comparando la imagen con el texto de cada clase.",
+      "keywords": [
+        "CLIP",
+        "contrastivo",
+        "InfoNCE",
+        "zero-shot",
+        "multimodal",
+        "supervisión débil"
+      ],
+      "anteriores": [
+        "P04",
+        "P05",
+        "P08"
+      ],
+      "posteriores": [
+        "modelos multimodales y de generación condicionada por texto"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2103.00020",
+          "url": "https://arxiv.org/abs/2103.00020"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Russakovsky et al. (2015), el paradigma de etiquetas fijas que CLIP rompe",
+          "url": "https://arxiv.org/abs/1409.0575"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P19",
+      "dir": "P19_scaling_laws",
+      "slug": "chinchilla-hoffmann-2022",
+      "title": "Training Compute-Optimal Large Language Models",
+      "title_es": "Entrenar modelos de lenguaje grandes con cómputo óptimo",
+      "authors": [
+        "Jordan Hoffmann",
+        "Sebastian Borgeaud",
+        "Arthur Mensch",
+        "y otros (DeepMind)"
+      ],
+      "year": 2022,
+      "venue": "arXiv:2203.15556 · NeurIPS 2022",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L4",
+      "lab": "scaling_laws",
+      "hito": "Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.",
+      "problema": "Tras GPT-3 la industria escalaba parámetros asumiendo que era la variable dominante, sin medir el reparto óptimo entre parámetros y tokens a cómputo constante.",
+      "propuesta": "Ajustar empíricamente L(N, D) y resolver el reparto que minimiza la pérdida bajo la restricción C = 6ND.",
+      "keywords": [
+        "leyes de escalado",
+        "cómputo óptimo",
+        "tokens por parámetro",
+        "FLOPs",
+        "infraentrenamiento"
+      ],
+      "anteriores": [
+        "P10",
+        "Kaplan et al. (2020), las leyes que este trabajo corrige"
+      ],
+      "posteriores": [
+        "P21",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento",
+        "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2203.15556",
+          "url": "https://arxiv.org/abs/2203.15556"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kaplan et al. (2020), leyes de escalado previas",
+          "url": "https://arxiv.org/abs/2001.08361"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P20",
+      "dir": "P20_mamba",
+      "slug": "mamba-gu-dao-2023",
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "title_es": "Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos",
+      "authors": [
+        "Albert Gu",
+        "Tri Dao"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2312.00752 · COLM 2024 (Outstanding Paper Award)",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L4",
+      "lab": "ssm",
+      "hito": "El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención.",
+      "problema": "La atención cuesta O(n²) y su memoria crece con la secuencia; las alternativas subcuadráticas previas no alcanzaban a la atención en lenguaje.",
+      "propuesta": "Hacer que los parámetros del espacio de estados dependan de la ENTRADA (selección), y compensar la pérdida de la convolución eficiente con un algoritmo paralelo consciente del hardware.",
+      "keywords": [
+        "SSM",
+        "selección",
+        "tiempo lineal",
+        "estado de tamaño fijo",
+        "escaneo paralelo",
+        "contexto largo"
+      ],
+      "anteriores": [
+        "P03",
+        "P08",
+        "S4 y los espacios de estados estructurados"
+      ],
+      "posteriores": [
+        "arquitecturas híbridas atención + SSM"
+      ],
+      "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer",
+        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2312.00752",
+          "url": "https://arxiv.org/abs/2312.00752"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Jamba (2024), híbrido Transformer-Mamba con MoE",
+          "url": "https://arxiv.org/abs/2403.19887"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P21",
+      "dir": "P21_moe",
+      "slug": "mixtral-jiang-2024",
+      "title": "Mixtral of Experts",
+      "title_es": "Mixtral: mezcla dispersa de expertos",
+      "authors": [
+        "Albert Q. Jiang",
+        "y otros (Mistral AI)"
+      ],
+      "year": 2024,
+      "venue": "arXiv:2401.04088",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "moe",
+      "hito": "Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.",
+      "problema": "En un modelo denso, cada token paga TODOS los parámetros. Crecer en capacidad implica crecer en coste de inferencia en la misma proporción.",
+      "propuesta": "Sustituir la capa feed-forward por 8 expertos con un router que elige 2 por token, y publicar pesos y resultados bajo licencia abierta.",
+      "keywords": [
+        "mezcla de expertos",
+        "router",
+        "top-2",
+        "parámetros activos",
+        "balanceo de carga",
+        "Apache 2.0"
+      ],
+      "anteriores": [
+        "P08",
+        "P19",
+        "Shazeer et al. (2017), capa MoE dispersa"
+      ],
+      "posteriores": [
+        "P22",
+        "modelos abiertos de gran escala"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad",
+        "classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2401.04088",
+          "url": "https://arxiv.org/abs/2401.04088"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Shazeer et al. (2017), la capa MoE dispersa original",
+          "url": "https://arxiv.org/abs/1701.06538"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P22",
+      "dir": "P22_deepseek_r1",
+      "slug": "deepseek-r1-2025",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "title_es": "DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo",
+      "authors": [
+        "DeepSeek-AI"
+      ],
+      "year": 2025,
+      "venue": "arXiv:2501.12948 · Nature 645, 633–638 (2025)",
+      "venue_type": "preprint + revista revisada por pares",
+      "acceso": "abierto",
+      "level": "L5",
+      "lab": "rl_reasoning",
+      "hito": "El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.",
+      "problema": "La cadena de pensamiento dependía de demostraciones humanas caras, y esa supervisión limitaba la capacidad en problemas complejos.",
+      "propuesta": "Recompensar únicamente el RESULTADO verificable y dejar que el comportamiento de razonamiento emerja del refuerzo, para luego transferirlo a modelos menores.",
+      "keywords": [
+        "razonamiento",
+        "refuerzo",
+        "recompensa verificable",
+        "cómputo en inferencia",
+        "destilación",
+        "pesos abiertos"
+      ],
+      "anteriores": [
+        "P12",
+        "P13",
+        "P15",
+        "P19"
+      ],
+      "posteriores": [
+        "frontier/current-topics.yaml"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo",
+        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2501.12948",
+          "url": "https://arxiv.org/abs/2501.12948"
+        },
+        {
+          "label": "DOI (Nature 645, 633–638, 2025)",
+          "url": "https://doi.org/10.1038/s41586-025-09422-z"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Snell et al. (2024), escalar cómputo en inferencia",
+          "url": "https://arxiv.org/abs/2408.03314"
+        }
       ],
       "consultado": "2026-08-16"
     }
-  ]
+  ],
+  "ruta_ampliada": [
+    "P17",
+    "P18",
+    "P19",
+    "P20",
+    "P21",
+    "P22"
+  ],
+  "notas_de_ruta": {
+    "ruta_minima": "P01–P16: la cadena canónica donde cada paper resuelve lo que el anterior dejó abierto. Se estudia en orden.",
+    "ruta_ampliada": "P17–P22: cobertura que la cadena mínima no da (generativa, multimodal, escalado) y continuación hasta 2025. Ordenada por año.",
+    "por_que_no_llega_a_2026": "El criterio de ascenso exige 12 meses desde la publicación (ver prompts/VIGILANCIA_DE_FRONTERA.md). Lo posterior vive en frontier/current-topics.yaml con fecha de revisión."
+  }
 }

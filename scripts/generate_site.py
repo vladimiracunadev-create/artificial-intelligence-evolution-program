@@ -83,9 +83,27 @@ def rewrite_class_links(text: str, lesson_path: str) -> str:
     # evaluación integrada en la misma página
     text = text.replace("(assessment.md)", "(#evaluacion)")
     text = text.replace("(README.md)", "(#top)")
+    # enlaces de vuelta al eje de papers, que sí tienen página propia en el sitio
+    text = re.sub(
+        r"\((?:\.\./)+papers/foundational/(P\d{2}_[a-z0-9_]+)/README\.md\)",
+        r"(../papers/\1.html)",
+        text,
+    )
+    text = re.sub(
+        r"\((?:\.\./)+papers/guides/([A-Z0-9_]+)\.md\)",
+        lambda m: "(../papers/" + guide_page(m.group(1) + ".md") + ")",
+        text,
+    )
+    text = re.sub(
+        r"\((?:\.\./)+papers/annexes/([A-Z0-9_]+)\.md\)",
+        lambda m: "(../papers/" + annex_page(m.group(1) + ".md") + ")",
+        text,
+    )
+    text = text.replace("(../../../papers/annexes/README.md)", "(../papers/anexos.html)")
+    text = text.replace("(../../../papers/README.md)", "(../papers/index.html)")
     # cualquier otra referencia relativa a archivos del repo → blob de GitHub
     text = re.sub(
-        r"\((?:\.\./)+((?:frontier|datasets|docs|specializations|src|scripts)/[^)\s]*)\)",
+        r"\((?:\.\./)+((?:frontier|datasets|docs|specializations|src|scripts|papers|notebooks)/[^)\s]*)\)",
         rf"({REPO_URL}/blob/main/\1)",
         text,
     )
@@ -156,6 +174,13 @@ def guide_page(name: str) -> str:
     return "guia-" + name.removesuffix(".md").lower().replace("_", "-") + ".html"
 
 
+def annex_page(name: str) -> str:
+    """A01_ALGEBRA_Y_GEOMETRIA.md → anexo-a01-algebra-y-geometria.html"""
+    if name in ("README.md", "readme.md"):
+        return "anexos.html"
+    return "anexo-" + name.removesuffix(".md").lower().replace("_", "-") + ".html"
+
+
 def paper_href(source_rel: str, target: str) -> str:
     """Traduce un enlace relativo del repositorio a su equivalente en el sitio.
 
@@ -178,6 +203,8 @@ def paper_href(source_rel: str, target: str) -> str:
         return f"catalogo.html{suffix}"
     if resolved.startswith("papers/guides/"):
         return guide_page(posixpath.basename(resolved)) + suffix
+    if resolved.startswith("papers/annexes/"):
+        return annex_page(posixpath.basename(resolved)) + suffix
     ficha = re.fullmatch(r"papers/foundational/(P\d{2}_[a-z0-9_]+)/README\.md", resolved)
     if ficha:
         return f"{ficha.group(1)}.html{suffix}"
@@ -231,6 +258,12 @@ def build_paper_pages(out_dir: Path) -> int:
         paper_page(f"papers/guides/{guide.name}", out_dir / guide_page(guide.name),
                    guide.stem.replace("_", " ").capitalize(), f"{hub} · Guía",
                    "Guía de lectura crítica de papers de inteligencia artificial.")
+        pages += 1
+
+    for annex in sorted((ROOT / "papers" / "annexes").glob("*.md")):
+        paper_page(f"papers/annexes/{annex.name}", out_dir / annex_page(annex.name),
+                   annex.stem.replace("_", " ").capitalize(), f"{hub} · Anexo",
+                   "Anexo matemático del eje de papers: explicación y ejemplo resuelto.")
         pages += 1
 
     for item in catalog["papers"]:

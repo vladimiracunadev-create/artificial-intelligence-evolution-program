@@ -2,7 +2,7 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 16 · **Actualizado:** 2026-08-16 · **Ruta mínima:** P01 → P02 → P03 → P04 → P05 → P06 → P07 → P08 → P09 → P10 → P11 → P12 → P13 → P14 → P15 → P16
+**Papers:** 22 · **Actualizado:** 2026-08-16 · **Ruta mínima:** P01 → P02 → P03 → P04 → P05 → P06 → P07 → P08 → P09 → P10 → P11 → P12 → P13 → P14 → P15 → P16
 
 ## Tabla maestra
 
@@ -24,6 +24,12 @@
 | P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 2023 | preprint + conferencia | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [notebook](../../notebooks/papers/P14_toolformer.ipynb) |
 | P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 2023 | preprint + conferencia | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [notebook](../../notebooks/papers/P15_dpo.ipynb) |
 | P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 2023 | cluster revisable | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [notebook](../../notebooks/papers/P16_agentic_systems.ipynb) |
+| P17 | Modelos probabilísticos de difusión con eliminación de ruido | 2020 | preprint + conferencia | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [notebook](../../notebooks/papers/P17_diffusion.ipynb) |
+| P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 2021 | preprint + conferencia | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [notebook](../../notebooks/papers/P18_clip.ipynb) |
+| P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 2022 | preprint + conferencia | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [notebook](../../notebooks/papers/P19_scaling_laws.ipynb) |
+| P20 | Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos | 2023 | preprint + conferencia | L4 | `ssm` | [ficha](../foundational/P20_mamba/README.md) | [notebook](../../notebooks/papers/P20_mamba.ipynb) |
+| P21 | Mixtral: mezcla dispersa de expertos | 2024 | preprint | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [notebook](../../notebooks/papers/P21_moe.ipynb) |
+| P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 2025 | preprint + revista revisada por pares | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [notebook](../../notebooks/papers/P22_deepseek_r1.ipynb) |
 
 ## Qué resolvió cada uno
 
@@ -186,6 +192,66 @@
 - **Conceptos:** agentic, reflexión, memoria, multiagente, MCP, presupuesto, criterio de parada
 - **Clases del programa:** [117](../../classes/part-09-ai-agent-engineering/117-prompt-recurso-tool-skill-workflow-y-agente/README.md), [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md), [124](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md), [132](../../classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md), [164](../../classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md)
 - **Fuentes primarias:** [Shinn et al. (2023), Reflexion](https://arxiv.org/abs/2303.11366) · [Park et al. (2023), Generative Agents](https://arxiv.org/abs/2304.03442) · [Wang et al. (2023), Voyager](https://arxiv.org/abs/2305.16291) · [Wu et al. (2023), AutoGen](https://arxiv.org/abs/2308.08155) · [Model Context Protocol (especificación)](https://modelcontextprotocol.io)
+
+### P17 · Denoising Diffusion Probabilistic Models (2020)
+
+- **Autoría:** Jonathan Ho, Ajay Jain, Pieter Abbeel
+- **Problema anterior:** Las GAN generaban imágenes de calidad pero eran inestables de entrenar y colapsaban la diversidad; los VAE eran estables y producían muestras borrosas.
+- **Propuesta:** Un proceso directo que añade ruido gaussiano en T pasos con forma cerrada, y una red que aprende a predecir ese ruido para invertirlo.
+- **Hito:** La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.
+- **Conceptos:** difusión, DDPM, proceso directo, predicción de ruido, cota variacional, score matching
+- **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
+- **Fuentes primarias:** [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
+
+### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
+
+- **Autoría:** Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, y otros (OpenAI)
+- **Problema anterior:** La visión dependía de conjuntos etiquetados con categorías fijas; cambiar de tarea exigía volver a anotar y volver a entrenar.
+- **Propuesta:** Entrenar de forma contrastiva sobre 400 millones de pares (imagen, texto) de internet, alineando ambos espacios, y clasificar comparando la imagen con el texto de cada clase.
+- **Hito:** El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.
+- **Conceptos:** CLIP, contrastivo, InfoNCE, zero-shot, multimodal, supervisión débil
+- **Clases del programa:** [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md), [070](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
+- **Fuentes primarias:** [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
+
+### P19 · Training Compute-Optimal Large Language Models (2022)
+
+- **Autoría:** Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, y otros (DeepMind)
+- **Problema anterior:** Tras GPT-3 la industria escalaba parámetros asumiendo que era la variable dominante, sin medir el reparto óptimo entre parámetros y tokens a cómputo constante.
+- **Propuesta:** Ajustar empíricamente L(N, D) y resolver el reparto que minimiza la pérdida bajo la restricción C = 6ND.
+- **Hito:** Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.
+- **Conceptos:** leyes de escalado, cómputo óptimo, tokens por parámetro, FLOPs, infraentrenamiento
+- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- **Fuentes primarias:** [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)
+
+### P20 · Mamba: Linear-Time Sequence Modeling with Selective State Spaces (2023)
+
+- **Autoría:** Albert Gu, Tri Dao
+- **Problema anterior:** La atención cuesta O(n²) y su memoria crece con la secuencia; las alternativas subcuadráticas previas no alcanzaban a la atención en lenguaje.
+- **Propuesta:** Hacer que los parámetros del espacio de estados dependan de la ENTRADA (selección), y compensar la pérdida de la convolución eficiente con un algoritmo paralelo consciente del hardware.
+- **Hito:** El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención.
+- **Conceptos:** SSM, selección, tiempo lineal, estado de tamaño fijo, escaneo paralelo, contexto largo
+- **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- **Fuentes primarias:** [arXiv:2312.00752](https://arxiv.org/abs/2312.00752)
+
+### P21 · Mixtral of Experts (2024)
+
+- **Autoría:** Albert Q. Jiang, y otros (Mistral AI)
+- **Problema anterior:** En un modelo denso, cada token paga TODOS los parámetros. Crecer en capacidad implica crecer en coste de inferencia en la misma proporción.
+- **Propuesta:** Sustituir la capa feed-forward por 8 expertos con un router que elige 2 por token, y publicar pesos y resultados bajo licencia abierta.
+- **Hito:** Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.
+- **Conceptos:** mezcla de expertos, router, top-2, parámetros activos, balanceo de carga, Apache 2.0
+- **Clases del programa:** [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [084](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)
+- **Fuentes primarias:** [arXiv:2401.04088](https://arxiv.org/abs/2401.04088)
+
+### P22 · DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (2025)
+
+- **Autoría:** DeepSeek-AI
+- **Problema anterior:** La cadena de pensamiento dependía de demostraciones humanas caras, y esa supervisión limitaba la capacidad en problemas complejos.
+- **Propuesta:** Recompensar únicamente el RESULTADO verificable y dejar que el comportamiento de razonamiento emerja del refuerzo, para luego transferirlo a modelos menores.
+- **Hito:** El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.
+- **Conceptos:** razonamiento, refuerzo, recompensa verificable, cómputo en inferencia, destilación, pesos abiertos
+- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- **Fuentes primarias:** [arXiv:2501.12948](https://arxiv.org/abs/2501.12948) · [DOI (Nature 645, 633–638, 2025)](https://doi.org/10.1038/s41586-025-09422-z)
 
 ## Miniaturas del Transformer
 

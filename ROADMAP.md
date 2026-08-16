@@ -8,12 +8,12 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.4.3** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.5.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
-| Eje de papers | 16 fichas · 24 notebooks · 16 motores |
-| Motores didácticos | 20 de clases + 16 de papers |
+| Eje de papers | 22 fichas · 30 notebooks · 22 motores · 5 anexos |
+| Motores didácticos | 20 de clases + 22 de papers |
 | PDFs | 17 (15 partes + programa completo + eje de papers) |
-| Tests | 36 |
+| Tests | 39 |
 
 ## ✅ 0.1.0 — Programa maestro inicial (entregado)
 
@@ -56,7 +56,14 @@
 - [x] Contrato verificado por código: 18 secciones por ficha, 17 momentos por
       notebook, manifiesto con hash independiente del sistema operativo.
 
-## 🤖 0.5 — Track agéntico aplicado
+## ✅ 0.5.0 — Ampliación del eje de papers (entregado)
+
+- [x] Ruta ampliada P17–P22: difusión, CLIP, leyes de escalado, Mamba, Mixtral y DeepSeek-R1.
+- [x] 5 anexos matemáticos con ejemplos resueltos a mano.
+- [x] Enlaces de vuelta clase → paper en 27 clases, generados y verificados.
+- [x] Diagramas mermaid en las fichas nuevas y en el hub del eje.
+
+## 🤖 0.6 — Track agéntico aplicado
 
 - [ ] Integraciones DEMO/LIVE con proveedores intercambiables.
 - [ ] MCP server educativo de solo lectura.
@@ -64,13 +71,13 @@
 - [ ] Evaluación de trayectorias y tool calls.
 - [ ] Capstone con router, handoff, supervisor y aprobación humana.
 
-## 📚 0.6 — Ampliación del eje de papers
+## 📚 0.7 — Segunda línea del eje
 
-- [ ] Fichas de segunda línea: GloVe, ELMo, T5, Chinchilla, CLIP y difusión.
+- [ ] Fichas de GloVe, ELMo y T5.
 - [ ] Reproducción parcial guiada de una figura real del Transformer.
 - [ ] Traducción de las fichas al inglés.
 
-## 📦 0.7 — Distribución
+## 📦 0.8 — Distribución
 
 - [ ] Release de Windows firmado.
 - [ ] App macOS y Linux empaquetada.
