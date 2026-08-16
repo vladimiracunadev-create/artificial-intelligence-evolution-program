@@ -1,0 +1,426 @@
+{
+  "updated": "2026-08-16",
+  "paper_count": 16,
+  "niveles": {
+    "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
+    "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
+    "L2": "Implementación: escribir la miniatura del mecanismo.",
+    "L3": "Análisis: comparar variantes, medir e interpretar.",
+    "L4": "Reproducción parcial: replicar una figura, tabla o ablación a escala reducida.",
+    "L5": "Investigación: leer la frontera con fecha y fuente, y proponer preguntas abiertas."
+  },
+  "papers": [
+    {
+      "id": "P01",
+      "page": "P01_perceptron.html",
+      "titulo": "El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro",
+      "original": "The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain",
+      "autoria": [
+        "Frank Rosenblatt"
+      ],
+      "anio": 1958,
+      "venue": "Psychological Review, 65(6), 386–408",
+      "nivel": "L1",
+      "motor": "perceptron",
+      "hito": "Primera máquina que aprende sus propios pesos a partir de ejemplos en lugar de ejecutar reglas escritas por una persona.",
+      "keywords": [
+        "perceptrón",
+        "clasificador lineal",
+        "regla de aprendizaje",
+        "separabilidad",
+        "conexionismo"
+      ],
+      "notebook": "notebooks/papers/P01_perceptron.ipynb"
+    },
+    {
+      "id": "P02",
+      "page": "P02_backpropagation.html",
+      "titulo": "Aprender representaciones retropropagando errores",
+      "original": "Learning representations by back-propagating errors",
+      "autoria": [
+        "David E. Rumelhart",
+        "Geoffrey E. Hinton",
+        "Ronald J. Williams"
+      ],
+      "anio": 1986,
+      "venue": "Nature, 323, 533–536",
+      "nivel": "L2",
+      "motor": "backprop",
+      "hito": "Un procedimiento práctico para entrenar capas ocultas: la red descubre representaciones intermedias que nadie diseñó.",
+      "keywords": [
+        "retropropagación",
+        "regla de la cadena",
+        "capas ocultas",
+        "gradiente",
+        "representaciones internas"
+      ],
+      "notebook": "notebooks/papers/P02_backpropagation.ipynb"
+    },
+    {
+      "id": "P03",
+      "page": "P03_lstm.html",
+      "titulo": "Memoria larga de corto plazo",
+      "original": "Long Short-Term Memory",
+      "autoria": [
+        "Sepp Hochreiter",
+        "Jürgen Schmidhuber"
+      ],
+      "anio": 1997,
+      "venue": "Neural Computation, 9(8), 1735–1780",
+      "nivel": "L2",
+      "motor": "lstm",
+      "hito": "Primera arquitectura recurrente capaz de mantener información a través de cientos de pasos sin que el gradiente se desvanezca.",
+      "keywords": [
+        "LSTM",
+        "gradiente desvaneciente",
+        "puertas",
+        "estado de celda",
+        "dependencias largas"
+      ],
+      "notebook": "notebooks/papers/P03_lstm.ipynb"
+    },
+    {
+      "id": "P04",
+      "page": "P04_alexnet.html",
+      "titulo": "Clasificación de ImageNet con redes neuronales convolucionales profundas",
+      "original": "ImageNet Classification with Deep Convolutional Neural Networks",
+      "autoria": [
+        "Alex Krizhevsky",
+        "Ilya Sutskever",
+        "Geoffrey E. Hinton"
+      ],
+      "anio": 2012,
+      "venue": "NeurIPS (NIPS) 2012",
+      "nivel": "L3",
+      "motor": "convnet",
+      "hito": "El resultado que convirtió el deep learning en la corriente principal: margen amplio sobre los métodos de visión hechos a mano.",
+      "keywords": [
+        "CNN",
+        "ImageNet",
+        "ReLU",
+        "dropout",
+        "GPU",
+        "aumento de datos"
+      ],
+      "notebook": "notebooks/papers/P04_alexnet.ipynb"
+    },
+    {
+      "id": "P05",
+      "page": "P05_word2vec.html",
+      "titulo": "Estimación eficiente de representaciones de palabras en un espacio vectorial",
+      "original": "Efficient Estimation of Word Representations in Vector Space",
+      "autoria": [
+        "Tomas Mikolov",
+        "Kai Chen",
+        "Greg Corrado",
+        "Jeffrey Dean"
+      ],
+      "anio": 2013,
+      "venue": "arXiv:1301.3781 · ICLR 2013 (workshop)",
+      "nivel": "L2",
+      "motor": "word2vec",
+      "hito": "El significado distribucional se vuelve barato: vectores densos entrenables sobre miles de millones de palabras.",
+      "keywords": [
+        "embeddings",
+        "skip-gram",
+        "CBOW",
+        "muestreo negativo",
+        "hipótesis distribucional",
+        "analogías"
+      ],
+      "notebook": "notebooks/papers/P05_word2vec.ipynb"
+    },
+    {
+      "id": "P06",
+      "page": "P06_seq2seq.html",
+      "titulo": "Aprendizaje de secuencia a secuencia con redes neuronales",
+      "original": "Sequence to Sequence Learning with Neural Networks",
+      "autoria": [
+        "Ilya Sutskever",
+        "Oriol Vinyals",
+        "Quoc V. Le"
+      ],
+      "anio": 2014,
+      "venue": "arXiv:1409.3215 · NeurIPS (NIPS) 2014",
+      "nivel": "L3",
+      "motor": "seq2seq",
+      "hito": "Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo.",
+      "keywords": [
+        "encoder-decoder",
+        "vector de contexto",
+        "traducción automática neuronal",
+        "cuello de botella",
+        "BLEU"
+      ],
+      "notebook": "notebooks/papers/P06_seq2seq.ipynb"
+    },
+    {
+      "id": "P07",
+      "page": "P07_attention_bahdanau.html",
+      "titulo": "Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir",
+      "original": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "autoria": [
+        "Dzmitry Bahdanau",
+        "Kyunghyun Cho",
+        "Yoshua Bengio"
+      ],
+      "anio": 2014,
+      "venue": "arXiv:1409.0473 · ICLR 2015",
+      "nivel": "L3",
+      "motor": "bahdanau",
+      "hito": "Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso.",
+      "keywords": [
+        "atención",
+        "alineación",
+        "vector de contexto dinámico",
+        "softmax",
+        "atención aditiva"
+      ],
+      "notebook": "notebooks/papers/P07_attention_bahdanau.ipynb"
+    },
+    {
+      "id": "P08",
+      "page": "P08_transformer.html",
+      "titulo": "La atención es todo lo que necesitas",
+      "original": "Attention Is All You Need",
+      "autoria": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "anio": 2017,
+      "venue": "arXiv:1706.03762 · NeurIPS (NIPS) 2017",
+      "nivel": "L4",
+      "motor": "transformer",
+      "hito": "Elimina la recurrencia y la convolución del modelado de secuencias: todo el cómputo de una capa se paraleliza.",
+      "keywords": [
+        "Transformer",
+        "self-attention",
+        "multi-head",
+        "scaled dot-product",
+        "codificación posicional",
+        "máscara causal",
+        "paralelización"
+      ],
+      "notebook": "notebooks/papers/P08_transformer.ipynb"
+    },
+    {
+      "id": "P09",
+      "page": "P09_bert.html",
+      "titulo": "BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje",
+      "original": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "autoria": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "anio": 2018,
+      "venue": "arXiv:1810.04805 · NAACL-HLT 2019",
+      "nivel": "L3",
+      "motor": "bert_mlm",
+      "hito": "Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño.",
+      "keywords": [
+        "BERT",
+        "MLM",
+        "bidireccional",
+        "preentrenamiento",
+        "fine-tuning",
+        "GLUE"
+      ],
+      "notebook": "notebooks/papers/P09_bert.ipynb"
+    },
+    {
+      "id": "P10",
+      "page": "P10_gpt3.html",
+      "titulo": "Los modelos de lenguaje son aprendices con pocos ejemplos",
+      "original": "Language Models are Few-Shot Learners",
+      "autoria": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "y otros (OpenAI)"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2005.14165 · NeurIPS 2020",
+      "nivel": "L3",
+      "motor": "gpt3_icl",
+      "hito": "El aprendizaje en contexto: la tarea se especifica en el prompt y el modelo se adapta sin actualizar ningún peso.",
+      "keywords": [
+        "GPT-3",
+        "aprendizaje en contexto",
+        "few-shot",
+        "escalado",
+        "modelo autorregresivo",
+        "prompt"
+      ],
+      "notebook": "notebooks/papers/P10_gpt3.ipynb"
+    },
+    {
+      "id": "P11",
+      "page": "P11_rag.html",
+      "titulo": "Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento",
+      "original": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "autoria": [
+        "Patrick Lewis",
+        "Ethan Perez",
+        "Aleksandra Piktus",
+        "Fabio Petroni",
+        "y otros"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2005.11401 · NeurIPS 2020",
+      "nivel": "L3",
+      "motor": "rag",
+      "hito": "Separa el conocimiento (índice consultable y actualizable) del razonamiento (parámetros del modelo).",
+      "keywords": [
+        "RAG",
+        "recuperación densa",
+        "memoria no paramétrica",
+        "citas",
+        "atribución",
+        "conocimiento actualizable"
+      ],
+      "notebook": "notebooks/papers/P11_rag.ipynb"
+    },
+    {
+      "id": "P12",
+      "page": "P12_instructgpt_rlhf.html",
+      "titulo": "Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana",
+      "original": "Training language models to follow instructions with human feedback",
+      "autoria": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "y otros (OpenAI)"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2203.02155 · NeurIPS 2022",
+      "nivel": "L3",
+      "motor": "rlhf",
+      "hito": "El salto de «modelo que completa texto» a «asistente que sigue instrucciones»: alineación con preferencias humanas.",
+      "keywords": [
+        "RLHF",
+        "alineación",
+        "modelo de recompensa",
+        "PPO",
+        "preferencias",
+        "instrucciones"
+      ],
+      "notebook": "notebooks/papers/P12_instructgpt_rlhf.ipynb"
+    },
+    {
+      "id": "P13",
+      "page": "P13_react.html",
+      "titulo": "ReAct: sinergia entre razonar y actuar en modelos de lenguaje",
+      "original": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "autoria": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2210.03629 · ICLR 2023",
+      "nivel": "L2",
+      "motor": "react",
+      "hito": "El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa.",
+      "keywords": [
+        "ReAct",
+        "agente",
+        "bucle pensamiento-acción-observación",
+        "herramientas",
+        "traza auditable"
+      ],
+      "notebook": "notebooks/papers/P13_react.ipynb"
+    },
+    {
+      "id": "P14",
+      "page": "P14_toolformer.html",
+      "titulo": "Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas",
+      "original": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "autoria": [
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Roberto Dessì",
+        "Roberta Raileanu",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2302.04761 · NeurIPS 2023",
+      "nivel": "L3",
+      "motor": "toolformer",
+      "hito": "El uso de herramientas se aprende de forma autosupervisada: el criterio de utilidad es la propia pérdida del modelo.",
+      "keywords": [
+        "Toolformer",
+        "tool use",
+        "autosupervisión",
+        "filtrado por pérdida",
+        "API calls"
+      ],
+      "notebook": "notebooks/papers/P14_toolformer.ipynb"
+    },
+    {
+      "id": "P15",
+      "page": "P15_dpo.html",
+      "titulo": "Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa",
+      "original": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "autoria": [
+        "Rafael Rafailov",
+        "Archit Sharma",
+        "Eric Mitchell",
+        "Stefano Ermon",
+        "Christopher D. Manning",
+        "Chelsea Finn"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2305.18290 · NeurIPS 2023",
+      "nivel": "L4",
+      "motor": "dpo",
+      "hito": "Alinear un modelo con preferencias humanas sin modelo de recompensa explícito ni bucle de aprendizaje por refuerzo.",
+      "keywords": [
+        "DPO",
+        "preferencias",
+        "recompensa implícita",
+        "KL",
+        "alineación",
+        "pérdida de clasificación"
+      ],
+      "notebook": "notebooks/papers/P15_dpo.ipynb"
+    },
+    {
+      "id": "P16",
+      "page": "P16_agentic_systems.html",
+      "titulo": "Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad",
+      "original": "Sistemas agentic contemporáneos (nodo de frontera, revisable)",
+      "autoria": [
+        "Varios (nodo compuesto)"
+      ],
+      "anio": 2023,
+      "venue": "Conjunto de trabajos posteriores a ReAct — releer con fecha de consulta",
+      "nivel": "L5",
+      "motor": "agentic",
+      "hito": "El agente deja de ser un bucle y pasa a ser un sistema: memoria, reflexión, planificación, presupuesto, múltiples agentes y protocolos de interoperabilidad.",
+      "keywords": [
+        "agentic",
+        "reflexión",
+        "memoria",
+        "multiagente",
+        "MCP",
+        "presupuesto",
+        "criterio de parada"
+      ],
+      "notebook": "notebooks/papers/P16_agentic_systems.ipynb"
+    }
+  ]
+}

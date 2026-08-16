@@ -119,8 +119,8 @@ Lo que aún no está y se declara como tal, en vez de fingir completitud:
 
 | Pendiente | Estado |
 |---|---|
-| Páginas HTML del eje dentro del sitio PWA | ⬜ no iniciado |
-| PDF imprimible del eje completo | ⬜ no iniciado |
+| Páginas HTML del eje dentro del sitio PWA | ✅ 24 páginas en `site/papers/`, con buscador en la portada |
+| PDF imprimible del eje completo | ✅ [`docs/pdf/papers-fundacionales.pdf`](../docs/pdf/papers-fundacionales.pdf), 155 páginas |
 | Fichas de segunda línea (GloVe, ELMo, T5, Chinchilla, CLIP, difusión) | ⬜ no iniciado |
 | Reproducción parcial guiada de una figura real de P08 | ⬜ no iniciado |
 | Traducción de las fichas a inglés | ⬜ no iniciado |

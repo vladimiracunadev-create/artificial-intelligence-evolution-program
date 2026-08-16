@@ -1,11 +1,23 @@
 from __future__ import annotations
 
-"""Genera PDFs imprimibles del programa: uno por parte y uno general.
+"""Genera PDFs imprimibles del programa: uno por parte, uno general y el eje de papers.
 
 Requiere: pip install markdown PyYAML, y Chrome o Edge instalado (impresión headless).
-Salida: docs/pdf/parte-NN.pdf (15) y docs/pdf/programa-completo.pdf.
+
+Salida:
+    docs/pdf/parte-NN.pdf (15)
+    docs/pdf/programa-completo.pdf
+    docs/pdf/papers-fundacionales.pdf
+
+Uso::
+
+    python scripts/generate_pdfs.py             # todo
+    python scripts/generate_pdfs.py --papers    # solo el eje de papers
+    python scripts/generate_pdfs.py --clases    # solo partes y programa completo
 """
 
+import argparse
+import json
 import re
 import subprocess
 import sys
@@ -141,11 +153,82 @@ def print_pdf(browser: str, html_path: Path, pdf_path: Path) -> None:
         raise SystemExit(f"PDF sospechosamente pequeño o ausente: {pdf_path}")
 
 
+def strip_paper_nav(md_text: str) -> str:
+    """Como strip_nav, más el pie de navegación propio de las fichas de papers."""
+    md_text = re.sub(r"\n---\n+\[⬅️.*$", "", md_text, flags=re.DOTALL)
+    md_text = re.sub(r"\n---\n+\[📇.*$", "", md_text, flags=re.DOTALL)
+    return strip_nav(md_text)
+
+
+def render_paper_doc(rel: str, *, drop_h1: bool = False) -> str:
+    text = strip_paper_nav((ROOT / rel).read_text(encoding="utf-8"))
+    if drop_h1:
+        text = re.sub(r"^\s*# .+?\n", "", text, count=1)
+    return '<div class="clase">' + markdown.markdown(text, extensions=MD_EXTENSIONS) + "</div>"
+
+
+def build_papers_html() -> str:
+    catalog = json.loads((ROOT / "papers" / "catalog" / "papers.json").read_text(encoding="utf-8"))
+    items = "".join(
+        f"<li>{item['id']} — {item['title_es']} ({item['year']})</li>" for item in catalog["papers"]
+    )
+    cover = (
+        '<div class="portada"><h1>📜 Papers fundacionales de la IA</h1>'
+        '<p class="sub">Artificial Intelligence Evolution Program · eje transversal</p>'
+        f'<p class="sub">{len(catalog["papers"])} hitos · de Rosenblatt (1958) a los sistemas agentic · '
+        f'actualizado {catalog["updated"]}</p>'
+        '<p class="sub" style="font-size:10pt; margin-top:18pt;">Este documento enlaza a las fuentes '
+        'primarias; no las reproduce. Los notebooks ejecutables viven en el repositorio.</p>'
+        f'<ol style="text-align:left; max-width: 440pt; margin: 24pt auto 0; font-size: 9.5pt;">{items}</ol></div>'
+    )
+
+    body = [cover, render_paper_doc("papers/README.md"), render_paper_doc("papers/ROADMAP.md")]
+    for guide in sorted((ROOT / "papers" / "guides").glob("*.md")):
+        body.append(render_paper_doc(f"papers/guides/{guide.name}"))
+    for item in catalog["papers"]:
+        body.append(render_paper_doc(f"papers/foundational/{item['dir']}/README.md"))
+        body.append(
+            '<div class="clase"><h1>📝 Evaluación — ' + item["id"] + "</h1>"
+            + markdown.markdown(
+                strip_paper_nav(
+                    re.sub(
+                        r"^\s*# .+?\n", "",
+                        (ROOT / "assessments" / "papers" / f"{item['dir']}.md").read_text(encoding="utf-8"),
+                        count=1,
+                    )
+                ),
+                extensions=MD_EXTENSIONS,
+            )
+            + "</div>"
+        )
+    return html_page("Papers fundacionales de la IA", "".join(body))
+
+
+def build_papers_pdf(browser: str, tmp: Path) -> None:
+    html_path = tmp / "papers-fundacionales.html"
+    html_path.write_text(build_papers_html(), encoding="utf-8")
+    pdf_path = OUT_DIR / "papers-fundacionales.pdf"
+    print_pdf(browser, html_path, pdf_path)
+    print(f"papers-fundacionales.pdf → {pdf_path.stat().st_size // 1024} kB")
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Genera los PDFs imprimibles del programa")
+    parser.add_argument("--papers", action="store_true", help="solo el eje de papers")
+    parser.add_argument("--clases", action="store_true", help="solo partes y programa completo")
+    args = parser.parse_args()
+    hacer_clases = args.clases or not args.papers
+    hacer_papers = args.papers or not args.clases
+
     curriculum = yaml.safe_load((ROOT / "curriculum.yaml").read_text(encoding="utf-8"))
     browser = find_browser()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix="ai-evolution-pdf-"))
+
+    if hacer_papers:
+        build_papers_pdf(browser, tmp)
+    if not hacer_clases:
+        return
 
     all_bodies: list[str] = []
     for part in curriculum["parts"]:

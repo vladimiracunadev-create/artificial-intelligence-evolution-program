@@ -55,6 +55,28 @@ function render() {
   updateProgress();
 }
 
+function paperCard(paper) {
+  return `
+    <article class="card" data-search="${(paper.titulo + " " + paper.original + " " + paper.keywords.join(" ")).toLowerCase()}">
+      <div class="meta"><span>${paper.id} · ${paper.anio}</span><span>${paper.nivel}</span></div>
+      <h3>${paper.titulo}</h3>
+      <p>${paper.hito}</p>
+      <div class="tags">${paper.keywords.slice(0, 4).map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+      <div class="actions">
+        <span>
+          <a href="papers/${paper.page}">Abrir ficha</a> ·
+          <a href="${REPO_URL}/blob/main/${paper.notebook}" rel="noopener">📓 Notebook</a>
+        </span>
+        <span class="tag">${paper.motor}</span>
+      </div>
+    </article>`;
+}
+
+function renderPapers(data) {
+  const grid = document.querySelector("#papers-grid");
+  if (grid) grid.innerHTML = data.papers.map(paperCard).join("");
+}
+
 function filter() {
   const query = document.querySelector("#search").value.trim().toLowerCase();
   const kind = document.querySelector("#kind").value;
@@ -79,3 +101,8 @@ fetch("data/catalog.json")
     document.querySelector("#search").addEventListener("input", filter);
     select.addEventListener("change", filter);
   });
+
+fetch("data/papers.json")
+  .then(response => response.json())
+  .then(renderPapers)
+  .catch(() => {});

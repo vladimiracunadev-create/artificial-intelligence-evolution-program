@@ -2,6 +2,23 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 0.4.1 — 2026-08-16
+
+- **El eje de papers se publica**, no solo se versiona:
+  - `scripts/generate_site.py` genera **24 páginas HTML** en `site/papers/` (hub, ruta,
+    índice, 5 guías y 16 fichas) reescribiendo cada enlace relativo del repositorio a su
+    equivalente del sitio; lo que no tiene página propia —notebooks, evaluaciones,
+    `frontier/`— apunta al repositorio en lugar de romperse. Verificado: 0 enlaces locales
+    rotos en las 24 páginas.
+  - Nueva sección **📜 Papers fundacionales** en la portada del sitio, con 16 tarjetas
+    generadas desde `site/data/papers.json` y alcanzables por el buscador existente.
+  - `scripts/generate_pdfs.py --papers` produce
+    **`docs/pdf/papers-fundacionales.pdf`** (155 páginas): portada con la ruta completa,
+    las 5 guías, las 16 fichas y sus 16 evaluaciones, con los enlaces relativos convertidos
+    a texto porque en papel no funcionan.
+  - `pages.yml` comprueba `site/data/papers.json`, el hub, la ficha de P08 y una guía antes
+    de desplegar; `service-worker.js` sube a `v4` y cachea `papers.json`.
+
 ## 0.4.0 — 2026-08-16
 
 - **Eje de papers fundacionales** (`papers/`), la pieza que faltaba para que el mapa

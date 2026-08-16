@@ -120,6 +120,11 @@ Con los notebooks:
 jupyter lab notebooks/papers/
 ```
 
+Sin código: el eje también se lee en el
+[sitio del programa](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/papers/)
+o en el [PDF imprimible de 155 páginas](../docs/pdf/papers-fundacionales.pdf)
+(`python scripts/generate_pdfs.py --papers`).
+
 Empieza por [`P01_perceptron.ipynb`](../notebooks/papers/P01_perceptron.ipynb) y sigue el
 orden de la ruta. **Antes de ejecutar cada celda, escribe tu predicción** en la sección 7 —
 ese paso no es decorativo: es lo que se evalúa.

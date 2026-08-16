@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.4.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.4.1-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-16%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-549-2e8b57?style=for-the-badge)](classes/)
@@ -64,8 +64,8 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
-| CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress` |
-| Sitio | ✅ PWA estática, búsqueda, filtros y progreso local |
+| CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
+| Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 24 páginas del eje de papers |
 | Escritorio | ✅ visor Tkinter local; workflow opcional para `.exe` |
 | CI | ✅ estructura, notebooks, tests, compilación y seguridad básica |
 | GPU / APIs pagadas | ⚪ extensiones opcionales; no se finge ejecución en CI |
@@ -252,6 +252,8 @@ El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
 - [📕 Programa completo (~1 135 páginas)](docs/pdf/programa-completo.pdf)
+- [📜 Papers fundacionales (155 páginas)](docs/pdf/papers-fundacionales.pdf) — las 16 fichas,
+  las 5 guías y las 16 evaluaciones del eje (`python scripts/generate_pdfs.py --papers`)
 - Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
   [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·
   [04](docs/pdf/parte-04.pdf) · [05](docs/pdf/parte-05.pdf) ·
