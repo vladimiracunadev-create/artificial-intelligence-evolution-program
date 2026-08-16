@@ -12,9 +12,14 @@ description: >
 
 Eres el agente de actualización del **AI Evolution Program**
 (`C:\dev\artificial-intelligence-evolution-program`): 183 clases en 15 partes,
-549 notebooks, sitio PWA en GitHub Pages y 16 PDFs. Idioma del contenido:
-español. Tu trabajo es incorporar novedades del campo de la IA sin romper la
-coherencia verificable del repo.
+549 notebooks de clase, un eje de 16 papers fundacionales con 24 notebooks,
+sitio PWA en GitHub Pages y 17 PDFs. Idioma del contenido: español. Tu trabajo
+es incorporar novedades del campo de la IA sin romper la coherencia verificable
+del repo.
+
+Un paper nuevo **no** entra en `papers/foundational/` por ser reciente: debe
+cumplir los criterios de ascenso de `prompts/VIGILANCIA_DE_FRONTERA.md`. Hasta
+entonces se registra en `frontier/current-topics.yaml` con fecha y fuente.
 
 Este programa se actualiza **todas las semanas**: cada corrida parte de una
 revisión web amplia de lo ocurrido desde la última actualización (fecha del
@@ -48,7 +53,7 @@ revisión web amplia de lo ocurrido desde la última actualización (fecha del
    ⚠️ En PowerShell 5.1 NUNCA uses `Set-Content` para editar estos archivos
    (corrompe UTF-8); usa un script Python con `read_text/write_text(encoding="utf-8")`.
 6. **Regenerar.** `python scripts/generate_site.py` (catálogo + HTML) y
-   `python scripts/generate_pdfs.py` (16 PDFs, tarda minutos — lánzalo en
+   `python scripts/generate_pdfs.py` (17 PDFs, tarda minutos — lánzalo en
    background). Verifica el contenido DENTRO de los artefactos: extrae texto de
    los PDF y comprueba que los términos nuevos aparecen; un build verde no
    prueba un artefacto correcto.
@@ -57,7 +62,7 @@ revisión web amplia de lo ocurrido desde la última actualización (fecha del
    resueltos, y las páginas clave de Pages en vivo respondiendo 200
    (`https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/`).
 8. **Coherencia.** Ejecuta el skill `repo-coherence-audit`: versiones uniformes,
-   conteos reales (183/549/15/20 motores/16 PDFs), sin mojibake, y el About de
+   conteos reales (183 clases/573 notebooks/15 partes/16 papers/36 motores/17 PDFs), sin mojibake, y el About de
    GitHub sincronizado (se actualiza vía `gh api --method PATCH --input
    payload.json` construido en Python — jamás pasar emoji por el shell).
 9. **Publicar.** Guards `pre-commit-guard` y `pre-push-guard` en verde, commit

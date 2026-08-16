@@ -14,16 +14,16 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.4.2-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.4.3-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-16%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
-[![Notebooks](https://img.shields.io/badge/notebooks-549-2e8b57?style=for-the-badge)](classes/)
+[![Notebooks](https://img.shields.io/badge/notebooks-573-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Jupyter](https://img.shields.io/badge/Jupyter-549%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-573%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
 [![Docker](https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white)](compose.yaml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
 
@@ -42,7 +42,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 📜 Papers | 🧰 Motores didácticos | 📕 PDFs |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **183** | **549 + 24** | **183** | **15** | **16** | **20 + 16** | **16** |
+| **183** | **549 + 24** | **183** | **15** | **16** | **20 + 16** | **17** |
 
 </div>
 
@@ -318,8 +318,8 @@ python scripts/generate_papers.py --check
 
 - 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
 - 📜 un **eje de papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Rosenblatt (1958) a los sistemas agentic, con fichas verificables y miniaturas ejecutables;
-- 🧪 material **ejecutable y verificable**: 549 notebooks, 183 laboratorios locales deterministas y contratos JSON con `evidence` y `limitations`;
-- 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 16 PDFs imprimibles;
+- 🧪 material **ejecutable y verificable**: 573 notebooks (549 de clase + 24 de papers), 183 laboratorios locales y 36 motores deterministas con contratos JSON que declaran `evidence` y `limitations`;
+- 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 17 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
 - 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.
 

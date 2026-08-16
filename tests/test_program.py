@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
+
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,6 +60,48 @@ class LabTests(unittest.TestCase):
             payload = json.loads((folder / name).read_text(encoding="utf-8"))
             self.assertEqual(payload["nbformat"], 4)
             self.assertGreaterEqual(len(payload["cells"]), 4)
+
+
+class VersionCoherenceTests(unittest.TestCase):
+    """La versión se declara en cinco sitios: o coinciden todos, o el repo miente.
+
+    Ya ocurrió dos veces: en 0.2.1 (`curriculum.yaml` y `__version__` arrastraban
+    0.1.0) y en 0.4.x (`__version__` y la app Android se quedaron en 0.3.0
+    mientras `pyproject` iba por 0.4.2). Esta prueba lo convierte en un fallo de
+    CI en lugar de en un hallazgo casual.
+    """
+
+    def canonical(self) -> str:
+        for line in (ROOT / "pyproject.toml").read_text(encoding="utf-8").splitlines():
+            if line.startswith("version = "):
+                return line.split('"')[1]
+        self.fail("pyproject.toml no declara version")
+
+    def test_all_manifests_declare_the_same_version(self):
+        esperada = self.canonical()
+        declarada = {
+            "src/ai_evolution/__init__.py": re.search(
+                r'__version__\s*=\s*"([^"]+)"',
+                (ROOT / "src" / "ai_evolution" / "__init__.py").read_text(encoding="utf-8"),
+            ).group(1),
+            "curriculum.yaml": str(yaml.safe_load((ROOT / "curriculum.yaml").read_text(encoding="utf-8"))["version"]),
+            "apps/android/package.json": json.loads(
+                (ROOT / "apps" / "android" / "package.json").read_text(encoding="utf-8")
+            )["version"],
+        }
+        for fuente, valor in declarada.items():
+            with self.subTest(fuente=fuente):
+                self.assertEqual(valor, esperada)
+
+    def test_readme_badge_matches(self):
+        esperada = self.canonical()
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(f"version-{esperada}-", readme)
+
+    def test_changelog_documents_the_current_version(self):
+        esperada = self.canonical()
+        changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        self.assertIn(f"## {esperada} — ", changelog)
 
 
 if __name__ == "__main__":

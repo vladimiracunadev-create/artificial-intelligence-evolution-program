@@ -2,6 +2,54 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 🏷️ Política de versiones y releases
+
+- **Fuente canónica de la versión:** `pyproject.toml`. Los otros cuatro
+  marcadores —`curriculum.yaml`, `src/ai_evolution/__init__.py`,
+  `apps/android/package.json` y el badge del README— deben coincidir con él;
+  `tests/test_program.py::VersionCoherenceTests` falla en CI si divergen.
+- **Cada versión de este changelog tiene su tag** `vX.Y.Z` apuntando al commit
+  que la introdujo. Los tags anteriores a 0.4.3 se crearon retroactivamente en
+  esa fecha, sobre sus commits reales.
+- **No toda versión tiene una release publicada en GitHub.** Las releases marcan
+  hitos que valen la pena descargar; los tags marcan todas las versiones.
+- Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
+  estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
+
+## 0.4.3 — 2026-08-16
+
+- **Reparación de coherencia**: la versión se declaraba en cinco sitios y decían
+  tres cosas distintas. `src/ai_evolution/__init__.py` y `apps/android/package.json`
+  seguían en `0.3.0` mientras `pyproject.toml` iba por `0.4.2`, y el «About» de
+  GitHub anunciaba `v0.3.0` con la última release publicada en `v0.2.0`. Todos
+  sincronizados a `0.4.3`, y `VersionCoherenceTests` convierte la próxima
+  divergencia en un fallo de CI en vez de en un hallazgo casual.
+- **Corregidas afirmaciones falsas de la documentación:**
+  - `ROADMAP.md` atribuía a 0.1.0 «15 partes y 183 clases · 549 notebooks»,
+    cuando 0.1.0 entregó **180 clases y 540 notebooks** —las 183 y los 549
+    llegaron en 0.3.0—. Reescrito con los conteos reales de cada versión.
+  - El mismo roadmap planificaba «0.3 — track agéntico» y «0.4 — distribución»
+    como futuro **no empezado**, cuando 0.3.0 y 0.4.x ya estaban publicadas con
+    otro contenido. El trabajo pendiente se renumeró a 0.5, 0.6 y 0.7.
+  - `docs/STUDENT_GUIDE.md` mandaba «leer README y theory», pero `theory.md` se
+    eliminó del contrato en 0.2.0 y no existe en ninguna de las 183 clases.
+  - `RECRUITER.md` y `docs/ARCHITECTURE.md` afirmaban «20 motores didácticos»:
+    son **36** desde 0.4.0 (20 de clases + 16 de papers).
+  - README y sitio decían «16 PDFs» y «549 notebooks»: son **17 PDFs** y
+    **573 notebooks** (549 de clase + 24 de papers).
+- **Documentación que faltaba**: ninguno de los ficheros de `docs/` mencionaba el
+  eje de papers pese a llevar tres versiones en el repositorio.
+  - `docs/ARCHITECTURE.md` documenta ahora las **dos** fuentes de verdad
+    (`curriculum.yaml` y `papers/catalog/papers.json`), los módulos `papers.py` y
+    `papers_lab.py`, la tabla de generadores y la regla de que lo generado no se
+    edita a mano.
+  - `docs/STUDENT_GUIDE.md` y `docs/INSTRUCTOR_GUIDE.md` incorporan la ruta de
+    trabajo de un paper y la sesión de 90 minutos del eje.
+  - `INSTALL.md` documenta los comandos del eje y cómo regenerar los PDFs;
+    `CONTRIBUTING.md`, los criterios para proponer un paper nuevo.
+  - `Makefile`: nuevos objetivos `papers`, `papers-check`, `pdf`, `pdf-papers` y
+    `all-checks`; `site` ahora regenera antes de servir.
+
 ## 0.4.2 — 2026-08-16
 
 - **Corrige el manifiesto del eje de papers, que dependía del sistema operativo.**

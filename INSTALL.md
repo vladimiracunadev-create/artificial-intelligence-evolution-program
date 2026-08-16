@@ -9,11 +9,33 @@ pip install -e .
 ai-evolution validate
 ```
 
+Requiere Python 3.11 o superior. La única dependencia del núcleo es `PyYAML`:
+las 183 clases y los 16 papers se ejecutan con la biblioteca estándar.
+
+## 📜 Eje de papers
+
+```bash
+ai-evolution papers                 # los 16 hitos de la ruta
+ai-evolution paper P08              # ficha de Attention Is All You Need
+ai-evolution paper-lab P08 --seed 7 # ejecuta su miniatura
+jupyter lab notebooks/papers/       # los 24 notebooks
+```
+
 ## 🛠️ Desarrollo
 
 ```bash
 pip install -e ".[dev,docs,assets]"
 python -m unittest discover -s tests -v
+python scripts/generate_papers.py --check
+```
+
+## 📕 Regenerar PDFs
+
+Requiere Chrome o Edge instalado (impresión headless) y `pip install markdown`.
+
+```bash
+python scripts/generate_pdfs.py --papers   # solo el eje de papers
+python scripts/generate_pdfs.py --clases   # partes y programa completo
 ```
 
 ## 🌐 Web
