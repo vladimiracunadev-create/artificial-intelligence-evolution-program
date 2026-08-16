@@ -290,6 +290,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
 | [P16 · Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad](../../../papers/foundational/P16_agentic_systems/README.md) | 2023 | El agente deja de ser un bucle y pasa a ser un sistema: memoria, reflexión, planificación, presupuesto, múltiples agentes y protocolos de interoperabilidad. | [notebook](../../../notebooks/papers/P16_agentic_systems.ipynb) |
+| [P33 · AutoGen: aplicaciones de nueva generación mediante conversación multiagente](../../../papers/foundational/P33_autogen/README.md) | 2023 | El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger. | [notebook](../../../notebooks/papers/P33_autogen.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

@@ -202,13 +202,16 @@ def validate_papers(*, strict: bool = False) -> dict[str, Any]:
     ids = [item["id"] for item in items]
     if len(ids) != len(set(ids)):
         errors.append("IDs de papers duplicados")
-    # El eje tiene dos bloques: la cadena canónica (P01–P16, en orden de
-    # dependencia) y la ampliación (P17–P22, en orden cronológico). Se validan
-    # juntos para que ningún paper quede fuera de una ruta.
-    rutas = list(data["ruta_minima"]) + list(data.get("ruta_ampliada", []))
+    # El eje tiene varios bloques con propósitos distintos: la cadena canónica
+    # (P01–P16, en orden de dependencia) y las rutas temáticas, cada una en
+    # orden cronológico. Se validan juntas para que ningún paper quede huérfano.
+    bloques = data.get("rutas", ["ruta_minima", "ruta_ampliada"])
+    rutas: list[str] = []
+    for bloque in bloques:
+        rutas.extend(data.get(bloque, []))
     if ids != rutas:
-        errors.append("`ruta_minima` + `ruta_ampliada` no coinciden con el orden de `papers`")
-    for bloque in ("ruta_minima", "ruta_ampliada"):
+        errors.append("las rutas declaradas no coinciden con el orden de `papers`")
+    for bloque in bloques:
         anios = [item["year"] for item in items if item["id"] in data.get(bloque, [])]
         if anios != sorted(anios):
             errors.append(f"`{bloque}` no está en orden cronológico")

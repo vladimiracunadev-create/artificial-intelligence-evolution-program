@@ -26,6 +26,17 @@ Una guía por paper con plan de sesión de 90 minutos, errores esperables en el 
 | P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos | [P20_mamba.md](P20_mamba.md) |
 | P21 · Mixtral: mezcla dispersa de expertos | [P21_moe.md](P21_moe.md) |
 | P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | [P22_deepseek_r1.md](P22_deepseek_r1.md) |
+| P23 · GloVe: vectores globales para representación de palabras | [P23_glove.md](P23_glove.md) |
+| P24 · Representaciones profundas de palabras dependientes del contexto | [P24_elmo.md](P24_elmo.md) |
+| P25 · Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto | [P25_t5.md](P25_t5.md) |
+| P26 · Control a nivel humano mediante aprendizaje por refuerzo profundo | [P26_dqn.md](P26_dqn.md) |
+| P27 · Dominar el go con redes neuronales profundas y búsqueda en árbol | [P27_alphago.md](P27_alphago.md) |
+| P28 · El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | [P28_chain_of_thought.md](P28_chain_of_thought.md) |
+| P29 · Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes | [P29_tree_of_thoughts.md](P29_tree_of_thoughts.md) |
+| P30 · Reflexion: agentes de lenguaje con refuerzo verbal | [P30_reflexion.md](P30_reflexion.md) |
+| P31 · Agentes generativos: simulacros interactivos de comportamiento humano | [P31_generative_agents.md](P31_generative_agents.md) |
+| P32 · Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes | [P32_voyager.md](P32_voyager.md) |
+| P33 · AutoGen: aplicaciones de nueva generación mediante conversación multiagente | [P33_autogen.md](P33_autogen.md) |
 
 ---
 

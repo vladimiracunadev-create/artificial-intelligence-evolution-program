@@ -199,6 +199,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Culberson, J. C. y Schaeffer, J. (1998). "Pattern Databases". *Computational Intelligence*, 14(3). [https://doi.org/10.1111/0824-7935.00065](https://doi.org/10.1111/0824-7935.00065)
 - Felner, A., Korf, R. E. y Hanan, S. (2004). "Additive Pattern Database Heuristics". *JAIR*, 22. [https://doi.org/10.1613/jair.1480](https://doi.org/10.1613/jair.1480)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P29 · Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes](../../../papers/foundational/P29_tree_of_thoughts/README.md) | 2023 | Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder. | [notebook](../../../notebooks/papers/P29_tree_of_thoughts.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

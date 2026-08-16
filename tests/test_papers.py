@@ -29,13 +29,14 @@ NOTEBOOKS = ROOT / "notebooks" / "papers"
 
 
 class CatalogTests(unittest.TestCase):
-    def test_catalog_is_valid_json_with_22_papers(self):
+    def test_catalog_is_valid_json_with_33_papers(self):
         data = load_papers()
-        self.assertEqual(len(data["papers"]), 22)
-        self.assertEqual(len(data["ruta_minima"]), 16)
-        self.assertEqual(len(data["ruta_ampliada"]), 6)
-        self.assertEqual(data["ruta_minima"] + data["ruta_ampliada"],
-                         [item["id"] for item in data["papers"]])
+        self.assertEqual(len(data["papers"]), 33)
+        esperado = []
+        for bloque in data["rutas"]:
+            esperado.extend(data[bloque])
+        self.assertEqual(esperado, [item["id"] for item in data["papers"]])
+        self.assertEqual(len(data["rutas"]), 4)
 
     def test_sources_yaml_parses(self):
         sources = load_sources()
@@ -59,7 +60,7 @@ class CatalogTests(unittest.TestCase):
     def test_chronological_order_within_each_route(self):
         """Cada bloque va en orden; entre bloques NO, porque son rutas distintas."""
         data = load_papers()
-        for bloque in ("ruta_minima", "ruta_ampliada"):
+        for bloque in data["rutas"]:
             with self.subTest(bloque=bloque):
                 anios = [item["year"] for item in data["papers"] if item["id"] in data[bloque]]
                 self.assertEqual(anios, sorted(anios))
@@ -75,8 +76,8 @@ class ContractTests(unittest.TestCase):
     def test_repository_contract(self):
         result = validate_papers(strict=True)
         self.assertTrue(result["ok"], result["errors"][:10])
-        self.assertEqual(result["papers"], 22)
-        self.assertEqual(result["notebooks"], 30)
+        self.assertEqual(result["papers"], 33)
+        self.assertEqual(result["notebooks"], 41)
         self.assertEqual(result["notebooks_transformer"], 8)
 
     def test_every_ficha_has_the_18_sections_in_order(self):
@@ -117,8 +118,8 @@ class ContractTests(unittest.TestCase):
 
     def test_manifest_hashes_are_current(self):
         manifest = json.loads((ROOT / "papers" / "manifest.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["papers"], 22)
-        self.assertEqual(manifest["notebooks"], 30)
+        self.assertEqual(manifest["papers"], 33)
+        self.assertEqual(manifest["notebooks"], 41)
         for entry in manifest["files"]:
             target = ROOT / entry["path"]
             with self.subTest(file=entry["path"]):
@@ -243,7 +244,7 @@ class PaperLabTests(unittest.TestCase):
     def test_classes_link_back_to_their_papers(self):
         """El circuito se cierra: la ficha enlaza a la clase y la clase a la ficha."""
         enlazadas = {ruta for item in load_papers()["papers"] for ruta in item["clases_del_programa"]}
-        self.assertGreaterEqual(len(enlazadas), 20)
+        self.assertGreaterEqual(len(enlazadas), 30)
         for ruta in enlazadas:
             with self.subTest(clase=ruta):
                 texto = (ROOT / ruta / "README.md").read_text(encoding="utf-8")

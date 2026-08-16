@@ -16,6 +16,34 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.6.0 — 2026-08-16
+
+- **El eje pasa de 22 a 33 papers, con dos bloques nuevos.** El detonante fue una observación
+  correcta: el eje tenía ReAct y Toolformer, pero Reflexion, Generative Agents, Voyager y AutoGen
+  vivían **dentro** de P16 como cluster, sin ficha propia, y multiagente no tenía ninguna. Al
+  revisarlo apareció un hueco mayor todavía: **no había un solo paper de aprendizaje por
+  refuerzo**, que es de donde viene la idea de agente.
+  - **Ruta de representación (P23–P25)**: GloVe (2014), ELMo (2018) y T5 (2019). Completa la
+    historia de cómo el lenguaje pasó de vectores estáticos a representaciones contextuales y de
+    ahí a un formato único texto → texto.
+  - **Ruta de agentes (P26–P33)**: DQN (2015), AlphaGo (2016), Chain-of-Thought (2022),
+    Tree of Thoughts (2023), Reflexion (2023), Generative Agents (2023), Voyager (2023) y
+    AutoGen (2023). Empieza en el refuerzo profundo y la búsqueda guiada, y llega al multiagente.
+  - Los identificadores P01–P22 **no se tocan**. El catálogo pasa a declarar cuatro rutas y la
+    validación comprueba que cada bloque esté en orden cronológico y que ningún paper quede fuera.
+- **11 motores deterministas nuevos**, todos en Python estándar: factorización de co-ocurrencias,
+  representación contextual, formato texto → texto, Q-learning con repetición de experiencia y
+  red objetivo, búsqueda guiada por prior, aritmética de la cadena de pensamiento, búsqueda en
+  árbol con poda, bucle de reflexión, recuperación de memoria puntuada, biblioteca de habilidades
+  y conversación multiagente con crítico.
+- **Tres afirmaciones corregidas antes de publicar**, porque no se sostenían contra su propia
+  salida: el motor de cadena de pensamiento anunciaba un cruce en el número de pasos que con sus
+  constantes no existía (el cruce real está en la fiabilidad **por paso**); el de AlphaGo
+  insinuaba que el prior fallaba cuando también acertaba; y el de ELMo daba una separación de
+  sentidos demasiado débil para la afirmación que hacía.
+- **Frontera**: se documenta explícitamente que el criterio de ascenso (12 meses) es lo que fija
+  el final del eje en 2025, y que lo posterior vive en `frontier/` con fecha.
+
 ## 0.5.0 — 2026-08-16
 
 - **El eje de papers se amplía de 16 a 22 hitos y llega hasta 2025.** El eje se cortaba en 2023

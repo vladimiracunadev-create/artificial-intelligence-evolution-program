@@ -1492,6 +1492,692 @@ def _rl_reasoning(seed: int) -> dict[str, Any]:
 
 
 # --------------------------------------------------------------------------- #
+# P23 — GloVe (Pennington, Socher y Manning, 2014)
+# --------------------------------------------------------------------------- #
+
+
+def _glove(seed: int) -> dict[str, Any]:
+    """Factorizar el logaritmo de las co-ocurrencias, en vez de predecir contexto."""
+    rng = random.Random(seed)
+    vocab = ["hielo", "vapor", "agua", "solido", "gas", "moda"]
+    # matriz de co-ocurrencia de juguete (simétrica, con la estructura del paper)
+    X = {
+        ("hielo", "solido"): 100, ("hielo", "agua"): 80, ("hielo", "gas"): 5, ("hielo", "moda"): 2,
+        ("vapor", "solido"): 4, ("vapor", "agua"): 78, ("vapor", "gas"): 96, ("vapor", "moda"): 2,
+    }
+    pares = {}
+    for (a, b), v in X.items():
+        pares[(a, b)] = v
+        pares[(b, a)] = v
+
+    dim = 6
+    w = {t: [rng.uniform(-0.3, 0.3) for _ in range(dim)] for t in vocab}
+    wt = {t: [rng.uniform(-0.3, 0.3) for _ in range(dim)] for t in vocab}
+    b = {t: 0.0 for t in vocab}
+    bt = {t: 0.0 for t in vocab}
+    lr, x_max, alpha = 0.05, 100.0, 0.75
+
+    def peso(x: float) -> float:
+        return (x / x_max) ** alpha if x < x_max else 1.0
+
+    perdidas = []
+    for paso in range(600):
+        total = 0.0
+        for (i, j), x in pares.items():
+            pred = _dot(w[i], wt[j]) + b[i] + bt[j]
+            err = pred - math.log(x)
+            f = peso(x)
+            total += f * err * err
+            g = 2 * f * err
+            for d in range(dim):
+                wi, wtj = w[i][d], wt[j][d]
+                w[i][d] -= lr * g * wtj
+                wt[j][d] -= lr * g * wi
+            b[i] -= lr * g
+            bt[j] -= lr * g
+        if paso % 200 == 0 or paso == 599:
+            perdidas.append({"paso": paso, "perdida": _round(total / len(pares), 5)})
+
+    ajuste = [
+        {"par": f"{i}-{j}", "log_X": _round(math.log(x), 3),
+         "predicho": _round(_dot(w[i], wt[j]) + b[i] + bt[j], 3)}
+        for (i, j), x in list(pares.items())[:4]
+    ]
+    # la razón de probabilidades: el argumento central del paper
+    razon_solido = pares[("hielo", "solido")] / pares[("vapor", "solido")]
+    razon_gas = pares[("hielo", "gas")] / pares[("vapor", "gas")]
+    razon_agua = pares[("hielo", "agua")] / pares[("vapor", "agua")]
+    return _contract(
+        "glove",
+        seed,
+        {
+            "perdida": perdidas,
+            "ajuste_log_cooocurrencia": ajuste,
+            "razones_de_cooocurrencia": {
+                "P(solido|hielo)/P(solido|vapor)": _round(razon_solido, 2),
+                "P(gas|hielo)/P(gas|vapor)": _round(razon_gas, 3),
+                "P(agua|hielo)/P(agua|vapor)": _round(razon_agua, 2),
+            },
+        },
+        [
+            "El modelo ajusta w_i·w̃_j + b_i + b̃_j al logaritmo de la co-ocurrencia: es una factorización, no una predicción.",
+            f"La razón de co-ocurrencia discrimina: ≫1 para 'sólido' ({razon_solido:.0f}), ≪1 para 'gas' ({razon_gas:.2f}) y ≈1 para 'agua' ({razon_agua:.2f}).",
+            "Esa razón es el argumento del paper: lo informativo no es la co-ocurrencia bruta, sino su cociente entre dos palabras.",
+        ],
+        [
+            "Seis palabras y ocho pares no son un corpus: aquí no emerge ninguna semántica real.",
+            "La función de peso f(x) y sus constantes están tomadas del paper pero no se ajustan aquí.",
+            "El debate GloVe frente a word2vec se resolvió empíricamente y depende del corpus y la tarea; esta miniatura no lo zanja.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P24 — ELMo (Peters et al., 2018)
+# --------------------------------------------------------------------------- #
+
+
+def _elmo(seed: int) -> dict[str, Any]:
+    """Un vector por APARICIÓN, no por palabra: la polisemia deja de colapsar."""
+    rng = random.Random(seed)
+    dim = 8
+    lexico = {}
+
+    def vec(token: str) -> list[float]:
+        if token not in lexico:
+            r = random.Random(hash(token) % 10_000 + seed)
+            lexico[token] = [r.uniform(-1, 1) for _ in range(dim)]
+        return lexico[token]
+
+    frases = [
+        "me sente en el banco del parque a leer".split(),
+        "el banco central subio la tasa de interes".split(),
+        "el banco del rio estaba mojado".split(),
+    ]
+    objetivo = "banco"
+
+    def estatico(_frase: list[str]) -> list[float]:
+        return vec(objetivo)                       # el mismo vector siempre (word2vec/GloVe)
+
+    def contextual(frase: list[str]) -> list[float]:
+        i = frase.index(objetivo)
+        izq = [0.0] * dim                          # LM hacia adelante
+        for t in frase[:i]:
+            izq = [0.6 * a + 0.4 * b for a, b in zip(izq, vec(t))]
+        der = [0.0] * dim                          # LM hacia atrás
+        for t in reversed(frase[i + 1:]):
+            der = [0.6 * a + 0.4 * b for a, b in zip(der, vec(t))]
+        base = vec(objetivo)
+        # combinación de capas: la representación es token + estados internos
+        return [0.2 * t + 0.4 * l + 0.4 * r for t, l, r in zip(base, izq, der)]
+
+    est = [estatico(f) for f in frases]
+    ctx = [contextual(f) for f in frases]
+
+    def pares(vs: list[list[float]]) -> dict[str, float]:
+        return {
+            "parque_vs_central": _round(_cosine(vs[0], vs[1]), 3),
+            "parque_vs_rio": _round(_cosine(vs[0], vs[2]), 3),
+            "central_vs_rio": _round(_cosine(vs[1], vs[2]), 3),
+        }
+
+    p_est, p_ctx = pares(est), pares(ctx)
+    return _contract(
+        "elmo",
+        seed,
+        {
+            "palabra": objetivo,
+            "contextos": [" ".join(f) for f in frases],
+            "similitud_estatica": p_est,
+            "similitud_contextual": p_ctx,
+            "sentidos_distinguidos": p_ctx["parque_vs_central"] < p_est["parque_vs_central"],
+        },
+        [
+            "Con embedding estático las tres apariciones son idénticas (coseno 1,0): el sentido se pierde.",
+            f"Con representación contextual, «banco del parque» y «banco central» bajan a {p_ctx['parque_vs_central']}: son sentidos distintos.",
+            "La representación es función de la frase entera, no de la palabra: eso es lo que aporta el paper.",
+        ],
+        [
+            "Aquí no hay LSTM ni modelo de lenguaje entrenado: la mezcla con decaimiento simula los estados internos.",
+            "ELMo combina las capas con pesos APRENDIDOS por tarea; los de esta miniatura están fijados a mano.",
+            "Tres frases no miden desambiguación: solo muestran que la representación deja de ser constante.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P25 — T5 (Raffel et al., 2019)
+# --------------------------------------------------------------------------- #
+
+
+def _t5(seed: int) -> dict[str, Any]:
+    """Todo problema de texto se reescribe como texto → texto."""
+    tareas = [
+        {"tarea": "traducción", "clasico": "modelo seq2seq con vocabulario de destino",
+         "entrada": "translate English to German: That is good.", "salida": "Das ist gut."},
+        {"tarea": "clasificación", "clasico": "cabeza de clasificación con 2 logits",
+         "entrada": "cola sentence: The movie was terrible.", "salida": "negative"},
+        {"tarea": "similitud (regresión)", "clasico": "cabeza de regresión con salida continua",
+         "entrada": "stsb sentence1: A man is playing. sentence2: A person plays.", "salida": "4.2"},
+        {"tarea": "resumen", "clasico": "modelo generativo aparte",
+         "entrada": "summarize: state authorities dispatched emergency crews...", "salida": "crews were dispatched"},
+        {"tarea": "respuesta a preguntas", "clasico": "cabeza de extracción con índices inicio/fin",
+         "entrada": "question: who wrote Hamlet? context: Hamlet was written by...", "salida": "Shakespeare"},
+    ]
+    cabezas_antes = len({t["clasico"] for t in tareas})
+    return _contract(
+        "t5",
+        seed,
+        {
+            "tareas": tareas,
+            "cabezas_especificas_antes": cabezas_antes,
+            "cabezas_especificas_despues": 0,
+            "objetivo_unico": "maximizar log p(texto_salida | texto_entrada)",
+            "que_cambia_por_tarea": "solo el prefijo del texto de entrada",
+        },
+        [
+            f"Cinco tareas que antes exigían {cabezas_antes} tipos de cabeza distintos se resuelven con un único formato texto → texto.",
+            "Incluso la regresión se emite como texto ('4.2'): el marco no hace excepciones.",
+            "Lo único que distingue una tarea de otra es el PREFIJO, así que la misma pérdida y el mismo modelo sirven para todas.",
+        ],
+        [
+            "Esto es el contrato de entrada y salida, no un modelo: aquí no se genera nada.",
+            "La contribución del paper es un estudio sistemático de objetivos, arquitecturas y datos, más el corpus C4; nada de eso cabe en una miniatura.",
+            "Emitir números como texto tiene un coste real de precisión que el formato unificado no resuelve.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P26 — DQN (Mnih et al., 2015)
+# --------------------------------------------------------------------------- #
+
+
+def _dqn(seed: int) -> dict[str, Any]:
+    """Q-learning tabular en una rejilla, con y sin las dos estabilizaciones del paper."""
+    filas, cols = 4, 4
+    meta = (3, 3)
+    acciones = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+    def entrenar(*, replay: bool, red_objetivo: bool, episodios: int = 400) -> dict[str, Any]:
+        rng = random.Random(seed)
+        Q = {(r, c, a): 0.0 for r in range(filas) for c in range(cols) for a in range(4)}
+        Q_obj = dict(Q)
+        buffer: list[tuple] = []
+        alpha, gamma, eps = 0.1, 0.95, 0.2
+        pasos_por_episodio = []
+        for ep in range(episodios):
+            estado = (0, 0)
+            for paso in range(60):
+                a = rng.randrange(4) if rng.random() < eps else max(range(4), key=lambda x: Q[(*estado, x)])
+                dr, dc = acciones[a]
+                nuevo = (min(max(estado[0] + dr, 0), filas - 1), min(max(estado[1] + dc, 0), cols - 1))
+                r = 1.0 if nuevo == meta else -0.01
+                buffer.append((estado, a, r, nuevo))
+                if len(buffer) > 500:
+                    buffer.pop(0)
+                # sin replay se aprende solo de la transición recién vista (muestras correlacionadas)
+                lote = [buffer[rng.randrange(len(buffer))] for _ in range(8)] if replay else [buffer[-1]]
+                for s, ac, rec, s2 in lote:
+                    tabla = Q_obj if red_objetivo else Q
+                    objetivo = rec + gamma * max(tabla[(*s2, x)] for x in range(4))
+                    Q[(*s, ac)] += alpha * (objetivo - Q[(*s, ac)])
+                estado = nuevo
+                if estado == meta:
+                    break
+            if red_objetivo and ep % 20 == 0:
+                Q_obj = dict(Q)
+            pasos_por_episodio.append(paso + 1)
+        ultimos = pasos_por_episodio[-50:]
+        return {
+            "pasos_medios_ultimos_50": _round(sum(ultimos) / len(ultimos), 2),
+            "mejor_episodio": min(pasos_por_episodio),
+            "optimo_teorico": 6,
+        }
+
+    completo = entrenar(replay=True, red_objetivo=True)
+    sin_nada = entrenar(replay=False, red_objetivo=False)
+    return _contract(
+        "dqn",
+        seed,
+        {
+            "entorno": "rejilla 4x4, de (0,0) a (3,3)",
+            "con_replay_y_red_objetivo": completo,
+            "sin_replay_ni_red_objetivo": sin_nada,
+            "componentes": ["Q-learning", "repetición de experiencia", "red objetivo congelada"],
+        },
+        [
+            f"Con las dos estabilizaciones, la política converge a {completo['pasos_medios_ultimos_50']} pasos medios (óptimo teórico: 6).",
+            f"Sin ellas queda en {sin_nada['pasos_medios_ultimos_50']}: aprender de transiciones consecutivas y correlacionadas degrada el resultado.",
+            "La contribución del paper no es Q-learning —de 1989— sino hacerlo estable con aproximación de función.",
+        ],
+        [
+            "Esto es Q tabular en 16 estados: NO hay red neuronal, ni píxeles, ni convoluciones.",
+            "El paper aprende directamente de la imagen en 49 juegos de Atari; aquí el estado es una coordenada.",
+            "Una rejilla determinista no tiene nada de la dificultad de exploración de un juego real.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P27 — AlphaGo (Silver et al., 2016)
+# --------------------------------------------------------------------------- #
+
+
+def _alphago(seed: int) -> dict[str, Any]:
+    """Política + valor + búsqueda: cada pieza aporta, y juntas aportan más."""
+    rng = random.Random(seed)
+    LINEAS = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
+
+    def ganador(t: list[str]) -> str | None:
+        for a, b, c in LINEAS:
+            if t[a] and t[a] == t[b] == t[c]:
+                return t[a]
+        return None if "" in t else "empate"
+
+    def politica(t: list[str], jugador: str) -> list[float]:
+        """Prior heurístico: preferir centro y esquinas. Imita la red de políticas."""
+        pref = [3, 2, 3, 2, 4, 2, 3, 2, 3]
+        libres = [i for i in range(9) if not t[i]]
+        pesos = [pref[i] for i in libres]
+        total = sum(pesos)
+        return [p / total for p in pesos], libres
+
+    def simular(t: list[str], jugador: str) -> float:
+        """Despliegue aleatorio hasta el final: la parte 'valor' por muestreo."""
+        t = list(t)
+        turno = jugador
+        while ganador(t) is None:
+            libres = [i for i in range(9) if not t[i]]
+            t[rng.choice(libres)] = turno
+            turno = "O" if turno == "X" else "X"
+        g = ganador(t)
+        return 1.0 if g == jugador else (0.5 if g == "empate" else 0.0)
+
+    valores_encontrados: dict[str, float] = {}
+
+    def jugar(usar_busqueda: bool, simulaciones: int = 60) -> str:
+        t = ["", "", "", "", "", "", "", "", ""]
+        t[4] = "O"          # el rival ocupa el centro: hay que responder bien
+        probs, libres = politica(t, "X")
+        if not usar_busqueda:
+            return str(libres[probs.index(max(probs))])
+        # búsqueda guiada por el prior: presupuesto repartido según la política
+        valores = {}
+        for idx, mov in enumerate(libres):
+            n = max(1, int(simulaciones * probs[idx]))
+            hijo = list(t)
+            hijo[mov] = "X"
+            valores[mov] = sum(simular(hijo, "X") for _ in range(n)) / n
+        valores_encontrados.update({str(k): _round(v, 3) for k, v in valores.items()})
+        return str(max(valores, key=valores.get))
+
+    solo_prior = jugar(usar_busqueda=False)
+    con_busqueda = jugar(usar_busqueda=True)
+    esquinas = {"0", "2", "6", "8"}
+    return _contract(
+        "alphago",
+        seed,
+        {
+            "posicion": "rival en el centro; a X le toca responder",
+            "solo_politica": solo_prior,
+            "politica_mas_busqueda": con_busqueda,
+            "valores_estimados_por_busqueda": valores_encontrados,
+            "ambas_eligen_esquina": solo_prior in {"0", "2", "6", "8"} and con_busqueda in {"0", "2", "6", "8"},
+            "componentes": ["red de políticas (prior)", "evaluación por despliegue (valor)", "búsqueda en árbol"],
+        },
+        [
+            f"El prior elige la casilla {solo_prior} por preferencia fija; la búsqueda elige la {con_busqueda} tras ESTIMAR el valor de cada opción.",
+            "Ambas aciertan el tipo de jugada (esquina), pero solo la búsqueda produce un número por casilla que se puede comparar y auditar.",
+            "El prior concentra el presupuesto de simulaciones donde importa: sin él la búsqueda se dispersa; sin búsqueda, el prior no verifica nada.",
+        ],
+        [
+            "Tres en raya tiene 9 posiciones; Go tiene más estados legales que átomos observables en el universo.",
+            "El prior es una heurística escrita a mano, no una red entrenada con partidas humanas ni por autojuego.",
+            "No hay MCTS con UCT ni red de valor aprendida: el despliegue aleatorio es la aproximación más burda posible.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P28 — Chain-of-Thought (Wei et al., 2022)
+# --------------------------------------------------------------------------- #
+
+
+def _cot(seed: int) -> dict[str, Any]:
+    """Descomponer reduce el error porque cada paso es más fácil que el problema entero."""
+    rng = random.Random(seed)
+    p_paso = 0.92          # fiabilidad por paso intermedio
+    p_directo_base = 0.60  # fiabilidad al responder de una vez, para 2 pasos
+
+    filas = []
+    for pasos in (1, 2, 3, 5, 8, 12):
+        # responder de golpe: la dificultad crece con el número de operaciones ocultas
+        p_directo = p_directo_base ** (pasos / 2)
+        # cadena: cada paso es fiable, pero hay que acertarlos todos
+        p_cadena = p_paso ** pasos
+        filas.append({
+            "pasos": pasos,
+            "directo": _round(p_directo, 4),
+            "cadena": _round(p_cadena, 4),
+            "gana_cadena": p_cadena > p_directo,
+        })
+    # el cruce no está en el número de pasos sino en la FIABILIDAD por paso:
+    # por debajo de cierto umbral, descomponer empeora el resultado
+    umbral = None
+    for centesimas in range(99, 49, -1):
+        q = centesimas / 100
+        if q ** 3 <= p_directo_base ** 1.5:
+            umbral = _round(q + 0.01, 2)
+            break
+    caida = _round(filas[0]["cadena"] - filas[-1]["cadena"], 4)
+
+    # emergencia con la escala: modelos pequeños no producen cadenas válidas
+    escala = []
+    for params, calidad_paso in ((0.4, 0.55), (7.0, 0.78), (62.0, 0.90), (540.0, 0.96)):
+        p_c = calidad_paso ** 3
+        p_d = 0.60 ** 1.5
+        escala.append({
+            "parametros_miles_millones": params,
+            "cadena_3_pasos": _round(p_c, 4),
+            "directo": _round(p_d, 4),
+            "la_cadena_ayuda": p_c > p_d,
+        })
+    return _contract(
+        "cot",
+        seed,
+        {
+            "supuestos": {"fiabilidad_por_paso": p_paso, "nota": "valores DIDÁCTICOS, no del paper"},
+            "por_numero_de_pasos": filas,
+            "emergencia_con_la_escala": escala,
+            "fiabilidad_por_paso_minima_para_que_compense": umbral,
+        },
+        [
+            "Descomponer gana cuando cada paso es mucho más fiable que el problema entero: es aritmética de probabilidades, no magia.",
+            f"El cruce no está en el número de pasos sino en la calidad de cada paso: por debajo de ~{umbral} de fiabilidad, descomponer EMPEORA el resultado.",
+            f"Aun ganando, la cadena se degrada con la longitud: de {filas[0]['cadena']} a {filas[-1]['cadena']} al pasar de 1 a 12 pasos ({caida} de caída).",
+            "La cadena solo ayuda a partir de cierta calidad por paso: por eso el efecto EMERGE con la escala y no aparece en modelos pequeños.",
+        ],
+        [
+            "Las fiabilidades están fijadas a mano para exhibir el argumento; no son medidas del paper.",
+            "Aquí no hay modelo de lenguaje: se modela la fiabilidad, no se genera ningún razonamiento.",
+            "Que la cadena sea correcta no implica que el texto describa el proceso real del modelo.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P29 — Tree of Thoughts (Yao et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _tot(seed: int) -> dict[str, Any]:
+    """Explorar varias ramas y poder retroceder, en vez de una sola cadena sin vuelta atrás."""
+    rng = random.Random(seed)
+    profundidad, ramas = 3, 3
+
+    def valor(camino: tuple[int, ...]) -> float:
+        """Evaluador heurístico del estado parcial: el 'self-evaluate' del paper."""
+        r = random.Random(hash(camino) % 100_000 + seed)
+        return r.random()
+
+    def es_solucion(camino: tuple[int, ...]) -> bool:
+        return len(camino) == profundidad and valor(camino) > 0.85
+
+    def cadena_lineal() -> dict[str, Any]:
+        camino: tuple[int, ...] = ()
+        visitados = 0
+        for _ in range(profundidad):
+            mejor = max(range(ramas), key=lambda b: valor(camino + (b,)))
+            visitados += ramas
+            camino = camino + (mejor,)      # decisión IRREVERSIBLE: no hay vuelta atrás
+        return {"camino": list(camino), "nodos_evaluados": visitados, "resuelve": es_solucion(camino)}
+
+    def busqueda_en_arbol(anchura: int = 3) -> dict[str, Any]:
+        frontera: list[tuple[int, ...]] = [()]
+        visitados = 0
+        for _ in range(profundidad):
+            candidatos = [c + (b,) for c in frontera for b in range(ramas)]
+            visitados += len(candidatos)
+            frontera = sorted(candidatos, key=valor, reverse=True)[:anchura]   # poda
+        ganador = next((c for c in frontera if es_solucion(c)), frontera[0])
+        return {"camino": list(ganador), "nodos_evaluados": visitados,
+                "resuelve": es_solucion(ganador), "frontera_final": len(frontera)}
+
+    lineal = cadena_lineal()
+    arbol = busqueda_en_arbol()
+    return _contract(
+        "tot",
+        seed,
+        {
+            "profundidad": profundidad,
+            "ramas_por_paso": ramas,
+            "cadena_lineal": lineal,
+            "busqueda_en_arbol": arbol,
+            "coste_relativo": _round(arbol["nodos_evaluados"] / lineal["nodos_evaluados"], 2),
+        },
+        [
+            f"La cadena lineal evalúa {lineal['nodos_evaluados']} nodos y el árbol {arbol['nodos_evaluados']}: explorar cuesta {arbol['nodos_evaluados'] / lineal['nodos_evaluados']:.1f}× más.",
+            "La cadena toma decisiones irreversibles: una elección localmente buena y globalmente mala no se puede deshacer.",
+            "El árbol mantiene varias hipótesis vivas y poda con un evaluador: es búsqueda clásica aplicada sobre pasos de razonamiento.",
+        ],
+        [
+            "El evaluador es una función hash determinista, no un modelo juzgando estados parciales.",
+            "Sin un buen evaluador, el árbol solo multiplica el coste: la calidad de la poda es el cuello de botella real.",
+            "El paper mide en tareas concretas (Game of 24, escritura creativa, crucigramas); esto no reproduce ninguna.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P30 — Reflexion (Shinn et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _reflexion(seed: int) -> dict[str, Any]:
+    """Reintentar con memoria verbal del fallo, sin actualizar un solo peso."""
+    errores = ["olvida el caso vacío", "confunde índice inicial", "no ordena antes de comparar"]
+
+    def intentos(con_reflexion: bool, max_intentos: int = 4) -> dict[str, Any]:
+        pendientes = list(errores)
+        memoria: list[str] = []
+        traza = []
+        for intento in range(1, max_intentos + 1):
+            # sin reflexión se repite el mismo primer error una y otra vez
+            fallo = pendientes[0] if pendientes else None
+            if fallo is None:
+                traza.append({"intento": intento, "resultado": "ÉXITO", "memoria": list(memoria)})
+                return {"exito": True, "intentos_usados": intento - 1, "traza": traza}
+            traza.append({"intento": intento, "resultado": f"FALLO: {fallo}",
+                          "memoria_antes": list(memoria)})
+            if con_reflexion:
+                memoria.append(f"la próxima vez: {fallo}")
+                pendientes.pop(0)                 # la reflexión evita repetir ESE error
+        return {"exito": not pendientes, "intentos_usados": max_intentos, "traza": traza}
+
+    sin = intentos(con_reflexion=False)
+    con = intentos(con_reflexion=True)
+    return _contract(
+        "reflexion",
+        seed,
+        {
+            "errores_del_problema": errores,
+            "sin_reflexion": sin,
+            "con_reflexion": con,
+            "pesos_actualizados": 0,
+        },
+        [
+            f"Sin reflexión el agente repite el mismo fallo y no termina en 4 intentos (éxito: {sin['exito']}).",
+            f"Con memoria verbal del fallo, resuelve en {con['intentos_usados']} intentos: cada reintento parte de lo aprendido.",
+            "El aprendizaje ocurre en el CONTEXTO, no en los parámetros: cero pesos actualizados.",
+        ],
+        [
+            "La reflexión aquí es una lista; en el paper la genera el modelo y puede ser incorrecta o inútil.",
+            "Requiere una señal de fallo fiable: sin verificador, no hay nada sobre lo que reflexionar.",
+            "La memoria verbal cabe en el contexto: no escala a miles de intentos.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P31 — Generative Agents (Park et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _generative_agents(seed: int) -> dict[str, Any]:
+    """Recuperar recuerdos por relevancia + recencia + importancia, no por orden."""
+    ahora = 100
+    recuerdos = [
+        {"texto": "Isabella planea una fiesta de San Valentín", "t": 95, "importancia": 9, "temas": {"fiesta", "isabella"}},
+        {"texto": "compré café en la tienda", "t": 99, "importancia": 1, "temas": {"cafe", "tienda"}},
+        {"texto": "Klaus investiga sobre gentrificación", "t": 40, "importancia": 6, "temas": {"klaus", "investigacion"}},
+        {"texto": "María quiere ir a la fiesta con Klaus", "t": 90, "importancia": 8, "temas": {"fiesta", "maria", "klaus"}},
+        {"texto": "hoy llovió por la tarde", "t": 98, "importancia": 2, "temas": {"clima"}},
+    ]
+    consulta = {"fiesta", "klaus"}
+    decaimiento = 0.99
+
+    puntuados = []
+    for r in recuerdos:
+        relevancia = len(consulta & r["temas"]) / len(consulta)
+        recencia = decaimiento ** (ahora - r["t"])
+        importancia = r["importancia"] / 10
+        total = relevancia + recencia + importancia
+        puntuados.append({
+            "texto": r["texto"],
+            "relevancia": _round(relevancia, 3),
+            "recencia": _round(recencia, 3),
+            "importancia": _round(importancia, 3),
+            "puntuacion": _round(total, 3),
+        })
+    ranking = sorted(puntuados, key=lambda x: -x["puntuacion"])
+    solo_recencia = sorted(puntuados, key=lambda x: -x["recencia"])
+    return _contract(
+        "generative_agents",
+        seed,
+        {
+            "consulta": sorted(consulta),
+            "ranking_completo": ranking,
+            "top_con_las_tres_senales": [r["texto"] for r in ranking[:2]],
+            "top_solo_por_recencia": [r["texto"] for r in solo_recencia[:2]],
+        },
+        [
+            f"Con las tres señales, lo recuperado es «{ranking[0]['texto']}»: relevante e importante.",
+            f"Solo por recencia saldría «{solo_recencia[0]['texto']}», que es trivial y no sirve para decidir.",
+            "Una memoria útil no es un registro cronológico: necesita puntuar qué merece recordarse ahora.",
+        ],
+        [
+            "La relevancia se calcula por solapamiento de conjuntos; en el paper es similitud de embeddings.",
+            "La importancia la asigna el propio modelo en el paper; aquí está escrita a mano.",
+            "Falta la reflexión: el paper sintetiza recuerdos en conclusiones de nivel superior, que es la mitad del aporte.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P32 — Voyager (Wang et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _voyager(seed: int) -> dict[str, Any]:
+    """Guardar lo aprendido como habilidad reutilizable, no como texto en el contexto."""
+    primitivas = {"talar", "recoger", "fabricar", "colocar", "minar", "fundir"}
+    biblioteca: dict[str, list[str]] = {}
+    tareas = [
+        ("conseguir_madera", ["talar", "recoger"]),
+        ("fabricar_mesa", ["conseguir_madera", "fabricar"]),
+        ("fabricar_pico", ["conseguir_madera", "fabricar_mesa", "fabricar"]),
+        ("minar_piedra", ["fabricar_pico", "minar"]),
+        ("fabricar_horno", ["minar_piedra", "fabricar_mesa", "fabricar"]),
+    ]
+
+    def expandir(nombre: str) -> list[str]:
+        if nombre in primitivas:
+            return [nombre]
+        return [p for paso in biblioteca[nombre] for p in expandir(paso)]
+
+    curriculo = []
+    for nombre, pasos in tareas:
+        biblioteca[nombre] = pasos
+        primitivos = len(expandir(nombre))
+        reutilizadas = [p for p in pasos if p not in primitivas]
+        curriculo.append({
+            "tarea": nombre,
+            "pasos_declarados": len(pasos),
+            "acciones_primitivas_equivalentes": primitivos,
+            "habilidades_reutilizadas": reutilizadas,
+            "factor_de_compresion": _round(primitivos / len(pasos), 2),
+        })
+    ultima = curriculo[-1]
+    return _contract(
+        "voyager",
+        seed,
+        {
+            "biblioteca_final": {k: v for k, v in biblioteca.items()},
+            "curriculo": curriculo,
+            "habilidades_aprendidas": len(biblioteca),
+        },
+        [
+            f"La última tarea se declara en {ultima['pasos_declarados']} pasos pero equivale a {ultima['acciones_primitivas_equivalentes']} acciones primitivas.",
+            "Cada habilidad nueva se construye sobre las anteriores: el currículo es acumulativo, no una lista plana.",
+            "La biblioteca es memoria PROCEDIMENTAL: no ocupa contexto y se puede invocar por nombre.",
+        ],
+        [
+            "Las habilidades son listas de nombres; en el paper son programas ejecutables que el modelo escribe y depura.",
+            "El currículo está fijado; en el paper lo propone el propio agente según lo que ya sabe.",
+            "No hay entorno: nada se ejecuta ni puede fallar, que es donde está la dificultad real.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P33 — AutoGen (Wu et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _autogen(seed: int) -> dict[str, Any]:
+    """Varios agentes con roles conversando: el crítico ve lo que el autor no ve."""
+    solucion_con_fallo = {"codigo": "def media(xs): return sum(xs)/len(xs)", "casos": ["[1,2,3] → 2.0", "[] → ZeroDivisionError"]}
+
+    def un_solo_agente() -> dict[str, Any]:
+        return {"turnos": 1, "entrega": solucion_con_fallo["codigo"],
+                "fallo_detectado": None, "correcto": False}
+
+    def conversacion_multiagente() -> dict[str, Any]:
+        traza = []
+        traza.append({"rol": "planificador", "mensaje": "escribe una función media y prueba con lista vacía"})
+        traza.append({"rol": "programador", "mensaje": solucion_con_fallo["codigo"]})
+        traza.append({"rol": "crítico", "mensaje": "falla con []: ZeroDivisionError"})
+        traza.append({"rol": "programador", "mensaje": "def media(xs): return sum(xs)/len(xs) if xs else 0.0"})
+        traza.append({"rol": "crítico", "mensaje": "ahora cubre el caso vacío"})
+        return {"turnos": len(traza), "traza": traza,
+                "entrega": traza[-2]["mensaje"], "fallo_detectado": "lista vacía", "correcto": True}
+
+    solo = un_solo_agente()
+    multi = conversacion_multiagente()
+    return _contract(
+        "autogen",
+        seed,
+        {
+            "un_solo_agente": solo,
+            "multiagente": multi,
+            "coste_relativo_en_turnos": _round(multi["turnos"] / solo["turnos"], 1),
+            "roles": ["planificador", "programador", "crítico"],
+        },
+        [
+            f"El agente único entrega en 1 turno código con un fallo; la conversación lo detecta y lo corrige en {multi['turnos']}.",
+            "El crítico funciona porque tiene un rol y un objetivo DISTINTOS del que escribió el código.",
+            f"La corrección cuesta {multi['turnos']}× más turnos: multiagente no es gratis, hay que justificar el gasto.",
+        ],
+        [
+            "Los mensajes están escritos a mano; en el paper los genera un modelo y el crítico puede equivocarse o adular.",
+            "Sin criterio de parada, dos agentes pueden conversar indefinidamente: es el fallo operativo característico.",
+            "Más agentes no es mejor por defecto: hay que demostrarlo contra una línea base de un solo agente bien construido.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
 # registro
 # --------------------------------------------------------------------------- #
 
@@ -1519,6 +2205,17 @@ PAPER_RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "ssm": _ssm,
     "moe": _moe,
     "rl_reasoning": _rl_reasoning,
+    "glove": _glove,
+    "elmo": _elmo,
+    "t5": _t5,
+    "dqn": _dqn,
+    "alphago": _alphago,
+    "cot": _cot,
+    "tot": _tot,
+    "reflexion": _reflexion,
+    "generative_agents": _generative_agents,
+    "voyager": _voyager,
+    "autogen": _autogen,
 }
 
 

@@ -2024,6 +2024,632 @@ SPECS.update({
 })
 
 
+def _spec(intuicion, concepto, codigo_md, codigo, prediccion, experimento, salida, comentario,
+          antipatron_md, antipatron, correccion_md, correccion, dg_md, dg, da, evidencia, cierre):
+    """Constructor de especificación de notebook: los 13 campos del contrato."""
+    return {
+        "intuicion": intuicion, "concepto": concepto, "codigo_md": codigo_md, "codigo": codigo,
+        "prediccion": prediccion, "experimento": experimento, "salida": salida,
+        "comentario": comentario, "antipatron_md": antipatron_md, "antipatron": antipatron,
+        "correccion_md": correccion_md, "correccion": correccion, "desafio_guiado_md": dg_md,
+        "desafio_guiado": dg, "desafio_autonomo": da, "evidencia": evidencia, "cierre": cierre,
+    }
+
+
+SPECS.update({
+    "P23_glove": _spec(
+        "Word2Vec mira por una ventanita y aprende de lo que pasa cerca. GloVe cuenta primero todo "
+        "el corpus y luego busca vectores que expliquen esa tabla de conteos. Mismo destino, camino opuesto.",
+        "```text\nJ = Σ_ij  f(X_ij) · ( w_i·w̃_j + b_i + b̃_j − log X_ij )²\n\n"
+        "    X_ij = veces que j aparece en el contexto de i\n"
+        "    f(x) = (x/x_max)^0.75 si x < x_max, si no 1   ← no dejar que los pares frecuentes dominen\n```\n\n"
+        "El argumento del paper no es la fórmula sino **qué se modela**: la RAZÓN "
+        "`P(k|hielo)/P(k|vapor)` discrimina, y la co-ocurrencia bruta no.",
+        "El motor ajusta la factorización sobre una matriz de co-ocurrencia de juguete con la estructura del ejemplo del paper.",
+        "r = run_paper_lab('glove', seed=7)['result']\n"
+        "show(r['razones_de_cooocurrencia'])\n"
+        "print()\n"
+        "for f in r['ajuste_log_cooocurrencia']:\n"
+        "    print(f\"{f['par']:<16} log X = {f['log_X']:>6.3f}   predicho = {f['predicho']:>6.3f}\")",
+        "1. ¿Qué razón esperas para «sólido»: mucho mayor que 1, mucho menor, o ≈1?\n"
+        "2. ¿Y para «agua», que acompaña a hielo y a vapor por igual?\n"
+        "3. ¿Por qué haría falta una función de peso f(x)?",
+        "r = run_paper_lab('glove', seed=7)['result']\n"
+        "for p in r['perdida']:\n"
+        "    print(f\"paso {p['paso']:>3} · pérdida {p['perdida']:.5f}\")\n"
+        "print('\\nla pérdida baja: los vectores explican cada vez mejor los conteos')",
+        "Las tres razones separan limpiamente: ≫1 para lo propio del hielo, ≪1 para lo propio del vapor "
+        "y ≈1 para lo compartido. **Eso** es lo que los vectores tienen que capturar, y por eso se ajusta "
+        "al logaritmo: convierte razones en diferencias.",
+        "Trabajo posterior (Levy y Goldberg, 2015) mostró que word2vec con muestreo negativo factoriza "
+        "implícitamente una matriz relacionada. La distinción «predictivo frente a contador» resultó ser "
+        "menos profunda de lo que parecía en 2014: es un buen ejemplo de cómo una dicotomía popular se disuelve.",
+        "Anti-patrón: ajustar sin función de peso. Los pares muy frecuentes («de», «la») dominan la pérdida y aplastan a los informativos.",
+        "x_max, alpha = 100.0, 0.75\n"
+        "for x in (1, 5, 50, 100, 5000):\n"
+        "    f = (x / x_max) ** alpha if x < x_max else 1.0\n"
+        "    print(f'X_ij={x:>5} → peso {f:.4f}' + ('   ← saturado, no crece más' if x >= x_max else ''))",
+        "Con la función de peso, un par que aparece 5 000 veces no pesa 50× más que uno de 100:",
+        "sin_peso = {x: x for x in (1, 100, 5000)}\n"
+        "con_peso = {x: (min(x, 100) / 100) ** 0.75 for x in (1, 100, 5000)}\n"
+        "print('sin peso :', sin_peso, ' ← el par de 5000 domina la pérdida')\n"
+        "print('con peso :', {k: round(v, 3) for k, v in con_peso.items()})",
+        "Comprueba que los pares raros (X_ij pequeño) también aportan poco: la función de peso los atenúa por el otro extremo.",
+        "for x in (1, 2, 3, 10):\n"
+        "    print(f'X_ij={x:>3} → peso {(x / 100) ** 0.75:.4f}  (ruido estadístico, se atenúa)')",
+        "Construye la matriz de co-ocurrencia de un corpus público pequeño, entrena GloVe y word2vec con "
+        "la misma dimensión, y compara ambos en un conjunto de analogías propio. Reporta también el tiempo "
+        "de entrenamiento: es el argumento práctico que más pesó en su momento.",
+        "Guarda la tabla de razones, el ajuste log X frente a predicho, y tu explicación de por qué se "
+        "modela el logaritmo y no la co-ocurrencia directa.",
+        "Las palabras ya tienen geometría global. Pero siguen teniendo **un solo vector por palabra**, y "
+        "eso sigue sin resolver la polisemia.",
+    ),
+    "P24_elmo": _spec(
+        "Un diccionario da una entrada por palabra. Un lector da un significado por aparición. ELMo deja "
+        "de ser diccionario: el vector de «banco» se calcula leyendo la frase entera.",
+        "```text\nEstático (P05, P23):   v(banco) = siempre el mismo vector\n\n"
+        "ELMo:  ELMo_k = γ · Σ_j s_j · h_{k,j}\n\n"
+        "    h_{k,j} = estado de la capa j del LM bidireccional en la posición k\n"
+        "    s_j     = pesos por capa, APRENDIDOS para cada tarea\n```\n\n"
+        "Las capas bajas capturan sintaxis y las altas semántica, así que cada tarea aprende **cuánto "
+        "pesa cada capa** en vez de recibir una mezcla fija.",
+        "El motor calcula el vector de «banco» en tres frases con sentidos distintos, de forma estática y contextual.",
+        "r = run_paper_lab('elmo', seed=7)['result']\n"
+        "for c in r['contextos']:\n"
+        "    print(' ·', c)\n"
+        "print('\\nestático   :', r['similitud_estatica'])\n"
+        "print('contextual :', r['similitud_contextual'])",
+        "1. ¿Cuánto valdrá el coseno entre las tres apariciones con embedding estático?\n"
+        "2. ¿Qué dos sentidos deberían quedar más cerca entre sí: parque/río o parque/central?\n"
+        "3. ¿Por qué combinar varias capas en vez de usar solo la última?",
+        "r = run_paper_lab('elmo', seed=7)['result']\n"
+        "e, c = r['similitud_estatica'], r['similitud_contextual']\n"
+        "for par in e:\n"
+        "    print(f'{par:<20} estático {e[par]:+.3f} → contextual {c[par]:+.3f} '\n"
+        "          f'(separación {e[par] - c[par]:+.3f})')",
+        "Con embedding estático los tres cosenos valen 1,0: son literalmente el mismo vector. Con "
+        "representación contextual bajan, y bajan **de forma desigual**: los sentidos parecidos quedan "
+        "más cerca que los distantes. Eso es lo que un clasificador aguas abajo puede aprovechar.",
+        "ELMo se usaba como **características congeladas**: se calculaban los vectores y se alimentaban a "
+        "un modelo específico de tarea. BERT, meses después, ajustaría el modelo entero. La diferencia "
+        "entre «extraer características» y «ajustar todo» define dos épocas del PLN.",
+        "Anti-patrón: usar solo la última capa porque «es la más profunda».",
+        "capas = {'capa 0 (tokens)': 'morfología y ortografía',\n"
+        "         'capa 1 (baja)': 'sintaxis: categoría gramatical, dependencias',\n"
+        "         'capa 2 (alta)': 'semántica: sentido en contexto'}\n"
+        "for k, v in capas.items():\n"
+        "    print(f'{k:<18} → {v}')\n"
+        "print('\\nUna tarea de etiquetado gramatical quiere la capa baja, no la alta.')",
+        "La corrección es dejar que la tarea decida los pesos por capa:",
+        "import math\n"
+        "for tarea, s in (('etiquetado gramatical', [0.2, 0.6, 0.2]),\n"
+        "                 ('respuesta a preguntas', [0.1, 0.3, 0.6])):\n"
+        "    print(f'{tarea:<24} pesos por capa {s} (suman {sum(s):.1f})')",
+        "Añade una cuarta frase con «banco» en el sentido de asiento y comprueba con cuál de las tres se agrupa.",
+        "r = run_paper_lab('elmo', seed=7)['result']\n"
+        "print('sentidos distinguidos:', r['sentidos_distinguidos'])\n"
+        "print('el par más separado es el de sentidos más distintos:')\n"
+        "for par, v in sorted(r['similitud_contextual'].items(), key=lambda kv: kv[1]):\n"
+        "    print(f'  {par:<20} {v:+.3f}')",
+        "Con un modelo contextual abierto y ejecutable localmente, toma 30 frases con una palabra polisémica "
+        "y agrupa sus vectores. Comprueba si los grupos se corresponden con los sentidos del diccionario y "
+        "documenta los casos donde no.",
+        "Guarda las similitudes estática y contextual, la explicación de por qué se combinan capas y tu "
+        "cuarta frase con el resultado de agrupamiento.",
+        "Las representaciones ya dependen del contexto. Falta unificar **las tareas**: cada una seguía "
+        "necesitando su propia cabeza y su propio formato.",
+    ),
+    "P25_t5": _spec(
+        "Cinco tareas, cinco arquitecturas, cinco formatos, cinco métricas. T5 pregunta: ¿y si todas "
+        "fueran «te doy un texto, devuélveme un texto»? Entonces solo hay un modelo y una pérdida.",
+        "```text\nAntes:\n"
+        "    clasificar → cabeza con 2 logits + entropía cruzada\n"
+        "    regresión  → cabeza lineal + error cuadrático\n"
+        "    extracción → dos cabezas (inicio, fin) + entropía cruzada\n"
+        "    generación → decoder + verosimilitud\n\n"
+        "T5:\n"
+        "    TODO      → texto de entrada con prefijo → texto de salida\n"
+        "    pérdida   → maximizar log p(texto_salida | texto_entrada)\n```",
+        "El motor muestra cinco tareas reescritas al mismo formato.",
+        "r = run_paper_lab('t5', seed=7)['result']\n"
+        "for t in r['tareas']:\n"
+        "    print(f\"{t['tarea']:<26} antes: {t['clasico']}\")\n"
+        "    print(f\"{'':<26} in : {t['entrada'][:62]}\")\n"
+        "    print(f\"{'':<26} out: {t['salida']}\\n\")",
+        "1. ¿Cómo se emite una regresión (un número real) como texto?\n"
+        "2. ¿Qué se pierde al hacerlo?\n"
+        "3. Si todas las tareas comparten pérdida, ¿qué distingue una de otra?",
+        "r = run_paper_lab('t5', seed=7)['result']\n"
+        "print('cabezas específicas antes :', r['cabezas_especificas_antes'])\n"
+        "print('cabezas específicas después:', r['cabezas_especificas_despues'])\n"
+        "print('objetivo único            :', r['objetivo_unico'])\n"
+        "print('lo único que cambia       :', r['que_cambia_por_tarea'])",
+        "Cinco tipos de cabeza distintos se reducen a cero. Lo único que distingue una tarea de otra es el "
+        "**prefijo del texto de entrada**. Eso es lo que permite el estudio sistemático del paper: se "
+        "pueden comparar objetivos, arquitecturas y corpus sin que la métrica cambie de significado.",
+        "La contribución más citada es el marco, pero la más valiosa es el **estudio**: decenas de "
+        "experimentos controlados comparando objetivos de preentrenamiento, arquitecturas y tamaños de "
+        "corpus. Es un paper de ingeniería empírica rigurosa, no una idea suelta.",
+        "Anti-patrón: emitir números como texto sin pensar en la precisión.",
+        "for real in (4.2, 4.25, 0.333333, 12345.678):\n"
+        "    print(f'valor {real:<12} → texto \"{real:.1f}\"  (se pierde todo lo que sigue)')",
+        "Por eso el paper discretiza la escala de la tarea de similitud a incrementos fijos:",
+        "def discretizar(x, paso=0.2):\n"
+        "    return round(round(x / paso) * paso, 1)\n"
+        "for real in (4.2, 4.25, 4.31, 4.9):\n"
+        "    print(f'{real} → {discretizar(real)}  (el modelo solo tiene que acertar una de 26 clases)')",
+        "Reescribe una tarea propia al formato texto → texto y define su prefijo.",
+        "mi_tarea = {'prefijo': 'detectar sentimiento: ',\n"
+        "            'entrada': 'detectar sentimiento: el envío llegó tarde y roto',\n"
+        "            'salida': 'negativo'}\n"
+        "show(mi_tarea)\n"
+        "print('¿qué cabeza específica necesita este modelo? ninguna')",
+        "Toma tres tareas de un benchmark público, reescríbelas al formato texto → texto y ajusta un modelo "
+        "pequeño de encoder-decoder abierto. Compara con entrenar tres modelos con cabezas específicas: "
+        "reporta exactitud, parámetros totales y tiempo.",
+        "Guarda las cinco tareas reescritas, la cuenta de cabezas antes y después, y tu explicación del "
+        "coste de precisión al emitir números como texto.",
+        "Un formato único para todas las tareas de texto. La siguiente pregunta ya no es de formato sino de "
+        "**decisión**: qué hacer, en qué orden, y cómo saber si salió bien.",
+    ),
+    "P26_dqn": _spec(
+        "Aprender a jugar sin que nadie te explique las reglas: pruebas, ves el marcador, y ajustas. El "
+        "problema es que si aprendes solo de lo último que acabas de hacer, te obsesionas con ello y "
+        "olvidas lo demás.",
+        "```text\nQ-learning:   Q(s,a) ← Q(s,a) + α·[ r + γ·max_a' Q(s',a') − Q(s,a) ]\n\n"
+        "Dos estabilizaciones que aporta el paper:\n"
+        "  · repetición de experiencia: guardar (s,a,r,s') y muestrear un LOTE al azar\n"
+        "      → rompe la correlación entre muestras consecutivas\n"
+        "  · red objetivo: usar una copia CONGELADA de Q para calcular el objetivo\n"
+        "      → el blanco deja de moverse mientras se dispara\n```",
+        "El motor entrena Q tabular en una rejilla 4×4, con y sin las dos estabilizaciones.",
+        "r = run_paper_lab('dqn', seed=7)['result']\n"
+        "print('entorno:', r['entorno'], '\\n')\n"
+        "show(r['con_replay_y_red_objetivo'])\n"
+        "show(r['sin_replay_ni_red_objetivo'])",
+        "1. ¿Cuál es el número mínimo de pasos de (0,0) a (3,3) moviéndose en cruz?\n"
+        "2. ¿Cuál de las dos configuraciones se acercará más a ese óptimo?\n"
+        "3. ¿Por qué aprender de transiciones consecutivas es un problema?",
+        "for semilla in (1, 7, 42):\n"
+        "    r = run_paper_lab('dqn', seed=semilla)['result']\n"
+        "    con = r['con_replay_y_red_objetivo']['pasos_medios_ultimos_50']\n"
+        "    sin = r['sin_replay_ni_red_objetivo']['pasos_medios_ultimos_50']\n"
+        "    print(f'semilla {semilla:>2} · con estabilizaciones {con:.2f} · sin ellas {sin:.2f} '\n"
+        "          f'· óptimo 6')",
+        "Con las dos estabilizaciones la política converge cerca del óptimo. Sin ellas queda peor y con más "
+        "varianza entre semillas. **La contribución del paper no es Q-learning** —que es de 1989— sino "
+        "hacerlo estable cuando la función Q es una red neuronal.",
+        "Fíjate en lo que el paper NO cambia: la misma arquitectura y los mismos hiperparámetros en decenas "
+        "de juegos distintos. Esa uniformidad es la afirmación fuerte —generalidad— y es más difícil de "
+        "conseguir que un buen resultado en un juego concreto.",
+        "Anti-patrón: mover el objetivo mientras se persigue. Sin red congelada, cada actualización cambia el blanco de la siguiente.",
+        "Q = 0.0\n"
+        "print('sin red objetivo — el blanco se mueve con cada paso:')\n"
+        "for i in range(5):\n"
+        "    objetivo = 1.0 + 0.95 * Q      # el objetivo depende de la MISMA Q que se actualiza\n"
+        "    Q += 0.5 * (objetivo - Q)\n"
+        "    print(f'  paso {i}: objetivo={objetivo:.4f}  Q={Q:.4f}')",
+        "Con una copia congelada, el blanco se queda quieto entre sincronizaciones:",
+        "Q, Q_obj = 0.0, 0.0\n"
+        "print('con red objetivo — el blanco solo cambia al sincronizar:')\n"
+        "for i in range(5):\n"
+        "    objetivo = 1.0 + 0.95 * Q_obj\n"
+        "    Q += 0.5 * (objetivo - Q)\n"
+        "    if i == 2:\n"
+        "        Q_obj = Q\n"
+        "        print('  --- sincronización ---')\n"
+        "    print(f'  paso {i}: objetivo={objetivo:.4f}  Q={Q:.4f}')",
+        "Sube la tasa de exploración ε y observa el compromiso entre explorar y explotar.",
+        "for eps in (0.0, 0.05, 0.2, 0.6):\n"
+        "    print(f'ε={eps:<5} → ' + ('nunca descubre rutas nuevas' if eps == 0 else\n"
+        "          'explora demasiado, no explota lo aprendido' if eps > 0.5 else 'equilibrio razonable'))",
+        "Implementa DQN con una red pequeña sobre un entorno de control clásico y de código abierto. Mide "
+        "la curva de recompensa con y sin repetición de experiencia, con tres semillas, y reporta la "
+        "varianza además de la media.",
+        "Guarda la comparación con y sin estabilizaciones en tres semillas, y tu explicación de por qué "
+        "un objetivo móvil desestabiliza el aprendizaje.",
+        "Ya hay un agente que aprende a decidir por recompensa. Pero en juegos con un espacio enorme, "
+        "probar no basta: hay que **buscar**.",
+    ),
+    "P27_alphago": _spec(
+        "Un buen jugador no calcula todas las jugadas: su intuición descarta el 99 % y solo analiza a "
+        "fondo las tres o cuatro que valen la pena. AlphaGo hace exactamente eso: una red da la intuición, "
+        "la búsqueda hace el análisis.",
+        "```text\nred de políticas p(a|s)   → qué jugadas merecen considerarse (reduce la ANCHURA)\n"
+        "red de valor    v(s)      → cómo de buena es esta posición (reduce la PROFUNDIDAD)\n"
+        "búsqueda MCTS             → combina ambas, simula y decide\n```\n\n"
+        "Sin el prior, la búsqueda se dispersa en un factor de ramificación inabordable. Sin la búsqueda, "
+        "el prior propone pero **no verifica nada**.",
+        "El motor juega una posición de tres en raya con prior heurístico, con y sin búsqueda guiada.",
+        "r = run_paper_lab('alphago', seed=7)['result']\n"
+        "print('posición:', r['posicion'])\n"
+        "print('solo política     → casilla', r['solo_politica'])\n"
+        "print('política+búsqueda → casilla', r['politica_mas_busqueda'])\n"
+        "show(r['valores_estimados_por_busqueda'])",
+        "1. ¿Cuál es la respuesta correcta cuando el rival ocupa el centro?\n"
+        "2. ¿Qué información tiene la búsqueda que el prior no tiene?\n"
+        "3. ¿Por qué el prior sigue siendo necesario si la búsqueda evalúa?",
+        "for semilla in (1, 7, 42):\n"
+        "    r = run_paper_lab('alphago', seed=semilla)['result']\n"
+        "    print(f\"semilla {semilla:>2} · prior {r['solo_politica']} · búsqueda {r['politica_mas_busqueda']} \"\n"
+        "          f\"· ambas esquina: {r['ambas_eligen_esquina']}\")",
+        "Ambas eligen esquina, pero solo la búsqueda produce **un número por casilla**. Esa es la "
+        "diferencia operativa: una preferencia no se puede comparar ni auditar; una estimación de valor, sí. "
+        "Y con más simulaciones, esa estimación mejora — el prior no mejora con nada.",
+        "AlphaGo es donde se juntan las dos tradiciones que el programa enseña por separado: la búsqueda "
+        "simbólica de la parte 01 y el aprendizaje profundo de la parte 04. Ninguna de las dos habría "
+        "bastado sola, y eso es lo que hay que llevarse.",
+        "Anti-patrón: presentarlo como «la red neuronal venció al campeón». La red sola no vence a nadie.",
+        "print('Sin busqueda: la red propone la jugada mas plausible SEGUN PARTIDAS VISTAS.')\n"
+        "print('No comprueba si funciona en ESTA posicion concreta.')\n"
+        "print('El titulo del paper nombra las dos piezas: redes profundas Y busqueda en arbol.')",
+        "La formulación correcta separa las tres contribuciones:",
+        "contribuciones = {\n"
+        "    'red de políticas': 'reduce la anchura del árbol proponiendo jugadas plausibles',\n"
+        "    'red de valor': 'reduce la profundidad evaluando posiciones sin llegar al final',\n"
+        "    'MCTS': 'usa ambas para repartir un presupuesto de simulaciones y decidir',\n"
+        "    'autojuego': 'genera los datos con los que se refinan las redes',\n"
+        "}\n"
+        "show(contribuciones)",
+        "Reparte el presupuesto de simulaciones de forma uniforme en vez de según el prior y compara.",
+        "libres = 8\n"
+        "for presupuesto in (8, 40, 200):\n"
+        "    print(f'{presupuesto:>3} simulaciones · uniforme: {presupuesto // libres} por jugada '\n"
+        "          f'· guiado: hasta {int(presupuesto * 0.25)} en la más prometedora')",
+        "Implementa MCTS con UCT sobre tres en raya o conecta-4, con y sin prior heurístico. Mide la tasa "
+        "de victoria frente a un oponente aleatorio en función del número de simulaciones, y localiza a "
+        "partir de cuántas el prior deja de aportar.",
+        "Guarda las jugadas elegidas por ambos métodos, los valores estimados por la búsqueda y tu "
+        "explicación de qué reduce la anchura y qué reduce la profundidad.",
+        "Búsqueda y aprendizaje ya colaboran en un juego con reglas. Trasladar eso al **lenguaje**, donde "
+        "no hay reglas ni marcador, exige otra idea.",
+    ),
+    "P28_chain_of_thought": _spec(
+        "Pedir el resultado de una multiplicación de tres cifras «de cabeza» falla; pedirla por pasos, no. "
+        "No es que el modelo sepa más: es que le has dado sitio donde hacer la cuenta.",
+        "```text\nDirecto:   pregunta → respuesta\n"
+        "Cadena :   pregunta → paso 1 → paso 2 → … → respuesta\n```\n\n"
+        "La aritmética de por qué funciona:\n\n"
+        "```text\nP(acertar directo)  ≈ dificultad del problema entero\n"
+        "P(acertar cadena)   ≈ (fiabilidad por paso)^n\n```\n\n"
+        "Descomponer gana **si y solo si** cada paso es mucho más fiable que el problema completo. Por eso "
+        "no funciona en modelos pequeños: sus pasos no son suficientemente buenos.",
+        "El motor modela ambas probabilidades y localiza el umbral de fiabilidad por paso.",
+        "r = run_paper_lab('cot', seed=7)['result']\n"
+        "show(r['supuestos'])\n"
+        "print()\n"
+        "for f in r['por_numero_de_pasos']:\n"
+        "    print(f\"{f['pasos']:>2} pasos · directo {f['directo']:.4f} · cadena {f['cadena']:.4f} \"\n"
+        "          f\"· gana cadena: {f['gana_cadena']}\")",
+        "1. ¿La cadena gana siempre, o hay un número de pasos a partir del cual pierde?\n"
+        "2. ¿De qué depende realmente que compense: del número de pasos o de la calidad de cada uno?\n"
+        "3. ¿Por qué el efecto no aparece en modelos pequeños?",
+        "r = run_paper_lab('cot', seed=7)['result']\n"
+        "print('umbral de fiabilidad por paso:', r['fiabilidad_por_paso_minima_para_que_compense'])\n"
+        "print()\n"
+        "for e in r['emergencia_con_la_escala']:\n"
+        "    print(f\"{e['parametros_miles_millones']:>6} MM parámetros · cadena {e['cadena_3_pasos']:.4f} \"\n"
+        "          f\"· directo {e['directo']:.4f} · ayuda: {e['la_cadena_ayuda']}\")",
+        "El cruce **no está en el número de pasos** sino en la fiabilidad de cada uno. Por debajo del "
+        "umbral, descomponer empeora: multiplicas errores. Por encima, mejora. Y como la fiabilidad por "
+        "paso crece con la escala del modelo, el efecto **emerge**: no es que aparezca una capacidad "
+        "mágica, es que un producto de números cruza un umbral.",
+        "Ojo con la palabra «emergencia». Aquí se puede explicar con probabilidad elemental. Trabajo "
+        "posterior discutió si muchas capacidades «emergentes» lo son de verdad o son artefactos de "
+        "métricas discontinuas (acertar/fallar) que ocultan una mejora continua.",
+        "Anti-patrón: leer la cadena como una explicación del proceso interno del modelo.",
+        "print('La cadena es TEXTO GENERADO, optimizado para que la respuesta final sea correcta.')\n"
+        "print('Puede contener pasos invalidos y llegar al resultado correcto, o al reves.')\n"
+        "print('Sirve para depurar y para dar sitio al calculo; no es un certificado.')",
+        "Lo que sí se puede afirmar, y cómo comprobarlo:",
+        "auditoria = {\n"
+        "    'comprobable': 'la respuesta final, contra la solución conocida',\n"
+        "    'no_comprobable_sin_trabajo': 'la validez de cada paso intermedio',\n"
+        "    'como_reforzarlo': ['muestrear varias cadenas y votar (autoconsistencia)',\n"
+        "                         'ejecutar el cálculo con una herramienta externa'],\n"
+        "}\n"
+        "show(auditoria)",
+        "Calcula cuántos pasos aguanta una cadena antes de bajar del 50 % de fiabilidad, para varias calidades por paso.",
+        "import math\n"
+        "for q in (0.80, 0.90, 0.95, 0.99):\n"
+        "    n = math.floor(math.log(0.5) / math.log(q))\n"
+        "    print(f'fiabilidad por paso {q:.2f} → aguanta {n:>3} pasos por encima del 50%')",
+        "Con un modelo abierto pequeño y un conjunto de problemas aritméticos, compara respuesta directa "
+        "frente a cadena de pensamiento. Mide además cuántas cadenas contienen un paso inválido pero "
+        "llegan al resultado correcto: esa tasa es la que desmonta la lectura ingenua.",
+        "Guarda la tabla directo/cadena, el umbral de fiabilidad y tu explicación de por qué la emergencia "
+        "aquí es aritmética y no magia.",
+        "Razonar en línea recta ayuda, pero no permite volver atrás. Si un paso intermedio es malo, toda la "
+        "cadena se pierde — y ahí entra la búsqueda.",
+    ),
+    "P29_tree_of_thoughts": _spec(
+        "Una cadena de pensamiento es como escribir a bolígrafo: si el tercer paso está mal, sigues "
+        "adelante con él. Un árbol es escribir a lápiz con varias hojas: exploras, comparas y borras.",
+        "```text\nCadena :  s₀ → s₁ → s₂ → s₃            una rama, sin vuelta atrás\n"
+        "Árbol  :  s₀ → {s₁ᵃ, s₁ᵇ, s₁ᶜ} → …     varias ramas, con evaluación y poda\n```\n\n"
+        "Tres piezas necesarias: **generar** candidatos, **evaluar** estados parciales (el propio modelo "
+        "juzga «esto promete / esto no lleva a nada») y una **estrategia de búsqueda** (anchura, "
+        "profundidad, poda).",
+        "El motor compara una cadena lineal con una búsqueda en árbol con poda sobre el mismo espacio.",
+        "r = run_paper_lab('tot', seed=7)['result']\n"
+        "print('profundidad:', r['profundidad'], '· ramas por paso:', r['ramas_por_paso'], '\\n')\n"
+        "show(r['cadena_lineal'])\n"
+        "show(r['busqueda_en_arbol'])\n"
+        "print('\\ncoste relativo:', r['coste_relativo'], 'x')",
+        "1. ¿Cuántos nodos evalúa una cadena de profundidad 3 con 3 ramas? ¿Y un árbol con anchura 3?\n"
+        "2. ¿Qué gana el árbol a cambio de ese coste?\n"
+        "3. Si el evaluador fuera aleatorio, ¿serviría de algo explorar?",
+        "for anchura in (1, 2, 3, 5):\n"
+        "    nodos = sum(min(3 ** (d + 1), anchura * 3) for d in range(3))\n"
+        "    print(f'anchura {anchura} → ~{nodos:>2} nodos evaluados '\n"
+        "          f\"({'equivale a la cadena lineal' if anchura == 1 else 'mantiene alternativas vivas'})\")",
+        "Con anchura 1, el árbol **es** la cadena lineal: ese es el caso límite. Cada unidad de anchura "
+        "multiplica el coste y compra la posibilidad de recuperarse de un mal paso. El compromiso es "
+        "explícito y se puede presupuestar.",
+        "La pieza frágil es el **evaluador**. Si el modelo no sabe juzgar estados parciales, el árbol solo "
+        "multiplica el gasto. Por eso ToT funciona bien en problemas donde el progreso parcial es "
+        "verificable (Game of 24, crucigramas) y peor donde no lo es.",
+        "Anti-patrón: aumentar la anchura para «buscar mejor», sin comprobar la calidad del evaluador.",
+        "import random\n"
+        "rng = random.Random(0)\n"
+        "for calidad in (0.5, 0.7, 0.95):\n"
+        "    aciertos = sum(1 for _ in range(1000) if rng.random() < calidad)\n"
+        "    print(f'evaluador con {calidad:.0%} de acierto → poda correcta {aciertos/10:.1f}% de las veces')\n"
+        "print('\\ncon un evaluador al 50% la poda es una moneda: gastas 3x y no ganas nada')",
+        "La corrección es medir el evaluador **antes** de pagar la búsqueda:",
+        "protocolo = {\n"
+        "    'paso_1': 'medir la calidad del evaluador sobre estados parciales con solución conocida',\n"
+        "    'paso_2': 'si acierta poco, mejorar el evaluador ANTES de ampliar la búsqueda',\n"
+        "    'paso_3': 'fijar presupuesto de nodos y reportarlo junto con la exactitud',\n"
+        "}\n"
+        "show(protocolo)",
+        "Comprueba el caso límite: con anchura 1 el árbol debe comportarse exactamente como la cadena.",
+        "r = run_paper_lab('tot', seed=7)['result']\n"
+        "print('cadena lineal   :', r['cadena_lineal']['nodos_evaluados'], 'nodos')\n"
+        "print('árbol anchura 3 :', r['busqueda_en_arbol']['nodos_evaluados'], 'nodos')\n"
+        "print('frontera final  :', r['busqueda_en_arbol']['frontera_final'], 'hipótesis vivas')",
+        "Implementa ToT sobre el juego de las 24 con un modelo abierto: genera candidatos, haz que el "
+        "modelo clasifique cada estado parcial como «seguro / quizá / imposible», y compara la tasa de "
+        "éxito frente a cadena simple. Reporta también el número de llamadas al modelo.",
+        "Guarda la comparación de nodos evaluados, el caso límite de anchura 1 y tu protocolo para medir "
+        "el evaluador antes de pagar la búsqueda.",
+        "Deliberar mejor dentro de un intento. Falta aprender **entre** intentos: que fallar una vez sirva "
+        "para la siguiente.",
+    ),
+    "P30_reflexion": _spec(
+        "Un agente sin memoria de sus fallos es alguien que repite el mismo error con entusiasmo. "
+        "Reflexion añade lo mínimo para romper el bucle: escribir qué salió mal y leerlo antes de reintentar.",
+        "```text\nBucle sin reflexión:   intento → falla → intento (idéntico) → falla → …\n\n"
+        "Bucle con reflexión:   intento → falla → REFLEXIÓN («olvidé el caso vacío»)\n"
+        "                       → memoria → intento (condicionado) → …\n```\n\n"
+        "No hay gradientes. La política mejora porque **el contexto del siguiente intento es distinto**: "
+        "es refuerzo, pero expresado en lenguaje.",
+        "El motor compara cuatro intentos con y sin memoria verbal del fallo.",
+        "r = run_paper_lab('reflexion', seed=7)['result']\n"
+        "print('errores del problema:', r['errores_del_problema'], '\\n')\n"
+        "print('SIN reflexión:')\n"
+        "for t in r['sin_reflexion']['traza']:\n"
+        "    print('  ', t)\n"
+        "print('\\nCON reflexión:')\n"
+        "for t in r['con_reflexion']['traza']:\n"
+        "    print('  ', t)",
+        "1. ¿Cuántos intentos necesita el agente sin memoria para superar tres errores distintos?\n"
+        "2. ¿Cuántos con memoria?\n"
+        "3. ¿Cuántos pesos se actualizan en el proceso?",
+        "r = run_paper_lab('reflexion', seed=7)['result']\n"
+        "print('pesos actualizados:', r['pesos_actualizados'])\n"
+        "print('sin reflexión → éxito:', r['sin_reflexion']['exito'],\n"
+        "      '· intentos:', r['sin_reflexion']['intentos_usados'])\n"
+        "print('con reflexión → éxito:', r['con_reflexion']['exito'],\n"
+        "      '· intentos:', r['con_reflexion']['intentos_usados'])",
+        "Sin memoria, el agente no termina: repite el primer fallo indefinidamente. Con memoria, cada "
+        "intento elimina un error y converge. Y **cero pesos actualizados**: todo el aprendizaje vive en "
+        "el contexto, lo que lo hace barato, inmediato y también efímero.",
+        "El método depende por completo de tener una **señal de fallo fiable**: un test que falle, un "
+        "compilador que proteste, un entorno que devuelva error. Sin verificador no hay sobre qué "
+        "reflexionar, y la reflexión degenera en autoafirmación.",
+        "Anti-patrón: reflexionar sin señal externa, dejando que el modelo juzgue su propio trabajo sin evidencia.",
+        "print('«Revisa tu respuesta y mejórala» sin ejecutar nada:')\n"
+        "print('  - el modelo suele declararse satisfecho, o cambia cosas al azar')\n"
+        "print('  - sin senal externa, la reflexion no tiene informacion nueva que incorporar')",
+        "La corrección es anclar la reflexión en una observación verificable:",
+        "ciclo = {\n"
+        "    '1_ejecutar': 'correr los tests / el código / la consulta',\n"
+        "    '2_observar': 'capturar el error concreto, no una impresión',\n"
+        "    '3_reflexionar': 'escribir qué causó ESE error',\n"
+        "    '4_reintentar': 'con la reflexión en el contexto',\n"
+        "    'criterio_de_parada': 'máximo de intentos + detección de reflexión repetida',\n"
+        "}\n"
+        "show(ciclo)",
+        "Comprueba qué pasa si la memoria crece sin límite: el contexto es finito.",
+        "for intentos in (3, 10, 50, 200):\n"
+        "    tokens = intentos * 80\n"
+        "    print(f'{intentos:>3} intentos → ~{tokens:>6} tokens de memoria verbal '\n"
+        "          f\"({'cabe' if tokens < 8000 else 'ya no cabe: hay que resumir o priorizar'})\")",
+        "Implementa Reflexion sobre un conjunto de ejercicios de programación con tests. Mide la tasa de "
+        "éxito acumulada por número de intentos, con y sin reflexión, y cuenta cuántas reflexiones son "
+        "realmente accionables frente a genéricas («ser más cuidadoso»).",
+        "Guarda ambas trazas, el número de pesos actualizados y tu ciclo de reflexión anclado en "
+        "observación verificable.",
+        "El agente ya aprende de sus fallos dentro de una tarea. Falta que recuerde **entre** tareas y a "
+        "lo largo del tiempo.",
+    ),
+    "P31_generative_agents": _spec(
+        "Una persona no recuerda su día en orden cronológico: recuerda lo que viene a cuento. Si un agente "
+        "guarda todo y recupera lo último, recordará que compró café en vez de que mañana hay una fiesta.",
+        "```text\npuntuación(recuerdo) = relevancia + recencia + importancia\n\n"
+        "    relevancia  = similitud con la consulta actual\n"
+        "    recencia    = decaimiento exponencial desde la última vez que se accedió\n"
+        "    importancia = cuán significativo es el recuerdo en sí (lo puntúa el modelo)\n```\n\n"
+        "Y encima, **reflexión**: sintetizar periódicamente los recuerdos en conclusiones de nivel "
+        "superior («Klaus está muy metido en su investigación»), que a su vez se guardan como recuerdos.",
+        "El motor puntúa cinco recuerdos ante una consulta, con las tres señales y solo con recencia.",
+        "r = run_paper_lab('generative_agents', seed=7)['result']\n"
+        "print('consulta:', r['consulta'], '\\n')\n"
+        "for m in r['ranking_completo']:\n"
+        "    print(f\"{m['puntuacion']:.3f} = rel {m['relevancia']:.2f} + rec {m['recencia']:.3f} \"\n"
+        "          f\"+ imp {m['importancia']:.2f}  ← {m['texto']}\")",
+        "1. ¿Qué recuerdo debería recuperarse ante una consulta sobre la fiesta y Klaus?\n"
+        "2. ¿Cuál saldría si ordenáramos solo por lo más reciente?\n"
+        "3. ¿Qué señal evita que un recuerdo trivial y reciente gane?",
+        "r = run_paper_lab('generative_agents', seed=7)['result']\n"
+        "print('con las tres señales :', r['top_con_las_tres_senales'])\n"
+        "print('solo por recencia    :', r['top_solo_por_recencia'])",
+        "Con las tres señales sube lo relevante e importante. Solo por recencia sube lo trivial. Una "
+        "memoria útil **no es un registro cronológico**: es un sistema de recuperación con criterio, y "
+        "ese criterio hay que diseñarlo.",
+        "Este paper se suele contar como «una simulación tipo Los Sims con LLM». Lo que importa "
+        "técnicamente es otra cosa: es de los primeros que trata la **memoria de un agente de larga "
+        "duración** como un problema de recuperación con puntuación, no como un log que se concatena.",
+        "Anti-patrón: meter toda la historia en el contexto porque «el contexto ya es grande».",
+        "for horas in (1, 8, 24, 168):\n"
+        "    eventos = horas * 30\n"
+        "    tokens = eventos * 25\n"
+        "    print(f'{horas:>3} h de vida → ~{eventos:>5} eventos → ~{tokens:>7} tokens '\n"
+        "          f\"({'cabe' if tokens < 100000 else 'imposible: hay que recuperar, no concatenar'})\")",
+        "La corrección es separar almacenamiento de recuperación, y puntuar:",
+        "arquitectura = {\n"
+        "    'flujo_de_memoria': 'todo se guarda, con marca de tiempo e importancia',\n"
+        "    'recuperacion': 'se puntúa por relevancia + recencia + importancia y se toma el top-k',\n"
+        "    'reflexion': 'periódicamente se sintetizan recuerdos en conclusiones de alto nivel',\n"
+        "    'lo_que_entra_al_contexto': 'solo el top-k recuperado, no el flujo completo',\n"
+        "}\n"
+        "show(arquitectura)",
+        "Cambia el factor de decaimiento y observa cuánto pesa la recencia frente a la importancia.",
+        "for decaimiento in (0.90, 0.99, 0.999):\n"
+        "    print(f'decaimiento {decaimiento}:')\n"
+        "    for antiguedad in (1, 10, 60):\n"
+        "        print(f'   hace {antiguedad:>2} pasos → recencia {decaimiento ** antiguedad:.4f}')",
+        "Implementa un flujo de memoria con recuperación puntuada para un asistente que registre tu propia "
+        "actividad durante una semana. Compara la utilidad de lo recuperado con las tres señales frente a "
+        "solo similitud, sobre 20 consultas reales tuyas.",
+        "Guarda el ranking con las tres señales, el que sale solo por recencia, y tu explicación de por qué "
+        "concatenar el historial no escala.",
+        "El agente ya recuerda lo pertinente. Falta que lo aprendido se convierta en **capacidad "
+        "reutilizable**, no solo en texto que recordar.",
+    ),
+    "P32_voyager": _spec(
+        "Aprender a cocinar no es recordar cada vez la receta entera: es que «hacer un sofrito» pase a ser "
+        "una sola cosa que sabes hacer. Voyager guarda habilidades, no anécdotas.",
+        "```text\nMemoria en contexto:      cada tarea reintroduce todo lo aprendido como TEXTO\n"
+        "                          → ocupa contexto, se pierde al terminar\n\n"
+        "Biblioteca de habilidades: cada solución verificada se guarda como CÓDIGO con nombre\n"
+        "                          → se invoca por nombre, se compone, persiste\n```\n\n"
+        "Más un **currículo automático**: el agente propone su siguiente tarea en función de lo que ya "
+        "sabe y de lo que ve en el entorno.",
+        "El motor construye una biblioteca donde cada habilidad se apoya en las anteriores.",
+        "r = run_paper_lab('voyager', seed=7)['result']\n"
+        "for c in r['curriculo']:\n"
+        "    print(f\"{c['tarea']:<18} · {c['pasos_declarados']} pasos declarados \"\n"
+        "          f\"= {c['acciones_primitivas_equivalentes']:>2} primitivas \"\n"
+        "          f\"· reutiliza {c['habilidades_reutilizadas']}\")",
+        "1. ¿Cuántas acciones primitivas equivale la última tarea, declarada en 3 pasos?\n"
+        "2. ¿Qué pasaría si cada tarea tuviera que escribirse desde cero en primitivas?\n"
+        "3. ¿Por qué una biblioteca no consume contexto y una memoria textual sí?",
+        "r = run_paper_lab('voyager', seed=7)['result']\n"
+        "print('habilidades en la biblioteca:', r['habilidades_aprendidas'], '\\n')\n"
+        "for c in r['curriculo']:\n"
+        "    print(f\"{c['tarea']:<18} factor de compresión {c['factor_de_compresion']:>5}x\")",
+        "El factor de compresión crece con el currículo: las tareas tardías se expresan en muy pocos pasos "
+        "porque cada uno esconde muchas primitivas. **Eso es lo que significa acumular capacidad**, frente "
+        "a acumular texto.",
+        "La pieza que hace esto viable, y que la miniatura no muestra, es la **verificación**: una "
+        "habilidad solo entra en la biblioteca si su código se ejecutó y funcionó en el entorno. Sin ese "
+        "filtro, la biblioteca se llena de habilidades rotas que se propagan a todo lo que las use.",
+        "Anti-patrón: guardar en la biblioteca sin verificar. Una habilidad rota contamina todas las que la componen.",
+        "biblioteca = {'conseguir_madera': 'ROTA (no comprueba si hay árbol)'}\n"
+        "dependen = ['fabricar_mesa', 'fabricar_pico', 'minar_piedra', 'fabricar_horno']\n"
+        "print('habilidad rota:', list(biblioteca)[0])\n"
+        "print('afectadas por composición:', dependen)\n"
+        "print(f'una sola habilidad sin verificar rompe {len(dependen)} tareas posteriores')",
+        "La corrección es un contrato de entrada a la biblioteca:",
+        "contrato = {\n"
+        "    'se_guarda_si': ['el código se ejecutó en el entorno',\n"
+        "                      'la tarea se completó de forma verificable',\n"
+        "                      'tiene nombre y descripción para poder recuperarla'],\n"
+        "    'se_reintenta_si': 'falla, con el error del entorno como retroalimentación',\n"
+        "    'nunca': 'guardar código que solo parece correcto',\n"
+        "}\n"
+        "show(contrato)",
+        "Comprueba cómo crece la capacidad al componer: cuenta las primitivas de una tarea inventada de nivel 6.",
+        "r = run_paper_lab('voyager', seed=7)['result']\n"
+        "biblioteca = r['biblioteca_final']\n"
+        "print('biblioteca:')\n"
+        "for k, v in biblioteca.items():\n"
+        "    print(f'  {k:<18} = {v}')",
+        "Construye un agente con biblioteca de habilidades para un entorno programable simple (por ejemplo "
+        "un intérprete de comandos de ficheros). Exige verificación antes de guardar y mide cuántos pasos "
+        "necesita para la tarea 10 con y sin biblioteca.",
+        "Guarda el currículo con su factor de compresión, el experimento de la habilidad rota y tu contrato "
+        "de entrada a la biblioteca.",
+        "Un agente que aprende y acumula. La última pregunta es si **varios** agentes se coordinan mejor "
+        "que uno solo — y qué cuesta.",
+    ),
+    "P33_autogen": _spec(
+        "Quien escribe un texto es mal corrector de su propio texto: lee lo que quiso escribir. Poner a "
+        "otro a revisarlo no es redundancia, es un punto de vista distinto sobre el mismo trabajo.",
+        "```text\nUn agente:     modelo → salida → (se juzga a sí mismo)\n\n"
+        "Multiagente:   planificador → programador → crítico → programador → …\n"
+        "               cada uno con su rol, su prompt y su objetivo\n```\n\n"
+        "AutoGen lo formula como **conversación**: agentes configurables que se mandan mensajes, con o sin "
+        "humano en el bucle, con o sin ejecución de código, y con patrones de conversación programables.",
+        "El motor compara una entrega de un solo agente con una conversación de tres roles.",
+        "r = run_paper_lab('autogen', seed=7)['result']\n"
+        "print('UN SOLO AGENTE:')\n"
+        "show(r['un_solo_agente'])\n"
+        "print('\\nMULTIAGENTE:')\n"
+        "for t in r['multiagente']['traza']:\n"
+        "    print(f\"  [{t['rol']:<13}] {t['mensaje']}\")",
+        "1. ¿Qué fallo tiene el código del agente único?\n"
+        "2. ¿Por qué el crítico lo detecta y el propio autor no?\n"
+        "3. ¿Cuántas veces más caro sale en turnos?",
+        "r = run_paper_lab('autogen', seed=7)['result']\n"
+        "print('un agente   → correcto:', r['un_solo_agente']['correcto'],\n"
+        "      '· turnos:', r['un_solo_agente']['turnos'])\n"
+        "print('multiagente → correcto:', r['multiagente']['correcto'],\n"
+        "      '· turnos:', r['multiagente']['turnos'])\n"
+        "print('coste relativo:', r['coste_relativo_en_turnos'], 'x')",
+        "La conversación encuentra el fallo y lo corrige, a cambio de **5× más turnos**. Esa es la cuenta "
+        "que hay que hacer siempre: multiagente no es gratis y no es mejor por defecto. Hay que demostrar "
+        "que el error que captura compensa el coste que añade.",
+        "El crítico funciona porque su **objetivo es distinto**: encontrar fallos, no producir código. Si "
+        "los dos roles comparten prompt, modelo y objetivo, la crítica se vuelve ceremonial — es la versión "
+        "multiagente de la sicofancia.",
+        "Anti-patrón: conversación sin criterio de parada. Dos agentes educados pueden felicitarse indefinidamente.",
+        "turnos = 0\n"
+        "for _ in range(50):\n"
+        "    turnos += 1\n"
+        "    # cada uno espera que el otro cierre; nadie tiene autoridad para terminar\n"
+        "print(f'sin criterio de parada: {turnos} turnos y subiendo, sin converger')\n"
+        "print('cada turno es una llamada al modelo: el coste es lineal y no acotado')",
+        "La corrección es dar autoridad de cierre y presupuesto:",
+        "protocolo = {\n"
+        "    'criterio_de_exito': 'los tests pasan (verificable, no opinión)',\n"
+        "    'maximo_de_turnos': 8,\n"
+        "    'quien_cierra': 'el crítico, y solo con evidencia de ejecución',\n"
+        "    'deteccion_de_bucle': 'si dos turnos repiten el mismo mensaje, abortar',\n"
+        "    'escalamiento': 'al agotar el presupuesto, entregar a un humano con la traza',\n"
+        "}\n"
+        "show(protocolo)",
+        "Añade un cuarto rol (por ejemplo, un revisor de seguridad) y razona si aporta o solo encarece.",
+        "roles = {'planificador': 'descompone', 'programador': 'implementa',\n"
+        "         'crítico': 'busca fallos', 'seguridad': 'busca riesgos'}\n"
+        "for n in range(2, 5):\n"
+        "    activos = list(roles)[:n]\n"
+        "    print(f'{n} roles {activos} → ~{n * 2} turnos mínimos')\n"
+        "print('\\ncada rol nuevo debe justificar su coste con un tipo de error que SOLO él captura')",
+        "Monta un sistema de dos y de cuatro agentes sobre la misma tarea de programación con tests. "
+        "Ejecuta 30 veces cada configuración y compara tasa de éxito, turnos y coste. Comprueba si el "
+        "multiagente gana a un agente único **bien construido**, que es la línea base honesta.",
+        "Guarda ambas trazas, el coste relativo en turnos y tu protocolo con criterio de parada, detección "
+        "de bucle y escalamiento.",
+        "Aquí se cierra el bloque de agentes. Todo lo que sigue —memoria compartida, protocolos entre "
+        "proveedores, evaluación de trayectorias— vive en la frontera, con fecha.",
+    ),
+})
+
+
 TRANSFORMER_SPECS: list[dict[str, Any]] = [
     {
         "id": "T01_recurrencia_vs_paralelismo",

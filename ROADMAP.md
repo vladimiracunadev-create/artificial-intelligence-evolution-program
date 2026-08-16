@@ -8,10 +8,10 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.5.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.6.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
-| Eje de papers | 22 fichas · 30 notebooks · 22 motores · 5 anexos |
-| Motores didácticos | 20 de clases + 22 de papers |
+| Eje de papers | 33 fichas · 41 notebooks · 33 motores · 5 anexos |
+| Motores didácticos | 20 de clases + 33 de papers |
 | PDFs | 17 (15 partes + programa completo + eje de papers) |
 | Tests | 39 |
 
@@ -71,9 +71,17 @@
 - [ ] Evaluación de trayectorias y tool calls.
 - [ ] Capstone con router, handoff, supervisor y aprobación humana.
 
-## 📚 0.7 — Segunda línea del eje
+## ✅ 0.6.0 — Representación y agentes (entregado)
 
-- [ ] Fichas de GloVe, ELMo y T5.
+- [x] Ruta de representación: GloVe, ELMo y T5.
+- [x] Ruta de agentes: DQN, AlphaGo, Chain-of-Thought, Tree of Thoughts, Reflexion,
+      Generative Agents, Voyager y AutoGen — incluido el hueco de refuerzo y el de multiagente.
+
+## 📚 0.7 — Camino a 50 papers
+
+- [ ] Memoria y contexto largo: RoPE, FlashAttention, *Lost in the Middle*, MemGPT.
+- [ ] Arquitectura y entrenamiento: ResNet, Adam, GAN, VAE, ViT, LoRA.
+- [ ] Evaluación y seguridad: SWE-bench, Constitutional AI, interpretabilidad mecanicista.
 - [ ] Reproducción parcial guiada de una figura real del Transformer.
 - [ ] Traducción de las fichas al inglés.
 

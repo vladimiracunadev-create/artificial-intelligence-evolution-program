@@ -44,6 +44,17 @@ Pregunta que me quedó abierta:
 | P20 | | | ⬜ pendiente |
 | P21 | | | ⬜ pendiente |
 | P22 | | | ⬜ pendiente |
+| P23 | | | ⬜ pendiente |
+| P24 | | | ⬜ pendiente |
+| P25 | | | ⬜ pendiente |
+| P26 | | | ⬜ pendiente |
+| P27 | | | ⬜ pendiente |
+| P28 | | | ⬜ pendiente |
+| P29 | | | ⬜ pendiente |
+| P30 | | | ⬜ pendiente |
+| P31 | | | ⬜ pendiente |
+| P32 | | | ⬜ pendiente |
+| P33 | | | ⬜ pendiente |
 
 ---
 

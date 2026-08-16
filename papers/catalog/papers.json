@@ -1269,6 +1269,631 @@
         }
       ],
       "consultado": "2026-08-16"
+    },
+    {
+      "id": "P23",
+      "dir": "P23_glove",
+      "slug": "glove-pennington-2014",
+      "title": "GloVe: Global Vectors for Word Representation",
+      "title_es": "GloVe: vectores globales para representación de palabras",
+      "authors": [
+        "Jeffrey Pennington",
+        "Richard Socher",
+        "Christopher D. Manning"
+      ],
+      "year": 2014,
+      "venue": "EMNLP 2014 · ACL Anthology D14-1162",
+      "venue_type": "conferencia",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "glove",
+      "hito": "Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.",
+      "problema": "Word2Vec aprendía de ventanas locales y desaprovechaba las estadísticas globales del corpus; los métodos de factorización usaban esas estadísticas pero producían peores analogías.",
+      "propuesta": "Ajustar por mínimos cuadrados ponderados el producto de vectores al logaritmo de la co-ocurrencia, con el argumento de que lo informativo es la RAZÓN de co-ocurrencias, no su valor bruto.",
+      "keywords": [
+        "GloVe",
+        "co-ocurrencia",
+        "factorización",
+        "mínimos cuadrados ponderados",
+        "razón de probabilidades"
+      ],
+      "anteriores": [
+        "P05",
+        "LSA y la factorización de matrices de co-ocurrencia"
+      ],
+      "posteriores": [
+        "P24",
+        "P18"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "ACL Anthology (EMNLP 2014)",
+          "url": "https://aclanthology.org/D14-1162/"
+        },
+        {
+          "label": "DOI",
+          "url": "https://doi.org/10.3115/v1/D14-1162"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Levy y Goldberg (2014): word2vec también factoriza implícitamente",
+          "url": "https://aclanthology.org/Q15-1016/"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P24",
+      "dir": "P24_elmo",
+      "slug": "elmo-peters-2018",
+      "title": "Deep Contextualized Word Representations",
+      "title_es": "Representaciones profundas de palabras dependientes del contexto",
+      "authors": [
+        "Matthew E. Peters",
+        "Mark Neumann",
+        "Mohit Iyyer",
+        "Matt Gardner",
+        "Christopher Clark",
+        "Kenton Lee",
+        "Luke Zettlemoyer"
+      ],
+      "year": 2018,
+      "venue": "NAACL 2018 · ACL Anthology N18-1202",
+      "venue_type": "conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "elmo",
+      "hito": "Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.",
+      "problema": "Un embedding estático da el mismo vector a «banco del parque» y «banco central»: el sentido se pierde antes de que el modelo empiece a trabajar.",
+      "propuesta": "Usar los estados internos de un modelo de lenguaje bidireccional profundo y combinar sus capas con pesos aprendidos por tarea.",
+      "keywords": [
+        "ELMo",
+        "embeddings contextuales",
+        "polisemia",
+        "modelo de lenguaje bidireccional",
+        "combinación de capas"
+      ],
+      "anteriores": [
+        "P03",
+        "P05",
+        "P23"
+      ],
+      "posteriores": [
+        "P09",
+        "P25"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "ACL Anthology (NAACL 2018)",
+          "url": "https://aclanthology.org/N18-1202/"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Howard y Ruder (2018), ULMFiT: transferencia en PLN",
+          "url": "https://arxiv.org/abs/1801.06146"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P25",
+      "dir": "P25_t5",
+      "slug": "t5-raffel-2019",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "title_es": "Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto",
+      "authors": [
+        "Colin Raffel",
+        "Noam Shazeer",
+        "Adam Roberts",
+        "Katherine Lee",
+        "Sharan Narang",
+        "Michael Matena",
+        "Yanqi Zhou",
+        "Wei Li",
+        "Peter J. Liu"
+      ],
+      "year": 2019,
+      "venue": "arXiv:1910.10683 · JMLR 21(140), 2020",
+      "venue_type": "preprint + revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "t5",
+      "hito": "Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.",
+      "problema": "Cada tarea exigía su propia cabeza —clasificación, regresión, extracción, generación— lo que impedía comparar objetivos, arquitecturas y datos en igualdad de condiciones.",
+      "propuesta": "Un marco unificado texto a texto, un estudio sistemático de todas las decisiones de diseño del preentrenamiento, y el corpus C4 (Colossal Clean Crawled Corpus).",
+      "keywords": [
+        "T5",
+        "texto a texto",
+        "transferencia",
+        "C4",
+        "encoder-decoder",
+        "estudio sistemático"
+      ],
+      "anteriores": [
+        "P08",
+        "P09",
+        "P24"
+      ],
+      "posteriores": [
+        "P11",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1910.10683",
+          "url": "https://arxiv.org/abs/1910.10683"
+        },
+        {
+          "label": "JMLR 21(140)",
+          "url": "https://jmlr.org/papers/v21/20-074.html"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Lewis et al. (2019), BART: el otro encoder-decoder preentrenado",
+          "url": "https://arxiv.org/abs/1910.13461"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P26",
+      "dir": "P26_dqn",
+      "slug": "dqn-mnih-2015",
+      "title": "Human-level control through deep reinforcement learning",
+      "title_es": "Control a nivel humano mediante aprendizaje por refuerzo profundo",
+      "authors": [
+        "Volodymyr Mnih",
+        "Koray Kavukcuoglu",
+        "David Silver",
+        "y otros (DeepMind)"
+      ],
+      "year": 2015,
+      "venue": "Nature 518, 529–533 (2015)",
+      "venue_type": "revista revisada por pares",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "dqn",
+      "hito": "El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.",
+      "problema": "Combinar aprendizaje por refuerzo con aproximación de función no lineal era notoriamente inestable: las muestras consecutivas están correlacionadas y el objetivo se mueve mientras se aprende.",
+      "propuesta": "Q-learning con una red convolucional, estabilizado con repetición de experiencia (rompe la correlación) y una red objetivo congelada (fija el blanco).",
+      "keywords": [
+        "DQN",
+        "Q-learning",
+        "repetición de experiencia",
+        "red objetivo",
+        "Atari",
+        "refuerzo profundo"
+      ],
+      "anteriores": [
+        "P02",
+        "P04",
+        "Watkins (1989), Q-learning"
+      ],
+      "posteriores": [
+        "P27",
+        "P12"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov",
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Nature 518, 529–533)",
+          "url": "https://doi.org/10.1038/nature14236"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sutton y Barto, Reinforcement Learning: An Introduction",
+          "url": "http://incompleteideas.net/book/the-book.html"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P27",
+      "dir": "P27_alphago",
+      "slug": "alphago-silver-2016",
+      "title": "Mastering the game of Go with deep neural networks and tree search",
+      "title_es": "Dominar el go con redes neuronales profundas y búsqueda en árbol",
+      "authors": [
+        "David Silver",
+        "Aja Huang",
+        "Chris J. Maddison",
+        "y otros (DeepMind)"
+      ],
+      "year": 2016,
+      "venue": "Nature 529, 484–489 (2016)",
+      "venue_type": "revista revisada por pares",
+      "acceso": "restringido",
+      "level": "L4",
+      "lab": "alphago",
+      "hito": "Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.",
+      "problema": "El go tiene un espacio de estados y un factor de ramificación que hacen inviable la búsqueda exhaustiva, y no existía una función de evaluación de posiciones suficientemente buena.",
+      "propuesta": "Una red de políticas que propone jugadas plausibles y una red de valor que evalúa posiciones, usadas para guiar y truncar una búsqueda de Monte Carlo en árbol.",
+      "keywords": [
+        "AlphaGo",
+        "MCTS",
+        "red de políticas",
+        "red de valor",
+        "autojuego",
+        "búsqueda guiada"
+      ],
+      "anteriores": [
+        "P26",
+        "P04",
+        "búsqueda en árbol y MCTS clásicos"
+      ],
+      "posteriores": [
+        "P29",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta",
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Nature 529, 484–489)",
+          "url": "https://doi.org/10.1038/nature16961"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Silver et al. (2017), AlphaGo Zero: sin partidas humanas",
+          "url": "https://doi.org/10.1038/nature24270"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P28",
+      "dir": "P28_chain_of_thought",
+      "slug": "chain-of-thought-wei-2022",
+      "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "title_es": "El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes",
+      "authors": [
+        "Jason Wei",
+        "Xuezhi Wang",
+        "Dale Schuurmans",
+        "Maarten Bosma",
+        "Brian Ichter",
+        "Fei Xia",
+        "Ed Chi",
+        "Quoc Le",
+        "Denny Zhou"
+      ],
+      "year": 2022,
+      "venue": "arXiv:2201.11903 · NeurIPS 2022",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "cot",
+      "hito": "Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.",
+      "problema": "Los modelos grandes fallaban en aritmética y razonamiento de varios pasos aunque acertaran tareas aparentemente más difíciles: se les pedía el resultado sin dejarles espacio para llegar a él.",
+      "propuesta": "Incluir en el prompt unos pocos ejemplos que muestren el razonamiento paso a paso, sin ajuste fino ni datos adicionales.",
+      "keywords": [
+        "cadena de pensamiento",
+        "razonamiento",
+        "prompting",
+        "emergencia",
+        "pasos intermedios"
+      ],
+      "anteriores": [
+        "P10"
+      ],
+      "posteriores": [
+        "P13",
+        "P29",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2201.11903",
+          "url": "https://arxiv.org/abs/2201.11903"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Wang et al. (2022), autoconsistencia: muestrear varias cadenas y votar",
+          "url": "https://arxiv.org/abs/2203.11171"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P29",
+      "dir": "P29_tree_of_thoughts",
+      "slug": "tree-of-thoughts-yao-2023",
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "title_es": "Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes",
+      "authors": [
+        "Shunyu Yao",
+        "Dian Yu",
+        "Jeffrey Zhao",
+        "Izhak Shafran",
+        "Thomas L. Griffiths",
+        "Yuan Cao",
+        "Karthik Narasimhan"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2305.10601 · NeurIPS 2023",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "tot",
+      "hito": "Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder.",
+      "problema": "Una cadena de pensamiento decide de izquierda a derecha y sin vuelta atrás: un paso localmente razonable y globalmente equivocado condena toda la solución.",
+      "propuesta": "Tratar los pasos de razonamiento como nodos de un árbol, hacer que el modelo evalúe estados parciales y aplicar búsqueda con poda y retroceso.",
+      "keywords": [
+        "árbol de pensamientos",
+        "búsqueda",
+        "autoevaluación",
+        "poda",
+        "retroceso",
+        "deliberación"
+      ],
+      "anteriores": [
+        "P28",
+        "P27",
+        "búsqueda en espacios de estados"
+      ],
+      "posteriores": [
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad",
+        "classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2305.10601",
+          "url": "https://arxiv.org/abs/2305.10601"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Yao et al. (2022), ReAct: el mismo primer autor, actuando en vez de deliberando",
+          "url": "https://arxiv.org/abs/2210.03629"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P30",
+      "dir": "P30_reflexion",
+      "slug": "reflexion-shinn-2023",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "title_es": "Reflexion: agentes de lenguaje con refuerzo verbal",
+      "authors": [
+        "Noah Shinn",
+        "Federico Cassano",
+        "Ashwin Gopinath",
+        "Karthik Narasimhan",
+        "Shunyu Yao"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2303.11366 · NeurIPS 2023",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "reflexion",
+      "hito": "El agente aprende entre intentos sin tocar un solo peso: el refuerzo ocurre en el contexto, en lenguaje natural.",
+      "problema": "Un bucle ReAct que falla vuelve a empezar de cero y repite el mismo error, porque no conserva nada de lo aprendido en el intento anterior.",
+      "propuesta": "Tras cada fallo, generar una reflexión verbal sobre qué salió mal y conservarla en una memoria episódica que condiciona el siguiente intento.",
+      "keywords": [
+        "Reflexion",
+        "refuerzo verbal",
+        "memoria episódica",
+        "autocrítica",
+        "reintento"
+      ],
+      "anteriores": [
+        "P13",
+        "P28"
+      ],
+      "posteriores": [
+        "P16",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2303.11366",
+          "url": "https://arxiv.org/abs/2303.11366"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Madaan et al. (2023), Self-Refine: refinamiento iterativo sin señal externa",
+          "url": "https://arxiv.org/abs/2303.17651"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P31",
+      "dir": "P31_generative_agents",
+      "slug": "generative-agents-park-2023",
+      "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "title_es": "Agentes generativos: simulacros interactivos de comportamiento humano",
+      "authors": [
+        "Joon Sung Park",
+        "Joseph C. O'Brien",
+        "Carrie J. Cai",
+        "Meredith Ringel Morris",
+        "Percy Liang",
+        "Michael S. Bernstein"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2304.03442 · UIST 2023",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "generative_agents",
+      "hito": "Resuelve la memoria de un agente que vive mucho tiempo: qué recordar, cuándo y por qué, cuando el contexto no da para todo.",
+      "problema": "Un agente con muchas horas de historia no cabe en su ventana de contexto, y un registro cronológico recupera lo reciente y trivial en vez de lo pertinente.",
+      "propuesta": "Un flujo de memoria con recuperación puntuada por relevancia, recencia e importancia, más un proceso de reflexión que sintetiza recuerdos en conclusiones de nivel superior.",
+      "keywords": [
+        "memoria episódica",
+        "recuperación puntuada",
+        "reflexión",
+        "planificación",
+        "simulación social"
+      ],
+      "anteriores": [
+        "P11",
+        "P13",
+        "P30"
+      ],
+      "posteriores": [
+        "P16"
+      ],
+      "clases_del_programa": [
+        "classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2304.03442",
+          "url": "https://arxiv.org/abs/2304.03442"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "P11 RAG: el antecedente de la memoria consultable",
+          "url": "https://arxiv.org/abs/2005.11401"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P32",
+      "dir": "P32_voyager",
+      "slug": "voyager-wang-2023",
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "title_es": "Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes",
+      "authors": [
+        "Guanzhi Wang",
+        "Yuqi Xie",
+        "Yunfan Jiang",
+        "Ajay Mandlekar",
+        "Chaowei Xiao",
+        "Yuke Zhu",
+        "Linxi Fan",
+        "Anima Anandkumar"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2305.16291",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "voyager",
+      "hito": "El agente acumula habilidades reutilizables en vez de contexto: memoria procedimental que no se borra al terminar la tarea.",
+      "problema": "Un agente que resuelve tareas cada vez desde cero no mejora con la experiencia, y meter todo lo aprendido en el prompt no escala.",
+      "propuesta": "Un currículo automático que propone la siguiente tarea alcanzable, una biblioteca de habilidades ejecutables indexada por nombre, y un bucle iterativo que depura el código con la retroalimentación del entorno.",
+      "keywords": [
+        "Voyager",
+        "biblioteca de habilidades",
+        "currículo automático",
+        "memoria procedimental",
+        "agente encarnado"
+      ],
+      "anteriores": [
+        "P13",
+        "P30",
+        "P14"
+      ],
+      "posteriores": [
+        "P16"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2305.16291",
+          "url": "https://arxiv.org/abs/2305.16291"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "P14 Toolformer: aprender cuándo llamar a una herramienta",
+          "url": "https://arxiv.org/abs/2302.04761"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P33",
+      "dir": "P33_autogen",
+      "slug": "autogen-wu-2023",
+      "title": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "title_es": "AutoGen: aplicaciones de nueva generación mediante conversación multiagente",
+      "authors": [
+        "Qingyun Wu",
+        "Gagan Bansal",
+        "Jieyu Zhang",
+        "Yiran Wu",
+        "y otros"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2308.08155",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L4",
+      "lab": "autogen",
+      "hito": "El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger.",
+      "problema": "Un solo agente escribe y juzga su propio trabajo, así que arrastra sus propios puntos ciegos; y no había forma estándar de componer varios agentes con humanos en el bucle.",
+      "propuesta": "Agentes conversables y configurables —con o sin persona humana, con o sin ejecución de código— que se coordinan mediante mensajes, con patrones de conversación programables.",
+      "keywords": [
+        "multiagente",
+        "conversación",
+        "roles",
+        "crítico",
+        "human-in-the-loop",
+        "orquestación"
+      ],
+      "anteriores": [
+        "P13",
+        "P30"
+      ],
+      "posteriores": [
+        "P16"
+      ],
+      "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2308.08155",
+          "url": "https://arxiv.org/abs/2308.08155"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Model Context Protocol: interoperabilidad de herramientas entre agentes",
+          "url": "https://modelcontextprotocol.io"
+        }
+      ],
+      "consultado": "2026-08-16"
     }
   ],
   "ruta_ampliada": [
@@ -1282,6 +1907,29 @@
   "notas_de_ruta": {
     "ruta_minima": "P01–P16: la cadena canónica donde cada paper resuelve lo que el anterior dejó abierto. Se estudia en orden.",
     "ruta_ampliada": "P17–P22: cobertura que la cadena mínima no da (generativa, multimodal, escalado) y continuación hasta 2025. Ordenada por año.",
-    "por_que_no_llega_a_2026": "El criterio de ascenso exige 12 meses desde la publicación (ver prompts/VIGILANCIA_DE_FRONTERA.md). Lo posterior vive en frontier/current-topics.yaml con fecha de revisión."
-  }
+    "por_que_no_llega_a_2026": "El criterio de ascenso exige 12 meses desde la publicación (ver prompts/VIGILANCIA_DE_FRONTERA.md). Lo posterior vive en frontier/current-topics.yaml con fecha de revisión.",
+    "ruta_representacion": "P23–P25: cómo el lenguaje pasó de vectores estáticos a representaciones contextuales y de ahí a un formato único texto → texto. Ordenada por año.",
+    "ruta_agentes": "P26–P33: decisión secuencial y agentes. Empieza en el refuerzo profundo y la búsqueda guiada —de donde viene la idea de agente— y llega al razonamiento deliberado, la memoria, las habilidades reutilizables y el multiagente. Ordenada por año."
+  },
+  "ruta_representacion": [
+    "P23",
+    "P24",
+    "P25"
+  ],
+  "ruta_agentes": [
+    "P26",
+    "P27",
+    "P28",
+    "P29",
+    "P30",
+    "P31",
+    "P32",
+    "P33"
+  ],
+  "rutas": [
+    "ruta_minima",
+    "ruta_ampliada",
+    "ruta_representacion",
+    "ruta_agentes"
+  ]
 }

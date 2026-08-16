@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
   "catalog_updated": "2026-08-16",
-  "papers": 22,
-  "notebooks": 30,
+  "papers": 33,
+  "notebooks": 41,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -133,8 +133,52 @@
       "sha256_lf": "1b8a768ee519271300dc77b9906c4405b9c1f8d0abd2cca62e6958b2e64c59de"
     },
     {
+      "path": "assessments/papers/P23_glove.md",
+      "sha256_lf": "107faca6a3cde243380161d6f36a3df4046e48b9f53ad983757a159b03a6b927"
+    },
+    {
+      "path": "assessments/papers/P24_elmo.md",
+      "sha256_lf": "537c0016ce3d253532776d1347b27d4dbd8ba00316d3b8c2d54daf9ba873fa3f"
+    },
+    {
+      "path": "assessments/papers/P25_t5.md",
+      "sha256_lf": "45c15a958f0318ce1bc276bea79cbb115cd6af3af76712bbb151bdb2801344da"
+    },
+    {
+      "path": "assessments/papers/P26_dqn.md",
+      "sha256_lf": "34aee46472773b679ac8a2a6d4fbd302beb4dbd974fcb33d8a0cfff1c4538129"
+    },
+    {
+      "path": "assessments/papers/P27_alphago.md",
+      "sha256_lf": "2020c801862c219978a4ab8008428f29c5db54a4de5871e5bedd2b53f8b96091"
+    },
+    {
+      "path": "assessments/papers/P28_chain_of_thought.md",
+      "sha256_lf": "1eafb248b125c258eb9e77e2fb8b4103c13bf47711b2e7a70413e3e06f851964"
+    },
+    {
+      "path": "assessments/papers/P29_tree_of_thoughts.md",
+      "sha256_lf": "caa662b0cfe7d94751f6a7f8ef812ae167bb5a7a057eeb713b854bc123be82c6"
+    },
+    {
+      "path": "assessments/papers/P30_reflexion.md",
+      "sha256_lf": "6da9b5a0c32ffc68390e19ec58170ee334b80b09b12d2e8ac1fedac402fcebb0"
+    },
+    {
+      "path": "assessments/papers/P31_generative_agents.md",
+      "sha256_lf": "128328bbb4c81d7544f518dbd70b669a64d4eb8bdf3dfe91c8f7b043105b3928"
+    },
+    {
+      "path": "assessments/papers/P32_voyager.md",
+      "sha256_lf": "f21c582512941c3eb3e336e929039330392d9134ff0f59945045c80870c62e33"
+    },
+    {
+      "path": "assessments/papers/P33_autogen.md",
+      "sha256_lf": "3d4836d57fa800e76f4133825b0ed8b5d225f9419291f975ebe70343f608a442"
+    },
+    {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "91e219ae7257b4ebb5bbbdb4c7049cac85818c95e7fd2e3a9a1cf1ba4a72027b"
+      "sha256_lf": "61c247d9a0652d04797aad1603da631f8e4a0c54900021c342d660762a3fa89c"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -225,8 +269,52 @@
       "sha256_lf": "522f921a02f0cfdb509c4363d826ae4d30673b703aa51909779d2717c3ecce84"
     },
     {
+      "path": "instructor/papers/P23_glove.md",
+      "sha256_lf": "8aafce7938b730d85b3600ea9eaa1c6f272eb3c07d9c4ce890fbd1a6c52ab916"
+    },
+    {
+      "path": "instructor/papers/P24_elmo.md",
+      "sha256_lf": "71063bf247fee60ccaf65c749a08bbe0199023f40e368afcff91a5da2b207edb"
+    },
+    {
+      "path": "instructor/papers/P25_t5.md",
+      "sha256_lf": "f66f1afe45af9824938bfcf7d3ff20df0021bb8f1107824af8b1ec9e7d14c99b"
+    },
+    {
+      "path": "instructor/papers/P26_dqn.md",
+      "sha256_lf": "c1c38fbf347e02523b7cd8295417c4ebefeb6604aefa0dfd4e3b14ba9f868a9e"
+    },
+    {
+      "path": "instructor/papers/P27_alphago.md",
+      "sha256_lf": "b03527876bf4986688e445109ad33e4bcbde6bdfef9913984f1f0368e0e1d6ac"
+    },
+    {
+      "path": "instructor/papers/P28_chain_of_thought.md",
+      "sha256_lf": "bbedfd0afcde6b89903bb199196d6e5b3b10d9e8f5788af612e45e034aee3913"
+    },
+    {
+      "path": "instructor/papers/P29_tree_of_thoughts.md",
+      "sha256_lf": "cb2e19ec58e5ad5e75a8ce3421076b1e3f658e27043aa2d3f2c2336f616a2219"
+    },
+    {
+      "path": "instructor/papers/P30_reflexion.md",
+      "sha256_lf": "dfd513e2bfa90639fd124df13ede38787d7d0a595b4e655ff4f57e0cc04063db"
+    },
+    {
+      "path": "instructor/papers/P31_generative_agents.md",
+      "sha256_lf": "14632f7bb2ee71006548204a1a346a4d38e156adfce1d92b46f7e5528b9947c5"
+    },
+    {
+      "path": "instructor/papers/P32_voyager.md",
+      "sha256_lf": "e791c4216aa3c6b3c6178f972c65f4284979b9a01eaf1e49bba76b6dd37c9f06"
+    },
+    {
+      "path": "instructor/papers/P33_autogen.md",
+      "sha256_lf": "3da9ef1990c288ae55ed22f3d97a71a3e119f948b52c2b39b601b303bfeb491d"
+    },
+    {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "cd5f11ab60902d03c527f877de6e59c92395cbdc0f7dd8d3f4c0f7d7738cee0f"
+      "sha256_lf": "27125709230c9364d3f63ce629fcb02b032ced903778914eae021d07e6882331"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -317,6 +405,50 @@
       "sha256_lf": "6521e3d9792ce34118daf14946076d0f43653fa1c508c2b6704c62a27fb7b6f0"
     },
     {
+      "path": "notebooks/papers/P23_glove.ipynb",
+      "sha256_lf": "bcdcae0d2d2f0c71f906adfad74788c321ab40cf52f0b3a783866a5876320fca"
+    },
+    {
+      "path": "notebooks/papers/P24_elmo.ipynb",
+      "sha256_lf": "588444d5a3219eb1a3aabc95fd2cac12f5c8ed0dfacdfac2eed5347a314853b2"
+    },
+    {
+      "path": "notebooks/papers/P25_t5.ipynb",
+      "sha256_lf": "984d5dd24bf9464b858fd17fa5ee2ed5316af8fe3443ab39a14f1f54a08422c8"
+    },
+    {
+      "path": "notebooks/papers/P26_dqn.ipynb",
+      "sha256_lf": "afb0ca7e77a079b4c8f905c003cde1ccdd6cf3843d9e10fc8bc9f851110926e9"
+    },
+    {
+      "path": "notebooks/papers/P27_alphago.ipynb",
+      "sha256_lf": "02ac236dc9c21c28a42fcb015df0e3856c11ab1d69787585a648946f9fa56e24"
+    },
+    {
+      "path": "notebooks/papers/P28_chain_of_thought.ipynb",
+      "sha256_lf": "ca6acddbbe5b7b31981b5aa00669720e069486f879e84ad2091372785b0002cd"
+    },
+    {
+      "path": "notebooks/papers/P29_tree_of_thoughts.ipynb",
+      "sha256_lf": "6e96201a7fefcdaf87c0c7a0fd52930c45d9909ca70d4f4c945c30e27014ef34"
+    },
+    {
+      "path": "notebooks/papers/P30_reflexion.ipynb",
+      "sha256_lf": "c2539af44e3ea0692039d89a24b7176a7e0d1ee216638c2c21027092f1f90729"
+    },
+    {
+      "path": "notebooks/papers/P31_generative_agents.ipynb",
+      "sha256_lf": "b3a0ca2a428ed462c3440997522c376d89208a08f3986cb0148ab1d6795f68d1"
+    },
+    {
+      "path": "notebooks/papers/P32_voyager.ipynb",
+      "sha256_lf": "9d7b50944cfac78affeef8670e4f42ab8eb8bfec7f3576f0a496e271a65e0e34"
+    },
+    {
+      "path": "notebooks/papers/P33_autogen.ipynb",
+      "sha256_lf": "0e43c050dba5d770060004ebc21d04255f9b37266cd058b84d969cd8005ece0a"
+    },
+    {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
       "sha256_lf": "122e0fcf47ff9d7a5c8288450e39a7d4a5f486f1f0a607f79924c846666c4d5d"
     },
@@ -350,7 +482,7 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "631ee6d5f6d5d01c6f93cd81e8bc1be7ce79f2d70ad5e381367286815f41c95a"
+      "sha256_lf": "4a3f4d772e8e01d185dd299c6a709f1802bb62f123fcf645de858c99a0b747e7"
     },
     {
       "path": "papers/ROADMAP.md",
@@ -382,11 +514,11 @@
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "82eddc601fce058f3755a36f16d2c091765b5a704b052d5c6e6b939d1ca283b6"
+      "sha256_lf": "e7938525faffa6ba5a86ae27a9e9e990b59f72a5f3750164034fcb4d132f04fa"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "20ddd58aa5cd8411f265ced789dd224e7f18acc3b889ace76d793857250f3c66"
+      "sha256_lf": "484c3c2a60c40480e7ec3fe28ea533d265f1098b3326b1dcd16740da8228d8df"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -481,6 +613,50 @@
       "sha256_lf": "94d02a8d33c44bce20d71660d9e686b64b629e762dc50d64f5b8758358bcb3e6"
     },
     {
+      "path": "papers/foundational/P23_glove/README.md",
+      "sha256_lf": "6f295c7a06abb14395f41af7891073846319048bdebd9f6fbec4903fb4c57e7e"
+    },
+    {
+      "path": "papers/foundational/P24_elmo/README.md",
+      "sha256_lf": "972f19c67b01ad73b5668ca6eb9b7148f528c279a35613709aca5337bedd9aa3"
+    },
+    {
+      "path": "papers/foundational/P25_t5/README.md",
+      "sha256_lf": "53e0bf0ca54995d2776a2a182698768f1e242bd8bae78495d5b69b36e9d838b1"
+    },
+    {
+      "path": "papers/foundational/P26_dqn/README.md",
+      "sha256_lf": "bae302111ffd1eff5cf34ab854cf32c7a65ae1d052db577f2374f9d8394f4387"
+    },
+    {
+      "path": "papers/foundational/P27_alphago/README.md",
+      "sha256_lf": "105a741899c74d0e7d7dad5cd03527131e45ab31dffe6d8c61168dfdf12b22a7"
+    },
+    {
+      "path": "papers/foundational/P28_chain_of_thought/README.md",
+      "sha256_lf": "695f60465c7f2cc306a395f4e8b3212b77def7c3aa71d9f2dcde0e553981bc4e"
+    },
+    {
+      "path": "papers/foundational/P29_tree_of_thoughts/README.md",
+      "sha256_lf": "5b465b40621748b2081376912ae01834d02bebba30609c20ce2a20ea42731009"
+    },
+    {
+      "path": "papers/foundational/P30_reflexion/README.md",
+      "sha256_lf": "e74ee4745b52b6b0d89801d3028ce1bdf3dffc8f9c33ba4bc4b4115c0ad7be8c"
+    },
+    {
+      "path": "papers/foundational/P31_generative_agents/README.md",
+      "sha256_lf": "6d4513bed2f9de6029d3b6c609363951de3211470b7b218befed7c7e3bc31ceb"
+    },
+    {
+      "path": "papers/foundational/P32_voyager/README.md",
+      "sha256_lf": "b1fd6f4ea4e7a2b91df1fdc0028b462943d2b5ac7b11545bc0d4b1c1b811ff3e"
+    },
+    {
+      "path": "papers/foundational/P33_autogen/README.md",
+      "sha256_lf": "d0a8c6a0b90ce15d6e5acd76b4971f2d52e799fc50195f9addee93be29b2bc79"
+    },
+    {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
       "sha256_lf": "e08d4427d94da4680598c41b0fe17a622b7d70e87aa28e095ac3997ea85b6e3c"
     },
@@ -502,7 +678,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "458ce741b66d2fe4358c7fdefde7c8cf3f9390e3b80973e7d098d06ec7f3a7b2"
+      "sha256_lf": "27efa37084dfcc4e657e06f53a13131366a0a56ef54867c9259f698059a46a38"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -593,8 +769,52 @@
       "sha256_lf": "0accf0f9adf5e772e58bb3dee9018c0f47a8a0761034ca07af10fa9ea69ad9c9"
     },
     {
+      "path": "student/papers/P23_glove.md",
+      "sha256_lf": "8dac47aefa6d6f84934c9979cf5a8d68fca9049f2e26352eda55a86782126591"
+    },
+    {
+      "path": "student/papers/P24_elmo.md",
+      "sha256_lf": "845c34d6c8fc204c8771c55375f16bed91313ccb61dbe40c223c0a95e678dfee"
+    },
+    {
+      "path": "student/papers/P25_t5.md",
+      "sha256_lf": "0d6940eada5a9b1f1028fa68bbe2a4b7332e36c7e319c505a9515c54a6bef2ff"
+    },
+    {
+      "path": "student/papers/P26_dqn.md",
+      "sha256_lf": "fea46a98b15e2fe52f5736e30b08ec585f2d3f7d96a3c8da93463cc0bb549cc1"
+    },
+    {
+      "path": "student/papers/P27_alphago.md",
+      "sha256_lf": "5e00ebd1319aa553b2edfcdb2c609ebc850d577c97375d3c86de63d91848ec10"
+    },
+    {
+      "path": "student/papers/P28_chain_of_thought.md",
+      "sha256_lf": "3c47423bc59cacdd3ef16c10f5a70ada262ff8d52dad83ee072f173a33ff684a"
+    },
+    {
+      "path": "student/papers/P29_tree_of_thoughts.md",
+      "sha256_lf": "41c329f727639cd6caf490f560f909000cded7e64d3b79d149738f24935d5415"
+    },
+    {
+      "path": "student/papers/P30_reflexion.md",
+      "sha256_lf": "fb46d8f6e868a59044a6c91adec2a3226d209839e46a78b0a5edfa9d705667df"
+    },
+    {
+      "path": "student/papers/P31_generative_agents.md",
+      "sha256_lf": "bff93b1573ab69e67336b2be54c2fca556e98f2d2aefba1d3b93a7953137fd44"
+    },
+    {
+      "path": "student/papers/P32_voyager.md",
+      "sha256_lf": "69fb9d6ef59703b848a689317ab47929613e30a9093bf19e6580e24b38f7bcee"
+    },
+    {
+      "path": "student/papers/P33_autogen.md",
+      "sha256_lf": "edec22afd36fc0bbad2529c493b2bfa484669e20351b627e013cbda15016029f"
+    },
+    {
       "path": "student/papers/README.md",
-      "sha256_lf": "8b97bb94777e2c93e53b93a4292353d91e9cf6f95772be596444f3deb64f8911"
+      "sha256_lf": "511cf316be8ceb1e3f90cfc3d11daffc49aa07b494765f0d9315e5a33c7c27c0"
     }
   ]
 }

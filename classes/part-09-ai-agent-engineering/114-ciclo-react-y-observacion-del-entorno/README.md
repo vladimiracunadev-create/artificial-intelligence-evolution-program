@@ -276,6 +276,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 |---|---:|---|---|
 | [P13 · ReAct: sinergia entre razonar y actuar en modelos de lenguaje](../../../papers/foundational/P13_react/README.md) | 2022 | El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa. | [notebook](../../../notebooks/papers/P13_react.ipynb) |
 | [P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo](../../../papers/foundational/P22_deepseek_r1/README.md) | 2025 | El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares. | [notebook](../../../notebooks/papers/P22_deepseek_r1.ipynb) |
+| [P28 · El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes](../../../papers/foundational/P28_chain_of_thought/README.md) | 2022 | Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez. | [notebook](../../../notebooks/papers/P28_chain_of_thought.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

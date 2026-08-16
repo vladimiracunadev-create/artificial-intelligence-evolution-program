@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-16",
-  "paper_count": 22,
+  "paper_count": 33,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -570,6 +570,309 @@
         "pesos abiertos"
       ],
       "notebook": "notebooks/papers/P22_deepseek_r1.ipynb"
+    },
+    {
+      "id": "P23",
+      "page": "P23_glove.html",
+      "titulo": "GloVe: vectores globales para representación de palabras",
+      "original": "GloVe: Global Vectors for Word Representation",
+      "autoria": [
+        "Jeffrey Pennington",
+        "Richard Socher",
+        "Christopher D. Manning"
+      ],
+      "anio": 2014,
+      "venue": "EMNLP 2014 · ACL Anthology D14-1162",
+      "nivel": "L2",
+      "motor": "glove",
+      "hito": "Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.",
+      "keywords": [
+        "GloVe",
+        "co-ocurrencia",
+        "factorización",
+        "mínimos cuadrados ponderados",
+        "razón de probabilidades"
+      ],
+      "notebook": "notebooks/papers/P23_glove.ipynb"
+    },
+    {
+      "id": "P24",
+      "page": "P24_elmo.html",
+      "titulo": "Representaciones profundas de palabras dependientes del contexto",
+      "original": "Deep Contextualized Word Representations",
+      "autoria": [
+        "Matthew E. Peters",
+        "Mark Neumann",
+        "Mohit Iyyer",
+        "Matt Gardner",
+        "Christopher Clark",
+        "Kenton Lee",
+        "Luke Zettlemoyer"
+      ],
+      "anio": 2018,
+      "venue": "NAACL 2018 · ACL Anthology N18-1202",
+      "nivel": "L3",
+      "motor": "elmo",
+      "hito": "Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.",
+      "keywords": [
+        "ELMo",
+        "embeddings contextuales",
+        "polisemia",
+        "modelo de lenguaje bidireccional",
+        "combinación de capas"
+      ],
+      "notebook": "notebooks/papers/P24_elmo.ipynb"
+    },
+    {
+      "id": "P25",
+      "page": "P25_t5.html",
+      "titulo": "Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto",
+      "original": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "autoria": [
+        "Colin Raffel",
+        "Noam Shazeer",
+        "Adam Roberts",
+        "Katherine Lee",
+        "Sharan Narang",
+        "Michael Matena",
+        "Yanqi Zhou",
+        "Wei Li",
+        "Peter J. Liu"
+      ],
+      "anio": 2019,
+      "venue": "arXiv:1910.10683 · JMLR 21(140), 2020",
+      "nivel": "L3",
+      "motor": "t5",
+      "hito": "Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.",
+      "keywords": [
+        "T5",
+        "texto a texto",
+        "transferencia",
+        "C4",
+        "encoder-decoder",
+        "estudio sistemático"
+      ],
+      "notebook": "notebooks/papers/P25_t5.ipynb"
+    },
+    {
+      "id": "P26",
+      "page": "P26_dqn.html",
+      "titulo": "Control a nivel humano mediante aprendizaje por refuerzo profundo",
+      "original": "Human-level control through deep reinforcement learning",
+      "autoria": [
+        "Volodymyr Mnih",
+        "Koray Kavukcuoglu",
+        "David Silver",
+        "y otros (DeepMind)"
+      ],
+      "anio": 2015,
+      "venue": "Nature 518, 529–533 (2015)",
+      "nivel": "L3",
+      "motor": "dqn",
+      "hito": "El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.",
+      "keywords": [
+        "DQN",
+        "Q-learning",
+        "repetición de experiencia",
+        "red objetivo",
+        "Atari",
+        "refuerzo profundo"
+      ],
+      "notebook": "notebooks/papers/P26_dqn.ipynb"
+    },
+    {
+      "id": "P27",
+      "page": "P27_alphago.html",
+      "titulo": "Dominar el go con redes neuronales profundas y búsqueda en árbol",
+      "original": "Mastering the game of Go with deep neural networks and tree search",
+      "autoria": [
+        "David Silver",
+        "Aja Huang",
+        "Chris J. Maddison",
+        "y otros (DeepMind)"
+      ],
+      "anio": 2016,
+      "venue": "Nature 529, 484–489 (2016)",
+      "nivel": "L4",
+      "motor": "alphago",
+      "hito": "Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.",
+      "keywords": [
+        "AlphaGo",
+        "MCTS",
+        "red de políticas",
+        "red de valor",
+        "autojuego",
+        "búsqueda guiada"
+      ],
+      "notebook": "notebooks/papers/P27_alphago.ipynb"
+    },
+    {
+      "id": "P28",
+      "page": "P28_chain_of_thought.html",
+      "titulo": "El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes",
+      "original": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+      "autoria": [
+        "Jason Wei",
+        "Xuezhi Wang",
+        "Dale Schuurmans",
+        "Maarten Bosma",
+        "Brian Ichter",
+        "Fei Xia",
+        "Ed Chi",
+        "Quoc Le",
+        "Denny Zhou"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2201.11903 · NeurIPS 2022",
+      "nivel": "L2",
+      "motor": "cot",
+      "hito": "Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.",
+      "keywords": [
+        "cadena de pensamiento",
+        "razonamiento",
+        "prompting",
+        "emergencia",
+        "pasos intermedios"
+      ],
+      "notebook": "notebooks/papers/P28_chain_of_thought.ipynb"
+    },
+    {
+      "id": "P29",
+      "page": "P29_tree_of_thoughts.html",
+      "titulo": "Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes",
+      "original": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "autoria": [
+        "Shunyu Yao",
+        "Dian Yu",
+        "Jeffrey Zhao",
+        "Izhak Shafran",
+        "Thomas L. Griffiths",
+        "Yuan Cao",
+        "Karthik Narasimhan"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2305.10601 · NeurIPS 2023",
+      "nivel": "L3",
+      "motor": "tot",
+      "hito": "Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder.",
+      "keywords": [
+        "árbol de pensamientos",
+        "búsqueda",
+        "autoevaluación",
+        "poda",
+        "retroceso",
+        "deliberación"
+      ],
+      "notebook": "notebooks/papers/P29_tree_of_thoughts.ipynb"
+    },
+    {
+      "id": "P30",
+      "page": "P30_reflexion.html",
+      "titulo": "Reflexion: agentes de lenguaje con refuerzo verbal",
+      "original": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "autoria": [
+        "Noah Shinn",
+        "Federico Cassano",
+        "Ashwin Gopinath",
+        "Karthik Narasimhan",
+        "Shunyu Yao"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2303.11366 · NeurIPS 2023",
+      "nivel": "L2",
+      "motor": "reflexion",
+      "hito": "El agente aprende entre intentos sin tocar un solo peso: el refuerzo ocurre en el contexto, en lenguaje natural.",
+      "keywords": [
+        "Reflexion",
+        "refuerzo verbal",
+        "memoria episódica",
+        "autocrítica",
+        "reintento"
+      ],
+      "notebook": "notebooks/papers/P30_reflexion.ipynb"
+    },
+    {
+      "id": "P31",
+      "page": "P31_generative_agents.html",
+      "titulo": "Agentes generativos: simulacros interactivos de comportamiento humano",
+      "original": "Generative Agents: Interactive Simulacra of Human Behavior",
+      "autoria": [
+        "Joon Sung Park",
+        "Joseph C. O'Brien",
+        "Carrie J. Cai",
+        "Meredith Ringel Morris",
+        "Percy Liang",
+        "Michael S. Bernstein"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2304.03442 · UIST 2023",
+      "nivel": "L3",
+      "motor": "generative_agents",
+      "hito": "Resuelve la memoria de un agente que vive mucho tiempo: qué recordar, cuándo y por qué, cuando el contexto no da para todo.",
+      "keywords": [
+        "memoria episódica",
+        "recuperación puntuada",
+        "reflexión",
+        "planificación",
+        "simulación social"
+      ],
+      "notebook": "notebooks/papers/P31_generative_agents.ipynb"
+    },
+    {
+      "id": "P32",
+      "page": "P32_voyager.html",
+      "titulo": "Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes",
+      "original": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "autoria": [
+        "Guanzhi Wang",
+        "Yuqi Xie",
+        "Yunfan Jiang",
+        "Ajay Mandlekar",
+        "Chaowei Xiao",
+        "Yuke Zhu",
+        "Linxi Fan",
+        "Anima Anandkumar"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2305.16291",
+      "nivel": "L3",
+      "motor": "voyager",
+      "hito": "El agente acumula habilidades reutilizables en vez de contexto: memoria procedimental que no se borra al terminar la tarea.",
+      "keywords": [
+        "Voyager",
+        "biblioteca de habilidades",
+        "currículo automático",
+        "memoria procedimental",
+        "agente encarnado"
+      ],
+      "notebook": "notebooks/papers/P32_voyager.ipynb"
+    },
+    {
+      "id": "P33",
+      "page": "P33_autogen.html",
+      "titulo": "AutoGen: aplicaciones de nueva generación mediante conversación multiagente",
+      "original": "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation",
+      "autoria": [
+        "Qingyun Wu",
+        "Gagan Bansal",
+        "Jieyu Zhang",
+        "Yiran Wu",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2308.08155",
+      "nivel": "L4",
+      "motor": "autogen",
+      "hito": "El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger.",
+      "keywords": [
+        "multiagente",
+        "conversación",
+        "roles",
+        "crítico",
+        "human-in-the-loop",
+        "orquestación"
+      ],
+      "notebook": "notebooks/papers/P33_autogen.ipynb"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **22 hitos · 30 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
+## **33 hitos · 41 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -18,7 +18,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **22** | **30** | **22** | **5** | **L0–L5** | **27** |
+| **33** | **41** | **33** | **5** | **L0–L5** | **35** |
 
 </div>
 
@@ -46,9 +46,9 @@ largas → la atención lo elimina → si la atención basta, sobra la recurrenc
 > año, venue, URL y fecha de consulta. Los notebooks implementan **miniaturas** del mecanismo
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
-## 🧭 Dos rutas
+## 🧭 Cuatro rutas
 
-El eje tiene dos bloques con propósitos distintos. **No se estudian igual.**
+El eje tiene cuatro bloques con propósitos distintos. **No se estudian igual.**
 
 ```mermaid
 flowchart TD
@@ -105,6 +105,30 @@ toca— y continúa la historia hasta 2025.
 | [P20](foundational/P20_mamba/README.md) | Mamba | 2023 | L4 | Tiempo lineal y estado fijo, sin atención |
 | [P21](foundational/P21_moe/README.md) | Mixtral (MoE) | 2024 | L3 | Capacidad y cómputo se desacoplan |
 | [P22](foundational/P22_deepseek_r1/README.md) | DeepSeek-R1 | 2025 | L5 | El razonamiento se incentiva con refuerzo verificable |
+
+### 📚 Ruta de representación — cómo el lenguaje llegó a un formato único
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P23](foundational/P23_glove/README.md) | GloVe | 2014 | L2 | Factorizar estadísticas globales con estructura lineal |
+| [P24](foundational/P24_elmo/README.md) | ELMo | 2018 | L3 | Un vector por aparición: la polisemia deja de colapsar |
+| [P25](foundational/P25_t5/README.md) | T5 | 2019 | L3 | Todo problema de texto es texto → texto |
+
+### 🤖 Ruta de agentes — decisión secuencial, razonamiento y multiagente
+
+Empieza donde de verdad empieza la idea de agente —el refuerzo y la búsqueda— y llega al
+multiagente. Es el bloque que responde a «¿dónde están los papers de agentes?».
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P26](foundational/P26_dqn/README.md) | DQN | 2015 | L3 | Aprender a actuar desde píxeles, de forma estable |
+| [P27](foundational/P27_alphago/README.md) | AlphaGo | 2016 | L4 | Búsqueda y aprendizaje se potencian |
+| [P28](foundational/P28_chain_of_thought/README.md) | Chain-of-Thought | 2022 | L2 | Descomponer desbloquea lo que fallaba de una vez |
+| [P29](foundational/P29_tree_of_thoughts/README.md) | Tree of Thoughts | 2023 | L3 | Explorar ramas y poder retroceder |
+| [P30](foundational/P30_reflexion/README.md) | Reflexion | 2023 | L2 | Aprender entre intentos sin tocar pesos |
+| [P31](foundational/P31_generative_agents/README.md) | Generative Agents | 2023 | L3 | Memoria episódica con recuperación puntuada |
+| [P32](foundational/P32_voyager/README.md) | Voyager | 2023 | L3 | Habilidades reutilizables, no contexto |
+| [P33](foundational/P33_autogen/README.md) | AutoGen | 2023 | L4 | Multiagente como patrón de programación |
 
 ## ⏳ ¿Por qué el eje no llega a 2026?
 
@@ -164,7 +188,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **27 clases** enlazadas llevan un bloque generado por
+Las **35 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.
@@ -210,7 +234,7 @@ papers/
 │   └── PAPERS_INDEX.md          ← índice legible (generado)
 └── foundational/PXX_slug/       ← una ficha de 18 secciones por paper
 
-notebooks/papers/                ← 22 + 8 notebooks (generados)
+notebooks/papers/                ← 33 + 8 notebooks (generados)
 instructor/papers/               ← plan de sesión por paper (generado)
 student/papers/                  ← ficha de estudio y bitácora (generado)
 assessments/papers/              ← evaluación con rúbrica por paper (generado)
