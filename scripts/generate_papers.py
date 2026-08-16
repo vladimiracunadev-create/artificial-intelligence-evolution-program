@@ -1,0 +1,2505 @@
+"""Generador del eje `papers/`.
+
+Fuente de verdad: `papers/catalog/papers.json` + las especificaciones de notebook
+de este archivo. A partir de ahí se derivan, de forma reproducible:
+
+* `papers/catalog/PAPERS_INDEX.md`
+* `notebooks/papers/*.ipynb`  (16 papers + 8 miniaturas del Transformer)
+* `instructor/papers/*.md`, `student/papers/*.md`, `assessments/papers/*.md`
+* `papers/manifest.json` con SHA-256 de cada artefacto
+
+Uso::
+
+    python scripts/generate_papers.py            # genera todo
+    python scripts/generate_papers.py --check    # falla si algo quedó desactualizado
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from ai_evolution.papers import (  # noqa: E402
+    FICHA_SECTIONS,
+    NOTEBOOK_SECTIONS,
+    load_papers,
+    sha256_of,
+)
+
+BOOTSTRAP = """import json
+import pathlib
+import sys
+
+ROOT = pathlib.Path.cwd()
+while not (ROOT / "pyproject.toml").exists() and ROOT != ROOT.parent:
+    ROOT = ROOT.parent
+sys.path.insert(0, str(ROOT / "src"))
+
+from ai_evolution.papers_lab import run_paper_lab
+
+
+def show(value):
+    print(json.dumps(value, ensure_ascii=False, indent=2))
+"""
+
+
+# --------------------------------------------------------------------------- #
+# especificaciones de notebook (secciones 4 a 16 del contrato)
+# --------------------------------------------------------------------------- #
+
+SPECS: dict[str, dict[str, Any]] = {
+    "P01_perceptron": {
+        "intuicion": (
+            "Una recta que separa dos grupos de puntos. El aprendizaje consiste en empujar la recta "
+            "cada vez que un punto queda del lado equivocado. Nada más. Si los grupos se pueden "
+            "separar con una recta, el empujón termina; si no, el empujón nunca termina."
+        ),
+        "concepto": (
+            "`ŷ = 1 si w·x + b ≥ 0, si no 0`. Regla de corrección: `w ← w + η(y − ŷ)x`, `b ← b + η(y − ŷ)`.\n\n"
+            "Solo se corrige ante error: si acierta, no toca nada. El teorema de Novikoff (1962) acota "
+            "el número de correcciones por `(R/γ)²` cuando existe un margen `γ > 0`."
+        ),
+        "codigo_md": "Veinte líneas bastan para el algoritmo de 1958. Lo que importa es la línea del `if`: sin error, no hay aprendizaje.",
+        "codigo": (
+            "def perceptron(data, epochs=20, lr=1.0):\n"
+            "    w, b, historial = [0.0, 0.0], 0.0, []\n"
+            "    for epoca in range(1, epochs + 1):\n"
+            "        errores = 0\n"
+            "        for x, y in data:\n"
+            "            z = w[0] * x[0] + w[1] * x[1] + b\n"
+            "            pred = 1 if z >= 0 else 0\n"
+            "            if pred != y:                      # <-- solo se aprende del error\n"
+            "                w = [wi + lr * (y - pred) * xi for wi, xi in zip(w, x)]\n"
+            "                b += lr * (y - pred)\n"
+            "                errores += 1\n"
+            "        historial.append({'epoca': epoca, 'errores': errores, 'w': list(w), 'b': b})\n"
+            "        if errores == 0:\n"
+            "            return {'converge': True, 'epocas': epoca, 'w': w, 'b': b, 'historial': historial}\n"
+            "    return {'converge': False, 'epocas': epochs, 'w': w, 'b': b, 'historial': historial[-3:]}\n"
+            "\n"
+            "AND = [([0, 0], 0), ([0, 1], 0), ([1, 0], 0), ([1, 1], 1)]\n"
+            "XOR = [([0, 0], 0), ([0, 1], 1), ([1, 0], 1), ([1, 1], 0)]\n"
+            "show(perceptron(AND))"
+        ),
+        "prediccion": (
+            "Antes de ejecutar la celda siguiente, escribe tu respuesta:\n\n"
+            "1. ¿En cuántas épocas converge AND?\n"
+            "2. ¿Qué crees que hará XOR: converger en más épocas, o no converger nunca?\n"
+            "3. Si XOR no converge, ¿los pesos se quedan quietos o siguen cambiando?"
+        ),
+        "experimento": (
+            "resultado_and = perceptron(AND)\n"
+            "resultado_xor = perceptron(XOR)\n"
+            "print('AND converge:', resultado_and['converge'], '· épocas:', resultado_and['epocas'])\n"
+            "print('XOR converge:', resultado_xor['converge'], '· épocas:', resultado_xor['epocas'])\n"
+            "print('XOR, últimas 3 épocas:')\n"
+            "show(resultado_xor['historial'])"
+        ),
+        "salida": (
+            "AND converge y deja de moverse: `errores = 0`. XOR nunca llega a `errores = 0` y sus pesos "
+            "siguen oscilando en las últimas épocas. **La oscilación es el dato**: no es que el algoritmo "
+            "aprenda lento, es que no existe solución que buscar."
+        ),
+        "comentario": (
+            "Esto separa dos ideas que los principiantes mezclan: *no converger por falta de épocas* "
+            "(problema de presupuesto) y *no converger porque la clase de hipótesis no contiene la solución* "
+            "(problema de capacidad representacional). Aumentar `epochs` a un millón no cambia el segundo caso."
+        ),
+        "antipatron_md": "Anti-patrón clásico: concluir «el modelo aprende» mirando solo el último `w` sin comprobar si el error llegó a cero.",
+        "antipatron": (
+            "malo = perceptron(XOR, epochs=200)\n"
+            "print('pesos finales:', malo['w'], malo['b'])\n"
+            "print('conclusión apresurada: «ya está entrenado, tengo pesos»')"
+        ),
+        "correccion_md": "La corrección es reportar siempre el criterio de parada junto con los pesos.",
+        "correccion": (
+            "def reportar(resultado, nombre):\n"
+            "    estado = 'CONVERGIÓ' if resultado['converge'] else 'NO CONVERGIÓ (tope de épocas)'\n"
+            "    print(f\"{nombre}: {estado} · w={resultado['w']} b={resultado['b']}\")\n"
+            "\n"
+            "reportar(perceptron(AND), 'AND')\n"
+            "reportar(perceptron(XOR, epochs=200), 'XOR')"
+        ),
+        "desafio_guiado_md": (
+            "Añade la característica `x₃ = x₁·x₂` a XOR y vuelve a entrenar. ¿Se vuelve separable? "
+            "Este es exactamente el truco que las capas ocultas aprenderán solas en P02."
+        ),
+        "desafio_guiado": (
+            "XOR3 = [([x[0], x[1], x[0] * x[1]], y) for x, y in XOR]\n"
+            "\n"
+            "def perceptron3(data, epochs=20, lr=1.0):\n"
+            "    w, b = [0.0, 0.0, 0.0], 0.0\n"
+            "    for epoca in range(1, epochs + 1):\n"
+            "        errores = 0\n"
+            "        for x, y in data:\n"
+            "            pred = 1 if sum(wi * xi for wi, xi in zip(w, x)) + b >= 0 else 0\n"
+            "            if pred != y:\n"
+            "                w = [wi + lr * (y - pred) * xi for wi, xi in zip(w, x)]\n"
+            "                b += lr * (y - pred)\n"
+            "                errores += 1\n"
+            "        if errores == 0:\n"
+            "            return {'converge': True, 'epocas': epoca, 'w': w, 'b': b}\n"
+            "    return {'converge': False, 'epocas': epochs, 'w': w, 'b': b}\n"
+            "\n"
+            "show(perceptron3(XOR3))"
+        ),
+        "desafio_autonomo": (
+            "Genera dos nubes de puntos gaussianas con distintos grados de solapamiento y mide cuántas "
+            "correcciones necesita el perceptrón en función del margen. Contrasta tu curva empírica con "
+            "la cota `(R/γ)²`. Documenta la semilla y el criterio de parada."
+        ),
+        "evidencia": (
+            "Guarda: (a) el número de épocas de AND, (b) la evidencia de no convergencia de XOR, "
+            "(c) el resultado de XOR con la característica `x₁·x₂`, y (d) una frase tuya distinguiendo "
+            "«no converge todavía» de «no puede converger»."
+        ),
+        "cierre": (
+            "El perceptrón demostró que una máquina puede ajustar su propio comportamiento a partir de "
+            "ejemplos. También demostró, sin quererlo, dónde estaba el techo: la frontera es lineal."
+        ),
+    },
+    "P02_backpropagation": {
+        "intuicion": (
+            "Si el resultado final está mal, ¿de quién es la culpa? Backpropagation reparte la culpa "
+            "hacia atrás: cada peso recibe una porción del error proporcional a cuánto influyó en él. "
+            "No es magia, es la regla de la cadena del cálculo aplicada con orden."
+        ),
+        "concepto": (
+            "Para una red `x → h = σ(W₁x + b₁) → o = σ(W₂h + b₂)` y pérdida `L = (o − y)²`:\n\n"
+            "```text\n"
+            "∂L/∂o_in = 2(o − y)·σ'(o_in)               con σ'(z) = σ(z)(1 − σ(z))\n"
+            "∂L/∂W₂   = ∂L/∂o_in · h\n"
+            "∂L/∂h_in = ∂L/∂o_in · W₂ · σ'(h_in)        ← aquí «viaja» el error hacia atrás\n"
+            "∂L/∂W₁   = ∂L/∂h_in · x\n"
+            "```"
+        ),
+        "codigo_md": "El motor del programa implementa esta derivación a mano, sin autograd, para que se vea cada término.",
+        "codigo": (
+            "resultado = run_paper_lab('backprop', seed=7)\n"
+            "show(resultado['result']['loss_history'])\n"
+            "show(resultado['result']['predictions'])"
+        ),
+        "prediccion": (
+            "1. ¿Bajará la pérdida de forma monótona o habrá una meseta al principio?\n"
+            "2. Con 2 neuronas ocultas, ¿podrá resolver XOR o hará falta más capacidad?\n"
+            "3. ¿Cuánto esperas que difiera el gradiente analítico del numérico: 1e-2, 1e-5 o 1e-10?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('backprop', seed=semilla)['result']\n"
+            "    print(f\"semilla {semilla:>2} · pérdida inicial {r['loss_history'][0]['loss']:.5f} \"\n"
+            "          f\"· final {r['loss_history'][-1]['loss']:.5f} \"\n"
+            "          f\"· |analítico − numérico| = {r['grad_check']['abs_diff']}\")"
+        ),
+        "salida": (
+            "La verificación numérica del gradiente es la parte más importante de la salida. "
+            "`|analítico − numérico| ≈ 1e-8` significa que la derivación es correcta. Si diera `1e-2`, "
+            "el entrenamiento podría *parecer* funcionar y estar optimizando otra cosa."
+        ),
+        "comentario": (
+            "La meseta inicial es real: con pesos pequeños las sigmoides están en su zona lineal y la "
+            "señal de gradiente es débil. Ese mismo fenómeno, multiplicado por muchas capas, es el "
+            "gradiente desvaneciente que P03 tendrá que resolver."
+        ),
+        "antipatron_md": "Anti-patrón: confiar en un gradiente escrito a mano sin verificarlo. Aquí se compara contra una derivada numérica *mal calculada* (diferencia hacia adelante con ε enorme).",
+        "antipatron": (
+            "eps_malo = 1e-1                      # ε demasiado grande: mide una secante, no una tangente\n"
+            "def f(x):\n"
+            "    return (x - 3) ** 2\n"
+            "\n"
+            "aprox = (f(2.0 + eps_malo) - f(2.0)) / eps_malo\n"
+            "print('derivada numérica con ε=1e-1 :', aprox, ' (analítica: -2.0)')"
+        ),
+        "correccion_md": "La corrección: diferencia **centrada** y un ε intermedio. Muy grande mide otra cosa; muy pequeño se come la precisión de punto flotante.",
+        "correccion": (
+            "for eps in (1e-1, 1e-3, 1e-5, 1e-9, 1e-12):\n"
+            "    centrada = (f(2.0 + eps) - f(2.0 - eps)) / (2 * eps)\n"
+            "    print(f'ε={eps:<8} → {centrada:+.10f}  error={abs(centrada + 2.0):.2e}')"
+        ),
+        "desafio_guiado_md": "Comprueba que el error del gradiente sube si aumentas la tasa de aprendizaje hasta desestabilizar el entrenamiento.",
+        "desafio_guiado": (
+            "r = run_paper_lab('backprop', seed=3)['result']\n"
+            "print('pérdida final:', r['loss_history'][-1]['loss'])\n"
+            "print('predicciones (XOR espera 0,1,1,0):')\n"
+            "for fila in r['predictions']:\n"
+            "    print(' ', fila['x'], '→', fila['pred'], ' (objetivo', fila['y'], ')')"
+        ),
+        "desafio_autonomo": (
+            "Reescribe la red con 1 sola neurona oculta y comprueba que ya no resuelve XOR. Después, "
+            "sustituye la sigmoide por ReLU y observa qué cambia en la meseta inicial. Documenta ambas "
+            "curvas de pérdida y explica la diferencia en términos de gradiente."
+        ),
+        "evidencia": (
+            "Guarda la curva de pérdida, la comprobación numérica del gradiente y una explicación de por "
+            "qué una red de 9 parámetros resuelve lo que el perceptrón no podía."
+        ),
+        "cierre": (
+            "Con backpropagation, las capas ocultas dejan de ser un misterio: se pueden entrenar. "
+            "El problema siguiente aparece al apilar muchas capas —o muchos pasos de tiempo— y ver que "
+            "el gradiente se apaga en el camino."
+        ),
+    },
+    "P03_lstm": {
+        "intuicion": (
+            "Una cinta transportadora que atraviesa el tiempo sin ser tocada, y tres compuertas que "
+            "deciden qué se sube, qué se baja y qué se mira. El truco no son las compuertas: es que la "
+            "cinta se actualiza **sumando**, no multiplicando."
+        ),
+        "concepto": (
+            "```text\n"
+            "f = σ(W_f·[h, x])   olvido      c = f ⊙ c_prev + i ⊙ g     ← suma, no producto encadenado\n"
+            "i = σ(W_i·[h, x])   entrada     h = o ⊙ tanh(c)\n"
+            "o = σ(W_o·[h, x])   salida\n"
+            "g = tanh(W_g·[h, x]) candidato\n"
+            "```\n\n"
+            "En un RNN clásico el gradiente se multiplica por `W·tanh'` en cada paso: si ese factor es "
+            "0,4, en 40 pasos queda `0,4⁴⁰ ≈ 1e-16`. En la celda, `∂c_t/∂c_{t-1} = f ≈ 1`."
+        ),
+        "codigo_md": "El motor calcula ambos decaimientos y una pasada completa de la celda con valores explícitos.",
+        "codigo": (
+            "r = run_paper_lab('lstm', seed=7)['result']\n"
+            "show(r['gates'])\n"
+            "show(r['gradient_after_40_steps'])"
+        ),
+        "prediccion": (
+            "1. Tras 40 pasos, ¿cuántos órdenes de magnitud separan el gradiente del RNN del de la celda?\n"
+            "2. Si la puerta de olvido valiera 0,5 en lugar de ~1, ¿la celda seguiría preservando el gradiente?\n"
+            "3. ¿Qué puerta controla lo que el resto de la red *ve*, sin borrar lo que la celda *recuerda*?"
+        ),
+        "experimento": (
+            "import math\n"
+            "\n"
+            "for f in (1.00, 0.98, 0.90, 0.50):\n"
+            "    grad = 1.0\n"
+            "    for _ in range(40):\n"
+            "        grad *= f\n"
+            "    print(f'puerta de olvido={f:.2f} → gradiente tras 40 pasos = {grad:.3e}')"
+        ),
+        "salida": (
+            "Con `f = 1,00` el gradiente se conserva exacto (carrusel de error constante). Con `f = 0,50` "
+            "la celda vuelve a desvanecerse: **la LSTM no elimina el problema, lo pone bajo control de una "
+            "puerta aprendida**. Esa distinción es la respuesta correcta en un examen."
+        ),
+        "comentario": (
+            "Ojo con el anacronismo: el paper de 1997 tenía puertas de entrada y salida. La puerta de "
+            "olvido —la que acabas de manipular— la añadieron Gers, Schmidhuber y Cummins en 1999/2000. "
+            "Atribuirla al paper original es un error frecuente en resúmenes de internet."
+        ),
+        "antipatron_md": "Anti-patrón: explicar la LSTM diciendo «resuelve el gradiente desvaneciente» sin condición alguna.",
+        "antipatron": (
+            "afirmacion = 'La LSTM resuelve el gradiente desvaneciente.'\n"
+            "print(afirmacion)\n"
+            "print('→ falso como enunciado absoluto: acabas de ver f=0.50 desvanecerse igual.')"
+        ),
+        "correccion_md": "Enunciado correcto, con su condición explícita:",
+        "correccion": (
+            "correcto = ('La LSTM MITIGA el gradiente desvaneciente cuando la puerta de olvido '\n"
+            "            'aprende a mantenerse cerca de 1 en el intervalo que hay que recordar.')\n"
+            "print(correcto)"
+        ),
+        "desafio_guiado_md": "¿A partir de qué valor de `f` el gradiente cae por debajo de 1e-3 en 40 pasos? Búscalo numéricamente.",
+        "desafio_guiado": (
+            "umbral = 1e-3\n"
+            "f = 1.0\n"
+            "while f > 0:\n"
+            "    if f ** 40 < umbral:\n"
+            "        break\n"
+            "    f -= 0.005\n"
+            "print(f'la puerta debe mantenerse por encima de f≈{f + 0.005:.3f} para conservar 1e-3 en 40 pasos')"
+        ),
+        "desafio_autonomo": (
+            "Implementa la tarea de «copia con retardo»: la red debe repetir un símbolo visto T pasos "
+            "antes. Mide la precisión con un RNN tanh y con una celda LSTM para T = 5, 20 y 100. "
+            "Reporta la semilla y el número de parámetros de cada modelo."
+        ),
+        "evidencia": (
+            "Guarda la tabla de decaimiento por valor de puerta, el umbral que encontraste y el enunciado "
+            "corregido sobre qué resuelve y qué no resuelve la LSTM."
+        ),
+        "cierre": (
+            "Ya se pueden modelar secuencias largas. Falta que la entrada y la salida puedan tener "
+            "longitudes distintas, que es lo que exige traducir."
+        ),
+    },
+    "P04_alexnet": {
+        "intuicion": (
+            "Un detector de bordes no debería tener que reaprenderse en cada esquina de la imagen. "
+            "La convolución aplica el mismo detector en todas partes: menos parámetros, y la posición "
+            "deja de importar."
+        ),
+        "concepto": (
+            "```text\n"
+            "(I * K)[r, c] = Σᵢ Σⱼ I[r+i, c+j] · K[i, j]      convolución (correlación cruzada)\n"
+            "ReLU(z) = max(0, z)                              no satura para z > 0\n"
+            "maxpool                                          invarianza local a pequeños desplazamientos\n"
+            "```\n\n"
+            "Un kernel 3×3 tiene 9 parámetros y se reutiliza en toda la imagen. La capa densa equivalente "
+            "necesitaría un peso por cada par (píxel de entrada, píxel de salida)."
+        ),
+        "codigo_md": "El motor convoluciona la misma imagen y una versión desplazada, y compara el conteo de parámetros.",
+        "codigo": (
+            "r = run_paper_lab('convnet', seed=7)['result']\n"
+            "print('mapa de activación (borde en el centro):')\n"
+            "for fila in r['feature_map']:\n"
+            "    print(' ', fila)\n"
+            "print('\\nla misma imagen desplazada:')\n"
+            "for fila in r['feature_map_shifted']:\n"
+            "    print(' ', fila)\n"
+            "show(r['params'])"
+        ),
+        "prediccion": (
+            "1. Si desplazo el borde una columna a la izquierda, ¿el pico de activación se desplaza o desaparece?\n"
+            "2. ¿Cuántas veces menos parámetros usa el kernel frente a la capa densa equivalente?\n"
+            "3. Tras ReLU y max-pool, ¿queda información de *dónde* estaba el borde?"
+        ),
+        "experimento": (
+            "def convolucionar(imagen, kernel):\n"
+            "    k = len(kernel)\n"
+            "    n = len(imagen) - k + 1\n"
+            "    return [[sum(imagen[r+i][c+j] * kernel[i][j] for i in range(k) for j in range(k))\n"
+            "             for c in range(n)] for r in range(n)]\n"
+            "\n"
+            "vertical = [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]]\n"
+            "horizontal = [[-1, -1, -1], [0, 0, 0], [1, 1, 1]]\n"
+            "imagen = [[0.0] * 3 + [1.0] * 3 for _ in range(6)]     # borde VERTICAL\n"
+            "\n"
+            "print('kernel vertical  →', convolucionar(imagen, vertical)[0])\n"
+            "print('kernel horizontal→', convolucionar(imagen, horizontal)[0])"
+        ),
+        "salida": (
+            "El kernel vertical responde con `3.0` justo en el borde; el horizontal responde `0.0` en todas "
+            "partes. **Un filtro solo ve aquello para lo que está sintonizado**: por eso una capa tiene "
+            "muchos filtros distintos, y por eso AlexNet aprendió los suyos en lugar de escribirlos."
+        ),
+        "comentario": (
+            "Lo que AlexNet aportó no fue la convolución (LeNet, 1998) sino la combinación que la hizo "
+            "escalar: profundidad, ReLU, dropout, aumento de datos, dos GPU y un dataset del tamaño de "
+            "ImageNet. Ninguna pieza sola explica el resultado."
+        ),
+        "antipatron_md": "Anti-patrón: presentar el resultado de AlexNet como «la CNN es mejor» sin nombrar el dataset ni el protocolo de evaluación.",
+        "antipatron": (
+            "print('«Las CNN son mejores que los métodos clásicos» ← afirmación sin contexto')\n"
+            "print('¿mejores en qué tarea, con qué datos, con qué métrica, contra qué línea base?')"
+        ),
+        "correccion_md": "Un claim verificable nombra tarea, dataset, métrica, línea base y condiciones de cómputo.",
+        "correccion": (
+            "claim = {\n"
+            "    'tarea': 'clasificación de imágenes en 1000 categorías',\n"
+            "    'dataset': 'ILSVRC-2012 (subconjunto de ImageNet)',\n"
+            "    'metrica': 'error top-5 en el conjunto de test',\n"
+            "    'linea_base': 'mejor sistema del certamen basado en descriptores diseñados a mano',\n"
+            "    'computo': '2 GPU, entrenamiento de varios días (ver sección 5 del paper)',\n"
+            "    'verificar_en': 'tabla de resultados del paper original',\n"
+            "}\n"
+            "show(claim)"
+        ),
+        "desafio_guiado_md": "Comprueba la equivarianza: convoluciona la imagen desplazada y verifica que el pico se mueve la misma cantidad.",
+        "desafio_guiado": (
+            "desplazada = [[0.0] * 2 + [1.0] * 4 for _ in range(6)]\n"
+            "original_fila = convolucionar(imagen, vertical)[0]\n"
+            "desplazada_fila = convolucionar(desplazada, vertical)[0]\n"
+            "print('original :', original_fila, '→ pico en índice', original_fila.index(max(original_fila)))\n"
+            "print('desplazada:', desplazada_fila, '→ pico en índice', desplazada_fila.index(max(desplazada_fila)))"
+        ),
+        "desafio_autonomo": (
+            "Toma un dataset pequeño y público de imágenes en escala de grises. Compara una red densa y "
+            "una convolucional con un número de parámetros comparable. Reporta accuracy, número de "
+            "parámetros y tiempo de entrenamiento, y evalúa también con las imágenes desplazadas 2 píxeles."
+        ),
+        "evidencia": (
+            "Guarda los dos mapas de activación, el conteo comparado de parámetros y el claim reescrito "
+            "con tarea, dataset, métrica y línea base."
+        ),
+        "cierre": (
+            "La visión aprendió a extraer sus propias características. El lenguaje seguía representando "
+            "las palabras como identificadores sin relación entre sí."
+        ),
+    },
+    "P05_word2vec": {
+        "intuicion": (
+            "Dime con quién apareces y te diré qué significas. Si «rey» y «reina» aparecen rodeadas de "
+            "las mismas palabras, sus vectores acabarán apuntando en direcciones parecidas — sin que "
+            "nadie escriba jamás una definición."
+        ),
+        "concepto": (
+            "Skip-gram maximiza `log σ(v_c·u_o)` para pares (centro, contexto) reales y "
+            "`log σ(−v_c·u_k)` para `k` pares negativos muestreados al azar.\n\n"
+            "El resultado es un espacio donde `coseno(a, b)` mide similitud distribucional y donde "
+            "ciertas relaciones aparecen como desplazamientos aproximadamente constantes."
+        ),
+        "codigo_md": "El motor entrena skip-gram con muestreo negativo sobre un corpus de 8 frases, en Python puro.",
+        "codigo": (
+            "r = run_paper_lab('word2vec', seed=7)['result']\n"
+            "print('vocabulario:', r['vocab_size'], '· dimensión:', r['dim'], '· pares:', r['training_pairs'])\n"
+            "show(r['neighbours'])"
+        ),
+        "prediccion": (
+            "1. ¿Quién estará más cerca de «rey»: «reina», «hombre» o «reino»?\n"
+            "2. ¿El resultado de `rey − hombre + mujer` será estable al cambiar la semilla?\n"
+            "3. Con solo 8 frases, ¿qué parte del resultado es señal y qué parte es ruido?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('word2vec', seed=semilla)['result']\n"
+            "    top = r['analogy_rey_menos_hombre_mas_mujer']\n"
+            "    print(f\"semilla {semilla:>2} → 1º {top[0]['word']} ({top[0]['cos']}) · \"\n"
+            "          f\"2º {top[1]['word']} ({top[1]['cos']})\")"
+        ),
+        "salida": (
+            "«reina» sale primera en las tres semillas, con un coseno muy por encima del segundo lugar. "
+            "Que el **primer** puesto sea estable y el **segundo** cambie es la lectura honesta: la señal "
+            "fuerte se sostiene, la cola es ruido de un corpus diminuto."
+        ),
+        "comentario": (
+            "La aritmética de analogías se popularizó como si el espacio codificara conceptos limpios. "
+            "Trabajos posteriores mostraron que el resultado depende del protocolo (por ejemplo, de "
+            "excluir del ranking las tres palabras de la consulta, como hace este código)."
+        ),
+        "antipatron_md": "Anti-patrón: evaluar la analogía **sin excluir** las palabras de la consulta. El vecino más cercano acaba siendo la propia palabra de partida.",
+        "antipatron": (
+            "print('Si no excluyes rey/hombre/mujer del ranking, «rey» suele ganar por su propio peso.')\n"
+            "print('El resultado parecería trivialmente correcto o trivialmente absurdo, según el caso.')\n"
+            "print('El protocolo de evaluación es parte del resultado, no un detalle de implementación.')"
+        ),
+        "correccion_md": "El código del motor ya aplica la exclusión. Aquí se hace explícito el criterio:",
+        "correccion": (
+            "protocolo = {\n"
+            "    'consulta': 'rey - hombre + mujer',\n"
+            "    'excluidas_del_ranking': ['rey', 'hombre', 'mujer'],\n"
+            "    'metrica': 'coseno',\n"
+            "    'corpus': '8 frases (juguete)',\n"
+            "    'semillas_probadas': [1, 7, 42],\n"
+            "}\n"
+            "show(protocolo)"
+        ),
+        "desafio_guiado_md": "Comprueba si «calle» y «reino» quedan lejos entre sí: son las dos «familias» semánticas del corpus.",
+        "desafio_guiado": (
+            "r = run_paper_lab('word2vec', seed=7)['result']\n"
+            "show(r['neighbours']['calle'])"
+        ),
+        "desafio_autonomo": (
+            "Entrena embeddings sobre un corpus público en español de al menos 1 millón de palabras. "
+            "Construye tu propio conjunto de 30 analogías y reporta accuracy top-1 y top-5, con la "
+            "distribución de frecuencias de las palabras implicadas. Comenta el sesgo que encuentres."
+        ),
+        "evidencia": (
+            "Guarda la tabla de vecinos, el resultado de la analogía en tres semillas y una frase sobre "
+            "qué parte del resultado consideras evidencia y qué parte artefacto del corpus."
+        ),
+        "cierre": (
+            "Las palabras ya tienen geometría. Falta que un modelo produzca *secuencias* completas a "
+            "partir de otras secuencias."
+        ),
+    },
+    "P06_seq2seq": {
+        "intuicion": (
+            "Leer una frase entera, cerrar los ojos, y escribir la traducción solo de memoria. Funciona "
+            "con frases cortas. Con un párrafo, cuando llegas al final ya no recuerdas cómo empezaba."
+        ),
+        "concepto": (
+            "```text\n"
+            "c = encoder(x₁…x_n)                    un único vector de tamaño fijo\n"
+            "p(y₁…y_m) = Π_t p(y_t | y_<t, c)       el decodificador solo ve c\n"
+            "```\n\n"
+            "Toda la información de la entrada tiene que caber en `c`. La capacidad de `c` no crece con "
+            "la longitud de la frase: ahí está el cuello de botella."
+        ),
+        "codigo_md": "El motor codifica secuencias de longitud creciente en un vector fijo y mide cuánto sobrevive del principio.",
+        "codigo": (
+            "r = run_paper_lab('seq2seq', seed=7)['result']\n"
+            "print('dimensión del vector de contexto:', r['state_dim'])\n"
+            "for fila in r['bottleneck']:\n"
+            "    print(f\"n={fila['length']:>2} · cos(primer token)={fila['cos_primer_token']:+.3f} \"\n"
+            "          f\"· cos(último)={fila['cos_ultimo_token']:+.3f} · recuperables={fila['tokens_recuperables']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Cómo evolucionará el coseno con el primer token al pasar de n=2 a n=32?\n"
+            "2. ¿Y el coseno con el último token?\n"
+            "3. Si inviertes la secuencia de entrada, ¿a qué extremo beneficias?"
+        ),
+        "experimento": (
+            "for fila in r['bottleneck']:\n"
+            "    brecha = fila['cos_ultimo_token'] - fila['cos_primer_token']\n"
+            "    print(f\"n={fila['length']:>2} · brecha último−primero = {brecha:+.3f}\")"
+        ),
+        "salida": (
+            "La brecha crece con la longitud: el vector fijo está dominado por lo último que leyó. Este es "
+            "exactamente el motivo por el que Sutskever et al. invirtieron la secuencia fuente — así el "
+            "principio de la frase de entrada queda *cerca* del principio de la de salida."
+        ),
+        "comentario": (
+            "Invertir la entrada es un parche brillante y honesto: no elimina el cuello de botella, "
+            "reordena qué información se pierde. El siguiente paper eliminará la premisa entera."
+        ),
+        "antipatron_md": "Anti-patrón: culpar al tamaño del modelo («faltan parámetros») cuando el problema es estructural.",
+        "antipatron": (
+            "print('Diagnóstico incorrecto: «sube la dimensión del estado y se arregla».')\n"
+            "print('Duplicar la dimensión retrasa el problema; no cambia que la capacidad sea CONSTANTE')\n"
+            "print('mientras la longitud de la entrada es VARIABLE.')"
+        ),
+        "correccion_md": "Diagnóstico correcto: capacidad constante frente a información creciente.",
+        "correccion": (
+            "diagnostico = {\n"
+            "    'sintoma': 'la calidad cae al crecer la longitud de la entrada',\n"
+            "    'causa_estructural': 'la entrada se comprime en un vector de tamaño fijo',\n"
+            "    'parche_del_paper': 'invertir la secuencia fuente',\n"
+            "    'solucion_de_fondo': 'dejar que el decodificador consulte TODOS los estados (P07)',\n"
+            "}\n"
+            "show(diagnostico)"
+        ),
+        "desafio_guiado_md": "Sube `state_dim` mentalmente: ¿a partir de qué longitud volvería a fallar? Compruébalo con una versión propia del codificador.",
+        "desafio_guiado": (
+            "def codificar(tokens, dim, decaimiento=0.7):\n"
+            "    estado = [0.0] * dim\n"
+            "    for i, t in enumerate(tokens):\n"
+            "        vec = [((i * 7 + d * 3) % 11) / 11 for d in range(dim)]\n"
+            "        estado = [decaimiento * s + (1 - decaimiento) * v for s, v in zip(estado, vec)]\n"
+            "    return estado\n"
+            "\n"
+            "for n in (4, 16, 64):\n"
+            "    estado = codificar(list(range(n)), dim=8)\n"
+            "    print(f'n={n:>2} → norma del estado {sum(x*x for x in estado) ** 0.5:.4f}')"
+        ),
+        "desafio_autonomo": (
+            "Implementa un seq2seq de juguete para invertir cadenas de longitud variable. Mide la "
+            "exactitud por longitud (2, 4, 8, 16) con y sin inversión de la entrada. Reporta la curva."
+        ),
+        "evidencia": (
+            "Guarda la tabla de cosenos por longitud, la brecha primero-último y el diagnóstico "
+            "distinguiendo causa estructural de parche."
+        ),
+        "cierre": (
+            "El cuello de botella tiene nombre y medida. La solución no será un vector más grande, sino "
+            "dejar de comprimir."
+        ),
+    },
+    "P07_attention_bahdanau": {
+        "intuicion": (
+            "En vez de memorizar la frase entera y cerrar los ojos, el traductor deja el texto original "
+            "sobre la mesa y, para cada palabra que escribe, vuelve a mirar la parte que le hace falta."
+        ),
+        "concepto": (
+            "```text\n"
+            "e_ij = vᵀ·tanh(W·s_{i−1} + U·h_j)      puntuación de compatibilidad (aditiva)\n"
+            "α_ij = softmax_j(e_ij)                  pesos que suman 1\n"
+            "c_i  = Σ_j α_ij · h_j                   vector de contexto DISTINTO en cada paso i\n"
+            "```\n\n"
+            "El cuello de botella desaparece: `c_i` se recalcula en cada paso a partir de todos los "
+            "estados del codificador."
+        ),
+        "codigo_md": "El motor aprende los 18 parámetros de la atención aditiva por descenso de gradiente y muestra la matriz α.",
+        "codigo": (
+            "r = run_paper_lab('bahdanau', seed=7)['result']\n"
+            "print('parámetros:', r['parametros'], '· aciertos:', r['aciertos_de_alineacion'])\n"
+            "for fila in r['alignment']:\n"
+            "    print(f\"{fila['target']:<8} → {fila['argmax']:<8} α={fila['alpha']} H={fila['entropia']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Sumarán exactamente 1 los pesos α de cada fila? ¿Por qué?\n"
+            "2. ¿Será la entropía alta (atención repartida) o baja (atención concentrada) tras entrenar?\n"
+            "3. Si la atención acierta la alineación, ¿demuestra eso que el modelo «entiende» la frase?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('bahdanau', seed=semilla)['result']\n"
+            "    entropias = [f['entropia'] for f in r['alignment']]\n"
+            "    print(f\"semilla {semilla:>2} · aciertos {r['aciertos_de_alineacion']} \"\n"
+            "          f\"· entropía media {sum(entropias)/len(entropias):.3f} \"\n"
+            "          f\"· pérdida final {r['perdida'][-1]['loss']}\")"
+        ),
+        "salida": (
+            "La entropía baja (cerca de 0) significa que α se concentra casi todo en una posición: la "
+            "alineación es nítida. `suma_alpha = 1.0` en cada fila confirma que softmax produce una "
+            "distribución de probabilidad sobre las posiciones de entrada."
+        ),
+        "comentario": (
+            "Aquí la alineación está supervisada para que el mecanismo se vea. En el paper **nadie etiqueta "
+            "la alineación**: emerge al entrenar solo la traducción. Esa es la parte notable, y conviene "
+            "no atribuir a este notebook un mérito que corresponde al paper."
+        ),
+        "antipatron_md": "Anti-patrón: leer la matriz de atención como una explicación causal («el modelo se fijó en X porque X importa»).",
+        "antipatron": (
+            "print('Afirmación tentadora: «α muestra en qué se fijó el modelo, luego explica su decisión».')\n"
+            "print('Jain y Wallace (2019) mostraron que se pueden construir distribuciones de atención')\n"
+            "print('muy distintas que producen la MISMA salida. Correlación ≠ explicación.')"
+        ),
+        "correccion_md": "Enunciado defendible sobre lo que la atención sí aporta:",
+        "correccion": (
+            "defendible = [\n"
+            "    'α es un peso de mezcla, verificable y que suma 1',\n"
+            "    'α elimina el cuello de botella del vector fijo (eso sí es causal en la arquitectura)',\n"
+            "    'α es una PISTA de interpretación, no una explicación del proceso interno',\n"
+            "]\n"
+            "for linea in defendible:\n"
+            "    print('-', linea)"
+        ),
+        "desafio_guiado_md": "Comprueba qué ocurre si eliminas el softmax y usas los scores crudos como pesos.",
+        "desafio_guiado": (
+            "scores = [2.0, 1.0, 0.5, -3.0]\n"
+            "suma_cruda = sum(scores)\n"
+            "print('pesos crudos normalizados:', [round(s / suma_cruda, 3) for s in scores])\n"
+            "print('→ hay pesos NEGATIVOS y la suma se rompe si los scores suman ~0')\n"
+            "import math\n"
+            "exp = [math.exp(s) for s in scores]\n"
+            "print('softmax                  :', [round(e / sum(exp), 3) for e in exp])"
+        ),
+        "desafio_autonomo": (
+            "Entrena atención aditiva sin supervisión de alineación: solo con la pérdida de predecir el "
+            "token siguiente en un corpus paralelo de juguete. Comprueba si la alineación emerge sola y "
+            "reporta cuántos ejemplos hicieron falta."
+        ),
+        "evidencia": (
+            "Guarda la matriz α, la entropía por fila y tu enunciado sobre qué se puede y qué no se puede "
+            "concluir de esa matriz."
+        ),
+        "cierre": (
+            "Si la atención resuelve el acceso a toda la entrada… ¿para qué sigue haciendo falta la "
+            "recurrencia? Esa pregunta es el título del paper siguiente."
+        ),
+    },
+    "P08_transformer": {
+        "intuicion": (
+            "Cada palabra pregunta al resto de la frase «¿quién de vosotros me importa?», recibe una "
+            "respuesta ponderada y se actualiza. Todas las palabras lo hacen **a la vez**, no en fila. "
+            "Ahí está la paralelización, y ahí está el salto de escala."
+        ),
+        "concepto": (
+            "```text\n"
+            "Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V\n"
+            "MultiHead(X) = Concat(head₁ … head_h)·W^O,  head_i = Attention(XW_i^Q, XW_i^K, XW_i^V)\n"
+            "PE(pos, 2i) = sin(pos/10000^{2i/d}),  PE(pos, 2i+1) = cos(pos/10000^{2i/d})\n"
+            "sublayer(x) = LayerNorm(x + Sublayer(x))\n"
+            "```\n\n"
+            "`√d_k` no es cosmética: sin ella el producto escalar crece con la dimensión, el softmax se "
+            "satura y el gradiente se apaga."
+        ),
+        "codigo_md": "El motor implementa la ecuación 1 completa: escala, máscara causal, multi-cabeza, codificación posicional y residual + layer norm.",
+        "codigo": (
+            "r = run_paper_lab('transformer', seed=7)['result']\n"
+            "show(r['entropia_media'])\n"
+            "print('\\nmatriz de atención con máscara causal:')\n"
+            "for fila in r['mascara_causal']:\n"
+            "    print(' ', fila)"
+        ),
+        "prediccion": (
+            "1. ¿La entropía será mayor con escala `√d_k` o sin ella? ¿Qué significa cada caso?\n"
+            "2. ¿Qué forma tendrá la matriz con máscara causal?\n"
+            "3. Para n=1000, ¿cuántas veces más operaciones hace la self-attention que la recurrencia con d=8?"
+        ),
+        "experimento": (
+            "for fila in r['complejidad']:\n"
+            "    print(f\"n={fila['n']:>5} · self-attention {fila['self_attention_ops']:>10} ops \"\n"
+            "          f\"· recurrente {fila['recurrent_ops']:>8} ops \"\n"
+            "          f\"· camino RNN {fila['camino_maximo_rnn']:>5} vs attention {fila['camino_maximo_attention']}\")"
+        ),
+        "salida": (
+            "Dos lecturas opuestas y ambas ciertas: el camino entre dos posiciones es **1** en atención y "
+            "**n** en recurrencia (ventaja de optimización), pero el coste crece con **n²** (desventaja de "
+            "memoria y cómputo). El Transformer compró paralelismo pagando con complejidad cuadrática."
+        ),
+        "comentario": (
+            "El título es una consigna, no un teorema. El modelo del paper **también** necesita redes "
+            "feed-forward por posición, residuales, layer norm y codificación posicional. Sin ellas la "
+            "atención sola no entrena. Esta es la sección 3 del paper, no una interpretación."
+        ),
+        "antipatron_md": "Anti-patrón deliberado: quitar la escala `√d_k` y creer que «da casi igual».",
+        "antipatron": (
+            "import math\n"
+            "import random\n"
+            "\n"
+            "rng = random.Random(0)\n"
+            "for d_k in (4, 64, 512):\n"
+            "    q = [rng.gauss(0, 1) for _ in range(d_k)]\n"
+            "    k = [rng.gauss(0, 1) for _ in range(d_k)]\n"
+            "    crudo = sum(a * b for a, b in zip(q, k))\n"
+            "    print(f'd_k={d_k:>3} · qᵀk sin escalar = {crudo:+8.2f} · escalado = {crudo / math.sqrt(d_k):+6.2f}')"
+        ),
+        "correccion_md": "La magnitud del producto escalar crece como √d_k. Al dividir por √d_k, la varianza vuelve a ~1 y el softmax no se satura:",
+        "correccion": (
+            "def softmax(xs):\n"
+            "    m = max(xs)\n"
+            "    e = [math.exp(x - m) for x in xs]\n"
+            "    return [v / sum(e) for v in e]\n"
+            "\n"
+            "scores = [12.0, 10.5, 9.0, 8.0]\n"
+            "print('sin escalar :', [round(p, 4) for p in softmax(scores)])\n"
+            "print('escalado /8 :', [round(p, 4) for p in softmax([s / 8 for s in scores])])\n"
+            "print('→ sin escalar, un solo token acapara casi toda la masa y el gradiente del resto ≈ 0')"
+        ),
+        "desafio_guiado_md": "Verifica que la codificación posicional distingue posiciones y que posiciones cercanas tienen codificaciones parecidas.",
+        "desafio_guiado": (
+            "from ai_evolution.papers_lab import positional_encoding\n"
+            "\n"
+            "def coseno(a, b):\n"
+            "    na = sum(x * x for x in a) ** 0.5\n"
+            "    nb = sum(x * x for x in b) ** 0.5\n"
+            "    return sum(x * y for x, y in zip(a, b)) / (na * nb)\n"
+            "\n"
+            "pe = [positional_encoding(p, 16) for p in range(8)]\n"
+            "for p in range(1, 8):\n"
+            "    print(f'cos(PE[0], PE[{p}]) = {coseno(pe[0], pe[p]):+.4f}')"
+        ),
+        "desafio_autonomo": (
+            "Implementa las proyecciones aprendidas W_Q, W_K, W_V (aquí ausentes) y entrena el bloque en "
+            "una tarea de copia. Mide qué aporta cada cabeza haciendo una ablación: desactiva una cabeza "
+            "y reporta la caída de exactitud."
+        ),
+        "evidencia": (
+            "Guarda: entropía con y sin escala, la matriz causal triangular, la tabla de complejidad y una "
+            "frase sobre qué compró y qué pagó el Transformer."
+        ),
+        "cierre": (
+            "El bloque está completo. A partir de aquí, la historia se bifurca: usar solo el encoder (P09) "
+            "o solo el decoder (P10). Las ocho miniaturas `T01`–`T08` desmontan este bloque pieza por pieza."
+        ),
+    },
+    "P09_bert": {
+        "intuicion": (
+            "Para adivinar una palabra tapada, un humano mira lo que hay antes **y** después. Un modelo "
+            "que solo mira hacia atrás está renunciando a la mitad de la evidencia disponible."
+        ),
+        "concepto": (
+            "MLM: se enmascara ~15 % de los tokens y se predice cada uno usando ambos lados.\n\n"
+            "```text\n"
+            "L = − Σ_{t ∈ enmascarados} log p(x_t | x_contexto_izquierdo, x_contexto_derecho)\n"
+            "```\n\n"
+            "No se puede entrenar bidireccionalmente con «predice el siguiente token»: cada token se vería "
+            "a sí mismo a través de las capas. Enmascarar es lo que hace legítima la bidireccionalidad."
+        ),
+        "codigo_md": "El motor cuenta candidatos compatibles con contexto solo-izquierdo frente a contexto bidireccional.",
+        "codigo": (
+            "r = run_paper_lab('bert_mlm', seed=7)['result']\n"
+            "for fila in r['masked_predictions']:\n"
+            "    print(f\"«{fila['izquierda']} [MASK] {fila['derecha']}» (gold: {fila['gold']})\")\n"
+            "    print('   solo izquierda :', fila['candidatos_solo_izquierda'], f\"({fila['ambiguedad_izquierda']} opciones)\")\n"
+            "    print('   bidireccional  :', fila['candidatos_bidireccional'], f\"({fila['ambiguedad_bidireccional']} opciones)\")"
+        ),
+        "prediccion": (
+            "1. ¿Reducirá el contexto derecho el número de candidatos, o lo dejará igual?\n"
+            "2. En «el banco [MASK] estaba mojado», ¿qué sentido de «banco» activa el contexto derecho?\n"
+            "3. ¿Por qué NO se puede entrenar un modelo bidireccional prediciendo el token siguiente?"
+        ),
+        "experimento": (
+            "for fila in r['masked_predictions']:\n"
+            "    reduccion = fila['ambiguedad_izquierda'] - fila['ambiguedad_bidireccional']\n"
+            "    print(f\"gold={fila['gold']:<8} · ambigüedad izq={fila['ambiguedad_izquierda']} \"\n"
+            "          f\"bi={fila['ambiguedad_bidireccional']} · reducción={reduccion}\")"
+        ),
+        "salida": (
+            "El contexto derecho reduce (o iguala) el conjunto de candidatos, nunca lo amplía: añadir "
+            "evidencia solo puede restringir. Ese es, en una línea, el argumento del paper."
+        ),
+        "comentario": (
+            "Cuidado con el anacronismo inverso: BERT **no** es un modelo generativo de propósito general. "
+            "Es un codificador para tareas de comprensión. La familia que hoy llamamos «LLM» viene de la "
+            "otra rama, la del decoder (P10)."
+        ),
+        "antipatron_md": "Anti-patrón: usar BERT como generador de texto autorregresivo porque «es un Transformer».",
+        "antipatron": (
+            "print('Uso incorrecto: pedirle a un encoder MLM que continúe un texto token a token.')\n"
+            "print('Su objetivo de entrenamiento nunca fue p(x_t | x_<t): rellena huecos, no continúa.')"
+        ),
+        "correccion_md": "Elige la familia según el objetivo de preentrenamiento, no según la arquitectura:",
+        "correccion": (
+            "familias = {\n"
+            "    'encoder (BERT)': {'objetivo': 'MLM', 'bueno_para': 'clasificar, extraer, buscar, comparar'},\n"
+            "    'decoder (GPT)': {'objetivo': 'siguiente token', 'bueno_para': 'generar, completar, dialogar'},\n"
+            "    'encoder-decoder (T5, BART)': {'objetivo': 'denoising / seq2seq', 'bueno_para': 'traducir, resumir'},\n"
+            "}\n"
+            "show(familias)"
+        ),
+        "desafio_guiado_md": "Añade una frase nueva al corpus y comprueba cómo cambia la ambigüedad del hueco.",
+        "desafio_guiado": (
+            "corpus = [\n"
+            "    'el banco del parque estaba mojado por la lluvia'.split(),\n"
+            "    'el banco del rio estaba mojado por la lluvia'.split(),\n"
+            "    'el banco del museo estaba mojado por la lluvia'.split(),   # <-- frase nueva\n"
+            "]\n"
+            "candidatos = {}\n"
+            "for linea in corpus:\n"
+            "    i = linea.index('del') + 1\n"
+            "    candidatos[linea[i]] = candidatos.get(linea[i], 0) + 1\n"
+            "print('candidatos para «el banco del [MASK] estaba mojado»:', candidatos)"
+        ),
+        "desafio_autonomo": (
+            "Con un modelo BERT en español de acceso abierto y ejecución local, compara la probabilidad "
+            "del token correcto con contexto completo y truncando el contexto derecho. Usa 20 frases "
+            "propias y reporta la diferencia media, la desviación y los casos donde no ayuda."
+        ),
+        "evidencia": (
+            "Guarda la tabla de ambigüedad, la justificación de por qué enmascarar habilita la "
+            "bidireccionalidad, y la tabla de familias con su objetivo de preentrenamiento."
+        ),
+        "cierre": (
+            "El preentrenamiento ya es la norma. Falta descubrir qué ocurre cuando la rama del decoder "
+            "se escala dos órdenes de magnitud."
+        ),
+    },
+    "P10_gpt3": {
+        "intuicion": (
+            "En vez de reentrenar el modelo para cada tarea, se le muestran dos o tres ejemplos dentro "
+            "del propio texto de entrada y el modelo sigue el patrón. Ningún peso cambia: lo único que "
+            "cambia es lo que hay escrito antes de la pregunta."
+        ),
+        "concepto": (
+            "El modelo sigue siendo `p(x_t | x_<t)`. Lo nuevo es el **protocolo de evaluación**:\n\n"
+            "```text\n"
+            "zero-shot : instrucción                        → respuesta\n"
+            "one-shot  : instrucción + 1 ejemplo            → respuesta\n"
+            "few-shot  : instrucción + k ejemplos           → respuesta\n"
+            "```\n\n"
+            "Sin actualización de gradiente en ninguno de los tres casos."
+        ),
+        "codigo_md": "El motor simula el fenómeno con inducción explícita de hipótesis: cada ejemplo del prompt elimina hipótesis incompatibles.",
+        "codigo": (
+            "r = run_paper_lab('gpt3_icl', seed=7)['result']\n"
+            "print('tarea latente:', r['tarea_latente'], '· pesos actualizados:', not r['sin_actualizar_pesos'])\n"
+            "for fila in r['in_context_learning']:\n"
+            "    print(f\"{fila['shots']}-shot · hipótesis vivas {len(fila['hipotesis_compatibles'])} \"\n"
+            "          f\"· elegida {fila['elegida']:<20} · accuracy {fila['accuracy_held_out']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Cuántos ejemplos harán falta para dejar una sola hipótesis compatible?\n"
+            "2. ¿La accuracy con 0 ejemplos será alta o azarosa?\n"
+            "3. ¿Este experimento demuestra algo sobre GPT-3, o solo ilustra el concepto?"
+        ),
+        "experimento": (
+            "for semilla in (1, 7, 42):\n"
+            "    r = run_paper_lab('gpt3_icl', seed=semilla)['result']\n"
+            "    curva = [(f['shots'], f['accuracy_held_out']) for f in r['in_context_learning']]\n"
+            "    print(f'semilla {semilla:>2} · curva shots→accuracy: {curva}')"
+        ),
+        "salida": (
+            "La accuracy sube con el número de ejemplos y se estabiliza. Con 0 ejemplos el sistema elige "
+            "entre hipótesis igualmente compatibles: acertar ahí es suerte, no capacidad."
+        ),
+        "comentario": (
+            "**Esto no es GPT-3.** Es una maqueta del fenómeno. GPT-3 no enumera hipótesis: condiciona una "
+            "distribución aprendida sobre billones de tokens. La maqueta sirve para razonar sobre el "
+            "mecanismo, no para hacer afirmaciones sobre el modelo real. Confundir ambas cosas es "
+            "exactamente el error que este programa entrena a detectar."
+        ),
+        "antipatron_md": "Anti-patrón: interpretar «few-shot learning» como que el modelo *aprende* durante la inferencia.",
+        "antipatron": (
+            "print('Lectura incorrecta: «con 3 ejemplos el modelo aprendió la tarea».')\n"
+            "print('No hay aprendizaje: no hay gradiente, no hay actualización, no hay memoria entre llamadas.')\n"
+            "print('Cierra la sesión y el modelo no recuerda nada.')"
+        ),
+        "correccion_md": "Formulación correcta: condicionamiento, no aprendizaje.",
+        "correccion": (
+            "correcto = {\n"
+            "    'que_ocurre': 'el prompt condiciona la distribución de salida',\n"
+            "    'que_NO_ocurre': ['actualización de pesos', 'persistencia entre llamadas', 'memoria del ejemplo'],\n"
+            "    'consecuencia_practica': 'el coste se paga en tokens de contexto en CADA llamada',\n"
+            "}\n"
+            "show(correcto)"
+        ),
+        "desafio_guiado_md": "Cambia la tarea latente a «última letra» y comprueba cuántos ejemplos hacen falta para desambiguar.",
+        "desafio_guiado": (
+            "palabras = ['gato', 'arbol', 'rio', 'libro']\n"
+            "hipotesis = {\n"
+            "    'primera_letra': lambda w: w[0].upper(),\n"
+            "    'ultima_letra': lambda w: w[-1].upper(),\n"
+            "    'longitud': lambda w: str(len(w)),\n"
+            "}\n"
+            "verdad = 'ultima_letra'\n"
+            "for k in (0, 1, 2):\n"
+            "    demos = [(w, hipotesis[verdad](w)) for w in palabras[:k]]\n"
+            "    vivas = [n for n, f in hipotesis.items() if all(f(w) == y for w, y in demos)]\n"
+            "    print(f'{k}-shot → hipótesis compatibles: {sorted(vivas)}')"
+        ),
+        "desafio_autonomo": (
+            "Diseña un experimento de few-shot con un modelo abierto ejecutable localmente. Varía el "
+            "**orden** de los ejemplos manteniendo el contenido y mide la varianza del resultado. "
+            "Documenta si la sensibilidad al orden invalida alguna conclusión que habrías sacado."
+        ),
+        "evidencia": (
+            "Guarda la curva shots→accuracy, la distinción entre condicionar y aprender, y una frase "
+            "explícita sobre qué NO demuestra esta maqueta."
+        ),
+        "cierre": (
+            "El modelo ya se adapta sin reentrenarse, pero todo lo que sabe sigue congelado en sus pesos "
+            "y no se puede citar. Ese es el problema del siguiente hito."
+        ),
+    },
+    "P11_rag": {
+        "intuicion": (
+            "Un examen a libro cerrado frente a un examen a libro abierto. En el primero, si no lo "
+            "recuerdas, lo inventas. En el segundo, buscas la página, la citas y quien corrige puede "
+            "verificarla."
+        ),
+        "concepto": (
+            "```text\n"
+            "p(y | x) ≈ Σ_{z ∈ top-k(x)} p_η(z | x) · p_θ(y | x, z)\n"
+            "```\n\n"
+            "`p_η` es el recuperador (memoria **no paramétrica**, actualizable sin reentrenar) y `p_θ` el "
+            "generador (memoria **paramétrica**). RAG separa lo que se sabe de cómo se razona."
+        ),
+        "codigo_md": "El motor recupera por similitud léxica, genera con citas y muestra el contraste con la respuesta sin recuperación.",
+        "codigo": (
+            "r = run_paper_lab('rag', seed=7)['result']\n"
+            "print('consulta:', r['query'], '\\n')\n"
+            "for fila in r['ranking']:\n"
+            "    print(f\"  {fila['doc']} score={fila['score']:.3f} · {fila['text'][:60]}…\")\n"
+            "print('\\ncon recuperación :', r['respuesta_con_citas'])\n"
+            "print('sin recuperación :', r['respuesta_sin_recuperacion'])"
+        ),
+        "prediccion": (
+            "1. ¿Qué documento quedará primero: el de la sanción o el de la entrada en vigor?\n"
+            "2. ¿Qué score tendrá el documento sobre hornear pan?\n"
+            "3. Si el recuperador fallara, ¿el generador lo notaría?"
+        ),
+        "experimento": (
+            "consultas = [\n"
+            "    'cuando entro en vigor la ley de transparencia algoritmica',\n"
+            "    'a que temperatura se hornea el pan',\n"
+            "    'quien gano el mundial de 1986',\n"
+            "]\n"
+            "documentos = {f['doc']: f['text'] for f in r['ranking']}\n"
+            "\n"
+            "def tf(texto):\n"
+            "    d = {}\n"
+            "    for t in texto.lower().replace('.', '').split():\n"
+            "        d[t] = d.get(t, 0) + 1\n"
+            "    return d\n"
+            "\n"
+            "def coseno(a, b):\n"
+            "    claves = set(a) | set(b)\n"
+            "    va = [a.get(k, 0) for k in claves]\n"
+            "    vb = [b.get(k, 0) for k in claves]\n"
+            "    na = sum(x * x for x in va) ** 0.5\n"
+            "    nb = sum(x * x for x in vb) ** 0.5\n"
+            "    return sum(x * y for x, y in zip(va, vb)) / (na * nb) if na and nb else 0.0\n"
+            "\n"
+            "for q in consultas:\n"
+            "    mejor = max(documentos.items(), key=lambda kv: coseno(tf(q), tf(kv[1])))\n"
+            "    print(f'{q[:45]:<47} → {mejor[0]} (score {coseno(tf(q), tf(mejor[1])):.3f})')"
+        ),
+        "salida": (
+            "La tercera consulta (mundial de 1986) **no tiene respuesta en el corpus** y aun así el "
+            "recuperador devuelve el documento «menos malo» con un score bajo. Un sistema honesto usa un "
+            "umbral: por debajo de él, la respuesta correcta es «no lo sé»."
+        ),
+        "comentario": (
+            "Recuperar no es responder. Los tres fallos típicos son independientes: (1) el documento "
+            "correcto no está en el índice, (2) está pero no se recupera, (3) se recupera y el generador "
+            "lo contradice. Evaluar RAG exige medir los tres por separado."
+        ),
+        "antipatron_md": "Anti-patrón: dar por buena una respuesta porque «lleva citas», sin comprobar que la cita sostiene la afirmación.",
+        "antipatron": (
+            "respuesta_falsa = 'La sanción máxima es del 12 % de la facturación [d4].'\n"
+            "print(respuesta_falsa)\n"
+            "print('La cita [d4] existe y es relevante… pero el número NO está en d4.')\n"
+            "print('Esto es una alucinación CON cita: la más difícil de detectar a simple vista.')"
+        ),
+        "correccion_md": "La verificación mínima: cada afirmación numérica debe aparecer literalmente en el documento citado.",
+        "correccion": (
+            "def verificar(afirmacion_numero, doc_texto):\n"
+            "    return afirmacion_numero in doc_texto\n"
+            "\n"
+            "d4 = documentos['d4']\n"
+            "print('d4 =', d4)\n"
+            "print('¿aparece «4 por ciento»? ', verificar('4 por ciento', d4))\n"
+            "print('¿aparece «12 por ciento»?', verificar('12 por ciento', d4))"
+        ),
+        "desafio_guiado_md": "Añade un umbral de score por debajo del cual el sistema se niega a responder.",
+        "desafio_guiado": (
+            "UMBRAL = 0.35\n"
+            "for q in consultas:\n"
+            "    mejor_doc, mejor_txt = max(documentos.items(), key=lambda kv: coseno(tf(q), tf(kv[1])))\n"
+            "    score = coseno(tf(q), tf(mejor_txt))\n"
+            "    if score < UMBRAL:\n"
+            "        print(f'{q[:45]:<47} → ABSTENCIÓN (score {score:.3f} < {UMBRAL})')\n"
+            "    else:\n"
+            "        print(f'{q[:45]:<47} → responder con [{mejor_doc}] (score {score:.3f})')"
+        ),
+        "desafio_autonomo": (
+            "Construye un RAG sobre 50 documentos propios. Mide por separado: recall@k del recuperador, "
+            "fidelidad de la respuesta al contexto y tasa de abstención correcta. Reporta los tres."
+        ),
+        "evidencia": (
+            "Guarda el ranking, el caso de alucinación con cita, la verificación literal y el mecanismo "
+            "de abstención con su umbral."
+        ),
+        "cierre": (
+            "El modelo ya puede citar. Todavía no está alineado con lo que una persona espera al pedirle "
+            "algo: eso exige aprender de preferencias humanas."
+        ),
+    },
+    "P12_instructgpt_rlhf": {
+        "intuicion": (
+            "Es mucho más fácil decir «prefiero esta respuesta a esta otra» que puntuar del 1 al 10. "
+            "RLHF convierte miles de esas comparaciones en un número que el modelo puede optimizar."
+        ),
+        "concepto": (
+            "Tres etapas:\n\n"
+            "```text\n"
+            "1. SFT : ajuste supervisado con demostraciones humanas\n"
+            "2. RM  : modelo de recompensa Bradley-Terry, p(y_w ≻ y_l) = σ(r(y_w) − r(y_l))\n"
+            "3. RL  : maximizar r(y) − β·KL(π ‖ π_SFT) con PPO\n"
+            "```\n\n"
+            "El término KL impide que la política se aleje tanto del modelo base que empiece a producir "
+            "texto degenerado con recompensa alta."
+        ),
+        "codigo_md": "El motor ajusta el modelo de recompensa sobre 5 comparaciones y reordena las respuestas candidatas.",
+        "codigo": (
+            "r = run_paper_lab('rlhf', seed=7)['result']\n"
+            "show(r['pesos_del_modelo_de_recompensa'])\n"
+            "print('\\nranking aprendido:')\n"
+            "for fila in r['ranking_aprendido']:\n"
+            "    print(f\"  r={fila['reward']:+7.3f} · {fila['texto']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Qué característica recibirá más peso: utilidad, honestidad, inocuidad o verbosidad?\n"
+            "2. ¿Quedará la respuesta peligrosa (d) arriba o abajo del ranking?\n"
+            "3. Si todas las respuestas preferidas fueran también las más largas, ¿qué aprendería el modelo?"
+        ),
+        "experimento": (
+            "r7 = run_paper_lab('rlhf', seed=7)['result']\n"
+            "pesos = r7['pesos_del_modelo_de_recompensa']\n"
+            "orden = sorted(pesos.items(), key=lambda kv: -abs(kv[1]))\n"
+            "print('características por influencia absoluta:')\n"
+            "for nombre, peso in orden:\n"
+            "    print(f'  {nombre:<12} {peso:+.3f}')"
+        ),
+        "salida": (
+            "«inocuidad» y «utilidad» dominan porque las comparaciones que le dimos castigan lo peligroso "
+            "y premian lo útil. **El modelo de recompensa no descubre valores: reproduce los del conjunto "
+            "de comparaciones.** Cambia las comparaciones y cambian los valores."
+        ),
+        "comentario": (
+            "Aquí está el punto político y técnico a la vez: quién etiqueta, con qué guía y con qué "
+            "incentivos determina qué significa «mejor». El propio paper documenta el perfil de sus "
+            "anotadores; leer esa sección es parte del ejercicio."
+        ),
+        "antipatron_md": "Anti-patrón: reward hacking. Si «verbosidad» correlaciona con preferencia, la política aprende a ser larga, no mejor.",
+        "antipatron": (
+            "preferencias_sesgadas = [('largo', 'corto')] * 5\n"
+            "print('Si TODAS las preferencias premian la respuesta larga:')\n"
+            "print('  el modelo de recompensa aprende r ∝ longitud')\n"
+            "print('  la política optimiza longitud')\n"
+            "print('  la métrica sube y la calidad real no se mueve')"
+        ),
+        "correccion_md": "Mitigaciones: penalización KL contra el modelo base, comparaciones controladas por longitud y evaluación humana independiente del RM.",
+        "correccion": (
+            "import math\n"
+            "\n"
+            "def objetivo(recompensa, kl, beta=0.2):\n"
+            "    return recompensa - beta * kl\n"
+            "\n"
+            "for kl in (0.0, 1.0, 5.0, 20.0):\n"
+            "    print(f'KL={kl:>5.1f} → objetivo con r=3.0: {objetivo(3.0, kl):+.2f}')\n"
+            "print('→ alejarse del modelo base se vuelve caro: eso frena el reward hacking extremo')"
+        ),
+        "desafio_guiado_md": "Invierte una comparación (haz que se prefiera la respuesta evasiva) y observa cómo se reordena todo.",
+        "desafio_guiado": (
+            "print('pesos originales:', run_paper_lab('rlhf', seed=1)['result']['pesos_del_modelo_de_recompensa'])\n"
+            "print('pesos con otra semilla:', run_paper_lab('rlhf', seed=99)['result']['pesos_del_modelo_de_recompensa'])\n"
+            "print('→ los pesos son estables porque las COMPARACIONES son las mismas;')\n"
+            "print('  la semilla no cambia los datos de preferencia, y eso es lo que manda.')"
+        ),
+        "desafio_autonomo": (
+            "Crea 30 pares de preferencia propios sobre un dominio que conozcas. Entrena el modelo de "
+            "recompensa, y luego construye adversarialmente una respuesta que maximice la recompensa "
+            "siendo claramente peor. Documenta qué característica explotaste."
+        ),
+        "evidencia": (
+            "Guarda los pesos aprendidos, el ranking, tu ejemplo de reward hacking y la explicación del "
+            "papel del término KL."
+        ),
+        "cierre": (
+            "El asistente ya sigue instrucciones. La siguiente pregunta es si hace falta todo el aparato "
+            "de RL para conseguirlo — la respuesta llega en P15."
+        ),
+    },
+    "P13_react": {
+        "intuicion": (
+            "Pensar en voz alta sin mirar nada lleva a inventar. Actuar sin pensar lleva a dar palos de "
+            "ciego. ReAct alterna: pienso qué necesito, lo busco, leo lo que salió, y ese resultado real "
+            "condiciona mi siguiente pensamiento."
+        ),
+        "concepto": (
+            "```text\n"
+            "bucle:  Thought_t → Action_t → Observation_t → Thought_{t+1} → …  → Finish\n"
+            "```\n\n"
+            "La observación viene del **entorno**, no del modelo. Ese es el anclaje que corrige la "
+            "trayectoria: sin él, el razonamiento en cadena se aleja de los hechos sin darse cuenta."
+        ),
+        "codigo_md": "El motor compara una estrategia solo-acción con el bucle completo sobre la misma pregunta compuesta.",
+        "codigo": (
+            "r = run_paper_lab('react', seed=7)['result']\n"
+            "print('pregunta:', r['pregunta'], '\\n')\n"
+            "print('ACT-ONLY →', r['act_only']['answer'], '· pasos:', r['pasos']['act_only'])\n"
+            "print('REACT    →', r['react']['answer'], '· pasos:', r['pasos']['react'], '\\n')\n"
+            "for paso in r['react']['trace']:\n"
+            "    print('  💭', paso['thought'])\n"
+            "    print('  🔧', paso['act'], '→', paso['obs'])"
+        ),
+        "prediccion": (
+            "1. ¿Por qué falla la estrategia solo-acción en una pregunta de dos saltos?\n"
+            "2. ¿Cuántas llamadas a la herramienta necesita ReAct como mínimo?\n"
+            "3. Si la primera observación fuera errónea, ¿el bucle lo detectaría?"
+        ),
+        "experimento": (
+            "KB = {'capital de francia': 'Paris', 'poblacion de paris': '2 100 000'}\n"
+            "\n"
+            "def buscar(clave):\n"
+            "    return KB.get(clave.lower(), 'sin resultados')\n"
+            "\n"
+            "def bucle(pregunta, max_pasos=4):\n"
+            "    traza, respuesta = [], None\n"
+            "    consulta = 'capital de francia'\n"
+            "    for paso in range(max_pasos):\n"
+            "        obs = buscar(consulta)\n"
+            "        traza.append({'paso': paso, 'accion': f'buscar({consulta})', 'obs': obs})\n"
+            "        if obs == 'sin resultados':\n"
+            "            traza.append({'paso': paso, 'decision': 'PARAR: la herramienta no sabe'})\n"
+            "            break\n"
+            "        if consulta.startswith('poblacion'):\n"
+            "            respuesta = obs\n"
+            "            break\n"
+            "        consulta = f'poblacion de {obs.lower()}'\n"
+            "    return {'respuesta': respuesta, 'traza': traza}\n"
+            "\n"
+            "show(bucle('cuantos habitantes tiene la capital de francia'))"
+        ),
+        "salida": (
+            "La traza muestra cómo la observación `Paris` **construye** la consulta siguiente. Sin ese "
+            "encadenamiento la pregunta es irresoluble con una sola búsqueda, por muy bueno que sea el modelo."
+        ),
+        "comentario": (
+            "Una traza legible no garantiza fidelidad: el texto del «pensamiento» es una generación más y "
+            "puede no describir el proceso real. Sirve para depurar y auditar decisiones, no como prueba "
+            "de cómo razonó el modelo."
+        ),
+        "antipatron_md": "Anti-patrón: bucle sin criterio de parada. Si la herramienta falla, el agente reintenta para siempre y quema presupuesto.",
+        "antipatron": (
+            "intentos = 0\n"
+            "for _ in range(50):                      # simulación acotada de un bucle infinito\n"
+            "    intentos += 1\n"
+            "    obs = buscar('dato que no existe')\n"
+            "    if obs != 'sin resultados':\n"
+            "        break\n"
+            "print(f'la herramienta devolvió «sin resultados» {intentos} veces y el agente siguió intentando')"
+        ),
+        "correccion_md": "Corrección: límite de pasos, detección de repetición y escalamiento explícito.",
+        "correccion": (
+            "def bucle_seguro(consulta, max_pasos=3):\n"
+            "    vistas = set()\n"
+            "    for paso in range(max_pasos):\n"
+            "        if consulta in vistas:\n"
+            "            return {'estado': 'ABORTADO', 'motivo': 'consulta repetida', 'pasos': paso}\n"
+            "        vistas.add(consulta)\n"
+            "        obs = buscar(consulta)\n"
+            "        if obs == 'sin resultados':\n"
+            "            return {'estado': 'ESCALADO', 'motivo': 'herramienta sin datos', 'pasos': paso + 1}\n"
+            "        return {'estado': 'OK', 'obs': obs, 'pasos': paso + 1}\n"
+            "    return {'estado': 'ABORTADO', 'motivo': 'límite de pasos', 'pasos': max_pasos}\n"
+            "\n"
+            "show(bucle_seguro('dato que no existe'))\n"
+            "show(bucle_seguro('capital de francia'))"
+        ),
+        "desafio_guiado_md": "Haz que la base de conocimiento devuelva un dato erróneo y comprueba que el bucle lo propaga sin dudar.",
+        "desafio_guiado": (
+            "KB['capital de francia'] = 'Berlin'          # dato corrupto\n"
+            "resultado = bucle('cuantos habitantes tiene la capital de francia')\n"
+            "show(resultado)\n"
+            "print('→ el agente no cuestiona la observación: la fiabilidad de la herramienta es su techo')\n"
+            "KB['capital de francia'] = 'Paris'           # restaurar"
+        ),
+        "desafio_autonomo": (
+            "Implementa ReAct sobre una API pública y gratuita. Añade un verificador que compruebe cada "
+            "observación contra una segunda fuente. Mide cuántas respuestas cambian al añadir el "
+            "verificador y cuánto cuesta en llamadas."
+        ),
+        "evidencia": (
+            "Guarda la traza completa, el caso de bucle sin parada, la versión con criterio de parada y "
+            "el experimento del dato corrupto."
+        ),
+        "cierre": (
+            "El modelo ya controla un bucle. Falta que aprenda **cuándo** conviene llamar a una "
+            "herramienta, en lugar de que se lo digamos nosotros."
+        ),
+    },
+    "P14_toolformer": {
+        "intuicion": (
+            "En vez de que un humano anote «aquí deberías usar la calculadora», el modelo prueba a "
+            "llamarla en muchos sitios, se queda con las llamadas que le ayudaron a predecir mejor lo que "
+            "venía después, y aprende de ese corpus filtrado por sí mismo."
+        ),
+        "concepto": (
+            "```text\n"
+            "1. muestrear posiciones y llamadas candidatas\n"
+            "2. ejecutar la API y obtener el resultado r\n"
+            "3. conservar la llamada si  L(con resultado) < L(sin llamada) − τ\n"
+            "4. reentrenar el modelo sobre el texto con las llamadas conservadas\n"
+            "```\n\n"
+            "El criterio de utilidad es la **pérdida del propio modelo**: nadie etiqueta nada."
+        ),
+        "codigo_md": "El motor aplica el filtro sobre tres candidatas: una útil, una marginal y una absurda.",
+        "codigo": (
+            "r = run_paper_lab('toolformer', seed=7)['result']\n"
+            "print('umbral τ =', r['umbral'], '\\n')\n"
+            "for fila in r['candidatos_evaluados']:\n"
+            "    marca = '✅' if fila['se_conserva'] else '❌'\n"
+            "    print(f\"{marca} Δpérdida={fila['reduccion_de_perdida']:+.2f} · {fila['llamada']}\")"
+        ),
+        "prediccion": (
+            "1. ¿Se conservará la llamada al buscador que solo reduce la pérdida en 0,04?\n"
+            "2. ¿Qué signo tendrá Δpérdida en la llamada absurda?\n"
+            "3. Si bajas τ a 0,01, ¿qué problema aparece?"
+        ),
+        "experimento": (
+            "candidatos = r['candidatos_evaluados']\n"
+            "for tau in (0.01, 0.30, 1.00, 3.00):\n"
+            "    conservados = [c['llamada'] for c in candidatos if c['reduccion_de_perdida'] > tau]\n"
+            "    print(f'τ={tau:<5} → {len(conservados)} llamadas conservadas: {conservados}')"
+        ),
+        "salida": (
+            "τ es el mando entre dos fallos opuestos: **τ bajo** conserva llamadas inútiles (el modelo "
+            "aprende a llamar herramientas todo el rato, con su coste y su latencia); **τ alto** descarta "
+            "llamadas útiles (el modelo vuelve a inventar los cálculos). No existe un τ universal."
+        ),
+        "comentario": (
+            "El método enseña *cuándo* llamar, no garantiza que la herramienta acierte. Un Toolformer "
+            "conectado a una API que devuelve basura aprenderá a llamarla con confianza. La calidad de la "
+            "herramienta es un supuesto del método, no un resultado."
+        ),
+        "antipatron_md": "Anti-patrón: medir el éxito por «número de llamadas a herramientas» como si más fuera mejor.",
+        "antipatron": (
+            "metrica_mala = {'llamadas_por_respuesta': 7, 'conclusion': 'el agente usa mucho las herramientas'}\n"
+            "show(metrica_mala)\n"
+            "print('→ 7 llamadas pueden significar competencia… o un bucle caro que no converge.')"
+        ),
+        "correccion_md": "Métricas que sí informan: utilidad marginal por llamada, coste y tasa de llamadas descartadas.",
+        "correccion": (
+            "util = [c for c in candidatos if c['se_conserva']]\n"
+            "metricas = {\n"
+            "    'candidatas_evaluadas': len(candidatos),\n"
+            "    'conservadas': len(util),\n"
+            "    'tasa_de_descarte': round(1 - len(util) / len(candidatos), 3),\n"
+            "    'reduccion_media_de_perdida': round(sum(c['reduccion_de_perdida'] for c in util) / max(len(util), 1), 3),\n"
+            "}\n"
+            "show(metricas)"
+        ),
+        "desafio_guiado_md": "Añade una candidata nueva con Δpérdida negativa grande y comprueba que el filtro la rechaza sin intervención humana.",
+        "desafio_guiado": (
+            "nueva = {'texto': 'Erase una vez un bosque.', 'llamada': '[Calc(erase) -> error]',\n"
+            "         'loss_sin': 0.80, 'loss_con': 2.40}\n"
+            "delta = nueva['loss_sin'] - nueva['loss_con']\n"
+            "print(f\"Δpérdida = {delta:+.2f} → se conserva: {delta > r['umbral']}\")"
+        ),
+        "desafio_autonomo": (
+            "Con un modelo abierto pequeño y un calculador local, implementa el filtrado real por "
+            "perplejidad sobre 200 frases con operaciones aritméticas. Reporta cuántas llamadas "
+            "sobreviven y cómo cambia el resultado al variar τ."
+        ),
+        "evidencia": (
+            "Guarda la tabla de candidatas con su Δpérdida, el barrido de τ y las métricas que sustituyen "
+            "al conteo bruto de llamadas."
+        ),
+        "cierre": (
+            "El uso de herramientas ya se autosupervisa. Volvemos a la alineación: ¿se puede conseguir el "
+            "efecto de RLHF sin su maquinaria?"
+        ),
+    },
+    "P15_dpo": {
+        "intuicion": (
+            "RLHF entrena un juez (modelo de recompensa) y luego entrena al alumno a gustar al juez. "
+            "DPO demuestra que el alumno **ya contiene** al juez: se puede ajustar directamente con las "
+            "comparaciones, sin construir el juez aparte."
+        ),
+        "concepto": (
+            "El óptimo del objetivo RLHF con restricción KL es `π*(y|x) ∝ π_ref(y|x)·exp(r(x,y)/β)`. "
+            "Despejando `r` y sustituyendo en Bradley-Terry:\n\n"
+            "```text\n"
+            "L_DPO = −log σ( β·[ log π(y_w|x)/π_ref(y_w|x) − log π(y_l|x)/π_ref(y_l|x) ] )\n"
+            "```\n\n"
+            "La recompensa implícita es `r̂ = β·log(π/π_ref)`. No hay RL, no hay muestreo on-policy."
+        ),
+        "codigo_md": "El motor optimiza la pérdida DPO sobre una política de 3 opciones y muestra la recompensa implícita resultante.",
+        "codigo": (
+            "r = run_paper_lab('dpo', seed=7)['result']\n"
+            "show(r['politica_referencia'])\n"
+            "show(r['politica_dpo'])\n"
+            "show(r['recompensa_implicita_beta_log_ratio'])"
+        ),
+        "prediccion": (
+            "1. ¿Hacia qué opción se desplazará la política tras optimizar?\n"
+            "2. ¿Qué signo tendrá la recompensa implícita de la opción preferida?\n"
+            "3. Si β fuera muy grande, ¿la política se movería más o menos respecto a la referencia?"
+        ),
+        "experimento": (
+            "import math\n"
+            "\n"
+            "def recompensa_implicita(p, p_ref, beta):\n"
+            "    return beta * (math.log(p) - math.log(p_ref))\n"
+            "\n"
+            "pol = r['politica_dpo']\n"
+            "ref = r['politica_referencia']\n"
+            "for beta in (0.1, 0.5, 1.0):\n"
+            "    valores = {k: round(recompensa_implicita(pol[k], ref[k], beta), 3) for k in pol}\n"
+            "    print(f'β={beta:<4} → r̂ = {valores}')"
+        ),
+        "salida": (
+            "La opción preferida tiene `r̂ > 0` y las rechazadas `r̂ < 0`: la política **es** el modelo de "
+            "recompensa, leído como log-ratio contra la referencia. β escala esa recompensa y, en el "
+            "objetivo, controla cuánto se permite alejarse de `π_ref`."
+        ),
+        "comentario": (
+            "DPO es más simple, no automáticamente mejor. Sigue dependiendo por completo de la calidad y "
+            "cobertura de los pares de preferencia, y no permite explorar respuestas nuevas fuera de la "
+            "distribución de los datos, cosa que el muestreo on-policy de RLHF sí hace."
+        ),
+        "antipatron_md": "Anti-patrón: quitar `π_ref` de la fórmula porque «se simplifica». Sin referencia no hay restricción KL y la política colapsa.",
+        "antipatron": (
+            "print('Si eliminas π_ref, la pérdida premia subir p(preferida) sin límite:')\n"
+            "for p in (0.5, 0.9, 0.99, 0.9999):\n"
+            "    print(f'  p={p:<7} → log p = {math.log(p):+.5f}  (nada frena el colapso a p→1)')\n"
+            "print('Resultado: una política degenerada que siempre dice lo mismo.')"
+        ),
+        "correccion_md": "Con `π_ref` el término es un *log-ratio*: alejarse cuesta, y β pone el precio.",
+        "correccion": (
+            "p_ref = 0.27\n"
+            "for p in (0.5, 0.9, 0.99, 0.9999):\n"
+            "    ratio = math.log(p) - math.log(p_ref)\n"
+            "    print(f'  p={p:<7} → β·log(π/π_ref) con β=0.5 = {0.5 * ratio:+.4f}')"
+        ),
+        "desafio_guiado_md": "Comprueba la simetría: la suma de recompensas implícitas ponderadas se mantiene acotada.",
+        "desafio_guiado": (
+            "for semilla in (1, 7, 42):\n"
+            "    res = run_paper_lab('dpo', seed=semilla)['result']\n"
+            "    print(f\"semilla {semilla:>2} · π_dpo = {res['politica_dpo']} \"\n"
+            "          f\"· pérdida final {res['perdida'][-1]['loss']}\")"
+        ),
+        "desafio_autonomo": (
+            "Implementa DPO sobre un modelo de lenguaje pequeño y abierto con 200 pares de preferencia. "
+            "Compara contra best-of-n con un modelo de recompensa entrenado sobre los mismos pares. "
+            "Reporta preferencia humana ciega sobre 50 salidas y el coste de cómputo de cada vía."
+        ),
+        "evidencia": (
+            "Guarda π_ref, π_DPO, la recompensa implícita para tres valores de β y tu explicación de por "
+            "qué eliminar π_ref rompe el método."
+        ),
+        "cierre": (
+            "Con alineación directa y herramientas autosupervisadas, las piezas del agente moderno están "
+            "sobre la mesa. Queda ensamblarlas en un sistema."
+        ),
+    },
+    "P16_agentic_systems": {
+        "intuicion": (
+            "Un agente que funciona en una demo y falla en producción casi nunca falla por el modelo: "
+            "falla porque no tenía presupuesto, ni criterio de parada, ni memoria, ni un plan para el "
+            "momento en que una herramienta devuelve un error."
+        ),
+        "concepto": (
+            "Un sistema agentic contemporáneo se describe por sus componentes, no por su prompt:\n\n"
+            "```text\n"
+            "plan · herramientas tipadas · memoria · presupuesto · criterio de parada · escalamiento\n"
+            "```\n\n"
+            "Los trabajos posteriores a ReAct añaden autocrítica (Reflexion), memoria episódica con "
+            "recuperación (Generative Agents), currículo autónomo (Voyager), orquestación multiagente "
+            "(AutoGen) y estandarización del acceso a herramientas (MCP)."
+        ),
+        "codigo_md": "El motor ejecuta un agente con presupuesto explícito que se topa con un fallo de herramienta.",
+        "codigo": (
+            "r = run_paper_lab('agentic', seed=7)['result']\n"
+            "show(r['presupuesto'])\n"
+            "show(r['consumido'])\n"
+            "print('\\ntraza:')\n"
+            "for paso in r['traza']:\n"
+            "    print(' ', paso)\n"
+            "print('\\nescalado a humano:', r['escalado_a_humano'])"
+        ),
+        "prediccion": (
+            "1. ¿Agotará el agente su presupuesto de pasos o se detendrá antes?\n"
+            "2. Cuando la verificación falle, ¿debe reintentar, seguir sin verificar, o parar?\n"
+            "3. ¿Qué componente del sistema es el que hace auditable esta ejecución?"
+        ),
+        "experimento": (
+            "componentes = r['componentes']\n"
+            "riesgo_si_falta = {\n"
+            "    'plan': 'el agente deambula sin objetivo verificable',\n"
+            "    'herramientas': 'el modelo alucina la acción en lugar de ejecutarla',\n"
+            "    'memoria': 'repite trabajo y pierde el contexto entre pasos',\n"
+            "    'presupuesto': 'coste ilimitado ante un bucle',\n"
+            "    'criterio de parada': 'nunca termina; consume hasta el timeout',\n"
+            "    'escalamiento': 'un fallo se convierte en una respuesta inventada',\n"
+            "}\n"
+            "for c in componentes:\n"
+            "    print(f'{c:<20} → si falta: {riesgo_si_falta[c]}')"
+        ),
+        "salida": (
+            "El agente se detiene en el paso de verificación y escala en lugar de responder igualmente. "
+            "**Parar es un resultado correcto.** Un sistema que siempre devuelve una respuesta está "
+            "ocultando sus fallos, no evitándolos."
+        ),
+        "comentario": (
+            "Este nodo es el más volátil del eje y por eso vive con fecha de consulta. Lo estable son las "
+            "preguntas (¿quién define el objetivo? ¿quién paga el presupuesto? ¿quién responde por el "
+            "error?); lo inestable son los nombres de framework de cada temporada."
+        ),
+        "antipatron_md": "Anti-patrón: «agente autónomo» sin límite de gasto ni permisos, evaluado por si «funcionó una vez».",
+        "antipatron": (
+            "demo = {'ejecuciones': 1, 'exito': True, 'conclusion': 'listo para producción'}\n"
+            "show(demo)\n"
+            "print('→ n=1 no es evidencia. No hay varianza, ni casos límite, ni fallos de herramienta,')\n"
+            "print('  ni coste medido, ni comportamiento ante entradas adversarias.')"
+        ),
+        "correccion_md": "Un reporte mínimamente serio de un agente incluye distribución, no una anécdota:",
+        "correccion": (
+            "reporte = {\n"
+            "    'ejecuciones': 100,\n"
+            "    'tasa_de_exito': 0.71,\n"
+            "    'tasa_de_escalamiento_correcto': 0.18,\n"
+            "    'tasa_de_respuesta_inventada': 0.03,\n"
+            "    'coste_medio_por_tarea': '0.9 llamadas de herramienta · 4 pasos',\n"
+            "    'p95_pasos': 9,\n"
+            "    'casos_adversarios_probados': ['herramienta caída', 'salida malformada', 'instrucción inyectada'],\n"
+            "}\n"
+            "show(reporte)"
+        ),
+        "desafio_guiado_md": "Reduce el presupuesto a 2 pasos y comprueba que el agente aborta de forma limpia en lugar de fallar a medias.",
+        "desafio_guiado": (
+            "presupuesto = {'pasos': 2}\n"
+            "plan = ['leer_requisito', 'consultar_datos', 'verificar', 'responder']\n"
+            "ejecutados = []\n"
+            "for paso in plan:\n"
+            "    if len(ejecutados) >= presupuesto['pasos']:\n"
+            "        print(f'ABORTADO antes de «{paso}» · pasos ejecutados: {ejecutados}')\n"
+            "        break\n"
+            "    ejecutados.append(paso)\n"
+            "else:\n"
+            "    print('completado:', ejecutados)"
+        ),
+        "desafio_autonomo": (
+            "Toma un agente que hayas construido en la parte 09 del programa y añádele los seis "
+            "componentes. Ejecútalo 50 veces sobre 10 tareas y reporta tasa de éxito, de escalamiento y "
+            "de respuesta inventada, con al menos tres casos adversarios. Fecha el informe."
+        ),
+        "evidencia": (
+            "Guarda la traza con presupuesto, la tabla componente→riesgo-si-falta y el reporte de "
+            "evaluación con distribución en lugar de anécdota."
+        ),
+        "cierre": (
+            "Aquí termina la ruta mínima y empieza la frontera. Lo que sigue no está consolidado: se "
+            "registra en `frontier/current-topics.yaml` con fecha y fuente, y se relee, no se cita como firme."
+        ),
+    },
+}
+
+
+TRANSFORMER_SPECS: list[dict[str, Any]] = [
+    {
+        "id": "T01_recurrencia_vs_paralelismo",
+        "titulo": "T01 — Por qué había que quitar la recurrencia",
+        "tema": "el problema que motiva el paper",
+        "objetivos": [
+            "Cuantificar el coste secuencial de un RNN frente a una capa de atención.",
+            "Distinguir «longitud del camino entre posiciones» de «número de operaciones».",
+        ],
+        "intuicion": (
+            "Un RNN es una fila de personas pasándose un mensaje al oído: la persona 100 no puede empezar "
+            "hasta que la 99 termine. La atención es una sala donde todos leen el mismo tablón a la vez."
+        ),
+        "concepto": (
+            "```text\n"
+            "               operaciones por capa   pasos secuenciales   camino máximo\n"
+            "recurrente      O(n · d²)                   O(n)               O(n)\n"
+            "self-attention  O(n² · d)                   O(1)               O(1)\n"
+            "```\n\n"
+            "(Tabla 1 del paper. `n` = longitud de secuencia, `d` = dimensión de representación.)"
+        ),
+        "codigo": (
+            "def tabla(n, d):\n"
+            "    return {\n"
+            "        'n': n,\n"
+            "        'recurrente_ops': n * d * d,\n"
+            "        'attention_ops': n * n * d,\n"
+            "        'pasos_secuenciales_rnn': n,\n"
+            "        'pasos_secuenciales_attn': 1,\n"
+            "    }\n"
+            "\n"
+            "for n in (10, 100, 512, 2048):\n"
+            "    show(tabla(n, d=512))"
+        ),
+        "prediccion": "¿A partir de qué `n` la atención hace MÁS operaciones que la recurrencia, con d=512?",
+        "experimento": (
+            "d = 512\n"
+            "for n in (64, 256, 512, 1024, 4096):\n"
+            "    rec, att = n * d * d, n * n * d\n"
+            "    print(f'n={n:>5} · recurrente={rec:>12,} · attention={att:>14,} · '\n"
+            "          f\"{'attention más cara' if att > rec else 'attention más barata'}\")"
+        ),
+        "salida": (
+            "El cruce está en `n = d`. Por debajo de la dimensión del modelo, la atención sale barata; por "
+            "encima, el término cuadrático manda. Por eso las ventanas de contexto largas son un problema "
+            "de ingeniería, no un detalle."
+        ),
+        "antipatron": (
+            "print('«El Transformer es más eficiente que el RNN» ← sin condiciones, es falso.')\n"
+            "print('Es más PARALELIZABLE siempre; es más eficiente en operaciones solo si n < d.')"
+        ),
+        "correccion": (
+            "enunciado = {\n"
+            "    'siempre_cierto': 'pasos secuenciales O(1) frente a O(n) → se aprovecha el hardware paralelo',\n"
+            "    'condicionado': 'menos operaciones solo cuando n < d',\n"
+            "    'coste_oculto': 'memoria de la matriz de atención: O(n²)',\n"
+            "}\n"
+            "show(enunciado)"
+        ),
+        "desafio": "Calcula la memoria de la matriz de atención (n² floats) para n=1024, 8192 y 128000, en MB.",
+        "conexion": "Si quitamos la recurrencia, hace falta un mecanismo que relacione posiciones: Q, K y V (T02).",
+    },
+    {
+        "id": "T02_qkv_scaled_dot_product",
+        "titulo": "T02 — Q, K, V y el producto escalar escalado",
+        "tema": "la ecuación 1 del paper",
+        "objetivos": [
+            "Explicar qué papel juega cada uno de Q, K y V.",
+            "Implementar `softmax(QKᵀ/√d_k)·V` desde cero y verificar sus propiedades.",
+        ],
+        "intuicion": (
+            "Una búsqueda en una biblioteca: **Q** es lo que preguntas, **K** son las etiquetas de los "
+            "lomos con las que comparas, y **V** es el contenido que te llevas. Comparas contra K, pero "
+            "te llevas V."
+        ),
+        "concepto": (
+            "```text\n"
+            "Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V\n"
+            "```\n\n"
+            "`QKᵀ` mide compatibilidad; `√d_k` normaliza la escala; `softmax` convierte en pesos que "
+            "suman 1; multiplicar por `V` mezcla la información."
+        ),
+        "codigo": (
+            "from ai_evolution.papers_lab import scaled_dot_product_attention\n"
+            "\n"
+            "Q = [[1.0, 0.0, 0.0, 0.0]]\n"
+            "K = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.9, 0.1, 0.0, 0.0]]\n"
+            "V = [[10.0, 0.0], [0.0, 10.0], [5.0, 5.0]]\n"
+            "r = scaled_dot_product_attention(Q, K, V)\n"
+            "print('pesos :', [round(w, 4) for w in r['weights'][0]], '· suma:', round(sum(r['weights'][0]), 6))\n"
+            "print('salida:', [round(v, 4) for v in r['output'][0]])"
+        ),
+        "prediccion": "Q coincide con K[0] y se parece a K[2]. ¿Cuál de los tres valores dominará la salida?",
+        "experimento": (
+            "for etiqueta, escala in (('con √d_k', True), ('sin escala', False)):\n"
+            "    r = scaled_dot_product_attention(Q, K, V, scale=escala)\n"
+            "    print(f\"{etiqueta:<11} pesos={[round(w, 4) for w in r['weights'][0]]}\")"
+        ),
+        "salida": (
+            "Los pesos suman exactamente 1 y la salida es una **combinación convexa** de las filas de V: "
+            "nunca puede salirse del casco convexo de los valores. La atención mezcla, no inventa."
+        ),
+        "antipatron": (
+            "malos = [2.0, -1.0, 0.5]\n"
+            "s = sum(malos)\n"
+            "print('normalizar dividiendo por la suma:', [round(m / s, 3) for m in malos])\n"
+            "print('→ hay pesos negativos y > 1: ya no es una distribución de probabilidad')"
+        ),
+        "correccion": (
+            "import math\n"
+            "e = [math.exp(m) for m in malos]\n"
+            "print('softmax:', [round(v / sum(e), 4) for v in e], '· suma:', round(sum(v / sum(e) for v in e), 6))"
+        ),
+        "desafio": "Haz Q ortogonal a todas las filas de K. ¿Qué distribución sale y qué significa esa entropía máxima?",
+        "conexion": "El softmax es la pieza que convierte compatibilidad en distribución. Vale la pena mirarlo solo (T03).",
+    },
+    {
+        "id": "T03_softmax_y_temperatura",
+        "titulo": "T03 — Softmax, escala y saturación",
+        "tema": "por qué √d_k no es cosmética",
+        "objetivos": [
+            "Ver cómo la escala de los scores cambia la entropía de la atención.",
+            "Relacionar saturación del softmax con gradientes que se apagan.",
+        ],
+        "intuicion": (
+            "El softmax es un mando de contraste. Scores muy grandes → la atención se vuelve un foco que "
+            "ilumina un solo punto y deja el resto a oscuras (gradiente ≈ 0 para los demás)."
+        ),
+        "concepto": (
+            "```text\n"
+            "softmax(z)_i = exp(z_i) / Σ_j exp(z_j)\n"
+            "```\n\n"
+            "Si `q` y `k` tienen componentes independientes de media 0 y varianza 1, `q·k` tiene varianza "
+            "`d_k`: su magnitud crece como `√d_k`. Dividir por `√d_k` devuelve la varianza a 1."
+        ),
+        "codigo": (
+            "import math\n"
+            "\n"
+            "def softmax(zs):\n"
+            "    m = max(zs)\n"
+            "    e = [math.exp(z - m) for z in zs]\n"
+            "    return [v / sum(e) for v in e]\n"
+            "\n"
+            "def entropia(ps):\n"
+            "    return -sum(p * math.log(p + 1e-12) for p in ps)\n"
+            "\n"
+            "base = [2.0, 1.0, 0.5, 0.0]\n"
+            "for factor in (0.25, 1, 4, 16):\n"
+            "    p = softmax([z * factor for z in base])\n"
+            "    print(f'escala ×{factor:<3} → {[round(v, 4) for v in p]} · H={entropia(p):.4f}')"
+        ),
+        "prediccion": "¿La entropía sube o baja al multiplicar los scores por 16? ¿Qué le pasa al gradiente de los tokens ignorados?",
+        "experimento": (
+            "import random\n"
+            "rng = random.Random(0)\n"
+            "for d_k in (4, 64, 512):\n"
+            "    q = [rng.gauss(0, 1) for _ in range(d_k)]\n"
+            "    ks = [[rng.gauss(0, 1) for _ in range(d_k)] for _ in range(4)]\n"
+            "    crudos = [sum(a * b for a, b in zip(q, k)) for k in ks]\n"
+            "    escalados = [c / math.sqrt(d_k) for c in crudos]\n"
+            "    print(f'd_k={d_k:>3} · H(sin escala)={entropia(softmax(crudos)):.4f}'\n"
+            "          f' · H(con escala)={entropia(softmax(escalados)):.4f}')"
+        ),
+        "salida": (
+            "Al crecer `d_k`, la entropía sin escalar se desploma: un token acapara la masa. Con la escala "
+            "la entropía se mantiene en un rango sano. **La saturación del softmax es el problema; √d_k es "
+            "la solución.**"
+        ),
+        "antipatron": (
+            "grande = [800.0, 799.0]\n"
+            "try:\n"
+            "    print([math.exp(z) for z in grande])\n"
+            "except OverflowError as exc:\n"
+            "    print('OverflowError:', exc, '← softmax ingenuo desborda')"
+        ),
+        "correccion": (
+            "print('softmax estable (restando el máximo):', [round(p, 6) for p in softmax(grande)])\n"
+            "print('mismo resultado matemático, sin desbordar')"
+        ),
+        "desafio": "Con d_k=512 y scores sin escalar, calcula el peso del segundo token. ¿Cuánto gradiente le llega?",
+        "conexion": "Con la atención bajo control, se puede aplicar a una secuencia consigo misma: self-attention (T04).",
+    },
+    {
+        "id": "T04_self_attention_y_mascara_causal",
+        "titulo": "T04 — Self-attention y máscara causal",
+        "tema": "atender a la propia secuencia, y no atender al futuro",
+        "objetivos": [
+            "Distinguir self-attention de cross-attention.",
+            "Implementar la máscara causal y comprobar que impide ver el futuro.",
+        ],
+        "intuicion": (
+            "Self-attention es que cada palabra pregunte al resto de **su propia** frase. La máscara "
+            "causal es taparle los ojos hacia adelante: si el modelo va a generar el token siguiente, no "
+            "puede haberlo visto ya."
+        ),
+        "concepto": (
+            "```text\n"
+            "self-attention  : Q, K, V salen de la MISMA secuencia\n"
+            "cross-attention : Q del decoder, K y V del encoder\n"
+            "máscara causal  : score_ij = −∞ para j > i  →  α_ij = 0\n"
+            "```"
+        ),
+        "codigo": (
+            "from ai_evolution.papers_lab import scaled_dot_product_attention\n"
+            "\n"
+            "X = [[1.0, 0.0], [0.9, 0.1], [0.0, 1.0], [0.1, 0.9]]\n"
+            "libre = scaled_dot_product_attention(X, X, X)\n"
+            "causal = scaled_dot_product_attention(X, X, X, causal=True)\n"
+            "print('sin máscara:')\n"
+            "for fila in libre['weights']:\n"
+            "    print('  ', [round(w, 3) for w in fila])\n"
+            "print('con máscara causal:')\n"
+            "for fila in causal['weights']:\n"
+            "    print('  ', [round(w, 3) for w in fila])"
+        ),
+        "prediccion": "¿Qué forma tendrá la matriz enmascarada? ¿Cuánto sumará la primera fila?",
+        "experimento": (
+            "for i, fila in enumerate(causal['weights']):\n"
+            "    futuro = sum(fila[i + 1:])\n"
+            "    print(f'fila {i}: suma={sum(fila):.6f} · masa sobre el futuro={futuro:.6f}')"
+        ),
+        "salida": (
+            "Matriz triangular inferior: la masa sobre el futuro es exactamente 0 y cada fila sigue sumando 1. "
+            "La posición 0 solo puede atenderse a sí misma, por eso su peso es 1,0."
+        ),
+        "antipatron": (
+            "print('Error frecuente: aplicar la máscara DESPUÉS del softmax.')\n"
+            "import math\n"
+            "def softmax(zs):\n"
+            "    m = max(zs)\n"
+            "    e = [math.exp(z - m) for z in zs]\n"
+            "    return [v / sum(e) for v in e]\n"
+            "p = softmax([2.0, 1.0, 3.0])\n"
+            "p_mal = [p[0], p[1], 0.0]\n"
+            "print('tras poner a cero el futuro:', [round(v, 4) for v in p_mal], '· suma =', round(sum(p_mal), 4))\n"
+            "print('→ ya no suma 1: la distribución quedó rota')"
+        ),
+        "correccion": (
+            "p_bien = softmax([2.0, 1.0, -1e9])\n"
+            "print('máscara ANTES del softmax:', [round(v, 6) for v in p_bien], '· suma =', round(sum(p_bien), 6))"
+        ),
+        "desafio": "Construye la máscara de padding (ignorar tokens de relleno) y comprueba que es independiente de la causal.",
+        "conexion": "Una sola cabeza captura un tipo de relación. El paper usa varias en paralelo (T05).",
+    },
+    {
+        "id": "T05_multi_head_attention",
+        "titulo": "T05 — Multi-head attention",
+        "tema": "varias relaciones a la vez, sin coste extra",
+        "objetivos": [
+            "Explicar por qué h cabezas de dimensión d/h cuestan lo mismo que una de dimensión d.",
+            "Observar que cabezas distintas producen distribuciones distintas.",
+        ],
+        "intuicion": (
+            "Una sola cabeza tiene que decidir una única forma de relacionar palabras. Varias cabezas "
+            "permiten que una siga la concordancia, otra la dependencia sintáctica y otra la correferencia "
+            "— y luego se concatena todo."
+        ),
+        "concepto": (
+            "```text\n"
+            "MultiHead(X) = Concat(head₁, …, head_h) · W^O\n"
+            "head_i = Attention(X·W_i^Q, X·W_i^K, X·W_i^V),   d_k = d_v = d_model / h\n"
+            "```\n\n"
+            "En el modelo base del paper: `d_model = 512`, `h = 8`, `d_k = 64`."
+        ),
+        "codigo": (
+            "from ai_evolution.papers_lab import multi_head_attention\n"
+            "\n"
+            "X = [[1.0, 0.0, 0.0, 1.0], [0.0, 1.0, 1.0, 0.0], [1.0, 1.0, 0.0, 0.0]]\n"
+            "r = multi_head_attention(X, heads=2)\n"
+            "for i, cabeza in enumerate(r['heads']):\n"
+            "    print(f'cabeza {i}:')\n"
+            "    for fila in cabeza:\n"
+            "        print('   ', [round(w, 3) for w in fila])"
+        ),
+        "prediccion": "Las dos cabezas ven mitades distintas del vector. ¿Producirán la misma distribución de atención?",
+        "experimento": (
+            "for h in (1, 2, 4):\n"
+            "    d_model = 8\n"
+            "    print(f'h={h} → d_k = {d_model // h} · parámetros de proyección ≈ {3 * d_model * d_model} (constante)')"
+        ),
+        "salida": (
+            "El número de parámetros no depende de `h`: partir `d_model` en más cabezas no cuesta más "
+            "memoria. Lo que cambia es la **capacidad de especialización**, no el presupuesto."
+        ),
+        "antipatron": (
+            "try:\n"
+            "    multi_head_attention([[1.0] * 5], heads=2)\n"
+            "except ValueError as exc:\n"
+            "    print('ValueError:', exc)\n"
+            "print('→ d_model debe ser divisible entre h; no es una convención, es aritmética')"
+        ),
+        "correccion": (
+            "r = multi_head_attention([[1.0, 0.5, 0.0, 0.2], [0.1, 0.9, 0.3, 0.4]], heads=2)\n"
+            "print('salida concatenada:', [[round(v, 3) for v in fila] for fila in r['output']])"
+        ),
+        "desafio": "Interpreta cada cabeza sobre una frase de 6 tokens y decide si alguna es prescindible (ablación).",
+        "conexion": "Falta un detalle grave: hasta aquí el modelo no sabe en qué ORDEN venían los tokens (T06).",
+    },
+    {
+        "id": "T06_positional_encoding",
+        "titulo": "T06 — Codificación posicional",
+        "tema": "la atención es permutación-equivariante y eso es un problema",
+        "objetivos": [
+            "Demostrar que sin posición, «el gato come» y «come gato el» son idénticos para la atención.",
+            "Verificar las propiedades de la codificación sinusoidal.",
+        ],
+        "intuicion": (
+            "La atención es un conjunto, no una lista: si barajas los tokens, la salida se baraja igual "
+            "pero no cambia. Hay que inyectar la posición en el propio vector."
+        ),
+        "concepto": (
+            "```text\n"
+            "PE(pos, 2i)   = sin(pos / 10000^{2i/d_model})\n"
+            "PE(pos, 2i+1) = cos(pos / 10000^{2i/d_model})\n"
+            "```\n\n"
+            "Se **suma** al embedding. Las frecuencias distintas por dimensión dan una firma única por "
+            "posición y permiten extrapolar a longitudes no vistas en entrenamiento."
+        ),
+        "codigo": (
+            "from ai_evolution.papers_lab import positional_encoding, scaled_dot_product_attention\n"
+            "\n"
+            "A = [[1.0, 0.0], [0.0, 1.0], [0.5, 0.5]]\n"
+            "B = [A[2], A[0], A[1]]                     # misma bolsa de tokens, otro orden\n"
+            "sa = scaled_dot_product_attention(A, A, A)['output']\n"
+            "sb = scaled_dot_product_attention(B, B, B)['output']\n"
+            "print('salida A :', [[round(v, 4) for v in f] for f in sa])\n"
+            "print('salida B :', [[round(v, 4) for v in f] for f in sb])\n"
+            "print('¿es B una permutación de A?', sorted(map(str, sa)) == sorted(map(str, sb)))"
+        ),
+        "prediccion": "Si sumamos PE a cada token, ¿seguirá siendo la salida de B una permutación de la de A?",
+        "experimento": (
+            "def con_posicion(seq):\n"
+            "    return [[v + p for v, p in zip(tok, positional_encoding(i, len(tok)))]\n"
+            "            for i, tok in enumerate(seq)]\n"
+            "\n"
+            "sa2 = scaled_dot_product_attention(*[con_posicion(A)] * 3)['output']\n"
+            "sb2 = scaled_dot_product_attention(*[con_posicion(B)] * 3)['output']\n"
+            "print('con PE, A:', [[round(v, 4) for v in f] for f in sa2])\n"
+            "print('con PE, B:', [[round(v, 4) for v in f] for f in sb2])\n"
+            "print('¿siguen siendo permutación una de otra?',\n"
+            "      sorted(map(str, sa2)) == sorted(map(str, sb2)))"
+        ),
+        "salida": (
+            "Sin PE, reordenar la entrada solo reordena la salida: el modelo es ciego al orden. Con PE, las "
+            "salidas dejan de ser permutaciones entre sí: **el orden ya es información**."
+        ),
+        "antipatron": (
+            "print('Error: CONCATENAR la posición en vez de sumarla, «para no contaminar el embedding».')\n"
+            "print('Concatenar cambia d_model, multiplica los parámetros de todas las proyecciones')\n"
+            "print('y rompe la compatibilidad con las conexiones residuales, que exigen misma dimensión.')"
+        ),
+        "correccion": (
+            "emb = [0.4, -0.2, 0.1, 0.7]\n"
+            "pe = positional_encoding(3, 4)\n"
+            "print('embedding:', emb)\n"
+            "print('PE(pos=3):', [round(v, 4) for v in pe])\n"
+            "print('suma     :', [round(a + b, 4) for a, b in zip(emb, pe)], '· dimensión intacta:', len(emb))"
+        ),
+        "desafio": "Comprueba si PE(pos+k) se puede expresar como una transformación lineal de PE(pos) para k fijo.",
+        "conexion": "Con posición y atención resueltas, falta el andamiaje que permite apilar capas: residual y layer norm (T07).",
+    },
+    {
+        "id": "T07_residual_layernorm_ffn",
+        "titulo": "T07 — Residual, layer norm y feed-forward",
+        "tema": "el andamiaje sin el que la atención no entrena",
+        "objetivos": [
+            "Ver por qué la conexión residual mantiene vivo el gradiente al apilar capas.",
+            "Comprobar el efecto normalizador de layer norm y el papel de la FFN por posición.",
+        ],
+        "intuicion": (
+            "La residual es una autopista por la que la información (y el gradiente) circula sin peajes: "
+            "cada subcapa **añade** un ajuste en vez de reemplazar la señal. Layer norm evita que esa suma "
+            "se descontrole capa tras capa."
+        ),
+        "concepto": (
+            "```text\n"
+            "salida = LayerNorm(x + Sublayer(x))\n"
+            "FFN(x) = max(0, x·W₁ + b₁)·W₂ + b₂      aplicada a CADA posición por separado\n"
+            "```\n\n"
+            "En el modelo base: `d_model = 512`, `d_ff = 2048`. La FFN es donde vive la mayor parte de los "
+            "parámetros de cada bloque."
+        ),
+        "codigo": (
+            "from ai_evolution.papers_lab import layer_norm\n"
+            "\n"
+            "x = [3.0, -1.0, 0.5, 7.5]\n"
+            "n = layer_norm(x)\n"
+            "print('entrada   :', x)\n"
+            "print('layer norm:', [round(v, 4) for v in n])\n"
+            "print('media ≈', round(sum(n) / len(n), 6), '· varianza ≈', round(sum(v * v for v in n) / len(n), 4))"
+        ),
+        "prediccion": "Tras layer norm, ¿cuánto valdrán exactamente la media y la varianza del vector?",
+        "experimento": (
+            "señal = 1.0\n"
+            "print('SIN residual (cada capa multiplica por 0.8):')\n"
+            "s = señal\n"
+            "for capa in range(1, 13):\n"
+            "    s *= 0.8\n"
+            "    if capa % 4 == 0:\n"
+            "        print(f'  capa {capa:>2} → {s:.6f}')\n"
+            "print('CON residual (x + 0.8·x_ajuste, la identidad sobrevive):')\n"
+            "s = señal\n"
+            "for capa in range(1, 13):\n"
+            "    s = s + 0.8 * 0.1 * s\n"
+            "    if capa % 4 == 0:\n"
+            "        print(f'  capa {capa:>2} → {s:.6f}')"
+        ),
+        "salida": (
+            "Sin residual la señal se apaga exponencialmente con la profundidad; con residual, el camino "
+            "identidad la mantiene. Esto es lo que hace **apilables** los 6 bloques del paper (y los "
+            "cientos de los modelos actuales)."
+        ),
+        "antipatron": (
+            "import math\n"
+            "print('Layer norm sin epsilon, con un vector constante:')\n"
+            "v = [2.0, 2.0, 2.0]\n"
+            "media = sum(v) / len(v)\n"
+            "var = sum((z - media) ** 2 for z in v) / len(v)\n"
+            "print('varianza =', var, '→ división por cero')\n"
+            "try:\n"
+            "    print([(z - media) / math.sqrt(var) for z in v])\n"
+            "except ZeroDivisionError as exc:\n"
+            "    print('ZeroDivisionError:', exc)"
+        ),
+        "correccion": (
+            "print('con epsilon:', [round(z, 6) for z in layer_norm([2.0, 2.0, 2.0])])\n"
+            "print('→ el epsilon no es un detalle de implementación: evita un NaN que se propaga a toda la red')"
+        ),
+        "desafio": "Cuenta los parámetros de la FFN (d_model=512, d_ff=2048) y compáralos con los de la atención multi-cabeza del mismo bloque.",
+        "conexion": "Con el bloque completo se ensamblan encoder y decoder, y aparecen los límites (T08).",
+    },
+    {
+        "id": "T08_encoder_decoder_y_limites",
+        "titulo": "T08 — Encoder, decoder, complejidad y qué NO dice el título",
+        "tema": "el modelo completo y su lectura honesta",
+        "objetivos": [
+            "Describir el flujo encoder → cross-attention → decoder.",
+            "Enunciar con precisión los límites del paper y del título.",
+        ],
+        "intuicion": (
+            "El encoder lee toda la frase de origen sin restricciones. El decoder escribe de izquierda a "
+            "derecha, mirando lo ya escrito (self-attention causal) y lo que el encoder entendió "
+            "(cross-attention)."
+        ),
+        "concepto": (
+            "```text\n"
+            "encoder ×N : self-attention → FFN                (sin máscara)\n"
+            "decoder ×N : self-attention causal → cross-attention → FFN\n"
+            "```\n\n"
+            "Modelo base del paper: N=6, d_model=512, h=8, d_ff=2048. La familia BERT usa solo el encoder; "
+            "la familia GPT, solo el decoder."
+        ),
+        "codigo": (
+            "r = run_paper_lab('transformer', seed=7)['result']\n"
+            "show(r['complejidad'])\n"
+            "print('normas tras residual + layer norm:', r['norma_tras_layernorm'])"
+        ),
+        "prediccion": "¿Qué crece más rápido al multiplicar n por 10: el coste de la atención o el del bloque recurrente?",
+        "experimento": (
+            "memoria_bytes = lambda n: n * n * 4          # matriz de atención en float32\n"
+            "for n in (512, 2048, 8192, 128000):\n"
+            "    mb = memoria_bytes(n) / 1024 ** 2\n"
+            "    print(f'n={n:>7} → matriz de atención ≈ {mb:>12,.1f} MB por cabeza y capa')"
+        ),
+        "salida": (
+            "Con n=128 000 la matriz de atención de UNA cabeza y UNA capa ocupa decenas de gigabytes. Por "
+            "eso el contexto largo real no usa atención densa ingenua: usa variantes (atención dispersa, "
+            "kernels de E/S optimizada, compresión). Ese es trabajo **posterior** al paper."
+        ),
+        "antipatron": (
+            "print('«Attention Is All You Need» leído literalmente diría que basta la atención.')\n"
+            "print('El propio modelo del paper necesita, además:')\n"
+            "for pieza in ['FFN por posición', 'conexiones residuales', 'layer normalization',\n"
+            "              'codificación posicional', 'embeddings compartidos', 'label smoothing', 'warmup del LR']:\n"
+            "    print('  -', pieza)"
+        ),
+        "correccion": (
+            "lectura_correcta = {\n"
+            "    'que_elimina': ['recurrencia', 'convolución'],\n"
+            "    'que_conserva': ['FFN', 'residual', 'layer norm', 'embeddings', 'codificación posicional'],\n"
+            "    'que_gana': 'paralelización y camino O(1) entre posiciones',\n"
+            "    'que_paga': 'coste y memoria O(n²) en la longitud de secuencia',\n"
+            "    'que_NO_dice': 'que la atención sola baste para construir un modelo entrenable',\n"
+            "}\n"
+            "show(lectura_correcta)"
+        ),
+        "desafio": "Escribe en cinco líneas qué hereda BERT del encoder y qué hereda GPT del decoder, sin usar la palabra «Transformer».",
+        "conexion": "Con el bloque desmontado, las dos ramas —encoder (P09) y decoder (P10)— se leen sin misterio.",
+    },
+]
+
+
+# --------------------------------------------------------------------------- #
+# construcción de notebooks
+# --------------------------------------------------------------------------- #
+
+
+def md(source: str) -> dict[str, Any]:
+    return {"cell_type": "markdown", "metadata": {}, "source": source.splitlines(keepends=True)}
+
+
+def code(source: str) -> dict[str, Any]:
+    return {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": source.splitlines(keepends=True),
+    }
+
+
+def notebook(cells: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "cells": cells,
+        "metadata": {
+            "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
+            "language_info": {"name": "python", "version": "3.11"},
+        },
+        "nbformat": 4,
+        "nbformat_minor": 5,
+    }
+
+
+def build_paper_notebook(paper: dict[str, Any]) -> dict[str, Any]:
+    spec = SPECS[paper["dir"]]
+    autores = ", ".join(paper["authors"])
+    anteriores = "\n".join(f"- {item}" for item in paper["anteriores"])
+    posteriores = "\n".join(f"- {item}" for item in paper["posteriores"])
+    fuentes = "\n".join(f"- [{f['label']}]({f['url']})" for f in paper["fuentes_primarias"])
+    cells = [
+        md(
+            f"# {paper['id']} — {paper['title_es']}\n\n"
+            f"## 1. Título y paper\n\n"
+            f"**Paper:** *{paper['title']}*  \n"
+            f"**Autoría:** {autores}  \n"
+            f"**Año y venue:** {paper['year']} · {paper['venue']}  \n"
+            f"**Nivel:** {paper['level']} · **Motor:** `{paper['lab']}`  \n"
+            f"**Ficha completa:** [`{paper['dir']}`](../../papers/foundational/{paper['dir']}/README.md)\n\n"
+            f"**Hito:** {paper['hito']}\n\n"
+            f"{fuentes}\n\n"
+            f"> Este notebook implementa una **miniatura** del mecanismo. No reproduce el experimento "
+            f"original ni sus métricas: reproduce la idea para que se pueda inspeccionar y discutir.\n"
+        ),
+        md(
+            "## 2. Objetivos\n\n"
+            f"1. Explicar qué problema resolvió el paper: {paper['problema']}\n"
+            f"2. Ejecutar una implementación mínima de la propuesta: {paper['propuesta']}\n"
+            "3. Predecir el resultado antes de ejecutar, y contrastar la predicción con la salida.\n"
+            "4. Identificar al menos una limitación de la miniatura y una del paper original.\n"
+            "5. Conectar el hito con el siguiente eslabón de la ruta.\n"
+        ),
+        md(
+            "## 3. Prerrequisitos\n\n"
+            "- Python 3.11+ y el paquete del programa instalado (`pip install -e .`).\n"
+            "- Haber leído la guía [método de lectura en 5 pasadas](../../papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md).\n"
+            "- Hitos previos:\n"
+            f"{anteriores}\n"
+        ),
+        md(f"## 4. Intuición\n\n{spec['intuicion']}\n"),
+        md(f"## 5. Concepto mínimo\n\n{spec['concepto']}\n"),
+        md(f"## 6. Código explicado\n\n{spec['codigo_md']}\n"),
+        code(BOOTSTRAP),
+        code(spec["codigo"]),
+        md(f"## 7. Predicción antes de ejecutar\n\n{spec['prediccion']}\n\n> Escribe tu respuesta aquí antes de continuar.\n"),
+        md("## 8. Experimento controlado\n\nSe varía una sola cosa y se observa el efecto.\n"),
+        code(spec["experimento"]),
+        md(f"## 9. Salida interpretable\n\n{spec['salida']}\n"),
+        md(f"## 10. Comentario pedagógico\n\n{spec['comentario']}\n"),
+        md(f"## 11. Error o anti-patrón deliberado\n\n{spec['antipatron_md']}\n"),
+        code(spec["antipatron"]),
+        md(f"## 12. Corrección\n\n{spec['correccion_md']}\n"),
+        code(spec["correccion"]),
+        md(f"## 13. Desafío guiado\n\n{spec['desafio_guiado_md']}\n"),
+        code(spec["desafio_guiado"]),
+        md(f"## 14. Desafío autónomo\n\n{spec['desafio_autonomo']}\n"),
+        md(
+            "## 15. Evidencia de aprendizaje\n\n"
+            f"{spec['evidencia']}\n\n"
+            f"Autoevaluación y respuestas esperadas: [ficha del paper](../../papers/foundational/{paper['dir']}/README.md) · "
+            f"evaluación formal: [`assessments/papers/{paper['dir']}.md`](../../assessments/papers/{paper['dir']}.md)\n"
+        ),
+        md(f"## 16. Cierre\n\n{spec['cierre']}\n"),
+        md(
+            "## 17. Conexión con el siguiente hito\n\n"
+            f"{posteriores}\n\n"
+            "Ruta completa: [`papers/ROADMAP.md`](../../papers/ROADMAP.md)\n"
+        ),
+    ]
+    return notebook(cells)
+
+
+def build_transformer_notebook(spec: dict[str, Any]) -> dict[str, Any]:
+    objetivos = "\n".join(f"{i}. {item}" for i, item in enumerate(spec["objetivos"], start=1))
+    cells = [
+        md(
+            f"# {spec['titulo']}\n\n"
+            "## 1. Título y paper\n\n"
+            "**Paper:** *Attention Is All You Need* (Vaswani et al., 2017)  \n"
+            "**Fuente primaria:** [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)  \n"
+            f"**Foco de esta miniatura:** {spec['tema']}  \n"
+            "**Ficha completa:** [`P08_transformer`](../../papers/foundational/P08_transformer/README.md)\n"
+        ),
+        md(f"## 2. Objetivos\n\n{objetivos}\n"),
+        md(
+            "## 3. Prerrequisitos\n\n"
+            "- Python 3.11+ con el paquete instalado (`pip install -e .`).\n"
+            "- Notebook [`P08_transformer`](P08_transformer.ipynb) al menos hojeado.\n"
+            "- Álgebra de vectores: producto escalar, norma y softmax.\n"
+        ),
+        md(f"## 4. Intuición\n\n{spec['intuicion']}\n"),
+        md(f"## 5. Concepto mínimo\n\n{spec['concepto']}\n"),
+        md("## 6. Código explicado\n\nCódigo mínimo, sin dependencias externas.\n"),
+        code(BOOTSTRAP),
+        code(spec["codigo"]),
+        md(f"## 7. Predicción antes de ejecutar\n\n{spec['prediccion']}\n\n> Escribe tu respuesta antes de continuar.\n"),
+        md("## 8. Experimento controlado\n"),
+        code(spec["experimento"]),
+        md(f"## 9. Salida interpretable\n\n{spec['salida']}\n"),
+        md(
+            "## 10. Comentario pedagógico\n\n"
+            "Esta miniatura aísla **una** pieza del bloque. Aislar es didáctico y también es una "
+            "simplificación: en el modelo real todas las piezas interactúan y se entrenan juntas.\n"
+        ),
+        md("## 11. Error o anti-patrón deliberado\n"),
+        code(spec["antipatron"]),
+        md("## 12. Corrección\n"),
+        code(spec["correccion"]),
+        md(f"## 13. Desafío guiado\n\n{spec['desafio']}\n"),
+        md(
+            "## 14. Desafío autónomo\n\n"
+            "Reescribe esta pieza con proyecciones aprendidas y comprueba que tu implementación reproduce "
+            "las propiedades verificadas aquí (sumas, formas, invariantes). Documenta la semilla.\n"
+        ),
+        md(
+            "## 15. Evidencia de aprendizaje\n\n"
+            "Guarda la salida del experimento, tu predicción previa y una frase sobre qué invariante "
+            "acabas de verificar.\n"
+        ),
+        md(
+            "## 16. Cierre\n\n"
+            f"Pieza cubierta: **{spec['tema']}**. Ya puede describirse con precisión, sin metáforas.\n"
+        ),
+        md(f"## 17. Conexión con el siguiente hito\n\n{spec['conexion']}\n"),
+    ]
+    return notebook(cells)
+
+
+# --------------------------------------------------------------------------- #
+# artefactos derivados
+# --------------------------------------------------------------------------- #
+
+
+def build_index(data: dict[str, Any]) -> str:
+    lines = [
+        "# 📇 Índice de papers fundacionales",
+        "",
+        "> Generado por `python scripts/generate_papers.py`. No editar a mano.",
+        "",
+        f"**Papers:** {len(data['papers'])} · **Actualizado:** {data['updated']} · "
+        f"**Ruta mínima:** {' → '.join(data['ruta_minima'])}",
+        "",
+        "## Tabla maestra",
+        "",
+        "| # | Paper | Año | Venue | Nivel | Motor | Ficha | Notebook |",
+        "|---|---|---:|---|:---:|---|---|---|",
+    ]
+    for item in data["papers"]:
+        lines.append(
+            f"| {item['id']} | {item['title_es']} | {item['year']} | {item['venue_type']} | "
+            f"{item['level']} | `{item['lab']}` | "
+            f"[ficha](../foundational/{item['dir']}/README.md) | "
+            f"[notebook](../../notebooks/papers/{item['dir']}.ipynb) |"
+        )
+    lines += ["", "## Qué resolvió cada uno", ""]
+    for item in data["papers"]:
+        lines += [
+            f"### {item['id']} · {item['title']} ({item['year']})",
+            "",
+            f"- **Autoría:** {', '.join(item['authors'])}",
+            f"- **Problema anterior:** {item['problema']}",
+            f"- **Propuesta:** {item['propuesta']}",
+            f"- **Hito:** {item['hito']}",
+            f"- **Conceptos:** {', '.join(item['keywords'])}",
+            "- **Clases del programa:** "
+            + ", ".join(
+                f"[{Path(path).name[:3]}](../../{path}/README.md)" for path in item["clases_del_programa"]
+            ),
+            "- **Fuentes primarias:** "
+            + " · ".join(f"[{f['label']}]({f['url']})" for f in item["fuentes_primarias"]),
+            "",
+        ]
+    lines += [
+        "## Miniaturas del Transformer",
+        "",
+        "El tratamiento especial de *Attention Is All You Need* se reparte en ocho notebooks:",
+        "",
+        "| Miniatura | Foco |",
+        "|---|---|",
+    ]
+    for spec in TRANSFORMER_SPECS:
+        lines.append(
+            f"| [{spec['titulo']}](../../notebooks/papers/{spec['id']}.ipynb) | {spec['tema']} |"
+        )
+    lines += [
+        "",
+        "---",
+        "",
+        "[⬅️ Volver al eje de papers](../README.md) · "
+        "[🗺️ Ruta](../ROADMAP.md) · "
+        "[🌐 Fuentes y venues](../guides/FUENTES_Y_VENUES.md)",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def build_instructor(item: dict[str, Any]) -> str:
+    clases = "\n".join(
+        f"- [{Path(path).name}](../../{path}/README.md)" for path in item["clases_del_programa"]
+    )
+    return f"""# 👩‍🏫 Guía docente — {item['id']} · {item['title_es']}
+
+> Generado por `python scripts/generate_papers.py`. Las notas de aula se editan en la ficha.
+
+**Paper:** *{item['title']}* ({item['year']}, {item['venue']})
+**Nivel:** {item['level']} · **Duración sugerida:** 1 sesión de 90 min + trabajo autónomo
+
+## Sesión de 90 minutos
+
+| Bloque | Min | Qué ocurre | Evidencia |
+|---|---:|---|---|
+| Contexto histórico | 15 | Se plantea el problema anterior sin nombrar la solución: *{item['problema']}* | El grupo propone al menos 2 soluciones ingenuas |
+| Propuesta | 15 | Se presenta la idea: *{item['propuesta']}* | Cada estudiante la reformula en una frase |
+| Predicción | 10 | Sección 7 del notebook, **antes** de ejecutar | Predicciones escritas y visibles |
+| Ejecución | 20 | Notebook `{item['dir']}.ipynb`, secciones 6–9 | Salida del experimento controlado |
+| Interpretación | 15 | Contraste predicción/resultado y anti-patrón (secciones 11–12) | Corrección argumentada |
+| Límites y cierre | 15 | Qué NO demuestra la miniatura, qué NO dice el paper | Una limitación por estudiante |
+
+## Errores que aparecerán en clase
+
+1. Atribuir al paper ideas posteriores (revisar la sección 12 de la ficha antes de la sesión).
+2. Confundir la miniatura del notebook con una reproducción del experimento original.
+3. Aceptar una métrica sin preguntar por tarea, dataset, línea base y protocolo.
+
+## Preguntas para dinamizar
+
+- ¿Qué habría que observar para considerar refutada la propuesta del paper?
+- ¿Qué parte del resultado depende de los datos y qué parte del método?
+- Si este paper no existiera, ¿qué habría bloqueado el hito siguiente?
+
+## Enlaces de aula
+
+- Ficha completa: [`{item['dir']}`](../../papers/foundational/{item['dir']}/README.md)
+- Notebook: [`{item['dir']}.ipynb`](../../notebooks/papers/{item['dir']}.ipynb)
+- Evaluación: [`{item['dir']}.md`](../../assessments/papers/{item['dir']}.md)
+- Clases del programa relacionadas:
+{clases}
+
+---
+
+[⬅️ Guías docentes del eje](README.md)
+"""
+
+
+def build_student(item: dict[str, Any]) -> str:
+    return f"""# 🎒 Ficha de estudio — {item['id']} · {item['title_es']}
+
+> Generado por `python scripts/generate_papers.py`. Tu bitácora personal va en [`BITACORA.md`](BITACORA.md).
+
+**Paper:** *{item['title']}* ({item['year']})
+**Nivel:** {item['level']} · **Notebook:** [`{item['dir']}.ipynb`](../../notebooks/papers/{item['dir']}.ipynb)
+
+## En una frase
+
+{item['hito']}
+
+## Ruta de trabajo (en este orden)
+
+1. Lee la **pasada 1** de la ficha: título, resumen, figuras. 10 minutos, sin fórmulas.
+2. Responde por escrito: *¿qué problema resolvía?* Compáralo con: «{item['problema']}»
+3. Abre el notebook y **escribe tu predicción** (sección 7) antes de ejecutar nada.
+4. Ejecuta y contrasta. Si acertaste, explica por qué; si fallaste, explica qué supusiste mal.
+5. Haz el anti-patrón (sección 11) y su corrección. Es la parte que más se evalúa.
+6. Escribe una limitación de la miniatura y una del paper. No las copies de la ficha.
+
+## Checklist de «lo entendí»
+
+- [ ] Sé qué se hacía antes de este paper y por qué no bastaba.
+- [ ] Puedo dibujar el mecanismo sin mirar.
+- [ ] Ejecuté la miniatura e interpreté su salida sin repetir el texto de la ficha.
+- [ ] Sé nombrar una cosa que el paper **no** demostró.
+- [ ] Sé qué idea de las que suelen atribuírsele llegó en realidad después.
+- [ ] Puedo conectar este hito con el siguiente en una frase.
+
+## Conceptos que debes poder definir
+
+{chr(10).join(f'- `{k}`' for k in item['keywords'])}
+
+## Fuentes primarias
+
+{chr(10).join(f"- [{f['label']}]({f['url']})" for f in item['fuentes_primarias'])}
+
+---
+
+[⬅️ Fichas de estudio](README.md) · [Ficha completa del paper](../../papers/foundational/{item['dir']}/README.md)
+"""
+
+
+def build_assessment(item: dict[str, Any]) -> str:
+    return f"""# 📝 Evaluación — {item['id']} · {item['title_es']}
+
+> Generado por `python scripts/generate_papers.py`.
+> Se evalúa comprensión histórica, lectura crítica e interpretación — no memorización de definiciones.
+
+**Paper:** *{item['title']}* ({item['year']}, {item['venue']}) · **Nivel:** {item['level']}
+
+## Parte A — Contexto histórico (20 pts)
+
+1. (10) Describe el estado del arte **inmediatamente anterior** a este paper y por qué era insuficiente.
+   No menciones la solución del paper en tu respuesta.
+2. (10) Nombra un trabajo anterior del que este paper depende y explica qué le tomó prestado.
+
+## Parte B — Lectura crítica (20 pts)
+
+3. (10) Localiza en el paper original una afirmación **cuantitativa** y reescríbela indicando tarea,
+   dataset, métrica, línea base y condiciones. Cita la tabla o sección.
+4. (10) Identifica una idea que hoy se asocia a este paper pero que **apareció después**. Aporta la
+   referencia posterior con año.
+
+## Parte C — Interpretación matemática (15 pts)
+
+5. (15) Explica la ecuación central con tus palabras y señala qué ocurre en un caso límite
+   (valor 0, dimensión muy grande, secuencia muy larga… según corresponda).
+
+## Parte D — Implementación e interpretación (25 pts)
+
+6. (10) Ejecuta [`{item['dir']}.ipynb`](../../notebooks/papers/{item['dir']}.ipynb) con **tres semillas**
+   y reporta qué varía y qué se mantiene.
+7. (10) Reproduce el anti-patrón de la sección 11 y explica por qué produce una conclusión errónea.
+8. (5) Aporta la corrección con su evidencia.
+
+## Parte E — Límites y transferencia (20 pts)
+
+9. (10) Escribe una limitación de la **miniatura** y una del **paper original**. No pueden ser la misma idea.
+10. (10) Conecta este hito con el siguiente de la ruta: ¿qué quedó sin resolver que motivó el paso siguiente?
+
+## Rúbrica
+
+| Nivel | Descripción |
+|---|---|
+| **A — Excelente** | Distingue hecho documentado, simplificación didáctica e inferencia propia. Cita fuentes primarias con sección o tabla. Sus límites son propios, no copiados. |
+| **B — Suficiente** | Explica el mecanismo y ejecuta la miniatura correctamente, pero repite los límites de la ficha y cita de forma imprecisa. |
+| **C — Insuficiente** | Describe el paper con narrativa retrospectiva, atribuye ideas posteriores, o presenta la salida de la miniatura como reproducción del experimento original. |
+
+## Criterio automático de rechazo
+
+Se devuelve sin nota cualquier entrega que:
+
+- atribuya al paper resultados, métricas o autores que no aparecen en la fuente primaria;
+- presente la ejecución del notebook como reproducción de los resultados del paper;
+- cite un paper que no se abrió (se comprueba pidiendo el número de figura o tabla).
+
+---
+
+[⬅️ Evaluaciones del eje](README.md) · [Ficha](../../papers/foundational/{item['dir']}/README.md)
+"""
+
+
+DERIVED_READMES = {
+    "instructor/papers/README.md": (
+        "# 👩‍🏫 Guías docentes del eje de papers\n\n"
+        "Una guía por paper con plan de sesión de 90 minutos, errores esperables en el aula y "
+        "preguntas para dinamizar. Generadas por `python scripts/generate_papers.py`.\n\n"
+        "| Paper | Guía |\n|---|---|\n"
+    ),
+    "student/papers/README.md": (
+        "# 🎒 Fichas de estudio del eje de papers\n\n"
+        "Una ficha por paper con ruta de trabajo y checklist de comprensión. "
+        "Tu registro personal va en [`BITACORA.md`](BITACORA.md).\n\n"
+        "| Paper | Ficha |\n|---|---|\n"
+    ),
+    "assessments/papers/README.md": (
+        "# 📝 Evaluaciones del eje de papers\n\n"
+        "Cada evaluación mide contexto histórico, lectura crítica, interpretación matemática, "
+        "implementación, límites y transferencia. Nunca solo definiciones.\n\n"
+        "| Paper | Evaluación |\n|---|---|\n"
+    ),
+}
+
+
+def write(path: Path, content: str, written: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    normalized = content if content.endswith("\n") else content + "\n"
+    if not path.exists() or path.read_text(encoding="utf-8") != normalized:
+        path.write_text(normalized, encoding="utf-8")
+    written.append(path.relative_to(ROOT).as_posix())
+
+
+def generate() -> list[str]:
+    data = load_papers()
+    written: list[str] = []
+
+    write(ROOT / "papers" / "catalog" / "PAPERS_INDEX.md", build_index(data), written)
+
+    for item in data["papers"]:
+        write(ROOT / "notebooks" / "papers" / f"{item['dir']}.ipynb",
+              json.dumps(build_paper_notebook(item), ensure_ascii=False, indent=1), written)
+        write(ROOT / "instructor" / "papers" / f"{item['dir']}.md", build_instructor(item), written)
+        write(ROOT / "student" / "papers" / f"{item['dir']}.md", build_student(item), written)
+        write(ROOT / "assessments" / "papers" / f"{item['dir']}.md", build_assessment(item), written)
+
+    for spec in TRANSFORMER_SPECS:
+        write(ROOT / "notebooks" / "papers" / f"{spec['id']}.ipynb",
+              json.dumps(build_transformer_notebook(spec), ensure_ascii=False, indent=1), written)
+
+    for rel, header in DERIVED_READMES.items():
+        rows = "\n".join(
+            f"| {item['id']} · {item['title_es']} | [{item['dir']}.md]({item['dir']}.md) |"
+            for item in data["papers"]
+        )
+        extra = ""
+        if rel.startswith("student"):
+            extra = (
+                "\n\n## Contrato de estudio\n\n"
+                "Antes de ejecutar: **predecir**. Después de ejecutar: **interpretar**. "
+                "Una ejecución sin predicción previa no cuenta como evidencia de aprendizaje.\n"
+            )
+        write(ROOT / rel, header + rows + extra + "\n\n---\n\n[⬅️ Eje de papers](../../papers/README.md)\n", written)
+
+    write(
+        ROOT / "student" / "papers" / "BITACORA.md",
+        "# 🗒️ Bitácora de lectura\n\n"
+        "> Plantilla personal. Una entrada por paper. No se genera automáticamente: se escribe.\n\n"
+        "## Plantilla\n\n"
+        "```text\n"
+        "Paper:\nFecha de lectura:\nPasada alcanzada (1-5):\n\n"
+        "Qué problema resolvía (con mis palabras):\n"
+        "Predicción antes de ejecutar:\n"
+        "Resultado observado:\n"
+        "¿Acerté? ¿Qué supuse mal?\n"
+        "Una limitación que NO estaba en la ficha:\n"
+        "Una idea que suele atribuirse a este paper y llegó después:\n"
+        "Pregunta que me quedó abierta:\n"
+        "```\n\n"
+        "## Registro\n\n"
+        "| Paper | Fecha | Pasada | Estado |\n|---|---|---|---|\n"
+        + "\n".join(f"| {item['id']} | | | ⬜ pendiente |" for item in load_papers()["papers"])
+        + "\n\n---\n\n[⬅️ Fichas de estudio](README.md)\n",
+        written,
+    )
+
+    manifest_files = sorted(set(written)) + sorted(
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "papers").rglob("*")
+        if path.is_file() and path.name not in {"manifest.json"}
+    )
+    manifest = {
+        "generated_by": "scripts/generate_papers.py",
+        "catalog_updated": data["updated"],
+        "papers": len(data["papers"]),
+        "notebooks": len(data["papers"]) + len(TRANSFORMER_SPECS),
+        "contrato_ficha": list(FICHA_SECTIONS),
+        "contrato_notebook": list(NOTEBOOK_SECTIONS),
+        "files": [
+            {"path": rel, "sha256": sha256_of(ROOT / rel)}
+            for rel in sorted(set(manifest_files))
+            if (ROOT / rel).exists()
+        ],
+    }
+    (ROOT / "papers" / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    written.append("papers/manifest.json")
+    return written
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Genera los artefactos del eje papers/")
+    parser.add_argument("--check", action="store_true", help="falla si algún artefacto cambia")
+    args = parser.parse_args()
+
+    if args.check:
+        before = {
+            path: path.read_bytes()
+            for path in list((ROOT / "notebooks" / "papers").glob("*.ipynb"))
+            + list((ROOT / "assessments" / "papers").glob("*.md"))
+            + list((ROOT / "instructor" / "papers").glob("*.md"))
+            + list((ROOT / "student" / "papers").glob("*.md"))
+        }
+        generate()
+        changed = [
+            path.relative_to(ROOT).as_posix()
+            for path, blob in before.items()
+            if path.read_bytes() != blob
+        ]
+        if changed:
+            print("artefactos desactualizados:", changed)
+            return 1
+        print("artefactos del eje papers al día")
+        return 0
+
+    written = generate()
+    print(f"eje papers generado: {len(written)} artefactos")
+    for rel in written:
+        print(" ·", rel)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

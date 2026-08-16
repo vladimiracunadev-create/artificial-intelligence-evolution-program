@@ -10,6 +10,7 @@ import yaml
 
 from .catalog import REPO_ROOT, load_curriculum
 from .labs import RUNNERS
+from .papers import validate_papers
 
 
 REQUIRED_LESSON_FILES = {
@@ -77,11 +78,16 @@ def validate_repository(*, strict: bool = False) -> dict[str, Any]:
         if warnings:
             errors.extend(warnings)
 
+    papers_report = validate_papers(strict=strict)
+    errors.extend(f"papers: {item}" for item in papers_report["errors"])
+
     return {
         "ok": not errors,
         "parts": len(curriculum["parts"]),
         "lessons": len(lessons),
         "notebooks": len(lessons) * 3,
+        "papers": papers_report["papers"],
+        "paper_notebooks": papers_report["notebooks"],
         "errors": errors,
         "warnings": warnings,
     }

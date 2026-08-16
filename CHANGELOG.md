@@ -2,6 +2,58 @@
 
 Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 
+## 0.4.0 — 2026-08-16
+
+- **Eje de papers fundacionales** (`papers/`), la pieza que faltaba para que el mapa
+  evolutivo se apoyara en fuentes primarias y no en narrativa retrospectiva. 16 hitos,
+  de Rosenblatt (1958) a los sistemas agentic, cada uno con la misma secuencia:
+  problema histórico → propuesta → intuición → matemática mínima → implementación →
+  experimento → interpretación → limitaciones → siguiente hito.
+  - **16 fichas** de 18 secciones obligatorias en `papers/foundational/`, con
+    identificación completa (autoría, año, venue, URL y fecha de consulta), qué observar
+    en el paper original con número de tabla o sección, límites que el paper admite y
+    límites que no admite, errores comunes —incluidas las atribuciones anacrónicas—,
+    actividades Bloom, autoevaluación y respuestas esperadas.
+  - **24 notebooks ejecutables** en `notebooks/papers/`: uno por hito más **ocho
+    miniaturas que desmontan *Attention Is All You Need*** pieza por pieza (recurrencia
+    vs paralelismo, Q/K/V y producto escalar escalado, softmax y saturación,
+    self-attention y máscara causal, multi-head, codificación posicional, residual +
+    layer norm + feed-forward, y encoder–decoder con sus límites). Cada notebook cumple
+    un contrato de 17 momentos que incluye **predicción antes de ejecutar**, anti-patrón
+    deliberado y su corrección.
+  - **16 motores deterministas** en `src/ai_evolution/papers_lab.py`: perceptrón,
+    backpropagation con verificación numérica del gradiente, carrusel de error constante
+    de la LSTM, convolución y equivarianza, skip-gram con muestreo negativo, cuello de
+    botella del vector fijo, atención aditiva entrenada, atención escalada multi-cabeza,
+    MLM bidireccional, aprendizaje en contexto, recuperación con citas, modelo de
+    recompensa Bradley-Terry, bucle ReAct, filtrado por reducción de pérdida, pérdida
+    DPO y bucle agentic con presupuesto. Python estándar: sin GPU, sin dependencias
+    nuevas, sin APIs pagadas.
+  - **5 guías** en `papers/guides/`: cómo leer un paper de IA, método de lectura en 5
+    pasadas, plantilla de ficha, glosario del eje y **dónde vive la investigación**
+    (arXiv y sus categorías, NeurIPS, ICML, ICLR, ACL Anthology, OpenReview, Semantic
+    Scholar y Google Scholar), con la distinción explícita entre dónde se publica y
+    dónde se busca.
+  - **Aula completa generada**: guía docente con sesión de 90 minutos, ficha de estudio
+    con checklist y bitácora, y evaluación con rúbrica A/B/C por paper, en
+    `instructor/papers/`, `student/papers/` y `assessments/papers/`.
+  - **4 prompts reutilizables** en `prompts/`: prompt maestro del eje, lectura crítica de
+    un paper, verificación de claims y vigilancia de frontera.
+- **Contrato verificado, no declarado**: `ai_evolution.papers.validate_papers()` comprueba
+  las 18 secciones de cada ficha y su orden, los 17 momentos de cada notebook, `nbformat`,
+  la existencia del motor, que cada paper tenga fuente primaria con URL, que las clases
+  enlazadas existan y que los SHA-256 de `papers/manifest.json` estén al día. Se integra en
+  `scripts/validate_repository.py --strict`.
+- **Nuevos comandos**: `ai-evolution papers`, `ai-evolution paper <id>` y
+  `ai-evolution paper-lab <id> --seed`.
+- **Nuevo generador**: `scripts/generate_papers.py` (con `--check` para CI) produce índice,
+  notebooks, artefactos de aula y manifiesto con SHA-256 a partir de `papers/catalog/papers.json`.
+- **Tests**: `tests/test_papers.py` añade 24 pruebas, entre ellas un smoke test que **ejecuta
+  todas las celdas de código de los 24 notebooks** y comprobaciones de que las afirmaciones
+  pedagógicas se sostienen (la analogía `rey − hombre + mujer → reina` es estable en tres
+  semillas; la atención escalada tiene más entropía que la no escalada; la máscara causal deja
+  masa 0 sobre el futuro; el agente escala en vez de responder ante un fallo de herramienta).
+
 ## 0.3.0 — 2026-08-14
 
 - **Tres clases nuevas de hardware en la parte 06**, el hueco que el programa

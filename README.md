@@ -3,7 +3,7 @@
 
 # 🧠 Artificial Intelligence Evolution Program
 
-## **15 partes · 183 clases · 549 notebooks · de la IA simbólica a los sistemas agénticos**
+## **15 partes · 183 clases · 16 papers fundacionales · de la IA simbólica a los sistemas agénticos**
 
 **Programa evolutivo y verificable para comprender e implementar la historia completa
 de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilidad,
@@ -14,8 +14,9 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.3.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.4.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
+[![Papers](https://img.shields.io/badge/papers-16%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-549-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
@@ -27,6 +28,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
 
 [🌐 **Sitio de estudio (vivo)**](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/) ·
+[📜 Papers fundacionales](papers/README.md) ·
 [🧭 Ruta](docs/LEARNING_PATH.md) ·
 [🤖 Especialización en agentes](docs/AGENTIC_SYSTEMS_TRACK.md) ·
 [📖 Glosario](docs/GLOSSARY.md) ·
@@ -38,9 +40,9 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 <br>
 
-| 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 🧰 Motores didácticos | 📕 PDFs |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| **183** | **549** | **183** | **15** | **20** | **16** |
+| 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 📜 Papers | 🧰 Motores didácticos | 📕 PDFs |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **183** | **549 + 24** | **183** | **15** | **16** | **20 + 16** | **16** |
 
 </div>
 
@@ -58,6 +60,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Superficie | Estado |
 |---|---|
 | Currículo | ✅ 183/183 clases documentadas |
+| Papers | ✅ 16 fichas de 18 secciones + 24 notebooks ejecutables + 16 motores deterministas |
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
@@ -170,6 +173,47 @@ Investigación abierta con fecha y fuente, y el proyecto integrador que une las
 |---:|---|---:|---|---|
 | 14 | [🔭 Frontera, investigación y proyectos integradores](classes/part-14-frontier-research-and-capstones/README.md) | 12 | frontera | 8–12 |
 
+## 📜 Eje de papers fundacionales
+
+Las clases enseñan **qué** sabe hoy el campo. El [eje de papers](papers/README.md) enseña
+**cómo llegó a saberlo**, leyendo las fuentes primarias y ejecutando una miniatura de cada
+mecanismo. No es una colección de PDFs: cada hito sigue la misma secuencia.
+
+```text
+problema histórico → propuesta → intuición → matemática mínima →
+implementación → experimento → interpretación → limitaciones → siguiente hito
+```
+
+La última flecha es la clave: **cada paper existe porque el anterior dejó algo sin resolver.**
+
+```mermaid
+flowchart LR
+    A["🔵 1958-1986<br/>Perceptrón · Backprop"] --> B["🟢 1997-2014<br/>LSTM · AlexNet<br/>Word2Vec · Seq2Seq"]
+    B --> C["🟡 2014-2017<br/>Attention · Transformer"]
+    C --> D["🟠 2018-2020<br/>BERT · GPT-3 · RAG"]
+    D --> E["🔴 2022-2023<br/>InstructGPT · ReAct<br/>Toolformer · DPO"]
+    E --> F["⚫ 2023+<br/>Sistemas agentic"]
+```
+
+| Qué incluye | Detalle |
+|---|---|
+| 📄 **16 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
+| 📓 **24 notebooks** | 16 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
+| 🧪 **16 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
+| 📚 **5 guías** | [Cómo leer un paper](papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [método en 5 pasadas](papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) · [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) · [plantilla de ficha](papers/guides/PLANTILLA_FICHA_PAPER.md) · [glosario](papers/guides/GLOSARIO_PAPERS_IA.md) |
+| 🎓 **Niveles L0–L5** | De orientar sobre qué es un paper a leer la frontera con fecha y fuente |
+| 👩‍🏫 **Aula completa** | [Guías docentes](instructor/papers/README.md), [fichas de estudio](student/papers/README.md) y [evaluaciones con rúbrica](assessments/papers/README.md) |
+
+Reglas que el repositorio **verifica automáticamente**: no atribuir a un paper ideas
+posteriores, no inventar autores, fechas, datasets ni métricas, registrar siempre venue y fecha
+de consulta, y no redistribuir material con copyright — solo enlazar.
+
+> [!TIP]
+> La guía [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) explica la
+> diferencia entre **dónde se publica** (arXiv, NeurIPS, ICML, ICLR, ACL Anthology) y **dónde
+> se busca** (Google Scholar, Semantic Scholar), y por qué OpenReview es el sitio más
+> infravalorado para aprender a leer con criterio.
+
 ## 🚀 Inicio rápido
 
 ```bash
@@ -181,6 +225,10 @@ ai-evolution catalog
 ai-evolution validate
 ai-evolution run 001
 ai-evolution frontier
+
+ai-evolution papers              # los 16 hitos de la ruta
+ai-evolution paper P08           # ficha de Attention Is All You Need
+ai-evolution paper-lab P08       # ejecuta su miniatura
 ```
 
 Sin instalar el paquete:
@@ -226,6 +274,29 @@ classes/part-XX-slug/NNN-topic/
 └── notebook_solution.ipynb
 ```
 
+## 📦 Contrato de un paper
+
+```text
+papers/
+├── catalog/papers.json          ← fuente de verdad (16 entradas validadas)
+├── catalog/sources.yaml         ← venues y repositorios primarios
+├── foundational/PXX_slug/       ← ficha de 18 secciones
+├── guides/                      ← cómo leer, 5 pasadas, plantilla, glosario, fuentes
+└── manifest.json                ← inventario con SHA-256 (generado)
+
+notebooks/papers/PXX_slug.ipynb  ← 17 momentos, del contexto al desafío autónomo
+instructor/papers/PXX_slug.md    ← plan de sesión de 90 minutos
+student/papers/PXX_slug.md       ← ruta de estudio y checklist
+assessments/papers/PXX_slug.md   ← evaluación con rúbrica A/B/C
+```
+
+Regenerar y verificar el eje completo:
+
+```bash
+python scripts/generate_papers.py
+python scripts/generate_papers.py --check
+```
+
 ## 🔗 Especializaciones conectadas
 
 | Especialización | Rol |
@@ -244,6 +315,7 @@ classes/part-XX-slug/NNN-topic/
 ### ✅ Lo que sí es
 
 - 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
+- 📜 un **eje de papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Rosenblatt (1958) a los sistemas agentic, con fichas verificables y miniaturas ejecutables;
 - 🧪 material **ejecutable y verificable**: 549 notebooks, 183 laboratorios locales deterministas y contratos JSON con `evidence` y `limitations`;
 - 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 16 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;

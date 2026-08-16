@@ -1,0 +1,136 @@
+# Fuentes primarias y venues para seguir la evolución de la IA
+#
+# Regla del eje: una afirmación sobre un paper se sostiene con la fuente primaria.
+# Un blog, un hilo o un resumen generado por IA son pistas, nunca evidencia.
+#
+# `rol` distingue DÓNDE se publica de DÓNDE se busca. Confundirlos es el error
+# más común: Google Scholar no publica nada, indexa.
+
+updated: '2026-08-16'
+revisar_cada: '90 días'
+
+repositorios_de_preprints:
+  - id: arxiv
+    nombre: arXiv
+    url: https://arxiv.org/
+    rol: publicación temprana (preprint, sin revisión por pares)
+    por_que_importa: >-
+      Es el lugar donde aparece primero casi toda la investigación relevante de IA,
+      con frecuencia meses antes de la conferencia. Attention Is All You Need estuvo
+      en arXiv en junio de 2017 y en NeurIPS en diciembre de 2017.
+    categorias:
+      - id: cs.AI
+        nombre: Artificial Intelligence
+        url: https://arxiv.org/list/cs.AI/recent
+      - id: cs.LG
+        nombre: Machine Learning
+        url: https://arxiv.org/list/cs.LG/recent
+      - id: cs.CL
+        nombre: Computation and Language (NLP y LLM)
+        url: https://arxiv.org/list/cs.CL/recent
+      - id: cs.CV
+        nombre: Computer Vision and Pattern Recognition
+        url: https://arxiv.org/list/cs.CV/recent
+      - id: stat.ML
+        nombre: Machine Learning (Statistics)
+        url: https://arxiv.org/list/stat.ML/recent
+    advertencia: >-
+      Un preprint NO ha pasado revisión por pares. Puede contener errores, ser
+      retirado o cambiar de versión (v1, v2, v3). Cita siempre la versión que leíste.
+
+conferencias:
+  - id: neurips
+    nombre: NeurIPS (Conference on Neural Information Processing Systems)
+    url: https://neurips.cc/
+    proceedings: https://papers.nips.cc/
+    rol: publicación revisada por pares
+    cobertura: ML e IA en sentido amplio; teoría, sistemas, aplicaciones, evaluación
+    papers_del_eje: [P04, P08, P10, P11, P12, P14, P15]
+  - id: icml
+    nombre: ICML (International Conference on Machine Learning)
+    url: https://icml.cc/
+    proceedings: https://proceedings.mlr.press/
+    rol: publicación revisada por pares
+    cobertura: machine learning avanzado, optimización, teoría del aprendizaje
+  - id: iclr
+    nombre: ICLR (International Conference on Learning Representations)
+    url: https://iclr.cc/
+    rol: publicación revisada por pares, con revisiones abiertas en OpenReview
+    cobertura: deep learning, representaciones, arquitecturas modernas
+    papers_del_eje: [P05, P07, P13]
+  - id: acl
+    nombre: ACL / NAACL / EMNLP (Association for Computational Linguistics)
+    url: https://aclanthology.org/
+    rol: publicación revisada por pares y archivo abierto y permanente
+    cobertura: PLN, LLM, traducción, evaluación lingüística
+    papers_del_eje: [P09]
+    nota: >-
+      ACL Anthology es de acceso abierto y estable: si un paper de PLN está ahí,
+      esa es la referencia canónica que debes citar.
+
+revisiones_abiertas:
+  - id: openreview
+    nombre: OpenReview
+    url: https://openreview.net/
+    rol: proceso editorial abierto (envíos, revisiones, réplicas de autores, decisión)
+    por_que_importa: >-
+      Es la única fuente que muestra el paper Y su discusión: qué objetaron los
+      revisores, qué respondieron los autores y qué cambió entre versiones.
+      Para aprender a leer críticamente vale tanto como el paper.
+    uso_pedagogico: >-
+      Ejercicio del nivel L3: leer una revisión negativa de un paper aceptado y
+      decidir si la objeción quedó realmente resuelta.
+
+buscadores_e_indices:
+  - id: semantic-scholar
+    nombre: Semantic Scholar
+    url: https://www.semanticscholar.org/
+    rol: índice y grafo de citas (NO publica)
+    util_para: rastrear qué papers citan a este y reconstruir linajes
+    api: https://api.semanticscholar.org/
+  - id: google-scholar
+    nombre: Google Scholar
+    url: https://scholar.google.com/
+    rol: índice de citas (NO publica)
+    util_para: encontrar versiones alternativas y contar citas
+    advertencia: >-
+      El número de citas mide atención, no calidad ni corrección.
+  - id: paperswithcode
+    nombre: Papers with Code
+    url: https://paperswithcode.com/
+    rol: enlace entre papers y sus implementaciones
+    advertencia: >-
+      Que exista código no implica que reproduzca los resultados del paper.
+  - id: doi
+    nombre: DOI / Crossref
+    url: https://www.doi.org/
+    rol: identificador persistente
+    util_para: citar revistas (Nature, Neural Computation, Psychological Review)
+
+linaje_historico_de_referencia:
+  descripcion: >-
+    Ruta que muestra cómo circula una idea entre estas fuentes. Se usa en la clase
+    L0 del eje para que el estudiante entienda el ciclo de vida de un paper.
+  pasos:
+    - '2017-06 · arXiv:1706.03762 — el preprint aparece'
+    - '2017-12 · NeurIPS 2017 — revisión por pares y presentación'
+    - '2017-2018 · el Transformer se convierte en arquitectura de referencia'
+    - '2018 · BERT (encoder) y GPT (decoder) toman caminos distintos del mismo bloque'
+    - '2020 · GPT-3 muestra aprendizaje en contexto al escalar'
+    - '2020 · RAG separa conocimiento de parámetros'
+    - '2022 · InstructGPT alinea el modelo con instrucciones humanas'
+    - '2022-2023 · ReAct y Toolformer convierten al modelo en controlador de un bucle'
+    - '2023+ · sistemas agentic: memoria, reflexión, multiagente, protocolos'
+
+higiene_de_citacion:
+  - Registra autores, año, título, venue, URL y fecha de consulta.
+  - Cita la versión que leíste (arXiv v1 y v3 pueden diferir).
+  - Prefiere el venue revisado si existe; usa arXiv cuando no exista o para la versión extendida.
+  - No cites un paper que no abriste.
+  - No conviertas un número de un resumen ajeno en un dato tuyo sin verlo en la tabla original.
+  - Distingue siempre: hecho documentado / simplificación didáctica / inferencia propia.
+
+no_redistribucion: >-
+  Este repositorio enlaza a las fuentes. No aloja PDFs de terceros con licencia
+  restrictiva. Los papers en revistas (P01, P02, P03) suelen requerir suscripción:
+  busca la versión de acceso abierto del autor o consúltalos en una biblioteca.
