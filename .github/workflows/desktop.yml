@@ -102,6 +102,61 @@ jobs:
       - name: Compilar instalador
         run: '& "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss'
 
+      # 4) MSI: lo que pide una implantacion gestionada (GPO, Intune, msiexec /qn)
+      - name: Instalar WiX Toolset
+        run: dotnet tool install --global wix --version 5.*
+
+      - name: Guion WiX
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          @"
+          <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+            <Package Name="AI Evolution Program" Manufacturer="Vladimir Acuna"
+                     Version="$v" UpgradeCode="6b1d4c2a-3e5f-4a7b-9c8d-1e2f3a4b5c6d"
+                     Scope="perMachine" Compressed="yes">
+              <MajorUpgrade DowngradeErrorMessage="Ya hay una version mas reciente instalada." />
+              <MediaTemplate EmbedCab="yes" />
+              <Icon Id="AppIcon" SourceFile="app.ico" />
+              <Property Id="ARPPRODUCTICON" Value="AppIcon" />
+              <Property Id="ARPURLINFOABOUT" Value="https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program" />
+
+              <StandardDirectory Id="ProgramFiles64Folder">
+                <Directory Id="INSTALLFOLDER" Name="AI Evolution Program" />
+              </StandardDirectory>
+              <StandardDirectory Id="ProgramMenuFolder">
+                <Directory Id="AppMenuFolder" Name="AI Evolution Program" />
+              </StandardDirectory>
+
+              <!-- recoleccion automatica de la carpeta portable ya compilada -->
+              <ComponentGroup Id="Contenido" Directory="INSTALLFOLDER">
+                <Files Include="dist-portable\AI-Evolution-Program-portable\**" />
+              </ComponentGroup>
+
+              <Component Id="AccesoDirecto" Directory="AppMenuFolder" Guid="7c2e5d3b-4f6a-4b8c-ad9e-2f3a4b5c6d7e">
+                <Shortcut Id="AtajoMenu" Name="AI Evolution Program"
+                          Target="[INSTALLFOLDER]AI-Evolution-Program-portable.exe"
+                          WorkingDirectory="INSTALLFOLDER" Icon="AppIcon" />
+                <RemoveFolder Id="QuitarCarpetaMenu" Directory="AppMenuFolder" On="uninstall" />
+                <RegistryValue Root="HKCU" Key="Software\AIEvolutionProgram"
+                               Name="instalado" Type="integer" Value="1" KeyPath="yes" />
+              </Component>
+
+              <Feature Id="Principal" Title="AI Evolution Program" Level="1">
+                <ComponentGroupRef Id="Contenido" />
+                <ComponentRef Id="AccesoDirecto" />
+              </Feature>
+            </Package>
+          </Wix>
+          "@ | Out-File -FilePath package.wxs -Encoding utf8
+          Get-Content package.wxs | Select-Object -First 6
+
+      - name: Compilar MSI
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          wix build package.wxs -arch x64 -out "dist/AI-Evolution-Program-$v-windows-x64.msi"
+
       - name: Renombrar el ejecutable unico con su version
         shell: pwsh
         run: |
@@ -115,7 +170,8 @@ jobs:
           $esperados = @(
             "dist/AI-Evolution-Program-$v-windows-x64.exe",
             "dist/AI-Evolution-Program-$v-portable-windows-x64.zip",
-            "dist/AI-Evolution-Program-$v-setup-windows-x64.exe"
+            "dist/AI-Evolution-Program-$v-setup-windows-x64.exe",
+            "dist/AI-Evolution-Program-$v-windows-x64.msi"
           )
           foreach ($f in $esperados) {
             if (-not (Test-Path $f)) { Write-Error "falta $f"; exit 1 }
@@ -127,7 +183,7 @@ jobs:
       - name: Checksums SHA-256
         shell: pwsh
         run: |
-          Get-ChildItem dist -Include *.exe, *.zip -Recurse |
+          Get-ChildItem dist -Include *.exe, *.zip, *.msi -Recurse |
             ForEach-Object { "{0}  {1}" -f (Get-FileHash $_ -Algorithm SHA256).Hash.ToLower(), $_.Name } |
             Out-File -FilePath dist/SHA256SUMS-windows.txt -Encoding utf8
           Get-Content dist/SHA256SUMS-windows.txt
@@ -138,5 +194,6 @@ jobs:
           path: |
             dist/*.exe
             dist/*.zip
+            dist/*.msi
             dist/SHA256SUMS-windows.txt
           if-no-files-found: error
