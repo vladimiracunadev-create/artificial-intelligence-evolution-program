@@ -27,10 +27,11 @@ Primera release con **binarios adjuntos**, todos versionados desde `pyproject.to
 |---|---|
 | `setup-windows-x64.exe` | Instalador (Inno Setup): menú de inicio y desinstalador |
 | `portable-windows-x64.zip` | Carpeta portable: descomprimir y ejecutar |
+| `windows-x64.msi` | MSI para implantación gestionada: `msiexec /qn`, GPO, Intune |
 | `windows-x64.exe` | Ejecutable único |
 | `android.apk` | Android, firmado con clave de depuración |
 
-El workflow de Windows producía **un** ejecutable; ahora produce los tres, con icono propio,
+El workflow de Windows producía **un** ejecutable; ahora produce los cuatro, con icono propio,
 verificación de tamaño mínimo y —lo importante— **regenerando el sitio antes de empaquetarlo**: el
 sitio viaja dentro del ejecutable y podía quedarse viejo.
 

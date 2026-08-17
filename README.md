@@ -66,7 +66,8 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
 | Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 67 páginas del eje de papers |
-| Escritorio | ✅ visor Tkinter local; workflow opcional para `.exe` |
+| Escritorio | ✅ visor Tkinter; se publica en 4 formatos (instalador, MSI, portable, exe único) |
+| Android | ✅ APK con el sitio embebido, funciona sin conexión |
 | CI | ✅ estructura, notebooks, tests, compilación y seguridad básica |
 | GPU / APIs pagadas | ⚪ extensiones opcionales; no se finge ejecución en CI |
 
@@ -262,14 +263,24 @@ sin cuenta.
 
 </div>
 
-**Descargas** — cada release publica los binarios con su `SHA256SUMS`:
+### ⬇️ Descargas
 
-| Formato | Para qué |
-|---|---|
-| `…-setup-windows-x64.exe` | Instalador: entrada en el menú de inicio y desinstalador |
-| `…-portable-windows-x64.zip` | Portable: se descomprime y se ejecuta, sin instalar |
-| `…-windows-x64.exe` | Ejecutable único: un solo fichero, arranca algo más lento |
-| `…-android.apk` | Android. Firmado con clave de depuración: hay que permitir orígenes desconocidos |
+Los enlaces apuntan siempre a la **última release**, así que no caducan al publicar una versión nueva:
+
+| Descarga | Formato | Para qué |
+|---|---|---|
+| [**Instalador**](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/releases/latest) | `setup-windows-x64.exe` | Uso normal: menú de inicio y desinstalador |
+| [**MSI**](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/releases/latest) | `windows-x64.msi` | Implantación gestionada: `msiexec /qn`, GPO, Intune |
+| [**Portable**](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/releases/latest) | `portable-windows-x64.zip` | Sin instalar: descomprimir y ejecutar |
+| [**Ejecutable único**](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/releases/latest) | `windows-x64.exe` | Un solo fichero; arranca algo más lento |
+| [**Android**](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/releases/latest) | `android.apk` | Móvil y tableta |
+
+Cada release publica además `SHA256SUMS-windows.txt` y `SHA256SUMS-android.txt` para verificar
+lo que descargas:
+
+```bash
+sha256sum -c SHA256SUMS-windows.txt
+```
 
 > [!NOTE]
 > El APK está firmado con una clave de **depuración**, no de publicación: se instala activando

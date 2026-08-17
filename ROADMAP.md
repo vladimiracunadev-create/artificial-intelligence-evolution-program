@@ -13,6 +13,7 @@
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
 | PDFs | 69: 17 del programa (15 partes + completo + eje) y 52 individuales, uno por paper |
+| Aplicaciones | Windows en 4 formatos (instalador, MSI, portable, exe único) y APK de Android, con checksums |
 | Tests | 39 |
 
 ## ✅ 0.1.0 — Programa maestro inicial (entregado)
@@ -108,7 +109,7 @@
 
 ## ✅ 0.11.0 — Aplicaciones publicadas (entregado)
 
-- [x] Windows en tres formatos: instalador, portable y ejecutable único, con checksums.
+- [x] Windows en cuatro formatos: instalador, MSI, portable y ejecutable único, con checksums.
 - [x] APK de Android versionado, con checksum.
 - [x] Capturas reales de las apps en la documentación.
 - [x] Contraste de los diagramas verificado (mínimo 5,59:1) para GitHub, sitio y PDF.
