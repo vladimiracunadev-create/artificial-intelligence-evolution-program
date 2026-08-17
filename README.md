@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.10.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.11.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-52%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
@@ -228,7 +228,7 @@ ai-evolution validate
 ai-evolution run 001
 ai-evolution frontier
 
-ai-evolution papers              # los 16 hitos de la ruta
+ai-evolution papers              # los 52 hitos del eje
 ai-evolution paper P08           # ficha de Attention Is All You Need
 ai-evolution paper-lab P08       # ejecuta su miniatura
 ```
@@ -247,6 +247,49 @@ python -m http.server 8080
 ```
 
 Abre `http://localhost:8080/site/`.
+
+## 📱 Aplicaciones
+
+El mismo programa, en tres formas. Todas llevan el contenido **dentro**: funcionan sin conexión y
+sin cuenta.
+
+<div align="center">
+
+| 🖥️ Escritorio (Windows) | 📱 Android · 🌐 PWA |
+|:---:|:---:|
+| <img src="docs/screenshots/app-escritorio.png" alt="App de escritorio: catálogo de las 183 clases con el detalle de la clase 055" width="520"> | <img src="docs/screenshots/app-movil-clase.png" alt="App móvil: la clase 055 en la interfaz del WebView" width="230"> |
+| Visor nativo del catálogo: busca, navega las 15 partes y abre el README o el sitio de cada clase | La app Android y la PWA cargan el mismo sitio: 183 clases, 52 papers y progreso local |
+
+</div>
+
+**Descargas** — cada release publica los binarios con su `SHA256SUMS`:
+
+| Formato | Para qué |
+|---|---|
+| `…-setup-windows-x64.exe` | Instalador: entrada en el menú de inicio y desinstalador |
+| `…-portable-windows-x64.zip` | Portable: se descomprime y se ejecuta, sin instalar |
+| `…-windows-x64.exe` | Ejecutable único: un solo fichero, arranca algo más lento |
+| `…-android.apk` | Android. Firmado con clave de depuración: hay que permitir orígenes desconocidos |
+
+> [!NOTE]
+> El APK está firmado con una clave de **depuración**, no de publicación: se instala activando
+> «orígenes desconocidos» y no procede de Google Play. Los ejecutables de Windows **no están
+> firmados con certificado de código**, así que SmartScreen avisará la primera vez. Comprueba el
+> `SHA256SUMS` de la release antes de ejecutarlos.
+
+Las tres se compilan desde el mismo repositorio con
+[`desktop.yml`](.github/workflows/desktop.yml) y [`android.yml`](.github/workflows/android.yml).
+Las capturas se regeneran con `python scripts/generate_screenshots.py --escritorio`.
+
+### 🌐 El sitio y el eje de papers
+
+<div align="center">
+
+| Portada | Matriz clase ↔ paper |
+|:---:|:---:|
+| <img src="docs/screenshots/sitio-portada.png" alt="Portada del sitio con las estadísticas del programa" width="420"> | <img src="docs/screenshots/sitio-matriz.png" alt="Matriz de vinculación entre clases y papers" width="420"> |
+
+</div>
 
 ## 📕 PDFs del programa
 

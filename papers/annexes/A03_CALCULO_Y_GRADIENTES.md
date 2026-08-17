@@ -86,7 +86,7 @@ flowchart LR
     L -.->|"δ_o"| O2["∂L/∂W₂"]
     O -.->|"W₂ᵀδ_o ⊙ σ'"| H2["δ_h"]
     H2 -.-> W1["∂L/∂W₁"]
-    style L fill:#3a1a1a,stroke:#f85149
+    style L fill:#3a1a1a,stroke:#f85149,color:#f0f6fc
 ```
 
 ## 4. Por qué el gradiente se desvanece

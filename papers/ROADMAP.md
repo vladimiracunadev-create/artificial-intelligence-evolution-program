@@ -1,6 +1,6 @@
 # 🗺️ Ruta del eje de papers
 
-> Cómo recorrer los 22 hitos: qué nivel exige cada uno, en qué orden, con qué dedicación y
+> Cómo recorrer los 52 hitos: qué nivel exige cada uno, en qué orden, con qué dedicación y
 > qué evidencia deja cada tramo.
 
 ## 🎓 Los seis niveles

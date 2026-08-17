@@ -4,11 +4,21 @@ Empaqueta el sitio completo del programa (index + 183 clases + 15 partes en HTML
 como aplicación Android con Capacitor. El contenido viaja embebido en el APK y
 funciona offline; los diagramas mermaid requieren conexión (se renderizan desde CDN).
 
+<div align="center">
+<img src="../../docs/screenshots/app-movil-clase.png" alt="La clase 055 dentro de la app" width="260">
+<img src="../../docs/screenshots/app-movil-paper.png" alt="La ficha del Transformer dentro de la app" width="260">
+</div>
+
+> [!IMPORTANT]
+> El APK se firma con la clave de **depuración** de Android, no con una de publicación: se instala
+> permitiendo «orígenes desconocidos» y no procede de Google Play. Cada release publica su
+> `SHA256SUMS-android.txt`.
+
 ## Build en CI (recomendado)
 
 Ejecuta el workflow **Android build** (`workflow_dispatch`). Pasos que realiza:
 
-1. Genera el sitio (`python scripts/generate_site.py`) → `site/` con las 195 páginas.
+1. Genera el sitio (`python scripts/generate_site.py`) → `site/` con sus 266 páginas.
 2. Copia `site/` a `apps/android/www/`.
 3. `npm ci && npx cap add android && npx capacitor-assets generate --android`
    (icono y splash desde `resources/`).

@@ -16,6 +16,52 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.11.0 — 2026-08-17
+
+### Aplicaciones publicadas
+
+Primera release con **binarios adjuntos**, todos versionados desde `pyproject.toml` y con su
+`SHA256SUMS`:
+
+| Formato | Qué es |
+|---|---|
+| `setup-windows-x64.exe` | Instalador (Inno Setup): menú de inicio y desinstalador |
+| `portable-windows-x64.zip` | Carpeta portable: descomprimir y ejecutar |
+| `windows-x64.exe` | Ejecutable único |
+| `android.apk` | Android, firmado con clave de depuración |
+
+El workflow de Windows producía **un** ejecutable; ahora produce los tres, con icono propio,
+verificación de tamaño mínimo y —lo importante— **regenerando el sitio antes de empaquetarlo**: el
+sitio viaja dentro del ejecutable y podía quedarse viejo.
+
+### Diagramas ilegibles fuera del sitio
+
+Las 30 directivas de estilo de los diagramas mermaid fijaban relleno oscuro **sin declarar color de
+texto**. En el sitio se veían —tema oscuro—, pero en **GitHub en modo claro y en los PDF** el texto
+salía oscuro sobre fondo oscuro. Ahora fijan relleno **y** texto: contraste mínimo **5,59:1**,
+verificado con el cálculo de luminancia relativa de WCAG.
+
+### Capturas en la documentación
+
+Nuevo `scripts/generate_screenshots.py`, con dos cuidados que costaron encontrar:
+
+- **La captura de la app nativa se acota a su ventana**, nunca a la pantalla completa: una captura
+  de pantalla entera arrastra lo que haya abierto en el escritorio de quien la genera, y estas
+  imágenes se publican.
+- **`--window-size` de Chrome headless solo recorta la imagen**, no cambia el viewport de
+  maquetación. Las capturas «de móvil» salían con el texto cortado y parecía un fallo del sitio;
+  el sitio estaba bien. Ahora se renderiza dentro de un `iframe` del tamaño exacto, que sí crea
+  un viewport real.
+
+### Integridad
+
+- **La versión 0.1.0 no tenía tag**, y el propio CHANGELOG afirma que todas lo tienen. Creado sobre
+  su commit real.
+- **La app de escritorio cortaba los títulos** del árbol de partes y clases: ahora la columna tiene
+  ancho propio, barras de desplazamiento y la ventana arranca más ancha.
+- Conteos corregidos en prosa, que el auditor de cifras no cazaba: «16 hitos» en la portada del
+  sitio, «22 hitos» en la ruta del eje, «195 páginas» en el README de Android.
+
 ## 0.10.0 — 2026-08-16
 
 ### Matriz de vinculación clase ↔ paper

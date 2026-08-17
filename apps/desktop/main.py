@@ -17,8 +17,8 @@ class ProgramApp(tk.Tk):
     def __init__(self) -> None:
         super().__init__()
         self.title("Artificial Intelligence Evolution Program")
-        self.geometry("1120x720")
-        self.minsize(900, 600)
+        self.geometry("1280x760")
+        self.minsize(1040, 620)
         self.configure(bg="#0b1020")
 
         style = ttk.Style(self)
@@ -36,8 +36,18 @@ class ProgramApp(tk.Tk):
         search.pack(fill=tk.X, pady=(0, 8))
         search.bind("<KeyRelease>", lambda _event: self.populate())
 
-        self.tree = ttk.Treeview(left, show="tree", height=24)
-        self.tree.pack(fill=tk.BOTH, expand=True)
+        # el arbol necesita ancho propio: los titulos de parte y clase se
+        # cortaban a la mitad y no habia forma de leerlos enteros
+        arbol = tk.Frame(left, bg="#0b1020")
+        arbol.pack(fill=tk.BOTH, expand=True)
+        self.tree = ttk.Treeview(arbol, show="tree", height=24)
+        barra_x = ttk.Scrollbar(arbol, orient=tk.HORIZONTAL, command=self.tree.xview)
+        barra_y = ttk.Scrollbar(arbol, orient=tk.VERTICAL, command=self.tree.yview)
+        self.tree.configure(xscrollcommand=barra_x.set, yscrollcommand=barra_y.set)
+        self.tree.column("#0", width=380, minwidth=380, stretch=False)
+        barra_y.pack(side=tk.RIGHT, fill=tk.Y)
+        barra_x.pack(side=tk.BOTTOM, fill=tk.X)
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.tree.bind("<<TreeviewSelect>>", self.select_lesson)
 
         self.title_label = tk.Label(right, text="Selecciona una clase", font=("Segoe UI", 22, "bold"), bg="#0b1020", fg="#ffffff", anchor="w")
