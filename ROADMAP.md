@@ -8,7 +8,7 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.11.1** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.11.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
@@ -113,6 +113,8 @@
 - [x] APK de Android versionado, con checksum.
 - [x] Capturas reales de las apps en la documentación.
 - [x] Contraste de los diagramas verificado (mínimo 5,59:1) para GitHub, sitio y PDF.
+- [x] Especializaciones conectadas: 20 repositorios agrupados, con qué parte extiende cada uno.
+- [x] Rama `main` protegida contra force-push y borrado.
 
 ## 📦 Pendiente — Distribución
 

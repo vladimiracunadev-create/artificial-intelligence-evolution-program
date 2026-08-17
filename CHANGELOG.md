@@ -13,10 +13,15 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
   esa fecha, sobre sus commits reales.
 - **No toda versión tiene una release publicada en GitHub.** Las releases marcan
   hitos que valen la pena descargar; los tags marcan todas las versiones.
+- **No toda mejora sube versión.** Un cambio que solo toca documentación entra en `main` sin
+  bumpear: subir versión obliga a rehacer el About, los conteos de toda la documentación y a
+  recompilar los cinco binarios, y eso solo se justifica cuando cambia algo que se distribuye.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
-## 0.11.1 — 2026-08-17
+## 0.11.0 — 2026-08-17
+
+### Documentación y protección de la rama
 
 - **Especializaciones conectadas, reescrita.** Listaba 4 repositorios con una línea de rol cada
   uno. Ahora son **20**, agrupados por para qué sirven —completan el eje de IA, operación e
@@ -28,8 +33,6 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - **Rama `main` protegida**: prohibido el force-push y el borrado de la rama. Se descartaron los
   checks obligatorios y el flujo por pull request para no bloquear el trabajo directo sobre `main`,
   que es como se mantiene este repositorio.
-
-## 0.11.0 — 2026-08-17
 
 ### Aplicaciones publicadas
 
