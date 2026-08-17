@@ -1,4 +1,8 @@
-.PHONY: validate test site desktop zip papers papers-check pdf pdf-papers all-checks
+.PHONY: validate test site desktop zip papers papers-check pdf pdf-papers all-checks hooks
+
+hooks:
+	git config core.hooksPath .githooks
+	@echo "hook pre-push activo: corre la tanda de CI antes de cada push"
 
 validate:
 	python scripts/validate_repository.py --strict

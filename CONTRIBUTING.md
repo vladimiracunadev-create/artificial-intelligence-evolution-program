@@ -30,8 +30,20 @@ redistribuir material con copyright — se enlaza.
 python -m unittest discover -s tests -v
 python scripts/validate_repository.py --strict
 python scripts/generate_papers.py --check
+python scripts/link_papers_to_classes.py --check
 python -m compileall -q src scripts classes apps
 ```
+
+Esa es exactamente la tanda del workflow `CI`. Para no tener que acordarse,
+instala una sola vez el hook que la corre antes de cada `git push`:
+
+```bash
+make hooks
+```
+
+El fallo más habitual es olvidar regenerar tras editar contenido: el manifiesto
+de hashes queda desfasado y caen los nueve jobs de la matriz. Se arregla con
+`python scripts/generate_papers.py` y `python scripts/link_papers_to_classes.py`.
 
 ## 📝 Commits
 
