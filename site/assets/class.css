@@ -74,3 +74,23 @@ pre.mermaid {
   justify-content: center;
   overflow-x: auto;
 }
+
+/* avisos de GitHub (> [!TIP], > [!NOTE]…), que antes salían como texto literal */
+.content blockquote.alerta { color: var(--text, inherit); }
+.content blockquote.alerta .alerta-titulo {
+  font-weight: 700;
+  letter-spacing: .01em;
+  margin: 0 0 .35rem;
+}
+.content blockquote.alerta-nota       { border-left-color: #58a6ff; }
+.content blockquote.alerta-consejo    { border-left-color: #3fb950; }
+.content blockquote.alerta-importante { border-left-color: #8957e5; }
+.content blockquote.alerta-aviso      { border-left-color: #d29922; }
+.content blockquote.alerta-precaucion { border-left-color: #f85149; }
+.content blockquote.alerta-nota       .alerta-titulo { color: #58a6ff; }
+.content blockquote.alerta-consejo    .alerta-titulo { color: #3fb950; }
+.content blockquote.alerta-importante .alerta-titulo { color: #8957e5; }
+.content blockquote.alerta-aviso      .alerta-titulo { color: #d29922; }
+.content blockquote.alerta-precaucion .alerta-titulo { color: #f85149; }
+/* destino de un `#ancla`: que el encabezado no quede bajo la barra superior */
+.content :is(h2, h3, h4)[id] { scroll-margin-top: 4.5rem; }

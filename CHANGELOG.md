@@ -16,6 +16,19 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.9.1 — 2026-08-16
+
+Dos defectos del renderizador del sitio, visibles al revisar las páginas ya publicadas.
+
+- **Ningún encabezado del sitio llevaba `id`.** Cada enlace a un apartado —los 78 puentes
+  matemáticos de las fichas, el índice temático del catálogo— caía al principio de la página en
+  vez de a su sección. El renderizador genera ahora anclas con el mismo algoritmo que GitHub, así
+  que un `#enlace` escrito para el repositorio funciona igual en el sitio. Comprobadas las
+  **264 anclas**: 0 rotas.
+- **Los avisos de GitHub salían como texto literal.** `> [!TIP]`, `> [!NOTE]` y compañía se
+  imprimían con los corchetes a la vista en 57 páginas. Ahora se convierten en recuadros con
+  título y color por tipo.
+
 ## 0.9.0 — 2026-08-16
 
 Dos huecos que se veían al revisar el sitio publicado: los papers no llegaban a las clases que

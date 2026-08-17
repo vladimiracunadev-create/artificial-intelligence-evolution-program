@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import posixpath
 import re
+import unicodedata
 from pathlib import Path
 
 import markdown
@@ -49,8 +50,45 @@ PAGE_TEMPLATE = """<!doctype html>
 """
 
 
+ALERTAS = {
+    "NOTE": ("nota", "📝 Nota"),
+    "TIP": ("consejo", "💡 Consejo"),
+    "IMPORTANT": ("importante", "❗ Importante"),
+    "WARNING": ("aviso", "⚠️ Aviso"),
+    "CAUTION": ("precaucion", "🛑 Precaución"),
+}
+
+
+def slug(texto: str) -> str:
+    """Ancla al estilo de GitHub, para que los `#enlaces` del markdown funcionen aquí.
+
+    Sin esto el renderizador no emitía ningún `id` y CADA enlace a un apartado
+    —los puentes matemáticos de las fichas, el índice temático— caía al principio
+    de la página en vez de a su sección.
+    """
+    limpio = re.sub(r"<[^>]+>", "", texto).strip().lower()
+    limpio = "".join(c for c in limpio
+                     if c.isalnum() or c in " -_" or unicodedata.category(c).startswith("L"))
+    return re.sub(r"\s+", "-", limpio.strip())
+
+
 def render(md_text: str) -> str:
-    return markdown.markdown(md_text, extensions=MD_EXTENSIONS)
+    html = markdown.markdown(md_text, extensions=MD_EXTENSIONS)
+
+    # ids en los encabezados, con el mismo algoritmo que usa GitHub
+    def encabezado(m: re.Match[str]) -> str:
+        return f'<h{m.group(1)} id="{slug(m.group(2))}">{m.group(2)}</h{m.group(1)}>'
+
+    html = re.sub(r"<h([1-6])>(.*?)</h\1>", encabezado, html, flags=re.S)
+
+    # avisos de GitHub (`> [!TIP]`), que el renderizador imprimía como texto literal
+    def alerta(m: re.Match[str]) -> str:
+        clase, titulo = ALERTAS[m.group(1)]
+        return (f'<blockquote class="alerta alerta-{clase}">\n'
+                f'<p class="alerta-titulo">{titulo}</p>\n<p>')
+
+    html = re.sub(r"<blockquote>\s*<p>\[!(" + "|".join(ALERTAS) + r")\]\s*", alerta, html)
+    return html
 
 
 def write_lf(path: Path, content: str) -> None:

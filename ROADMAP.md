@@ -8,7 +8,7 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.9.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.9.1** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
