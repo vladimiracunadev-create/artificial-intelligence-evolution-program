@@ -238,6 +238,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Documentación oficial de Claude (prompting y salidas estructuradas): <https://docs.claude.com>
 - Especificación JSON Schema: <https://json-schema.org>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P34 · RoFormer: Transformer mejorado con codificación posicional rotatoria](../../../papers/foundational/P34_rope/README.md) | 2021 | La posición se codifica rotando, y la atención pasa a depender solo de la distancia relativa. Es la base de casi todo modelo actual. | [notebook](../../../notebooks/papers/P34_rope.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -55,6 +55,11 @@ Pregunta que me quedó abierta:
 | P31 | | | ⬜ pendiente |
 | P32 | | | ⬜ pendiente |
 | P33 | | | ⬜ pendiente |
+| P34 | | | ⬜ pendiente |
+| P35 | | | ⬜ pendiente |
+| P36 | | | ⬜ pendiente |
+| P37 | | | ⬜ pendiente |
+| P38 | | | ⬜ pendiente |
 
 ---
 

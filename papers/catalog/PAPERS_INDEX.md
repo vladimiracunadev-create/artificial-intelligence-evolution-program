@@ -2,47 +2,153 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 33 · **Actualizado:** 2026-08-16 · **Ruta mínima:** P01 → P02 → P03 → P04 → P05 → P06 → P07 → P08 → P09 → P10 → P11 → P12 → P13 → P14 → P15 → P16
+**Papers:** 38 · **Actualizado:** 2026-08-16 · **Cobertura:** 1958–2025
 
-## Tabla maestra
+> [!NOTE]
+> Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no
+> se renumeran nunca, para no romper enlaces, notebooks ni evaluaciones. Por eso su orden
+> es de incorporación y **no significa nada**. Para estudiar, usa el orden cronológico de
+> esta tabla o la [vista temática](#vista-tematica).
 
-| # | Paper | Año | Venue | Nivel | Motor | Ficha | Notebook |
-|---|---|---:|---|:---:|---|---|---|
-| P01 | El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro | 1958 | revista | L1 | `perceptron` | [ficha](../foundational/P01_perceptron/README.md) | [notebook](../../notebooks/papers/P01_perceptron.ipynb) |
-| P02 | Aprender representaciones retropropagando errores | 1986 | revista | L2 | `backprop` | [ficha](../foundational/P02_backpropagation/README.md) | [notebook](../../notebooks/papers/P02_backpropagation.ipynb) |
-| P03 | Memoria larga de corto plazo | 1997 | revista | L2 | `lstm` | [ficha](../foundational/P03_lstm/README.md) | [notebook](../../notebooks/papers/P03_lstm.ipynb) |
-| P04 | Clasificación de ImageNet con redes neuronales convolucionales profundas | 2012 | conferencia | L3 | `convnet` | [ficha](../foundational/P04_alexnet/README.md) | [notebook](../../notebooks/papers/P04_alexnet.ipynb) |
-| P05 | Estimación eficiente de representaciones de palabras en un espacio vectorial | 2013 | preprint + taller | L2 | `word2vec` | [ficha](../foundational/P05_word2vec/README.md) | [notebook](../../notebooks/papers/P05_word2vec.ipynb) |
-| P06 | Aprendizaje de secuencia a secuencia con redes neuronales | 2014 | preprint + conferencia | L3 | `seq2seq` | [ficha](../foundational/P06_seq2seq/README.md) | [notebook](../../notebooks/papers/P06_seq2seq.ipynb) |
-| P07 | Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir | 2014 | preprint + conferencia | L3 | `bahdanau` | [ficha](../foundational/P07_attention_bahdanau/README.md) | [notebook](../../notebooks/papers/P07_attention_bahdanau.ipynb) |
-| P08 | La atención es todo lo que necesitas | 2017 | preprint + conferencia | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [notebook](../../notebooks/papers/P08_transformer.ipynb) |
-| P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 2018 | preprint + conferencia | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [notebook](../../notebooks/papers/P09_bert.ipynb) |
-| P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 2020 | preprint + conferencia | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [notebook](../../notebooks/papers/P10_gpt3.ipynb) |
-| P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 2020 | preprint + conferencia | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [notebook](../../notebooks/papers/P11_rag.ipynb) |
-| P12 | Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana | 2022 | preprint + conferencia | L3 | `rlhf` | [ficha](../foundational/P12_instructgpt_rlhf/README.md) | [notebook](../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
-| P13 | ReAct: sinergia entre razonar y actuar en modelos de lenguaje | 2022 | preprint + conferencia | L2 | `react` | [ficha](../foundational/P13_react/README.md) | [notebook](../../notebooks/papers/P13_react.ipynb) |
-| P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 2023 | preprint + conferencia | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [notebook](../../notebooks/papers/P14_toolformer.ipynb) |
-| P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 2023 | preprint + conferencia | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [notebook](../../notebooks/papers/P15_dpo.ipynb) |
-| P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 2023 | cluster revisable | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [notebook](../../notebooks/papers/P16_agentic_systems.ipynb) |
-| P17 | Modelos probabilísticos de difusión con eliminación de ruido | 2020 | preprint + conferencia | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [notebook](../../notebooks/papers/P17_diffusion.ipynb) |
-| P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 2021 | preprint + conferencia | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [notebook](../../notebooks/papers/P18_clip.ipynb) |
-| P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 2022 | preprint + conferencia | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [notebook](../../notebooks/papers/P19_scaling_laws.ipynb) |
-| P20 | Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos | 2023 | preprint + conferencia | L4 | `ssm` | [ficha](../foundational/P20_mamba/README.md) | [notebook](../../notebooks/papers/P20_mamba.ipynb) |
-| P21 | Mixtral: mezcla dispersa de expertos | 2024 | preprint | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [notebook](../../notebooks/papers/P21_moe.ipynb) |
-| P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 2025 | preprint + revista revisada por pares | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [notebook](../../notebooks/papers/P22_deepseek_r1.ipynb) |
-| P23 | GloVe: vectores globales para representación de palabras | 2014 | conferencia | L2 | `glove` | [ficha](../foundational/P23_glove/README.md) | [notebook](../../notebooks/papers/P23_glove.ipynb) |
-| P24 | Representaciones profundas de palabras dependientes del contexto | 2018 | conferencia | L3 | `elmo` | [ficha](../foundational/P24_elmo/README.md) | [notebook](../../notebooks/papers/P24_elmo.ipynb) |
-| P25 | Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto | 2019 | preprint + revista | L3 | `t5` | [ficha](../foundational/P25_t5/README.md) | [notebook](../../notebooks/papers/P25_t5.ipynb) |
-| P26 | Control a nivel humano mediante aprendizaje por refuerzo profundo | 2015 | revista revisada por pares | L3 | `dqn` | [ficha](../foundational/P26_dqn/README.md) | [notebook](../../notebooks/papers/P26_dqn.ipynb) |
-| P27 | Dominar el go con redes neuronales profundas y búsqueda en árbol | 2016 | revista revisada por pares | L4 | `alphago` | [ficha](../foundational/P27_alphago/README.md) | [notebook](../../notebooks/papers/P27_alphago.ipynb) |
-| P28 | El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | 2022 | preprint + conferencia | L2 | `cot` | [ficha](../foundational/P28_chain_of_thought/README.md) | [notebook](../../notebooks/papers/P28_chain_of_thought.ipynb) |
-| P29 | Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes | 2023 | preprint + conferencia | L3 | `tot` | [ficha](../foundational/P29_tree_of_thoughts/README.md) | [notebook](../../notebooks/papers/P29_tree_of_thoughts.ipynb) |
-| P30 | Reflexion: agentes de lenguaje con refuerzo verbal | 2023 | preprint + conferencia | L2 | `reflexion` | [ficha](../foundational/P30_reflexion/README.md) | [notebook](../../notebooks/papers/P30_reflexion.ipynb) |
-| P31 | Agentes generativos: simulacros interactivos de comportamiento humano | 2023 | preprint + conferencia | L3 | `generative_agents` | [ficha](../foundational/P31_generative_agents/README.md) | [notebook](../../notebooks/papers/P31_generative_agents.ipynb) |
-| P32 | Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes | 2023 | preprint | L3 | `voyager` | [ficha](../foundational/P32_voyager/README.md) | [notebook](../../notebooks/papers/P32_voyager.ipynb) |
-| P33 | AutoGen: aplicaciones de nueva generación mediante conversación multiagente | 2023 | preprint | L4 | `autogen` | [ficha](../foundational/P33_autogen/README.md) | [notebook](../../notebooks/papers/P33_autogen.ipynb) |
+## 📅 Tabla maestra — todos los papers, por año
 
-## Qué resolvió cada uno
+| Año | # | Paper | Bloque | Nivel | Motor | Ficha | Notebook |
+|---:|---|---|---|:---:|---|---|---|
+| **1958** | P01 | El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro | 🔗 cadena | L1 | `perceptron` | [ficha](../foundational/P01_perceptron/README.md) | [nb](../../notebooks/papers/P01_perceptron.ipynb) |
+| **1986** | P02 | Aprender representaciones retropropagando errores | 🔗 cadena | L2 | `backprop` | [ficha](../foundational/P02_backpropagation/README.md) | [nb](../../notebooks/papers/P02_backpropagation.ipynb) |
+| **1997** | P03 | Memoria larga de corto plazo | 🔗 cadena | L2 | `lstm` | [ficha](../foundational/P03_lstm/README.md) | [nb](../../notebooks/papers/P03_lstm.ipynb) |
+| **2012** | P04 | Clasificación de ImageNet con redes neuronales convolucionales profundas | 🔗 cadena | L3 | `convnet` | [ficha](../foundational/P04_alexnet/README.md) | [nb](../../notebooks/papers/P04_alexnet.ipynb) |
+| **2013** | P05 | Estimación eficiente de representaciones de palabras en un espacio vectorial | 🔗 cadena | L2 | `word2vec` | [ficha](../foundational/P05_word2vec/README.md) | [nb](../../notebooks/papers/P05_word2vec.ipynb) |
+| **2013** | P38 | Bayes variacional con autocodificación | 🏗️ arquitectura | L3 | `vae` | [ficha](../foundational/P38_vae/README.md) | [nb](../../notebooks/papers/P38_vae.ipynb) |
+| **2014** | P06 | Aprendizaje de secuencia a secuencia con redes neuronales | 🔗 cadena | L3 | `seq2seq` | [ficha](../foundational/P06_seq2seq/README.md) | [nb](../../notebooks/papers/P06_seq2seq.ipynb) |
+| **2014** | P07 | Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir | 🔗 cadena | L3 | `bahdanau` | [ficha](../foundational/P07_attention_bahdanau/README.md) | [nb](../../notebooks/papers/P07_attention_bahdanau.ipynb) |
+| **2014** | P23 | GloVe: vectores globales para representación de palabras | 🔤 representación | L2 | `glove` | [ficha](../foundational/P23_glove/README.md) | [nb](../../notebooks/papers/P23_glove.ipynb) |
+| **2015** | P26 | Control a nivel humano mediante aprendizaje por refuerzo profundo | 🤖 agentes | L3 | `dqn` | [ficha](../foundational/P26_dqn/README.md) | [nb](../../notebooks/papers/P26_dqn.ipynb) |
+| **2016** | P27 | Dominar el go con redes neuronales profundas y búsqueda en árbol | 🤖 agentes | L4 | `alphago` | [ficha](../foundational/P27_alphago/README.md) | [nb](../../notebooks/papers/P27_alphago.ipynb) |
+| **2017** | P08 | La atención es todo lo que necesitas | 🔗 cadena | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [nb](../../notebooks/papers/P08_transformer.ipynb) |
+| **2018** | P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 🔗 cadena | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [nb](../../notebooks/papers/P09_bert.ipynb) |
+| **2018** | P24 | Representaciones profundas de palabras dependientes del contexto | 🔤 representación | L3 | `elmo` | [ficha](../foundational/P24_elmo/README.md) | [nb](../../notebooks/papers/P24_elmo.ipynb) |
+| **2019** | P25 | Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto | 🔤 representación | L3 | `t5` | [ficha](../foundational/P25_t5/README.md) | [nb](../../notebooks/papers/P25_t5.ipynb) |
+| **2020** | P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 🔗 cadena | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [nb](../../notebooks/papers/P10_gpt3.ipynb) |
+| **2020** | P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 🔗 cadena | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [nb](../../notebooks/papers/P11_rag.ipynb) |
+| **2020** | P17 | Modelos probabilísticos de difusión con eliminación de ruido | 📚 ampliada | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [nb](../../notebooks/papers/P17_diffusion.ipynb) |
+| **2021** | P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 📚 ampliada | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [nb](../../notebooks/papers/P18_clip.ipynb) |
+| **2021** | P34 | RoFormer: Transformer mejorado con codificación posicional rotatoria | 🧠 memoria | L3 | `rope` | [ficha](../foundational/P34_rope/README.md) | [nb](../../notebooks/papers/P34_rope.ipynb) |
+| **2022** | P12 | Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana | 🔗 cadena | L3 | `rlhf` | [ficha](../foundational/P12_instructgpt_rlhf/README.md) | [nb](../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
+| **2022** | P13 | ReAct: sinergia entre razonar y actuar en modelos de lenguaje | 🔗 cadena | L2 | `react` | [ficha](../foundational/P13_react/README.md) | [nb](../../notebooks/papers/P13_react.ipynb) |
+| **2022** | P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 📚 ampliada | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [nb](../../notebooks/papers/P19_scaling_laws.ipynb) |
+| **2022** | P28 | El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | 🤖 agentes | L2 | `cot` | [ficha](../foundational/P28_chain_of_thought/README.md) | [nb](../../notebooks/papers/P28_chain_of_thought.ipynb) |
+| **2022** | P35 | FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S | 🧠 memoria | L4 | `flashattention` | [ficha](../foundational/P35_flashattention/README.md) | [nb](../../notebooks/papers/P35_flashattention.ipynb) |
+| **2023** | P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 🔗 cadena | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [nb](../../notebooks/papers/P14_toolformer.ipynb) |
+| **2023** | P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 🔗 cadena | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [nb](../../notebooks/papers/P15_dpo.ipynb) |
+| **2023** | P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 🔗 cadena | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [nb](../../notebooks/papers/P16_agentic_systems.ipynb) |
+| **2023** | P20 | Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos | 📚 ampliada | L4 | `ssm` | [ficha](../foundational/P20_mamba/README.md) | [nb](../../notebooks/papers/P20_mamba.ipynb) |
+| **2023** | P29 | Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes | 🤖 agentes | L3 | `tot` | [ficha](../foundational/P29_tree_of_thoughts/README.md) | [nb](../../notebooks/papers/P29_tree_of_thoughts.ipynb) |
+| **2023** | P30 | Reflexion: agentes de lenguaje con refuerzo verbal | 🤖 agentes | L2 | `reflexion` | [ficha](../foundational/P30_reflexion/README.md) | [nb](../../notebooks/papers/P30_reflexion.ipynb) |
+| **2023** | P31 | Agentes generativos: simulacros interactivos de comportamiento humano | 🤖 agentes | L3 | `generative_agents` | [ficha](../foundational/P31_generative_agents/README.md) | [nb](../../notebooks/papers/P31_generative_agents.ipynb) |
+| **2023** | P32 | Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes | 🤖 agentes | L3 | `voyager` | [ficha](../foundational/P32_voyager/README.md) | [nb](../../notebooks/papers/P32_voyager.ipynb) |
+| **2023** | P33 | AutoGen: aplicaciones de nueva generación mediante conversación multiagente | 🤖 agentes | L4 | `autogen` | [ficha](../foundational/P33_autogen/README.md) | [nb](../../notebooks/papers/P33_autogen.ipynb) |
+| **2023** | P36 | Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos | 🧠 memoria | L3 | `lost_in_middle` | [ficha](../foundational/P36_lost_in_middle/README.md) | [nb](../../notebooks/papers/P36_lost_in_middle.ipynb) |
+| **2023** | P37 | MemGPT: modelos de lenguaje como sistemas operativos | 🧠 memoria | L3 | `memgpt` | [ficha](../foundational/P37_memgpt/README.md) | [nb](../../notebooks/papers/P37_memgpt.ipynb) |
+| **2024** | P21 | Mixtral: mezcla dispersa de expertos | 📚 ampliada | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [nb](../../notebooks/papers/P21_moe.ipynb) |
+| **2025** | P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 📚 ampliada | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [nb](../../notebooks/papers/P22_deepseek_r1.ipynb) |
+
+<a id="vista-tematica"></a>
+
+## 🧭 Vista temática — por bloque
+
+### 🔗 cadena
+
+P01–P16: la cadena canónica donde cada paper resuelve lo que el anterior dejó abierto. Se estudia en orden.
+
+- **1958** · [P01 · El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro](../foundational/P01_perceptron/README.md) — Primera máquina que aprende sus propios pesos a partir de ejemplos en lugar de ejecutar reglas escritas por una persona.
+- **1986** · [P02 · Aprender representaciones retropropagando errores](../foundational/P02_backpropagation/README.md) — Un procedimiento práctico para entrenar capas ocultas: la red descubre representaciones intermedias que nadie diseñó.
+- **1997** · [P03 · Memoria larga de corto plazo](../foundational/P03_lstm/README.md) — Primera arquitectura recurrente capaz de mantener información a través de cientos de pasos sin que el gradiente se desvanezca.
+- **2012** · [P04 · Clasificación de ImageNet con redes neuronales convolucionales profundas](../foundational/P04_alexnet/README.md) — El resultado que convirtió el deep learning en la corriente principal: margen amplio sobre los métodos de visión hechos a mano.
+- **2013** · [P05 · Estimación eficiente de representaciones de palabras en un espacio vectorial](../foundational/P05_word2vec/README.md) — El significado distribucional se vuelve barato: vectores densos entrenables sobre miles de millones de palabras.
+- **2014** · [P06 · Aprendizaje de secuencia a secuencia con redes neuronales](../foundational/P06_seq2seq/README.md) — Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo.
+- **2014** · [P07 · Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir](../foundational/P07_attention_bahdanau/README.md) — Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso.
+- **2017** · [P08 · La atención es todo lo que necesitas](../foundational/P08_transformer/README.md) — Elimina la recurrencia y la convolución del modelado de secuencias: todo el cómputo de una capa se paraleliza.
+- **2018** · [P09 · BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje](../foundational/P09_bert/README.md) — Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño.
+- **2020** · [P10 · Los modelos de lenguaje son aprendices con pocos ejemplos](../foundational/P10_gpt3/README.md) — El aprendizaje en contexto: la tarea se especifica en el prompt y el modelo se adapta sin actualizar ningún peso.
+- **2020** · [P11 · Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento](../foundational/P11_rag/README.md) — Separa el conocimiento (índice consultable y actualizable) del razonamiento (parámetros del modelo).
+- **2022** · [P12 · Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana](../foundational/P12_instructgpt_rlhf/README.md) — El salto de «modelo que completa texto» a «asistente que sigue instrucciones»: alineación con preferencias humanas.
+- **2022** · [P13 · ReAct: sinergia entre razonar y actuar en modelos de lenguaje](../foundational/P13_react/README.md) — El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa.
+- **2023** · [P14 · Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas](../foundational/P14_toolformer/README.md) — El uso de herramientas se aprende de forma autosupervisada: el criterio de utilidad es la propia pérdida del modelo.
+- **2023** · [P15 · Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa](../foundational/P15_dpo/README.md) — Alinear un modelo con preferencias humanas sin modelo de recompensa explícito ni bucle de aprendizaje por refuerzo.
+- **2023** · [P16 · Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad](../foundational/P16_agentic_systems/README.md) — El agente deja de ser un bucle y pasa a ser un sistema: memoria, reflexión, planificación, presupuesto, múltiples agentes y protocolos de interoperabilidad.
+
+### 📚 ampliada
+
+P17–P22: cobertura que la cadena mínima no da (generativa, multimodal, escalado) y continuación hasta 2025. Ordenada por año.
+
+- **2020** · [P17 · Modelos probabilísticos de difusión con eliminación de ruido](../foundational/P17_diffusion/README.md) — La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.
+- **2021** · [P18 · Aprender modelos visuales transferibles con supervisión de lenguaje natural](../foundational/P18_clip/README.md) — El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.
+- **2022** · [P19 · Entrenar modelos de lenguaje grandes con cómputo óptimo](../foundational/P19_scaling_laws/README.md) — Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.
+- **2023** · [P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos](../foundational/P20_mamba/README.md) — El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención.
+- **2024** · [P21 · Mixtral: mezcla dispersa de expertos](../foundational/P21_moe/README.md) — Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.
+- **2025** · [P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo](../foundational/P22_deepseek_r1/README.md) — El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.
+
+### 🔤 representación
+
+P23–P25: cómo el lenguaje pasó de vectores estáticos a representaciones contextuales y de ahí a un formato único texto → texto. Ordenada por año.
+
+- **2014** · [P23 · GloVe: vectores globales para representación de palabras](../foundational/P23_glove/README.md) — Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.
+- **2018** · [P24 · Representaciones profundas de palabras dependientes del contexto](../foundational/P24_elmo/README.md) — Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.
+- **2019** · [P25 · Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto](../foundational/P25_t5/README.md) — Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.
+
+### 🤖 agentes
+
+P26–P33: decisión secuencial y agentes. Empieza en el refuerzo profundo y la búsqueda guiada —de donde viene la idea de agente— y llega al razonamiento deliberado, la memoria, las habilidades reutilizables y el multiagente. Ordenada por año.
+
+- **2015** · [P26 · Control a nivel humano mediante aprendizaje por refuerzo profundo](../foundational/P26_dqn/README.md) — El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.
+- **2016** · [P27 · Dominar el go con redes neuronales profundas y búsqueda en árbol](../foundational/P27_alphago/README.md) — Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.
+- **2022** · [P28 · El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes](../foundational/P28_chain_of_thought/README.md) — Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.
+- **2023** · [P29 · Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes](../foundational/P29_tree_of_thoughts/README.md) — Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder.
+- **2023** · [P30 · Reflexion: agentes de lenguaje con refuerzo verbal](../foundational/P30_reflexion/README.md) — El agente aprende entre intentos sin tocar un solo peso: el refuerzo ocurre en el contexto, en lenguaje natural.
+- **2023** · [P31 · Agentes generativos: simulacros interactivos de comportamiento humano](../foundational/P31_generative_agents/README.md) — Resuelve la memoria de un agente que vive mucho tiempo: qué recordar, cuándo y por qué, cuando el contexto no da para todo.
+- **2023** · [P32 · Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes](../foundational/P32_voyager/README.md) — El agente acumula habilidades reutilizables en vez de contexto: memoria procedimental que no se borra al terminar la tarea.
+- **2023** · [P33 · AutoGen: aplicaciones de nueva generación mediante conversación multiagente](../foundational/P33_autogen/README.md) — El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger.
+
+### 🧠 memoria
+
+P34–P37: cómo se codifica la posición, por qué el contexto largo es viable, por qué tenerlo no basta y cómo se gestiona como memoria jerárquica.
+
+- **2021** · [P34 · RoFormer: Transformer mejorado con codificación posicional rotatoria](../foundational/P34_rope/README.md) — La posición se codifica rotando, y la atención pasa a depender solo de la distancia relativa. Es la base de casi todo modelo actual.
+- **2022** · [P35 · FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S](../foundational/P35_flashattention/README.md) — El cuello de botella de la atención no eran los FLOPs sino las lecturas y escrituras a memoria. Y la solución es EXACTA, no aproximada.
+- **2023** · [P36 · Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos](../foundational/P36_lost_in_middle/README.md) — Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio.
+- **2023** · [P37 · MemGPT: modelos de lenguaje como sistemas operativos](../foundational/P37_memgpt/README.md) — Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida.
+
+### 🏗️ arquitectura
+
+P38 en adelante: el andamiaje que hace entrenable todo lo demas. En construccion: los motores y notebooks de P39-P52 ya existen y estan probados; falta su ficha.
+
+- **2013** · [P38 · Bayes variacional con autocodificación](../foundational/P38_vae/README.md) — Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.
+
+## 🚧 En construcción
+
+Papers con **motor y notebook ya implementados y probados**, a los que les falta su
+ficha de 18 secciones. No aparecen en la tabla maestra hasta estar completos, para que
+el contrato del eje siga siendo verificable.
+
+| Año | # | Paper | Motor |
+|---:|---|---|---|
+| 2014 | P39 | Generative Adversarial Networks | `gan` |
+| 2014 | P40 | Dropout: A Simple Way to Prevent Neural Networks from Overfitting | `dropout` |
+| 2014 | P41 | Adam: A Method for Stochastic Optimization | `adam` |
+| 2014 | P42 | Explaining and Harnessing Adversarial Examples | `adversarial` |
+| 2015 | P43 | Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift | `batchnorm` |
+| 2015 | P44 | Deep Residual Learning for Image Recognition | `resnet` |
+| 2015 | P45 | Distilling the Knowledge in a Neural Network | `distillation` |
+| 2020 | P46 | An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale | `vit` |
+| 2021 | P47 | Highly accurate protein structure prediction with AlphaFold | `alphafold` |
+| 2021 | P48 | LoRA: Low-Rank Adaptation of Large Language Models | `lora` |
+| 2022 | P50 | Constitutional AI: Harmlessness from AI Feedback | `constitutional_ai` |
+| 2023 | P49 | QLoRA: Efficient Finetuning of Quantized LLMs | `quantization` |
+| 2023 | P51 | SWE-bench: Can Language Models Resolve Real-World GitHub Issues? | `swebench` |
+| 2023 | P52 | Towards Monosemanticity: Decomposing Language Models With Dictionary Learning | `superposition` |
+
+## 📖 Qué resolvió cada uno
 
 ### P01 · The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain (1958)
 
@@ -94,6 +200,16 @@
 - **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md), [100](../../classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial/README.md)
 - **Fuentes primarias:** [arXiv:1301.3781](https://arxiv.org/abs/1301.3781) · [arXiv:1310.4546 (muestreo negativo y frases)](https://arxiv.org/abs/1310.4546)
 
+### P38 · Auto-Encoding Variational Bayes (2013)
+
+- **Autoría:** Diederik P. Kingma, Max Welling
+- **Problema anterior:** Un modelo generativo con variables latentes exige muestrear, y muestrear es un nodo estocástico que bloquea el gradiente: no se podía entrenar por retropropagación.
+- **Propuesta:** Escribir la muestra como z = μ + σ·ε con ε de una normal fija: el azar queda fuera del camino del gradiente, y se optimiza una cota inferior de la verosimilitud (ELBO).
+- **Hito:** Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.
+- **Conceptos:** VAE, reparametrización, ELBO, espacio latente, inferencia variacional
+- **Clases del programa:** [088](../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md), [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- **Fuentes primarias:** [arXiv:1312.6114](https://arxiv.org/abs/1312.6114)
+
 ### P06 · Sequence to Sequence Learning with Neural Networks (2014)
 
 - **Autoría:** Ilya Sutskever, Oriol Vinyals, Quoc V. Le
@@ -113,6 +229,36 @@
 - **Conceptos:** atención, alineación, vector de contexto dinámico, softmax, atención aditiva
 - **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 - **Fuentes primarias:** [arXiv:1409.0473](https://arxiv.org/abs/1409.0473)
+
+### P23 · GloVe: Global Vectors for Word Representation (2014)
+
+- **Autoría:** Jeffrey Pennington, Richard Socher, Christopher D. Manning
+- **Problema anterior:** Word2Vec aprendía de ventanas locales y desaprovechaba las estadísticas globales del corpus; los métodos de factorización usaban esas estadísticas pero producían peores analogías.
+- **Propuesta:** Ajustar por mínimos cuadrados ponderados el producto de vectores al logaritmo de la co-ocurrencia, con el argumento de que lo informativo es la RAZÓN de co-ocurrencias, no su valor bruto.
+- **Hito:** Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.
+- **Conceptos:** GloVe, co-ocurrencia, factorización, mínimos cuadrados ponderados, razón de probabilidades
+- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
+- **Fuentes primarias:** [ACL Anthology (EMNLP 2014)](https://aclanthology.org/D14-1162/) · [DOI](https://doi.org/10.3115/v1/D14-1162)
+
+### P26 · Human-level control through deep reinforcement learning (2015)
+
+- **Autoría:** Volodymyr Mnih, Koray Kavukcuoglu, David Silver, y otros (DeepMind)
+- **Problema anterior:** Combinar aprendizaje por refuerzo con aproximación de función no lineal era notoriamente inestable: las muestras consecutivas están correlacionadas y el objetivo se mueve mientras se aprende.
+- **Propuesta:** Q-learning con una red convolucional, estabilizado con repetición de experiencia (rompe la correlación) y una red objetivo congelada (fija el blanco).
+- **Hito:** El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.
+- **Conceptos:** DQN, Q-learning, repetición de experiencia, red objetivo, Atari, refuerzo profundo
+- **Clases del programa:** [029](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md), [030](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md)
+- **Fuentes primarias:** [DOI (Nature 518, 529–533)](https://doi.org/10.1038/nature14236)
+
+### P27 · Mastering the game of Go with deep neural networks and tree search (2016)
+
+- **Autoría:** David Silver, Aja Huang, Chris J. Maddison, y otros (DeepMind)
+- **Problema anterior:** El go tiene un espacio de estados y un factor de ramificación que hacen inviable la búsqueda exhaustiva, y no existía una función de evaluación de posiciones suficientemente buena.
+- **Propuesta:** Una red de políticas que propone jugadas plausibles y una red de valor que evalúa posiciones, usadas para guiar y truncar una búsqueda de Monte Carlo en árbol.
+- **Hito:** Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.
+- **Conceptos:** AlphaGo, MCTS, red de políticas, red de valor, autojuego, búsqueda guiada
+- **Clases del programa:** [017](../../classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta/README.md), [031](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion/README.md)
+- **Fuentes primarias:** [DOI (Nature 529, 484–489)](https://doi.org/10.1038/nature16961)
 
 ### P08 · Attention Is All You Need (2017)
 
@@ -134,6 +280,26 @@
 - **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1810.04805](https://arxiv.org/abs/1810.04805) · [ACL Anthology (NAACL 2019)](https://aclanthology.org/N19-1423/)
 
+### P24 · Deep Contextualized Word Representations (2018)
+
+- **Autoría:** Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer
+- **Problema anterior:** Un embedding estático da el mismo vector a «banco del parque» y «banco central»: el sentido se pierde antes de que el modelo empiece a trabajar.
+- **Propuesta:** Usar los estados internos de un modelo de lenguaje bidireccional profundo y combinar sus capas con pesos aprendidos por tarea.
+- **Hito:** Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.
+- **Conceptos:** ELMo, embeddings contextuales, polisemia, modelo de lenguaje bidireccional, combinación de capas
+- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
+- **Fuentes primarias:** [ACL Anthology (NAACL 2018)](https://aclanthology.org/N18-1202/)
+
+### P25 · Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019)
+
+- **Autoría:** Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu
+- **Problema anterior:** Cada tarea exigía su propia cabeza —clasificación, regresión, extracción, generación— lo que impedía comparar objetivos, arquitecturas y datos en igualdad de condiciones.
+- **Propuesta:** Un marco unificado texto a texto, un estudio sistemático de todas las decisiones de diseño del preentrenamiento, y el corpus C4 (Colossal Clean Crawled Corpus).
+- **Hito:** Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.
+- **Conceptos:** T5, texto a texto, transferencia, C4, encoder-decoder, estudio sistemático
+- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
+- **Fuentes primarias:** [arXiv:1910.10683](https://arxiv.org/abs/1910.10683) · [JMLR 21(140)](https://jmlr.org/papers/v21/20-074.html)
+
 ### P10 · Language Models are Few-Shot Learners (2020)
 
 - **Autoría:** Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, y otros (OpenAI)
@@ -154,6 +320,36 @@
 - **Clases del programa:** [105](../../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md), [111](../../classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable/README.md)
 - **Fuentes primarias:** [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
 
+### P17 · Denoising Diffusion Probabilistic Models (2020)
+
+- **Autoría:** Jonathan Ho, Ajay Jain, Pieter Abbeel
+- **Problema anterior:** Las GAN generaban imágenes de calidad pero eran inestables de entrenar y colapsaban la diversidad; los VAE eran estables y producían muestras borrosas.
+- **Propuesta:** Un proceso directo que añade ruido gaussiano en T pasos con forma cerrada, y una red que aprende a predecir ese ruido para invertirlo.
+- **Hito:** La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.
+- **Conceptos:** difusión, DDPM, proceso directo, predicción de ruido, cota variacional, score matching
+- **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
+- **Fuentes primarias:** [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
+
+### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
+
+- **Autoría:** Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, y otros (OpenAI)
+- **Problema anterior:** La visión dependía de conjuntos etiquetados con categorías fijas; cambiar de tarea exigía volver a anotar y volver a entrenar.
+- **Propuesta:** Entrenar de forma contrastiva sobre 400 millones de pares (imagen, texto) de internet, alineando ambos espacios, y clasificar comparando la imagen con el texto de cada clase.
+- **Hito:** El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.
+- **Conceptos:** CLIP, contrastivo, InfoNCE, zero-shot, multimodal, supervisión débil
+- **Clases del programa:** [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md), [070](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
+- **Fuentes primarias:** [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
+
+### P34 · RoFormer: Enhanced Transformer with Rotary Position Embedding (2021)
+
+- **Autoría:** Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, Yunfeng Liu
+- **Problema anterior:** La codificación sinusoidal del Transformer se SUMA al embedding y codifica posición absoluta; la atención no ve directamente la distancia entre dos tokens, que es lo que importa en lenguaje.
+- **Propuesta:** Rotar los vectores de consulta y clave en función de su posición, de modo que el producto escalar entre dos posiciones dependa únicamente de su diferencia.
+- **Hito:** La posición se codifica rotando, y la atención pasa a depender solo de la distancia relativa. Es la base de casi todo modelo actual.
+- **Conceptos:** RoPE, posición relativa, rotación, contexto largo, decaimiento con la distancia
+- **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [079](../../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md)
+- **Fuentes primarias:** [arXiv:2104.09864](https://arxiv.org/abs/2104.09864)
+
 ### P12 · Training language models to follow instructions with human feedback (2022)
 
 - **Autoría:** Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, y otros (OpenAI)
@@ -173,6 +369,36 @@
 - **Conceptos:** ReAct, agente, bucle pensamiento-acción-observación, herramientas, traza auditable
 - **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md), [112](../../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md)
 - **Fuentes primarias:** [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
+
+### P19 · Training Compute-Optimal Large Language Models (2022)
+
+- **Autoría:** Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, y otros (DeepMind)
+- **Problema anterior:** Tras GPT-3 la industria escalaba parámetros asumiendo que era la variable dominante, sin medir el reparto óptimo entre parámetros y tokens a cómputo constante.
+- **Propuesta:** Ajustar empíricamente L(N, D) y resolver el reparto que minimiza la pérdida bajo la restricción C = 6ND.
+- **Hito:** Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.
+- **Conceptos:** leyes de escalado, cómputo óptimo, tokens por parámetro, FLOPs, infraentrenamiento
+- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- **Fuentes primarias:** [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)
+
+### P28 · Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (2022)
+
+- **Autoría:** Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou
+- **Problema anterior:** Los modelos grandes fallaban en aritmética y razonamiento de varios pasos aunque acertaran tareas aparentemente más difíciles: se les pedía el resultado sin dejarles espacio para llegar a él.
+- **Propuesta:** Incluir en el prompt unos pocos ejemplos que muestren el razonamiento paso a paso, sin ajuste fino ni datos adicionales.
+- **Hito:** Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.
+- **Conceptos:** cadena de pensamiento, razonamiento, prompting, emergencia, pasos intermedios
+- **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- **Fuentes primarias:** [arXiv:2201.11903](https://arxiv.org/abs/2201.11903)
+
+### P35 · FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (2022)
+
+- **Autoría:** Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Ré
+- **Problema anterior:** Durante años se atacó el coste O(n²) de la atención con aproximaciones (dispersa, lineal), que perdían calidad y a menudo ni siquiera eran más rápidas en la práctica.
+- **Propuesta:** Reorganizar el cálculo por bloques que caben en la memoria rápida del chip, evitando materializar la matriz de atención completa en la memoria lenta.
+- **Hito:** El cuello de botella de la atención no eran los FLOPs sino las lecturas y escrituras a memoria. Y la solución es EXACTA, no aproximada.
+- **Conceptos:** FlashAttention, consciencia de E/S, tiling, atención exacta, jerarquía de memoria, contexto largo
+- **Clases del programa:** [081](../../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md), [085](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
+- **Fuentes primarias:** [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)
 
 ### P14 · Toolformer: Language Models Can Teach Themselves to Use Tools (2023)
 
@@ -204,36 +430,6 @@
 - **Clases del programa:** [117](../../classes/part-09-ai-agent-engineering/117-prompt-recurso-tool-skill-workflow-y-agente/README.md), [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md), [124](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md), [132](../../classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md), [164](../../classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md)
 - **Fuentes primarias:** [Shinn et al. (2023), Reflexion](https://arxiv.org/abs/2303.11366) · [Park et al. (2023), Generative Agents](https://arxiv.org/abs/2304.03442) · [Wang et al. (2023), Voyager](https://arxiv.org/abs/2305.16291) · [Wu et al. (2023), AutoGen](https://arxiv.org/abs/2308.08155) · [Model Context Protocol (especificación)](https://modelcontextprotocol.io)
 
-### P17 · Denoising Diffusion Probabilistic Models (2020)
-
-- **Autoría:** Jonathan Ho, Ajay Jain, Pieter Abbeel
-- **Problema anterior:** Las GAN generaban imágenes de calidad pero eran inestables de entrenar y colapsaban la diversidad; los VAE eran estables y producían muestras borrosas.
-- **Propuesta:** Un proceso directo que añade ruido gaussiano en T pasos con forma cerrada, y una red que aprende a predecir ese ruido para invertirlo.
-- **Hito:** La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.
-- **Conceptos:** difusión, DDPM, proceso directo, predicción de ruido, cota variacional, score matching
-- **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
-- **Fuentes primarias:** [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
-
-### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
-
-- **Autoría:** Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, y otros (OpenAI)
-- **Problema anterior:** La visión dependía de conjuntos etiquetados con categorías fijas; cambiar de tarea exigía volver a anotar y volver a entrenar.
-- **Propuesta:** Entrenar de forma contrastiva sobre 400 millones de pares (imagen, texto) de internet, alineando ambos espacios, y clasificar comparando la imagen con el texto de cada clase.
-- **Hito:** El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.
-- **Conceptos:** CLIP, contrastivo, InfoNCE, zero-shot, multimodal, supervisión débil
-- **Clases del programa:** [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md), [070](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
-- **Fuentes primarias:** [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
-
-### P19 · Training Compute-Optimal Large Language Models (2022)
-
-- **Autoría:** Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, y otros (DeepMind)
-- **Problema anterior:** Tras GPT-3 la industria escalaba parámetros asumiendo que era la variable dominante, sin medir el reparto óptimo entre parámetros y tokens a cómputo constante.
-- **Propuesta:** Ajustar empíricamente L(N, D) y resolver el reparto que minimiza la pérdida bajo la restricción C = 6ND.
-- **Hito:** Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.
-- **Conceptos:** leyes de escalado, cómputo óptimo, tokens por parámetro, FLOPs, infraentrenamiento
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
-- **Fuentes primarias:** [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)
-
 ### P20 · Mamba: Linear-Time Sequence Modeling with Selective State Spaces (2023)
 
 - **Autoría:** Albert Gu, Tri Dao
@@ -243,86 +439,6 @@
 - **Conceptos:** SSM, selección, tiempo lineal, estado de tamaño fijo, escaneo paralelo, contexto largo
 - **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
 - **Fuentes primarias:** [arXiv:2312.00752](https://arxiv.org/abs/2312.00752)
-
-### P21 · Mixtral of Experts (2024)
-
-- **Autoría:** Albert Q. Jiang, y otros (Mistral AI)
-- **Problema anterior:** En un modelo denso, cada token paga TODOS los parámetros. Crecer en capacidad implica crecer en coste de inferencia en la misma proporción.
-- **Propuesta:** Sustituir la capa feed-forward por 8 expertos con un router que elige 2 por token, y publicar pesos y resultados bajo licencia abierta.
-- **Hito:** Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.
-- **Conceptos:** mezcla de expertos, router, top-2, parámetros activos, balanceo de carga, Apache 2.0
-- **Clases del programa:** [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [084](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)
-- **Fuentes primarias:** [arXiv:2401.04088](https://arxiv.org/abs/2401.04088)
-
-### P22 · DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (2025)
-
-- **Autoría:** DeepSeek-AI
-- **Problema anterior:** La cadena de pensamiento dependía de demostraciones humanas caras, y esa supervisión limitaba la capacidad en problemas complejos.
-- **Propuesta:** Recompensar únicamente el RESULTADO verificable y dejar que el comportamiento de razonamiento emerja del refuerzo, para luego transferirlo a modelos menores.
-- **Hito:** El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.
-- **Conceptos:** razonamiento, refuerzo, recompensa verificable, cómputo en inferencia, destilación, pesos abiertos
-- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
-- **Fuentes primarias:** [arXiv:2501.12948](https://arxiv.org/abs/2501.12948) · [DOI (Nature 645, 633–638, 2025)](https://doi.org/10.1038/s41586-025-09422-z)
-
-### P23 · GloVe: Global Vectors for Word Representation (2014)
-
-- **Autoría:** Jeffrey Pennington, Richard Socher, Christopher D. Manning
-- **Problema anterior:** Word2Vec aprendía de ventanas locales y desaprovechaba las estadísticas globales del corpus; los métodos de factorización usaban esas estadísticas pero producían peores analogías.
-- **Propuesta:** Ajustar por mínimos cuadrados ponderados el producto de vectores al logaritmo de la co-ocurrencia, con el argumento de que lo informativo es la RAZÓN de co-ocurrencias, no su valor bruto.
-- **Hito:** Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.
-- **Conceptos:** GloVe, co-ocurrencia, factorización, mínimos cuadrados ponderados, razón de probabilidades
-- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
-- **Fuentes primarias:** [ACL Anthology (EMNLP 2014)](https://aclanthology.org/D14-1162/) · [DOI](https://doi.org/10.3115/v1/D14-1162)
-
-### P24 · Deep Contextualized Word Representations (2018)
-
-- **Autoría:** Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer
-- **Problema anterior:** Un embedding estático da el mismo vector a «banco del parque» y «banco central»: el sentido se pierde antes de que el modelo empiece a trabajar.
-- **Propuesta:** Usar los estados internos de un modelo de lenguaje bidireccional profundo y combinar sus capas con pesos aprendidos por tarea.
-- **Hito:** Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.
-- **Conceptos:** ELMo, embeddings contextuales, polisemia, modelo de lenguaje bidireccional, combinación de capas
-- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
-- **Fuentes primarias:** [ACL Anthology (NAACL 2018)](https://aclanthology.org/N18-1202/)
-
-### P25 · Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019)
-
-- **Autoría:** Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu
-- **Problema anterior:** Cada tarea exigía su propia cabeza —clasificación, regresión, extracción, generación— lo que impedía comparar objetivos, arquitecturas y datos en igualdad de condiciones.
-- **Propuesta:** Un marco unificado texto a texto, un estudio sistemático de todas las decisiones de diseño del preentrenamiento, y el corpus C4 (Colossal Clean Crawled Corpus).
-- **Hito:** Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.
-- **Conceptos:** T5, texto a texto, transferencia, C4, encoder-decoder, estudio sistemático
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
-- **Fuentes primarias:** [arXiv:1910.10683](https://arxiv.org/abs/1910.10683) · [JMLR 21(140)](https://jmlr.org/papers/v21/20-074.html)
-
-### P26 · Human-level control through deep reinforcement learning (2015)
-
-- **Autoría:** Volodymyr Mnih, Koray Kavukcuoglu, David Silver, y otros (DeepMind)
-- **Problema anterior:** Combinar aprendizaje por refuerzo con aproximación de función no lineal era notoriamente inestable: las muestras consecutivas están correlacionadas y el objetivo se mueve mientras se aprende.
-- **Propuesta:** Q-learning con una red convolucional, estabilizado con repetición de experiencia (rompe la correlación) y una red objetivo congelada (fija el blanco).
-- **Hito:** El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.
-- **Conceptos:** DQN, Q-learning, repetición de experiencia, red objetivo, Atari, refuerzo profundo
-- **Clases del programa:** [029](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md), [030](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md)
-- **Fuentes primarias:** [DOI (Nature 518, 529–533)](https://doi.org/10.1038/nature14236)
-
-### P27 · Mastering the game of Go with deep neural networks and tree search (2016)
-
-- **Autoría:** David Silver, Aja Huang, Chris J. Maddison, y otros (DeepMind)
-- **Problema anterior:** El go tiene un espacio de estados y un factor de ramificación que hacen inviable la búsqueda exhaustiva, y no existía una función de evaluación de posiciones suficientemente buena.
-- **Propuesta:** Una red de políticas que propone jugadas plausibles y una red de valor que evalúa posiciones, usadas para guiar y truncar una búsqueda de Monte Carlo en árbol.
-- **Hito:** Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.
-- **Conceptos:** AlphaGo, MCTS, red de políticas, red de valor, autojuego, búsqueda guiada
-- **Clases del programa:** [017](../../classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta/README.md), [031](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion/README.md)
-- **Fuentes primarias:** [DOI (Nature 529, 484–489)](https://doi.org/10.1038/nature16961)
-
-### P28 · Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (2022)
-
-- **Autoría:** Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou
-- **Problema anterior:** Los modelos grandes fallaban en aritmética y razonamiento de varios pasos aunque acertaran tareas aparentemente más difíciles: se les pedía el resultado sin dejarles espacio para llegar a él.
-- **Propuesta:** Incluir en el prompt unos pocos ejemplos que muestren el razonamiento paso a paso, sin ajuste fino ni datos adicionales.
-- **Hito:** Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.
-- **Conceptos:** cadena de pensamiento, razonamiento, prompting, emergencia, pasos intermedios
-- **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
-- **Fuentes primarias:** [arXiv:2201.11903](https://arxiv.org/abs/2201.11903)
 
 ### P29 · Tree of Thoughts: Deliberate Problem Solving with Large Language Models (2023)
 
@@ -373,6 +489,46 @@
 - **Conceptos:** multiagente, conversación, roles, crítico, human-in-the-loop, orquestación
 - **Clases del programa:** [124](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)
 - **Fuentes primarias:** [arXiv:2308.08155](https://arxiv.org/abs/2308.08155)
+
+### P36 · Lost in the Middle: How Language Models Use Long Contexts (2023)
+
+- **Autoría:** Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele Bevilacqua, Fabio Petroni, Percy Liang
+- **Problema anterior:** La industria competía por anunciar ventanas de contexto cada vez mayores, sin medir si los modelos aprovechaban de verdad todo ese espacio.
+- **Propuesta:** Medirlo: colocar el mismo documento relevante en distintas posiciones del contexto y observar cómo cambia la exactitud.
+- **Hito:** Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio.
+- **Conceptos:** contexto largo, curva en U, primacía, recencia, recuperación, posición
+- **Clases del programa:** [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md)
+- **Fuentes primarias:** [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
+
+### P37 · MemGPT: Towards LLMs as Operating Systems (2023)
+
+- **Autoría:** Charles Packer, Sarah Wooders, Kevin Lin, Vivian Fang, Shishir G. Patil, Ion Stoica, Joseph E. Gonzalez
+- **Problema anterior:** La ventana de contexto es un límite duro. Ampliarla es caro y, como muestra P36, no garantiza que se use bien.
+- **Propuesta:** Gestionar el contexto como un sistema operativo gestiona la memoria: un contexto principal pequeño, un almacén externo grande, y el propio modelo decidiendo qué paginar mediante llamadas de función.
+- **Hito:** Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida.
+- **Conceptos:** MemGPT, memoria jerárquica, paginación, contexto virtual, llamadas de función, memoria de agente
+- **Clases del programa:** [108](../../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md), [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)
+- **Fuentes primarias:** [arXiv:2310.08560](https://arxiv.org/abs/2310.08560)
+
+### P21 · Mixtral of Experts (2024)
+
+- **Autoría:** Albert Q. Jiang, y otros (Mistral AI)
+- **Problema anterior:** En un modelo denso, cada token paga TODOS los parámetros. Crecer en capacidad implica crecer en coste de inferencia en la misma proporción.
+- **Propuesta:** Sustituir la capa feed-forward por 8 expertos con un router que elige 2 por token, y publicar pesos y resultados bajo licencia abierta.
+- **Hito:** Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.
+- **Conceptos:** mezcla de expertos, router, top-2, parámetros activos, balanceo de carga, Apache 2.0
+- **Clases del programa:** [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [084](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)
+- **Fuentes primarias:** [arXiv:2401.04088](https://arxiv.org/abs/2401.04088)
+
+### P22 · DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (2025)
+
+- **Autoría:** DeepSeek-AI
+- **Problema anterior:** La cadena de pensamiento dependía de demostraciones humanas caras, y esa supervisión limitaba la capacidad en problemas complejos.
+- **Propuesta:** Recompensar únicamente el RESULTADO verificable y dejar que el comportamiento de razonamiento emerja del refuerzo, para luego transferirlo a modelos menores.
+- **Hito:** El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.
+- **Conceptos:** razonamiento, refuerzo, recompensa verificable, cómputo en inferencia, destilación, pesos abiertos
+- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- **Fuentes primarias:** [arXiv:2501.12948](https://arxiv.org/abs/2501.12948) · [DOI (Nature 645, 633–638, 2025)](https://doi.org/10.1038/s41586-025-09422-z)
 
 ## Miniaturas del Transformer
 

@@ -3,7 +3,7 @@
 
 # 🧠 Artificial Intelligence Evolution Program
 
-## **15 partes · 183 clases · 33 papers fundacionales · de la IA simbólica a los sistemas agénticos**
+## **15 partes · 183 clases · 38 papers fundacionales · de la IA simbólica a los sistemas agénticos**
 
 **Programa evolutivo y verificable para comprender e implementar la historia completa
 de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilidad,
@@ -14,16 +14,16 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.6.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.7.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
-[![Papers](https://img.shields.io/badge/papers-33%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
-[![Notebooks](https://img.shields.io/badge/notebooks-590-2e8b57?style=for-the-badge)](classes/)
+[![Papers](https://img.shields.io/badge/papers-38%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
+[![Notebooks](https://img.shields.io/badge/notebooks-595-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Jupyter](https://img.shields.io/badge/Jupyter-590%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-595%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
 [![Docker](https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white)](compose.yaml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
 
@@ -42,7 +42,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 📜 Papers | 🧰 Motores didácticos | 📕 PDFs |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **183** | **549 + 41** | **183** | **15** | **33** | **20 + 33** | **17** |
+| **183** | **549 + 46** | **183** | **15** | **38** | **20 + 52** | **17 + 38** |
 
 </div>
 
@@ -60,7 +60,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Superficie | Estado |
 |---|---|
 | Currículo | ✅ 183/183 clases documentadas |
-| Papers | ✅ 33 fichas de 18 secciones + 41 notebooks + 33 motores + 5 anexos matemáticos + enlaces de vuelta en 35 clases |
+| Papers | ✅ 38 fichas de 18 secciones + 46 notebooks + 52 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 42 clases |
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
@@ -197,11 +197,11 @@ flowchart LR
 
 | Qué incluye | Detalle |
 |---|---|
-| 📄 **33 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
-| 📓 **41 notebooks** | 33 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
-| 🧪 **33 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
+| 📄 **38 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
+| 📓 **46 notebooks** | 38 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
+| 🧪 **52 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
 | 🧮 **5 anexos** | Toda la matemática del eje explicada una vez, con ejemplo resuelto a mano y su error común |
-| 🔁 **Ida y vuelta** | Las 35 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
+| 🔁 **Ida y vuelta** | Las 42 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
 | 📚 **5 guías** | [Cómo leer un paper](papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [método en 5 pasadas](papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) · [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) · [plantilla de ficha](papers/guides/PLANTILLA_FICHA_PAPER.md) · [glosario](papers/guides/GLOSARIO_PAPERS_IA.md) |
 | 🎓 **Niveles L0–L5** | De orientar sobre qué es un paper a leer la frontera con fecha y fuente |
 | 👩‍🏫 **Aula completa** | [Guías docentes](instructor/papers/README.md), [fichas de estudio](student/papers/README.md) y [evaluaciones con rúbrica](assessments/papers/README.md) |
@@ -320,8 +320,8 @@ python scripts/generate_papers.py --check
 ### ✅ Lo que sí es
 
 - 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
-- 📜 un **eje de 33 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Rosenblatt (1958) a DeepSeek-R1 (2025), con bloques de representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
-- 🧪 material **ejecutable y verificable**: 590 notebooks (549 de clase + 41 de papers), 183 laboratorios locales y 53 motores deterministas con contratos JSON que declaran `evidence` y `limitations`;
+- 📜 un **eje de 38 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Rosenblatt (1958) a DeepSeek-R1 (2025), con bloques de representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
+- 🧪 material **ejecutable y verificable**: 595 notebooks (549 de clase + 46 de papers), 183 laboratorios locales y 72 motores deterministas con contratos JSON que declaran `evidence` y `limitations`;
 - 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 17 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
 - 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.

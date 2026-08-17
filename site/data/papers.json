@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-16",
-  "paper_count": 33,
+  "paper_count": 38,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -873,6 +873,141 @@
         "orquestación"
       ],
       "notebook": "notebooks/papers/P33_autogen.ipynb"
+    },
+    {
+      "id": "P34",
+      "page": "P34_rope.html",
+      "titulo": "RoFormer: Transformer mejorado con codificación posicional rotatoria",
+      "original": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+      "autoria": [
+        "Jianlin Su",
+        "Yu Lu",
+        "Shengfeng Pan",
+        "Ahmed Murtadha",
+        "Bo Wen",
+        "Yunfeng Liu"
+      ],
+      "anio": 2021,
+      "venue": "arXiv:2104.09864",
+      "nivel": "L3",
+      "motor": "rope",
+      "hito": "La posición se codifica rotando, y la atención pasa a depender solo de la distancia relativa. Es la base de casi todo modelo actual.",
+      "keywords": [
+        "RoPE",
+        "posición relativa",
+        "rotación",
+        "contexto largo",
+        "decaimiento con la distancia"
+      ],
+      "notebook": "notebooks/papers/P34_rope.ipynb"
+    },
+    {
+      "id": "P35",
+      "page": "P35_flashattention.html",
+      "titulo": "FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S",
+      "original": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "autoria": [
+        "Tri Dao",
+        "Daniel Y. Fu",
+        "Stefano Ermon",
+        "Atri Rudra",
+        "Christopher Ré"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2205.14135 · NeurIPS 2022",
+      "nivel": "L4",
+      "motor": "flashattention",
+      "hito": "El cuello de botella de la atención no eran los FLOPs sino las lecturas y escrituras a memoria. Y la solución es EXACTA, no aproximada.",
+      "keywords": [
+        "FlashAttention",
+        "consciencia de E/S",
+        "tiling",
+        "atención exacta",
+        "jerarquía de memoria",
+        "contexto largo"
+      ],
+      "notebook": "notebooks/papers/P35_flashattention.ipynb"
+    },
+    {
+      "id": "P36",
+      "page": "P36_lost_in_middle.html",
+      "titulo": "Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos",
+      "original": "Lost in the Middle: How Language Models Use Long Contexts",
+      "autoria": [
+        "Nelson F. Liu",
+        "Kevin Lin",
+        "John Hewitt",
+        "Ashwin Paranjape",
+        "Michele Bevilacqua",
+        "Fabio Petroni",
+        "Percy Liang"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2307.03172 · TACL",
+      "nivel": "L3",
+      "motor": "lost_in_middle",
+      "hito": "Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio.",
+      "keywords": [
+        "contexto largo",
+        "curva en U",
+        "primacía",
+        "recencia",
+        "recuperación",
+        "posición"
+      ],
+      "notebook": "notebooks/papers/P36_lost_in_middle.ipynb"
+    },
+    {
+      "id": "P37",
+      "page": "P37_memgpt.html",
+      "titulo": "MemGPT: modelos de lenguaje como sistemas operativos",
+      "original": "MemGPT: Towards LLMs as Operating Systems",
+      "autoria": [
+        "Charles Packer",
+        "Sarah Wooders",
+        "Kevin Lin",
+        "Vivian Fang",
+        "Shishir G. Patil",
+        "Ion Stoica",
+        "Joseph E. Gonzalez"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2310.08560",
+      "nivel": "L3",
+      "motor": "memgpt",
+      "hito": "Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida.",
+      "keywords": [
+        "MemGPT",
+        "memoria jerárquica",
+        "paginación",
+        "contexto virtual",
+        "llamadas de función",
+        "memoria de agente"
+      ],
+      "notebook": "notebooks/papers/P37_memgpt.ipynb"
+    },
+    {
+      "id": "P38",
+      "page": "P38_vae.html",
+      "titulo": "Bayes variacional con autocodificación",
+      "original": "Auto-Encoding Variational Bayes",
+      "autoria": [
+        "Diederik P. Kingma",
+        "Max Welling"
+      ],
+      "anio": 2013,
+      "venue": "arXiv:1312.6114 · ICLR 2014",
+      "nivel": "L3",
+      "motor": "vae",
+      "hito": "Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.",
+      "keywords": [
+        "VAE",
+        "reparametrización",
+        "ELBO",
+        "espacio latente",
+        "inferencia variacional"
+      ],
+      "notebook": "notebooks/papers/P38_vae.ipynb"
     }
   ]
 }

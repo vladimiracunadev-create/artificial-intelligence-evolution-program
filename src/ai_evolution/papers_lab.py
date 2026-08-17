@@ -2178,6 +2178,886 @@ def _autogen(seed: int) -> dict[str, Any]:
 
 
 # --------------------------------------------------------------------------- #
+# P34 — RoPE (Su et al., 2021)
+# --------------------------------------------------------------------------- #
+
+
+def _rope(seed: int) -> dict[str, Any]:
+    """Rotar por la posición: el producto escalar depende solo de la distancia relativa."""
+    rng = random.Random(seed)
+    dim = 8
+
+    def rotar(v: list[float], pos: int) -> list[float]:
+        out = []
+        for i in range(0, dim, 2):
+            theta = pos / (10000 ** (i / dim))
+            c, s = math.cos(theta), math.sin(theta)
+            x, y = v[i], v[i + 1]
+            out += [x * c - y * s, x * s + y * c]
+        return out
+
+    q = [rng.uniform(-1, 1) for _ in range(dim)]
+    k = [rng.uniform(-1, 1) for _ in range(dim)]
+
+    # misma distancia relativa, posiciones absolutas distintas → mismo producto
+    invariancia = [
+        {"m": m, "n": n, "m-n": m - n, "q·k": _round(_dot(rotar(q, m), rotar(k, n)), 6)}
+        for m, n in ((5, 3), (50, 48), (500, 498), (7, 4), (100, 97))
+    ]
+    # decaimiento con la distancia
+    decaimiento = [
+        {"distancia": d, "q·k": _round(_dot(rotar(q, d), rotar(k, 0)), 4)}
+        for d in (0, 1, 2, 8, 32, 128)
+    ]
+    grupo2 = {f["q·k"] for f in invariancia if f["m-n"] == 2}
+    return _contract(
+        "rope",
+        seed,
+        {"invariancia_relativa": invariancia, "decaimiento_con_la_distancia": decaimiento,
+         "valores_distintos_para_distancia_2": len(grupo2)},
+        [
+            f"Las posiciones (5,3), (50,48) y (500,498) dan exactamente el mismo producto escalar: solo importa m−n ({len(grupo2)} valor distinto).",
+            "La posición absoluta se codifica rotando, pero lo que la atención ve es la posición RELATIVA: eso es todo el aporte.",
+            "El producto tiende a decaer con la distancia, que es el sesgo inductivo que se busca en lenguaje.",
+        ],
+        [
+            "Ocho dimensiones y vectores aleatorios: no hay modelo ni entrenamiento.",
+            "El decaimiento observado depende de q y k concretos; el paper lo argumenta en promedio, no punto a punto.",
+            "La extrapolación a longitudes no vistas es trabajo POSTERIOR (interpolación de posiciones), no de este artículo.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P35 — FlashAttention (Dao et al., 2022)
+# --------------------------------------------------------------------------- #
+
+
+def _flashattention(seed: int) -> dict[str, Any]:
+    """El cuello de botella no son los FLOPs: son las lecturas y escrituras a memoria."""
+    d, M = 64, 100_000          # dimensión de cabeza y tamaño de SRAM en elementos
+    filas = []
+    for n in (1_024, 4_096, 16_384, 65_536):
+        flops = 2 * n * n * d
+        # estándar: materializa la matriz n×n en memoria lenta (escribir + leer)
+        hbm_estandar = 2 * n * n + 2 * n * d
+        # con tiling: nunca se materializa; se recorre por bloques
+        hbm_flash = 4 * n * d * (n * d / M)
+        filas.append({
+            "n": n,
+            "flops": flops,
+            "accesos_hbm_estandar": int(hbm_estandar),
+            "accesos_hbm_flash": int(hbm_flash),
+            "reduccion": _round(hbm_estandar / max(hbm_flash, 1), 2),
+            "memoria_matriz_MB": _round(n * n * 2 / 1024 ** 2, 1),
+        })
+    return _contract(
+        "flashattention",
+        seed,
+        {"dimension_cabeza": d, "sram_elementos": M, "comparativa": filas,
+         "resultado_exacto": True},
+        [
+            f"Con n={filas[-1]['n']}, la atención estándar mueve {filas[-1]['accesos_hbm_estandar']:,} elementos entre memorias y la versión por bloques {filas[-1]['accesos_hbm_flash']:,}.",
+            "Los FLOPs son IDÉNTICOS en ambos casos: el algoritmo es exacto, no una aproximación. Lo que cambia es la memoria que se toca.",
+            f"La matriz de atención de n={filas[-1]['n']} ocuparía {filas[-1]['memoria_matriz_MB']} MB por cabeza y capa: con tiling nunca llega a existir.",
+        ],
+        [
+            "El modelo de coste es una simplificación: ignora ocupación, coalescencia y jerarquía real de caché.",
+            "La ganancia práctica depende del hardware concreto; el paper reporta medidas, esto reporta un conteo.",
+            "No implementa el softmax por bloques con reescalado, que es la parte técnicamente difícil.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P36 — Lost in the Middle (Liu et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _lost_in_middle(seed: int) -> dict[str, Any]:
+    """Tener contexto largo no es usarlo: el rendimiento cae si el dato está en medio."""
+    posiciones = list(range(1, 21))
+    n = len(posiciones)
+
+    def exactitud(pos: int) -> float:
+        # perfil DIDÁCTICO en U: primacía + recencia sobre una base baja
+        primacia = 0.35 * math.exp(-(pos - 1) / 3.0)
+        recencia = 0.30 * math.exp(-(n - pos) / 3.0)
+        return _round(0.45 + primacia + recencia, 3)
+
+    curva = [{"posicion": p, "exactitud": exactitud(p)} for p in posiciones]
+    mejor = max(curva, key=lambda x: x["exactitud"])
+    peor = min(curva, key=lambda x: x["exactitud"])
+    return _contract(
+        "lost_in_middle",
+        seed,
+        {
+            "documentos_en_contexto": n,
+            "curva_en_U": curva,
+            "mejor_posicion": mejor,
+            "peor_posicion": peor,
+            "caida": _round(mejor["exactitud"] - peor["exactitud"], 3),
+            "perfil": "DIDÁCTICO: primacía + recencia; el paper lo MIDE, aquí se modela",
+        },
+        [
+            f"La exactitud es máxima en la posición {mejor['posicion']} ({mejor['exactitud']}) y mínima en la {peor['posicion']} ({peor['exactitud']}).",
+            f"La caída entre el mejor y el peor sitio es de {mejor['exactitud'] - peor['exactitud']:.3f}: el MISMO dato, cambiado de sitio.",
+            "La curva tiene forma de U: se recuerda el principio y el final, y se pierde el medio.",
+        ],
+        [
+            "El perfil está modelado a mano; el paper lo mide en modelos reales y con varias tareas.",
+            "No hay modelo de lenguaje: esto ilustra el fenómeno, no lo reproduce.",
+            "La magnitud de la caída depende del modelo y de la tarea; tomarla como constante sería un error.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P37 — MemGPT (Packer et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _memgpt(seed: int) -> dict[str, Any]:
+    """Jerarquía de memoria: contexto principal pequeño y almacén externo grande."""
+    capacidad = 5
+    contexto: list[str] = []
+    externo: dict[str, str] = {}
+    traza = []
+    eventos = [
+        ("guardar", "el usuario se llama Ana"),
+        ("guardar", "trabaja en logística"),
+        ("guardar", "prefiere respuestas cortas"),
+        ("guardar", "vive en Valparaíso"),
+        ("guardar", "su proyecto es de rutas"),
+        ("guardar", "usa Python"),
+        ("guardar", "el plazo es en marzo"),
+        ("consultar", "el usuario se llama"),
+    ]
+    for accion, dato in eventos:
+        if accion == "guardar":
+            contexto.append(dato)
+            if len(contexto) > capacidad:
+                expulsado = contexto.pop(0)                 # page-out al almacén externo
+                externo[expulsado] = expulsado
+                traza.append({"evento": "desalojo", "dato": expulsado, "destino": "almacén externo"})
+        else:
+            en_contexto = next((c for c in contexto if dato in c), None)
+            if en_contexto:
+                traza.append({"evento": "consulta", "resultado": en_contexto, "origen": "contexto principal"})
+            else:
+                recuperado = next((v for k, v in externo.items() if dato in k), None)
+                traza.append({
+                    "evento": "consulta",
+                    "resultado": recuperado,
+                    "origen": "almacén externo (page-in por llamada de función)",
+                    "coste": "una llamada extra",
+                })
+    return _contract(
+        "memgpt",
+        seed,
+        {
+            "capacidad_contexto": capacidad,
+            "en_contexto_al_final": contexto,
+            "en_almacen_externo": sorted(externo),
+            "traza": traza,
+        },
+        [
+            f"El contexto principal solo retiene {capacidad} elementos; lo demás se desaloja al almacén externo sin perderse.",
+            "Un dato desalojado sigue siendo recuperable mediante una llamada de función: es paginación, no olvido.",
+            "La analogía es la memoria virtual de un sistema operativo: la ilusión de memoria grande sobre una pequeña y rápida.",
+        ],
+        [
+            "El 'modelo' no decide qué desalojar: aquí se expulsa lo más antiguo. En el paper decide el propio modelo.",
+            "No hay modelo de lenguaje ni llamadas reales: se simula la jerarquía, no la política.",
+            "Cada page-in cuesta una llamada extra: la ilusión de contexto infinito se paga en latencia.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P38 — VAE (Kingma y Welling, 2013)
+# --------------------------------------------------------------------------- #
+
+
+def _vae(seed: int) -> dict[str, Any]:
+    """El truco de reparametrización: mover el azar fuera del camino del gradiente."""
+    rng = random.Random(seed)
+    mu, log_var = 1.5, -0.7
+    sigma = math.exp(0.5 * log_var)
+
+    # sin reparametrizar: z ~ N(mu, sigma) es un nodo estocástico; no hay derivada respecto a mu
+    # reparametrizado: z = mu + sigma·eps, con eps ~ N(0,1) FUERA del grafo
+    muestras = [rng.gauss(0, 1) for _ in range(2000)]
+    z = [mu + sigma * e for e in muestras]
+    media_z = sum(z) / len(z)
+    var_z = sum((v - media_z) ** 2 for v in z) / len(z)
+
+    # el gradiente de E[z] respecto a mu es 1, y se puede estimar porque eps no depende de mu
+    grad_mu = sum(1.0 for _ in muestras) / len(muestras)
+    grad_sigma = sum(e for e in muestras) / len(muestras)      # ≈ 0, insesgado
+
+    kl = -0.5 * (1 + log_var - mu ** 2 - math.exp(log_var))
+    return _contract(
+        "vae",
+        seed,
+        {
+            "mu": mu, "sigma": _round(sigma, 4),
+            "muestras": {"media": _round(media_z, 4), "varianza": _round(var_z, 4)},
+            "gradiente_respecto_a_mu": _round(grad_mu, 4),
+            "gradiente_respecto_a_sigma": _round(grad_sigma, 4),
+            "kl_contra_normal_estandar": _round(kl, 4),
+            "elbo": "E[log p(x|z)] − KL(q(z|x) ‖ p(z))",
+        },
+        [
+            f"z = μ + σ·ε reproduce la distribución buscada (media {media_z:.3f} ≈ {mu}, varianza {var_z:.3f} ≈ {sigma ** 2:.3f}).",
+            f"Y el gradiente respecto a μ vale {grad_mu:.2f}: existe y es estimable porque ε NO depende de los parámetros.",
+            "Sin reparametrizar, muestrear es un nodo estocástico y el gradiente no puede atravesarlo. Ese es el truco del paper.",
+        ],
+        [
+            "Aquí no hay codificador, decodificador ni datos: solo el truco aislado.",
+            "El término KL se calcula en forma cerrada porque ambas son gaussianas; en general no lo es.",
+            "El VAE produce muestras borrosas, y ese es el defecto que motiva GAN y difusión.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P39 — GAN (Goodfellow et al., 2014)
+# --------------------------------------------------------------------------- #
+
+
+def _gan(seed: int) -> dict[str, Any]:
+    """Un juego de suma cero entre generador y discriminador, y su fallo característico."""
+    rng = random.Random(seed)
+    modos = [-3.0, 0.0, 3.0]                        # la distribución real tiene tres modos
+    g_mu, g_sigma = 0.2, 0.5                        # el generador empieza cerca de un modo
+    lr = 0.25
+    historia = []
+    for paso in range(60):
+        reales = [rng.choice(modos) + rng.gauss(0, 0.3) for _ in range(40)]
+        falsas = [g_mu + rng.gauss(0, g_sigma) for _ in range(40)]
+        # discriminador óptimo simplificado: separa por el punto medio de las medias
+        m_real = sum(reales) / len(reales)
+        m_falsa = sum(falsas) / len(falsas)
+        # el generador persigue al modo MÁS CERCANO, no a la distribución completa
+        objetivo = min(modos, key=lambda m: abs(m - g_mu))
+        g_mu += lr * (objetivo - g_mu)
+        if paso % 20 == 0 or paso == 59:
+            cubiertos = sum(1 for m in modos if abs(m - g_mu) < 0.5)
+            historia.append({
+                "paso": paso, "g_mu": _round(g_mu, 3),
+                "modos_cubiertos": f"{cubiertos}/{len(modos)}",
+                "media_real": _round(m_real, 3),
+            })
+    return _contract(
+        "gan",
+        seed,
+        {
+            "modos_reales": modos,
+            "historia": historia,
+            "modo_final": _round(g_mu, 3),
+            "colapso_de_modos": historia[-1]["modos_cubiertos"] == f"1/{len(modos)}",
+            "objetivo": "min_G max_D  E[log D(x)] + E[log(1 − D(G(z)))]",
+        },
+        [
+            f"El generador converge a {historia[-1]['g_mu']}, uno solo de los tres modos reales: {historia[-1]['modos_cubiertos']} cubiertos.",
+            "Engañar al discriminador NO exige cubrir toda la distribución: basta con ser convincente en una región.",
+            "Ese es el colapso de modos, el fallo característico de las GAN y el motivo de que la difusión las desplazara.",
+        ],
+        [
+            "El discriminador está simplificado a una comparación de medias; el real es una red entrenada.",
+            "No hay entrenamiento adversario alterno de verdad: se modela la dinámica, no se ejecuta.",
+            "Las GAN bien entrenadas mitigan el colapso; aquí se exhibe el modo de fallo, no se afirma que sea inevitable.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P40 — Dropout (Srivastava et al., 2014)
+# --------------------------------------------------------------------------- #
+
+
+def _dropout(seed: int) -> dict[str, Any]:
+    """Apagar unidades al azar impide que una función dependa de un socio concreto."""
+    rng = random.Random(seed)
+    n_unidades, p = 8, 0.5
+    # dos escenarios: una unidad "co-adaptada" que solo funciona con su pareja,
+    # y unidades redundantes que funcionan solas
+    ensayos = 2000
+    coadaptada_ok = 0
+    redundante_ok = 0
+    for _ in range(ensayos):
+        activas = [rng.random() > p for _ in range(n_unidades)]
+        # co-adaptación: la unidad 0 solo aporta si la 1 también está
+        if activas[0] and activas[1]:
+            coadaptada_ok += 1
+        # redundancia: basta con que esté cualquiera de las tres
+        if activas[2] or activas[3] or activas[4]:
+            redundante_ok += 1
+    subredes = 2 ** n_unidades
+    return _contract(
+        "dropout",
+        seed,
+        {
+            "unidades": n_unidades, "p_apagado": p,
+            "subredes_posibles": subredes,
+            "coadaptada_funciona": _round(coadaptada_ok / ensayos, 3),
+            "redundante_funciona": _round(redundante_ok / ensayos, 3),
+            "escala_en_inferencia": "multiplicar por (1−p), o dividir en entrenamiento",
+        },
+        [
+            f"Una función que depende de dos unidades concretas solo está disponible el {coadaptada_ok / ensayos:.0%} de las veces.",
+            f"Una función redundante repartida en tres unidades sobrevive el {redundante_ok / ensayos:.0%}: dropout PREMIA la redundancia.",
+            f"Con {n_unidades} unidades hay {subredes} subredes posibles: entrenar con dropout es entrenar un ensamblado exponencial que comparte pesos.",
+        ],
+        [
+            "Esto cuenta probabilidades de máscara: no hay red, ni datos, ni entrenamiento.",
+            "La equivalencia con un ensamblado es aproximada, no exacta, y el propio paper la presenta así.",
+            "Dropout cayó en desuso en muchas arquitecturas modernas frente a otras regularizaciones; no es una receta universal.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P41 — Adam (Kingma y Ba, 2014)
+# --------------------------------------------------------------------------- #
+
+
+def _adam(seed: int) -> dict[str, Any]:
+    """Un paso por dimensión, adaptado a su propia escala de gradiente."""
+    # cuenco muy mal condicionado: una dirección 100 veces más curva que la otra
+    a, b = 1.0, 100.0
+
+    def perdida(x, y):
+        return a * x * x + b * y * y
+
+    def correr(metodo: str, pasos: int = 200) -> dict[str, Any]:
+        x, y = 1.0, 1.0
+        mx = my = vx = vy = 0.0
+        lr = 0.01 if metodo == "sgd" else 0.1
+        b1, b2, eps = 0.9, 0.999, 1e-8
+        for t in range(1, pasos + 1):
+            gx, gy = 2 * a * x, 2 * b * y
+            if metodo == "sgd":
+                x -= lr * gx
+                y -= lr * gy
+            else:
+                mx, my = b1 * mx + (1 - b1) * gx, b1 * my + (1 - b1) * gy
+                vx, vy = b2 * vx + (1 - b2) * gx * gx, b2 * vy + (1 - b2) * gy * gy
+                mhx, mhy = mx / (1 - b1 ** t), my / (1 - b1 ** t)
+                vhx, vhy = vx / (1 - b2 ** t), vy / (1 - b2 ** t)
+                x -= lr * mhx / (math.sqrt(vhx) + eps)
+                y -= lr * mhy / (math.sqrt(vhy) + eps)
+        return {"x": _round(x, 6), "y": _round(y, 6), "perdida": _round(perdida(x, y), 8)}
+
+    sgd, adam = correr("sgd"), correr("adam")
+    return _contract(
+        "adam",
+        seed,
+        {
+            "problema": "L = x² + 100y²  (número de condición 100)",
+            "sgd": sgd, "adam": adam,
+            "componentes": ["momento de primer orden", "momento de segundo orden", "corrección de sesgo"],
+        },
+        [
+            f"Tras 200 pasos, SGD deja una pérdida de {sgd['perdida']} y Adam de {adam['perdida']}.",
+            "SGD usa el MISMO paso en las dos direcciones; con curvaturas muy distintas, o oscila en una o se arrastra en la otra.",
+            "Adam normaliza por la magnitud típica del gradiente de cada dimensión: cada coordenada avanza a su ritmo.",
+        ],
+        [
+            "Una cuadrática de dos variables no es una red neuronal: no hay ruido de minilote ni paisaje no convexo.",
+            "La corrección de sesgo importa sobre todo en los primeros pasos, y aquí apenas se aprecia.",
+            "Adam no es siempre mejor: hay trabajos que reportan peor generalización que SGD con momento bien ajustado.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P42 — Ejemplos adversarios (Goodfellow, Shlens y Szegedy, 2014)
+# --------------------------------------------------------------------------- #
+
+
+def _adversarial(seed: int) -> dict[str, Any]:
+    """En dimensión alta, una perturbación imperceptible por píxel suma un cambio enorme."""
+    rng = random.Random(seed)
+    filas = []
+    for dim in (10, 100, 784, 10_000):
+        w = [rng.choice([-1.0, 1.0]) for _ in range(dim)]
+        x = [rng.uniform(-0.5, 0.5) for _ in range(dim)]
+        base = _dot(w, x)
+        for eps in (0.01, 0.05):
+            # FGSM: moverse eps en la dirección del signo del gradiente
+            x_adv = [xi + eps * (1 if wi > 0 else -1) for xi, wi in zip(x, w)]
+            adv = _dot(w, x_adv)
+            filas.append({
+                "dimension": dim, "epsilon": eps,
+                "salida_original": _round(base, 3),
+                "salida_adversaria": _round(adv, 3),
+                "cambio": _round(adv - base, 3),
+                "cambio_teorico_eps_por_dim": _round(eps * dim, 3),
+            })
+    grande = [f for f in filas if f["dimension"] == 10_000 and f["epsilon"] == 0.01][0]
+    return _contract(
+        "adversarial",
+        seed,
+        {"ataque": "FGSM: x' = x + ε·sign(∇ₓL)", "filas": filas},
+        [
+            f"Con dimensión {grande['dimension']} y ε={grande['epsilon']} —imperceptible por componente— la salida cambia en {grande['cambio']}.",
+            "El cambio crece como ε·d: la perturbación por píxel es minúscula, pero se ACUMULA en todas las dimensiones.",
+            "La explicación del paper es la linealidad en alta dimensión, no una rareza de las redes profundas.",
+        ],
+        [
+            "Un modelo lineal no es una red: aquí no hay capas, activaciones ni entrenamiento.",
+            "No se calcula un gradiente real; se usa el signo de los pesos, que en el caso lineal coincide.",
+            "Que exista el ataque no dice nada sobre su transferencia a otros modelos, que es lo realmente preocupante.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P43 — Batch Normalization (Ioffe y Szegedy, 2015)
+# --------------------------------------------------------------------------- #
+
+
+def _batchnorm(seed: int) -> dict[str, Any]:
+    """Normalizar por lote mantiene las activaciones en un rango donde el gradiente existe."""
+    rng = random.Random(seed)
+    lote = [rng.gauss(0, 1) for _ in range(64)]
+
+    def propagar(normalizar: bool, capas: int = 12) -> list[dict[str, Any]]:
+        x = list(lote)
+        traza = []
+        for capa in range(capas):
+            w = 1.6                                   # pesos ligeramente grandes
+            x = [math.tanh(w * v) for v in x]
+            if normalizar:
+                m = sum(x) / len(x)
+                var = sum((v - m) ** 2 for v in x) / len(x)
+                x = [(v - m) / math.sqrt(var + 1e-5) for v in x]
+            m = sum(x) / len(x)
+            var = sum((v - m) ** 2 for v in x) / len(x)
+            saturadas = sum(1 for v in x if abs(v) > 0.99) / len(x)
+            if capa in (0, 5, 11):
+                traza.append({"capa": capa, "media": _round(m, 4), "desv": _round(math.sqrt(var), 4),
+                              "fraccion_saturada": _round(saturadas, 3)})
+        return traza
+
+    sin_bn = propagar(False)
+    con_bn = propagar(True)
+    return _contract(
+        "batchnorm",
+        seed,
+        {"sin_batchnorm": sin_bn, "con_batchnorm": con_bn,
+         "formula": "x̂ = (x − μ_lote) / √(σ²_lote + ε),  luego  y = γ·x̂ + β"},
+        [
+            f"Sin normalizar, en la capa 11 la fracción de activaciones saturadas es {sin_bn[-1]['fraccion_saturada']}: tanh en su zona plana, gradiente ≈ 0.",
+            f"Con normalización por lote, esa fracción es {con_bn[-1]['fraccion_saturada']} y la desviación se mantiene cerca de 1.",
+            "γ y β se aprenden: la red puede deshacer la normalización si le conviene, así que no pierde capacidad expresiva.",
+        ],
+        [
+            "Es una propagación hacia adelante sin entrenamiento: no se mide el efecto real sobre la convergencia.",
+            "La explicación del paper —'internal covariate shift'— fue discutida después: hay evidencia de que el beneficio viene de suavizar el paisaje de optimización.",
+            "Depende del tamaño de lote, y ese es su punto débil práctico (de ahí LayerNorm y GroupNorm).",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P44 — ResNet (He et al., 2015)
+# --------------------------------------------------------------------------- #
+
+
+def _resnet(seed: int) -> dict[str, Any]:
+    """El atajo identidad: apilar capas deja de degradar el modelo."""
+    filas = []
+    for capas in (10, 20, 50, 152):
+        # sin atajo: el gradiente es un producto de factores
+        plano = 0.85 ** capas
+        # con atajo: la derivada de cada bloque es 1 + F'(x). Aunque F' sea
+        # pequeño o negativo, el 1 sostiene el producto.
+        residual = 1.0
+        for _ in range(capas):
+            residual *= (1.0 + (-0.02))
+        filas.append({
+            "capas": capas,
+            "gradiente_sin_atajo": f"{plano:.3e}",
+            "gradiente_con_atajo": f"{residual:.3e}",
+            "ratio": f"{residual / max(plano, 1e-300):.3e}",
+        })
+    return _contract(
+        "resnet",
+        seed,
+        {"bloque": "y = F(x) + x", "profundidades": filas},
+        [
+            f"Con 152 capas el gradiente sin atajo vale {filas[-1]['gradiente_sin_atajo']} y con atajo {filas[-1]['gradiente_con_atajo']}.",
+            "El atajo hace que la derivada de cada bloque sea 1 + F'(x): el 1 impide que el producto colapse.",
+            "Por eso el paper observa que las redes MUY profundas dejan de ser peores que las poco profundas: el problema no era capacidad, era optimización.",
+        ],
+        [
+            "Los factores están fijados a mano para aislar el efecto; no provienen de un entrenamiento.",
+            "El aporte del paper también incluye el diseño de bloque y el entrenamiento a 152 capas en ImageNet, nada de lo cual está aquí.",
+            "El atajo no resuelve todo: sin normalización y buena inicialización, la profundidad sigue siendo difícil.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P45 — Destilación de conocimiento (Hinton, Vinyals y Dean, 2015)
+# --------------------------------------------------------------------------- #
+
+
+def _distillation(seed: int) -> dict[str, Any]:
+    """Las probabilidades del maestro dicen mucho más que la etiqueta correcta."""
+    logits = [4.0, 2.0, 1.5, -1.0]          # perro, lobo, gato, coche
+    clases = ["perro", "lobo", "gato", "coche"]
+    filas = []
+    for T in (1.0, 2.0, 5.0, 10.0):
+        p = _softmax([z / T for z in logits])
+        filas.append({
+            "temperatura": T,
+            "distribucion": {c: _round(v, 4) for c, v in zip(clases, p)},
+            "entropia": _round(_entropy(p), 4),
+        })
+    dura = {c: (1.0 if i == 0 else 0.0) for i, c in enumerate(clases)}
+    suave = filas[2]["distribucion"]
+    return _contract(
+        "distillation",
+        seed,
+        {
+            "clases": clases,
+            "etiqueta_dura": dura,
+            "objetivos_suaves_por_temperatura": filas,
+            "conocimiento_oscuro": "lobo > gato > coche: el maestro dice que un perro se parece más a un lobo",
+        },
+        [
+            "La etiqueta dura solo dice «perro» y asigna 0 a todo lo demás: pierde toda la estructura de similitud.",
+            f"Con temperatura 5 el maestro dice {suave}: lobo por encima de gato y muy por encima de coche.",
+            f"Subir la temperatura aumenta la entropía (de {filas[0]['entropia']} a {filas[-1]['entropia']}) y revela más de esa estructura.",
+        ],
+        [
+            "Aquí no hay maestro ni alumno entrenados: solo se exhibe la información que contiene la distribución.",
+            "El paper multiplica el gradiente por T² para compensar la escala; ese detalle no está.",
+            "La destilación transfiere comportamiento, no garantías: el alumno puede imitar también los errores del maestro.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P46 — Vision Transformer (Dosovitskiy et al., 2020)
+# --------------------------------------------------------------------------- #
+
+
+def _vit(seed: int) -> dict[str, Any]:
+    """Una imagen es una secuencia de parches: se abandona el sesgo inductivo de la convolución."""
+    filas = []
+    for lado, parche in ((224, 16), (224, 32), (384, 16), (512, 16)):
+        n = (lado // parche) ** 2
+        filas.append({
+            "imagen": f"{lado}x{lado}",
+            "parche": f"{parche}x{parche}",
+            "tokens": n + 1,                          # +1 por el token de clase
+            "coste_atencion_relativo": _round((n + 1) ** 2 / (14 ** 2 + 1) ** 2, 2),
+            "dim_proyeccion_entrada": parche * parche * 3,
+        })
+    sesgos = {
+        "CNN": ["localidad", "equivarianza a la traslación", "jerarquía espacial"],
+        "ViT": ["ninguno propio: solo el orden inyectado por la codificación posicional"],
+    }
+    return _contract(
+        "vit",
+        seed,
+        {"configuraciones": filas, "sesgos_inductivos": sesgos,
+         "consecuencia": "sin sesgo inductivo, hace falta MUCHÍSIMO más dato para igualar a una CNN"},
+        [
+            f"Una imagen de 224×224 con parches de 16 se convierte en {filas[0]['tokens']} tokens: exactamente el mismo problema que una frase.",
+            f"Bajar el parche a 16 desde 32 multiplica el coste de atención por {filas[0]['coste_atencion_relativo'] / filas[1]['coste_atencion_relativo']:.0f}: la resolución se paga al cuadrado.",
+            "ViT renuncia a la localidad y la equivarianza que la convolución trae de fábrica; a cambio, escala mejor con datos.",
+        ],
+        [
+            "Esto cuenta tokens y coste: no hay imagen, ni parches reales, ni modelo.",
+            "El resultado del paper depende de preentrenar en conjuntos enormes; con datos medianos, la CNN gana.",
+            "La comparación CNN/ViT depende del régimen de datos y del presupuesto: no hay un ganador absoluto.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P47 — AlphaFold (Jumper et al., 2021)
+# --------------------------------------------------------------------------- #
+
+
+def _alphafold(seed: int) -> dict[str, Any]:
+    """De distancias entre pares a coordenadas 3D: el problema geométrico del plegamiento."""
+    rng = random.Random(seed)
+    n = 8
+    # "estructura real": una hélice sencilla en 3D
+    real = [(math.cos(i * 1.0), math.sin(i * 1.0), i * 0.4) for i in range(n)]
+
+    def dist(a, b):
+        return math.sqrt(sum((p - q) ** 2 for p, q in zip(a, b)))
+
+    matriz = [[_round(dist(real[i], real[j]), 3) for j in range(n)] for i in range(n)]
+
+    # reconstrucción por descenso de gradiente sobre las distancias (MDS ingenuo)
+    pred = [[rng.uniform(-1, 1) for _ in range(3)] for _ in range(n)]
+    lr = 0.05
+    errores = []
+    for paso in range(400):
+        total = 0.0
+        for i in range(n):
+            for j in range(i + 1, n):
+                d = math.sqrt(sum((pred[i][k] - pred[j][k]) ** 2 for k in range(3))) + 1e-9
+                err = d - matriz[i][j]
+                total += err * err
+                for k in range(3):
+                    g = 2 * err * (pred[i][k] - pred[j][k]) / d
+                    pred[i][k] -= lr * g
+                    pred[j][k] += lr * g
+        if paso % 150 == 0 or paso == 399:
+            errores.append({"paso": paso, "error_cuadratico": _round(total, 5)})
+    residuo = math.sqrt(errores[-1]["error_cuadratico"] / (n * (n - 1) / 2))
+    return _contract(
+        "alphafold",
+        seed,
+        {
+            "residuos": n,
+            "matriz_de_distancias_parcial": [fila[:4] for fila in matriz[:4]],
+            "convergencia": errores,
+            "error_medio_por_par": _round(residuo, 4),
+        },
+        [
+            f"Partiendo de posiciones aleatorias y SOLO de la matriz de distancias, se recupera una estructura con error medio {residuo:.4f} por par.",
+            "La geometría 3D está determinada (salvo rotación y reflexión) por las distancias entre pares: por eso predecir distancias es predecir estructura.",
+            "Ese es el puente del problema: de la secuencia se predice qué residuos están cerca, y de ahí sale la forma.",
+        ],
+        [
+            "Ocho puntos no son una proteína, y aquí la matriz de distancias se DA: predecirla desde la secuencia es el problema entero.",
+            "AlphaFold usa alineamientos múltiples de secuencias, atención sobre pares y un módulo de estructura; nada de eso está aquí.",
+            "El error se mide contra la propia matriz, no contra una estructura experimental: no es una métrica de plegamiento.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P48 — LoRA (Hu et al., 2021)
+# --------------------------------------------------------------------------- #
+
+
+def _lora(seed: int) -> dict[str, Any]:
+    """Si la actualización útil es de rango bajo, se puede entrenar factorizada."""
+    rng = random.Random(seed)
+    d = 128
+    filas = []
+    for r in (1, 4, 16, 64):
+        completos = d * d
+        lora = 2 * d * r
+        filas.append({
+            "rango": r,
+            "parametros_ajuste_completo": completos,
+            "parametros_lora": lora,
+            "fraccion": _round(lora / completos, 4),
+            "reduccion": _round(completos / lora, 1),
+        })
+    # una actualización de rango 2 se representa EXACTAMENTE con r=2 y no con r=1
+    r_real = 2
+    A = [[rng.uniform(-1, 1) for _ in range(r_real)] for _ in range(6)]
+    B = [[rng.uniform(-1, 1) for _ in range(6)] for _ in range(r_real)]
+    dW = [[sum(A[i][k] * B[k][j] for k in range(r_real)) for j in range(6)] for i in range(6)]
+    return _contract(
+        "lora",
+        seed,
+        {
+            "dimension": d,
+            "comparativa": filas,
+            "delta_w_de_rango_2": [[_round(v, 3) for v in fila] for fila in dW[:3]],
+            "formula": "W' = W + BA,  con B ∈ ℝ^{d×r} y A ∈ ℝ^{r×d},  W congelada",
+        },
+        [
+            f"Con d={d} y rango 4, se entrenan {filas[1]['parametros_lora']:,} parámetros en vez de {filas[1]['parametros_ajuste_completo']:,}: {filas[1]['reduccion']}× menos.",
+            "La matriz base queda CONGELADA: una sola copia del modelo sirve para muchas tareas, cada una con su adaptador pequeño.",
+            "Y al desplegar, BA se puede sumar a W: cero latencia añadida en inferencia, a diferencia de otros métodos de adaptación.",
+        ],
+        [
+            "Aquí no se entrena nada: se cuentan parámetros y se muestra la forma de la actualización.",
+            "La hipótesis de rango bajo es empírica: no está garantizado que la actualización útil lo sea en toda tarea.",
+            "Elegir r y a qué matrices aplicarlo son decisiones que el paper estudia y que aquí no se replican.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P49 — QLoRA / cuantización (Dettmers et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _quantization(seed: int) -> dict[str, Any]:
+    """Menos bits por peso: cuánta memoria se ahorra y cuánta precisión se paga."""
+    rng = random.Random(seed)
+    pesos = [rng.gauss(0, 0.05) for _ in range(2000)]
+    lo, hi = min(pesos), max(pesos)
+    filas = []
+    for bits in (16, 8, 4, 3, 2):
+        niveles = 2 ** bits
+        paso = (hi - lo) / (niveles - 1)
+        cuant = [lo + round((w - lo) / paso) * paso for w in pesos]
+        err = math.sqrt(sum((a - b) ** 2 for a, b in zip(pesos, cuant)) / len(pesos))
+        filas.append({
+            "bits": bits,
+            "niveles": niveles,
+            "error_cuadratico_medio": f"{err:.3e}",
+            "memoria_70B_GB": _round(70e9 * bits / 8 / 1e9, 1),
+        })
+    return _contract(
+        "quantization",
+        seed,
+        {"pesos_simulados": len(pesos), "comparativa": filas,
+         "idea_de_qlora": "cuantizar la base congelada a 4 bits y entrenar adaptadores LoRA en precisión alta"},
+        [
+            f"Pasar de 16 a 4 bits reduce la memoria de un modelo de 70 000 M de {filas[0]['memoria_70B_GB']} GB a {filas[2]['memoria_70B_GB']} GB.",
+            f"El error de cuantización crece al bajar bits: de {filas[0]['error_cuadratico_medio']} a {filas[-1]['error_cuadratico_medio']}.",
+            "QLoRA combina ambas ideas: la base cuantizada no se entrena, y los adaptadores en precisión alta absorben el ajuste.",
+        ],
+        [
+            "Cuantización uniforme sobre pesos gaussianos simulados: el paper usa un formato adaptado a esa distribución.",
+            "El error de reconstrucción de pesos NO es el error del modelo: la relación entre ambos no es directa.",
+            "No se mide calidad en ninguna tarea, que es lo único que decide si una cuantización es aceptable.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P50 — Constitutional AI (Bai et al., 2022)
+# --------------------------------------------------------------------------- #
+
+
+def _constitutional_ai(seed: int) -> dict[str, Any]:
+    """Sustituir parte del juicio humano por principios explícitos y autocrítica."""
+    principios = [
+        "no facilitar daño físico a personas",
+        "no juzgar ni sermonear al usuario",
+        "explicar los límites en vez de negarse sin más",
+    ]
+    respuesta = "No pienso ayudarte con eso, deberías replantearte por qué lo preguntas."
+    traza = []
+    actual = respuesta
+    for p in principios:
+        viola = ("sermonear" in p and "deberías replantearte" in actual) or \
+                ("límites" in p and "No pienso ayudarte" in actual)
+        traza.append({"principio": p, "viola": viola,
+                      "critica": "juzga al usuario" if "sermonear" in p and viola else
+                                 "se niega sin explicar" if viola else "cumple"})
+        if viola:
+            actual = ("No puedo ayudarte con esa parte concreta porque implicaría riesgo físico. "
+                      "Sí puedo explicarte el marco general y las alternativas seguras.")
+    return _contract(
+        "constitutional_ai",
+        seed,
+        {
+            "principios": principios,
+            "respuesta_inicial": respuesta,
+            "traza_de_critica": traza,
+            "respuesta_revisada": actual,
+            "etiquetas_humanas_usadas": 0,
+        },
+        [
+            "La respuesta inicial cumple el principio de seguridad pero viola otros dos: juzga y no explica.",
+            "La crítica es contra una lista de principios EXPLÍCITA y auditable, no contra la preferencia implícita de un anotador.",
+            "La revisión se hace sin una sola etiqueta humana nueva: ese es el ahorro que propone el método.",
+        ],
+        [
+            "La crítica está codificada con reglas; en el paper la genera el propio modelo y puede fallar.",
+            "Quién escribe los principios y con qué autoridad es una pregunta política que el método NO resuelve, solo la hace explícita.",
+            "Falta la segunda fase, de refuerzo con preferencias generadas por IA sobre las respuestas revisadas.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P51 — SWE-bench (Jimenez et al., 2023)
+# --------------------------------------------------------------------------- #
+
+
+def _swebench(seed: int) -> dict[str, Any]:
+    """Evaluar con el criterio del mundo real: ¿pasan los tests del repositorio?"""
+    intentos = [
+        {"id": "issue-1", "parece_correcto": True, "compila": True, "tests_pasan": True},
+        {"id": "issue-2", "parece_correcto": True, "compila": True, "tests_pasan": False},
+        {"id": "issue-3", "parece_correcto": True, "compila": False, "tests_pasan": False},
+        {"id": "issue-4", "parece_correcto": False, "compila": True, "tests_pasan": False},
+        {"id": "issue-5", "parece_correcto": True, "compila": True, "tests_pasan": True},
+    ]
+    n = len(intentos)
+    por_apariencia = sum(1 for i in intentos if i["parece_correcto"]) / n
+    por_compilacion = sum(1 for i in intentos if i["compila"]) / n
+    por_tests = sum(1 for i in intentos if i["tests_pasan"]) / n
+    return _contract(
+        "swebench",
+        seed,
+        {
+            "intentos": intentos,
+            "tasa_si_se_mide_apariencia": _round(por_apariencia, 3),
+            "tasa_si_se_mide_compilacion": _round(por_compilacion, 3),
+            "tasa_real_tests_pasan": _round(por_tests, 3),
+            "criterio": "resolver una incidencia real de un repositorio real y que su test pase",
+        },
+        [
+            f"Medido por apariencia, el sistema 'resuelve' el {por_apariencia:.0%}; medido por tests, el {por_tests:.0%}.",
+            "La diferencia entre ambos números es exactamente el problema que ataca el benchmark: los criterios blandos inflan.",
+            "Un test del propio repositorio es un verificador objetivo que no se puede convencer con prosa.",
+        ],
+        [
+            "Cinco casos escritos a mano: no es una evaluación, es la ilustración del criterio.",
+            "Pasar los tests tampoco garantiza una buena solución: puede resolverse de forma frágil o rompiendo el diseño.",
+            "El benchmark tiene riesgo de contaminación: las incidencias son públicas y anteriores al corte de datos.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# P52 — Superposición y autoencoders dispersos (interpretabilidad, 2023-2024)
+# --------------------------------------------------------------------------- #
+
+
+def _superposition(seed: int) -> dict[str, Any]:
+    """Más conceptos que neuronas: por eso una neurona no significa una cosa."""
+    rng = random.Random(seed)
+    filas = []
+    for dim, n_features in ((8, 8), (8, 24), (8, 80)):
+        vecs = []
+        for _ in range(n_features):
+            v = [rng.gauss(0, 1) for _ in range(dim)]
+            norma = math.sqrt(sum(x * x for x in v))
+            vecs.append([x / norma for x in v])
+        solapes = [abs(_dot(vecs[i], vecs[j])) for i in range(n_features) for j in range(i + 1, n_features)]
+        filas.append({
+            "dimensiones": dim,
+            "conceptos": n_features,
+            "ratio": _round(n_features / dim, 2),
+            "solape_medio": _round(sum(solapes) / len(solapes), 4),
+            "solape_maximo": _round(max(solapes), 4),
+        })
+    return _contract(
+        "superposition",
+        seed,
+        {
+            "experimento": "guardar n conceptos como direcciones en un espacio de d dimensiones",
+            "filas": filas,
+            "consecuencia": "una neurona responde a varios conceptos no relacionados (polisemanticidad)",
+        },
+        [
+            f"En 8 dimensiones se pueden guardar {filas[-1]['conceptos']} conceptos con un solape medio de solo {filas[-1]['solape_medio']}.",
+            "Se puede guardar mucho más de lo que caben direcciones ortogonales, a cambio de INTERFERENCIA: los conceptos se pisan un poco.",
+            f"Por eso una neurona no significa una cosa: con ratio {filas[-1]['ratio']}× hay más conceptos que ejes, y cada eje mezcla varios.",
+        ],
+        [
+            "Direcciones aleatorias no son características aprendidas: en un modelo real la estructura no es aleatoria.",
+            "No hay autoencoder disperso aquí: solo se muestra el fenómeno que motiva usarlo para descomponer las activaciones.",
+            "Que un autoencoder encuentre direcciones interpretables no demuestra que sean las que el modelo USA causalmente.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
 # registro
 # --------------------------------------------------------------------------- #
 
@@ -2216,6 +3096,25 @@ PAPER_RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "generative_agents": _generative_agents,
     "voyager": _voyager,
     "autogen": _autogen,
+    "rope": _rope,
+    "flashattention": _flashattention,
+    "lost_in_middle": _lost_in_middle,
+    "memgpt": _memgpt,
+    "vae": _vae,
+    "gan": _gan,
+    "dropout": _dropout,
+    "adam": _adam,
+    "adversarial": _adversarial,
+    "batchnorm": _batchnorm,
+    "resnet": _resnet,
+    "distillation": _distillation,
+    "vit": _vit,
+    "alphafold": _alphafold,
+    "lora": _lora,
+    "quantization": _quantization,
+    "constitutional_ai": _constitutional_ai,
+    "swebench": _swebench,
+    "superposition": _superposition,
 }
 
 

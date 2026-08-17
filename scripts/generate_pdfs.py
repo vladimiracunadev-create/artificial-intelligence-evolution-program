@@ -212,19 +212,51 @@ def build_papers_pdf(browser: str, tmp: Path) -> None:
     print(f"papers-fundacionales.pdf → {pdf_path.stat().st_size // 1024} kB")
 
 
+def build_paper_pdfs(browser: str, tmp: Path) -> None:
+    """Un PDF por paper: ficha + su evaluación, para leer o imprimir suelto."""
+    catalog = json.loads((ROOT / "papers" / "catalog" / "papers.json").read_text(encoding="utf-8"))
+    destino = OUT_DIR / "papers"
+    destino.mkdir(parents=True, exist_ok=True)
+    for item in catalog["papers"]:
+        portada = (
+            f'<div class="portada"><h1>{item["id"]}</h1>'
+            f'<p class="sub">{item["title_es"]}</p>'
+            f'<p class="sub" style="font-size:11pt;">{item["title"]}</p>'
+            f'<p class="sub" style="font-size:10pt;">{", ".join(item["authors"])} · '
+            f'{item["year"]} · {item["venue"]}</p>'
+            f'<p class="sub" style="font-size:9.5pt; margin-top:24pt;">'
+            f'Ficha pedagógica del Artificial Intelligence Evolution Program. '
+            f'No es el paper original: es una guía de lectura en español que enlaza a la fuente '
+            f'primaria. Consultado {item["consultado"]}.</p></div>'
+        )
+        cuerpo = portada + render_paper_doc(f"papers/foundational/{item['dir']}/README.md")
+        evaluacion = ROOT / "assessments" / "papers" / f"{item['dir']}.md"
+        if evaluacion.exists():
+            cuerpo += render_paper_doc(f"assessments/papers/{item['dir']}.md")
+        html_path = tmp / f"{item['dir']}.html"
+        html_path.write_text(html_page(f"{item['id']} — {item['title_es']}", cuerpo), encoding="utf-8")
+        pdf_path = destino / f"{item['dir']}.pdf"
+        print_pdf(browser, html_path, pdf_path)
+        print(f"  {item['id']} → {pdf_path.stat().st_size // 1024} kB")
+    print(f"PDFs individuales: {len(catalog['papers'])} en {destino.relative_to(ROOT).as_posix()}/")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Genera los PDFs imprimibles del programa")
     parser.add_argument("--papers", action="store_true", help="solo el eje de papers")
     parser.add_argument("--clases", action="store_true", help="solo partes y programa completo")
+    parser.add_argument("--por-paper", action="store_true", help="un PDF por paper, en docs/pdf/papers/")
     args = parser.parse_args()
-    hacer_clases = args.clases or not args.papers
-    hacer_papers = args.papers or not args.clases
+    hacer_clases = args.clases or not (args.papers or args.por_paper)
+    hacer_papers = args.papers or not (args.clases or args.por_paper)
 
     curriculum = yaml.safe_load((ROOT / "curriculum.yaml").read_text(encoding="utf-8"))
     browser = find_browser()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix="ai-evolution-pdf-"))
 
+    if args.por_paper:
+        build_paper_pdfs(browser, tmp)
     if hacer_papers:
         build_papers_pdf(browser, tmp)
     if not hacer_clases:

@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **33 hitos · 41 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
+## **38 hitos · 46 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -18,7 +18,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **33** | **41** | **33** | **5** | **L0–L5** | **35** |
+| **38** | **46** | **38** | **5** | **L0–L5** | **42** |
 
 </div>
 
@@ -46,9 +46,9 @@ largas → la atención lo elimina → si la atención basta, sobra la recurrenc
 > año, venue, URL y fecha de consulta. Los notebooks implementan **miniaturas** del mecanismo
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
-## 🧭 Cuatro rutas
+## 🧭 Seis rutas
 
-El eje tiene cuatro bloques con propósitos distintos. **No se estudian igual.**
+El eje tiene seis bloques con propósitos distintos. **No se estudian igual.**
 
 ```mermaid
 flowchart TD
@@ -188,7 +188,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **35 clases** enlazadas llevan un bloque generado por
+Las **42 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.
@@ -234,7 +234,7 @@ papers/
 │   └── PAPERS_INDEX.md          ← índice legible (generado)
 └── foundational/PXX_slug/       ← una ficha de 18 secciones por paper
 
-notebooks/papers/                ← 33 + 8 notebooks (generados)
+notebooks/papers/                ← 38 + 8 notebooks (generados)
 instructor/papers/               ← plan de sesión por paper (generado)
 student/papers/                  ← ficha de estudio y bitácora (generado)
 assessments/papers/              ← evaluación con rúbrica por paper (generado)

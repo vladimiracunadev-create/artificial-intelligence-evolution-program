@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
   "catalog_updated": "2026-08-16",
-  "papers": 33,
-  "notebooks": 41,
+  "papers": 38,
+  "notebooks": 46,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -177,8 +177,28 @@
       "sha256_lf": "3d4836d57fa800e76f4133825b0ed8b5d225f9419291f975ebe70343f608a442"
     },
     {
+      "path": "assessments/papers/P34_rope.md",
+      "sha256_lf": "8e6eb7686a6b3091f3ba7e0440d417fcdb0822d9aa41d88bdeb0273137e92f5d"
+    },
+    {
+      "path": "assessments/papers/P35_flashattention.md",
+      "sha256_lf": "f446290712351515f3d6463380830c16ddb4857918e708e1b860c0ca32d439d7"
+    },
+    {
+      "path": "assessments/papers/P36_lost_in_middle.md",
+      "sha256_lf": "49a671634828ff85c4fa24d5c35b03f2a992e4acb4dd636b30c75845777acb32"
+    },
+    {
+      "path": "assessments/papers/P37_memgpt.md",
+      "sha256_lf": "49f2aa29fe8be6c8b2a4e28dbcdfd7ea25fc09021a020d6d8a4dba0b3e543067"
+    },
+    {
+      "path": "assessments/papers/P38_vae.md",
+      "sha256_lf": "6e7f0d92d27cdf6eeef493d39c6e0fd0b98628817f1d1036cfb67afa53419f0f"
+    },
+    {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "61c247d9a0652d04797aad1603da631f8e4a0c54900021c342d660762a3fa89c"
+      "sha256_lf": "9357cef741974e9c588a8f7fab1f425b54a9c356dcaf6e52caac1cf188e139a5"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -313,8 +333,28 @@
       "sha256_lf": "3da9ef1990c288ae55ed22f3d97a71a3e119f948b52c2b39b601b303bfeb491d"
     },
     {
+      "path": "instructor/papers/P34_rope.md",
+      "sha256_lf": "88594dd4f8d0babab1956275c9f7fc31e4bd9fba2d8e2c5acbeb9156a8afa2be"
+    },
+    {
+      "path": "instructor/papers/P35_flashattention.md",
+      "sha256_lf": "8b73c239538a1ae2a8a9f1c85c4d745746b053658257021a1882ae6ad6ebdbdd"
+    },
+    {
+      "path": "instructor/papers/P36_lost_in_middle.md",
+      "sha256_lf": "672e2152204dbc9c9e6e7fceefb12429c6ebdf0c2999c08ad8ef05107f473888"
+    },
+    {
+      "path": "instructor/papers/P37_memgpt.md",
+      "sha256_lf": "e01ef6f5e0eb8652320e1a02946c3b8ca3915b8b5073b451c907efd3c340c274"
+    },
+    {
+      "path": "instructor/papers/P38_vae.md",
+      "sha256_lf": "95ae36fef5cf5796a4ce5503e3547d986fcdd05c0f1888cddd7366ebcf149e6f"
+    },
+    {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "27125709230c9364d3f63ce629fcb02b032ced903778914eae021d07e6882331"
+      "sha256_lf": "f9bd119e4d755ef6078135194f56e26b56a36705703c1b45db7018981016fb62"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -449,6 +489,26 @@
       "sha256_lf": "0e43c050dba5d770060004ebc21d04255f9b37266cd058b84d969cd8005ece0a"
     },
     {
+      "path": "notebooks/papers/P34_rope.ipynb",
+      "sha256_lf": "d6c23fdb7f4259ecc547282190881d5148508d25f46bbd9f5357ce7afaeb9b23"
+    },
+    {
+      "path": "notebooks/papers/P35_flashattention.ipynb",
+      "sha256_lf": "a277bcd3d805e42b83f09474895db37eba8604876131856c5157942e45c701ef"
+    },
+    {
+      "path": "notebooks/papers/P36_lost_in_middle.ipynb",
+      "sha256_lf": "5cb1e876b7b6a934bf88055a102aee2d94f544d9f3443a149de5ee1f71230d63"
+    },
+    {
+      "path": "notebooks/papers/P37_memgpt.ipynb",
+      "sha256_lf": "1d0be7e3467c988cb4f03f0d70efc40ec7693bc4310f334d755c66567930917a"
+    },
+    {
+      "path": "notebooks/papers/P38_vae.ipynb",
+      "sha256_lf": "ffe457ac4ec72f361b759e7e4df912601f38fe77e5ce9e1545b2a71d2efde8a0"
+    },
+    {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
       "sha256_lf": "122e0fcf47ff9d7a5c8288450e39a7d4a5f486f1f0a607f79924c846666c4d5d"
     },
@@ -482,7 +542,7 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "4a3f4d772e8e01d185dd299c6a709f1802bb62f123fcf645de858c99a0b747e7"
+      "sha256_lf": "d7f2590194b27b64d5fa794180cfe1ed7b43fb0966ffd7112017020dcc7ba0ab"
     },
     {
       "path": "papers/ROADMAP.md",
@@ -514,11 +574,11 @@
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "e7938525faffa6ba5a86ae27a9e9e990b59f72a5f3750164034fcb4d132f04fa"
+      "sha256_lf": "81073db530246adc411a3685b936bc0b727cc7f7cc13762fc1f6a3d3e1f217e2"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "484c3c2a60c40480e7ec3fe28ea533d265f1098b3326b1dcd16740da8228d8df"
+      "sha256_lf": "b3d3802456917556a2aed02b2ccdde4b9ef452282b83fd4979a5fcb1d82a05b8"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -657,6 +717,26 @@
       "sha256_lf": "d0a8c6a0b90ce15d6e5acd76b4971f2d52e799fc50195f9addee93be29b2bc79"
     },
     {
+      "path": "papers/foundational/P34_rope/README.md",
+      "sha256_lf": "d984efaff57d21cf5a9775404aa989d449e8a03fc7d3cd8ead624e221de617a6"
+    },
+    {
+      "path": "papers/foundational/P35_flashattention/README.md",
+      "sha256_lf": "5aef68059262fd5912483df7e60b4b9c2b60684e1e9e3d2210f0381ea81f048f"
+    },
+    {
+      "path": "papers/foundational/P36_lost_in_middle/README.md",
+      "sha256_lf": "4449c9a7d2ce989f6617490b53b7da601f8970deaa16011fd09416a72724e23b"
+    },
+    {
+      "path": "papers/foundational/P37_memgpt/README.md",
+      "sha256_lf": "d24dddbeb222ac2069d759c47a840cc8871875d48011ba47516f1c720df6c73c"
+    },
+    {
+      "path": "papers/foundational/P38_vae/README.md",
+      "sha256_lf": "07c08e2092f5e2d9ea57927510b247611af2c7136a94a53a0ec1e7a5320e14f5"
+    },
+    {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
       "sha256_lf": "e08d4427d94da4680598c41b0fe17a622b7d70e87aa28e095ac3997ea85b6e3c"
     },
@@ -678,7 +758,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "27efa37084dfcc4e657e06f53a13131366a0a56ef54867c9259f698059a46a38"
+      "sha256_lf": "efd70dbf454a7b7cf779cccf9004f0878238e23e3ea9d79627b4399cd5bb772c"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -813,8 +893,28 @@
       "sha256_lf": "edec22afd36fc0bbad2529c493b2bfa484669e20351b627e013cbda15016029f"
     },
     {
+      "path": "student/papers/P34_rope.md",
+      "sha256_lf": "e2cb3b0e9e4a09c66ad3cf94d4feb59d421c94bb060e29f29cfa19a23e5387fe"
+    },
+    {
+      "path": "student/papers/P35_flashattention.md",
+      "sha256_lf": "d02b6357c9c3b43eb6f5ad27a0cdbe989d52bbfa6e55061381161c47a86dd2ed"
+    },
+    {
+      "path": "student/papers/P36_lost_in_middle.md",
+      "sha256_lf": "d993ae9b223e001812811a591891f73d802f7bc8c034a968dbc41393b05a671e"
+    },
+    {
+      "path": "student/papers/P37_memgpt.md",
+      "sha256_lf": "537b72427405902f427d0a44a0891d6bc28419b38504b0cd1d2522a03fd12067"
+    },
+    {
+      "path": "student/papers/P38_vae.md",
+      "sha256_lf": "fca495a9c57f96842fa5ffdf0ac84d8015bd61911e908aef01a20c8f07b88d70"
+    },
+    {
       "path": "student/papers/README.md",
-      "sha256_lf": "511cf316be8ceb1e3f90cfc3d11daffc49aa07b494765f0d9315e5a33c7c27c0"
+      "sha256_lf": "abe81b88be3ac756bdfcd1d09e9e3bde725dcfdd426d2df1c524456880fa8348"
     }
   ]
 }

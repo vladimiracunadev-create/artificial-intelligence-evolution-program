@@ -37,6 +37,11 @@ Cada evaluación mide contexto histórico, lectura crítica, interpretación mat
 | P31 · Agentes generativos: simulacros interactivos de comportamiento humano | [P31_generative_agents.md](P31_generative_agents.md) |
 | P32 · Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes | [P32_voyager.md](P32_voyager.md) |
 | P33 · AutoGen: aplicaciones de nueva generación mediante conversación multiagente | [P33_autogen.md](P33_autogen.md) |
+| P34 · RoFormer: Transformer mejorado con codificación posicional rotatoria | [P34_rope.md](P34_rope.md) |
+| P35 · FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S | [P35_flashattention.md](P35_flashattention.md) |
+| P36 · Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos | [P36_lost_in_middle.md](P36_lost_in_middle.md) |
+| P37 · MemGPT: modelos de lenguaje como sistemas operativos | [P37_memgpt.md](P37_memgpt.md) |
+| P38 · Bayes variacional con autocodificación | [P38_vae.md](P38_vae.md) |
 
 ---
 

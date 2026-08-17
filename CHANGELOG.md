@@ -16,6 +16,30 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.7.0 — 2026-08-16
+
+- **Bloque de memoria y contexto (P34–P37)**, que faltaba por completo: RoPE (2021),
+  FlashAttention (2022), *Lost in the Middle* (2023) y MemGPT (2023). Cubre cómo se codifica la
+  posición, por qué el contexto largo es viable, por qué tenerlo **no basta** —la curva en U— y
+  cómo se gestiona como memoria jerárquica. Los cuatro verificados contra su fuente primaria.
+- **P38 VAE** abre el bloque de arquitectura y entrenamiento con el truco de reparametrización.
+- **Índice unificado y ordenado por año.** La documentación mostraba una tabla por bloque, lo que
+  se leía como un listado de «lo nuevo». Ahora `PAPERS_INDEX.md` tiene **una tabla maestra
+  cronológica** con todos los papers y una columna de bloque, más una vista temática aparte. Se
+  documenta explícitamente que los identificadores `PXX` son **estables** y su orden es de
+  incorporación, no de lectura.
+- **Un PDF por paper**: `python scripts/generate_pdfs.py --por-paper` genera 38 PDFs en
+  `docs/pdf/papers/`, cada uno con la ficha completa y su evaluación, y una portada que deja
+  claro que **no es el paper original** sino la ficha pedagógica en español que enlaza a la fuente.
+- **19 motores deterministas nuevos** ya implementados y probados (RoPE, FlashAttention, curva en
+  U, paginación de memoria, VAE, GAN, dropout, Adam, adversarios, batch norm, ResNet, destilación,
+  ViT, AlphaFold, LoRA, cuantización, IA constitucional, SWE-bench y superposición), con sus 19
+  notebooks generados y ejecutados sin error.
+- **14 papers en construcción** (P39–P52). Sus motores y notebooks están listos y probados; les
+  falta la ficha de 18 secciones. Se declaran en `pendientes_de_ficha` dentro del catálogo y
+  aparecen como «en construcción» en el índice, **fuera** de la tabla maestra, para que el
+  contrato del eje siga siendo verificable en todo momento.
+
 ## 0.6.0 — 2026-08-16
 
 - **El eje pasa de 22 a 33 papers, con dos bloques nuevos.** El detonante fue una observación

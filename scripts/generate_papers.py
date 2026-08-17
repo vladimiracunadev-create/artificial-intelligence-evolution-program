@@ -2650,6 +2650,687 @@ SPECS.update({
 })
 
 
+def _auto(lab, intuicion, concepto, prediccion, salida, comentario, anti_md, anti, corr_md, corr,
+          dg_md, da, evidencia, cierre, extra_exp=None):
+    """Especificación compacta para motores cuyo notebook sigue el patrón estándar."""
+    codigo = f"r = run_paper_lab('{lab}', seed=7)['result']\nshow(r)"
+    exp = extra_exp or (
+        f"for semilla in (1, 7, 42):\n"
+        f"    r = run_paper_lab('{lab}', seed=semilla)\n"
+        f"    print(f'semilla {{semilla:>2}} · evidencia principal:')\n"
+        f"    for e in r['evidence']:\n"
+        f"        print('   +', e)\n"
+        f"    break  # determinista: basta una para ver la estructura\n"
+        f"for semilla in (1, 7, 42):\n"
+        f"    r = run_paper_lab('{lab}', seed=semilla)['result']\n"
+        f"    print(f'semilla {{semilla:>2}} → claves: {{list(r)[:4]}}')"
+    )
+    return _spec(intuicion, concepto, "El motor aísla el mecanismo del paper con datos de juguete y salida inspeccionable.",
+                 codigo, prediccion, exp, salida, comentario, anti_md, anti, corr_md, corr,
+                 dg_md, f"r = run_paper_lab('{lab}', seed=3)['result']\nshow(r)", da, evidencia, cierre)
+
+
+SPECS.update({
+    "P34_rope": _auto(
+        "rope",
+        "En vez de sumar una marca de posición, se **rota** el vector según dónde esté. Al comparar "
+        "dos tokens, las rotaciones se cancelan parcialmente y lo que queda depende solo de cuánto "
+        "se separan. La posición absoluta desaparece del resultado.",
+        "```text\nRoPE: q_m = R_m·q,   k_n = R_n·k,   con R_θ una rotación por bloques de 2\n\n"
+        "    ⟨R_m·q, R_n·k⟩ = f(q, k, m − n)      ← solo la DIFERENCIA\n```",
+        "1. ¿Darán el mismo producto escalar las posiciones (5,3) y (500,498)?\n"
+        "2. ¿Qué le pasa al producto conforme crece la distancia?\n"
+        "3. ¿Por qué eso es un buen sesgo para lenguaje?",
+        "Las tres parejas con la misma diferencia dan **exactamente** el mismo valor. La posición "
+        "absoluta se usa para rotar, pero no aparece en el resultado: la atención solo ve distancia relativa.",
+        "Esto es lo que hoy llevan casi todos los modelos abiertos. La codificación sinusoidal de "
+        "[P08](../../papers/foundational/P08_transformer/README.md) sigue siendo válida, pero RoPE se "
+        "impuso porque da la relatividad **gratis**, sin parámetros extra ni tablas de posición.",
+        "Anti-patrón: creer que RoPE permite por sí solo extrapolar a contextos mucho más largos.",
+        "print('RoPE da posicion relativa; NO garantiza extrapolar mas alla del entrenamiento.')\n"
+        "print('Extender el contexto exige tecnicas POSTERIORES (interpolacion de posiciones).')\n"
+        "print('Atribuirle eso al paper de 2021 es un anacronismo.')",
+        "Lo que sí aporta, enunciado con precisión:",
+        "aporta = {'relatividad': 'el producto depende solo de m−n',\n"
+        "          'sin parametros': 'la rotacion no anade pesos que aprender',\n"
+        "          'decaimiento': 'tiende a bajar con la distancia, buen sesgo para lenguaje',\n"
+        "          'no_aporta': 'extrapolacion automatica a longitudes no vistas'}\n"
+        "show(aporta)",
+        "Comprueba que dos parejas con distinta diferencia dan valores distintos, y que la de diferencia 0 es la mayor.",
+        "Implementa RoPE sobre una atención pequeña y mide la exactitud en una tarea de copia con "
+        "posiciones desplazadas. Comprueba si el modelo generaliza a posiciones que no vio.",
+        "Guarda la tabla de invariancia relativa, la de decaimiento y tu enunciado de qué aporta y qué no.",
+        "La posición ya es relativa y barata. El siguiente muro no es matemático: es la memoria del "
+        "hardware.",
+    ),
+    "P35_flashattention": _auto(
+        "flashattention",
+        "El cálculo de la atención no es lento por hacer muchas cuentas: es lento por escribir y leer "
+        "una matriz enorme en la memoria lenta de la GPU. La solución no es calcular menos, sino no "
+        "escribirla nunca.",
+        "```text\nEstándar:  calcular S = QKᵀ  → ESCRIBIR n×n en HBM → leer → softmax → escribir → leer → ×V\n"
+        "Flash   :  recorrer por bloques que caben en SRAM, con softmax incremental reescalado\n\n"
+        "    mismos FLOPs · mismo resultado EXACTO · muchísimos menos accesos a memoria\n```",
+        "1. ¿Cambian los FLOPs entre ambas versiones?\n"
+        "2. ¿Y el resultado numérico?\n"
+        "3. ¿Qué crece más rápido con n: el cómputo o la memoria que hay que mover?",
+        "Los FLOPs son idénticos y el resultado es **exacto**: no es una aproximación. Lo que cambia es "
+        "cuántos elementos viajan entre la memoria rápida del chip y la lenta. Ese era el cuello de botella "
+        "real, y durante años se atacó el equivocado.",
+        "Es una lección más general que la atención: en hardware moderno, **mover datos cuesta más que "
+        "calcular**. Muchas optimizaciones «obvias» de FLOPs no aceleran nada porque el proceso está "
+        "limitado por memoria. Conecta directamente con el modelo roofline de la clase 081.",
+        "Anti-patrón: optimizar FLOPs sin mirar el tráfico de memoria.",
+        "print('Reducir FLOPs con atencion aproximada fue el enfoque dominante 2019-2021.')\n"
+        "print('Muchos de esos metodos NO eran mas rapidos en la practica:')\n"
+        "print('  bajaban el computo pero seguian materializando matrices en memoria lenta.')",
+        "El criterio correcto es contar accesos a memoria, no operaciones:",
+        "d, M = 64, 100_000\n"
+        "for n in (1024, 16384):\n"
+        "    print(f'n={n:>6} · FLOPs={2*n*n*d:>15,} · HBM estandar={2*n*n+2*n*d:>13,} '\n"
+        "          f'· HBM flash={int(4*n*d*(n*d/M)):>12,}')",
+        "Calcula a partir de qué n la matriz de atención deja de caber en 40 GB, y compáralo con el contexto que anuncian los modelos actuales.",
+        "Perfila una implementación de atención en tu GPU con y sin la versión optimizada de tu "
+        "biblioteca, a varias longitudes. Reporta tiempo y memoria máxima, no solo tiempo.",
+        "Guarda la tabla de FLOPs frente a accesos a memoria y tu explicación de por qué el algoritmo "
+        "es exacto y aun así mucho más rápido.",
+        "Ya cabe el contexto largo. La pregunta siguiente es incómoda: ¿lo usa el modelo?",
+    ),
+    "P36_lost_in_middle": _auto(
+        "lost_in_middle",
+        "Le das al modelo veinte documentos y el dato bueno está en el número once. Rinde peor que si "
+        "estuviera en el primero o en el último. El mismo dato, el mismo modelo, la misma pregunta: "
+        "solo cambia el sitio.",
+        "```text\nexactitud(posición del documento relevante) tiene forma de U:\n\n"
+        "    alta al principio  (primacía)\n"
+        "    baja en el medio   ← el hallazgo\n"
+        "    alta al final      (recencia)\n```",
+        "1. ¿En qué posición esperas la mejor exactitud? ¿Y la peor?\n"
+        "2. ¿Qué implica esto para un sistema RAG que ordena los pasajes por score?\n"
+        "3. Si un modelo anuncia 128 000 tokens de contexto, ¿qué habría que medir antes de creerlo?",
+        "La caída entre la mejor y la peor posición es grande, y no hay nada distinto en el contenido. "
+        "**Contexto disponible no es contexto utilizable**, y esa distinción no aparece en ninguna ficha "
+        "técnica de modelo.",
+        "El impacto práctico es directo en RAG: si recuperas diez pasajes y colocas el mejor en medio, "
+        "estás saboteando tu propio sistema. Conviene poner lo más relevante al principio **o** al final, "
+        "y medirlo en vez de suponerlo.",
+        "Anti-patrón: elegir modelo por el tamaño de su ventana de contexto.",
+        "for ventana in (8_000, 32_000, 128_000, 1_000_000):\n"
+        "    print(f'{ventana:>9,} tokens anunciados → ¿cuantos USA bien? el numero no lo dice')",
+        "La comprobación correcta es una prueba de aguja en el pajar por posición:",
+        "protocolo = {'1': 'insertar un hecho unico en la posicion p del contexto',\n"
+        "             '2': 'preguntar por ese hecho',\n"
+        "             '3': 'repetir para p en todo el rango y varias longitudes',\n"
+        "             '4': 'reportar la CURVA, no un solo numero'}\n"
+        "show(protocolo)",
+        "Calcula la caída relativa entre la mejor y la peor posición y decide si es tolerable para un sistema de consulta legal.",
+        "Ejecuta una prueba de aguja en el pajar sobre un modelo abierto, con al menos cinco longitudes "
+        "y diez posiciones. Dibuja la curva y localiza dónde empieza a degradarse.",
+        "Guarda la curva en U, la caída entre extremos y tu protocolo de comprobación por posición.",
+        "Si la ventana no basta ni usándola bien, hay que dejar de tratarla como memoria y empezar a "
+        "gestionarla como tal.",
+    ),
+    "P37_memgpt": _auto(
+        "memgpt",
+        "Tu ordenador te deja abrir archivos mucho más grandes que su memoria RAM. No los carga enteros: "
+        "los pagina. MemGPT hace lo mismo con el contexto — y quien decide qué paginar es el propio modelo.",
+        "```text\ncontexto principal   (pequeño, rápido, siempre visible)   ← como la RAM\n"
+        "almacén externo      (grande, lento, accesible por función) ← como el disco\n\n"
+        "    el modelo llama a funciones para mover información entre ambos\n```",
+        "1. ¿Qué pasa con el sexto dato si la capacidad es de cinco?\n"
+        "2. ¿Se pierde?\n"
+        "3. ¿Qué cuesta recuperarlo?",
+        "Lo desalojado **no se pierde**: baja al almacén externo y vuelve con una llamada de función. La "
+        "ilusión es de memoria grande; la realidad es una jerarquía con coste por acceso.",
+        "La analogía con el sistema operativo es literal y ese es su valor: da un vocabulario prestado "
+        "—paginación, jerarquía, interrupciones— para un problema que se estaba tratando sin marco.",
+        "Anti-patrón: tratar el almacén externo como gratis.",
+        "for consultas in (1, 10, 100):\n"
+        "    print(f'{consultas:>3} page-ins → {consultas} llamadas extra al modelo '\n"
+        "          f'({consultas * 2:>3} segundos aprox. de latencia añadida)')",
+        "Lo correcto es presupuestar los accesos igual que cualquier otra llamada:",
+        "presupuesto = {'page_ins_maximos_por_respuesta': 3,\n"
+        "               'que_va_al_contexto_principal': 'lo que se usa en casi toda interaccion',\n"
+        "               'que_va_al_externo': 'historico, detalles puntuales, documentos',\n"
+        "               'si_se_agota': 'responder con lo que hay y declarar la limitacion'}\n"
+        "show(presupuesto)",
+        "Reduce la capacidad del contexto principal a 2 y comprueba cuántos datos acaban en el almacén externo.",
+        "Implementa una jerarquía de memoria de dos niveles para un asistente propio, con política de "
+        "desalojo explícita. Mide cuántas veces hay que paginar en 50 conversaciones reales.",
+        "Guarda la traza de desalojos y recuperaciones, y tu presupuesto de accesos por respuesta.",
+        "Con esto se cierra el bloque de memoria y contexto. Lo que sigue es el andamiaje que hace "
+        "entrenable todo lo anterior.",
+    ),
+    "P38_vae": _auto(
+        "vae",
+        "Quieres derivar respecto a la media de una distribución de la que estás muestreando. Pero "
+        "muestrear es un dado: no tiene derivada. El truco es sacar el dado fuera — tirarlo aparte y "
+        "meter su resultado ya fijado en la fórmula.",
+        "```text\nSin reparametrizar:  z ~ N(μ, σ²)          ← nodo estocástico, gradiente bloqueado\n"
+        "Reparametrizado   :  z = μ + σ·ε,  ε ~ N(0,1)  ← el azar está FUERA del camino\n\n"
+        "ELBO = E_q[log p(x|z)] − KL(q(z|x) ‖ p(z))\n```",
+        "1. ¿La distribución de z cambia al reparametrizar?\n"
+        "2. ¿Cuánto vale ∂z/∂μ?\n"
+        "3. ¿Por qué eso hace entrenable el modelo?",
+        "La distribución es la misma —media y varianza coinciden— pero ahora `∂z/∂μ = 1` existe y se "
+        "puede estimar, porque `ε` no depende de los parámetros. Ese es todo el truco, y es lo que hizo "
+        "entrenable una familia entera de modelos.",
+        "El truco de reparametrización trasciende al VAE: aparece en política estocástica, en atención "
+        "con puertas, en cuantización diferenciable. Cuando algo «no es derivable», la pregunta útil es "
+        "si se puede reescribir moviendo el azar fuera.",
+        "Anti-patrón: creer que el término KL es un detalle de regularización opcional.",
+        "print('Sin el termino KL, el codificador puede mapear cada x a una gaussiana')\n"
+        "print('estrechisima y separada de las demas: el espacio latente deja de ser')\n"
+        "print('continuo y muestrear de la prior ya no genera nada coherente.')",
+        "El ELBO tiene dos términos y ambos hacen falta:",
+        "elbo = {'reconstruccion': 'que el decodificador recupere x desde z',\n"
+        "        'KL': 'que q(z|x) no se aleje de la prior, para que el espacio sea muestreable',\n"
+        "        'tension': 'demasiada KL → muestras borrosas; poca → espacio latente roto'}\n"
+        "show(elbo)",
+        "Comprueba que la varianza empírica de las muestras coincide con σ² y que el gradiente respecto a σ es insesgado.",
+        "Implementa un VAE sobre un conjunto de imágenes pequeño y visualiza el espacio latente en 2D. "
+        "Interpola entre dos puntos y comprueba si las muestras intermedias son coherentes.",
+        "Guarda la comprobación de media y varianza, el valor del gradiente respecto a μ y tu explicación "
+        "de los dos términos del ELBO.",
+        "Ya se puede entrenar un modelo generativo latente, pero sus muestras son borrosas. La respuesta "
+        "de 2014 fue radicalmente distinta: convertirlo en un juego.",
+    ),
+    "P39_gan": _auto(
+        "gan",
+        "Un falsificador y un policía que aprenden a la vez. El falsificador mejora porque el policía lo "
+        "pilla; el policía mejora porque el falsificador se refina. Nadie le enseña al falsificador qué "
+        "es un billete bueno: solo si coló o no.",
+        "```text\nmin_G max_D  E_x[log D(x)] + E_z[log(1 − D(G(z)))]\n\n"
+        "    D quiere acertar quién es real     → maximiza\n"
+        "    G quiere que D se equivoque        → minimiza\n```\n\n"
+        "No hay verosimilitud explícita: la señal de entrenamiento la produce **otra red**.",
+        "1. ¿Tiene que cubrir el generador los tres modos de la distribución real para engañar al discriminador?\n"
+        "2. ¿Qué pasará con la diversidad de sus muestras?\n"
+        "3. ¿Cómo lo detectarías si solo miras muestras individuales?",
+        "El generador converge a **un solo modo** de los tres. Y desde el punto de vista de su objetivo, "
+        "hace bien: engañar al discriminador no exige cubrir la distribución, basta con ser convincente "
+        "en una región. Eso es el colapso de modos.",
+        "El colapso es difícil de detectar mirando muestras: cada una puede ser excelente. Hay que medir "
+        "**cobertura**, no solo calidad. Es el mismo error que en RAG con las citas: la muestra individual "
+        "se ve bien y el sistema está roto.",
+        "Anti-patrón: evaluar un modelo generativo enseñando las mejores muestras.",
+        "print('20 imagenes preciosas elegidas a mano NO son evidencia de nada.')\n"
+        "print('Un generador colapsado produce muestras excelentes... todas parecidas.')\n"
+        "print('Sin medida de cobertura/diversidad, la evaluacion es publicidad.')",
+        "Lo mínimo que hay que reportar en un modelo generativo:",
+        "reporte = {'calidad': 'metrica perceptual sobre muestras no elegidas',\n"
+        "           'diversidad': 'cobertura de los modos de la distribucion real',\n"
+        "           'muestras': 'aleatorias con semilla, no seleccionadas',\n"
+        "           'estabilidad': 'varias semillas de entrenamiento, no una'}\n"
+        "show(reporte)",
+        "Cambia la posición inicial del generador y observa a qué modo colapsa: siempre al más cercano.",
+        "Entrena una GAN pequeña sobre una mezcla de gaussianas 2D y mide cuántos modos cubre a lo largo "
+        "del entrenamiento. Compara con un VAE y con difusión sobre los mismos datos.",
+        "Guarda la trayectoria del generador, el conteo de modos cubiertos y tu lista de lo que hay que "
+        "reportar en un modelo generativo.",
+        "Generar ya es posible por dos vías. Ahora el andamiaje: qué hace que una red profunda se pueda "
+        "entrenar sin memorizar.",
+    ),
+    "P40_dropout": _auto(
+        "dropout",
+        "Si en un equipo cada tarea depende de dos personas concretas, el día que una falte no se hace "
+        "nada. Si todos pueden cubrir varias tareas, el equipo aguanta. Dropout obliga a lo segundo "
+        "haciendo faltar a gente al azar cada día.",
+        "```text\nEntrenamiento:  h̃ = h ⊙ m,   m ~ Bernoulli(1−p)\n"
+        "Inferencia   :  se usan todas, escaladas por (1−p)\n\n"
+        "Con n unidades hay 2ⁿ subredes posibles, todas compartiendo pesos.\n```",
+        "1. ¿Con qué probabilidad están activas a la vez dos unidades concretas, si p=0,5?\n"
+        "2. ¿Y al menos una de tres?\n"
+        "3. ¿Qué tipo de representación premia eso?",
+        "Una función que depende de dos unidades concretas solo está disponible una cuarta parte de las "
+        "veces; una repartida entre tres, casi siempre. Dropout no «añade ruido»: **cambia qué "
+        "representaciones son rentables**.",
+        "Dropout dominó la regularización durante años y hoy se usa mucho menos en visión y en "
+        "Transformers grandes, donde otras técnicas y la escala de datos cumplen ese papel. Es un buen "
+        "recordatorio de que las recetas caducan.",
+        "Anti-patrón: dejar dropout activo en inferencia.",
+        "print('Con dropout activo en inferencia, la misma entrada da salidas distintas.')\n"
+        "print('Y la magnitud de las activaciones es (1-p) veces la esperada.')\n"
+        "print('Es un fallo clasico: el modelo \"funciona peor en produccion\" sin causa aparente.')",
+        "La corrección es la escala, y el motivo es que la esperanza cuadre:",
+        "p = 0.5\n"
+        "print('en entrenamiento: se apaga la fraccion p, la suma esperada baja a (1-p) del total')\n"
+        "print(f'en inferencia   : o se multiplica por (1-p)={1-p}, o se divide en entrenamiento')\n"
+        "print('las dos convenciones existen; usar las dos a la vez rompe el modelo')",
+        "Calcula la probabilidad de que una función que depende de 4 unidades concretas esté disponible.",
+        "Entrena una red pequeña con y sin dropout sobre un conjunto con pocos datos. Compara la brecha "
+        "entre error de entrenamiento y de validación, no solo el error final.",
+        "Guarda las probabilidades de disponibilidad, el conteo de subredes y tu explicación del escalado "
+        "en inferencia.",
+        "La red ya no memoriza. Pero sigue siendo difícil de optimizar si cada dirección tiene una "
+        "curvatura distinta.",
+    ),
+    "P41_adam": _auto(
+        "adam",
+        "Bajar un valle largo y estrecho: en la dirección estrecha, un paso normal te hace rebotar de "
+        "pared a pared; en la larga, ese mismo paso no avanza nada. Adam mide cuánto se mueve cada "
+        "dirección y ajusta su paso por separado.",
+        "```text\nm_t = β₁·m_{t−1} + (1−β₁)·g          primer momento (dirección)\n"
+        "v_t = β₂·v_{t−1} + (1−β₂)·g²         segundo momento (escala)\n"
+        "m̂ = m_t/(1−β₁ᵗ),  v̂ = v_t/(1−β₂ᵗ)   corrección de sesgo\n"
+        "θ ← θ − η · m̂ / (√v̂ + ε)\n```\n\n"
+        "El paso efectivo de cada coordenada es ~η, independientemente de la escala de su gradiente.",
+        "1. Con L = x² + 100y², ¿qué gradiente es mayor: el de x o el de y?\n"
+        "2. ¿Qué le pasa a SGD con una tasa que sirva para x?\n"
+        "3. ¿Y a Adam?",
+        "SGD se queda con una pérdida enorme: con una tasa que sirva para la dirección plana, **oscila** "
+        "en la empinada sin converger. Adam llega a ~1e-8 porque normaliza cada coordenada por su propia "
+        "escala de gradiente.",
+        "Adam es el optimizador por defecto de casi todo lo que estudias en este eje. Pero «por defecto» "
+        "no es «siempre mejor»: hay trabajos que reportan mejor generalización con SGD con momento bien "
+        "ajustado, sobre todo en visión.",
+        "Anti-patrón: usar el decaimiento de pesos de SGD tal cual dentro de Adam.",
+        "print('En SGD, weight decay equivale a sumar lambda*theta al gradiente.')\n"
+        "print('En Adam ese termino se divide tambien por sqrt(v): la regularizacion')\n"
+        "print('acaba siendo distinta por coordenada, que NO es lo que se queria.')\n"
+        "print('AdamW (2017) lo corrige desacoplandolo del paso adaptativo.')",
+        "Los tres componentes y qué aporta cada uno:",
+        "componentes = {'primer momento': 'suaviza la direccion, como el momento clasico',\n"
+        "               'segundo momento': 'normaliza por la escala tipica de cada coordenada',\n"
+        "               'correccion de sesgo': 'evita pasos diminutos en las primeras iteraciones'}\n"
+        "show(componentes)",
+        "Sube el número de condición del problema a 10 000 y comprueba si Adam sigue convergiendo.",
+        "Entrena la misma red con SGD, SGD+momento, Adam y AdamW sobre un conjunto pequeño. Compara "
+        "curvas de entrenamiento **y** de validación: el mejor entrenamiento no siempre generaliza mejor.",
+        "Guarda la comparación en el problema mal condicionado y tu explicación de por qué el decaimiento "
+        "de pesos necesita tratamiento aparte.",
+        "Ya se entrena estable y rápido. Toca la pregunta incómoda: ¿es robusto lo que se ha entrenado?",
+    ),
+    "P42_adversarial": _auto(
+        "adversarial",
+        "Cambia cada píxel de una foto en una milésima —invisible— pero **todos en la dirección que más "
+        "confunde al modelo**. En una imagen con miles de píxeles, esas milésimas suman lo suficiente "
+        "para cambiar la predicción.",
+        "```text\nFGSM:  x' = x + ε · sign(∇ₓ L(θ, x, y))\n\n"
+        "Para un modelo lineal wᵀx:\n"
+        "    cambio = wᵀ(x' − x) = ε · Σᵢ |wᵢ|      ← crece con la DIMENSIÓN\n```",
+        "1. Con ε=0,01, ¿cuánto cambia la salida en dimensión 10? ¿Y en 10 000?\n"
+        "2. ¿Es un problema de la profundidad de la red?\n"
+        "3. ¿Por qué la perturbación es imperceptible y el efecto no?",
+        "El cambio crece proporcionalmente a la dimensión. Con 10 000 componentes y ε=0,01, la salida se "
+        "mueve ~100 unidades. **La causa es la linealidad en alta dimensión**, no la complejidad del "
+        "modelo — que es justo lo contrario de lo que se creía.",
+        "El resultado más inquietante del paper no está en esta miniatura: los ejemplos adversarios "
+        "**transfieren** entre modelos distintos entrenados con datos distintos. Eso significa que no son "
+        "un bug de un modelo, sino una propiedad de los datos y de la clase de funciones.",
+        "Anti-patrón: creer que un modelo con alta exactitud es un modelo robusto.",
+        "print('Exactitud 99% en el conjunto de test ← distribucion natural')\n"
+        "print('Exactitud  0% bajo perturbacion adversaria ← distribucion elegida por un atacante')\n"
+        "print('Son dos metricas distintas, y la segunda casi nunca se reporta.')",
+        "Lo que hay que medir si el modelo se despliega donde alguien puede atacarlo:",
+        "evaluacion = {'exactitud_limpia': 'sobre el test estandar',\n"
+        "              'exactitud_robusta': 'bajo ataque, con epsilon declarado',\n"
+        "              'ataque_usado': 'FGSM, PGD, adaptativo... y sus parametros',\n"
+        "              'transferencia': 'si el ataque generado en otro modelo tambien funciona'}\n"
+        "show(evaluacion)",
+        "Calcula qué ε hace falta en dimensión 784 (una imagen 28×28) para mover la salida 10 unidades.",
+        "Implementa FGSM sobre un clasificador pequeño y mide la exactitud en función de ε. Después prueba "
+        "entrenamiento adversario y comprueba cuánta exactitud limpia cuesta la robustez.",
+        "Guarda la tabla de cambio frente a dimensión, y tu protocolo de evaluación con exactitud limpia "
+        "y robusta por separado.",
+        "La robustez es un problema abierto. Volvamos al entrenamiento: qué hace que una red profunda "
+        "sea entrenable.",
+    ),
+    "P43_batchnorm": _auto(
+        "batchnorm",
+        "Una tubería de doce filtros donde cada uno amplifica un poco. Al final, la señal está saturada o "
+        "extinguida. Normalizar entre etapas es reajustar el caudal para que cada filtro reciba lo que "
+        "sabe procesar.",
+        "```text\nx̂ = (x − μ_lote) / √(σ²_lote + ε)\n"
+        "y  = γ·x̂ + β                    γ y β se APRENDEN\n```\n\n"
+        "γ y β permiten deshacer la normalización si conviene: no se pierde capacidad expresiva.",
+        "1. ¿Qué fracción de activaciones estará saturada en la capa 11 sin normalizar?\n"
+        "2. ¿Y con normalización?\n"
+        "3. ¿Por qué importa la saturación de tanh?",
+        "Sin normalizar, casi todas las activaciones acaban en la zona plana de tanh, donde la derivada "
+        "es prácticamente cero: **el gradiente no puede volver**. Con normalización, la desviación se "
+        "mantiene cerca de 1 y las unidades siguen en su rango útil.",
+        "La explicación del paper —«internal covariate shift»— fue **discutida después**. Hay evidencia "
+        "de que el beneficio real viene de suavizar el paisaje de optimización. Es un caso didáctico "
+        "excelente: la técnica funciona y su explicación original resultó incompleta.",
+        "Anti-patrón: usar batch norm con lotes muy pequeños.",
+        "for lote in (1, 2, 8, 64, 256):\n"
+        "    error = 1 / (lote ** 0.5)\n"
+        "    print(f'lote {lote:>3} → error relativo de la estadistica ~{error:.2f} '\n"
+        "          f\"({'inutilizable' if lote < 8 else 'aceptable'})\")",
+        "Por eso existen LayerNorm y GroupNorm, que no dependen del lote:",
+        "variantes = {'BatchNorm': 'normaliza por LOTE — depende del tamano de lote',\n"
+        "             'LayerNorm': 'normaliza por MUESTRA — la que usa el Transformer',\n"
+        "             'GroupNorm': 'por grupos de canales — para lotes pequenos en vision'}\n"
+        "show(variantes)",
+        "Comprueba qué pasa con la desviación en la capa 11 si subes el peso de 1,6 a 2,5.",
+        "Entrena una red profunda con y sin normalización, variando la tasa de aprendizaje en un rango "
+        "amplio. Reporta el rango de tasas que converge en cada caso: ahí está el beneficio real.",
+        "Guarda las trazas de media, desviación y saturación por capa, y tu comparación de las tres "
+        "variantes de normalización.",
+        "Con normalización se entrena más profundo. Pero pasado cierto punto, más capas volvían a "
+        "empeorar — y no por sobreajuste.",
+    ),
+    "P44_resnet": _auto(
+        "resnet",
+        "Si una capa nueva no aporta, debería poder no hacer nada. Con capas normales, «no hacer nada» "
+        "—la identidad— es sorprendentemente difícil de aprender. Con un atajo, es gratis: basta con que "
+        "el bloque aprenda cero.",
+        "```text\nBloque plano   :  y = F(x)          aprender la identidad es difícil\n"
+        "Bloque residual:  y = F(x) + x      la identidad es F ≡ 0\n\n"
+        "    ∂y/∂x = F'(x) + 1     ← el 1 sostiene el producto a través de las capas\n```",
+        "1. ¿Qué gradiente queda tras 152 capas con un factor de 0,85 por capa?\n"
+        "2. ¿Y con el atajo?\n"
+        "3. ¿Por qué el paper llama «degradación» al problema y no «sobreajuste»?",
+        "Sin atajo, el gradiente a 152 capas es del orden de 1e-11: la señal no llega. Con atajo se "
+        "mantiene en un rango utilizable. La diferencia es de nueve órdenes de magnitud, y explica por "
+        "qué de golpe se pudieron entrenar redes diez veces más profundas.",
+        "La observación clave del paper es que el error de **entrenamiento** subía con la profundidad. "
+        "Eso descarta el sobreajuste: no era falta de capacidad, era imposibilidad de optimizar. "
+        "Distinguir ambas cosas es una habilidad diagnóstica que sirve para toda la vida.",
+        "Anti-patrón: diagnosticar «sobreajuste» sin mirar el error de entrenamiento.",
+        "casos = [('entrenamiento bajo, validacion alta', 'sobreajuste'),\n"
+        "         ('entrenamiento ALTO, validacion alta', 'subajuste u optimizacion rota'),\n"
+        "         ('entrenamiento sube al anadir capas', 'DEGRADACION: el caso de ResNet')]\n"
+        "for sintoma, diagnostico in casos:\n"
+        "    print(f'{sintoma:<40} → {diagnostico}')",
+        "El mismo principio aditivo aparece en tres sitios de este eje:",
+        "principio = {'LSTM (P03)': 'c_t = f*c_{t-1} + i*g — ruta aditiva en el TIEMPO',\n"
+        "             'ResNet (P44)': 'y = F(x) + x — ruta aditiva en la PROFUNDIDAD',\n"
+        "             'Transformer (P08)': 'LayerNorm(x + Sublayer(x)) — en cada subcapa'}\n"
+        "show(principio)",
+        "Calcula a partir de cuántas capas el gradiente sin atajo baja de 1e-6 con factor 0,85.",
+        "Entrena dos redes de 30 capas, con y sin atajos, sobre un conjunto pequeño. Compara el error de "
+        "**entrenamiento**: si el plano es peor, has reproducido la degradación.",
+        "Guarda la tabla de gradientes por profundidad, la tabla de diagnóstico y tu explicación de por "
+        "qué la identidad es difícil sin atajo.",
+        "Ya se entrenan redes enormes. El problema pasa a ser el contrario: cómo servirlas sin arruinarse.",
+    ),
+    "P45_distillation": _auto(
+        "distillation",
+        "Un examen tipo test corregido solo con «bien/mal» enseña menos que uno donde el profesor te dice "
+        "qué otras respuestas estuvieron cerca de ser correctas. Esa información extra es lo que el "
+        "maestro le pasa al alumno.",
+        "```text\nEtiqueta dura :  perro=1, lobo=0, gato=0, coche=0\n"
+        "Objetivo suave:  perro=0.6, lobo=0.25, gato=0.13, coche=0.02   ← con temperatura T\n\n"
+        "    p_i = softmax(z_i / T)      T alta → distribución más informativa\n```",
+        "1. ¿Qué información contiene el objetivo suave que la etiqueta dura no?\n"
+        "2. ¿Qué le pasa a la entropía al subir T?\n"
+        "3. ¿Por qué eso ayuda a un modelo pequeño?",
+        "El maestro dice que un perro se parece más a un lobo que a un gato, y muchísimo más que a un "
+        "coche. Esa **estructura de similitud entre clases** es conocimiento que la etiqueta dura tira a "
+        "la basura, y es lo que permite al alumno aprender con muchos menos datos.",
+        "La destilación es hoy la razón de que existan modelos pequeños sorprendentemente buenos, "
+        "incluidos los de razonamiento de [P22](../../papers/foundational/P22_deepseek_r1/README.md). "
+        "El alumno hereda comportamiento — incluidos los errores del maestro.",
+        "Anti-patrón: destilar de un maestro sin evaluar al maestro.",
+        "print('El alumno aprende la distribucion del maestro, sesgos y errores incluidos.')\n"
+        "print('Si el maestro confunde sistematicamente dos clases, el alumno lo heredara')\n"
+        "print('y ademas con mas confianza, porque lo aprendio como objetivo suave.')",
+        "Lo que hay que comprobar antes de destilar:",
+        "checklist = {'maestro evaluado': 'en el mismo conjunto donde se medira al alumno',\n"
+        "             'errores caracterizados': 'que clases confunde y con que frecuencia',\n"
+        "             'temperatura': 'elegida en validacion, no copiada de un paper',\n"
+        "             'alumno evaluado aparte': 'nunca solo contra el maestro'}\n"
+        "show(checklist)",
+        "Sube la temperatura a 20 y observa si la distribución sigue siendo informativa o se vuelve uniforme.",
+        "Destila un modelo pequeño a partir de uno mayor en una tarea de clasificación. Compara con "
+        "entrenar el pequeño solo con etiquetas duras, y mide también si hereda los errores del maestro.",
+        "Guarda la tabla de distribuciones por temperatura, la entropía y tu checklist previo a destilar.",
+        "Modelos pequeños que heredan capacidad. Ahora, un cambio de arquitectura que nadie esperaba en visión.",
+    ),
+    "P46_vit": _auto(
+        "vit",
+        "Trocea la imagen en cuadraditos, ponlos en fila y trátalos como si fueran palabras de una frase. "
+        "Suena absurdo —se pierde toda la noción de vecindad— y funciona, si tienes datos suficientes.",
+        "```text\nimagen 224×224  →  parches 16×16  →  (224/16)² = 196 tokens  (+1 de clase)\n\n"
+        "cada parche: 16·16·3 = 768 valores → proyección lineal → token\n```\n\n"
+        "A partir de ahí, es el encoder de [P08](../../papers/foundational/P08_transformer/README.md) "
+        "sin ninguna modificación.",
+        "1. ¿Cuántos tokens salen de una imagen 224×224 con parches de 16?\n"
+        "2. ¿Qué pasa con el coste si bajas el parche a 8?\n"
+        "3. ¿Qué sesgo inductivo pierde respecto a una CNN?",
+        "Una imagen se convierte en una secuencia de ~200 tokens: exactamente el mismo problema que una "
+        "frase. Y bajar el tamaño de parche multiplica el coste **al cuadrado**, porque la atención es "
+        "cuadrática en el número de tokens.",
+        "El resultado del paper viene con una condición grande: **funciona si se preentrena con muchísimos "
+        "datos**. Con conjuntos medianos, la CNN gana, porque su sesgo inductivo vale más que la "
+        "flexibilidad. Es un ejemplo limpio del compromiso sesgo/datos.",
+        "Anti-patrón: citar ViT como «los Transformers superan a las CNN» sin la condición de datos.",
+        "for datos in ('1M imagenes', '14M imagenes', '300M imagenes'):\n"
+        "    ganador = 'CNN' if '1M' in datos else 'ViT' if '300M' in datos else 'depende'\n"
+        "    print(f'preentrenado con {datos:<15} → suele ganar: {ganador}')",
+        "El enunciado correcto incluye el régimen:",
+        "enunciado = {'valido': 'con preentrenamiento a gran escala, ViT iguala o supera a CNN comparables',\n"
+        "             'no_valido': 'los Transformers son mejores que las CNN en vision',\n"
+        "             'razon': 'sin sesgo inductivo hace falta mas dato para aprender lo mismo',\n"
+        "             'consecuencia': 'la eleccion depende de tu regimen de datos, no de la moda'}\n"
+        "show(enunciado)",
+        "Calcula los tokens y el coste relativo de una imagen 512×512 con parches de 8.",
+        "Entrena un ViT pequeño y una CNN de parámetros comparables sobre un conjunto de 10 000 imágenes. "
+        "Repite con aumento de datos agresivo y comprueba si la brecha se cierra.",
+        "Guarda la tabla de tokens y coste, y tu enunciado con la condición de régimen de datos.",
+        "El mismo bloque sirve para texto e imagen. Y también para problemas científicos que llevaban "
+        "décadas abiertos.",
+    ),
+    "P47_alphafold": _auto(
+        "alphafold",
+        "Si sabes a qué distancia está cada par de puntos, la forma queda determinada. Predecir la "
+        "estructura de una proteína se parece a reconstruir un objeto conociendo solo las distancias "
+        "entre sus vértices.",
+        "```text\nsecuencia de aminoácidos → (predicción) → distancias entre pares → geometría 3D\n\n"
+        "Las distancias entre todos los pares determinan las coordenadas\n"
+        "salvo rotación, traslación y reflexión.\n```",
+        "1. Partiendo de posiciones aleatorias, ¿se puede recuperar la forma solo con las distancias?\n"
+        "2. ¿Qué queda indeterminado?\n"
+        "3. ¿Cuál es la parte verdaderamente difícil del problema real?",
+        "Desde posiciones aleatorias y solo con la matriz de distancias, la geometría se recupera con "
+        "error muy pequeño. Lo que queda indeterminado es la orientación: rotar o reflejar la estructura "
+        "no cambia ninguna distancia.",
+        "Ojo con lo que esta miniatura **no** hace: aquí la matriz de distancias se **da**. Predecirla a "
+        "partir de la secuencia es el problema entero, y para eso AlphaFold usa alineamientos múltiples "
+        "de secuencias evolutivas y atención sobre pares de residuos.",
+        "Anti-patrón: contar AlphaFold como «la IA resolvió la biología».",
+        "print('Resolvio con alta precision UN problema concreto: estructura desde secuencia.')\n"
+        "print('No resuelve: funcion de la proteina, interacciones, dinamica, plegamiento in vivo,')\n"
+        "print('complejos grandes, ni proteinas sin homologos conocidos.')",
+        "Lo que sí cambió, que ya es enorme:",
+        "impacto = {'antes': 'meses o anos de trabajo experimental por proteina',\n"
+        "           'despues': 'prediccion en minutos, con estimacion de confianza por residuo',\n"
+        "           'escala': 'base de datos abierta con cientos de millones de estructuras',\n"
+        "           'leccion': 'la IA puede producir conocimiento cientifico, no solo productos'}\n"
+        "show(impacto)",
+        "Comprueba que la estructura recuperada tiene las mismas distancias aunque las coordenadas sean distintas.",
+        "Reconstruye una estructura pequeña desde su matriz de distancias usando escalado multidimensional "
+        "y compara con el descenso de gradiente. Mide el error con distintos niveles de ruido en las "
+        "distancias: eso simula un predictor imperfecto.",
+        "Guarda la curva de convergencia, el error medio por par y tu lista de lo que AlphaFold **no** resuelve.",
+        "Modelos enormes con impacto real. Queda el problema práctico: adaptarlos sin poder permitirse "
+        "reentrenarlos.",
+    ),
+    "P48_lora": _auto(
+        "lora",
+        "Para adaptar un modelo enorme a tu tarea no hace falta reescribirlo entero: basta con una nota "
+        "al margen. LoRA aprende esa nota —pequeña— y deja el original intacto.",
+        "```text\nAjuste completo:  W' = W_entrenada           d×d parámetros por matriz\n"
+        "LoRA          :  W' = W + B·A               2·d·r parámetros,  r ≪ d\n\n"
+        "    W congelada · B ∈ ℝ^{d×r} · A ∈ ℝ^{r×d}\n```\n\n"
+        "Al desplegar, B·A se **suma** a W: no queda coste extra en inferencia.",
+        "1. Con d=128 y r=4, ¿cuántos parámetros se entrenan frente al ajuste completo?\n"
+        "2. ¿Cuántas copias del modelo hacen falta para diez tareas?\n"
+        "3. ¿Qué coste añade en inferencia?",
+        "Con rango 4 se entrena una fracción diminuta de los parámetros. Y como la matriz base queda "
+        "congelada, **una sola copia del modelo sirve para todas las tareas**: cada una aporta solo su "
+        "adaptador. En inferencia, cero coste añadido porque BA se fusiona con W.",
+        "La hipótesis de fondo es empírica: que la actualización útil para adaptar un modelo es de rango "
+        "bajo. No está garantizada para toda tarea, y elegir r y a qué matrices aplicarlo son decisiones "
+        "que el paper estudia con ablaciones.",
+        "Anti-patrón: subir r «por si acaso» hasta que deja de haber ahorro.",
+        "d = 4096\n"
+        "for r in (1, 8, 64, 512, 2048):\n"
+        "    lora, completo = 2 * d * r, d * d\n"
+        "    print(f'r={r:>4} → {lora:>10,} params ({lora/completo:>6.1%} del completo)'\n"
+        "          + ('  ← ya no ahorra' if lora > completo * 0.5 else ''))",
+        "El criterio correcto es empírico y barato de obtener:",
+        "protocolo = {'1': 'empezar con r pequeno (4-16)',\n"
+        "             '2': 'subir r solo si la metrica de validacion mejora',\n"
+        "             '3': 'reportar r junto con el resultado, siempre',\n"
+        "             '4': 'probar tambien a QUE matrices aplicarlo, no solo con que rango'}\n"
+        "show(protocolo)",
+        "Comprueba que una actualización de rango 2 se representa exactamente con r=2 y no con r=1.",
+        "Ajusta un modelo abierto pequeño con LoRA a varios rangos sobre la misma tarea. Compara métrica, "
+        "parámetros entrenados y tiempo. Localiza el rango donde deja de mejorar.",
+        "Guarda la tabla de parámetros por rango, la forma de la actualización factorizada y tu protocolo "
+        "de elección de r.",
+        "Ya se adapta barato. Falta que el modelo base quepa en la máquina.",
+    ),
+    "P49_qlora": _auto(
+        "quantization",
+        "Guardar cada peso con menos decimales. Suena a pérdida garantizada, y lo es — pero mucho menor "
+        "de lo que parece, porque los pesos se agrupan en un rango estrecho y no hace falta tanta "
+        "precisión para distinguirlos.",
+        "```text\n16 bits → 65 536 niveles      140 GB para un modelo de 70 000 M\n"
+        " 4 bits →     16 niveles       35 GB para el mismo modelo\n\n"
+        "QLoRA:  base cuantizada a 4 bits y CONGELADA + adaptadores LoRA en precisión alta\n```",
+        "1. ¿Cuánta memoria ahorra pasar de 16 a 4 bits?\n"
+        "2. ¿Qué le pasa al error de cuantización?\n"
+        "3. ¿Por qué los adaptadores van en precisión alta?",
+        "Pasar de 16 a 4 bits divide la memoria por cuatro, y el error de reconstrucción crece pero se "
+        "mantiene pequeño frente a la escala de los pesos. Los adaptadores van en precisión alta porque "
+        "son la parte que **se entrena**: ahí el gradiente sí necesita resolución.",
+        "El error de reconstrucción de los pesos **no es** el error del modelo. Un modelo puede tolerar "
+        "mucho ruido en pesos poco influyentes y muy poco en otros. Por eso la cuantización se valida "
+        "midiendo calidad en tareas, nunca por el error numérico.",
+        "Anti-patrón: elegir el número de bits mirando solo el error de reconstrucción.",
+        "print('error de pesos bajo ≠ modelo igual de bueno')\n"
+        "print('  · unos pocos pesos atipicos dominan el resultado y se cuantizan mal')\n"
+        "print('  · la degradacion aparece en tareas concretas, no en la media')\n"
+        "print('  · hay que medir en la tarea, no en la norma del error')",
+        "El protocolo mínimo para aceptar una cuantización:",
+        "protocolo = {'medir': 'la tarea real, no la perplejidad sola',\n"
+        "             'comparar': 'contra el modelo sin cuantizar, mismo prompt y semilla',\n"
+        "             'buscar': 'degradacion concentrada en casos raros, no solo la media',\n"
+        "             'reportar': 'bits, formato, que capas se dejaron sin cuantizar'}\n"
+        "show(protocolo)",
+        "Calcula cuánta VRAM necesitas para un modelo de 70 000 M a 4, 8 y 16 bits, y con cuál cabe en 24 GB.",
+        "Cuantiza un modelo abierto pequeño a 8 y 4 bits y compara su calidad en una tarea concreta, no "
+        "solo la perplejidad. Busca casos donde la degradación sea desproporcionada.",
+        "Guarda la tabla de bits, error y memoria, y tu protocolo de aceptación de una cuantización.",
+        "El modelo ya cabe y se adapta barato. Queda decidir cuándo un modelo es **aceptable**.",
+    ),
+    "P50_constitutional_ai": _auto(
+        "constitutional_ai",
+        "En vez de que miles de personas señalen una por una qué respuestas les gustan, se escriben los "
+        "principios y se le pide al modelo que critique y reescriba las suyas contra esa lista. Los "
+        "criterios dejan de estar implícitos en los datos y pasan a poder discutirse.",
+        "```text\nRLHF (P12):   preferencias humanas → modelo de recompensa → RL\n"
+        "             criterios IMPLÍCITOS en los datos, no inspeccionables\n\n"
+        "CAI       :   principios escritos → autocrítica → revisión → preferencias de IA → RL\n"
+        "             criterios EXPLÍCITOS y auditables\n```",
+        "1. ¿Cuántas etiquetas humanas nuevas hacen falta para la fase de crítica?\n"
+        "2. ¿Qué gana la organización al escribir los principios?\n"
+        "3. ¿Qué problema NO resuelve el método?",
+        "La revisión se produce con **cero etiquetas humanas nuevas**, y contra una lista que cualquiera "
+        "puede leer y objetar. Eso cambia la conversación: se discute sobre los principios, no sobre el "
+        "resultado opaco de un modelo de recompensa.",
+        "Y aquí está el límite honesto: **quién escribe los principios y con qué autoridad** es una "
+        "pregunta política que el método no resuelve. Lo que hace es hacerla explícita, que ya es "
+        "bastante más de lo que ofrecía RLHF.",
+        "Anti-patrón: creer que los principios explícitos hacen el sistema objetivo.",
+        "print('Explicito ≠ objetivo. Una constitucion es un conjunto de VALORES elegidos.')\n"
+        "print('Lo que cambia es que ahora se pueden leer, criticar y versionar,')\n"
+        "print('en vez de quedar sepultados en 100.000 comparaciones de anotadores.')",
+        "Lo que aporta y lo que no:",
+        "balance = {'aporta': ['criterios auditables', 'menos etiquetado humano',\n"
+        "                       'menos exposicion de anotadores a contenido danino'],\n"
+        "           'no_aporta': ['objetividad', 'legitimidad de quien escribe los principios',\n"
+        "                          'garantia de que el modelo los aplique bien']}\n"
+        "show(balance)",
+        "Añade un cuarto principio contradictorio con otro y observa qué debería hacer el sistema.",
+        "Escribe una constitución de cinco principios para un asistente de tu dominio. Genera 20 "
+        "respuestas, critícalas contra ella y mide cuántas mejoran, cuántas empeoran y cuántas quedan "
+        "igual. Documenta los conflictos entre principios.",
+        "Guarda la traza de crítica y revisión, y tu balance de lo que el método aporta y lo que no.",
+        "Ya hay criterios explícitos de comportamiento. Falta un criterio de **capacidad** que no se pueda "
+        "convencer con prosa.",
+    ),
+    "P51_swebench": _auto(
+        "swebench",
+        "La pregunta no es si el código parece correcto. Es si, aplicado al repositorio real, los tests "
+        "que ya existían pasan. Un test no se deja convencer.",
+        "```text\nBenchmarks previos:  problema autocontenido → ¿la salida coincide?\n"
+        "SWE-bench        :  incidencia REAL de un repo real\n"
+        "                     → aplicar el parche generado\n"
+        "                     → ejecutar los tests DEL PROPIO repositorio\n```",
+        "1. ¿Qué proporción «parece correcta» en el ejemplo? ¿Y cuál pasa los tests?\n"
+        "2. ¿Por qué es tan grande la diferencia?\n"
+        "3. ¿Basta con que compile?",
+        "Medido por apariencia el sistema resuelve mucho más que medido por tests. Esa brecha es el "
+        "problema entero: **los criterios blandos inflan**, y en programación es especialmente fácil que "
+        "algo parezca correcto y no lo sea.",
+        "El propio benchmark tiene una debilidad conocida: las incidencias son públicas y anteriores al "
+        "corte de datos de muchos modelos, así que hay riesgo de contaminación. Existen variantes "
+        "verificadas y filtradas justamente por eso.",
+        "Anti-patrón: reportar «resuelve el 60 %» sin decir con qué criterio.",
+        "criterios = {'parece correcto': 'juicio humano rapido o de otro modelo',\n"
+        "             'compila': 'necesario, muy lejos de suficiente',\n"
+        "             'tests pasan': 'el criterio del benchmark',\n"
+        "             'revision humana acepta': 'el criterio del mundo real, aun mas duro'}\n"
+        "for k, v in criterios.items():\n"
+        "    print(f'{k:<24} → {v}')",
+        "Un reporte creíble nombra el criterio y las condiciones:",
+        "reporte = {'criterio': 'tests del repositorio pasan',\n"
+        "           'conjunto': 'que subconjunto y de que fecha',\n"
+        "           'contaminacion': 'si se comprobo solapamiento con el corpus',\n"
+        "           'coste': 'llamadas al modelo e intentos por incidencia',\n"
+        "           'andamiaje': 'que agente/herramientas, no solo que modelo'}\n"
+        "show(reporte)",
+        "Calcula la tasa con cada criterio y ordénalos de más blando a más duro.",
+        "Toma cinco incidencias cerradas de un repositorio propio, pide a un modelo que las resuelva y "
+        "evalúa con los tests reales. Compara con tu impresión al leer el parche: mide tu propia brecha.",
+        "Guarda la tabla de tasas por criterio y tu formato de reporte con criterio, contaminación y coste.",
+        "Ya se puede medir capacidad con un criterio duro. Queda mirar dentro del modelo.",
+    ),
+    "P52_superposition": _auto(
+        "superposition",
+        "Ocho ejes y ochenta conceptos que guardar. No caben ortogonales, así que se colocan casi "
+        "ortogonales y se aceptan pequeñas interferencias. Por eso al mirar una neurona se ven varios "
+        "conceptos sin relación: no es un fallo, es la estrategia.",
+        "```text\nSi n_características > n_dimensiones, no pueden ser todas ortogonales.\n\n"
+        "En dimensión alta caben MUCHAS direcciones casi ortogonales:\n"
+        "    solape medio pequeño, pero no cero → interferencia\n\n"
+        "Consecuencia: una neurona responde a varios conceptos (polisemanticidad).\n```",
+        "1. ¿Cuántos conceptos ortogonales caben en 8 dimensiones?\n"
+        "2. ¿Y casi ortogonales?\n"
+        "3. ¿Qué se paga por guardar más de los que caben?",
+        "En 8 dimensiones caben 8 direcciones ortogonales, pero **80 casi ortogonales** con un solape "
+        "medio pequeño. Se paga con interferencia: los conceptos se pisan un poco. El modelo acepta ese "
+        "ruido a cambio de representar mucho más.",
+        "Esto explica por qué la interpretabilidad neurona a neurona fracasó durante años: se buscaba "
+        "una correspondencia que **no existe**. La unidad de significado no es la neurona, es una "
+        "dirección en el espacio de activaciones — y por eso se usan autoencoders dispersos para buscarla.",
+        "Anti-patrón: concluir que «la neurona 1 437 detecta perros».",
+        "print('Una neurona puede activarse con perros, con texto en aleman y con codigo Python.')\n"
+        "print('No es un fallo del modelo ni una casualidad: es superposicion.')\n"
+        "print('Buscar significado NEURONA a neurona es buscar en la base equivocada.')",
+        "Lo que sí se puede afirmar, y qué haría falta para más:",
+        "afirmaciones = {'sostenible': 'esta DIRECCION del espacio se activa con este concepto',\n"
+        "                'no_sostenible': 'esta NEURONA significa este concepto',\n"
+        "                'siguiente_paso': 'comprobar causalidad interviniendo sobre la direccion',\n"
+        "                'limite': 'que un autoencoder la encuentre no prueba que el modelo la USE'}\n"
+        "show(afirmaciones)",
+        "Comprueba cómo crece el solape máximo al pasar de 8 a 24 y a 80 conceptos en 8 dimensiones.",
+        "Entrena un autoencoder disperso sobre las activaciones de una capa de un modelo abierto pequeño "
+        "y examina las características que encuentra. Comprueba cuántas son interpretables y diseña una "
+        "intervención para verificar que son causales.",
+        "Guarda la tabla de solapes por número de conceptos y tu distinción entre lo que se puede afirmar "
+        "sobre una dirección y sobre una neurona.",
+        "Aquí termina el eje: 52 papers desde una máquina que ajusta pesos hasta la pregunta de qué hay "
+        "dentro de una que ya funciona. Lo posterior vive en la frontera, con fecha.",
+    ),
+})
+
+
 TRANSFORMER_SPECS: list[dict[str, Any]] = [
     {
         "id": "T01_recurrencia_vs_paralelismo",
@@ -3302,29 +3983,89 @@ def build_transformer_notebook(spec: dict[str, Any]) -> dict[str, Any]:
 # --------------------------------------------------------------------------- #
 
 
+RUTA_ETIQUETA = {
+    "ruta_minima": "🔗 cadena",
+    "ruta_ampliada": "📚 ampliada",
+    "ruta_representacion": "🔤 representación",
+    "ruta_agentes": "🤖 agentes",
+    "ruta_memoria": "🧠 memoria",
+    "ruta_arquitectura": "🏗️ arquitectura",
+    "ruta_evaluacion": "🛡️ evaluación",
+}
+
+
 def build_index(data: dict[str, Any]) -> str:
+    """Índice unificado: UNA tabla maestra ordenada por año, más vistas alternativas.
+
+    Los identificadores PXX son estables y se asignan al incorporar cada paper, así
+    que su orden es de incorporación y no significa nada. Para leer, lo que sirve es
+    el orden cronológico o el temático.
+    """
+    ruta_de = {}
+    for bloque in data.get("rutas", []):
+        for pid in data.get(bloque, []):
+            ruta_de[pid] = RUTA_ETIQUETA.get(bloque, bloque)
+
+    por_anio = sorted(data["papers"], key=lambda item: (item["year"], item["id"]))
     lines = [
         "# 📇 Índice de papers fundacionales",
         "",
         "> Generado por `python scripts/generate_papers.py`. No editar a mano.",
         "",
         f"**Papers:** {len(data['papers'])} · **Actualizado:** {data['updated']} · "
-        f"**Ruta mínima:** {' → '.join(data['ruta_minima'])}",
+        f"**Cobertura:** {por_anio[0]['year']}–{por_anio[-1]['year']}",
         "",
-        "## Tabla maestra",
+        "> [!NOTE]",
+        "> Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no",
+        "> se renumeran nunca, para no romper enlaces, notebooks ni evaluaciones. Por eso su orden",
+        "> es de incorporación y **no significa nada**. Para estudiar, usa el orden cronológico de",
+        "> esta tabla o la [vista temática](#vista-tematica).",
         "",
-        "| # | Paper | Año | Venue | Nivel | Motor | Ficha | Notebook |",
-        "|---|---|---:|---|:---:|---|---|---|",
+        "## 📅 Tabla maestra — todos los papers, por año",
+        "",
+        "| Año | # | Paper | Bloque | Nivel | Motor | Ficha | Notebook |",
+        "|---:|---|---|---|:---:|---|---|---|",
     ]
-    for item in data["papers"]:
+    for item in por_anio:
         lines.append(
-            f"| {item['id']} | {item['title_es']} | {item['year']} | {item['venue_type']} | "
-            f"{item['level']} | `{item['lab']}` | "
+            f"| **{item['year']}** | {item['id']} | {item['title_es']} "
+            f"| {ruta_de.get(item['id'], '—')} | {item['level']} | `{item['lab']}` | "
             f"[ficha](../foundational/{item['dir']}/README.md) | "
-            f"[notebook](../../notebooks/papers/{item['dir']}.ipynb) |"
+            f"[nb](../../notebooks/papers/{item['dir']}.ipynb) |"
         )
-    lines += ["", "## Qué resolvió cada uno", ""]
-    for item in data["papers"]:
+
+    lines += ["", '<a id="vista-tematica"></a>', "", "## 🧭 Vista temática — por bloque", ""]
+    for bloque in data.get("rutas", []):
+        ids = data.get(bloque, [])
+        if not ids:
+            continue
+        nota = data.get("notas_de_ruta", {}).get(bloque, "")
+        lines += [f"### {RUTA_ETIQUETA.get(bloque, bloque)}", "", nota, ""]
+        for pid in ids:
+            item = next(x for x in data["papers"] if x["id"] == pid)
+            lines.append(
+                f"- **{item['year']}** · [{item['id']} · {item['title_es']}]"
+                f"(../foundational/{item['dir']}/README.md) — {item['hito']}"
+            )
+        lines.append("")
+
+    if data.get("pendientes_de_ficha"):
+        lines += [
+            "## 🚧 En construcción",
+            "",
+            "Papers con **motor y notebook ya implementados y probados**, a los que les falta su",
+            "ficha de 18 secciones. No aparecen en la tabla maestra hasta estar completos, para que",
+            "el contrato del eje siga siendo verificable.",
+            "",
+            "| Año | # | Paper | Motor |",
+            "|---:|---|---|---|",
+        ]
+        for item in sorted(data["pendientes_de_ficha"], key=lambda x: x["anio"]):
+            lines.append(f"| {item['anio']} | {item['id']} | {item['titulo']} | `{item['motor']}` |")
+        lines.append("")
+
+    lines += ["## 📖 Qué resolvió cada uno", ""]
+    for item in por_anio:
         lines += [
             f"### {item['id']} · {item['title']} ({item['year']})",
             "",

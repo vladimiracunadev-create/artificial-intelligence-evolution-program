@@ -1894,6 +1894,285 @@
         }
       ],
       "consultado": "2026-08-16"
+    },
+    {
+      "id": "P34",
+      "dir": "P34_rope",
+      "slug": "rope-su-2021",
+      "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+      "title_es": "RoFormer: Transformer mejorado con codificación posicional rotatoria",
+      "authors": [
+        "Jianlin Su",
+        "Yu Lu",
+        "Shengfeng Pan",
+        "Ahmed Murtadha",
+        "Bo Wen",
+        "Yunfeng Liu"
+      ],
+      "year": 2021,
+      "venue": "arXiv:2104.09864",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "rope",
+      "hito": "La posición se codifica rotando, y la atención pasa a depender solo de la distancia relativa. Es la base de casi todo modelo actual.",
+      "problema": "La codificación sinusoidal del Transformer se SUMA al embedding y codifica posición absoluta; la atención no ve directamente la distancia entre dos tokens, que es lo que importa en lenguaje.",
+      "propuesta": "Rotar los vectores de consulta y clave en función de su posición, de modo que el producto escalar entre dos posiciones dependa únicamente de su diferencia.",
+      "keywords": [
+        "RoPE",
+        "posición relativa",
+        "rotación",
+        "contexto largo",
+        "decaimiento con la distancia"
+      ],
+      "anteriores": [
+        "P08"
+      ],
+      "posteriores": [
+        "P35",
+        "extensión de contexto por interpolación"
+      ],
+      "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer",
+        "classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2104.09864",
+          "url": "https://arxiv.org/abs/2104.09864"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Shaw et al. (2018), posición relativa en atención",
+          "url": "https://arxiv.org/abs/1803.02155"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P35",
+      "dir": "P35_flashattention",
+      "slug": "flashattention-dao-2022",
+      "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+      "title_es": "FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S",
+      "authors": [
+        "Tri Dao",
+        "Daniel Y. Fu",
+        "Stefano Ermon",
+        "Atri Rudra",
+        "Christopher Ré"
+      ],
+      "year": 2022,
+      "venue": "arXiv:2205.14135 · NeurIPS 2022",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L4",
+      "lab": "flashattention",
+      "hito": "El cuello de botella de la atención no eran los FLOPs sino las lecturas y escrituras a memoria. Y la solución es EXACTA, no aproximada.",
+      "problema": "Durante años se atacó el coste O(n²) de la atención con aproximaciones (dispersa, lineal), que perdían calidad y a menudo ni siquiera eran más rápidas en la práctica.",
+      "propuesta": "Reorganizar el cálculo por bloques que caben en la memoria rápida del chip, evitando materializar la matriz de atención completa en la memoria lenta.",
+      "keywords": [
+        "FlashAttention",
+        "consciencia de E/S",
+        "tiling",
+        "atención exacta",
+        "jerarquía de memoria",
+        "contexto largo"
+      ],
+      "anteriores": [
+        "P08",
+        "P34"
+      ],
+      "posteriores": [
+        "contexto largo en modelos de producción"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo",
+        "classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2205.14135",
+          "url": "https://arxiv.org/abs/2205.14135"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "P20 Mamba: la alternativa por arquitectura al mismo problema",
+          "url": "https://arxiv.org/abs/2312.00752"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P36",
+      "dir": "P36_lost_in_middle",
+      "slug": "lost-in-the-middle-liu-2023",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "title_es": "Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos",
+      "authors": [
+        "Nelson F. Liu",
+        "Kevin Lin",
+        "John Hewitt",
+        "Ashwin Paranjape",
+        "Michele Bevilacqua",
+        "Fabio Petroni",
+        "Percy Liang"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2307.03172 · TACL",
+      "venue_type": "preprint + revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "lost_in_middle",
+      "hito": "Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio.",
+      "problema": "La industria competía por anunciar ventanas de contexto cada vez mayores, sin medir si los modelos aprovechaban de verdad todo ese espacio.",
+      "propuesta": "Medirlo: colocar el mismo documento relevante en distintas posiciones del contexto y observar cómo cambia la exactitud.",
+      "keywords": [
+        "contexto largo",
+        "curva en U",
+        "primacía",
+        "recencia",
+        "recuperación",
+        "posición"
+      ],
+      "anteriores": [
+        "P10",
+        "P11",
+        "P35"
+      ],
+      "posteriores": [
+        "P37",
+        "evaluación de contexto largo"
+      ],
+      "clases_del_programa": [
+        "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos",
+        "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2307.03172",
+          "url": "https://arxiv.org/abs/2307.03172"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "P11 RAG: por qué el orden de los pasajes recuperados importa",
+          "url": "https://arxiv.org/abs/2005.11401"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P37",
+      "dir": "P37_memgpt",
+      "slug": "memgpt-packer-2023",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
+      "title_es": "MemGPT: modelos de lenguaje como sistemas operativos",
+      "authors": [
+        "Charles Packer",
+        "Sarah Wooders",
+        "Kevin Lin",
+        "Vivian Fang",
+        "Shishir G. Patil",
+        "Ion Stoica",
+        "Joseph E. Gonzalez"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2310.08560",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "memgpt",
+      "hito": "Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida.",
+      "problema": "La ventana de contexto es un límite duro. Ampliarla es caro y, como muestra P36, no garantiza que se use bien.",
+      "propuesta": "Gestionar el contexto como un sistema operativo gestiona la memoria: un contexto principal pequeño, un almacén externo grande, y el propio modelo decidiendo qué paginar mediante llamadas de función.",
+      "keywords": [
+        "MemGPT",
+        "memoria jerárquica",
+        "paginación",
+        "contexto virtual",
+        "llamadas de función",
+        "memoria de agente"
+      ],
+      "anteriores": [
+        "P11",
+        "P31",
+        "P36"
+      ],
+      "posteriores": [
+        "P16",
+        "gestión de contexto en agentes"
+      ],
+      "clases_del_programa": [
+        "classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo",
+        "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2310.08560",
+          "url": "https://arxiv.org/abs/2310.08560"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "P31 Generative Agents: la otra vía, recuperación puntuada",
+          "url": "https://arxiv.org/abs/2304.03442"
+        }
+      ],
+      "consultado": "2026-08-16"
+    },
+    {
+      "id": "P38",
+      "dir": "P38_vae",
+      "slug": "vae-kingma-welling-2013",
+      "title": "Auto-Encoding Variational Bayes",
+      "title_es": "Bayes variacional con autocodificación",
+      "authors": [
+        "Diederik P. Kingma",
+        "Max Welling"
+      ],
+      "year": 2013,
+      "venue": "arXiv:1312.6114 · ICLR 2014",
+      "venue_type": "preprint + conferencia",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "vae",
+      "hito": "Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.",
+      "problema": "Un modelo generativo con variables latentes exige muestrear, y muestrear es un nodo estocástico que bloquea el gradiente: no se podía entrenar por retropropagación.",
+      "propuesta": "Escribir la muestra como z = μ + σ·ε con ε de una normal fija: el azar queda fuera del camino del gradiente, y se optimiza una cota inferior de la verosimilitud (ELBO).",
+      "keywords": [
+        "VAE",
+        "reparametrización",
+        "ELBO",
+        "espacio latente",
+        "inferencia variacional"
+      ],
+      "anteriores": [
+        "P02"
+      ],
+      "posteriores": [
+        "P39",
+        "P17"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales",
+        "classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1312.6114",
+          "url": "https://arxiv.org/abs/1312.6114"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Rezende et al. (2014), derivación independiente y contemporánea",
+          "url": "https://arxiv.org/abs/1401.4082"
+        }
+      ],
+      "consultado": "2026-08-16"
     }
   ],
   "ruta_ampliada": [
@@ -1909,7 +2188,9 @@
     "ruta_ampliada": "P17–P22: cobertura que la cadena mínima no da (generativa, multimodal, escalado) y continuación hasta 2025. Ordenada por año.",
     "por_que_no_llega_a_2026": "El criterio de ascenso exige 12 meses desde la publicación (ver prompts/VIGILANCIA_DE_FRONTERA.md). Lo posterior vive en frontier/current-topics.yaml con fecha de revisión.",
     "ruta_representacion": "P23–P25: cómo el lenguaje pasó de vectores estáticos a representaciones contextuales y de ahí a un formato único texto → texto. Ordenada por año.",
-    "ruta_agentes": "P26–P33: decisión secuencial y agentes. Empieza en el refuerzo profundo y la búsqueda guiada —de donde viene la idea de agente— y llega al razonamiento deliberado, la memoria, las habilidades reutilizables y el multiagente. Ordenada por año."
+    "ruta_agentes": "P26–P33: decisión secuencial y agentes. Empieza en el refuerzo profundo y la búsqueda guiada —de donde viene la idea de agente— y llega al razonamiento deliberado, la memoria, las habilidades reutilizables y el multiagente. Ordenada por año.",
+    "ruta_memoria": "P34–P37: cómo se codifica la posición, por qué el contexto largo es viable, por qué tenerlo no basta y cómo se gestiona como memoria jerárquica.",
+    "ruta_arquitectura": "P38 en adelante: el andamiaje que hace entrenable todo lo demas. En construccion: los motores y notebooks de P39-P52 ya existen y estan probados; falta su ficha."
   },
   "ruta_representacion": [
     "P23",
@@ -1930,6 +2211,119 @@
     "ruta_minima",
     "ruta_ampliada",
     "ruta_representacion",
-    "ruta_agentes"
+    "ruta_agentes",
+    "ruta_memoria",
+    "ruta_arquitectura"
+  ],
+  "ruta_memoria": [
+    "P34",
+    "P35",
+    "P36",
+    "P37"
+  ],
+  "ruta_arquitectura": [
+    "P38"
+  ],
+  "ruta_evaluacion": [],
+  "orden_de_estudio": "Los identificadores son ESTABLES, no un orden de lectura: se asignan al incorporar un paper y nunca se renumeran, para no romper enlaces ni evaluaciones. Para leer, usa la vista cronológica o la temática de PAPERS_INDEX.md.",
+  "pendientes_de_ficha": [
+    {
+      "id": "P39",
+      "titulo": "Generative Adversarial Networks",
+      "anio": 2014,
+      "motor": "gan",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P40",
+      "titulo": "Dropout: A Simple Way to Prevent Neural Networks from Overfitting",
+      "anio": 2014,
+      "motor": "dropout",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P41",
+      "titulo": "Adam: A Method for Stochastic Optimization",
+      "anio": 2014,
+      "motor": "adam",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P42",
+      "titulo": "Explaining and Harnessing Adversarial Examples",
+      "anio": 2014,
+      "motor": "adversarial",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P43",
+      "titulo": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift",
+      "anio": 2015,
+      "motor": "batchnorm",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P44",
+      "titulo": "Deep Residual Learning for Image Recognition",
+      "anio": 2015,
+      "motor": "resnet",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P45",
+      "titulo": "Distilling the Knowledge in a Neural Network",
+      "anio": 2015,
+      "motor": "distillation",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P46",
+      "titulo": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "anio": 2020,
+      "motor": "vit",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P47",
+      "titulo": "Highly accurate protein structure prediction with AlphaFold",
+      "anio": 2021,
+      "motor": "alphafold",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P48",
+      "titulo": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "anio": 2021,
+      "motor": "lora",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P49",
+      "titulo": "QLoRA: Efficient Finetuning of Quantized LLMs",
+      "anio": 2023,
+      "motor": "quantization",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P50",
+      "titulo": "Constitutional AI: Harmlessness from AI Feedback",
+      "anio": 2022,
+      "motor": "constitutional_ai",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P51",
+      "titulo": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "anio": 2023,
+      "motor": "swebench",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    },
+    {
+      "id": "P52",
+      "titulo": "Towards Monosemanticity: Decomposing Language Models With Dictionary Learning",
+      "anio": 2023,
+      "motor": "superposition",
+      "estado": "motor y notebook listos; falta la ficha de 18 secciones"
+    }
   ]
 }

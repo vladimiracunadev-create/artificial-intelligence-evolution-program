@@ -232,6 +232,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs* (NF4): <https://arxiv.org/abs/2305.14314>
 - llama.cpp (formato GGUF y runtime local): <https://github.com/ggerganov/llama.cpp>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P35 · FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S](../../../papers/foundational/P35_flashattention/README.md) | 2022 | El cuello de botella de la atención no eran los FLOPs sino las lecturas y escrituras a memoria. Y la solución es EXACTA, no aproximada. | [notebook](../../../notebooks/papers/P35_flashattention.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior
