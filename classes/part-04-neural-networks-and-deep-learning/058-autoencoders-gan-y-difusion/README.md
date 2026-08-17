@@ -248,6 +248,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
 | [P38 · Bayes variacional con autocodificación](../../../papers/foundational/P38_vae/README.md) | 2013 | Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo. | [notebook](../../../notebooks/papers/P38_vae.ipynb) |
+| [P39 · Redes generativas adversarias](../../../papers/foundational/P39_gan/README.md) | 2014 | Convierte la generación en un juego: dos redes compiten y ninguna necesita una verosimilitud explícita. | [notebook](../../../notebooks/papers/P39_gan.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

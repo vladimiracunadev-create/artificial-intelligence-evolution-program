@@ -60,6 +60,20 @@ Pregunta que me quedó abierta:
 | P36 | | | ⬜ pendiente |
 | P37 | | | ⬜ pendiente |
 | P38 | | | ⬜ pendiente |
+| P39 | | | ⬜ pendiente |
+| P40 | | | ⬜ pendiente |
+| P41 | | | ⬜ pendiente |
+| P42 | | | ⬜ pendiente |
+| P43 | | | ⬜ pendiente |
+| P44 | | | ⬜ pendiente |
+| P45 | | | ⬜ pendiente |
+| P46 | | | ⬜ pendiente |
+| P47 | | | ⬜ pendiente |
+| P48 | | | ⬜ pendiente |
+| P49 | | | ⬜ pendiente |
+| P50 | | | ⬜ pendiente |
+| P51 | | | ⬜ pendiente |
+| P52 | | | ⬜ pendiente |
 
 ---
 

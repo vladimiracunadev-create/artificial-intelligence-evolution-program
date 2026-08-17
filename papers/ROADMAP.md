@@ -144,7 +144,7 @@ Lo que aún no está y se declara como tal, en vez de fingir completitud:
 
 | Pendiente | Estado |
 |---|---|
-| Páginas HTML del eje dentro del sitio PWA | ✅ 36 páginas en `site/papers/`, con buscador en la portada |
+| Páginas HTML del eje dentro del sitio PWA | ✅ 66 páginas en `site/papers/`, con buscador en la portada |
 | PDF imprimible del eje completo | ✅ [`docs/pdf/papers-fundacionales.pdf`](../docs/pdf/papers-fundacionales.pdf), 201 páginas |
 | Anexos matemáticos con ejemplos resueltos | ✅ 5 anexos en [`annexes/`](annexes/README.md) |
 | Enlaces de vuelta clase → paper | ✅ 27 clases, generados y verificados en CI |

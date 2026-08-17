@@ -2,7 +2,7 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 38 · **Actualizado:** 2026-08-16 · **Cobertura:** 1958–2025
+**Papers:** 52 · **Actualizado:** 2026-08-16 · **Cobertura:** 1958–2025
 
 > [!NOTE]
 > Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no
@@ -23,7 +23,14 @@
 | **2014** | P06 | Aprendizaje de secuencia a secuencia con redes neuronales | 🔗 cadena | L3 | `seq2seq` | [ficha](../foundational/P06_seq2seq/README.md) | [nb](../../notebooks/papers/P06_seq2seq.ipynb) |
 | **2014** | P07 | Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir | 🔗 cadena | L3 | `bahdanau` | [ficha](../foundational/P07_attention_bahdanau/README.md) | [nb](../../notebooks/papers/P07_attention_bahdanau.ipynb) |
 | **2014** | P23 | GloVe: vectores globales para representación de palabras | 🔤 representación | L2 | `glove` | [ficha](../foundational/P23_glove/README.md) | [nb](../../notebooks/papers/P23_glove.ipynb) |
+| **2014** | P39 | Redes generativas adversarias | 🏗️ arquitectura | L3 | `gan` | [ficha](../foundational/P39_gan/README.md) | [nb](../../notebooks/papers/P39_gan.ipynb) |
+| **2014** | P40 | Dropout: una forma simple de evitar el sobreajuste en redes neuronales | 🏗️ arquitectura | L2 | `dropout` | [ficha](../foundational/P40_dropout/README.md) | [nb](../../notebooks/papers/P40_dropout.ipynb) |
+| **2014** | P41 | Adam: un método de optimización estocástica | 🏗️ arquitectura | L2 | `adam` | [ficha](../foundational/P41_adam/README.md) | [nb](../../notebooks/papers/P41_adam.ipynb) |
+| **2014** | P42 | Explicar y aprovechar los ejemplos adversarios | 🏗️ arquitectura | L3 | `adversarial` | [ficha](../foundational/P42_adversarial/README.md) | [nb](../../notebooks/papers/P42_adversarial.ipynb) |
 | **2015** | P26 | Control a nivel humano mediante aprendizaje por refuerzo profundo | 🤖 agentes | L3 | `dqn` | [ficha](../foundational/P26_dqn/README.md) | [nb](../../notebooks/papers/P26_dqn.ipynb) |
+| **2015** | P43 | Normalización por lotes: acelerar el entrenamiento profundo | 🏗️ arquitectura | L2 | `batchnorm` | [ficha](../foundational/P43_batchnorm/README.md) | [nb](../../notebooks/papers/P43_batchnorm.ipynb) |
+| **2015** | P44 | Aprendizaje residual profundo para reconocimiento de imágenes | 🏗️ arquitectura | L3 | `resnet` | [ficha](../foundational/P44_resnet/README.md) | [nb](../../notebooks/papers/P44_resnet.ipynb) |
+| **2015** | P45 | Destilar el conocimiento de una red neuronal | 🏗️ arquitectura | L2 | `distillation` | [ficha](../foundational/P45_distillation/README.md) | [nb](../../notebooks/papers/P45_distillation.ipynb) |
 | **2016** | P27 | Dominar el go con redes neuronales profundas y búsqueda en árbol | 🤖 agentes | L4 | `alphago` | [ficha](../foundational/P27_alphago/README.md) | [nb](../../notebooks/papers/P27_alphago.ipynb) |
 | **2017** | P08 | La atención es todo lo que necesitas | 🔗 cadena | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [nb](../../notebooks/papers/P08_transformer.ipynb) |
 | **2018** | P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 🔗 cadena | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [nb](../../notebooks/papers/P09_bert.ipynb) |
@@ -32,13 +39,17 @@
 | **2020** | P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 🔗 cadena | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [nb](../../notebooks/papers/P10_gpt3.ipynb) |
 | **2020** | P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 🔗 cadena | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [nb](../../notebooks/papers/P11_rag.ipynb) |
 | **2020** | P17 | Modelos probabilísticos de difusión con eliminación de ruido | 📚 ampliada | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [nb](../../notebooks/papers/P17_diffusion.ipynb) |
+| **2020** | P46 | Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala | 🏗️ arquitectura | L3 | `vit` | [ficha](../foundational/P46_vit/README.md) | [nb](../../notebooks/papers/P46_vit.ipynb) |
 | **2021** | P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 📚 ampliada | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [nb](../../notebooks/papers/P18_clip.ipynb) |
 | **2021** | P34 | RoFormer: Transformer mejorado con codificación posicional rotatoria | 🧠 memoria | L3 | `rope` | [ficha](../foundational/P34_rope/README.md) | [nb](../../notebooks/papers/P34_rope.ipynb) |
+| **2021** | P47 | Predicción de estructura de proteínas de alta precisión con AlphaFold | 🏗️ arquitectura | L4 | `alphafold` | [ficha](../foundational/P47_alphafold/README.md) | [nb](../../notebooks/papers/P47_alphafold.ipynb) |
+| **2021** | P48 | LoRA: adaptación de rango bajo de modelos de lenguaje grandes | 🏗️ arquitectura | L3 | `lora` | [ficha](../foundational/P48_lora/README.md) | [nb](../../notebooks/papers/P48_lora.ipynb) |
 | **2022** | P12 | Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana | 🔗 cadena | L3 | `rlhf` | [ficha](../foundational/P12_instructgpt_rlhf/README.md) | [nb](../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
 | **2022** | P13 | ReAct: sinergia entre razonar y actuar en modelos de lenguaje | 🔗 cadena | L2 | `react` | [ficha](../foundational/P13_react/README.md) | [nb](../../notebooks/papers/P13_react.ipynb) |
 | **2022** | P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 📚 ampliada | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [nb](../../notebooks/papers/P19_scaling_laws.ipynb) |
 | **2022** | P28 | El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | 🤖 agentes | L2 | `cot` | [ficha](../foundational/P28_chain_of_thought/README.md) | [nb](../../notebooks/papers/P28_chain_of_thought.ipynb) |
 | **2022** | P35 | FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S | 🧠 memoria | L4 | `flashattention` | [ficha](../foundational/P35_flashattention/README.md) | [nb](../../notebooks/papers/P35_flashattention.ipynb) |
+| **2022** | P50 | IA constitucional: inocuidad a partir de retroalimentación de IA | 🛡️ evaluación | L4 | `constitutional_ai` | [ficha](../foundational/P50_constitutional_ai/README.md) | [nb](../../notebooks/papers/P50_constitutional_ai.ipynb) |
 | **2023** | P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 🔗 cadena | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [nb](../../notebooks/papers/P14_toolformer.ipynb) |
 | **2023** | P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 🔗 cadena | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [nb](../../notebooks/papers/P15_dpo.ipynb) |
 | **2023** | P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 🔗 cadena | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [nb](../../notebooks/papers/P16_agentic_systems.ipynb) |
@@ -50,6 +61,9 @@
 | **2023** | P33 | AutoGen: aplicaciones de nueva generación mediante conversación multiagente | 🤖 agentes | L4 | `autogen` | [ficha](../foundational/P33_autogen/README.md) | [nb](../../notebooks/papers/P33_autogen.ipynb) |
 | **2023** | P36 | Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos | 🧠 memoria | L3 | `lost_in_middle` | [ficha](../foundational/P36_lost_in_middle/README.md) | [nb](../../notebooks/papers/P36_lost_in_middle.ipynb) |
 | **2023** | P37 | MemGPT: modelos de lenguaje como sistemas operativos | 🧠 memoria | L3 | `memgpt` | [ficha](../foundational/P37_memgpt/README.md) | [nb](../../notebooks/papers/P37_memgpt.ipynb) |
+| **2023** | P49 | QLoRA: ajuste fino eficiente de modelos cuantizados | 🏗️ arquitectura | L3 | `quantization` | [ficha](../foundational/P49_qlora/README.md) | [nb](../../notebooks/papers/P49_qlora.ipynb) |
+| **2023** | P51 | SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub? | 🛡️ evaluación | L3 | `swebench` | [ficha](../foundational/P51_swebench/README.md) | [nb](../../notebooks/papers/P51_swebench.ipynb) |
+| **2023** | P52 | Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario | 🛡️ evaluación | L5 | `superposition` | [ficha](../foundational/P52_superposition/README.md) | [nb](../../notebooks/papers/P52_superposition.ipynb) |
 | **2024** | P21 | Mixtral: mezcla dispersa de expertos | 📚 ampliada | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [nb](../../notebooks/papers/P21_moe.ipynb) |
 | **2025** | P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 📚 ampliada | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [nb](../../notebooks/papers/P22_deepseek_r1.ipynb) |
 
@@ -121,32 +135,28 @@ P34–P37: cómo se codifica la posición, por qué el contexto largo es viable,
 
 ### 🏗️ arquitectura
 
-P38 en adelante: el andamiaje que hace entrenable todo lo demas. En construccion: los motores y notebooks de P39-P52 ya existen y estan probados; falta su ficha.
+P38–P49: el andamiaje que hace entrenable todo lo demás — generativa clásica, regularización, optimización, robustez, normalización, profundidad, compresión, visión con Transformer, ciencia aplicada y adaptación eficiente.
 
 - **2013** · [P38 · Bayes variacional con autocodificación](../foundational/P38_vae/README.md) — Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.
+- **2014** · [P39 · Redes generativas adversarias](../foundational/P39_gan/README.md) — Convierte la generación en un juego: dos redes compiten y ninguna necesita una verosimilitud explícita.
+- **2014** · [P40 · Dropout: una forma simple de evitar el sobreajuste en redes neuronales](../foundational/P40_dropout/README.md) — Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos.
+- **2014** · [P41 · Adam: un método de optimización estocástica](../foundational/P41_adam/README.md) — Un paso de aprendizaje por dimensión, adaptado a la escala de su propio gradiente. Es el optimizador por defecto de casi todo lo que vino después.
+- **2014** · [P42 · Explicar y aprovechar los ejemplos adversarios](../foundational/P42_adversarial/README.md) — Una perturbación imperceptible cambia la predicción. Y la causa no es la profundidad: es la linealidad en dimensión alta.
+- **2015** · [P43 · Normalización por lotes: acelerar el entrenamiento profundo](../foundational/P43_batchnorm/README.md) — Normalizar las activaciones dentro de la red permite tasas de aprendizaje mucho mayores y hace el entrenamiento profundo mucho menos frágil.
+- **2015** · [P44 · Aprendizaje residual profundo para reconocimiento de imágenes](../foundational/P44_resnet/README.md) — El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad.
+- **2015** · [P45 · Destilar el conocimiento de una red neuronal](../foundational/P45_distillation/README.md) — Las probabilidades del maestro contienen más información que la etiqueta correcta: el modelo pequeño aprende de esa estructura.
+- **2020** · [P46 · Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala](../foundational/P46_vit/README.md) — Trata la imagen como una secuencia de parches y aplica un Transformer puro: la convolución deja de ser imprescindible en visión.
+- **2021** · [P47 · Predicción de estructura de proteínas de alta precisión con AlphaFold](../foundational/P47_alphafold/README.md) — Resuelve en la práctica un problema abierto de cincuenta años en biología, y demuestra que la IA puede producir conocimiento científico, no solo productos.
+- **2021** · [P48 · LoRA: adaptación de rango bajo de modelos de lenguaje grandes](../foundational/P48_lora/README.md) — Ajustar un modelo enorme entrenando una fracción diminuta de parámetros, sin coste añadido en inferencia.
+- **2023** · [P49 · QLoRA: ajuste fino eficiente de modelos cuantizados](../foundational/P49_qlora/README.md) — Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo.
 
-## 🚧 En construcción
+### 🛡️ evaluación
 
-Papers con **motor y notebook ya implementados y probados**, a los que les falta su
-ficha de 18 secciones. No aparecen en la tabla maestra hasta estar completos, para que
-el contrato del eje siga siendo verificable.
+P50–P52: cómo se decide que un modelo es aceptable — principios explícitos, criterios de evaluación verificables e interpretabilidad de lo que hay dentro.
 
-| Año | # | Paper | Motor |
-|---:|---|---|---|
-| 2014 | P39 | Generative Adversarial Networks | `gan` |
-| 2014 | P40 | Dropout: A Simple Way to Prevent Neural Networks from Overfitting | `dropout` |
-| 2014 | P41 | Adam: A Method for Stochastic Optimization | `adam` |
-| 2014 | P42 | Explaining and Harnessing Adversarial Examples | `adversarial` |
-| 2015 | P43 | Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift | `batchnorm` |
-| 2015 | P44 | Deep Residual Learning for Image Recognition | `resnet` |
-| 2015 | P45 | Distilling the Knowledge in a Neural Network | `distillation` |
-| 2020 | P46 | An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale | `vit` |
-| 2021 | P47 | Highly accurate protein structure prediction with AlphaFold | `alphafold` |
-| 2021 | P48 | LoRA: Low-Rank Adaptation of Large Language Models | `lora` |
-| 2022 | P50 | Constitutional AI: Harmlessness from AI Feedback | `constitutional_ai` |
-| 2023 | P49 | QLoRA: Efficient Finetuning of Quantized LLMs | `quantization` |
-| 2023 | P51 | SWE-bench: Can Language Models Resolve Real-World GitHub Issues? | `swebench` |
-| 2023 | P52 | Towards Monosemanticity: Decomposing Language Models With Dictionary Learning | `superposition` |
+- **2022** · [P50 · IA constitucional: inocuidad a partir de retroalimentación de IA](../foundational/P50_constitutional_ai/README.md) — Sustituye parte del juicio humano por un conjunto de principios explícitos y auditables, y por la autocrítica del modelo.
+- **2023** · [P51 · SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub?](../foundational/P51_swebench/README.md) — Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan.
+- **2023** · [P52 · Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario](../foundational/P52_superposition/README.md) — Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables.
 
 ## 📖 Qué resolvió cada uno
 
@@ -240,6 +250,46 @@ el contrato del eje siga siendo verificable.
 - **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 - **Fuentes primarias:** [ACL Anthology (EMNLP 2014)](https://aclanthology.org/D14-1162/) · [DOI](https://doi.org/10.3115/v1/D14-1162)
 
+### P39 · Generative Adversarial Networks (2014)
+
+- **Autoría:** Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, y otros
+- **Problema anterior:** Los modelos generativos exigían definir y optimizar una verosimilitud, lo que obligaba a aproximaciones costosas o producía muestras borrosas.
+- **Propuesta:** Entrenar un generador contra un discriminador en un juego minimax: el generador gana cuando el discriminador ya no distingue lo real de lo sintético.
+- **Hito:** Convierte la generación en un juego: dos redes compiten y ninguna necesita una verosimilitud explícita.
+- **Conceptos:** GAN, minimax, discriminador, colapso de modos, entrenamiento adversario
+- **Clases del programa:** [089](../../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md), [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- **Fuentes primarias:** [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
+
+### P40 · Dropout: A Simple Way to Prevent Neural Networks from Overfitting (2014)
+
+- **Autoría:** Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, Ruslan Salakhutdinov
+- **Problema anterior:** Las redes grandes memorizaban el conjunto de entrenamiento, y las unidades desarrollaban co-adaptaciones frágiles: una función solo servía si su 'socia' estaba presente.
+- **Propuesta:** En cada paso, poner a cero cada unidad con probabilidad p. Ninguna función puede depender de una unidad concreta, así que la red aprende representaciones redundantes.
+- **Hito:** Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos.
+- **Conceptos:** dropout, regularización, co-adaptación, ensamblado, sobreajuste
+- **Clases del programa:** [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Fuentes primarias:** [JMLR 15(56)](https://jmlr.org/papers/v15/srivastava14a.html)
+
+### P41 · Adam: A Method for Stochastic Optimization (2014)
+
+- **Autoría:** Diederik P. Kingma, Jimmy Ba
+- **Problema anterior:** SGD usa la misma tasa de aprendizaje en todas las direcciones. En un problema mal condicionado, o oscila en las direcciones de mucha curvatura o se arrastra en las de poca.
+- **Propuesta:** Mantener medias móviles del gradiente (primer momento) y de su cuadrado (segundo momento), con corrección de sesgo, y normalizar el paso de cada coordenada por su magnitud típica.
+- **Hito:** Un paso de aprendizaje por dimensión, adaptado a la escala de su propio gradiente. Es el optimizador por defecto de casi todo lo que vino después.
+- **Conceptos:** Adam, optimización adaptativa, momentos, corrección de sesgo, tasa de aprendizaje
+- **Clases del programa:** [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
+- **Fuentes primarias:** [arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
+
+### P42 · Explaining and Harnessing Adversarial Examples (2014)
+
+- **Autoría:** Ian J. Goodfellow, Jonathon Shlens, Christian Szegedy
+- **Problema anterior:** Szegedy et al. (2013) habían descubierto que perturbaciones minúsculas engañaban a las redes, y se atribuía a la extrema no linealidad de los modelos profundos.
+- **Propuesta:** Mostrar que la explicación es la contraria —el comportamiento demasiado LINEAL en alta dimensión— y derivar de ahí un ataque de un solo paso (FGSM) y una defensa por entrenamiento adversario.
+- **Hito:** Una perturbación imperceptible cambia la predicción. Y la causa no es la profundidad: es la linealidad en dimensión alta.
+- **Conceptos:** ejemplos adversarios, FGSM, robustez, linealidad, entrenamiento adversario
+- **Clases del programa:** [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- **Fuentes primarias:** [arXiv:1412.6572](https://arxiv.org/abs/1412.6572)
+
 ### P26 · Human-level control through deep reinforcement learning (2015)
 
 - **Autoría:** Volodymyr Mnih, Koray Kavukcuoglu, David Silver, y otros (DeepMind)
@@ -249,6 +299,36 @@ el contrato del eje siga siendo verificable.
 - **Conceptos:** DQN, Q-learning, repetición de experiencia, red objetivo, Atari, refuerzo profundo
 - **Clases del programa:** [029](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md), [030](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md)
 - **Fuentes primarias:** [DOI (Nature 518, 529–533)](https://doi.org/10.1038/nature14236)
+
+### P43 · Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (2015)
+
+- **Autoría:** Sergey Ioffe, Christian Szegedy
+- **Problema anterior:** Entrenar redes profundas exigía inicializaciones cuidadosas y tasas de aprendizaje pequeñas: la distribución de las activaciones de cada capa se desplazaba durante el entrenamiento.
+- **Propuesta:** Normalizar cada activación usando la media y la varianza del minilote, y añadir dos parámetros aprendidos (γ, β) para que la red pueda deshacer la normalización si le conviene.
+- **Hito:** Normalizar las activaciones dentro de la red permite tasas de aprendizaje mucho mayores y hace el entrenamiento profundo mucho menos frágil.
+- **Conceptos:** normalización por lotes, activaciones, tasa de aprendizaje, γ y β, estabilidad
+- **Clases del programa:** [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Fuentes primarias:** [arXiv:1502.03167](https://arxiv.org/abs/1502.03167)
+
+### P44 · Deep Residual Learning for Image Recognition (2015)
+
+- **Autoría:** Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+- **Problema anterior:** Al pasar de 20 a 56 capas, el error de ENTRENAMIENTO subía. No era sobreajuste: era que las redes muy profundas se habían vuelto imposibles de optimizar.
+- **Propuesta:** Que cada bloque aprenda un residuo F(x) y la salida sea F(x) + x. Si la capa no aporta, aprender F ≈ 0 es fácil, y el gradiente siempre tiene una ruta directa.
+- **Hito:** El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad.
+- **Conceptos:** ResNet, conexión residual, atajo identidad, degradación, profundidad
+- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Fuentes primarias:** [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
+
+### P45 · Distilling the Knowledge in a Neural Network (2015)
+
+- **Autoría:** Geoffrey Hinton, Oriol Vinyals, Jeff Dean
+- **Problema anterior:** Los modelos grandes o los conjuntos de modelos daban los mejores resultados pero eran caros de servir, y entrenar el modelo pequeño con las etiquetas duras daba mucho peor resultado.
+- **Propuesta:** Entrenar el modelo pequeño para reproducir la distribución completa del maestro, suavizada con una temperatura que revela la estructura de similitud entre clases.
+- **Hito:** Las probabilidades del maestro contienen más información que la etiqueta correcta: el modelo pequeño aprende de esa estructura.
+- **Conceptos:** destilación, objetivos suaves, temperatura, conocimiento oscuro, compresión de modelos
+- **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md)
+- **Fuentes primarias:** [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 
 ### P27 · Mastering the game of Go with deep neural networks and tree search (2016)
 
@@ -330,6 +410,16 @@ el contrato del eje siga siendo verificable.
 - **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
 - **Fuentes primarias:** [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
 
+### P46 · An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (2020)
+
+- **Autoría:** Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, y otros
+- **Problema anterior:** La convolución traía de fábrica localidad y equivarianza a la traslación, y se asumía que sin esos sesgos inductivos la visión no funcionaría.
+- **Propuesta:** Partir la imagen en parches, proyectarlos como si fueran tokens, añadir codificación posicional y aplicar el encoder del Transformer sin más.
+- **Hito:** Trata la imagen como una secuencia de parches y aplica un Transformer puro: la convolución deja de ser imprescindible en visión.
+- **Conceptos:** ViT, parches, sesgo inductivo, preentrenamiento a escala, visión
+- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
+- **Fuentes primarias:** [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)
+
 ### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
 
 - **Autoría:** Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, y otros (OpenAI)
@@ -349,6 +439,26 @@ el contrato del eje siga siendo verificable.
 - **Conceptos:** RoPE, posición relativa, rotación, contexto largo, decaimiento con la distancia
 - **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [079](../../classes/part-06-foundation-models-and-llm-engineering/079-prompting-contexto-y-resultados-estructurados/README.md)
 - **Fuentes primarias:** [arXiv:2104.09864](https://arxiv.org/abs/2104.09864)
+
+### P47 · Highly accurate protein structure prediction with AlphaFold (2021)
+
+- **Autoría:** John Jumper, Richard Evans, Alexander Pritzel, y otros (DeepMind)
+- **Problema anterior:** Predecir la estructura tridimensional de una proteína a partir de su secuencia de aminoácidos llevaba décadas sin resolverse, y determinarla experimentalmente cuesta meses o años por proteína.
+- **Propuesta:** Una arquitectura que razona conjuntamente sobre alineamientos múltiples de secuencias y sobre representaciones de pares de residuos, con un módulo que produce coordenadas 3D directamente.
+- **Hito:** Resuelve en la práctica un problema abierto de cincuenta años en biología, y demuestra que la IA puede producir conocimiento científico, no solo productos.
+- **Conceptos:** AlphaFold, plegamiento de proteínas, estructura, atención sobre pares, IA para ciencia
+- **Clases del programa:** [181](../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md)
+- **Fuentes primarias:** [DOI (Nature 596, 583–589)](https://doi.org/10.1038/s41586-021-03819-2)
+
+### P48 · LoRA: Low-Rank Adaptation of Large Language Models (2021)
+
+- **Autoría:** Edward J. Hu, Yelong Shen, Phillip Wallis, y otros
+- **Problema anterior:** El ajuste fino completo exige una copia entera del modelo por tarea: inviable en almacenamiento y en memoria de entrenamiento cuando el modelo tiene miles de millones de parámetros.
+- **Propuesta:** Congelar los pesos originales y aprender una actualización factorizada de rango bajo, W' = W + BA, que al desplegar se puede fusionar con W.
+- **Hito:** Ajustar un modelo enorme entrenando una fracción diminuta de parámetros, sin coste añadido en inferencia.
+- **Conceptos:** LoRA, rango bajo, adaptación eficiente, PEFT, adaptadores
+- **Clases del programa:** [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
+- **Fuentes primarias:** [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
 
 ### P12 · Training language models to follow instructions with human feedback (2022)
 
@@ -399,6 +509,16 @@ el contrato del eje siga siendo verificable.
 - **Conceptos:** FlashAttention, consciencia de E/S, tiling, atención exacta, jerarquía de memoria, contexto largo
 - **Clases del programa:** [081](../../classes/part-06-foundation-models-and-llm-engineering/081-aceleradores-memoria-y-el-limite-real-del-computo/README.md), [085](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
 - **Fuentes primarias:** [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)
+
+### P50 · Constitutional AI: Harmlessness from AI Feedback (2022)
+
+- **Autoría:** Yuntao Bai, Saurav Kadavath, Sandipan Kundu, y otros (Anthropic)
+- **Problema anterior:** RLHF depende de miles de comparaciones humanas: es caro, expone a los anotadores a contenido dañino, y los criterios quedan implícitos en los datos, sin poder inspeccionarse ni discutirse.
+- **Propuesta:** Escribir los principios de forma explícita, hacer que el modelo critique y revise sus propias respuestas contra ellos, y usar preferencias generadas por IA para la fase de refuerzo.
+- **Hito:** Sustituye parte del juicio humano por un conjunto de principios explícitos y auditables, y por la autocrítica del modelo.
+- **Conceptos:** IA constitucional, RLAIF, autocrítica, principios explícitos, inocuidad
+- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
+- **Fuentes primarias:** [arXiv:2212.08073](https://arxiv.org/abs/2212.08073)
 
 ### P14 · Toolformer: Language Models Can Teach Themselves to Use Tools (2023)
 
@@ -509,6 +629,36 @@ el contrato del eje siga siendo verificable.
 - **Conceptos:** MemGPT, memoria jerárquica, paginación, contexto virtual, llamadas de función, memoria de agente
 - **Clases del programa:** [108](../../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md), [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)
 - **Fuentes primarias:** [arXiv:2310.08560](https://arxiv.org/abs/2310.08560)
+
+### P49 · QLoRA: Efficient Finetuning of Quantized LLMs (2023)
+
+- **Autoría:** Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, Luke Zettlemoyer
+- **Problema anterior:** LoRA reduce los parámetros entrenables, pero el modelo base seguía teniendo que caber en memoria en precisión alta: eso dejaba fuera a casi todo el mundo.
+- **Propuesta:** Cuantizar el modelo base congelado a 4 bits con un formato adaptado a la distribución de los pesos, y entrenar encima adaptadores LoRA en precisión alta.
+- **Hito:** Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo.
+- **Conceptos:** QLoRA, cuantización de 4 bits, NF4, ajuste eficiente, memoria
+- **Clases del programa:** [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md), [085](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
+- **Fuentes primarias:** [arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
+
+### P51 · SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (2023)
+
+- **Autoría:** Carlos E. Jimenez, John Yang, Alexander Wettig, y otros
+- **Problema anterior:** Los benchmarks de programación usaban problemas de juguete autocontenidos y se saturaban rápido; no medían nada parecido al trabajo real de mantener un repositorio.
+- **Propuesta:** Construir el conjunto a partir de incidencias y parches reales de proyectos populares, y evaluar con un criterio objetivo: aplicar el parche generado y ejecutar los tests del propio repositorio.
+- **Hito:** Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan.
+- **Conceptos:** SWE-bench, evaluación, tests como criterio, agentes de programación, contaminación
+- **Clases del programa:** [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md), [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)
+- **Fuentes primarias:** [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
+
+### P52 · Towards Monosemanticity: Decomposing Language Models With Dictionary Learning (2023)
+
+- **Autoría:** Trenton Bricken, Adly Templeton, Joshua Batson, y otros (Anthropic)
+- **Problema anterior:** Al inspeccionar neuronas individuales de un modelo se encuentra que responden a conceptos no relacionados entre sí. La interpretabilidad neurona a neurona no funcionaba, y no se sabía por qué.
+- **Propuesta:** La hipótesis de superposición: el modelo representa MÁS características que dimensiones tiene, como direcciones casi ortogonales con interferencia. Y un autoencoder disperso puede recuperar esas direcciones.
+- **Hito:** Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables.
+- **Conceptos:** superposición, monosemanticidad, autoencoder disperso, interpretabilidad mecanicista, características
+- **Clases del programa:** [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)
+- **Fuentes primarias:** [Transformer Circuits Thread (2023)](https://transformer-circuits.pub/2023/monosemantic-features)
 
 ### P21 · Mixtral of Experts (2024)
 

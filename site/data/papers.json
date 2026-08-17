@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-16",
-  "paper_count": 38,
+  "paper_count": 52,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -1008,6 +1008,351 @@
         "inferencia variacional"
       ],
       "notebook": "notebooks/papers/P38_vae.ipynb"
+    },
+    {
+      "id": "P39",
+      "page": "P39_gan.html",
+      "titulo": "Redes generativas adversarias",
+      "original": "Generative Adversarial Networks",
+      "autoria": [
+        "Ian J. Goodfellow",
+        "Jean Pouget-Abadie",
+        "Mehdi Mirza",
+        "y otros"
+      ],
+      "anio": 2014,
+      "venue": "arXiv:1406.2661 · NeurIPS 2014",
+      "nivel": "L3",
+      "motor": "gan",
+      "hito": "Convierte la generación en un juego: dos redes compiten y ninguna necesita una verosimilitud explícita.",
+      "keywords": [
+        "GAN",
+        "minimax",
+        "discriminador",
+        "colapso de modos",
+        "entrenamiento adversario"
+      ],
+      "notebook": "notebooks/papers/P39_gan.ipynb"
+    },
+    {
+      "id": "P40",
+      "page": "P40_dropout.html",
+      "titulo": "Dropout: una forma simple de evitar el sobreajuste en redes neuronales",
+      "original": "Dropout: A Simple Way to Prevent Neural Networks from Overfitting",
+      "autoria": [
+        "Nitish Srivastava",
+        "Geoffrey Hinton",
+        "Alex Krizhevsky",
+        "Ilya Sutskever",
+        "Ruslan Salakhutdinov"
+      ],
+      "anio": 2014,
+      "venue": "JMLR 15(56):1929–1958",
+      "nivel": "L2",
+      "motor": "dropout",
+      "hito": "Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos.",
+      "keywords": [
+        "dropout",
+        "regularización",
+        "co-adaptación",
+        "ensamblado",
+        "sobreajuste"
+      ],
+      "notebook": "notebooks/papers/P40_dropout.ipynb"
+    },
+    {
+      "id": "P41",
+      "page": "P41_adam.html",
+      "titulo": "Adam: un método de optimización estocástica",
+      "original": "Adam: A Method for Stochastic Optimization",
+      "autoria": [
+        "Diederik P. Kingma",
+        "Jimmy Ba"
+      ],
+      "anio": 2014,
+      "venue": "arXiv:1412.6980 · ICLR 2015",
+      "nivel": "L2",
+      "motor": "adam",
+      "hito": "Un paso de aprendizaje por dimensión, adaptado a la escala de su propio gradiente. Es el optimizador por defecto de casi todo lo que vino después.",
+      "keywords": [
+        "Adam",
+        "optimización adaptativa",
+        "momentos",
+        "corrección de sesgo",
+        "tasa de aprendizaje"
+      ],
+      "notebook": "notebooks/papers/P41_adam.ipynb"
+    },
+    {
+      "id": "P42",
+      "page": "P42_adversarial.html",
+      "titulo": "Explicar y aprovechar los ejemplos adversarios",
+      "original": "Explaining and Harnessing Adversarial Examples",
+      "autoria": [
+        "Ian J. Goodfellow",
+        "Jonathon Shlens",
+        "Christian Szegedy"
+      ],
+      "anio": 2014,
+      "venue": "arXiv:1412.6572 · ICLR 2015",
+      "nivel": "L3",
+      "motor": "adversarial",
+      "hito": "Una perturbación imperceptible cambia la predicción. Y la causa no es la profundidad: es la linealidad en dimensión alta.",
+      "keywords": [
+        "ejemplos adversarios",
+        "FGSM",
+        "robustez",
+        "linealidad",
+        "entrenamiento adversario"
+      ],
+      "notebook": "notebooks/papers/P42_adversarial.ipynb"
+    },
+    {
+      "id": "P43",
+      "page": "P43_batchnorm.html",
+      "titulo": "Normalización por lotes: acelerar el entrenamiento profundo",
+      "original": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift",
+      "autoria": [
+        "Sergey Ioffe",
+        "Christian Szegedy"
+      ],
+      "anio": 2015,
+      "venue": "arXiv:1502.03167 · ICML 2015",
+      "nivel": "L2",
+      "motor": "batchnorm",
+      "hito": "Normalizar las activaciones dentro de la red permite tasas de aprendizaje mucho mayores y hace el entrenamiento profundo mucho menos frágil.",
+      "keywords": [
+        "normalización por lotes",
+        "activaciones",
+        "tasa de aprendizaje",
+        "γ y β",
+        "estabilidad"
+      ],
+      "notebook": "notebooks/papers/P43_batchnorm.ipynb"
+    },
+    {
+      "id": "P44",
+      "page": "P44_resnet.html",
+      "titulo": "Aprendizaje residual profundo para reconocimiento de imágenes",
+      "original": "Deep Residual Learning for Image Recognition",
+      "autoria": [
+        "Kaiming He",
+        "Xiangyu Zhang",
+        "Shaoqing Ren",
+        "Jian Sun"
+      ],
+      "anio": 2015,
+      "venue": "arXiv:1512.03385 · CVPR 2016",
+      "nivel": "L3",
+      "motor": "resnet",
+      "hito": "El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad.",
+      "keywords": [
+        "ResNet",
+        "conexión residual",
+        "atajo identidad",
+        "degradación",
+        "profundidad"
+      ],
+      "notebook": "notebooks/papers/P44_resnet.ipynb"
+    },
+    {
+      "id": "P45",
+      "page": "P45_distillation.html",
+      "titulo": "Destilar el conocimiento de una red neuronal",
+      "original": "Distilling the Knowledge in a Neural Network",
+      "autoria": [
+        "Geoffrey Hinton",
+        "Oriol Vinyals",
+        "Jeff Dean"
+      ],
+      "anio": 2015,
+      "venue": "arXiv:1503.02531",
+      "nivel": "L2",
+      "motor": "distillation",
+      "hito": "Las probabilidades del maestro contienen más información que la etiqueta correcta: el modelo pequeño aprende de esa estructura.",
+      "keywords": [
+        "destilación",
+        "objetivos suaves",
+        "temperatura",
+        "conocimiento oscuro",
+        "compresión de modelos"
+      ],
+      "notebook": "notebooks/papers/P45_distillation.ipynb"
+    },
+    {
+      "id": "P46",
+      "page": "P46_vit.html",
+      "titulo": "Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala",
+      "original": "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
+      "autoria": [
+        "Alexey Dosovitskiy",
+        "Lucas Beyer",
+        "Alexander Kolesnikov",
+        "y otros"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2010.11929 · ICLR 2021",
+      "nivel": "L3",
+      "motor": "vit",
+      "hito": "Trata la imagen como una secuencia de parches y aplica un Transformer puro: la convolución deja de ser imprescindible en visión.",
+      "keywords": [
+        "ViT",
+        "parches",
+        "sesgo inductivo",
+        "preentrenamiento a escala",
+        "visión"
+      ],
+      "notebook": "notebooks/papers/P46_vit.ipynb"
+    },
+    {
+      "id": "P47",
+      "page": "P47_alphafold.html",
+      "titulo": "Predicción de estructura de proteínas de alta precisión con AlphaFold",
+      "original": "Highly accurate protein structure prediction with AlphaFold",
+      "autoria": [
+        "John Jumper",
+        "Richard Evans",
+        "Alexander Pritzel",
+        "y otros (DeepMind)"
+      ],
+      "anio": 2021,
+      "venue": "Nature 596, 583–589 (2021)",
+      "nivel": "L4",
+      "motor": "alphafold",
+      "hito": "Resuelve en la práctica un problema abierto de cincuenta años en biología, y demuestra que la IA puede producir conocimiento científico, no solo productos.",
+      "keywords": [
+        "AlphaFold",
+        "plegamiento de proteínas",
+        "estructura",
+        "atención sobre pares",
+        "IA para ciencia"
+      ],
+      "notebook": "notebooks/papers/P47_alphafold.ipynb"
+    },
+    {
+      "id": "P48",
+      "page": "P48_lora.html",
+      "titulo": "LoRA: adaptación de rango bajo de modelos de lenguaje grandes",
+      "original": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "autoria": [
+        "Edward J. Hu",
+        "Yelong Shen",
+        "Phillip Wallis",
+        "y otros"
+      ],
+      "anio": 2021,
+      "venue": "arXiv:2106.09685 · ICLR 2022",
+      "nivel": "L3",
+      "motor": "lora",
+      "hito": "Ajustar un modelo enorme entrenando una fracción diminuta de parámetros, sin coste añadido en inferencia.",
+      "keywords": [
+        "LoRA",
+        "rango bajo",
+        "adaptación eficiente",
+        "PEFT",
+        "adaptadores"
+      ],
+      "notebook": "notebooks/papers/P48_lora.ipynb"
+    },
+    {
+      "id": "P49",
+      "page": "P49_qlora.html",
+      "titulo": "QLoRA: ajuste fino eficiente de modelos cuantizados",
+      "original": "QLoRA: Efficient Finetuning of Quantized LLMs",
+      "autoria": [
+        "Tim Dettmers",
+        "Artidoro Pagnoni",
+        "Ari Holtzman",
+        "Luke Zettlemoyer"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2305.14314 · NeurIPS 2023",
+      "nivel": "L3",
+      "motor": "quantization",
+      "hito": "Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo.",
+      "keywords": [
+        "QLoRA",
+        "cuantización de 4 bits",
+        "NF4",
+        "ajuste eficiente",
+        "memoria"
+      ],
+      "notebook": "notebooks/papers/P49_qlora.ipynb"
+    },
+    {
+      "id": "P50",
+      "page": "P50_constitutional_ai.html",
+      "titulo": "IA constitucional: inocuidad a partir de retroalimentación de IA",
+      "original": "Constitutional AI: Harmlessness from AI Feedback",
+      "autoria": [
+        "Yuntao Bai",
+        "Saurav Kadavath",
+        "Sandipan Kundu",
+        "y otros (Anthropic)"
+      ],
+      "anio": 2022,
+      "venue": "arXiv:2212.08073",
+      "nivel": "L4",
+      "motor": "constitutional_ai",
+      "hito": "Sustituye parte del juicio humano por un conjunto de principios explícitos y auditables, y por la autocrítica del modelo.",
+      "keywords": [
+        "IA constitucional",
+        "RLAIF",
+        "autocrítica",
+        "principios explícitos",
+        "inocuidad"
+      ],
+      "notebook": "notebooks/papers/P50_constitutional_ai.ipynb"
+    },
+    {
+      "id": "P51",
+      "page": "P51_swebench.html",
+      "titulo": "SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub?",
+      "original": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "autoria": [
+        "Carlos E. Jimenez",
+        "John Yang",
+        "Alexander Wettig",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2310.06770 · ICLR 2024",
+      "nivel": "L3",
+      "motor": "swebench",
+      "hito": "Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan.",
+      "keywords": [
+        "SWE-bench",
+        "evaluación",
+        "tests como criterio",
+        "agentes de programación",
+        "contaminación"
+      ],
+      "notebook": "notebooks/papers/P51_swebench.ipynb"
+    },
+    {
+      "id": "P52",
+      "page": "P52_superposition.html",
+      "titulo": "Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario",
+      "original": "Towards Monosemanticity: Decomposing Language Models With Dictionary Learning",
+      "autoria": [
+        "Trenton Bricken",
+        "Adly Templeton",
+        "Joshua Batson",
+        "y otros (Anthropic)"
+      ],
+      "anio": 2023,
+      "venue": "Transformer Circuits Thread",
+      "nivel": "L5",
+      "motor": "superposition",
+      "hito": "Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables.",
+      "keywords": [
+        "superposición",
+        "monosemanticidad",
+        "autoencoder disperso",
+        "interpretabilidad mecanicista",
+        "características"
+      ],
+      "notebook": "notebooks/papers/P52_superposition.ipynb"
     }
   ]
 }

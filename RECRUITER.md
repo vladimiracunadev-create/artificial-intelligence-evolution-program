@@ -3,10 +3,10 @@
 Este repositorio demuestra:
 
 - diseño curricular de 183 clases en 15 partes;
-- comprensión de la evolución completa de la IA, anclada en 16 papers
+- comprensión de la evolución completa de la IA, anclada en 52 papers
   fundacionales leídos en su fuente primaria;
 - separación entre modelos, tools, skills, workflows y agentes;
-- 36 motores didácticos reutilizables con contratos uniformes
+- 72 motores didácticos reutilizables con contratos uniformes (20 de clase + 52 de papers)
   (20 de clases + 16 de papers), deterministas y sin dependencias;
 - contratos verificados por código, no declarados: 18 secciones por ficha,
   17 momentos por notebook y un manifiesto con hash por artefacto;
@@ -23,7 +23,7 @@ Este repositorio demuestra:
 5. `docs/AGENTIC_SYSTEMS_TRACK.md`
 6. `src/ai_evolution/labs.py`
 7. `tests/test_papers.py` — incluye un smoke test que ejecuta las celdas de los
-   24 notebooks del eje
+   60 notebooks del eje
 8. `site/index.html`
 
 El repositorio no afirma que los ejemplos educativos sean despliegues

@@ -30,7 +30,7 @@ Cómo leer: [método de lectura en 5 pasadas](../papers/guides/METODO_DE_LECTURA
 ## ⚖️ Qué necesitas
 
 No necesitas GPU ni API para las demostraciones centrales, ni para ninguno de
-los 36 motores didácticos. Las extensiones grandes aparecen siempre como
+los 72 motores didácticos. Las extensiones grandes aparecen siempre como
 actividades opcionales y declaran qué entorno externo exigen.
 
 ## 🧭 El contrato de estudio

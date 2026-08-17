@@ -245,13 +245,13 @@ def build_paper_pages(out_dir: Path) -> int:
 
     paper_page("papers/README.md", out_dir / "index.html",
                "Eje de papers fundacionales", "📜 Papers",
-               "16 papers fundacionales de la IA, con fichas verificables y miniaturas ejecutables.")
+               "52 papers fundacionales de la IA, con fichas verificables y miniaturas ejecutables.")
     paper_page("papers/ROADMAP.md", out_dir / "roadmap.html",
                "Ruta del eje de papers", f"{hub} · Ruta",
                "Niveles L0–L5, cuatro fases y definición de terminado del eje de papers.")
     paper_page("papers/catalog/PAPERS_INDEX.md", out_dir / "catalogo.html",
                "Índice de papers", f"{hub} · Índice",
-               "Tabla maestra de los 16 papers fundacionales del programa.")
+               "Tabla maestra de los 52 papers fundacionales del programa.")
     pages += 3
 
     for guide in sorted((ROOT / "papers" / "guides").glob("*.md")):

@@ -4,7 +4,7 @@ Fuente de verdad: `papers/catalog/papers.json` + las especificaciones de noteboo
 de este archivo. A partir de ahí se derivan, de forma reproducible:
 
 * `papers/catalog/PAPERS_INDEX.md`
-* `notebooks/papers/*.ipynb`  (16 papers + 8 miniaturas del Transformer)
+* `notebooks/papers/*.ipynb`  (52 papers + 8 miniaturas del Transformer)
 * `instructor/papers/*.md`, `student/papers/*.md`, `assessments/papers/*.md`
 * `papers/manifest.json` con SHA-256 de cada artefacto
 

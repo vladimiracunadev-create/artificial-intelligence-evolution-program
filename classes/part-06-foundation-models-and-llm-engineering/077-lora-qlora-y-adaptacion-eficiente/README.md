@@ -221,6 +221,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Documentación oficial de Hugging Face PEFT: <https://huggingface.co/docs/peft>
 - Documentación oficial de bitsandbytes (NF4, 4-bit): <https://huggingface.co/docs/bitsandbytes>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P48 · LoRA: adaptación de rango bajo de modelos de lenguaje grandes](../../../papers/foundational/P48_lora/README.md) | 2021 | Ajustar un modelo enorme entrenando una fracción diminuta de parámetros, sin coste añadido en inferencia. | [notebook](../../../notebooks/papers/P48_lora.ipynb) |
+| [P49 · QLoRA: ajuste fino eficiente de modelos cuantizados](../../../papers/foundational/P49_qlora/README.md) | 2023 | Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo. | [notebook](../../../notebooks/papers/P49_qlora.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

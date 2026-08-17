@@ -2938,17 +2938,22 @@ def _constitutional_ai(seed: int) -> dict[str, Any]:
         "explicar los límites en vez de negarse sin más",
     ]
     respuesta = "No pienso ayudarte con eso, deberías replantearte por qué lo preguntas."
+    # la crítica se hace contra la respuesta ORIGINAL, principio por principio:
+    # si se revisara sobre la marcha, los principios posteriores juzgarían un
+    # texto que ya cambió y la traza dejaría de ser interpretable.
     traza = []
-    actual = respuesta
     for p in principios:
-        viola = ("sermonear" in p and "deberías replantearte" in actual) or \
-                ("límites" in p and "No pienso ayudarte" in actual)
-        traza.append({"principio": p, "viola": viola,
-                      "critica": "juzga al usuario" if "sermonear" in p and viola else
-                                 "se niega sin explicar" if viola else "cumple"})
-        if viola:
-            actual = ("No puedo ayudarte con esa parte concreta porque implicaría riesgo físico. "
-                      "Sí puedo explicarte el marco general y las alternativas seguras.")
+        if "sermonear" in p and "deberías replantearte" in respuesta:
+            traza.append({"principio": p, "viola": True, "critica": "juzga al usuario"})
+        elif "límites" in p and "No pienso ayudarte" in respuesta:
+            traza.append({"principio": p, "viola": True, "critica": "se niega sin explicar"})
+        else:
+            traza.append({"principio": p, "viola": False, "critica": "cumple"})
+    violados = [t for t in traza if t["viola"]]
+    actual = respuesta
+    if violados:
+        actual = ("No puedo ayudarte con esa parte concreta porque implicaría riesgo físico. "
+                  "Sí puedo explicarte el marco general y las alternativas seguras.")
     return _contract(
         "constitutional_ai",
         seed,
@@ -2957,10 +2962,11 @@ def _constitutional_ai(seed: int) -> dict[str, Any]:
             "respuesta_inicial": respuesta,
             "traza_de_critica": traza,
             "respuesta_revisada": actual,
+            "principios_violados": len(violados),
             "etiquetas_humanas_usadas": 0,
         },
         [
-            "La respuesta inicial cumple el principio de seguridad pero viola otros dos: juzga y no explica.",
+            f"La respuesta inicial cumple el principio de seguridad y viola los otros {len(violados)}: juzga al usuario y se niega sin explicar.",
             "La crítica es contra una lista de principios EXPLÍCITA y auditable, no contra la preferencia implícita de un anotador.",
             "La revisión se hace sin una sola etiqueta humana nueva: ese es el ahorro que propone el método.",
         ],
@@ -3046,7 +3052,7 @@ def _superposition(seed: int) -> dict[str, Any]:
         },
         [
             f"En 8 dimensiones se pueden guardar {filas[-1]['conceptos']} conceptos con un solape medio de solo {filas[-1]['solape_medio']}.",
-            "Se puede guardar mucho más de lo que caben direcciones ortogonales, a cambio de INTERFERENCIA: los conceptos se pisan un poco.",
+            f"El precio es la INTERFERENCIA en el peor caso: el solape máximo sube de {filas[0]['solape_maximo']} con {filas[0]['conceptos']} conceptos a {filas[-1]['solape_maximo']} con {filas[-1]['conceptos']}.",
             f"Por eso una neurona no significa una cosa: con ratio {filas[-1]['ratio']}× hay más conceptos que ejes, y cada eje mezcla varios.",
         ],
         [

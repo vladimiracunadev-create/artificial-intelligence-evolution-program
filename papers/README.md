@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **38 hitos · 46 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
+## **52 hitos · 60 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -188,7 +188,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **42 clases** enlazadas llevan un bloque generado por
+Las **50 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

@@ -42,6 +42,20 @@ Una ficha por paper con ruta de trabajo y checklist de comprensión. Tu registro
 | P36 · Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos | [P36_lost_in_middle.md](P36_lost_in_middle.md) |
 | P37 · MemGPT: modelos de lenguaje como sistemas operativos | [P37_memgpt.md](P37_memgpt.md) |
 | P38 · Bayes variacional con autocodificación | [P38_vae.md](P38_vae.md) |
+| P39 · Redes generativas adversarias | [P39_gan.md](P39_gan.md) |
+| P40 · Dropout: una forma simple de evitar el sobreajuste en redes neuronales | [P40_dropout.md](P40_dropout.md) |
+| P41 · Adam: un método de optimización estocástica | [P41_adam.md](P41_adam.md) |
+| P42 · Explicar y aprovechar los ejemplos adversarios | [P42_adversarial.md](P42_adversarial.md) |
+| P43 · Normalización por lotes: acelerar el entrenamiento profundo | [P43_batchnorm.md](P43_batchnorm.md) |
+| P44 · Aprendizaje residual profundo para reconocimiento de imágenes | [P44_resnet.md](P44_resnet.md) |
+| P45 · Destilar el conocimiento de una red neuronal | [P45_distillation.md](P45_distillation.md) |
+| P46 · Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala | [P46_vit.md](P46_vit.md) |
+| P47 · Predicción de estructura de proteínas de alta precisión con AlphaFold | [P47_alphafold.md](P47_alphafold.md) |
+| P48 · LoRA: adaptación de rango bajo de modelos de lenguaje grandes | [P48_lora.md](P48_lora.md) |
+| P49 · QLoRA: ajuste fino eficiente de modelos cuantizados | [P49_qlora.md](P49_qlora.md) |
+| P50 · IA constitucional: inocuidad a partir de retroalimentación de IA | [P50_constitutional_ai.md](P50_constitutional_ai.md) |
+| P51 · SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub? | [P51_swebench.md](P51_swebench.md) |
+| P52 · Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario | [P52_superposition.md](P52_superposition.md) |
 
 ## Contrato de estudio
 

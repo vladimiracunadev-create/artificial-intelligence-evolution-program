@@ -16,6 +16,33 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.8.0 — 2026-08-16
+
+- **Las 14 fichas que faltaban (P39–P52)**, con lo que el eje queda **completo en 52 papers** y sin
+  ninguna entrada pendiente en el catálogo. Cada una con sus 18 secciones, diagrama, fuentes
+  primarias verificadas con fecha de consulta y una sección honesta de límites:
+  - **Arquitectura y entrenamiento**: GAN (2014), Dropout (2014), Adam (2014), ejemplos adversarios
+    (2014), BatchNorm (2015), ResNet (2015), destilación (2015), Vision Transformer (2020),
+    AlphaFold 2 (2021), LoRA (2021) y QLoRA (2023).
+  - **Evaluación y seguridad**: IA constitucional (2022), SWE-bench (2023) y superposición con
+    autoencoders dispersos (2022–2023).
+- **Dos rutas nuevas** en el catálogo: `ruta_arquitectura` (P38–P49) y `ruta_evaluacion`
+  (P50–P52), ambas en orden cronológico y validadas por el mismo contrato que las anteriores.
+- **Dos afirmaciones de motor corregidas** porque su propia salida las contradecía:
+  - `constitutional_ai` evaluaba cada principio contra un texto que la revisión anterior ya había
+    cambiado, así que la traza decía «un principio violado» mientras la evidencia decía dos. Ahora
+    la crítica se hace contra la respuesta **original** y ambas coinciden.
+  - `superposition` presentaba el solape **medio** como prueba de interferencia, pero ese valor
+    depende de la dimensión y no del número de conceptos. Ahora cita el solape **máximo**, que sí
+    crece: de 0,734 con 8 conceptos a 0,925 con 80.
+- **Barrido de coherencia de toda la documentación**: se sincronizaron los conteos de papers,
+  notebooks, motores, páginas del sitio y clases enlazadas en `README.md`, `ROADMAP.md`,
+  `INSTALL.md`, `RECRUITER.md`, `papers/README.md`, `papers/ROADMAP.md`, `docs/ARCHITECTURE.md`,
+  `docs/STUDENT_GUIDE.md`, `site/index.html`, los badges y el About de GitHub. Las referencias
+  históricas del changelog y del roadmap por versión se conservan intactas.
+- **52 PDFs individuales** regenerados (uno por paper) y el PDF completo del eje.
+- **66 páginas del eje** en el sitio, con enlaces de vuelta en **50 clases**.
+
 ## 0.7.0 — 2026-08-16
 
 - **Bloque de memoria y contexto (P34–P37)**, que faltaba por completo: RoPE (2021),

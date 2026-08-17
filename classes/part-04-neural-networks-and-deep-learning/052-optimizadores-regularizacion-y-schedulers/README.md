@@ -230,6 +230,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (Optimization). [deeplearningbook.org/contents/optimization.html](https://www.deeplearningbook.org/contents/optimization.html)
 - Documentación de PyTorch: [`torch.optim`](https://pytorch.org/docs/stable/optim.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P40 · Dropout: una forma simple de evitar el sobreajuste en redes neuronales](../../../papers/foundational/P40_dropout/README.md) | 2014 | Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos. | [notebook](../../../notebooks/papers/P40_dropout.ipynb) |
+| [P41 · Adam: un método de optimización estocástica](../../../papers/foundational/P41_adam/README.md) | 2014 | Un paso de aprendizaje por dimensión, adaptado a la escala de su propio gradiente. Es el optimizador por defecto de casi todo lo que vino después. | [notebook](../../../notebooks/papers/P41_adam.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

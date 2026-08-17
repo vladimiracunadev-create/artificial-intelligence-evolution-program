@@ -14,12 +14,12 @@ flowchart TD
     SRC --> LABS["🧪 labs.py<br/>20 motores de clases"]
     CLASSES -->|"lab.py llama a"| LABS
 
-    PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>16 fichas de 18 secciones"]
-    PAP -.->|"generate_papers.py"| NB["📓 notebooks/papers/<br/>24 notebooks"]
+    PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>52 fichas de 18 secciones"]
+    PAP -.->|"generate_papers.py"| NB["📓 notebooks/papers/<br/>60 notebooks"]
     PAP -.->|"generate_papers.py"| AULA["👩‍🏫 instructor · 🎒 student · 📝 assessments"]
     PAP -.->|"generate_papers.py"| MAN[("🔐 papers/manifest.json<br/>hash por artefacto")]
     PAP --> SITE
-    SRC --> PLABS["🧪 papers_lab.py<br/>16 motores de papers"]
+    SRC --> PLABS["🧪 papers_lab.py<br/>52 motores de papers"]
     NB -->|"importan"| PLABS
     FICHAS -.->|"ancla en"| CLASSES
 
@@ -40,7 +40,7 @@ curriculum.yaml                    fuente de verdad del eje de clases
       ├── src/ai_evolution/        catálogo, CLI, validación y motores
       │      ├── labs.py           20 motores de clases
       │      ├── papers.py         contrato y validación del eje de papers
-      │      └── papers_lab.py     16 motores de papers
+      │      └── papers_lab.py     52 motores de papers
       ├── site/                    PWA generada
       ├── apps/desktop/            visor local
       ├── frontier/                conocimiento cambiante y fechado
@@ -48,9 +48,9 @@ curriculum.yaml                    fuente de verdad del eje de clases
 
 papers/catalog/papers.json         fuente de verdad del eje de papers
       │
-      ├── papers/foundational/     16 fichas escritas a mano (18 secciones)
+      ├── papers/foundational/     52 fichas escritas a mano (18 secciones)
       ├── papers/guides/           5 guías de lectura crítica
-      ├── notebooks/papers/        24 notebooks    ← generados
+      ├── notebooks/papers/        60 notebooks    ← generados
       ├── instructor/papers/       plan de sesión  ← generados
       ├── student/papers/          ficha de estudio ← generados
       ├── assessments/papers/      evaluaciones    ← generados
@@ -62,7 +62,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 1. `curriculum.yaml` es la fuente única de conteos y rutas del eje de clases;
    `papers/catalog/papers.json` lo es del eje de papers.
 2. Cada clase es autocontenida, pero no duplica algoritmos centrales.
-3. Los 20 motores de clases viven en `src/ai_evolution/labs.py` y los 16 motores
+3. Los 20 motores de clases viven en `src/ai_evolution/labs.py` y los 52 motores
    de papers en `src/ai_evolution/papers_lab.py`. Ambos son deterministas, de
    Python estándar y devuelven el mismo contrato: `result`, `evidence` y
    `limitations`.
@@ -83,7 +83,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 
 | Script | Qué produce | Verificación |
 |---|---|---|
-| `scripts/generate_papers.py` | índice, 24 notebooks, aula y manifiesto del eje | `--check` en CI |
+| `scripts/generate_papers.py` | índice, 60 notebooks, aula y manifiesto del eje | `--check` en CI |
 | `scripts/generate_site.py` | PWA: 198 páginas de clase + 24 de papers + los dos JSON | `pages.yml` |
 | `scripts/generate_pdfs.py` | 17 PDFs (`--papers` / `--clases` para acotar) | tamaño mínimo del PDF |
 | `scripts/generate_assets.py` | recursos derivados | — |

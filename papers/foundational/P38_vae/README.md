@@ -133,7 +133,8 @@ y el gradiente respecto a `μ` existe y vale 1.
 
 ## 13. Relación con trabajos posteriores
 
-- **GAN (Goodfellow et al., 2014)** — la respuesta opuesta al mismo problema: un juego adversario en vez de una cota variacional. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
+- **[P39 GAN](../P39_gan/README.md) (2014)** — la respuesta opuesta al mismo problema: un
+  juego adversario en vez de una cota variacional.
 - **[P17 Difusión](../P17_diffusion/README.md) (2020)** — combina estabilidad de entrenamiento y
   calidad de muestra, que era justo lo que ninguno de los dos lograba a la vez.
 - **Difusión latente (2022)** — difusión sobre un espacio latente tipo autoencoder.
@@ -203,4 +204,4 @@ ai-evolution paper-lab P38 --seed 7
 [📇 Índice](../../catalog/PAPERS_INDEX.md) ·
 [📝 Evaluación](../../../assessments/papers/P38_vae.md) ·
 [🏫 Clase 088 · Espacios latentes y VAE](../../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md) ·
-[🚧 Siguiente en construcción: P39 GAN](../../catalog/PAPERS_INDEX.md)
+[➡️ Siguiente: P39 GAN](../P39_gan/README.md)

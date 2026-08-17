@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
   "catalog_updated": "2026-08-16",
-  "papers": 38,
-  "notebooks": 46,
+  "papers": 52,
+  "notebooks": 60,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -197,8 +197,64 @@
       "sha256_lf": "6e7f0d92d27cdf6eeef493d39c6e0fd0b98628817f1d1036cfb67afa53419f0f"
     },
     {
+      "path": "assessments/papers/P39_gan.md",
+      "sha256_lf": "10cfaf7e04290652e6ae7c9aa9a472a8a0b69973a6953ef6e242902d7b4f1b06"
+    },
+    {
+      "path": "assessments/papers/P40_dropout.md",
+      "sha256_lf": "75c124341b4e546cf1ed559858f5293311b4fe2789d8d1e9472856ed31d7f312"
+    },
+    {
+      "path": "assessments/papers/P41_adam.md",
+      "sha256_lf": "0aa0d1bf649d9f92b868e6a72db261312238c89060cf3022a1acf881cd151421"
+    },
+    {
+      "path": "assessments/papers/P42_adversarial.md",
+      "sha256_lf": "7416fab7875f584672ffab36df5b248b5d1970e77886e2220ba7e08fbdd7b2ac"
+    },
+    {
+      "path": "assessments/papers/P43_batchnorm.md",
+      "sha256_lf": "046e83e2bd3015372ae99b74fbf8ea749bb2a4af7e2562c26c9085ef0857e4a6"
+    },
+    {
+      "path": "assessments/papers/P44_resnet.md",
+      "sha256_lf": "a7802f1225a97861f834435ca2602e1da400f6ed1af600609aaf8a519d754018"
+    },
+    {
+      "path": "assessments/papers/P45_distillation.md",
+      "sha256_lf": "f7ab8f92077014754a76201d2e7056dc7c7045081ef391e1e657150999501611"
+    },
+    {
+      "path": "assessments/papers/P46_vit.md",
+      "sha256_lf": "ae8d20c165d0c4499cfcf2c674694d454feffd44105949966c9272f38cf9b9d7"
+    },
+    {
+      "path": "assessments/papers/P47_alphafold.md",
+      "sha256_lf": "41f671255c8e587741ebfeb44de888047edf30571a5f18cd3943685d63fc14a8"
+    },
+    {
+      "path": "assessments/papers/P48_lora.md",
+      "sha256_lf": "0cd51b44ac723aa0b796eaaf132305e9bb0c1cb60d781cec755f4656c120e0cc"
+    },
+    {
+      "path": "assessments/papers/P49_qlora.md",
+      "sha256_lf": "65e8afba1062e39f0b8ea1ea640f567fae4b34292d8ab268a3800b0e2962a69e"
+    },
+    {
+      "path": "assessments/papers/P50_constitutional_ai.md",
+      "sha256_lf": "0bc9c2d3a3d7c7d3c2962951b16d81e0ae9c41c59334e786962c5fe412f8648a"
+    },
+    {
+      "path": "assessments/papers/P51_swebench.md",
+      "sha256_lf": "23463141d05d6572df80659d6a56f44c68f8bf14e6100ce1951e069e7f34d993"
+    },
+    {
+      "path": "assessments/papers/P52_superposition.md",
+      "sha256_lf": "816907a68d0107c40fcaa56cde4a560e28be5429f43fd768f9b840e07fcd302a"
+    },
+    {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "9357cef741974e9c588a8f7fab1f425b54a9c356dcaf6e52caac1cf188e139a5"
+      "sha256_lf": "f0eaf001c523f5df3b2f2f16e8f58c45135a81fefae7fda6b926e59a5658b319"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -353,8 +409,64 @@
       "sha256_lf": "95ae36fef5cf5796a4ce5503e3547d986fcdd05c0f1888cddd7366ebcf149e6f"
     },
     {
+      "path": "instructor/papers/P39_gan.md",
+      "sha256_lf": "3eac56ecc2dc61de40ce6e32ca8a9a4fcc4e9ddd21b60f6172d5fc6137ca7b3f"
+    },
+    {
+      "path": "instructor/papers/P40_dropout.md",
+      "sha256_lf": "7cc70c242a044e7452b9c411e4da6fab3984e8d1255117d1dacb6ef1e0046765"
+    },
+    {
+      "path": "instructor/papers/P41_adam.md",
+      "sha256_lf": "f8089d638bf1de0753e2beccdf48d359fe73cd29f7b95799cf57ca612a720d2b"
+    },
+    {
+      "path": "instructor/papers/P42_adversarial.md",
+      "sha256_lf": "11b2f44bda7c3c5e9e3f1c9465802f98afbfdbebd37d8786737b1e71dd995e4f"
+    },
+    {
+      "path": "instructor/papers/P43_batchnorm.md",
+      "sha256_lf": "f87220df4beee3aaab3516065a8123064c5e8300b4ba73bd357f56c9a59065a5"
+    },
+    {
+      "path": "instructor/papers/P44_resnet.md",
+      "sha256_lf": "7cd9ecaaee63d8edeed0aa80f93aa6ed76eca400217518cc603d2b971f448b5b"
+    },
+    {
+      "path": "instructor/papers/P45_distillation.md",
+      "sha256_lf": "469180c26fd4bfb1921aac66f88036b0f073e45d436f47fef5ae4817d2314c79"
+    },
+    {
+      "path": "instructor/papers/P46_vit.md",
+      "sha256_lf": "1f17af18168e02dafa8cb248843acec023b387c919b0d76981ff0a23be678af2"
+    },
+    {
+      "path": "instructor/papers/P47_alphafold.md",
+      "sha256_lf": "24d4732d731e780ce7d3c109d0cf7b676f1bf7343676f73fecb9cc4c4bd75e1b"
+    },
+    {
+      "path": "instructor/papers/P48_lora.md",
+      "sha256_lf": "df6c84776cf35865873d4880dfcb6b20c74c0c062a420856d56fa755c57f8946"
+    },
+    {
+      "path": "instructor/papers/P49_qlora.md",
+      "sha256_lf": "d874caf6f7f7b33e66fa2587fe63d92c6d19c30ccf284885709a03141fc24b5f"
+    },
+    {
+      "path": "instructor/papers/P50_constitutional_ai.md",
+      "sha256_lf": "719ea0a3ea85dbcdf382bcfc7dfe9c107567ae8ce6424ea62812fb69611102b8"
+    },
+    {
+      "path": "instructor/papers/P51_swebench.md",
+      "sha256_lf": "925e24f38bfeac5347ac43e96940c850a3078753718671a7a9aec5677d7ec541"
+    },
+    {
+      "path": "instructor/papers/P52_superposition.md",
+      "sha256_lf": "417823e7908c61982e50521d96845902acb45b4c40a639b43136d95a39cb270d"
+    },
+    {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "f9bd119e4d755ef6078135194f56e26b56a36705703c1b45db7018981016fb62"
+      "sha256_lf": "563b1df26d03d8cc1798351aa4b31210e3e01cbf40235764f747ba22633c4954"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -509,6 +621,62 @@
       "sha256_lf": "ffe457ac4ec72f361b759e7e4df912601f38fe77e5ce9e1545b2a71d2efde8a0"
     },
     {
+      "path": "notebooks/papers/P39_gan.ipynb",
+      "sha256_lf": "fd3c5010832b16eec4b21df85811c854759a0d7f4eacfedf72986b038b24541a"
+    },
+    {
+      "path": "notebooks/papers/P40_dropout.ipynb",
+      "sha256_lf": "4e5386813d0828b9d491dfcb6d54ca5a3858f5755495a59cd08817e9b116ce63"
+    },
+    {
+      "path": "notebooks/papers/P41_adam.ipynb",
+      "sha256_lf": "7bbfc12ea25f027e6d1ab0d515192528bb0808f9c5faf027162255d0168f3d35"
+    },
+    {
+      "path": "notebooks/papers/P42_adversarial.ipynb",
+      "sha256_lf": "12c7c68b60b814405241b4aaf52224b97bcc30dbd45690ee3aa8a46919025105"
+    },
+    {
+      "path": "notebooks/papers/P43_batchnorm.ipynb",
+      "sha256_lf": "01bb3a6891630ae8ed10b9d378ca9a95fec20395fa5ba2dd56b37914c5db254b"
+    },
+    {
+      "path": "notebooks/papers/P44_resnet.ipynb",
+      "sha256_lf": "bf66f79e8402f3290cc194856102119276a77c6712048ea7a084a552aee82703"
+    },
+    {
+      "path": "notebooks/papers/P45_distillation.ipynb",
+      "sha256_lf": "696b4bb6e8a40bbb298aeacb828076a438ee8f25629cf8d74916d369d72ee136"
+    },
+    {
+      "path": "notebooks/papers/P46_vit.ipynb",
+      "sha256_lf": "46f6b29a94a51fbc396e4d827e0ae7244098b2a63c3518ed5ab40a85b854ae08"
+    },
+    {
+      "path": "notebooks/papers/P47_alphafold.ipynb",
+      "sha256_lf": "4f7b6a513bfc4a9fb10642cba42324a4757cf053d854fa0aa567330cc2b86414"
+    },
+    {
+      "path": "notebooks/papers/P48_lora.ipynb",
+      "sha256_lf": "d390c5fbca8a4fc67833a4532a842bea20b3d7978897377f42c96b22053b35ca"
+    },
+    {
+      "path": "notebooks/papers/P49_qlora.ipynb",
+      "sha256_lf": "6cb72c0dd8861b9ccce0cd0e8fdab400b1cebe0c5500d38396ab4b06607a2c9e"
+    },
+    {
+      "path": "notebooks/papers/P50_constitutional_ai.ipynb",
+      "sha256_lf": "405df8671c16fb915ef641529f98bac30be692f4e3d4d98cf0029ec15e573657"
+    },
+    {
+      "path": "notebooks/papers/P51_swebench.ipynb",
+      "sha256_lf": "260111ead57fe939f8b7f5f186ae6690d0e01f21bf3f3a1317117dd8b7153bbc"
+    },
+    {
+      "path": "notebooks/papers/P52_superposition.ipynb",
+      "sha256_lf": "654cc8736b4526d41eb65b51f2a726397ac1ffb767c6a63555c496b13944082f"
+    },
+    {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
       "sha256_lf": "122e0fcf47ff9d7a5c8288450e39a7d4a5f486f1f0a607f79924c846666c4d5d"
     },
@@ -542,11 +710,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "d7f2590194b27b64d5fa794180cfe1ed7b43fb0966ffd7112017020dcc7ba0ab"
+      "sha256_lf": "352f7cafef0af5b21ff2e832345fe92421b900e7a721a88bed4c6defe3369f7a"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "a140174c4024a3fbb181e9f6270d8265874f5196e4bfb45891fd18f705b2ccd5"
+      "sha256_lf": "a07c8708b714a317a770881186c0ea8579f36838718fab1d1eea60c80eed3c67"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -574,11 +742,11 @@
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "81073db530246adc411a3685b936bc0b727cc7f7cc13762fc1f6a3d3e1f217e2"
+      "sha256_lf": "ccfcb84c747263c211f131748f76844a80b75c65a0f6fb8876f6b0119469692e"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "b3d3802456917556a2aed02b2ccdde4b9ef452282b83fd4979a5fcb1d82a05b8"
+      "sha256_lf": "76054876dc1519e9a582d3a2bc982526d7c1ad5283a809006ebbfcdc9c32ecb7"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -734,7 +902,63 @@
     },
     {
       "path": "papers/foundational/P38_vae/README.md",
-      "sha256_lf": "07c08e2092f5e2d9ea57927510b247611af2c7136a94a53a0ec1e7a5320e14f5"
+      "sha256_lf": "9f66ab068de789e4e31fac1d3f15bc0d6a03e54ef4d8c8ab8db9fd16e6df20a5"
+    },
+    {
+      "path": "papers/foundational/P39_gan/README.md",
+      "sha256_lf": "83e0a139aa24a67e72b6aa952279e5a1e01e0942bf49549984d8da9be4e1a669"
+    },
+    {
+      "path": "papers/foundational/P40_dropout/README.md",
+      "sha256_lf": "81f2c688617b0ca6518228d0ac682a74954e58839e33749fdec51290dc1c4d42"
+    },
+    {
+      "path": "papers/foundational/P41_adam/README.md",
+      "sha256_lf": "e5bb2ae249ff1a6549ac72d080e84c212a4bea91fa96436b655af9d6c8e451cd"
+    },
+    {
+      "path": "papers/foundational/P42_adversarial/README.md",
+      "sha256_lf": "11e3517e3307b28096fb0898173b73f930c7e3ad40dc13e41c01d0cf9cdf7f79"
+    },
+    {
+      "path": "papers/foundational/P43_batchnorm/README.md",
+      "sha256_lf": "c84452fb5658588fdc592361cd039df09535bd4614b21b28f95b131a40611ed3"
+    },
+    {
+      "path": "papers/foundational/P44_resnet/README.md",
+      "sha256_lf": "4b47e01991f181f4898144088e97658e6b4c46bf5f0a1b410109fee8333d13d2"
+    },
+    {
+      "path": "papers/foundational/P45_distillation/README.md",
+      "sha256_lf": "5258accf09f931e21ac99bd2da4da5c11c08d58cf69931979629c0ab4f5ac68c"
+    },
+    {
+      "path": "papers/foundational/P46_vit/README.md",
+      "sha256_lf": "ac29faa130bc78c93992559581438da07aa84377cd40e173ce05c83068ce0b08"
+    },
+    {
+      "path": "papers/foundational/P47_alphafold/README.md",
+      "sha256_lf": "7634f946f264186a5cb3c312eaea7b3eaedacf71afc57ad2bf6e0d14a34d342c"
+    },
+    {
+      "path": "papers/foundational/P48_lora/README.md",
+      "sha256_lf": "0d5f2332a68c68c7a72797b4e12ca939e521c72fd2b069d844fdf9768c7e33bc"
+    },
+    {
+      "path": "papers/foundational/P49_qlora/README.md",
+      "sha256_lf": "bf9fc0f470b226c262e076f888ee92fc2853f8de5c31a9d4bce3a9e066ee9b8e"
+    },
+    {
+      "path": "papers/foundational/P50_constitutional_ai/README.md",
+      "sha256_lf": "beac4231819f1669af4b81fc8faca938ec0810e2829a79abaebdeee2768157a0"
+    },
+    {
+      "path": "papers/foundational/P51_swebench/README.md",
+      "sha256_lf": "9114fe5d9661546058b60d560aab526bccdfebe68174a6e7cbc9bfed98c2806f"
+    },
+    {
+      "path": "papers/foundational/P52_superposition/README.md",
+      "sha256_lf": "3ae7443828a7e65613e3804882e825c7ea838c918fbcd7b488090e0c047d5698"
     },
     {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
@@ -758,7 +982,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "efd70dbf454a7b7cf779cccf9004f0878238e23e3ea9d79627b4399cd5bb772c"
+      "sha256_lf": "a00d5de4d6543b91a20d5d9c9af993dd833145747689954484086164134074ea"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -913,8 +1137,64 @@
       "sha256_lf": "fca495a9c57f96842fa5ffdf0ac84d8015bd61911e908aef01a20c8f07b88d70"
     },
     {
+      "path": "student/papers/P39_gan.md",
+      "sha256_lf": "2a69682fc5ec15296a05a943b39a5c6b9f328251288b1be997ed1c230e1683b7"
+    },
+    {
+      "path": "student/papers/P40_dropout.md",
+      "sha256_lf": "6bcec118ceaf5483fe745e2f513a10380539302d5eda2872ab4320bf41e55ae6"
+    },
+    {
+      "path": "student/papers/P41_adam.md",
+      "sha256_lf": "da101b152e2ae7ffc5c177ca71188e4356876e819d3ee97fa2e13aaf892f3753"
+    },
+    {
+      "path": "student/papers/P42_adversarial.md",
+      "sha256_lf": "0547ad07af86d4a9683decca580a2393075b3b3da953fbb1b5bab452bcbcd64f"
+    },
+    {
+      "path": "student/papers/P43_batchnorm.md",
+      "sha256_lf": "e11289919a656e1eaae3a389210c906ec02bf68795d6b20a4392a31e370f0407"
+    },
+    {
+      "path": "student/papers/P44_resnet.md",
+      "sha256_lf": "b5aedb7fc59bc6b01423c2a2f970b0bad68b02a0e74aa18d56ca4b785919ac18"
+    },
+    {
+      "path": "student/papers/P45_distillation.md",
+      "sha256_lf": "dff404df1a7956c161570d3360eedcf00f7c89d3b6d549130bc7e3d481689f01"
+    },
+    {
+      "path": "student/papers/P46_vit.md",
+      "sha256_lf": "b5b5222abdd80c0ebdbacab492254c464760f000da39b2ddc0be41ee3e5746a3"
+    },
+    {
+      "path": "student/papers/P47_alphafold.md",
+      "sha256_lf": "351f9100623f61ca798fc4766daaab554db0f8f45994e9f66ca82ecb95ccc024"
+    },
+    {
+      "path": "student/papers/P48_lora.md",
+      "sha256_lf": "15cf30cdbc51c4cfc9671127d512e5a182f1900f10f645a6a63cb5a61c7feb79"
+    },
+    {
+      "path": "student/papers/P49_qlora.md",
+      "sha256_lf": "a003659f1cd3b8644a7f4405ab375d73be45dd1c305d95d0028823b82b564bc5"
+    },
+    {
+      "path": "student/papers/P50_constitutional_ai.md",
+      "sha256_lf": "c26270112b73cdddcd9549e461d351dea1e3fd7d530751c939974b22f27481cc"
+    },
+    {
+      "path": "student/papers/P51_swebench.md",
+      "sha256_lf": "04f8170cc27373cf62842d0005d1102f7b0ebc65d0d51d4050c00ec39999db7a"
+    },
+    {
+      "path": "student/papers/P52_superposition.md",
+      "sha256_lf": "45688d812564733146105152e8f78a7829c91b89cef6e6a9268a26484a82fde1"
+    },
+    {
       "path": "student/papers/README.md",
-      "sha256_lf": "abe81b88be3ac756bdfcd1d09e9e3bde725dcfdd426d2df1c524456880fa8348"
+      "sha256_lf": "02fac6fd25c12cf033532968fc791c1254310909f88ae5c8e9414927d2c100d5"
     }
   ]
 }

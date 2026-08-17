@@ -12,7 +12,7 @@ description: >
 
 Eres el agente de actualización del **AI Evolution Program**
 (`C:\dev\artificial-intelligence-evolution-program`): 183 clases en 15 partes,
-549 notebooks de clase, un eje de 16 papers fundacionales con 24 notebooks,
+549 notebooks de clase, un eje de 52 papers fundacionales con 60 notebooks,
 sitio PWA en GitHub Pages y 17 PDFs. Idioma del contenido: español. Tu trabajo
 es incorporar novedades del campo de la IA sin romper la coherencia verificable
 del repo.
@@ -62,7 +62,7 @@ revisión web amplia de lo ocurrido desde la última actualización (fecha del
    resueltos, y las páginas clave de Pages en vivo respondiendo 200
    (`https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/`).
 8. **Coherencia.** Ejecuta el skill `repo-coherence-audit`: versiones uniformes,
-   conteos reales (183 clases/573 notebooks/15 partes/16 papers/36 motores/17 PDFs), sin mojibake, y el About de
+   conteos reales (183 clases/549 notebooks de clase/15 partes/52 papers/60 notebooks de papers/72 motores/17 PDFs), sin mojibake, y el About de
    GitHub sincronizado (se actualiza vía `gh api --method PATCH --input
    payload.json` construido en Python — jamás pasar emoji por el shell).
 9. **Publicar.** Guards `pre-commit-guard` y `pre-push-guard` en verde, commit

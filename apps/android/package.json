@@ -1,6 +1,6 @@
 {
   "name": "ai-evolution-app",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "description": "App Android del AI Evolution Program: las 183 clases embebidas offline",
   "dependencies": {
