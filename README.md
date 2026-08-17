@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.11.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.11.1-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-52%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
@@ -358,12 +358,61 @@ python scripts/generate_papers.py --check
 
 ## 🔗 Especializaciones conectadas
 
-| Especialización | Rol |
+Este programa enseña **la evolución** de la IA: de dónde salió cada idea, qué problema resolvía y
+dónde falla. No pretende ser además un curso de Python, de matemática, de nube o de seguridad.
+Para eso hay repositorios hermanos, y aquí está **qué aporta cada uno y qué parte de este programa
+extiende**.
+
+### 🧠 Completan el eje de IA
+
+| Repositorio | Qué aporta | Qué extiende de aquí |
+|---|---|---|
+| 🧮 [Computational Mathematics Program](https://github.com/vladimiracunadev-create/computational-mathematics-program) | 18 partes · 360 clases · 1080 notebooks, con demostraciones deterministas verificadas en CI | Los [5 anexos matemáticos](papers/annexes/README.md) comprimen lo imprescindible; esto lo desarrolla entero |
+| 🐍 [Python Data Science Program](https://github.com/vladimiracunadev-create/python-data-science-program) | 232 clases · Python/Polars, ML clásico, estadística, causalidad y MLOps | La **parte 03** (ML clásico) y la **12** (MLOps), que el eje de papers **no** cubre |
+| 🧠 [Neural Network Training Labs](https://github.com/vladimiracunadev-create/neural-network-training-labs) | 31 rutas · 93 notebooks · PyTorch, ONNX/INT8, DDP/FSDP2, champion/challenger | La **parte 04**: aquí se lee el paper, allí se entrena y se despliega de verdad |
+| 🤖 [LangGraph Realworld](https://github.com/vladimiracunadev-create/langgraph-realworld) | 25 casos empresariales con LangGraph y FastAPI, con observabilidad y 8 capas de seguridad | Las **partes 09 y 10**: del patrón de agente al sistema en producción |
+| 🔒 [MCP + Ollama Local](https://github.com/vladimiracunadev-create/mcp-ollama-local) | Chat con LLM local, herramientas MCP en sandbox e historial, sin enviar datos a la nube | Las **partes 06 y 09**: ejecutar y dar herramientas a un modelo sin API de pago |
+| 🎨 [ChofyAI Studio](https://github.com/vladimiracunadev-create/chofyai-studio) | Lanzador local que orquesta cinco herramientas de IA creativa (TTS, transcripción, imagen) | La **parte 07**: generativa multimedia ejecutándose en tu equipo |
+
+### ⚙️ Operación, infraestructura y seguridad
+
+| Repositorio | Qué aporta | Qué extiende de aquí |
+|---|---|---|
+| ☁️ [Multi-Cloud Engineering Program](https://github.com/vladimiracunadev-create/multi-cloud-engineering-program) | 288 clases · AWS, Azure, GCP, Kubernetes, Terraform, SRE y FinOps | La **parte 12**: dónde vive de verdad un sistema de IA en producción |
+| 🛡️ [Modern Cybersecurity Program](https://github.com/vladimiracunadev-create/modern-cybersecurity-program) | 340 clases · laboratorios Docker, retos CTF y mapeo a 7 certificaciones | La **parte 13**: seguridad más allá de la superficie propia de la IA |
+| 🧪 [Sandbox Labs](https://github.com/vladimiracunadev-create/sandbox-labs) | 36 casos de aislamiento en Linux, con evidencia firmada de qué controles se aplicaron | Las clases **164 y 119**: ejecutar herramientas ajenas con mínimo privilegio |
+| 🐳 [Docker Labs](https://github.com/vladimiracunadev-create/docker-labs) · [WSL Labs](https://github.com/vladimiracunadev-create/wsl-labs) | Contenedores en varios stacks, y el motor nativo de WSL sin Docker Desktop | El entorno reproducible que los laboratorios dan por supuesto |
+| 🔧 [Problem-Driven Systems Lab](https://github.com/vladimiracunadev-create/problem-driven-systems-lab) | 12 problemas reales resueltos en 7 stacks, con evidencia operacional | La **parte 12**: rendimiento, observabilidad y resiliencia con las manos |
+
+### 🔬 IA aplicada a un dominio
+
+| Repositorio | Qué aporta | Con qué conecta |
+|---|---|---|
+| 🧬 [Human Genome Labs](https://github.com/vladimiracunadev-create/human-genome-labs) | Plataforma reproducible de genética molecular, con contratos de resultado científico | [P47 AlphaFold](papers/foundational/P47_alphafold/README.md) y la clase **181** |
+| 🤖 [Automa PC](https://github.com/vladimiracunadev-create/automa-pc) | Orquestador local de procesos con flujos declarativos, OCR y visión | La **parte 11**: uso de computador y automatización de escritorio |
+| ⛓️ [Blockchain Learning Path](https://github.com/vladimiracunadev-create/blockchain-learning-path) · 🏦 [Finance & Banking](https://github.com/vladimiracunadev-create/finance-and-banking-evolution-program) | Infraestructura financiera programable y banca, con fuentes oficiales | Dominios donde la IA se aplica bajo regulación estricta |
+
+### 🧰 Herramientas con las que se mantiene este repositorio
+
+| Repositorio | Qué aporta |
 |---|---|
-| [Python Data Science Program](https://github.com/vladimiracunadev-create/python-data-science-program) | Python, ML, estadística, MLOps y datos |
-| [Neural Network Training Labs](https://github.com/vladimiracunadev-create/neural-network-training-labs) | Entrenamiento y despliegue profundo de redes neuronales |
-| [LangGraph Realworld](https://github.com/vladimiracunadev-create/langgraph-realworld) | Casos empresariales de orquestación |
-| [Claude Skills Toolkit](https://github.com/vladimiracunadev-create/claude-skills-toolkit) | Skills operativos reutilizables |
+| 🧰 [Claude Skills Toolkit](https://github.com/vladimiracunadev-create/claude-skills-toolkit) | 14 skills agentic sin dependencias: auditoría de seguridad, versionado, linting, coherencia |
+| 🤖 [Operational AI Agents](https://github.com/vladimiracunadev-create/operational-ai-agents) | 13 agentes con contrato, control humano y 39 evaluaciones deterministas |
+| 🌐 [Polyglot Programming Labs](https://github.com/vladimiracunadev-create/polyglot-programming-labs) | 176 clases y 1360 implementaciones verificadas en 10 lenguajes |
+
+> [!NOTE]
+> Las cifras son las que declara cada repositorio en su propio README. Son proyectos
+> **independientes**: se enlazan porque se complementan, no porque compartan código, versión ni
+> calendario. El resto del trabajo —videojuegos, empresa, liderazgo, herramientas forenses— está en
+> el [perfil completo](https://github.com/vladimiracunadev-create).
+
+### 🧭 Cómo combinarlos
+
+- **Sin base matemática** → primero los [anexos](papers/annexes/README.md) de este eje; si algo se
+  resiste, el programa de matemática computacional.
+- **Quieres entrenar, no solo entender** → parte 04 aquí, y después los labs de redes neuronales.
+- **Un agente a producción** → partes 09 y 10 aquí, luego LangGraph Realworld y multi-cloud.
+- **Sin GPU ni API de pago** → MCP + Ollama Local y ChofyAI Studio, todo en tu equipo.
 
 ## ⚖️ Qué es y qué no es este programa
 

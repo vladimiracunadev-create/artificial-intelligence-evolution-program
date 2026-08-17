@@ -16,6 +16,19 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.11.1 — 2026-08-17
+
+- **Especializaciones conectadas, reescrita.** Listaba 4 repositorios con una línea de rol cada
+  uno. Ahora son **20**, agrupados por para qué sirven —completan el eje de IA, operación e
+  infraestructura, IA aplicada a un dominio, herramientas de mantenimiento—, cada uno con icono,
+  qué aporta y **qué parte concreta de este programa extiende**. Los enlaces que faltaban incluían
+  matemática computacional (que desarrolla lo que los anexos comprimen), multi-cloud, MCP + Ollama
+  local, ChofyAI Studio, Human Genome Labs y los laboratorios de contenedores. Cierra con cuatro
+  rutas de combinación según de dónde vengas. Los 20 enlaces verificados con HTTP 200.
+- **Rama `main` protegida**: prohibido el force-push y el borrado de la rama. Se descartaron los
+  checks obligatorios y el flujo por pull request para no bloquear el trabajo directo sobre `main`,
+  que es como se mantiene este repositorio.
+
 ## 0.11.0 — 2026-08-17
 
 ### Aplicaciones publicadas
