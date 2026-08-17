@@ -4111,6 +4111,89 @@ def replace_block(path: Path, marca: str, contenido: str, written: list[str]) ->
     written.append(path.relative_to(ROOT).as_posix())
 
 
+def build_matriz(data: dict[str, Any]) -> str:
+    """La vinculación clase ↔ paper en las dos direcciones, desde una sola fuente.
+
+    Existía el enlace en cada ficha y el bloque de vuelta en cada clase, pero no
+    había ningún sitio donde ver la relación completa ni comprobar su cobertura.
+    """
+    import yaml  # local: solo hace falta aquí
+
+    curriculo = yaml.safe_load((ROOT / "curriculum.yaml").read_text(encoding="utf-8"))
+    titulo_de, parte_de = {}, {}
+    numero_de = {}
+    for parte in curriculo["parts"]:
+        for leccion in parte["lessons"]:
+            titulo_de[leccion["path"]] = leccion["title"]
+            parte_de[leccion["path"]] = parte
+            numero_de[leccion["path"]] = str(leccion["id"]).zfill(3)
+
+    por_clase: dict[str, list[dict[str, Any]]] = {}
+    for item in data["papers"]:
+        for clase in item["clases_del_programa"]:
+            por_clase.setdefault(clase, []).append(item)
+
+    enlaces = sum(len(v) for v in por_clase.values())
+    lines = [
+        "# 🔁 Matriz de vinculación clase ↔ paper",
+        "",
+        "> Generado por `python scripts/generate_papers.py`. No editar a mano.",
+        "> La fuente es el campo `clases_del_programa` de [`papers.json`](papers.json).",
+        "",
+        f"**{len(data['papers'])} papers** · **{len(por_clase)} clases enlazadas** de "
+        f"{len(titulo_de)} · **{enlaces} enlaces** · cada enlace se escribe en las dos "
+        "direcciones y CI falla si alguna se desincroniza.",
+        "",
+        "## 📜 De paper a clase",
+        "",
+        "| # | Paper | Año | Clases que fundamenta |",
+        "|---|---|---:|---|",
+    ]
+    for item in sorted(data["papers"], key=lambda x: (x["year"], x["id"])):
+        destinos = " · ".join(
+            f"[{numero_de[c]} {titulo_de[c]}](../../{c}/README.md)"
+            for c in item["clases_del_programa"]
+        )
+        lines.append(
+            f"| [{item['id']}](../foundational/{item['dir']}/README.md) "
+            f"| {nombre_corto(item)} | {item['year']} | {destinos} |"
+        )
+
+    lines += ["", "## 🏫 De clase a paper", "",
+              "| Clase | Parte | Papers que la fundamentan |", "|---|---|---|"]
+    for clase in sorted(por_clase, key=lambda c: numero_de[c]):
+        papers = " · ".join(
+            f"[{p['id']} {nombre_corto(p)}](../foundational/{p['dir']}/README.md)"
+            for p in sorted(por_clase[clase], key=lambda x: x["id"])
+        )
+        lines.append(
+            f"| [{numero_de[clase]} {titulo_de[clase]}](../../{clase}/README.md) "
+            f"| {parte_de[clase]['id']} | {papers} |"
+        )
+
+    lines += ["", "## 📊 Cobertura por parte", "",
+              "| Parte | Clases con paper | Total |", "|---|---:|---:|"]
+    for parte in curriculo["parts"]:
+        total = len(parte["lessons"])
+        con = sum(1 for x in parte["lessons"] if x["path"] in por_clase)
+        barra = "█" * con + "·" * (total - con)
+        lines.append(f"| {parte['id']} · {parte['title']} | {con} `{barra}` | {total} |")
+
+    lines += [
+        "",
+        "> [!NOTE]",
+        "> Las partes sin papers —machine learning clásico, MLOps, robótica— lo están porque **el",
+        "> eje no las cubre**, no por olvido: son 52 papers de la línea de aprendizaje profundo y",
+        "> modelos de lenguaje. Forzar asociaciones ahí sería peor que decirlo.",
+        "",
+        "---",
+        "",
+        "[📇 Índice de papers](PAPERS_INDEX.md) · [📜 Eje de papers](../README.md) · "
+        "[🏫 Programa](../../README.md)",
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def build_index(data: dict[str, Any]) -> str:
     """Índice unificado: UNA tabla maestra ordenada por año, más vistas alternativas.
 
@@ -4416,6 +4499,7 @@ def generate() -> list[str]:
     written: list[str] = []
 
     write(ROOT / "papers" / "catalog" / "PAPERS_INDEX.md", build_index(data), written)
+    write(ROOT / "papers" / "catalog" / "MATRIZ_CLASES_PAPERS.md", build_matriz(data), written)
 
     readme = ROOT / "papers" / "README.md"
     replace_block(readme, "stats", build_readme_stats(data), written)

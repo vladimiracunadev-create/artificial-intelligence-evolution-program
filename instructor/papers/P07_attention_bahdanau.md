@@ -34,6 +34,7 @@
 - Notebook: [`P07_attention_bahdanau.ipynb`](../../notebooks/papers/P07_attention_bahdanau.ipynb)
 - Evaluación: [`P07_attention_bahdanau.md`](../../assessments/papers/P07_attention_bahdanau.md)
 - Clases del programa relacionadas:
+- [054-rnn-lstm-y-secuencias](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
 - [055-atencion-y-arquitectura-transformer](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 
 ---

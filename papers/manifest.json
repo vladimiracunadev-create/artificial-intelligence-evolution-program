@@ -258,11 +258,11 @@
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
-      "sha256_lf": "057f5956fec2b5c74f4e9763ba2f518fa594ce6bcc6974dd1f0b916b57b77e0b"
+      "sha256_lf": "624c8d2e4f7b539f61cb5b321e8855aaca0301b08ac7004e729cb4c953fe0b66"
     },
     {
       "path": "instructor/papers/P02_backpropagation.md",
-      "sha256_lf": "9a391a24e67275639c76070eac67a07fd9710ed060c337dc2e596f25febe065d"
+      "sha256_lf": "dead983fa80ef64a2aa3336cba77cef22cbfa7b4dc0cbaeddddc78ea8f3c59fb"
     },
     {
       "path": "instructor/papers/P03_lstm.md",
@@ -278,11 +278,11 @@
     },
     {
       "path": "instructor/papers/P06_seq2seq.md",
-      "sha256_lf": "058a148b972cc646669e6e1f5fe4edee4b79e3cf87aa70c0cbb2260145109da8"
+      "sha256_lf": "e0d56e1a23af710193ebf316dfb53b7e752ad081d56450b06427fc5abe988d2a"
     },
     {
       "path": "instructor/papers/P07_attention_bahdanau.md",
-      "sha256_lf": "eab994898487d285f169172beb61becdba9e84a274d4d8aceb9ad3bd48465872"
+      "sha256_lf": "379f35a869de2dd998d99dda5df82e808487cfaebb383b1612d3a61a7b95907e"
     },
     {
       "path": "instructor/papers/P08_transformer.md",
@@ -346,11 +346,11 @@
     },
     {
       "path": "instructor/papers/P23_glove.md",
-      "sha256_lf": "8aafce7938b730d85b3600ea9eaa1c6f272eb3c07d9c4ce890fbd1a6c52ab916"
+      "sha256_lf": "f3140b9ed707d81dfc01dc7e89c92615d5ae80ff2807c300cf57d6afa747ebe6"
     },
     {
       "path": "instructor/papers/P24_elmo.md",
-      "sha256_lf": "71063bf247fee60ccaf65c749a08bbe0199023f40e368afcff91a5da2b207edb"
+      "sha256_lf": "ff680f3b96775262d53b430eee79b694c3ac0ad62e7b74ab676e27502eeafd64"
     },
     {
       "path": "instructor/papers/P25_t5.md",
@@ -382,7 +382,7 @@
     },
     {
       "path": "instructor/papers/P32_voyager.md",
-      "sha256_lf": "e791c4216aa3c6b3c6178f972c65f4284979b9a01eaf1e49bba76b6dd37c9f06"
+      "sha256_lf": "df9182ea31af15d2ffb1ed7f99ae0d5ac10cb4323dd93f9963a29336e32f7499"
     },
     {
       "path": "instructor/papers/P33_autogen.md",
@@ -418,7 +418,7 @@
     },
     {
       "path": "instructor/papers/P41_adam.md",
-      "sha256_lf": "f8089d638bf1de0753e2beccdf48d359fe73cd29f7b95799cf57ca612a720d2b"
+      "sha256_lf": "8ecf4bd8564775f113d397db7f0b1ecc86d7bd0e7fc2e88f8bc77e555cb1de62"
     },
     {
       "path": "instructor/papers/P42_adversarial.md",
@@ -426,7 +426,7 @@
     },
     {
       "path": "instructor/papers/P43_batchnorm.md",
-      "sha256_lf": "f87220df4beee3aaab3516065a8123064c5e8300b4ba73bd357f56c9a59065a5"
+      "sha256_lf": "951cb9a12cd514687352a4a72fab267612e36d2f3586e869ced1624a26da1990"
     },
     {
       "path": "instructor/papers/P44_resnet.md",
@@ -434,7 +434,7 @@
     },
     {
       "path": "instructor/papers/P45_distillation.md",
-      "sha256_lf": "469180c26fd4bfb1921aac66f88036b0f073e45d436f47fef5ae4817d2314c79"
+      "sha256_lf": "5fefd469f0c2c943cef8f3ef4baaa6387bf1a6340afa2c21fc69d0b246c62861"
     },
     {
       "path": "instructor/papers/P46_vit.md",
@@ -442,15 +442,15 @@
     },
     {
       "path": "instructor/papers/P47_alphafold.md",
-      "sha256_lf": "24d4732d731e780ce7d3c109d0cf7b676f1bf7343676f73fecb9cc4c4bd75e1b"
+      "sha256_lf": "b9acf8a6db888f7779b10822e8cf40a6a654f531180efeccf28fc2391a8cf8ad"
     },
     {
       "path": "instructor/papers/P48_lora.md",
-      "sha256_lf": "df6c84776cf35865873d4880dfcb6b20c74c0c062a420856d56fa755c57f8946"
+      "sha256_lf": "d6b8ac853b4b49b127dd2c90ffdddcc0691f90f8766f049202d5900fd227092f"
     },
     {
       "path": "instructor/papers/P49_qlora.md",
-      "sha256_lf": "d874caf6f7f7b33e66fa2587fe63d92c6d19c30ccf284885709a03141fc24b5f"
+      "sha256_lf": "22df13fbc39de69927e8411b9bbad23accbffc348a70376f3cd1ea23ceb3e5cd"
     },
     {
       "path": "instructor/papers/P50_constitutional_ai.md",
@@ -710,11 +710,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "6b4194522c634c5c301bf6cabdccff1817dcd99210f0b89add06208e1a8506aa"
+      "sha256_lf": "c6ee1bf5aecd3cb4cfeb3073204755a0efe04759233fdd4d61dc192210376f81"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "7f88c0313463a316179881a08abace3883ab9d3952c26dfdba02ac48caab67c7"
+      "sha256_lf": "c08cf34f92bc55d99564942d7d96bbfb4a0054b0cb112d80fc2b4cda86cbc8ff"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -741,12 +741,16 @@
       "sha256_lf": "98cab58a6493f206606754c7601f2fe3a2ea8b09ba098af5df7dc48af31b9e0c"
     },
     {
+      "path": "papers/catalog/MATRIZ_CLASES_PAPERS.md",
+      "sha256_lf": "f37744dfef0126c3449d668747f8c182074ece37eedc1bdbc7d20b2aed240980"
+    },
+    {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "e6dda8119b0167a1d750ed7b420f762e791511f57a0f7817b60a5e5771127f4a"
+      "sha256_lf": "ba83b590900c6543bcb064ffb4ed9404eade0ffd83163f4fab9fa541be534b9b"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "ea0d4af11a19947ded57221abf79b8b2312fdd9a397ab8a4c493b9f449ada856"
+      "sha256_lf": "0aa725a28449d7c5c6208e12e4727de57958900baf7fe6a6331b0012a36fc629"
     },
     {
       "path": "papers/catalog/sources.yaml",

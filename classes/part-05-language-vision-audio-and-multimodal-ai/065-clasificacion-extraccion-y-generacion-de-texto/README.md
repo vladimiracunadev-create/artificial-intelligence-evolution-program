@@ -260,6 +260,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
 | [P09 · BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje](../../../papers/foundational/P09_bert/README.md) | 2018 | Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño. | [notebook](../../../notebooks/papers/P09_bert.ipynb) |
+| [P24 · Representaciones profundas de palabras dependientes del contexto](../../../papers/foundational/P24_elmo/README.md) | 2018 | Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio. | [notebook](../../../notebooks/papers/P24_elmo.ipynb) |
 | [P25 · Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto](../../../papers/foundational/P25_t5/README.md) | 2019 | Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas. | [notebook](../../../notebooks/papers/P25_t5.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).

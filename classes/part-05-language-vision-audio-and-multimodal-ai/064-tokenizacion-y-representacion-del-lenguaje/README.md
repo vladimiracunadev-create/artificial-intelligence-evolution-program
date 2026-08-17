@@ -249,6 +249,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
 | [P05 · Estimación eficiente de representaciones de palabras en un espacio vectorial](../../../papers/foundational/P05_word2vec/README.md) | 2013 | El significado distribucional se vuelve barato: vectores densos entrenables sobre miles de millones de palabras. | [notebook](../../../notebooks/papers/P05_word2vec.ipynb) |
+| [P23 · GloVe: vectores globales para representación de palabras](../../../papers/foundational/P23_glove/README.md) | 2014 | Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos. | [notebook](../../../notebooks/papers/P23_glove.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

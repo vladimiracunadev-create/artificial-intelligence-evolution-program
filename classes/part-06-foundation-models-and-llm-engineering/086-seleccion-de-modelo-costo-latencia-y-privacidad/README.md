@@ -244,6 +244,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | [P10 · Los modelos de lenguaje son aprendices con pocos ejemplos](../../../papers/foundational/P10_gpt3/README.md) | 2020 | El aprendizaje en contexto: la tarea se especifica en el prompt y el modelo se adapta sin actualizar ningún peso. | [notebook](../../../notebooks/papers/P10_gpt3.ipynb) |
 | [P19 · Entrenar modelos de lenguaje grandes con cómputo óptimo](../../../papers/foundational/P19_scaling_laws/README.md) | 2022 | Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos. | [notebook](../../../notebooks/papers/P19_scaling_laws.ipynb) |
 | [P21 · Mixtral: mezcla dispersa de expertos](../../../papers/foundational/P21_moe/README.md) | 2024 | Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token. | [notebook](../../../notebooks/papers/P21_moe.ipynb) |
+| [P45 · Destilar el conocimiento de una red neuronal](../../../papers/foundational/P45_distillation/README.md) | 2015 | Las probabilidades del maestro contienen más información que la etiqueta correcta: el modelo pequeño aprende de esa estructura. | [notebook](../../../notebooks/papers/P45_distillation.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

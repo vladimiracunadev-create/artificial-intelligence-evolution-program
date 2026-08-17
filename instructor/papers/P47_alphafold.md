@@ -34,6 +34,7 @@
 - Notebook: [`P47_alphafold.ipynb`](../../notebooks/papers/P47_alphafold.ipynb)
 - Evaluación: [`P47_alphafold.md`](../../assessments/papers/P47_alphafold.md)
 - Clases del programa relacionadas:
+- [173-causal-ai-y-descubrimiento-cientifico](../../classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico/README.md)
 - [181-ia-para-ciencia-clima-y-salud-responsable](../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md)
 
 ---

@@ -250,6 +250,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Model Context Protocol](https://modelcontextprotocol.io/): la capa complementaria de acceso a herramientas que un skill puede orquestar.
 - [Anthropic — Building effective agents (2024)](https://www.anthropic.com/engineering/building-effective-agents): principios de simplicidad que los skills empaquetan como práctica.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P32 · Voyager: un agente encarnado de final abierto con modelos de lenguaje grandes](../../../papers/foundational/P32_voyager/README.md) | 2023 | El agente acumula habilidades reutilizables en vez de contexto: memoria procedimental que no se borra al terminar la tarea. | [notebook](../../../notebooks/papers/P32_voyager.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -35,6 +35,8 @@
 - Evaluación: [`P45_distillation.md`](../../assessments/papers/P45_distillation.md)
 - Clases del programa relacionadas:
 - [059-transferencia-fine-tuning-y-destilacion](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md)
+- [086-seleccion-de-modelo-costo-latencia-y-privacidad](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- [157-costo-latencia-caching-y-capacidad](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/157-costo-latencia-caching-y-capacidad/README.md)
 
 ---
 

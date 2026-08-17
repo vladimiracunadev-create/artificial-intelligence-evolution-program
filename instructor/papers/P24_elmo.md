@@ -34,6 +34,7 @@
 - Notebook: [`P24_elmo.ipynb`](../../notebooks/papers/P24_elmo.ipynb)
 - Evaluación: [`P24_elmo.md`](../../assessments/papers/P24_elmo.md)
 - Clases del programa relacionadas:
+- [065-clasificacion-extraccion-y-generacion-de-texto](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md)
 - [066-embeddings-semanticos-y-similitud](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 
 ---

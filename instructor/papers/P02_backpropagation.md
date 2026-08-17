@@ -35,6 +35,7 @@
 - Evaluación: [`P02_backpropagation.md`](../../assessments/papers/P02_backpropagation.md)
 - Clases del programa relacionadas:
 - [050-mlp-y-backpropagation](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md)
+- [051-activaciones-inicializacion-y-normalizacion](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
 
 ---
 

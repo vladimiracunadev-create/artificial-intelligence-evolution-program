@@ -34,6 +34,7 @@
 - Notebook: [`P41_adam.ipynb`](../../notebooks/papers/P41_adam.ipynb)
 - Evaluación: [`P41_adam.md`](../../assessments/papers/P41_adam.md)
 - Clases del programa relacionadas:
+- [050-mlp-y-backpropagation](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md)
 - [052-optimizadores-regularizacion-y-schedulers](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 
 ---

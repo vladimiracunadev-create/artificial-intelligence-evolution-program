@@ -34,6 +34,7 @@
 - Notebook: [`P32_voyager.ipynb`](../../notebooks/papers/P32_voyager.ipynb)
 - Evaluación: [`P32_voyager.md`](../../assessments/papers/P32_voyager.md)
 - Clases del programa relacionadas:
+- [133-agent-skills-como-capacidades-portables](../../classes/part-10-multi-agent-systems-and-interoperability/133-agent-skills-como-capacidades-portables/README.md)
 - [147-proyecto-agente-que-actua-con-limites](../../classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites/README.md)
 
 ---

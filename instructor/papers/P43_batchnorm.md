@@ -35,6 +35,7 @@
 - Evaluación: [`P43_batchnorm.md`](../../assessments/papers/P43_batchnorm.md)
 - Clases del programa relacionadas:
 - [051-activaciones-inicializacion-y-normalizacion](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- [052-optimizadores-regularizacion-y-schedulers](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 
 ---
 

@@ -34,6 +34,7 @@
 - Notebook: [`P23_glove.ipynb`](../../notebooks/papers/P23_glove.ipynb)
 - Evaluación: [`P23_glove.md`](../../assessments/papers/P23_glove.md)
 - Clases del programa relacionadas:
+- [064-tokenizacion-y-representacion-del-lenguaje](../../classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje/README.md)
 - [066-embeddings-semanticos-y-similitud](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 
 ---

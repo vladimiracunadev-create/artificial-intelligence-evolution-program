@@ -35,6 +35,7 @@
 - Evaluación: [`P49_qlora.md`](../../assessments/papers/P49_qlora.md)
 - Clases del programa relacionadas:
 - [077-lora-qlora-y-adaptacion-eficiente](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
+- [082-dimensionar-hardware-de-la-laptop-al-cluster](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md)
 - [085-cuantizacion-e-inferencia-local](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
 
 ---

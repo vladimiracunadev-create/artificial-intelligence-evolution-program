@@ -9,6 +9,7 @@ no como una colección de PDFs, sino como una cadena de problemas resueltos
 que cada estudiante puede ejecutar, romper e interpretar.**
 
 [📇 Índice de papers](catalog/PAPERS_INDEX.md) ·
+[🔁 Matriz clase ↔ paper](catalog/MATRIZ_CLASES_PAPERS.md) ·
 [🗺️ Ruta y niveles](ROADMAP.md) ·
 [🧮 Anexos matemáticos](annexes/README.md) ·
 [🌐 Fuentes y venues](guides/FUENTES_Y_VENUES.md) ·
@@ -19,7 +20,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 <!-- stats:inicio -->
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **52** | **60** | **52** | **5** | **L0–L5** | **81** |
+| **52** | **60** | **52** | **5** | **L0–L5** | **86** |
 <!-- stats:fin -->
 
 </div>
@@ -227,7 +228,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **81 clases** enlazadas llevan un bloque generado por
+Las **86 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

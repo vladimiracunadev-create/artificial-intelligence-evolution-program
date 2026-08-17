@@ -182,7 +182,8 @@ def build_papers_html() -> str:
         f'<ol style="text-align:left; max-width: 440pt; margin: 24pt auto 0; font-size: 9.5pt;">{items}</ol></div>'
     )
 
-    body = [cover, render_paper_doc("papers/README.md"), render_paper_doc("papers/ROADMAP.md")]
+    body = [cover, render_paper_doc("papers/README.md"), render_paper_doc("papers/ROADMAP.md"),
+            render_paper_doc("papers/catalog/MATRIZ_CLASES_PAPERS.md")]
     for guide in sorted((ROOT / "papers" / "guides").glob("*.md")):
         body.append(render_paper_doc(f"papers/guides/{guide.name}"))
     # los anexos van ANTES de las fichas: son la matemática que estas dan por sabida

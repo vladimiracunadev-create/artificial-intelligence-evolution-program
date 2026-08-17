@@ -278,6 +278,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 |---|---:|---|---|
 | [P19 · Entrenar modelos de lenguaje grandes con cómputo óptimo](../../../papers/foundational/P19_scaling_laws/README.md) | 2022 | Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos. | [notebook](../../../notebooks/papers/P19_scaling_laws.ipynb) |
 | [P21 · Mixtral: mezcla dispersa de expertos](../../../papers/foundational/P21_moe/README.md) | 2024 | Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token. | [notebook](../../../notebooks/papers/P21_moe.ipynb) |
+| [P49 · QLoRA: ajuste fino eficiente de modelos cuantizados](../../../papers/foundational/P49_qlora/README.md) | 2023 | Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo. | [notebook](../../../notebooks/papers/P49_qlora.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

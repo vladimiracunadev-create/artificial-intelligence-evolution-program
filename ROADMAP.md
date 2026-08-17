@@ -8,7 +8,7 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.9.1** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.10.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
@@ -99,6 +99,12 @@
 - [x] Cobertura clase → paper de 50 a 81 clases (45 enlaces nuevos).
 - [x] Enlaces del sitio a las fichas, que apuntaban a blobs de GitHub inexistentes.
 - [x] La clase 010 enlaza el eje de papers y sus guías de lectura.
+
+## ✅ 0.10.0 — Matriz clase ↔ paper (entregado)
+
+- [x] Página generada con la vinculación completa en ambos sentidos y la cobertura por parte.
+- [x] Presente en el repositorio, en el sitio y en el PDF del eje.
+- [x] 52 de 52 papers con clase; cobertura de 81 a 86 clases.
 
 ## 📦 Pendiente — Distribución
 

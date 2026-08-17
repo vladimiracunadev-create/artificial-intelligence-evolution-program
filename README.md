@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.9.1-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.10.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-52%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
@@ -60,12 +60,12 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Superficie | Estado |
 |---|---|
 | Currículo | ✅ 183/183 clases documentadas |
-| Papers | ✅ 52 fichas de 18 secciones + 60 notebooks + 52 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 81 clases |
+| Papers | ✅ 52 fichas de 18 secciones + 60 notebooks + 52 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 86 clases |
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
-| Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 66 páginas del eje de papers |
+| Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 67 páginas del eje de papers |
 | Escritorio | ✅ visor Tkinter local; workflow opcional para `.exe` |
 | CI | ✅ estructura, notebooks, tests, compilación y seguridad básica |
 | GPU / APIs pagadas | ⚪ extensiones opcionales; no se finge ejecución en CI |
@@ -201,7 +201,7 @@ flowchart LR
 | 📓 **60 notebooks** | 52 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
 | 🧪 **52 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
 | 🧮 **5 anexos** | Toda la matemática del eje explicada una vez, con ejemplo resuelto a mano y su error común |
-| 🔁 **Ida y vuelta** | Las 81 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
+| 🔁 **Ida y vuelta** | Las 86 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
 | 📚 **5 guías** | [Cómo leer un paper](papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [método en 5 pasadas](papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) · [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) · [plantilla de ficha](papers/guides/PLANTILLA_FICHA_PAPER.md) · [glosario](papers/guides/GLOSARIO_PAPERS_IA.md) |
 | 🎓 **Niveles L0–L5** | De orientar sobre qué es un paper a leer la frontera con fecha y fuente |
 | 👩‍🏫 **Aula completa** | [Guías docentes](instructor/papers/README.md), [fichas de estudio](student/papers/README.md) y [evaluaciones con rúbrica](assessments/papers/README.md) |
@@ -253,9 +253,9 @@ Abre `http://localhost:8080/site/`.
 El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
-- [📕 Programa completo (1 157 páginas)](docs/pdf/programa-completo.pdf)
-- [📜 Papers fundacionales (442 páginas)](docs/pdf/papers-fundacionales.pdf) — las 52 fichas,
-  las 5 guías, los 5 anexos matemáticos y las 52 evaluaciones del eje
+- [📕 Programa completo (1 159 páginas)](docs/pdf/programa-completo.pdf)
+- [📜 Papers fundacionales (451 páginas)](docs/pdf/papers-fundacionales.pdf) — las 52 fichas,
+  las 5 guías, los 5 anexos matemáticos, la matriz clase ↔ paper y las 52 evaluaciones del eje
   (`python scripts/generate_pdfs.py --papers`)
 - Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
   [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·

@@ -243,6 +243,8 @@ def paper_href(source_rel: str, target: str) -> str:
         return f"roadmap.html{suffix}"
     if resolved == "papers/catalog/PAPERS_INDEX.md":
         return f"catalogo.html{suffix}"
+    if resolved == "papers/catalog/MATRIZ_CLASES_PAPERS.md":
+        return f"matriz.html{suffix}"
     if resolved.startswith("papers/guides/"):
         return guide_page(posixpath.basename(resolved)) + suffix
     if resolved.startswith("papers/annexes/"):
@@ -294,7 +296,11 @@ def build_paper_pages(out_dir: Path) -> int:
     paper_page("papers/catalog/PAPERS_INDEX.md", out_dir / "catalogo.html",
                "Índice de papers", f"{hub} · Índice",
                "Tabla maestra de los 52 papers fundacionales del programa.")
-    pages += 3
+
+    paper_page("papers/catalog/MATRIZ_CLASES_PAPERS.md", out_dir / "matriz.html",
+               "Matriz clase ↔ paper", f"{hub} · Matriz",
+               "Qué papers fundamentan cada clase y qué clases cubre cada paper, en ambos sentidos.")
+    pages += 4
 
     for guide in sorted((ROOT / "papers" / "guides").glob("*.md")):
         paper_page(f"papers/guides/{guide.name}", out_dir / guide_page(guide.name),

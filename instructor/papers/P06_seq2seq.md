@@ -35,6 +35,8 @@
 - Evaluación: [`P06_seq2seq.md`](../../assessments/papers/P06_seq2seq.md)
 - Clases del programa relacionadas:
 - [054-rnn-lstm-y-secuencias](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- [055-atencion-y-arquitectura-transformer](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
+- [067-reconocimiento-automatico-del-habla](../../classes/part-05-language-vision-audio-and-multimodal-ai/067-reconocimiento-automatico-del-habla/README.md)
 
 ---
 

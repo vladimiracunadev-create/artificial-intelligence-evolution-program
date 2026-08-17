@@ -34,6 +34,7 @@
 - Notebook: [`P01_perceptron.ipynb`](../../notebooks/papers/P01_perceptron.ipynb)
 - Evaluación: [`P01_perceptron.md`](../../assessments/papers/P01_perceptron.md)
 - Clases del programa relacionadas:
+- [039-clasificacion-logistica-y-umbrales](../../classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales/README.md)
 - [049-perceptron-y-limites-de-separabilidad](../../classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad/README.md)
 
 ---

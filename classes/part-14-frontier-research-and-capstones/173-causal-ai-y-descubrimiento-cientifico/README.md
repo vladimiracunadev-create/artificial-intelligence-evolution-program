@@ -243,6 +243,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Schölkopf, B. et al. (2021). *Toward Causal Representation Learning*. Proceedings of the IEEE. [arXiv:2102.11107](https://arxiv.org/abs/2102.11107)
 - Spirtes, P., Glymour, C. & Scheines, R. (2000). *Causation, Prediction, and Search* (2.ª ed.). MIT Press.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P47 · Predicción de estructura de proteínas de alta precisión con AlphaFold](../../../papers/foundational/P47_alphafold/README.md) | 2021 | Resuelve en la práctica un problema abierto de cincuenta años en biología, y demuestra que la IA puede producir conocimiento científico, no solo productos. | [notebook](../../../notebooks/papers/P47_alphafold.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

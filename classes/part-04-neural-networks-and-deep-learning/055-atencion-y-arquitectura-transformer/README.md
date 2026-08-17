@@ -246,6 +246,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
+| [P06 · Aprendizaje de secuencia a secuencia con redes neuronales](../../../papers/foundational/P06_seq2seq/README.md) | 2014 | Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo. | [notebook](../../../notebooks/papers/P06_seq2seq.ipynb) |
 | [P07 · Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir](../../../papers/foundational/P07_attention_bahdanau/README.md) | 2014 | Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso. | [notebook](../../../notebooks/papers/P07_attention_bahdanau.ipynb) |
 | [P08 · La atención es todo lo que necesitas](../../../papers/foundational/P08_transformer/README.md) | 2017 | Elimina la recurrencia y la convolución del modelado de secuencias: todo el cómputo de una capa se paraleliza. | [notebook](../../../notebooks/papers/P08_transformer.ipynb) |
 | [P20 · Mamba: modelado de secuencias en tiempo lineal con espacios de estados selectivos](../../../papers/foundational/P20_mamba/README.md) | 2023 | El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención. | [notebook](../../../notebooks/papers/P20_mamba.ipynb) |

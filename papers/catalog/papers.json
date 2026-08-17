@@ -65,6 +65,7 @@
         "P02"
       ],
       "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales",
         "classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad"
       ],
       "fuentes_primarias": [
@@ -116,7 +117,8 @@
         "P04"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation"
+        "classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation",
+        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion"
       ],
       "fuentes_primarias": [
         {
@@ -338,7 +340,9 @@
         "P07"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
+        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias",
+        "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/067-reconocimiento-automatico-del-habla"
       ],
       "fuentes_primarias": [
         {
@@ -388,6 +392,7 @@
         "P08"
       ],
       "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias",
         "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer"
       ],
       "fuentes_primarias": [
@@ -1329,6 +1334,7 @@
         "P18"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje",
         "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud"
       ],
       "fuentes_primarias": [
@@ -1390,6 +1396,7 @@
         "P25"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto",
         "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud"
       ],
       "fuentes_primarias": [
@@ -1858,6 +1865,7 @@
         "P16"
       ],
       "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/133-agent-skills-como-capacidades-portables",
         "classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites"
       ],
       "fuentes_primarias": [
@@ -2354,6 +2362,7 @@
         "entrenamiento de todos los modelos posteriores"
       ],
       "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation",
         "classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers"
       ],
       "fuentes_primarias": [
@@ -2458,7 +2467,8 @@
         "LayerNorm y P08"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion"
+        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion",
+        "classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers"
       ],
       "fuentes_primarias": [
         {
@@ -2566,7 +2576,9 @@
         "modelos pequeños de razonamiento"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion"
+        "classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion",
+        "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad",
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/157-costo-latencia-caching-y-capacidad"
       ],
       "fuentes_primarias": [
         {
@@ -2673,6 +2685,7 @@
         "IA aplicada a descubrimiento científico"
       ],
       "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico",
         "classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable"
       ],
       "fuentes_primarias": [
@@ -2726,6 +2739,7 @@
         "ecosistema de modelos abiertos ajustados"
       ],
       "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion",
         "classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente"
       ],
       "fuentes_primarias": [
@@ -2778,6 +2792,7 @@
       ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente",
+        "classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster",
         "classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local"
       ],
       "fuentes_primarias": [

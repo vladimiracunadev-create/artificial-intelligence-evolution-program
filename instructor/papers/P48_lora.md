@@ -34,6 +34,7 @@
 - Notebook: [`P48_lora.ipynb`](../../notebooks/papers/P48_lora.ipynb)
 - Evaluación: [`P48_lora.md`](../../assessments/papers/P48_lora.md)
 - Clases del programa relacionadas:
+- [059-transferencia-fine-tuning-y-destilacion](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md)
 - [077-lora-qlora-y-adaptacion-eficiente](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
 
 ---

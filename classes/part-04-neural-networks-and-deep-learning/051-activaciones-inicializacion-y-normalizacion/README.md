@@ -235,6 +235,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
+| [P02 · Aprender representaciones retropropagando errores](../../../papers/foundational/P02_backpropagation/README.md) | 1986 | Un procedimiento práctico para entrenar capas ocultas: la red descubre representaciones intermedias que nadie diseñó. | [notebook](../../../notebooks/papers/P02_backpropagation.ipynb) |
 | [P40 · Dropout: una forma simple de evitar el sobreajuste en redes neuronales](../../../papers/foundational/P40_dropout/README.md) | 2014 | Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos. | [notebook](../../../notebooks/papers/P40_dropout.ipynb) |
 | [P43 · Normalización por lotes: acelerar el entrenamiento profundo](../../../papers/foundational/P43_batchnorm/README.md) | 2015 | Normalizar las activaciones dentro de la red permite tasas de aprendizaje mucho mayores y hace el entrenamiento profundo mucho menos frágil. | [notebook](../../../notebooks/papers/P43_batchnorm.ipynb) |
 | [P44 · Aprendizaje residual profundo para reconocimiento de imágenes](../../../papers/foundational/P44_resnet/README.md) | 2015 | El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad. | [notebook](../../../notebooks/papers/P44_resnet.ipynb) |

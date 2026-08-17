@@ -167,7 +167,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Una unidad de decisión lineal con umbral y una regla de corrección de error que solo actúa cuando la predicción falla.
 - **Hito:** Primera máquina que aprende sus propios pesos a partir de ejemplos en lugar de ejecutar reglas escritas por una persona.
 - **Conceptos:** perceptrón, clasificador lineal, regla de aprendizaje, separabilidad, conexionismo
-- **Clases del programa:** [049](../../classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad/README.md)
+- **Clases del programa:** [039](../../classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales/README.md), [049](../../classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad/README.md)
 - **Fuentes primarias:** [DOI (Psychological Review)](https://doi.org/10.1037/h0042519)
 
 ### P02 · Learning representations by back-propagating errors (1986)
@@ -177,7 +177,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Aplicar la regla de la cadena hacia atrás por el grafo de cómputo para obtener el gradiente de la pérdida respecto de cada peso.
 - **Hito:** Un procedimiento práctico para entrenar capas ocultas: la red descubre representaciones intermedias que nadie diseñó.
 - **Conceptos:** retropropagación, regla de la cadena, capas ocultas, gradiente, representaciones internas
-- **Clases del programa:** [050](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md)
+- **Clases del programa:** [050](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
 - **Fuentes primarias:** [DOI (Nature)](https://doi.org/10.1038/323533a0)
 
 ### P03 · Long Short-Term Memory (1997)
@@ -227,7 +227,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un LSTM codifica la entrada en un vector de tamaño fijo y otro LSTM lo decodifica token a token; invertir la secuencia fuente mejora el resultado.
 - **Hito:** Una única red aprende a mapear secuencias de longitud variable a secuencias de longitud variable, de extremo a extremo.
 - **Conceptos:** encoder-decoder, vector de contexto, traducción automática neuronal, cuello de botella, BLEU
-- **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md), [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [067](../../classes/part-05-language-vision-audio-and-multimodal-ai/067-reconocimiento-automatico-del-habla/README.md)
 - **Fuentes primarias:** [arXiv:1409.3215](https://arxiv.org/abs/1409.3215)
 
 ### P07 · Neural Machine Translation by Jointly Learning to Align and Translate (2014)
@@ -237,7 +237,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un vector de contexto distinto por paso de salida, calculado como suma ponderada de los estados del codificador con pesos aprendidos (atención aditiva).
 - **Hito:** Nace la atención: el decodificador deja de depender de un único vector y consulta toda la entrada en cada paso.
 - **Conceptos:** atención, alineación, vector de contexto dinámico, softmax, atención aditiva
-- **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
+- **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md), [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 - **Fuentes primarias:** [arXiv:1409.0473](https://arxiv.org/abs/1409.0473)
 
 ### P23 · GloVe: Global Vectors for Word Representation (2014)
@@ -247,7 +247,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Ajustar por mínimos cuadrados ponderados el producto de vectores al logaritmo de la co-ocurrencia, con el argumento de que lo informativo es la RAZÓN de co-ocurrencias, no su valor bruto.
 - **Hito:** Unifica las dos familias de embeddings: factorizar estadísticas globales de co-ocurrencia con la ventaja de los métodos predictivos.
 - **Conceptos:** GloVe, co-ocurrencia, factorización, mínimos cuadrados ponderados, razón de probabilidades
-- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
+- **Clases del programa:** [064](../../classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje/README.md), [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 - **Fuentes primarias:** [ACL Anthology (EMNLP 2014)](https://aclanthology.org/D14-1162/) · [DOI](https://doi.org/10.3115/v1/D14-1162)
 
 ### P39 · Generative Adversarial Networks (2014)
@@ -277,7 +277,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Mantener medias móviles del gradiente (primer momento) y de su cuadrado (segundo momento), con corrección de sesgo, y normalizar el paso de cada coordenada por su magnitud típica.
 - **Hito:** Un paso de aprendizaje por dimensión, adaptado a la escala de su propio gradiente. Es el optimizador por defecto de casi todo lo que vino después.
 - **Conceptos:** Adam, optimización adaptativa, momentos, corrección de sesgo, tasa de aprendizaje
-- **Clases del programa:** [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
+- **Clases del programa:** [050](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md), [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 - **Fuentes primarias:** [arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
 
 ### P42 · Explaining and Harnessing Adversarial Examples (2014)
@@ -307,7 +307,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Normalizar cada activación usando la media y la varianza del minilote, y añadir dos parámetros aprendidos (γ, β) para que la red pueda deshacer la normalización si le conviene.
 - **Hito:** Normalizar las activaciones dentro de la red permite tasas de aprendizaje mucho mayores y hace el entrenamiento profundo mucho menos frágil.
 - **Conceptos:** normalización por lotes, activaciones, tasa de aprendizaje, γ y β, estabilidad
-- **Clases del programa:** [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Clases del programa:** [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md), [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 - **Fuentes primarias:** [arXiv:1502.03167](https://arxiv.org/abs/1502.03167)
 
 ### P44 · Deep Residual Learning for Image Recognition (2015)
@@ -327,7 +327,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Entrenar el modelo pequeño para reproducir la distribución completa del maestro, suavizada con una temperatura que revela la estructura de similitud entre clases.
 - **Hito:** Las probabilidades del maestro contienen más información que la etiqueta correcta: el modelo pequeño aprende de esa estructura.
 - **Conceptos:** destilación, objetivos suaves, temperatura, conocimiento oscuro, compresión de modelos
-- **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md)
+- **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [157](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/157-costo-latencia-caching-y-capacidad/README.md)
 - **Fuentes primarias:** [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 
 ### P27 · Mastering the game of Go with deep neural networks and tree search (2016)
@@ -367,7 +367,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Usar los estados internos de un modelo de lenguaje bidireccional profundo y combinar sus capas con pesos aprendidos por tarea.
 - **Hito:** Un vector por APARICIÓN y no por palabra: la polisemia deja de colapsar en un único punto del espacio.
 - **Conceptos:** ELMo, embeddings contextuales, polisemia, modelo de lenguaje bidireccional, combinación de capas
-- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
+- **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 - **Fuentes primarias:** [ACL Anthology (NAACL 2018)](https://aclanthology.org/N18-1202/)
 
 ### P25 · Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019)
@@ -447,7 +447,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Una arquitectura que razona conjuntamente sobre alineamientos múltiples de secuencias y sobre representaciones de pares de residuos, con un módulo que produce coordenadas 3D directamente.
 - **Hito:** Resuelve en la práctica un problema abierto de cincuenta años en biología, y demuestra que la IA puede producir conocimiento científico, no solo productos.
 - **Conceptos:** AlphaFold, plegamiento de proteínas, estructura, atención sobre pares, IA para ciencia
-- **Clases del programa:** [181](../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md)
+- **Clases del programa:** [173](../../classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico/README.md), [181](../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md)
 - **Fuentes primarias:** [DOI (Nature 596, 583–589)](https://doi.org/10.1038/s41586-021-03819-2)
 
 ### P48 · LoRA: Low-Rank Adaptation of Large Language Models (2021)
@@ -457,7 +457,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Congelar los pesos originales y aprender una actualización factorizada de rango bajo, W' = W + BA, que al desplegar se puede fusionar con W.
 - **Hito:** Ajustar un modelo enorme entrenando una fracción diminuta de parámetros, sin coste añadido en inferencia.
 - **Conceptos:** LoRA, rango bajo, adaptación eficiente, PEFT, adaptadores
-- **Clases del programa:** [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
+- **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md), [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
 - **Fuentes primarias:** [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
 
 ### P12 · Training language models to follow instructions with human feedback (2022)
@@ -597,7 +597,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un currículo automático que propone la siguiente tarea alcanzable, una biblioteca de habilidades ejecutables indexada por nombre, y un bucle iterativo que depura el código con la retroalimentación del entorno.
 - **Hito:** El agente acumula habilidades reutilizables en vez de contexto: memoria procedimental que no se borra al terminar la tarea.
 - **Conceptos:** Voyager, biblioteca de habilidades, currículo automático, memoria procedimental, agente encarnado
-- **Clases del programa:** [147](../../classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites/README.md)
+- **Clases del programa:** [133](../../classes/part-10-multi-agent-systems-and-interoperability/133-agent-skills-como-capacidades-portables/README.md), [147](../../classes/part-11-embodied-ai-robotics-and-computer-use/147-proyecto-agente-que-actua-con-limites/README.md)
 - **Fuentes primarias:** [arXiv:2305.16291](https://arxiv.org/abs/2305.16291)
 
 ### P33 · AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (2023)
@@ -637,7 +637,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Cuantizar el modelo base congelado a 4 bits con un formato adaptado a la distribución de los pesos, y entrenar encima adaptadores LoRA en precisión alta.
 - **Hito:** Pone el ajuste fino de un modelo muy grande al alcance de una sola GPU de consumo.
 - **Conceptos:** QLoRA, cuantización de 4 bits, NF4, ajuste eficiente, memoria
-- **Clases del programa:** [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md), [085](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
+- **Clases del programa:** [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md), [082](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md), [085](../../classes/part-06-foundation-models-and-llm-engineering/085-cuantizacion-e-inferencia-local/README.md)
 - **Fuentes primarias:** [arXiv:2305.14314](https://arxiv.org/abs/2305.14314)
 
 ### P51 · SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (2023)

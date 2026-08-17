@@ -16,6 +16,33 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.10.0 — 2026-08-16
+
+### Matriz de vinculación clase ↔ paper
+
+La relación existía en las dos direcciones —el enlace en cada ficha, el bloque de vuelta en cada
+clase— pero **no había ningún sitio donde verla entera** ni comprobar su cobertura. Nueva página
+generada, [`papers/catalog/MATRIZ_CLASES_PAPERS.md`](papers/catalog/MATRIZ_CLASES_PAPERS.md), con:
+
+- **De paper a clase**: los 52, por año, con las clases que fundamenta cada uno.
+- **De clase a paper**: las 86 clases enlazadas, con sus papers.
+- **Cobertura por parte**, con barra visual y una nota explícita sobre por qué hay partes en cero.
+
+Se genera desde `papers.json`, entra en el sitio (`papers/matriz.html`) y en el PDF del eje, y
+`generate_papers.py --check` la vigila en CI.
+
+### Cobertura ampliada: 86 clases
+
+**15 enlaces nuevos** sobre los 13 papers que tenían una sola clase cuando su contexto daba para
+más: el perceptrón también fundamenta la clasificación logística, Seq2Seq el reconocimiento del
+habla, Voyager las capacidades portables de agente, AlphaFold el descubrimiento científico, LoRA la
+transferencia y el ajuste fino.
+
+Resultado: **52 de 52 papers con al menos una clase**, 51 con dos o más, y un máximo de 8 (RAG).
+El único con una sola es DPO, cuya clase se llama literalmente «RLHF, RLAIF y DPO».
+
+El PDF del eje pasa a **451 páginas** y el sitio a **67 páginas** del eje.
+
 ## 0.9.1 — 2026-08-16
 
 Dos defectos del renderizador del sitio, visibles al revisar las páginas ya publicadas.
