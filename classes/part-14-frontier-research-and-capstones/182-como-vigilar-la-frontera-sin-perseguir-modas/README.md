@@ -30,7 +30,7 @@ Al finalizar podrás:
 ## 🗺️ Ubicación en el mapa de la IA
 
 Esta clase no añade una técnica: añade el método para decidir qué técnicas merecen tu
-tiempo. Después de 178 clases, el riesgo profesional ya no es no saber, sino gastar
+tiempo. Después de 181 clases, el riesgo profesional ya no es no saber, sino gastar
 atención en lo que caducará en seis meses mientras se descuida lo que lleva décadas
 siendo cierto (álgebra lineal, probabilidad, búsqueda, evaluación). Es la
 contrapartida metodológica de todo el programa y el prerequisito del capstone: un
@@ -92,7 +92,7 @@ El propio repositorio implementa el patrón: el directorio `frontier/` mantiene
 `maturity`, `reviewed` (fecha) y `source` (enlace verificable) más una `reason` de
 por qué está ahí. El diseño tiene tres propiedades importantes:
 
-- **Separación física**: la frontera vive fuera de las 180 clases, así que su
+- **Separación física**: la frontera vive fuera de las 183 clases, así que su
   caducidad no contamina el núcleo. El README de `frontier/` lo dice explícitamente:
   no sustituyen el núcleo estable.
 - **Fecha de revisión obligatoria**: un tema sin `reviewed` reciente es una

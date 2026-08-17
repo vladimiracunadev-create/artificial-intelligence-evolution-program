@@ -185,6 +185,10 @@ def build_papers_html() -> str:
     body = [cover, render_paper_doc("papers/README.md"), render_paper_doc("papers/ROADMAP.md")]
     for guide in sorted((ROOT / "papers" / "guides").glob("*.md")):
         body.append(render_paper_doc(f"papers/guides/{guide.name}"))
+    # los anexos van ANTES de las fichas: son la matemática que estas dan por sabida
+    body.append(render_paper_doc("papers/annexes/README.md"))
+    for annex in sorted((ROOT / "papers" / "annexes").glob("A*.md")):
+        body.append(render_paper_doc(f"papers/annexes/{annex.name}"))
     for item in catalog["papers"]:
         body.append(render_paper_doc(f"papers/foundational/{item['dir']}/README.md"))
         body.append(

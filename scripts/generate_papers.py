@@ -3994,6 +3994,123 @@ RUTA_ETIQUETA = {
 }
 
 
+RUTA_TITULO = {
+    "ruta_minima": "🔗 Ruta mínima — la cadena canónica",
+    "ruta_ampliada": "📚 Ruta ampliada — lo que la cadena mínima no cubre",
+    "ruta_representacion": "🔤 Ruta de representación — cómo el lenguaje llegó a un formato único",
+    "ruta_agentes": "🤖 Ruta de agentes — decisión secuencial, razonamiento y multiagente",
+    "ruta_memoria": "🧠 Ruta de memoria y contexto — qué recuerda el modelo y cómo",
+    "ruta_arquitectura": "🏗️ Ruta de arquitectura y entrenamiento — el andamiaje de todo lo demás",
+    "ruta_evaluacion": "🛡️ Ruta de evaluación y seguridad — cómo se decide que un modelo sirve",
+}
+
+CARDINAL = {4: "Cuatro", 5: "Cinco", 6: "Seis", 7: "Siete", 8: "Ocho", 9: "Nueve", 10: "Diez"}
+
+
+def nombre_corto(item: dict[str, Any]) -> str:
+    """El nombre con el que se conoce al paper, tomado del H1 de su propia ficha.
+
+    `title_es` es el título completo traducido y no cabe en una tabla; el H1 de la
+    ficha («# P08 — Transformer») ya lleva el nombre corto curado a mano.
+    """
+    encabezado = (ROOT / "papers" / "foundational" / item["dir"] / "README.md").read_text(
+        encoding="utf-8"
+    ).splitlines()[0]
+    _, _, corto = encabezado.lstrip("# ").partition("—")
+    return corto.strip() or item["title_es"]
+
+
+def primera_frase(texto: str) -> str:
+    """La primera frase del hito: lo demás es matiz que no cabe en una celda."""
+    corte = texto.find(". ")
+    return texto[: corte + 1] if corte != -1 else texto
+
+
+def build_readme_routes(data: dict[str, Any]) -> str:
+    """Sección de rutas de `papers/README.md`, generada desde el catálogo.
+
+    Estaba escrita a mano y se quedó atrás: anunciaba seis rutas cuando ya había
+    siete, y sus tablas paraban en P33. Generarla desde `papers.json` hace
+    imposible que vuelva a mentir sobre su propio contenido.
+    """
+    bloques = [b for b in data.get("rutas", []) if data.get(b)]
+    por_id = {item["id"]: item for item in data["papers"]}
+    total = len(data["papers"])
+    cardinal = CARDINAL.get(len(bloques), str(len(bloques)))
+
+    lines = [
+        f"## 🧭 {cardinal} rutas · {total} papers",
+        "",
+        f"El eje tiene {len(bloques)} bloques con propósitos distintos. **No se estudian igual.**",
+        "Dentro de cada uno, los papers van **en orden cronológico**; entre bloques no hay orden,",
+        "porque responden a preguntas diferentes.",
+        "",
+        "```mermaid",
+        "flowchart TD",
+    ]
+    for n, bloque in enumerate(bloques, start=1):
+        ids = data[bloque]
+        anios = [por_id[pid]["year"] for pid in ids]
+        etiqueta = RUTA_ETIQUETA.get(bloque, bloque)
+        lines.append(
+            f'    R{n}["{etiqueta}<br/>{ids[0]}–{ids[-1]} · {len(ids)} papers'
+            f'<br/>{min(anios)}–{max(anios)}"]'
+        )
+    lines += [
+        f"    R1 -.->|\"se estudia primero,<br/>en orden\"| R2",
+        "```",
+        "",
+    ]
+    for bloque in bloques:
+        ids = data[bloque]
+        nota = data.get("notas_de_ruta", {}).get(bloque, "")
+        lines += [f"### {RUTA_TITULO.get(bloque, RUTA_ETIQUETA.get(bloque, bloque))}", ""]
+        if nota:
+            lines += [nota, ""]
+        lines += [
+            "| # | Paper | Año | Nivel | Lo que aportó |",
+            "|---|---|---:|:---:|---|",
+        ]
+        for pid in ids:
+            item = por_id[pid]
+            lines.append(
+                f"| [{item['id']}](foundational/{item['dir']}/README.md) | {nombre_corto(item)} "
+                f"| {item['year']} | {item['level']} | {primera_frase(item['hito'])} |"
+            )
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def build_readme_stats(data: dict[str, Any]) -> str:
+    """La tabla de conteos de la portada del eje, desde la verdad verificable."""
+    clases = {c for item in data["papers"] for c in item["clases_del_programa"]}
+    notebooks = len(list((ROOT / "notebooks" / "papers").glob("*.ipynb")))
+    anexos = len(list((ROOT / "papers" / "annexes").glob("A*.md")))
+    return (
+        "| 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |\n"
+        "|:---:|:---:|:---:|:---:|:---:|:---:|\n"
+        f"| **{len(data['papers'])}** | **{notebooks}** | **{len(data['papers'])}** "
+        f"| **{anexos}** | **L0–L5** | **{len(clases)}** |\n"
+    )
+
+
+def replace_block(path: Path, marca: str, contenido: str, written: list[str]) -> None:
+    """Sustituye el bloque entre `<!-- marca:inicio -->` y `<!-- marca:fin -->`.
+
+    Idempotente: el resto del fichero —que sí está escrito a mano— no se toca.
+    """
+    inicio, fin = f"<!-- {marca}:inicio -->", f"<!-- {marca}:fin -->"
+    texto = path.read_text(encoding="utf-8")
+    if inicio not in texto or fin not in texto:
+        raise SystemExit(f"{path}: faltan los marcadores `{inicio}` / `{fin}`")
+    antes = texto[: texto.index(inicio) + len(inicio)]
+    despues = texto[texto.index(fin):]
+    nuevo = f"{antes}\n{contenido.rstrip()}\n{despues}"
+    if nuevo != texto:
+        path.write_text(nuevo, encoding="utf-8", newline="\n")
+    written.append(path.relative_to(ROOT).as_posix())
+
+
 def build_index(data: dict[str, Any]) -> str:
     """Índice unificado: UNA tabla maestra ordenada por año, más vistas alternativas.
 
@@ -4299,6 +4416,10 @@ def generate() -> list[str]:
     written: list[str] = []
 
     write(ROOT / "papers" / "catalog" / "PAPERS_INDEX.md", build_index(data), written)
+
+    readme = ROOT / "papers" / "README.md"
+    replace_block(readme, "stats", build_readme_stats(data), written)
+    replace_block(readme, "rutas", build_readme_routes(data), written)
 
     for item in data["papers"]:
         write(ROOT / "notebooks" / "papers" / f"{item['dir']}.ipynb",

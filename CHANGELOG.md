@@ -16,6 +16,28 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.8.1 — 2026-08-16
+
+Correcciones de coherencia encontradas con una auditoría **exhaustiva**: en vez de buscar los
+valores que uno ya sospecha, se extrajo cada par (número, sustantivo) de los **903 ficheros**
+`.md` y `.html` del repositorio y se contrastó contra los conteos reales.
+
+- **El PDF del eje no contenía los anexos matemáticos** que su propia descripción prometía. Ahora
+  los incluye, entre las guías y las fichas: 434 páginas frente a las 413 anteriores.
+- **La sección de rutas de `papers/README.md` pasa a ser generada.** Estaba escrita a mano,
+  anunciaba «seis rutas» cuando ya había siete y sus tablas paraban en P33: faltaban 19 papers.
+  Ahora se genera desde `papers.json` entre marcadores, y `generate_papers.py --check` la vigila
+  en CI, así que no puede volver a quedarse atrás.
+- **El roadmap listaba como pendiente lo que ya se había entregado.** La sección «0.7 — Camino a
+  50 papers» tenía sin marcar memoria y contexto, arquitectura y entrenamiento, y evaluación y
+  seguridad, entregados en 0.7.0 y 0.8.0. Se sustituye por las secciones reales de esas dos
+  versiones, y los planes que siguen pendientes dejan de llevar un número de versión que ya se
+  usó para otra cosa.
+- **Conteos corregidos**: el PDF del eje decía «201 páginas · 22 fichas · 22 evaluaciones»
+  (`README.md`, `papers/ROADMAP.md`), los anexos hablaban de «22 fichas», los enlaces de vuelta
+  de «27 clases», la clase 182 de «178» y «180 clases», y el total de PDFs imprimibles omitía los
+  52 individuales.
+
 ## 0.8.0 — 2026-08-16
 
 - **Las 14 fichas que faltaban (P39–P52)**, con lo que el eje queda **completo en 52 papers** y sin

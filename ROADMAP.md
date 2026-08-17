@@ -8,11 +8,11 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.8.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.8.1** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
-| PDFs | 17 (15 partes + programa completo + eje de papers) |
+| PDFs | 69: 17 del programa (15 partes + completo + eje) y 52 individuales, uno por paper |
 | Tests | 39 |
 
 ## ✅ 0.1.0 — Programa maestro inicial (entregado)
@@ -63,7 +63,7 @@
 - [x] Enlaces de vuelta clase → paper en 27 clases, generados y verificados.
 - [x] Diagramas mermaid en las fichas nuevas y en el hub del eje.
 
-## 🤖 0.6 — Track agéntico aplicado
+## 🤖 Pendiente — Track agéntico aplicado
 
 - [ ] Integraciones DEMO/LIVE con proveedores intercambiables.
 - [ ] MCP server educativo de solo lectura.
@@ -77,15 +77,23 @@
 - [x] Ruta de agentes: DQN, AlphaGo, Chain-of-Thought, Tree of Thoughts, Reflexion,
       Generative Agents, Voyager y AutoGen — incluido el hueco de refuerzo y el de multiagente.
 
-## 📚 0.7 — Camino a 50 papers
+## ✅ 0.7.0 — Memoria y contexto (entregado)
 
-- [ ] Memoria y contexto largo: RoPE, FlashAttention, *Lost in the Middle*, MemGPT.
-- [ ] Arquitectura y entrenamiento: ResNet, Adam, GAN, VAE, ViT, LoRA.
-- [ ] Evaluación y seguridad: SWE-bench, Constitutional AI, interpretabilidad mecanicista.
-- [ ] Reproducción parcial guiada de una figura real del Transformer.
-- [ ] Traducción de las fichas al inglés.
+- [x] Bloque de memoria y contexto: RoPE, FlashAttention, *Lost in the Middle* y MemGPT.
+- [x] P38 VAE abre el bloque de arquitectura y entrenamiento.
+- [x] Índice unificado del eje: una tabla maestra por año, más vista temática.
+- [x] Un PDF por paper, con portada que declara que no es el artículo original.
 
-## 📦 0.8 — Distribución
+## ✅ 0.8.0 — El eje completo en 52 papers (entregado)
+
+- [x] Las 14 fichas restantes (P39–P52): arquitectura y entrenamiento, evaluación y seguridad.
+- [x] Rutas `ruta_arquitectura` (P38–P49) y `ruta_evaluacion` (P50–P52), cronológicas.
+- [x] La sección de rutas de `papers/README.md` pasa a ser **generada**: ya no puede
+      quedarse atrás respecto al catálogo.
+- [x] Los anexos matemáticos entran en el PDF del eje, que su portada ya prometía.
+- [x] Barrido de coherencia de toda la documentación, el sitio, los PDFs y el About.
+
+## 📦 Pendiente — Distribución
 
 - [ ] Release de Windows firmado.
 - [ ] App macOS y Linux empaquetada.
@@ -94,6 +102,8 @@
 
 ## 🧪 Sin versión asignada
 
+- [ ] Reproducción parcial guiada de una figura real del Transformer.
+- [ ] Traducción de las fichas al inglés.
 - [ ] Rúbricas automáticas por familia de laboratorios.
 - [ ] Quizzes pre/post y exportación de progreso.
 - [ ] Ejecutar en CI una muestra rotativa de notebooks de clase.

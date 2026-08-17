@@ -710,11 +710,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "352f7cafef0af5b21ff2e832345fe92421b900e7a721a88bed4c6defe3369f7a"
+      "sha256_lf": "63ee9cf887055b46cbea6acac4374edba9389151480536d2b74e4bdb96be45f9"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "a07c8708b714a317a770881186c0ea8579f36838718fab1d1eea60c80eed3c67"
+      "sha256_lf": "eee2df63f78fc5680d97200129e9aff36b3b57bea7a154972edac36ba1e027ce"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -738,7 +738,7 @@
     },
     {
       "path": "papers/annexes/README.md",
-      "sha256_lf": "1ed291f5f0cb8f8b4cd2b449abbdb131c57941d82843a8ac5a3627e751faaad6"
+      "sha256_lf": "98cab58a6493f206606754c7601f2fe3a2ea8b09ba098af5df7dc48af31b9e0c"
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",

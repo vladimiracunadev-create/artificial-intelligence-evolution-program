@@ -14,7 +14,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.8.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.8.1-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-52%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
@@ -253,9 +253,9 @@ Abre `http://localhost:8080/site/`.
 El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
-- [📕 Programa completo (~1 135 páginas)](docs/pdf/programa-completo.pdf)
-- [📜 Papers fundacionales (201 páginas)](docs/pdf/papers-fundacionales.pdf) — las 22 fichas,
-  las 5 guías, los 5 anexos matemáticos y las 22 evaluaciones del eje
+- [📕 Programa completo (1 145 páginas)](docs/pdf/programa-completo.pdf)
+- [📜 Papers fundacionales (434 páginas)](docs/pdf/papers-fundacionales.pdf) — las 52 fichas,
+  las 5 guías, los 5 anexos matemáticos y las 52 evaluaciones del eje
   (`python scripts/generate_pdfs.py --papers`)
 - Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
   [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·
@@ -322,7 +322,7 @@ python scripts/generate_papers.py --check
 - 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
 - 📜 un **eje de 52 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Rosenblatt (1958) a DeepSeek-R1 (2025), con bloques de representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
 - 🧪 material **ejecutable y verificable**: 595 notebooks (549 de clase + 46 de papers), 183 laboratorios locales y 72 motores deterministas con contratos JSON que declaran `evidence` y `limitations`;
-- 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 17 PDFs imprimibles;
+- 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 69 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
 - 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.
 
