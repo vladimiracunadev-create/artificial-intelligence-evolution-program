@@ -81,7 +81,7 @@ flowchart LR
     Q --> R1["✅ alta"]
     Q --> R2["❌ baja"]
     Q --> R3["✅ alta"]
-    style R2 fill:#3a1a1a,stroke:#f85149
+    style R2 fill:#3a1a1a,stroke:#f85149,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

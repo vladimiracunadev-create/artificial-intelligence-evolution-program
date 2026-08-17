@@ -89,7 +89,7 @@ flowchart LR
     AP --> T{"🧪 ejecutar la suite<br/>del repositorio"}
     T -->|"todo verde"| OK["✅ resuelto"]
     T -->|"cualquier fallo"| NO["❌ no resuelto"]
-    style T fill:#2a2a1a,stroke:#d29922
+    style T fill:#2a2a1a,stroke:#d29922,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

@@ -82,7 +82,7 @@ flowchart LR
     RM --> P["producto escalar"]
     RN --> P
     P --> R["resultado = f(q, k, m−n)<br/>la posición absoluta se cancela"]
-    style R fill:#1a3a2a,stroke:#3fb950
+    style R fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

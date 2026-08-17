@@ -85,7 +85,7 @@ flowchart TD
     E -->|"no"| REF["✍️ reflexionar:<br/>«falló porque…»"]
     REF --> M
     M -.->|"condiciona el<br/>siguiente intento"| A
-    style E fill:#1a3a2a,stroke:#3fb950
+    style E fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

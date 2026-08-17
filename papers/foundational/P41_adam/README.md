@@ -91,7 +91,7 @@ flowchart LR
     C1 --> P["θ ← θ − η·m̂/(√v̂+ε)"]
     C2 --> P
     P --> R["paso ≈ η en CADA<br/>coordenada, sea cual sea<br/>su escala de gradiente"]
-    style R fill:#1a3a2a,stroke:#3fb950
+    style R fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

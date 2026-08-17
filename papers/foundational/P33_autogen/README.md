@@ -91,7 +91,7 @@ flowchart TD
     K -->|"falla: «rompe con lista vacía»"| C
     K -->|"pasa"| E["✅ entregar"]
     K -.->|"presupuesto agotado"| H["🙋 escalar a humano"]
-    style K fill:#3a2a1a,stroke:#d29922
+    style K fill:#3a2a1a,stroke:#d29922,color:#f0f6fc
 ```
 
 El crítico funciona porque su **objetivo es distinto**: encontrar fallos, no producir código. Si

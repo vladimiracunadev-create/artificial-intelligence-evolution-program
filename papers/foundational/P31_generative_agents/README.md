@@ -90,7 +90,7 @@ flowchart TD
     A --> F
     F -.->|"periódicamente"| R["💭 reflexión:<br/>sintetizar conclusiones"]
     R --> F
-    style R fill:#2a1a3a,stroke:#8957e5
+    style R fill:#2a1a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

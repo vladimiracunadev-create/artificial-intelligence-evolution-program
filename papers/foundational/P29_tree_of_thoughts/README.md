@@ -93,7 +93,7 @@ flowchart TD
     K1 --> G2["generar siguiente nivel"]
     K2 --> G2
     G2 --> R["🎯 solución"]
-    style X fill:#3a1a1a,stroke:#f85149
+    style X fill:#3a1a1a,stroke:#f85149,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

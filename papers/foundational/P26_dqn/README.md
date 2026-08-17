@@ -88,7 +88,7 @@ flowchart TD
     QT["red objetivo Q(θ⁻)<br/>CONGELADA"] -->|"calcula el objetivo"| Q
     Q -->|"cada N pasos<br/>se copia"| QT
     Q --> A
-    style QT fill:#1a2a3a,stroke:#58a6ff
+    style QT fill:#1a2a3a,stroke:#58a6ff,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

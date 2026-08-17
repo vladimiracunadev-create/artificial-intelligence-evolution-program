@@ -87,7 +87,7 @@ flowchart TD
     X -->|"error / fallo"| P
     X -->|"✅ verificado"| B
     B -.->|"componer"| P
-    style X fill:#1a3a2a,stroke:#3fb950
+    style X fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 La flecha que importa es la de **verificación**: solo entra en la biblioteca lo que se ejecutó y

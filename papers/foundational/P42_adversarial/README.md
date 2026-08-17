@@ -93,7 +93,7 @@ flowchart LR
     S --> P["x' = x + ε·sign(...)"]
     X --> P
     P --> R["🖼️ visualmente idéntica<br/>❌ clasificada mal<br/>con alta confianza"]
-    style R fill:#3a1a1a,stroke:#f85149
+    style R fill:#3a1a1a,stroke:#f85149,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

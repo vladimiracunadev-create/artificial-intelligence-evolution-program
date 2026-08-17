@@ -6,19 +6,137 @@ permissions:
 jobs:
   windows:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
-      - run: pip install pyinstaller
-      - run: pyinstaller --noconfirm --onefile --windowed --name AI-Evolution-Program --add-data "site;site" apps/desktop/main.py
-      - name: Verify executable exists
+
+      - name: Leer la version canonica
+        id: ver
+        shell: pwsh
         run: |
-          if (-not (Test-Path "dist/AI-Evolution-Program.exe")) { exit 1 }
+          $v = (Select-String -Path pyproject.toml -Pattern '^version = "(.+)"').Matches[0].Groups[1].Value
+          "version=$v" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          Write-Host "version=$v"
+
+      # el sitio va DENTRO del ejecutable: si esta viejo, la app miente
+      - name: Regenerar el sitio
+        run: |
+          python -m pip install PyYAML markdown pyinstaller
+          python scripts/generate_site.py
+          if (-not (Test-Path "site/classes/183.html")) { exit 1 }
+
+      - name: Icono para el ejecutable
+        shell: pwsh
+        run: |
+          python -m pip install pillow
+          python -c "from PIL import Image; im=Image.open('site/assets/icon-512.png'); im.save('app.ico', sizes=[(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)])"
+
+      # 1) EXE unico: portable de un solo fichero, arranca mas lento
+      - name: Compilar ejecutable unico
+        run: >
+          pyinstaller --noconfirm --onefile --windowed --icon app.ico
+          --name AI-Evolution-Program --add-data "site;site" apps/desktop/main.py
+
+      # 2) Carpeta portable: arranca rapido, se lleva en un USB
+      - name: Compilar version portable (carpeta)
+        run: >
+          pyinstaller --noconfirm --onedir --windowed --icon app.ico
+          --name AI-Evolution-Program-portable --distpath dist-portable
+          --add-data "site;site" apps/desktop/main.py
+
+      - name: Empaquetar portable en ZIP
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          Copy-Item README.md, LICENSE "dist-portable/AI-Evolution-Program-portable/" -ErrorAction SilentlyContinue
+          Compress-Archive -Path "dist-portable/AI-Evolution-Program-portable/*" `
+            -DestinationPath "dist/AI-Evolution-Program-$v-portable-windows-x64.zip" -Force
+
+      # 3) Instalador: entrada en el menu de inicio y desinstalador
+      - name: Instalar Inno Setup
+        run: choco install innosetup --no-progress -y
+
+      - name: Guion del instalador
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          @"
+          [Setup]
+          AppId={{8C4F2E31-9A7B-4D5E-B1C6-AI-EVOLUTION}}
+          AppName=AI Evolution Program
+          AppVersion=$v
+          AppPublisher=Vladimir Acuna
+          AppPublisherURL=https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program
+          DefaultDirName={autopf}\AI Evolution Program
+          DefaultGroupName=AI Evolution Program
+          OutputDir=dist
+          OutputBaseFilename=AI-Evolution-Program-$v-setup-windows-x64
+          SetupIconFile=app.ico
+          Compression=lzma2/max
+          SolidCompression=yes
+          WizardStyle=modern
+          PrivilegesRequiredOverridesAllowed=dialog
+          ArchitecturesInstallIn64BitMode=x64compatible
+
+          [Languages]
+          Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
+
+          [Tasks]
+          Name: "desktopicon"; Description: "Crear un acceso directo en el escritorio"; GroupDescription: "Accesos directos:"
+
+          [Files]
+          Source: "dist-portable\AI-Evolution-Program-portable\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+
+          [Icons]
+          Name: "{group}\AI Evolution Program"; Filename: "{app}\AI-Evolution-Program-portable.exe"
+          Name: "{group}\Desinstalar AI Evolution Program"; Filename: "{uninstallexe}"
+          Name: "{autodesktop}\AI Evolution Program"; Filename: "{app}\AI-Evolution-Program-portable.exe"; Tasks: desktopicon
+
+          [Run]
+          Filename: "{app}\AI-Evolution-Program-portable.exe"; Description: "Abrir el programa"; Flags: nowait postinstall skipifsilent
+          "@ | Out-File -FilePath installer.iss -Encoding utf8
+
+      - name: Compilar instalador
+        run: '& "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss'
+
+      - name: Renombrar el ejecutable unico con su version
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          Move-Item "dist/AI-Evolution-Program.exe" "dist/AI-Evolution-Program-$v-windows-x64.exe" -Force
+
+      - name: Verificar los tres entregables
+        shell: pwsh
+        run: |
+          $v = "${{ steps.ver.outputs.version }}"
+          $esperados = @(
+            "dist/AI-Evolution-Program-$v-windows-x64.exe",
+            "dist/AI-Evolution-Program-$v-portable-windows-x64.zip",
+            "dist/AI-Evolution-Program-$v-setup-windows-x64.exe"
+          )
+          foreach ($f in $esperados) {
+            if (-not (Test-Path $f)) { Write-Error "falta $f"; exit 1 }
+            $kb = [int]((Get-Item $f).Length / 1KB)
+            if ($kb -lt 5000) { Write-Error "$f sospechosamente pequeno: $kb kB"; exit 1 }
+            Write-Host "$f -> $kb kB"
+          }
+
+      - name: Checksums SHA-256
+        shell: pwsh
+        run: |
+          Get-ChildItem dist -Include *.exe, *.zip -Recurse |
+            ForEach-Object { "{0}  {1}" -f (Get-FileHash $_ -Algorithm SHA256).Hash.ToLower(), $_.Name } |
+            Out-File -FilePath dist/SHA256SUMS-windows.txt -Encoding utf8
+          Get-Content dist/SHA256SUMS-windows.txt
+
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: AI-Evolution-Program-windows
-          path: dist/AI-Evolution-Program.exe
+          path: |
+            dist/*.exe
+            dist/*.zip
+            dist/SHA256SUMS-windows.txt
           if-no-files-found: error

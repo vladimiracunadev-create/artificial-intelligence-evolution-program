@@ -90,7 +90,7 @@ flowchart LR
     C2 --> S(("➕"))
     X -->|"atajo identidad<br/>sin parámetros"| S
     S --> A["ReLU"] --> Y["y = F(x) + x"]
-    style S fill:#1a3a2a,stroke:#3fb950
+    style S fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

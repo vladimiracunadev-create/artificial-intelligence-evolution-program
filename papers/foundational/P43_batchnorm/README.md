@@ -87,8 +87,8 @@ flowchart LR
     subgraph C["✅ con batch norm"]
         B1["capa 1"] --> N1["norm"] --> B2["capa 5<br/>desv ≈ 1"] --> N2["norm"] --> B3["capa 11<br/>🟢 en rango útil"]
     end
-    style A3 fill:#3a1a1a,stroke:#f85149
-    style B3 fill:#1a3a2a,stroke:#3fb950
+    style A3 fill:#3a1a1a,stroke:#f85149,color:#f0f6fc
+    style B3 fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

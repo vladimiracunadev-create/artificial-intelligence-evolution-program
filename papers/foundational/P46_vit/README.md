@@ -95,7 +95,7 @@ flowchart LR
     PE --> T["🔁 codificador Transformer<br/>(sin cambios)"]
     T --> H["estado del token [clase]"]
     H --> C["clasificador"]
-    style T fill:#2a1a3a,stroke:#8957e5
+    style T fill:#2a1a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

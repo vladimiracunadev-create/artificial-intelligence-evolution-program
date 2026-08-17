@@ -103,7 +103,7 @@ flowchart TD
     U -.-> E["📈 emerge: verificar,<br/>reflexionar, cambiar de estrategia"]
     E -.-> D["📦 destilar a<br/>modelos menores"]
 
-    style V fill:#1a3a2a,stroke:#3fb950
+    style V fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 Nadie etiqueta el contenido de las trazas. La única flecha con información humana es la que

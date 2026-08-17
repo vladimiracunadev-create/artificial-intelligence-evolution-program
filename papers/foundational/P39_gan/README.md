@@ -89,7 +89,7 @@ flowchart LR
     D -->|"gradiente"| G
     D -->|"gradiente"| D2["actualizar D"]
     G -.->|"nunca ve datos reales<br/>directamente"| R
-    style D fill:#2a1a3a,stroke:#8957e5
+    style D fill:#2a1a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

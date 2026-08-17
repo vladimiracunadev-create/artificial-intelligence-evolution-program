@@ -97,7 +97,7 @@ flowchart LR
     PA --> L
     Y["etiqueta dura"] --> L
     L --> G["gradiente → alumno"]
-    style M fill:#2a1a3a,stroke:#8957e5
+    style M fill:#2a1a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

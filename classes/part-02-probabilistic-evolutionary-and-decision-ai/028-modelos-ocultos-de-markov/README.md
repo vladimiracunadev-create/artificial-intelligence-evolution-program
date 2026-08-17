@@ -138,9 +138,9 @@ flowchart LR
     q1 -.->|"b(o1)"| o1[/"o1=u"/]
     q2 -.->|"b(o2)"| o2[/"o2=u"/]
     q3 -.->|"b(o3)"| o3[/"o3=n"/]
-    style o1 fill:#eee,stroke:#999
-    style o2 fill:#eee,stroke:#999
-    style o3 fill:#eee,stroke:#999
+    style o1 fill:#eee,stroke:#999,color:#111418
+    style o2 fill:#eee,stroke:#999,color:#111418
+    style o3 fill:#eee,stroke:#999,color:#111418
 ```
 
 ## ⚠️ Errores conceptuales frecuentes

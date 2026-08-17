@@ -104,7 +104,7 @@ flowchart TD
     E6 --> SUM
     SUM --> OUT["salida"]
 
-    classDef off fill:#2a2a3a,stroke:#555,color:#888;
+    classDef off fill:#2a2a3a,stroke:#6b7280,color:#9aa4b2;
 ```
 
 Los seis expertos en gris **no se computan** para este token — pero **sí están cargados en

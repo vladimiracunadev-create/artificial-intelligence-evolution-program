@@ -84,8 +84,8 @@ flowchart TD
     M -->|"función: guardar"| E[("💾 almacén externo<br/>grande y lento")]
     E -->|"función: buscar<br/>(page-in, cuesta una llamada)"| M
     C -->|"desalojo al llenarse<br/>(page-out)"| E
-    style C fill:#1a3a2a,stroke:#3fb950
-    style E fill:#2a2a3a,stroke:#8957e5
+    style C fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
+    style E fill:#2a2a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

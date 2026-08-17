@@ -97,7 +97,7 @@ flowchart LR
     SFT --> PR["fase 2: preferencias<br/>generadas por IA"]
     P --> PR
     PR --> RM["modelo de recompensa"] --> RL["RL sobre la política"]
-    style P fill:#2a2a1a,stroke:#d29922
+    style P fill:#2a2a1a,stroke:#d29922,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

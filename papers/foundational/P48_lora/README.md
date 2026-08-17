@@ -98,7 +98,7 @@ flowchart LR
     B --> S
     S --> Y["h = Wx + BAx"]
     S -.->|"al desplegar:<br/>W ← W + BA"| D["una matriz normal<br/>✅ sin latencia extra"]
-    style W fill:#1a2a3a,stroke:#58a6ff
+    style W fill:#1a2a3a,stroke:#58a6ff,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

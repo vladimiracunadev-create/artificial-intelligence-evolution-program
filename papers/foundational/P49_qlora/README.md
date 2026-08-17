@@ -99,7 +99,7 @@ flowchart LR
     B --> S
     S --> Y["h = Wx + BAx"]
     Y -.->|"gradiente SOLO a A y B"| A
-    style W fill:#1a2a3a,stroke:#58a6ff
+    style W fill:#1a2a3a,stroke:#58a6ff,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

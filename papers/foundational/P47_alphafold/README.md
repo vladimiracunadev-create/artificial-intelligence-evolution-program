@@ -90,7 +90,7 @@ flowchart LR
     EV --> ST["módulo de estructura<br/>equivariante SE(3)"]
     ST --> C["coordenadas 3D<br/>+ confianza pLDDT"]
     C -.->|"reciclado ×3"| EV
-    style EV fill:#2a1a3a,stroke:#8957e5
+    style EV fill:#2a1a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

@@ -85,7 +85,7 @@ flowchart LR
     SG --> Z
     Z --> D["decodificador<br/>p(x|z)"]
     D --> XR["x̂"]
-    style EPS fill:#2a2a3a,stroke:#8957e5
+    style EPS fill:#2a2a3a,stroke:#8957e5,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original

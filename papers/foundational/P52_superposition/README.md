@@ -93,7 +93,7 @@ flowchart LR
     S --> D["decodificador<br/>8d → d"]
     D --> R["reconstrucción ≈ activaciones"]
     S -.->|"cada característica<br/>UNA cosa interpretable"| I["'citas legales'<br/>'ADN'<br/>'hebreo'"]
-    style S fill:#1a3a2a,stroke:#3fb950
+    style S fill:#1a3a2a,stroke:#3fb950,color:#f0f6fc
 ```
 
 ## 7. Qué observar en el paper original
