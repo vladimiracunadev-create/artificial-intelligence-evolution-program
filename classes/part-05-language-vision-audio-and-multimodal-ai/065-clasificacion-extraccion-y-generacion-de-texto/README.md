@@ -249,6 +249,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Documentación de scikit-learn: Working with text data — [scikit-learn.org](https://scikit-learn.org/stable/modules/feature_extraction.html)
 - Documentación de spaCy: Linguistic features (NER) — [spacy.io/usage/linguistic-features](https://spacy.io/usage/linguistic-features)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P09 · BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje](../../../papers/foundational/P09_bert/README.md) | 2018 | Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño. | [notebook](../../../notebooks/papers/P09_bert.ipynb) |
+| [P25 · Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto](../../../papers/foundational/P25_t5/README.md) | 2019 | Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas. | [notebook](../../../notebooks/papers/P25_t5.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

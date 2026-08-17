@@ -34,8 +34,9 @@
 - Notebook: [`P42_adversarial.ipynb`](../../notebooks/papers/P42_adversarial.ipynb)
 - Evaluación: [`P42_adversarial.md`](../../assessments/papers/P42_adversarial.md)
 - Clases del programa relacionadas:
-- [162-red-teaming-y-abuso](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md)
 - [053-cnn-y-aprendizaje-espacial](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- [162-red-teaming-y-abuso](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md)
+- [163-prompt-injection-e-instrucciones-no-confiables](../../classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md)
 
 ---
 

@@ -63,6 +63,16 @@ para intento en 1..N:
 La comparación con el refuerzo clásico es directa: donde RL actualiza `θ`, aquí se actualiza el
 **contexto**. Es más barato e inmediato, y también más frágil y efímero.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | cuánta información aporta un intento fallido sobre el siguiente |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

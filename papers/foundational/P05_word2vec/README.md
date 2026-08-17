@@ -4,6 +4,7 @@
 > dirección se puede calcular a escala de miles de millones de palabras.
 
 **Nivel:** L2 · **Motor:** `word2vec` · **Notebook:** [`P05_word2vec.ipynb`](../../../notebooks/papers/P05_word2vec.ipynb)
+· **Anexo:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 
 ## 1. Identificación
 
@@ -75,6 +76,17 @@ analogía a : b :: c : ?   →   argmax_d  cos(v_b − v_a + v_c, v_d),  d ∉ {
 
 La exclusión de `{a, b, c}` del ranking **es parte del protocolo**, no un detalle de
 implementación: sin ella el resultado cambia por completo.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | la similitud coseno es cómo se lee la geometría que el modelo aprende |
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | el softmax sobre el vocabulario y por qué su coste motiva el muestreo negativo |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

@@ -34,8 +34,8 @@
 - Notebook: [`P38_vae.ipynb`](../../notebooks/papers/P38_vae.ipynb)
 - Evaluación: [`P38_vae.md`](../../assessments/papers/P38_vae.md)
 - Clases del programa relacionadas:
-- [088-espacios-latentes-y-autoencoders-variacionales](../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md)
 - [058-autoencoders-gan-y-difusion](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- [088-espacios-latentes-y-autoencoders-variacionales](../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md)
 
 ---
 

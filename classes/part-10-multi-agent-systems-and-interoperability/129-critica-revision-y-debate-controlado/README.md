@@ -211,6 +211,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): patrones de conversación con roles críticos programables.
 - [Irving et al., *AI safety via debate* (arXiv:1805.00899)](https://arxiv.org/abs/1805.00899): el debate como mecanismo de supervisión escalable.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P30 · Reflexion: agentes de lenguaje con refuerzo verbal](../../../papers/foundational/P30_reflexion/README.md) | 2023 | El agente aprende entre intentos sin tocar un solo peso: el refuerzo ocurre en el contexto, en lenguaje natural. | [notebook](../../../notebooks/papers/P30_reflexion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

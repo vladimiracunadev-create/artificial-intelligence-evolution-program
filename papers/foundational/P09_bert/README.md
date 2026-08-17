@@ -4,6 +4,7 @@
 > tareas, un ajuste pequeño para cada una.
 
 **Nivel:** L3 · **Motor:** `bert_mlm` · **Notebook:** [`P09_bert.ipynb`](../../../notebooks/papers/P09_bert.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
 
@@ -81,6 +82,16 @@ secuencia para clasificación.
 
 **Escala del modelo:** BERT-base con 12 capas, `d_model=768`, 12 cabezas, ≈110 M de parámetros;
 BERT-large con 24 capas, `d_model=1024`, 16 cabezas, ≈340 M.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | predecir la palabra oculta es maximizar una verosimilitud, medida con entropía cruzada |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

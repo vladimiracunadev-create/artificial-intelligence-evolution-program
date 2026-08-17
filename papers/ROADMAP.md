@@ -145,9 +145,9 @@ Lo que aún no está y se declara como tal, en vez de fingir completitud:
 | Pendiente | Estado |
 |---|---|
 | Páginas HTML del eje dentro del sitio PWA | ✅ 66 páginas en `site/papers/`, con buscador en la portada |
-| PDF imprimible del eje completo | ✅ [`docs/pdf/papers-fundacionales.pdf`](../docs/pdf/papers-fundacionales.pdf), 434 páginas |
+| PDF imprimible del eje completo | ✅ [`docs/pdf/papers-fundacionales.pdf`](../docs/pdf/papers-fundacionales.pdf), 442 páginas |
 | Anexos matemáticos con ejemplos resueltos | ✅ 5 anexos en [`annexes/`](annexes/README.md) |
-| Enlaces de vuelta clase → paper | ✅ 50 clases, generados y verificados en CI |
+| Enlaces de vuelta clase → paper | ✅ 81 clases, generados y verificados en CI |
 | Ampliación a generativa, multimodal y escalado (P17–P19) | ✅ difusión, CLIP y leyes de escalado |
 | Continuación hasta 2025 (P20–P22) | ✅ Mamba, Mixtral y DeepSeek-R1 |
 | Fichas de segunda línea (GloVe, ELMo, T5) | ⬜ no iniciado |

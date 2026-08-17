@@ -4,6 +4,7 @@
 > criterio su propia pérdida. Nadie etiqueta nada.
 
 **Nivel:** L3 · **Motor:** `toolformer` · **Notebook:** [`P14_toolformer.ipynb`](../../../notebooks/papers/P14_toolformer.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
 
@@ -77,6 +78,16 @@ Se conserva la llamada si:
 El segundo término de `L⁻` importa: compara contra **hacer la llamada sin recibir respuesta**,
 lo que aísla el valor del **resultado** frente al valor de la mera presencia del texto de la
 llamada.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | el criterio de «útil» es una bajada de la pérdida, es decir, de la entropía cruzada |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

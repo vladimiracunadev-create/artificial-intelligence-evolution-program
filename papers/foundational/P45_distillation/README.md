@@ -74,6 +74,17 @@ Con logits `[4,0 · 2,0 · 1,5 · −1,0]` para perro, lobo, gato y coche:
 El orden `lobo > gato > coche` está siempre; la temperatura solo lo hace **utilizable** como señal
 de gradiente.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | el softmax con temperatura: la pieza central del método |
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | la entropía, que es cómo se mide cuánta estructura revela cada temperatura |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

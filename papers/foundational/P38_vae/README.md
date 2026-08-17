@@ -62,6 +62,17 @@ Con ambas gaussianas, la KL tiene forma cerrada:
 Sin el término KL, el codificador puede mapear cada `x` a una gaussiana estrechísima y aislada:
 el espacio latente deja de ser continuo y muestrear de la prior no genera nada coherente.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | gaussianas: la distribución latente y el ruido que el truco reparametriza |
+| [**A02 §4** · Divergencia KL](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#4-divergencia-kl) | la divergencia KL, que es el segundo término de la cota |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

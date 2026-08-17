@@ -66,6 +66,16 @@ Objetivo de preentrenamiento elegido tras el barrido: **corrupción de tramos** 
 secuencias contiguas de tokens y el modelo debe emitirlas, con centinelas que marcan cada hueco.
 No es el enmascarado token a token de BERT, y el paper explica por qué gana.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | una sola pérdida —entropía cruzada sobre texto— para todas las tareas |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

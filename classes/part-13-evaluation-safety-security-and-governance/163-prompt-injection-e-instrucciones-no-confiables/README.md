@@ -230,6 +230,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Wallace et al. (2024), *The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions*, arXiv:2404.13208](https://arxiv.org/abs/2404.13208)
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P42 · Explicar y aprovechar los ejemplos adversarios](../../../papers/foundational/P42_adversarial/README.md) | 2014 | Una perturbación imperceptible cambia la predicción. Y la causa no es la profundidad: es la linealidad en dimensión alta. | [notebook](../../../notebooks/papers/P42_adversarial.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

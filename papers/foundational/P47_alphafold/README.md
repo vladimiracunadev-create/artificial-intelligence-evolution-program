@@ -68,6 +68,17 @@ La miniatura del eje hace exactamente esto: parte de ocho puntos en posiciones *
 usando solo la matriz de distancias, converge por descenso de gradiente a la estructura correcta —
 el error cuadrático cae de 20,04 a 0,0 en menos de 150 pasos.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | distancias y normas: la geometría queda fijada por las distancias entre pares |
+| [**A01 §5** · Proyección y subespacios](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#5-proyección-y-subespacios) | por qué la solución es única solo salvo rotación, traslación y reflexión |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

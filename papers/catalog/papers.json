@@ -167,6 +167,7 @@
         "P06"
       ],
       "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/028-modelos-ocultos-de-markov",
         "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
       ],
       "fuentes_primarias": [
@@ -219,7 +220,9 @@
         "P08"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial"
+        "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose"
       ],
       "fuentes_primarias": [
         {
@@ -277,8 +280,10 @@
         "P11"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje",
         "classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud",
-        "classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial"
+        "classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial",
+        "classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados"
       ],
       "fuentes_primarias": [
         {
@@ -508,6 +513,7 @@
         "P10"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto",
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento"
       ],
       "fuentes_primarias": [
@@ -569,6 +575,7 @@
       ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento",
+        "classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones",
         "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad"
       ],
       "fuentes_primarias": [
@@ -628,9 +635,14 @@
         "P13"
       ],
       "clases_del_programa": [
+        "classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25",
+        "classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings",
+        "classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia",
         "classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas",
+        "classes/part-08-retrieval-context-memory-and-knowledge/106-transformacion-y-descomposicion-de-consultas",
         "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion",
-        "classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable"
+        "classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable",
+        "classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion"
       ],
       "fuentes_primarias": [
         {
@@ -684,6 +696,7 @@
         "P15"
       ],
       "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones",
         "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo"
       ],
       "fuentes_primarias": [
@@ -745,8 +758,10 @@
         "P16"
       ],
       "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente",
         "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno",
-        "classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente"
+        "classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas",
+        "classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales"
       ],
       "fuentes_primarias": [
         {
@@ -979,7 +994,9 @@
       ],
       "clases_del_programa": [
         "classes/part-07-generative-ai-across-media/090-modelos-de-difusion",
-        "classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento"
+        "classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento",
+        "classes/part-07-generative-ai-across-media/092-control-estructural-y-edicion-generativa",
+        "classes/part-07-generative-ai-across-media/095-generacion-y-edicion-de-video"
       ],
       "fuentes_primarias": [
         {
@@ -1035,6 +1052,7 @@
         "modelos multimodales y de generación condicionada por texto"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose",
         "classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje",
         "classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta"
       ],
@@ -1090,6 +1108,8 @@
       ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento",
+        "classes/part-06-foundation-models-and-llm-engineering/075-escalamiento-computo-y-leyes-empiricas",
+        "classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster",
         "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad"
       ],
       "fuentes_primarias": [
@@ -1142,8 +1162,8 @@
         "arquitecturas híbridas atención + SSM"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer",
-        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias"
+        "classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias",
+        "classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer"
       ],
       "fuentes_primarias": [
         {
@@ -1196,8 +1216,10 @@
         "modelos abiertos de gran escala"
       ],
       "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster",
+        "classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches",
         "classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad",
-        "classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches"
+        "classes/part-10-multi-agent-systems-and-interoperability/125-router-y-especialistas"
       ],
       "fuentes_primarias": [
         {
@@ -1250,7 +1272,8 @@
       ],
       "clases_del_programa": [
         "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo",
-        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno"
+        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno",
+        "classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia"
       ],
       "fuentes_primarias": [
         {
@@ -1427,6 +1450,7 @@
         "P22"
       ],
       "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto",
         "classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento"
       ],
       "fuentes_primarias": [
@@ -1487,7 +1511,8 @@
       ],
       "clases_del_programa": [
         "classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov",
-        "classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada"
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada",
+        "classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo"
       ],
       "fuentes_primarias": [
         {
@@ -1543,7 +1568,9 @@
       ],
       "clases_del_programa": [
         "classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta",
-        "classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion"
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion",
+        "classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo",
+        "classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica"
       ],
       "fuentes_primarias": [
         {
@@ -1601,7 +1628,9 @@
         "P22"
       ],
       "clases_del_programa": [
-        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno"
+        "classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno",
+        "classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas",
+        "classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia"
       ],
       "fuentes_primarias": [
         {
@@ -1659,7 +1688,9 @@
       ],
       "clases_del_programa": [
         "classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad",
-        "classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas"
+        "classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas",
+        "classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas",
+        "classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia"
       ],
       "fuentes_primarias": [
         {
@@ -1713,7 +1744,8 @@
         "P22"
       ],
       "clases_del_programa": [
-        "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes"
+        "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes",
+        "classes/part-10-multi-agent-systems-and-interoperability/129-critica-revision-y-debate-controlado"
       ],
       "fuentes_primarias": [
         {
@@ -1768,7 +1800,8 @@
         "P16"
       ],
       "clases_del_programa": [
-        "classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag"
+        "classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag",
+        "classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad"
       ],
       "fuentes_primarias": [
         {
@@ -1879,7 +1912,9 @@
         "P16"
       ],
       "clases_del_programa": [
-        "classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente"
+        "classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente",
+        "classes/part-10-multi-agent-systems-and-interoperability/127-supervisor-workers",
+        "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados"
       ],
       "fuentes_primarias": [
         {
@@ -2047,8 +2082,10 @@
         "evaluación de contexto largo"
       ],
       "clases_del_programa": [
+        "classes/part-08-retrieval-context-memory-and-knowledge/101-segmentacion-metadatos-y-ventanas",
         "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos",
-        "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion"
+        "classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion",
+        "classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad"
       ],
       "fuentes_primarias": [
         {
@@ -2107,7 +2144,8 @@
       ],
       "clases_del_programa": [
         "classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo",
-        "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos"
+        "classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos",
+        "classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad"
       ],
       "fuentes_primarias": [
         {
@@ -2157,8 +2195,8 @@
         "P17"
       ],
       "clases_del_programa": [
-        "classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales",
-        "classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion"
+        "classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion",
+        "classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales"
       ],
       "fuentes_primarias": [
         {
@@ -2211,8 +2249,8 @@
         "modelos generativos de imagen"
       ],
       "clases_del_programa": [
-        "classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial",
-        "classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion"
+        "classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion",
+        "classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial"
       ],
       "fuentes_primarias": [
         {
@@ -2266,8 +2304,8 @@
         "regularización moderna"
       ],
       "clases_del_programa": [
-        "classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers",
-        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion"
+        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion",
+        "classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers"
       ],
       "fuentes_primarias": [
         {
@@ -2367,8 +2405,9 @@
         "P52"
       ],
       "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial",
         "classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso",
-        "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial"
+        "classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables"
       ],
       "fuentes_primarias": [
         {
@@ -2473,8 +2512,10 @@
         "toda arquitectura profunda posterior"
       ],
       "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion",
         "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial",
-        "classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion"
+        "classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose"
       ],
       "fuentes_primarias": [
         {
@@ -2579,6 +2620,7 @@
       ],
       "clases_del_programa": [
         "classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial",
+        "classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual",
         "classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje"
       ],
       "fuentes_primarias": [
@@ -2788,7 +2830,8 @@
         "alineación con principios"
       ],
       "clases_del_programa": [
-        "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo"
+        "classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo",
+        "classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge"
       ],
       "fuentes_primarias": [
         {
@@ -2841,8 +2884,9 @@
         "P16"
       ],
       "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes",
         "classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito",
-        "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes"
+        "classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion"
       ],
       "fuentes_primarias": [
         {
@@ -2894,8 +2938,9 @@
         "interpretabilidad a escala"
       ],
       "clases_del_programa": [
+        "classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito",
         "classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso",
-        "classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito"
+        "classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion"
       ],
       "fuentes_primarias": [
         {

@@ -239,6 +239,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Smith, R. G., *The Contract Net Protocol*, IEEE Transactions on Computers C-29(12), 1980](https://doi.org/10.1109/TC.1980.1675516): negociación y adjudicación de tareas, el antecedente clásico.
 - Meyer, B., *Object-Oriented Software Construction*, 2.ª ed., Prentice Hall, 1997: *design by contract* — precondiciones, postcondiciones e invariantes.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P33 · AutoGen: aplicaciones de nueva generación mediante conversación multiagente](../../../papers/foundational/P33_autogen/README.md) | 2023 | El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger. | [notebook](../../../notebooks/papers/P33_autogen.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

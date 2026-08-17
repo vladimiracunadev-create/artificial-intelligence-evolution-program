@@ -66,6 +66,17 @@ Inferencia: μ y σ² son estadísticas acumuladas (media móvil), no del lote.
 El `ε` no es decorativo: con un lote donde todas las activaciones sean iguales, `σ² = 0` y la
 división explota. Ese epsilon evita un NaN que se propagaría a toda la red.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | media y varianza de un lote, y por qué estimarlas con pocas muestras es ruido |
+| [**A03 §4** · Por qué el gradiente se desvanece](../../annexes/A03_CALCULO_Y_GRADIENTES.md#4-por-qué-el-gradiente-se-desvanece) | el gradiente que se desvanece al saturar, que es lo que la normalización evita |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

@@ -34,8 +34,8 @@
 - Notebook: [`P39_gan.ipynb`](../../notebooks/papers/P39_gan.ipynb)
 - Evaluación: [`P39_gan.md`](../../assessments/papers/P39_gan.md)
 - Clases del programa relacionadas:
-- [089-gan-y-entrenamiento-adversarial](../../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md)
 - [058-autoencoders-gan-y-difusion](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- [089-gan-y-entrenamiento-adversarial](../../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md)
 
 ---
 

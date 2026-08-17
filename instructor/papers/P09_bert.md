@@ -34,6 +34,7 @@
 - Notebook: [`P09_bert.ipynb`](../../notebooks/papers/P09_bert.ipynb)
 - Evaluación: [`P09_bert.md`](../../assessments/papers/P09_bert.md)
 - Clases del programa relacionadas:
+- [065-clasificacion-extraccion-y-generacion-de-texto](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md)
 - [074-objetivos-de-preentrenamiento](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 
 ---

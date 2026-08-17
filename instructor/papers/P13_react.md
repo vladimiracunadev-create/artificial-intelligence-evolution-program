@@ -34,8 +34,10 @@
 - Notebook: [`P13_react.ipynb`](../../notebooks/papers/P13_react.ipynb)
 - Evaluación: [`P13_react.md`](../../assessments/papers/P13_react.md)
 - Clases del programa relacionadas:
-- [114-ciclo-react-y-observacion-del-entorno](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
 - [112-de-modelo-y-automatizacion-a-agente](../../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md)
+- [114-ciclo-react-y-observacion-del-entorno](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- [115-planificacion-y-descomposicion-de-tareas](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md)
+- [116-herramientas-tipadas-y-efectos-laterales](../../classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales/README.md)
 
 ---
 

@@ -4,6 +4,7 @@
 > prompt**. Ningún peso cambia: cambia lo que hay escrito antes de la pregunta.
 
 **Nivel:** L3 · **Motor:** `gpt3_icl` · **Notebook:** [`P10_gpt3.ipynb`](../../../notebooks/papers/P10_gpt3.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 ## 1. Identificación
 
@@ -71,6 +72,17 @@ few-shot  : p(y | instrucción, (x₁,y₁)…(x_k,y_k), x)
 
 **Escala del modelo mayor:** 175 000 millones de parámetros, 96 capas, `d_model = 12 288`,
 96 cabezas de atención, ventana de contexto de 2 048 tokens.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §4** · FLOPs de entrenamiento: la regla de 6ND](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#4-flops-de-entrenamiento-la-regla-de-6nd) | la regla de 6ND para saber qué costó entrenarlo |
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | el softmax y la temperatura, que gobiernan lo que el modelo emite |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

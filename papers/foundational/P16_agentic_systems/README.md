@@ -4,6 +4,7 @@
 > ReAct que convierten el bucle en un sistema. Se lee con fecha de consulta y se relee.
 
 **Nivel:** L5 · **Motor:** `agentic` · **Notebook:** [`P16_agentic_systems.ipynb`](../../../notebooks/papers/P16_agentic_systems.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 > [!WARNING]
 > Esta ficha es la más volátil del eje y se aparta deliberadamente del formato de las quince
@@ -93,6 +94,16 @@ PARAR si:  objetivo cumplido
 ```
 
 La última línea es la que separa un prototipo de un sistema operable.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §6** · La cuenta que casi nadie hace: inferencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#6-la-cuenta-que-casi-nadie-hace-inferencia) | el coste de inferencia de un sistema con memoria, reflexión y varios agentes |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

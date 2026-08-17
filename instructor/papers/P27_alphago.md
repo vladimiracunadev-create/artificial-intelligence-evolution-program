@@ -36,6 +36,8 @@
 - Clases del programa relacionadas:
 - [017-juegos-minimax-y-poda-alfa-beta](../../classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta/README.md)
 - [031-metodos-monte-carlo-y-simulacion](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion/README.md)
+- [057-aprendizaje-por-refuerzo-profundo](../../classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo/README.md)
+- [172-ia-neuro-simbolica](../../classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica/README.md)
 
 ---
 

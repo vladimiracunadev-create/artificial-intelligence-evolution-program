@@ -5,6 +5,7 @@
 > preferencias. Sin modelo de recompensa. Sin aprendizaje por refuerzo.
 
 **Nivel:** L4 · **Motor:** `dpo` · **Notebook:** [`P15_dpo.ipynb`](../../../notebooks/papers/P15_dpo.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
 
@@ -82,6 +83,17 @@ Recompensa implícita:
   política colapsa a una distribución degenerada. El log-ratio es lo que convierte «subir» en
   «subir *relativamente a la referencia*», y `β` pone el precio.
 - **La restricción KL no desapareció**: quedó absorbida en la forma del log-ratio.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §5** · Bradley-Terry: aprender de comparaciones](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-bradley-terry-aprender-de-comparaciones) | el mismo Bradley-Terry de RLHF, ahora sin modelo de recompensa intermedio |
+| [**A02 §4** · Divergencia KL](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#4-divergencia-kl) | la divergencia KL, que es lo que impide alejarse del modelo de referencia |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

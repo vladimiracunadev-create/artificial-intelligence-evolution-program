@@ -236,6 +236,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic Engineering — "Building effective agents" (orquestador-trabajadores, evaluador-optimizador)](https://www.anthropic.com/engineering/building-effective-agents)
 - [LangGraph — Overview (grafos de control con estado para planes ejecutables)](https://docs.langchain.com/oss/python/langgraph/overview)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P13 · ReAct: sinergia entre razonar y actuar en modelos de lenguaje](../../../papers/foundational/P13_react/README.md) | 2022 | El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa. | [notebook](../../../notebooks/papers/P13_react.ipynb) |
+| [P28 · El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes](../../../papers/foundational/P28_chain_of_thought/README.md) | 2022 | Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez. | [notebook](../../../notebooks/papers/P28_chain_of_thought.ipynb) |
+| [P29 · Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes](../../../papers/foundational/P29_tree_of_thoughts/README.md) | 2023 | Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder. | [notebook](../../../notebooks/papers/P29_tree_of_thoughts.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

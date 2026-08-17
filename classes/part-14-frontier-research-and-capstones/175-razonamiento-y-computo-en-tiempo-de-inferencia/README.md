@@ -237,6 +237,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - DeepSeek-AI (2025). *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*. [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
 - OpenAI (2024). *Learning to reason with LLMs* (o1). [Blog oficial](https://openai.com/index/learning-to-reason-with-llms/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P22 · DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo](../../../papers/foundational/P22_deepseek_r1/README.md) | 2025 | El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares. | [notebook](../../../notebooks/papers/P22_deepseek_r1.ipynb) |
+| [P28 · El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes](../../../papers/foundational/P28_chain_of_thought/README.md) | 2022 | Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez. | [notebook](../../../notebooks/papers/P28_chain_of_thought.ipynb) |
+| [P29 · Árbol de pensamientos: resolución deliberada de problemas con modelos de lenguaje grandes](../../../papers/foundational/P29_tree_of_thoughts/README.md) | 2023 | Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder. | [notebook](../../../notebooks/papers/P29_tree_of_thoughts.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -5,6 +5,7 @@
 > paper más influyente del campo.
 
 **Nivel:** L3 · **Motor:** `bahdanau` · **Notebook:** [`P07_attention_bahdanau.ipynb`](../../../notebooks/papers/P07_attention_bahdanau.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
 
@@ -74,6 +75,17 @@ Salida:
 - `v`, `W`, `U` : parámetros **aprendidos** junto con el resto del modelo.
 
 Obsérvese que `c_i` depende de `i`: **hay un contexto por paso de salida**, no uno por frase.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | los pesos de alineación son un softmax: suman 1 y compiten entre sí |
+| [**A04** · la atención paso a paso](../../annexes/A04_ATENCION_PASO_A_PASO.md) | el mecanismo completo, paso a paso, con números |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

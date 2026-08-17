@@ -251,6 +251,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Dosovitskiy, A. et al. (2020). "An Image is Worth 16x16 Words" (ViT) — [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)
 - Documentación oficial de torchvision (modelos y transformaciones) — [pytorch.org/vision](https://pytorch.org/vision/stable/index.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P04 · Clasificación de ImageNet con redes neuronales convolucionales profundas](../../../papers/foundational/P04_alexnet/README.md) | 2012 | El resultado que convirtió el deep learning en la corriente principal: margen amplio sobre los métodos de visión hechos a mano. | [notebook](../../../notebooks/papers/P04_alexnet.ipynb) |
+| [P44 · Aprendizaje residual profundo para reconocimiento de imágenes](../../../papers/foundational/P44_resnet/README.md) | 2015 | El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad. | [notebook](../../../notebooks/papers/P44_resnet.ipynb) |
+| [P46 · Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala](../../../papers/foundational/P46_vit/README.md) | 2020 | Trata la imagen como una secuencia de parches y aplica un Transformer puro: la convolución deja de ser imprescindible en visión. | [notebook](../../../notebooks/papers/P46_vit.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

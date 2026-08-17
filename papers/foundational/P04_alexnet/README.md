@@ -4,6 +4,7 @@
 > combinación que demostró que las ideas viejas escalaban.
 
 **Nivel:** L3 · **Motor:** `convnet` · **Notebook:** [`P04_alexnet.ipynb`](../../../notebooks/papers/P04_alexnet.ipynb)
+· **Anexo:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 
 ## 1. Identificación
 
@@ -73,6 +74,17 @@ Dropout (entrenamiento):
 **Recuento de parámetros.** Una capa densa que conecte una entrada de `H×W` con una salida de
 `H'×W'` necesita `H·W·H'·W'` pesos. Un kernel `k×k` necesita `k²`, reutilizados en toda la
 imagen. Esa reducción es lo que hace viable la profundidad.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §4** · Matrices como transformaciones](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#4-matrices-como-transformaciones) | una convolución es una transformación lineal con pesos compartidos |
+| [**A05 §3** · La cuenta que decide el hardware: memoria](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#3-la-cuenta-que-decide-el-hardware-memoria) | la cuenta de memoria que obligó a partir la red en dos GPU |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

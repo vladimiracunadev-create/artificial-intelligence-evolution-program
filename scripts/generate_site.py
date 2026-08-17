@@ -101,9 +101,13 @@ def rewrite_class_links(text: str, lesson_path: str) -> str:
     )
     text = text.replace("(../../../papers/annexes/README.md)", "(../papers/anexos.html)")
     text = text.replace("(../../../papers/README.md)", "(../papers/index.html)")
-    # cualquier otra referencia relativa a archivos del repo → blob de GitHub
+    # cualquier otra referencia relativa a archivos del repo → blob de GitHub.
+    # Se excluye lo que termina en `.html`: eso ya lo reescribieron las reglas de
+    # arriba y es una página DEL SITIO. Sin la exclusión, este catch-all las pisaba
+    # y mandaba cada paper de una clase a un blob de GitHub inexistente.
     text = re.sub(
-        r"\((?:\.\./)+((?:frontier|datasets|docs|specializations|src|scripts|papers|notebooks)/[^)\s]*)\)",
+        r"\((?:\.\./)+((?:frontier|datasets|docs|specializations|src|scripts|papers|notebooks)"
+        r"/(?![^)\s]*\.html\))[^)\s]*)\)",
         rf"({REPO_URL}/blob/main/\1)",
         text,
     )

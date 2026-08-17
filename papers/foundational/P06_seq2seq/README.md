@@ -5,6 +5,7 @@
 > tres papers siguientes.
 
 **Nivel:** L3 · **Motor:** `seq2seq` · **Notebook:** [`P06_seq2seq.ipynb`](../../../notebooks/papers/P06_seq2seq.ipynb)
+· **Anexo:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 
 ## 1. Identificación
 
@@ -67,6 +68,17 @@ Inferencia:    búsqueda en haz (beam search) sobre la secuencia de salida
 **El punto crítico:** `c ∈ ℝᵈ` tiene dimensión **constante**, mientras que la información de
 `x₁…x_n` crece con `n`. Comprimir algo de tamaño creciente en algo de tamaño fijo tiene un
 coste, y ese coste crece con la longitud.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §5** · Proyección y subespacios](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#5-proyección-y-subespacios) | comprimir una frase en un vector fijo es una proyección, con la pérdida que eso implica |
+| [**A03 §4** · Por qué el gradiente se desvanece](../../annexes/A03_CALCULO_Y_GRADIENTES.md#4-por-qué-el-gradiente-se-desvanece) | el gradiente que tiene que atravesar toda la secuencia |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

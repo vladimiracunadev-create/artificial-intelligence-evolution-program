@@ -34,8 +34,10 @@
 - Notebook: [`P44_resnet.ipynb`](../../notebooks/papers/P44_resnet.ipynb)
 - Evaluación: [`P44_resnet.md`](../../assessments/papers/P44_resnet.md)
 - Clases del programa relacionadas:
-- [053-cnn-y-aprendizaje-espacial](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
 - [051-activaciones-inicializacion-y-normalizacion](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- [053-cnn-y-aprendizaje-espacial](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- [061-clasificacion-y-representacion-visual](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md)
+- [062-deteccion-segmentacion-y-pose](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md)
 
 ---
 

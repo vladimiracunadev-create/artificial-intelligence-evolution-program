@@ -73,6 +73,17 @@ Para un modelo lineal wᵀx, el cambio en la salida es:
 La perturbación se mide en norma infinito —cuánto cambia **cada** componente— y el efecto se
 acumula en norma 1.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §1** · Producto escalar](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#1-producto-escalar) | el producto escalar: el ataque crece como `ε·‖w‖₁` porque la salida es `wᵀx` |
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | normas: la perturbación se acota en infinito y el efecto se acumula en norma 1 |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

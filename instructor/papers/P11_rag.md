@@ -34,9 +34,14 @@
 - Notebook: [`P11_rag.ipynb`](../../notebooks/papers/P11_rag.ipynb)
 - Evaluación: [`P11_rag.md`](../../assessments/papers/P11_rag.md)
 - Clases del programa relacionadas:
+- [102-busqueda-lexica-y-bm25](../../classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md)
+- [103-busqueda-hibrida-y-fusion-de-rankings](../../classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md)
+- [104-re-ranking-y-filtros-de-evidencia](../../classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia/README.md)
 - [105-rag-basico-con-citas](../../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md)
+- [106-transformacion-y-descomposicion-de-consultas](../../classes/part-08-retrieval-context-memory-and-knowledge/106-transformacion-y-descomposicion-de-consultas/README.md)
 - [110-evaluacion-de-fidelidad-cobertura-y-atribucion](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md)
 - [111-proyecto-rag-productivo-y-auditable](../../classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable/README.md)
+- [168-alucinacion-grounding-y-abstencion](../../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)
 
 ---
 

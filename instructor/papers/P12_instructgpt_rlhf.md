@@ -34,6 +34,7 @@
 - Notebook: [`P12_instructgpt_rlhf.ipynb`](../../notebooks/papers/P12_instructgpt_rlhf.ipynb)
 - Evaluación: [`P12_instructgpt_rlhf.md`](../../assessments/papers/P12_instructgpt_rlhf.md)
 - Clases del programa relacionadas:
+- [076-instruction-tuning-y-datos-de-instrucciones](../../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md)
 - [078-rlhf-rlaif-y-dpo](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
 
 ---

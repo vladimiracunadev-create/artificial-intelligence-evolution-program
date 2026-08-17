@@ -4,6 +4,7 @@
 > estaban infraentrenados en datos.
 
 **Nivel:** L4 · **Motor:** `scaling_laws` · **Notebook:** [`P19_scaling_laws.ipynb`](../../../notebooks/papers/P19_scaling_laws.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 · **Anexo matemático:** [complejidad, coste y escalado](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 ## 1. Identificación
@@ -76,6 +77,17 @@ parámetro** que depende de `α` y `β`, no del presupuesto.
 > Los valores ajustados de `E`, `A`, `B`, `α` y `β` están en el artículo. El motor de este eje
 > usa constantes **didácticas** para que la curva tenga la forma correcta: la forma es lo
 > transferible, los números concretos hay que leerlos en la fuente.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §4** · FLOPs de entrenamiento: la regla de 6ND](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#4-flops-de-entrenamiento-la-regla-de-6nd) | la regla de 6ND: el presupuesto de cómputo que se reparte |
+| [**A05 §5** · Escalado: dónde gastar el presupuesto](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#5-escalado-dónde-gastar-el-presupuesto) | dónde gastarlo, que es exactamente la pregunta del paper |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

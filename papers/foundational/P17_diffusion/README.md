@@ -4,6 +4,7 @@
 > paso a paso, un proceso de ruido que se conoce en forma cerrada.
 
 **Nivel:** L3 · **Motor:** `diffusion` · **Notebook:** [`P17_diffusion.ipynb`](../../../notebooks/papers/P17_diffusion.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 · **Anexo matemático:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
@@ -68,6 +69,16 @@ Pérdida simplificada:
 
 La segunda línea es la que convierte un problema generativo en **regresión supervisada**: el
 par de entrenamiento `(x_t, ε)` se fabrica gratis desde cualquier imagen y cualquier `t`.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | gaussianas y el proceso de difusión: la matemática literal del método |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

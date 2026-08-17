@@ -35,6 +35,7 @@
 - Evaluación: [`P50_constitutional_ai.md`](../../assessments/papers/P50_constitutional_ai.md)
 - Clases del programa relacionadas:
 - [078-rlhf-rlaif-y-dpo](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
+- [161-golden-datasets-regresion-y-llm-as-judge](../../classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge/README.md)
 
 ---
 

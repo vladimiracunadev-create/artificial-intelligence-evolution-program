@@ -266,6 +266,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [RFC 9110 — HTTP Semantics, §9.2.2 "Idempotent Methods" (definición normativa de idempotencia)](https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods)
 - [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: herramientas con más efecto del necesario)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P13 · ReAct: sinergia entre razonar y actuar en modelos de lenguaje](../../../papers/foundational/P13_react/README.md) | 2022 | El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa. | [notebook](../../../notebooks/papers/P13_react.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -4,6 +4,7 @@
 > representaciones y empieza a descubrirlas.
 
 **Nivel:** L2 · **Motor:** `backprop` · **Notebook:** [`P02_backpropagation.ipynb`](../../../notebooks/papers/P02_backpropagation.ipynb)
+· **Anexo:** [cálculo y gradientes](../../annexes/A03_CALCULO_Y_GRADIENTES.md)
 
 ## 1. Identificación
 
@@ -72,6 +73,17 @@ Actualización:  θ ← θ − η · ∂L/∂θ
 
 El único ingrediente nuevo respecto al cálculo elemental es el orden: computar `δ` de atrás
 hacia adelante evita recalcular derivadas repetidas. Eso es lo que lo hace viable.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §2** · Regla de la cadena](../../annexes/A03_CALCULO_Y_GRADIENTES.md#2-regla-de-la-cadena) | la regla de la cadena **es** el algoritmo: todo lo demás es contabilidad |
+| [**A03 §3** · Retropropagación](../../annexes/A03_CALCULO_Y_GRADIENTES.md#3-retropropagación) | la retropropagación como aplicación ordenada de esa regla, capa por capa |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

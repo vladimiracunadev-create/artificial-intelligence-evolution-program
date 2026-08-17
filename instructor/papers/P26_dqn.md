@@ -36,6 +36,7 @@
 - Clases del programa relacionadas:
 - [029-procesos-de-decision-de-markov](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md)
 - [030-teoria-de-decision-y-utilidad-esperada](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md)
+- [057-aprendizaje-por-refuerzo-profundo](../../classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo/README.md)
 
 ---
 

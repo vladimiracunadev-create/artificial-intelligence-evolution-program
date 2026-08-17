@@ -4,6 +4,7 @@
 > Y es el primer LLM de pesos abiertos publicado tras revisión por pares.
 
 **Nivel:** L5 · **Motor:** `rl_reasoning` · **Notebook:** [`P22_deepseek_r1.ipynb`](../../../notebooks/papers/P22_deepseek_r1.ipynb)
+· **Anexo:** [cálculo y gradientes](../../annexes/A03_CALCULO_Y_GRADIENTES.md)
 · **Anexo matemático:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
@@ -73,6 +74,16 @@ enunciado y la respuesta es instrumental: sobrevive si aumenta la probabilidad d
 Consecuencia medible y no gratuita: las trayectorias que aciertan más son **más largas**, así
 que la política aprendida gasta más tokens por respuesta. El cómputo se desplaza del
 entrenamiento a la inferencia.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §6** · Gradiente de política (REINFORCE)](../../annexes/A03_CALCULO_Y_GRADIENTES.md#6-gradiente-de-política-reinforce) | el gradiente de política, con una recompensa verificable en vez de aprendida |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

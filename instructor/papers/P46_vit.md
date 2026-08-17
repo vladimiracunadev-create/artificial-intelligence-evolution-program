@@ -35,6 +35,7 @@
 - Evaluación: [`P46_vit.md`](../../assessments/papers/P46_vit.md)
 - Clases del programa relacionadas:
 - [053-cnn-y-aprendizaje-espacial](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- [061-clasificacion-y-representacion-visual](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md)
 - [069-modelos-vision-lenguaje](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
 
 ---

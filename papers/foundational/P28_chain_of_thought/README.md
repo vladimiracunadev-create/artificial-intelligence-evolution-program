@@ -63,6 +63,16 @@ salen las tres consecuencias observables:
 - como la fiabilidad por paso crece con la escala del modelo, el efecto **emerge**: un producto
   de números cruza un umbral.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | la fiabilidad por paso y cómo se compone: por qué encadenar pasos degrada |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

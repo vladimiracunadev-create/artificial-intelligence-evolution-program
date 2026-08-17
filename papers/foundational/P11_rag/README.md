@@ -4,6 +4,7 @@
 > consultable, actualizable y citable, en vez de quedar congelado en los pesos.
 
 **Nivel:** L3 · **Motor:** `rag` · **Notebook:** [`P11_rag.ipynb`](../../../notebooks/papers/P11_rag.ipynb)
+· **Anexo:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 
 ## 1. Identificación
 
@@ -71,6 +72,16 @@ RAG-Token (documento distinto por token):
 - `p_η` — recuperador: memoria **no paramétrica**, sustituible sin reentrenar.
 - `p_θ` — generador: memoria **paramétrica**.
 - El documento latente `z` se **marginaliza**: no se elige uno y se descarta el resto.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | recuperar es ordenar por coseno: sin esa métrica no hay recuperación |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

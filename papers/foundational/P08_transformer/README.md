@@ -4,6 +4,7 @@
 > para entrenar a gran escala. Casi todo lo que vino después es una rama de este bloque.
 
 **Nivel:** L4 · **Motor:** `transformer` · **Notebook:** [`P08_transformer.ipynb`](../../../notebooks/papers/P08_transformer.ipynb)
+· **Anexo:** [la atención paso a paso](../../annexes/A04_ATENCION_PASO_A_PASO.md)
 · **Miniaturas:** [T01–T08](#14-notebook-asociado)
 
 ## 1. Identificación
@@ -123,6 +124,17 @@ FFN(x) = max(0, x·W₁ + b₁) · W₂ + b₂     (misma FFN en todas las posic
 
 La atención sale más barata en operaciones cuando `n < d`, y siempre gana en paralelismo y en
 longitud de camino.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A04** · la atención paso a paso](../../annexes/A04_ATENCION_PASO_A_PASO.md) | el anexo entero es esta arquitectura desmontada con números a mano |
+| [**A05 §2** · El cruce: atención frente a recurrencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#2-el-cruce-atención-frente-a-recurrencia) | el cruce O(n²) frente a O(n): dónde deja de compensar |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

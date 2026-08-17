@@ -34,8 +34,10 @@
 - Notebook: [`P21_moe.ipynb`](../../notebooks/papers/P21_moe.ipynb)
 - Evaluación: [`P21_moe.md`](../../assessments/papers/P21_moe.md)
 - Clases del programa relacionadas:
-- [086-seleccion-de-modelo-costo-latencia-y-privacidad](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- [082-dimensionar-hardware-de-la-laptop-al-cluster](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md)
 - [084-serving-batching-y-caches](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)
+- [086-seleccion-de-modelo-costo-latencia-y-privacidad](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- [125-router-y-especialistas](../../classes/part-10-multi-agent-systems-and-interoperability/125-router-y-especialistas/README.md)
 
 ---
 

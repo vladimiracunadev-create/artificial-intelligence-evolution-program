@@ -252,6 +252,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [OWASP Top 10 for LLM Applications (envenenamiento de memoria como riesgo persistente)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - ["LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth", arXiv:2602.07962 (medición del context rot)](https://arxiv.org/abs/2602.07962)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P31 · Agentes generativos: simulacros interactivos de comportamiento humano](../../../papers/foundational/P31_generative_agents/README.md) | 2023 | Resuelve la memoria de un agente que vive mucho tiempo: qué recordar, cuándo y por qué, cuando el contexto no da para todo. | [notebook](../../../notebooks/papers/P31_generative_agents.ipynb) |
+| [P36 · Perdidos en el medio: cómo usan los modelos de lenguaje los contextos largos](../../../papers/foundational/P36_lost_in_middle/README.md) | 2023 | Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio. | [notebook](../../../notebooks/papers/P36_lost_in_middle.ipynb) |
+| [P37 · MemGPT: modelos de lenguaje como sistemas operativos](../../../papers/foundational/P37_memgpt/README.md) | 2023 | Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida. | [notebook](../../../notebooks/papers/P37_memgpt.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

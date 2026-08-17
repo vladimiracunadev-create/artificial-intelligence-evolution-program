@@ -58,6 +58,16 @@ resultado: exactitud[p] tiene forma de U
     alta en p=k      (recencia)
 ```
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | la posición como variable: la exactitud no es uniforme a lo largo del contexto |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

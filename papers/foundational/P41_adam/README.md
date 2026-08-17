@@ -69,6 +69,17 @@ Valores por defecto del paper: `β₁ = 0,9`, `β₂ = 0,999`, `ε = 1e-8`.
 `m₁ = 0,1·g₁`, diez veces menor que el gradiente real. Sin corregir, los primeros pasos serían
 diminutos justo cuando más falta hace avanzar.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §1** · Derivada: la pregunta que resuelve](../../annexes/A03_CALCULO_Y_GRADIENTES.md#1-derivada-la-pregunta-que-resuelve) | qué es una derivada y qué información da su magnitud |
+| [**A03 §2** · Regla de la cadena](../../annexes/A03_CALCULO_Y_GRADIENTES.md#2-regla-de-la-cadena) | la regla de la cadena, que produce los gradientes que Adam consume |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

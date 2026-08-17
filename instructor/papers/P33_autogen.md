@@ -35,6 +35,8 @@
 - Evaluación: [`P33_autogen.md`](../../assessments/papers/P33_autogen.md)
 - Clases del programa relacionadas:
 - [124-workflow-subagente-y-sistema-multiagente](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)
+- [127-supervisor-workers](../../classes/part-10-multi-agent-systems-and-interoperability/127-supervisor-workers/README.md)
+- [131-contratos-de-roles-capacidades-y-resultados](../../classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md)
 
 ---
 

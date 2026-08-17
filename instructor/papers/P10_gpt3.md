@@ -35,6 +35,7 @@
 - Evaluación: [`P10_gpt3.md`](../../assessments/papers/P10_gpt3.md)
 - Clases del programa relacionadas:
 - [074-objetivos-de-preentrenamiento](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
+- [076-instruction-tuning-y-datos-de-instrucciones](../../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md)
 - [086-seleccion-de-modelo-costo-latencia-y-privacidad](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
 
 ---

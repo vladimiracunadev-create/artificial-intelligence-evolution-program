@@ -34,8 +34,9 @@
 - Notebook: [`P52_superposition.ipynb`](../../notebooks/papers/P52_superposition.ipynb)
 - Evaluación: [`P52_superposition.md`](../../assessments/papers/P52_superposition.md)
 - Clases del programa relacionadas:
-- [162-red-teaming-y-abuso](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md)
 - [160-diseno-de-evaluaciones-y-criterios-de-exito](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)
+- [162-red-teaming-y-abuso](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md)
+- [167-explicabilidad-incertidumbre-y-calibracion](../../classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md)
 
 ---
 

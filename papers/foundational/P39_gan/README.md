@@ -67,6 +67,17 @@ facilidad, `log(1 − D(G(z)))` se satura y el gradiente para `G` casi desaparec
 entrena `G` maximizando `log D(G(z))` en lugar de minimizando el término original — mismo punto
 fijo, gradientes mucho mejores.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | verosimilitud, para ver qué es exactamente lo que este método **evita** calcular |
+| [**A02 §4** · Divergencia KL](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#4-divergencia-kl) | la KL, de la que deriva la divergencia de Jensen-Shannon del objetivo |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

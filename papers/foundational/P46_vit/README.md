@@ -73,6 +73,17 @@ Coste de la atención: O(N²)
 Bajar el parche de 32 a 16 multiplica el coste por **17**: la resolución se paga al cuadrado. Ese
 es el compromiso central de la arquitectura.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §2** · El cruce: atención frente a recurrencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#2-el-cruce-atención-frente-a-recurrencia) | el coste cuadrático en el número de parches, que decide la resolución viable |
+| [**A01 §4** · Matrices como transformaciones](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#4-matrices-como-transformaciones) | proyectar un parche aplanado es una transformación lineal |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

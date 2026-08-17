@@ -68,6 +68,16 @@ Cinco intentos, tres criterios:
 La brecha entre 80 % y 40 % es exactamente el problema que ataca el benchmark. Los criterios
 blandos inflan, y siempre en la misma dirección.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | qué mide realmente una tasa de éxito y qué información aporta el criterio |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

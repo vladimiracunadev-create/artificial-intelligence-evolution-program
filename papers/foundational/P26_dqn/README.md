@@ -67,6 +67,16 @@ Con red objetivo congelada θ⁻:
 hace a Q-learning **fuera de política**: aprende el valor de actuar óptimamente aunque esté
 explorando.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §3** · Retropropagación](../../annexes/A03_CALCULO_Y_GRADIENTES.md#3-retropropagación) | la retropropagación sobre un objetivo que se mueve, que es la dificultad del método |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

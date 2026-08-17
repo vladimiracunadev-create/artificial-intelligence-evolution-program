@@ -76,6 +76,17 @@ Con 2000 pesos simulados de una gaussiana:
 La memoria baja **linealmente** con los bits; el error crece mucho más deprisa. Ahí está el
 compromiso, y por qué 4 bits acabó siendo el punto habitual.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §3** · La cuenta que decide el hardware: memoria](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#3-la-cuenta-que-decide-el-hardware-memoria) | la cuenta de memoria: bits por parámetro por número de parámetros |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | la gaussiana que siguen los pesos, que es lo que NF4 aprovecha |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

@@ -4,6 +4,7 @@
 > observa el mundo y actúa sobre él. Es el paper donde empieza, en sentido técnico, el agente.
 
 **Nivel:** L2 · **Motor:** `react` · **Notebook:** [`P13_react.ipynb`](../../../notebooks/papers/P13_react.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 ## 1. Identificación
 
@@ -73,6 +74,16 @@ ReAct:
 
 Las observaciones `o` entran en el contexto pero **no** las genera el modelo: vienen del
 entorno. Ese es el anclaje.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §6** · La cuenta que casi nadie hace: inferencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#6-la-cuenta-que-casi-nadie-hace-inferencia) | cada vuelta del bucle es una llamada más: el coste de razonar y actuar es aditivo |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

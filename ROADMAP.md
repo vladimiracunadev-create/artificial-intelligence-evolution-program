@@ -8,7 +8,7 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.8.1** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.9.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
 | Motores didácticos | 20 de clases + 52 de papers |
@@ -92,6 +92,13 @@
       quedarse atrás respecto al catálogo.
 - [x] Los anexos matemáticos entran en el PDF del eje, que su portada ya prometía.
 - [x] Barrido de coherencia de toda la documentación, el sitio, los PDFs y el About.
+
+## ✅ 0.9.0 — El eje conectado (entregado)
+
+- [x] Puente matemático en las 52 fichas: apartados concretos de los anexos, con anclas verificadas.
+- [x] Cobertura clase → paper de 50 a 81 clases (45 enlaces nuevos).
+- [x] Enlaces del sitio a las fichas, que apuntaban a blobs de GitHub inexistentes.
+- [x] La clase 010 enlaza el eje de papers y sus guías de lectura.
 
 ## 📦 Pendiente — Distribución
 

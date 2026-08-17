@@ -71,6 +71,16 @@ Representación para la tarea:
 Lo esencial: `ELMo_k` depende de `k` **y de toda la frase**. Un embedding estático no tiene el
 subíndice `k`.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | el coseno, que es como se comprueba que dos apariciones de la misma palabra se separan |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

@@ -36,6 +36,8 @@
 - Clases del programa relacionadas:
 - [014-busqueda-en-anchura-y-profundidad](../../classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad/README.md)
 - [016-diseno-y-validacion-de-heuristicas](../../classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas/README.md)
+- [115-planificacion-y-descomposicion-de-tareas](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md)
+- [175-razonamiento-y-computo-en-tiempo-de-inferencia](../../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)
 
 ---
 

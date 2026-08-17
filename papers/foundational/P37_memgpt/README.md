@@ -65,6 +65,16 @@ al necesitar algo ausente:
 El coste no desaparece: se convierte en **latencia por acceso**, exactamente como un fallo de
 página.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §6** · La cuenta que casi nadie hace: inferencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#6-la-cuenta-que-casi-nadie-hace-inferencia) | el coste por token de un contexto que no cabe, que es lo que obliga a paginar |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

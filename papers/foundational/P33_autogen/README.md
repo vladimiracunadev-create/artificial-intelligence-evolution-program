@@ -70,6 +70,16 @@ Esa desigualdad casi nunca se escribe, y es la que decide.
 Fiabilidad compuesta, además: con `n` agentes y probabilidad `p` de que cada uno haga bien su
 parte, el sistema completo va como `p^n` salvo que haya verificación entre pasos.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §6** · La cuenta que casi nadie hace: inferencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#6-la-cuenta-que-casi-nadie-hace-inferencia) | el coste de inferencia se multiplica por el número de agentes y de turnos |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

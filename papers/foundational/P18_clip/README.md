@@ -4,6 +4,7 @@
 > nadie anotó, descritas con palabras.
 
 **Nivel:** L3 · **Motor:** `clip` · **Notebook:** [`P18_clip.ipynb`](../../../notebooks/papers/P18_clip.ipynb)
+· **Anexo:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 · **Anexo matemático:** [álgebra y geometría](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md)
 
 ## 1. Identificación
@@ -71,6 +72,17 @@ Clasificación zero-shot:
 
 La **diagonal** son los pares correctos. Todo lo demás del lote son negativos: por eso el
 tamaño de lote es un hiperparámetro de primer orden y no un detalle de implementación.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | el coseno entre el vector de imagen y el de texto es toda la predicción |
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | el softmax contrastivo sobre el lote |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

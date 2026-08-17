@@ -243,6 +243,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Molnar, *Interpretable Machine Learning* (libro abierto)](https://christophm.github.io/interpretable-ml-book/)
 - [Kendall & Gal (2017), *What Uncertainties Do We Need in Bayesian Deep Learning?*, arXiv:1703.04977](https://arxiv.org/abs/1703.04977)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P52 · Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario](../../../papers/foundational/P52_superposition/README.md) | 2023 | Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables. | [notebook](../../../notebooks/papers/P52_superposition.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

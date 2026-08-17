@@ -262,6 +262,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - OpenAI (2026). *Harness engineering: leveraging Codex in an agent-first world*. [openai.com/index/harness-engineering](https://openai.com/index/harness-engineering/)
 - GitHub — *Spec Kit* (toolkit de spec-driven development para agentes de código). [github.com/github/spec-kit](https://github.com/github/spec-kit)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P51 · SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub?](../../../papers/foundational/P51_swebench/README.md) | 2023 | Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan. | [notebook](../../../notebooks/papers/P51_swebench.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

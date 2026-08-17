@@ -35,6 +35,8 @@
 - Evaluación: [`P28_chain_of_thought.md`](../../assessments/papers/P28_chain_of_thought.md)
 - Clases del programa relacionadas:
 - [114-ciclo-react-y-observacion-del-entorno](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- [115-planificacion-y-descomposicion-de-tareas](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md)
+- [175-razonamiento-y-computo-en-tiempo-de-inferencia](../../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)
 
 ---
 

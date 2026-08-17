@@ -34,6 +34,7 @@
 - Notebook: [`P18_clip.ipynb`](../../notebooks/papers/P18_clip.ipynb)
 - Evaluación: [`P18_clip.md`](../../assessments/papers/P18_clip.md)
 - Clases del programa relacionadas:
+- [062-deteccion-segmentacion-y-pose](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md)
 - [069-modelos-vision-lenguaje](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
 - [070-fusion-multimodal-y-representacion-conjunta](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
 

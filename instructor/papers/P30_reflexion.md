@@ -35,6 +35,7 @@
 - Evaluación: [`P30_reflexion.md`](../../assessments/papers/P30_reflexion.md)
 - Clases del programa relacionadas:
 - [122-evaluacion-y-depuracion-de-agentes](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)
+- [129-critica-revision-y-debate-controlado](../../classes/part-10-multi-agent-systems-and-interoperability/129-critica-revision-y-debate-controlado/README.md)
 
 ---
 

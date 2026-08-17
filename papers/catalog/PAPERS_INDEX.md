@@ -187,7 +187,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Una celda con estado aditivo (carrusel de error constante) y puertas multiplicativas que deciden qué entra y qué sale.
 - **Hito:** Primera arquitectura recurrente capaz de mantener información a través de cientos de pasos sin que el gradiente se desvanezca.
 - **Conceptos:** LSTM, gradiente desvaneciente, puertas, estado de celda, dependencias largas
-- **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- **Clases del programa:** [028](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/028-modelos-ocultos-de-markov/README.md), [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
 - **Fuentes primarias:** [DOI (Neural Computation)](https://doi.org/10.1162/neco.1997.9.8.1735)
 
 ### P04 · ImageNet Classification with Deep Convolutional Neural Networks (2012)
@@ -197,7 +197,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Una CNN profunda entrenada en GPU con ReLU, dropout, aumento de datos y solapamiento de pooling sobre ILSVRC-2012.
 - **Hito:** El resultado que convirtió el deep learning en la corriente principal: margen amplio sobre los métodos de visión hechos a mano.
 - **Conceptos:** CNN, ImageNet, ReLU, dropout, GPU, aumento de datos
-- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [061](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md), [062](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md)
 - **Fuentes primarias:** [NeurIPS 2012 (proceedings)](https://papers.nips.cc/paper_files/paper/2012) · [DOI (versión Communications of the ACM, 2017)](https://doi.org/10.1145/3065386)
 
 ### P05 · Efficient Estimation of Word Representations in Vector Space (2013)
@@ -207,7 +207,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Dos arquitecturas log-lineales sin capa oculta —CBOW y skip-gram— que predicen contexto y producen vectores con estructura lineal.
 - **Hito:** El significado distribucional se vuelve barato: vectores densos entrenables sobre miles de millones de palabras.
 - **Conceptos:** embeddings, skip-gram, CBOW, muestreo negativo, hipótesis distribucional, analogías
-- **Clases del programa:** [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md), [100](../../classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial/README.md)
+- **Clases del programa:** [064](../../classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje/README.md), [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md), [100](../../classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial/README.md), [166](../../classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados/README.md)
 - **Fuentes primarias:** [arXiv:1301.3781](https://arxiv.org/abs/1301.3781) · [arXiv:1310.4546 (muestreo negativo y frases)](https://arxiv.org/abs/1310.4546)
 
 ### P38 · Auto-Encoding Variational Bayes (2013)
@@ -217,7 +217,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Escribir la muestra como z = μ + σ·ε con ε de una normal fija: el azar queda fuera del camino del gradiente, y se optimiza una cota inferior de la verosimilitud (ELBO).
 - **Hito:** Hace entrenable un modelo generativo latente: el truco de reparametrización deja pasar el gradiente a través del muestreo.
 - **Conceptos:** VAE, reparametrización, ELBO, espacio latente, inferencia variacional
-- **Clases del programa:** [088](../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md), [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- **Clases del programa:** [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md), [088](../../classes/part-07-generative-ai-across-media/088-espacios-latentes-y-autoencoders-variacionales/README.md)
 - **Fuentes primarias:** [arXiv:1312.6114](https://arxiv.org/abs/1312.6114)
 
 ### P06 · Sequence to Sequence Learning with Neural Networks (2014)
@@ -257,7 +257,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Entrenar un generador contra un discriminador en un juego minimax: el generador gana cuando el discriminador ya no distingue lo real de lo sintético.
 - **Hito:** Convierte la generación en un juego: dos redes compiten y ninguna necesita una verosimilitud explícita.
 - **Conceptos:** GAN, minimax, discriminador, colapso de modos, entrenamiento adversario
-- **Clases del programa:** [089](../../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md), [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md)
+- **Clases del programa:** [058](../../classes/part-04-neural-networks-and-deep-learning/058-autoencoders-gan-y-difusion/README.md), [089](../../classes/part-07-generative-ai-across-media/089-gan-y-entrenamiento-adversarial/README.md)
 - **Fuentes primarias:** [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
 
 ### P40 · Dropout: A Simple Way to Prevent Neural Networks from Overfitting (2014)
@@ -267,7 +267,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** En cada paso, poner a cero cada unidad con probabilidad p. Ninguna función puede depender de una unidad concreta, así que la red aprende representaciones redundantes.
 - **Hito:** Apagar unidades al azar durante el entrenamiento equivale a entrenar un ensamblado exponencial de subredes que comparten pesos.
 - **Conceptos:** dropout, regularización, co-adaptación, ensamblado, sobreajuste
-- **Clases del programa:** [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Clases del programa:** [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md), [052](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 - **Fuentes primarias:** [JMLR 15(56)](https://jmlr.org/papers/v15/srivastava14a.html)
 
 ### P41 · Adam: A Method for Stochastic Optimization (2014)
@@ -287,7 +287,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Mostrar que la explicación es la contraria —el comportamiento demasiado LINEAL en alta dimensión— y derivar de ahí un ataque de un solo paso (FGSM) y una defensa por entrenamiento adversario.
 - **Hito:** Una perturbación imperceptible cambia la predicción. Y la causa no es la profundidad: es la linealidad en dimensión alta.
 - **Conceptos:** ejemplos adversarios, FGSM, robustez, linealidad, entrenamiento adversario
-- **Clases del programa:** [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md)
+- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [163](../../classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md)
 - **Fuentes primarias:** [arXiv:1412.6572](https://arxiv.org/abs/1412.6572)
 
 ### P26 · Human-level control through deep reinforcement learning (2015)
@@ -297,7 +297,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Q-learning con una red convolucional, estabilizado con repetición de experiencia (rompe la correlación) y una red objetivo congelada (fija el blanco).
 - **Hito:** El primer agente que aprende a actuar directamente desde píxeles, con la misma arquitectura y los mismos hiperparámetros en decenas de juegos.
 - **Conceptos:** DQN, Q-learning, repetición de experiencia, red objetivo, Atari, refuerzo profundo
-- **Clases del programa:** [029](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md), [030](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md)
+- **Clases del programa:** [029](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/029-procesos-de-decision-de-markov/README.md), [030](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/030-teoria-de-decision-y-utilidad-esperada/README.md), [057](../../classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo/README.md)
 - **Fuentes primarias:** [DOI (Nature 518, 529–533)](https://doi.org/10.1038/nature14236)
 
 ### P43 · Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (2015)
@@ -317,7 +317,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Que cada bloque aprenda un residuo F(x) y la salida sea F(x) + x. Si la capa no aporta, aprender F ≈ 0 es fácil, y el gradiente siempre tiene una ruta directa.
 - **Hito:** El atajo identidad hace apilables cientos de capas. Es la misma idea aditiva de la LSTM, aplicada a la profundidad.
 - **Conceptos:** ResNet, conexión residual, atajo identidad, degradación, profundidad
-- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- **Clases del programa:** [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md), [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [061](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md), [062](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md)
 - **Fuentes primarias:** [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
 
 ### P45 · Distilling the Knowledge in a Neural Network (2015)
@@ -337,7 +337,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Una red de políticas que propone jugadas plausibles y una red de valor que evalúa posiciones, usadas para guiar y truncar una búsqueda de Monte Carlo en árbol.
 - **Hito:** Une las dos tradiciones de la IA: la búsqueda simbólica de la parte 01 y el aprendizaje profundo de la parte 04, en un solo sistema.
 - **Conceptos:** AlphaGo, MCTS, red de políticas, red de valor, autojuego, búsqueda guiada
-- **Clases del programa:** [017](../../classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta/README.md), [031](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion/README.md)
+- **Clases del programa:** [017](../../classes/part-01-symbolic-ai-search-logic-and-planning/017-juegos-minimax-y-poda-alfa-beta/README.md), [031](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/031-metodos-monte-carlo-y-simulacion/README.md), [057](../../classes/part-04-neural-networks-and-deep-learning/057-aprendizaje-por-refuerzo-profundo/README.md), [172](../../classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica/README.md)
 - **Fuentes primarias:** [DOI (Nature 529, 484–489)](https://doi.org/10.1038/nature16961)
 
 ### P08 · Attention Is All You Need (2017)
@@ -357,7 +357,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Modelado de lenguaje enmascarado (MLM) más predicción de la siguiente oración (NSP), y ajuste fino de todo el modelo por tarea.
 - **Hito:** Consolida el patrón preentrenar-y-ajustar: un mismo modelo base sirve para muchas tareas con un ajuste pequeño.
 - **Conceptos:** BERT, MLM, bidireccional, preentrenamiento, fine-tuning, GLUE
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
+- **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1810.04805](https://arxiv.org/abs/1810.04805) · [ACL Anthology (NAACL 2019)](https://aclanthology.org/N19-1423/)
 
 ### P24 · Deep Contextualized Word Representations (2018)
@@ -377,7 +377,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un marco unificado texto a texto, un estudio sistemático de todas las decisiones de diseño del preentrenamiento, y el corpus C4 (Colossal Clean Crawled Corpus).
 - **Hito:** Todo problema de texto se reescribe como texto → texto: un solo modelo, una sola pérdida, cero cabezas específicas.
 - **Conceptos:** T5, texto a texto, transferencia, C4, encoder-decoder, estudio sistemático
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
+- **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1910.10683](https://arxiv.org/abs/1910.10683) · [JMLR 21(140)](https://jmlr.org/papers/v21/20-074.html)
 
 ### P10 · Language Models are Few-Shot Learners (2020)
@@ -387,7 +387,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Escalar un Transformer autorregresivo hasta 175 000 millones de parámetros y evaluar en modo zero-shot, one-shot y few-shot mediante condicionamiento en el prompt.
 - **Hito:** El aprendizaje en contexto: la tarea se especifica en el prompt y el modelo se adapta sin actualizar ningún peso.
 - **Conceptos:** GPT-3, aprendizaje en contexto, few-shot, escalado, modelo autorregresivo, prompt
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [076](../../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
 - **Fuentes primarias:** [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)
 
 ### P11 · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks (2020)
@@ -397,7 +397,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Combinar un recuperador denso (DPR) sobre un índice de Wikipedia con un generador seq2seq (BART), entrenados de forma conjunta.
 - **Hito:** Separa el conocimiento (índice consultable y actualizable) del razonamiento (parámetros del modelo).
 - **Conceptos:** RAG, recuperación densa, memoria no paramétrica, citas, atribución, conocimiento actualizable
-- **Clases del programa:** [105](../../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md), [111](../../classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable/README.md)
+- **Clases del programa:** [102](../../classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md), [103](../../classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md), [104](../../classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia/README.md), [105](../../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md), [106](../../classes/part-08-retrieval-context-memory-and-knowledge/106-transformacion-y-descomposicion-de-consultas/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md), [111](../../classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable/README.md), [168](../../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)
 - **Fuentes primarias:** [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
 
 ### P17 · Denoising Diffusion Probabilistic Models (2020)
@@ -407,7 +407,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un proceso directo que añade ruido gaussiano en T pasos con forma cerrada, y una red que aprende a predecir ese ruido para invertirlo.
 - **Hito:** La generación deja de ser un salto en la oscuridad: se aprende a deshacer, paso a paso, un proceso de ruido conocido.
 - **Conceptos:** difusión, DDPM, proceso directo, predicción de ruido, cota variacional, score matching
-- **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
+- **Clases del programa:** [090](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md), [091](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md), [092](../../classes/part-07-generative-ai-across-media/092-control-estructural-y-edicion-generativa/README.md), [095](../../classes/part-07-generative-ai-across-media/095-generacion-y-edicion-de-video/README.md)
 - **Fuentes primarias:** [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
 
 ### P46 · An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (2020)
@@ -417,7 +417,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Partir la imagen en parches, proyectarlos como si fueran tokens, añadir codificación posicional y aplicar el encoder del Transformer sin más.
 - **Hito:** Trata la imagen como una secuencia de parches y aplica un Transformer puro: la convolución deja de ser imprescindible en visión.
 - **Conceptos:** ViT, parches, sesgo inductivo, preentrenamiento a escala, visión
-- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
+- **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [061](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md), [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
 - **Fuentes primarias:** [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)
 
 ### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
@@ -427,7 +427,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Entrenar de forma contrastiva sobre 400 millones de pares (imagen, texto) de internet, alineando ambos espacios, y clasificar comparando la imagen con el texto de cada clase.
 - **Hito:** El texto se convierte en la etiqueta: un solo modelo clasifica categorías que nadie anotó, describiéndolas con palabras.
 - **Conceptos:** CLIP, contrastivo, InfoNCE, zero-shot, multimodal, supervisión débil
-- **Clases del programa:** [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md), [070](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
+- **Clases del programa:** [062](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md), [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md), [070](../../classes/part-05-language-vision-audio-and-multimodal-ai/070-fusion-multimodal-y-representacion-conjunta/README.md)
 - **Fuentes primarias:** [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
 
 ### P34 · RoFormer: Enhanced Transformer with Rotary Position Embedding (2021)
@@ -467,7 +467,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Tres etapas: ajuste supervisado con demostraciones, modelo de recompensa entrenado con comparaciones humanas y optimización por PPO con penalización KL.
 - **Hito:** El salto de «modelo que completa texto» a «asistente que sigue instrucciones»: alineación con preferencias humanas.
 - **Conceptos:** RLHF, alineación, modelo de recompensa, PPO, preferencias, instrucciones
-- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
+- **Clases del programa:** [076](../../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md), [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
 - **Fuentes primarias:** [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)
 
 ### P13 · ReAct: Synergizing Reasoning and Acting in Language Models (2022)
@@ -477,7 +477,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Intercalar trazas de pensamiento y acciones sobre un entorno, de modo que cada observación real condicione el siguiente razonamiento.
 - **Hito:** El modelo deja de ser solo un generador de texto y pasa a ser el controlador de un bucle que observa y actúa.
 - **Conceptos:** ReAct, agente, bucle pensamiento-acción-observación, herramientas, traza auditable
-- **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md), [112](../../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md)
+- **Clases del programa:** [112](../../classes/part-09-ai-agent-engineering/112-de-modelo-y-automatizacion-a-agente/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md), [115](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md), [116](../../classes/part-09-ai-agent-engineering/116-herramientas-tipadas-y-efectos-laterales/README.md)
 - **Fuentes primarias:** [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
 
 ### P19 · Training Compute-Optimal Large Language Models (2022)
@@ -487,7 +487,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Ajustar empíricamente L(N, D) y resolver el reparto que minimiza la pérdida bajo la restricción C = 6ND.
 - **Hito:** Corrige la carrera por el tamaño: a cómputo fijo, los modelos de la época estaban infraentrenados en datos.
 - **Conceptos:** leyes de escalado, cómputo óptimo, tokens por parámetro, FLOPs, infraentrenamiento
-- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
+- **Clases del programa:** [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md), [075](../../classes/part-06-foundation-models-and-llm-engineering/075-escalamiento-computo-y-leyes-empiricas/README.md), [082](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
 - **Fuentes primarias:** [arXiv:2203.15556](https://arxiv.org/abs/2203.15556)
 
 ### P28 · Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (2022)
@@ -497,7 +497,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Incluir en el prompt unos pocos ejemplos que muestren el razonamiento paso a paso, sin ajuste fino ni datos adicionales.
 - **Hito:** Descomponer en pasos intermedios desbloquea tareas que el mismo modelo fallaba respondiendo de una vez.
 - **Conceptos:** cadena de pensamiento, razonamiento, prompting, emergencia, pasos intermedios
-- **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- **Clases del programa:** [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md), [115](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md), [175](../../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)
 - **Fuentes primarias:** [arXiv:2201.11903](https://arxiv.org/abs/2201.11903)
 
 ### P35 · FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (2022)
@@ -517,7 +517,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Escribir los principios de forma explícita, hacer que el modelo critique y revise sus propias respuestas contra ellos, y usar preferencias generadas por IA para la fase de refuerzo.
 - **Hito:** Sustituye parte del juicio humano por un conjunto de principios explícitos y auditables, y por la autocrítica del modelo.
 - **Conceptos:** IA constitucional, RLAIF, autocrítica, principios explícitos, inocuidad
-- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
+- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [161](../../classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge/README.md)
 - **Fuentes primarias:** [arXiv:2212.08073](https://arxiv.org/abs/2212.08073)
 
 ### P14 · Toolformer: Language Models Can Teach Themselves to Use Tools (2023)
@@ -557,7 +557,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Hacer que los parámetros del espacio de estados dependan de la ENTRADA (selección), y compensar la pérdida de la convolución eficiente con un algoritmo paralelo consciente del hardware.
 - **Hito:** El primer competidor serio del Transformer en lenguaje: tiempo lineal y estado de tamaño fijo, sin atención.
 - **Conceptos:** SSM, selección, tiempo lineal, estado de tamaño fijo, escaneo paralelo, contexto largo
-- **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md), [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 - **Fuentes primarias:** [arXiv:2312.00752](https://arxiv.org/abs/2312.00752)
 
 ### P29 · Tree of Thoughts: Deliberate Problem Solving with Large Language Models (2023)
@@ -567,7 +567,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Tratar los pasos de razonamiento como nodos de un árbol, hacer que el modelo evalúe estados parciales y aplicar búsqueda con poda y retroceso.
 - **Hito:** Devuelve la búsqueda clásica al razonamiento: explorar varias ramas, evaluarlas y poder retroceder.
 - **Conceptos:** árbol de pensamientos, búsqueda, autoevaluación, poda, retroceso, deliberación
-- **Clases del programa:** [014](../../classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad/README.md), [016](../../classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas/README.md)
+- **Clases del programa:** [014](../../classes/part-01-symbolic-ai-search-logic-and-planning/014-busqueda-en-anchura-y-profundidad/README.md), [016](../../classes/part-01-symbolic-ai-search-logic-and-planning/016-diseno-y-validacion-de-heuristicas/README.md), [115](../../classes/part-09-ai-agent-engineering/115-planificacion-y-descomposicion-de-tareas/README.md), [175](../../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)
 - **Fuentes primarias:** [arXiv:2305.10601](https://arxiv.org/abs/2305.10601)
 
 ### P30 · Reflexion: Language Agents with Verbal Reinforcement Learning (2023)
@@ -577,7 +577,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Tras cada fallo, generar una reflexión verbal sobre qué salió mal y conservarla en una memoria episódica que condiciona el siguiente intento.
 - **Hito:** El agente aprende entre intentos sin tocar un solo peso: el refuerzo ocurre en el contexto, en lenguaje natural.
 - **Conceptos:** Reflexion, refuerzo verbal, memoria episódica, autocrítica, reintento
-- **Clases del programa:** [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)
+- **Clases del programa:** [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md), [129](../../classes/part-10-multi-agent-systems-and-interoperability/129-critica-revision-y-debate-controlado/README.md)
 - **Fuentes primarias:** [arXiv:2303.11366](https://arxiv.org/abs/2303.11366)
 
 ### P31 · Generative Agents: Interactive Simulacra of Human Behavior (2023)
@@ -587,7 +587,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Un flujo de memoria con recuperación puntuada por relevancia, recencia e importancia, más un proceso de reflexión que sintetiza recuerdos en conclusiones de nivel superior.
 - **Hito:** Resuelve la memoria de un agente que vive mucho tiempo: qué recordar, cuándo y por qué, cuando el contexto no da para todo.
 - **Conceptos:** memoria episódica, recuperación puntuada, reflexión, planificación, simulación social
-- **Clases del programa:** [107](../../classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag/README.md)
+- **Clases del programa:** [107](../../classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag/README.md), [118](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 - **Fuentes primarias:** [arXiv:2304.03442](https://arxiv.org/abs/2304.03442)
 
 ### P32 · Voyager: An Open-Ended Embodied Agent with Large Language Models (2023)
@@ -607,7 +607,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Agentes conversables y configurables —con o sin persona humana, con o sin ejecución de código— que se coordinan mediante mensajes, con patrones de conversación programables.
 - **Hito:** El multiagente deja de ser una metáfora y pasa a ser un patrón de programación: agentes con rol que conversan hasta converger.
 - **Conceptos:** multiagente, conversación, roles, crítico, human-in-the-loop, orquestación
-- **Clases del programa:** [124](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md)
+- **Clases del programa:** [124](../../classes/part-10-multi-agent-systems-and-interoperability/124-workflow-subagente-y-sistema-multiagente/README.md), [127](../../classes/part-10-multi-agent-systems-and-interoperability/127-supervisor-workers/README.md), [131](../../classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md)
 - **Fuentes primarias:** [arXiv:2308.08155](https://arxiv.org/abs/2308.08155)
 
 ### P36 · Lost in the Middle: How Language Models Use Long Contexts (2023)
@@ -617,7 +617,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Medirlo: colocar el mismo documento relevante en distintas posiciones del contexto y observar cómo cambia la exactitud.
 - **Hito:** Tener contexto largo no es usarlo: el rendimiento cae en forma de U cuando el dato relevante está en el medio.
 - **Conceptos:** contexto largo, curva en U, primacía, recencia, recuperación, posición
-- **Clases del programa:** [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md)
+- **Clases del programa:** [101](../../classes/part-08-retrieval-context-memory-and-knowledge/101-segmentacion-metadatos-y-ventanas/README.md), [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md), [118](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 - **Fuentes primarias:** [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
 
 ### P37 · MemGPT: Towards LLMs as Operating Systems (2023)
@@ -627,7 +627,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Gestionar el contexto como un sistema operativo gestiona la memoria: un contexto principal pequeño, un almacén externo grande, y el propio modelo decidiendo qué paginar mediante llamadas de función.
 - **Hito:** Aplica al contexto la idea de memoria virtual: una jerarquía que da la ilusión de memoria grande sobre una pequeña y rápida.
 - **Conceptos:** MemGPT, memoria jerárquica, paginación, contexto virtual, llamadas de función, memoria de agente
-- **Clases del programa:** [108](../../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md), [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)
+- **Clases del programa:** [108](../../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md), [109](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md), [118](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 - **Fuentes primarias:** [arXiv:2310.08560](https://arxiv.org/abs/2310.08560)
 
 ### P49 · QLoRA: Efficient Finetuning of Quantized LLMs (2023)
@@ -647,7 +647,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Construir el conjunto a partir de incidencias y parches reales de proyectos populares, y evaluar con un criterio objetivo: aplicar el parche generado y ejecutar los tests del propio repositorio.
 - **Hito:** Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan.
 - **Conceptos:** SWE-bench, evaluación, tests como criterio, agentes de programación, contaminación
-- **Clases del programa:** [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md), [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)
+- **Clases del programa:** [122](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md), [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md), [178](../../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)
 - **Fuentes primarias:** [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
 
 ### P52 · Towards Monosemanticity: Decomposing Language Models With Dictionary Learning (2023)
@@ -657,7 +657,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** La hipótesis de superposición: el modelo representa MÁS características que dimensiones tiene, como direcciones casi ortogonales con interferencia. Y un autoencoder disperso puede recuperar esas direcciones.
 - **Hito:** Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables.
 - **Conceptos:** superposición, monosemanticidad, autoencoder disperso, interpretabilidad mecanicista, características
-- **Clases del programa:** [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)
+- **Clases del programa:** [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md), [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [167](../../classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md)
 - **Fuentes primarias:** [Transformer Circuits Thread (2023)](https://transformer-circuits.pub/2023/monosemantic-features)
 
 ### P21 · Mixtral of Experts (2024)
@@ -667,7 +667,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Sustituir la capa feed-forward por 8 expertos con un router que elige 2 por token, y publicar pesos y resultados bajo licencia abierta.
 - **Hito:** Desacopla capacidad de cómputo: 47 000 millones de parámetros totales, 13 000 millones activos por token.
 - **Conceptos:** mezcla de expertos, router, top-2, parámetros activos, balanceo de carga, Apache 2.0
-- **Clases del programa:** [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [084](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md)
+- **Clases del programa:** [082](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md), [084](../../classes/part-06-foundation-models-and-llm-engineering/084-serving-batching-y-caches/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [125](../../classes/part-10-multi-agent-systems-and-interoperability/125-router-y-especialistas/README.md)
 - **Fuentes primarias:** [arXiv:2401.04088](https://arxiv.org/abs/2401.04088)
 
 ### P22 · DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (2025)
@@ -677,7 +677,7 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Propuesta:** Recompensar únicamente el RESULTADO verificable y dejar que el comportamiento de razonamiento emerja del refuerzo, para luego transferirlo a modelos menores.
 - **Hito:** El razonamiento se incentiva con refuerzo puro, sin trazas humanas anotadas; y es el primer LLM de pesos abiertos publicado tras revisión por pares.
 - **Conceptos:** razonamiento, refuerzo, recompensa verificable, cómputo en inferencia, destilación, pesos abiertos
-- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md)
+- **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [114](../../classes/part-09-ai-agent-engineering/114-ciclo-react-y-observacion-del-entorno/README.md), [175](../../classes/part-14-frontier-research-and-capstones/175-razonamiento-y-computo-en-tiempo-de-inferencia/README.md)
 - **Fuentes primarias:** [arXiv:2501.12948](https://arxiv.org/abs/2501.12948) · [DOI (Nature 645, 633–638, 2025)](https://doi.org/10.1038/s41586-025-09422-z)
 
 ## Miniaturas del Transformer

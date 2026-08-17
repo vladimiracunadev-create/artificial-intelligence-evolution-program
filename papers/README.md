@@ -19,7 +19,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 <!-- stats:inicio -->
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **52** | **60** | **52** | **5** | **L0–L5** | **50** |
+| **52** | **60** | **52** | **5** | **L0–L5** | **81** |
 <!-- stats:fin -->
 
 </div>
@@ -227,7 +227,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **50 clases** enlazadas llevan un bloque generado por
+Las **81 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

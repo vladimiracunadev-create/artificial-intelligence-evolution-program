@@ -66,6 +66,16 @@ Coste, con ramificación b, profundidad d y anchura de haz k:
 Con `k = 1`, el árbol **es** la cadena. Cada unidad de anchura multiplica el coste y compra la
 posibilidad de recuperarse de un mal paso. El compromiso es explícito y presupuestable.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §1** · Notación O(): qué dice y qué no](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#1-notación-o-qué-dice-y-qué-no) | la notación O() aplicada a un árbol: ramificación por profundidad |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

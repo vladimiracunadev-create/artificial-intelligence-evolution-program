@@ -36,6 +36,7 @@
 - Clases del programa relacionadas:
 - [108-memoria-de-corto-y-largo-plazo](../../classes/part-08-retrieval-context-memory-and-knowledge/108-memoria-de-corto-y-largo-plazo/README.md)
 - [109-compresion-de-contexto-y-caches-semanticos](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)
+- [118-memoria-contexto-y-continuidad](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 
 ---
 

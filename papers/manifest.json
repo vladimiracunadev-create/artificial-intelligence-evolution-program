@@ -266,15 +266,15 @@
     },
     {
       "path": "instructor/papers/P03_lstm.md",
-      "sha256_lf": "c76e5220a9c31b0d27e6fd61823cf193149ce4745c266e5ccd3b46e173244488"
+      "sha256_lf": "c2e1383ff64e3dd96674d2384240b11927942d1a8e8e6d23f7efc45bd7e3c0fb"
     },
     {
       "path": "instructor/papers/P04_alexnet.md",
-      "sha256_lf": "519b85ad55f7db186c44464dff584c38224a2087b420f8cde291ecfe11939cdb"
+      "sha256_lf": "ac60f106599d94106c9e44b7c2b32402fc41157ac736109a44dd18c70fd5985d"
     },
     {
       "path": "instructor/papers/P05_word2vec.md",
-      "sha256_lf": "eb49692aabea0904025edd6362e86d96b0ddf7b2b98c335c219c85e861979575"
+      "sha256_lf": "cf317c83a30403ea98cedd48c2aa69fdcc416be92caf29a9be06794c843d957e"
     },
     {
       "path": "instructor/papers/P06_seq2seq.md",
@@ -290,23 +290,23 @@
     },
     {
       "path": "instructor/papers/P09_bert.md",
-      "sha256_lf": "0b60e8014697f43353a7b4ec48313fd3fd0ae9f08010bcfa2a7e0ef4794ec4af"
+      "sha256_lf": "7859d8c079f8cf9ee59395382cfcd688470204494587151a6b68b48099463d04"
     },
     {
       "path": "instructor/papers/P10_gpt3.md",
-      "sha256_lf": "a88b23a1287cd5bb3b6d9b31d5e1e972e13ed7dec431bf90ee2b1e38d4d49b82"
+      "sha256_lf": "4a7451561bff519427d12fafc0ed274800411587b326d74c3cf8e0c9fb0526ad"
     },
     {
       "path": "instructor/papers/P11_rag.md",
-      "sha256_lf": "ffd77df00013a792b9720c26f5596255d67ba599142fea1e6608e5988c7ea374"
+      "sha256_lf": "9045662db01e9c963e693d5148b693cb60a4ed070772b0a1fce800d15bf32057"
     },
     {
       "path": "instructor/papers/P12_instructgpt_rlhf.md",
-      "sha256_lf": "956f79ea21971baf0734efa510149815e24ed458b1d19b9c548564f0d5716e31"
+      "sha256_lf": "72eefa026420b895b8c57b83c3f7a3113ee157cffd81fc5448cb0d60b8f8e43e"
     },
     {
       "path": "instructor/papers/P13_react.md",
-      "sha256_lf": "c28b6d7e681f5623ec186c352834ff085de5b9b88ef7bbdf346e0f7425380248"
+      "sha256_lf": "b6bdb7f5f438d1076602a160a133dcdadddd55704859b5f395be13b86dfe7f40"
     },
     {
       "path": "instructor/papers/P14_toolformer.md",
@@ -322,27 +322,27 @@
     },
     {
       "path": "instructor/papers/P17_diffusion.md",
-      "sha256_lf": "99d0e406a091e7a734c5bd0a614850422271e10208959c93b2d7723753f198d8"
+      "sha256_lf": "d28d73ab3afa10dee1a39d6c9c2baa271fae6249bdd412ea828292b198339177"
     },
     {
       "path": "instructor/papers/P18_clip.md",
-      "sha256_lf": "8e51df30e2630e0b7d067112c86cb79bb6e6ea7908f48c31b9cb07eadb91f7df"
+      "sha256_lf": "bd277a5fbf1cc6406e86c5b51b62f177d1156755ba5710423dc3eef060453d61"
     },
     {
       "path": "instructor/papers/P19_scaling_laws.md",
-      "sha256_lf": "f6284bee639bc7dbea168ce26468c5e4009172e5d5f13065f2a0ffcf38563502"
+      "sha256_lf": "7130f3d89c1512fd4848d3de4f87c873b7614516f4ab0edfc72513492de37faf"
     },
     {
       "path": "instructor/papers/P20_mamba.md",
-      "sha256_lf": "c6a6d2e161141794171caf23b5ca02e9b3da565ebaf7354977cea19c6acfd286"
+      "sha256_lf": "51de062b41b9e7208183b0f123fd03723fc2ddb6c00d6fd1b9a19167b894b94a"
     },
     {
       "path": "instructor/papers/P21_moe.md",
-      "sha256_lf": "41533c4dde560d23165588434f6d1adfb17169e91d303b98bbb16d7d108cf24b"
+      "sha256_lf": "16003af9ce06921c5fa132f530385393175497c0a84285764718375ec9cd05b3"
     },
     {
       "path": "instructor/papers/P22_deepseek_r1.md",
-      "sha256_lf": "522f921a02f0cfdb509c4363d826ae4d30673b703aa51909779d2717c3ecce84"
+      "sha256_lf": "9b5b439648c10377d3d44a4b50ecc87a2a6b0f8ff6d926754d828200aef9e49d"
     },
     {
       "path": "instructor/papers/P23_glove.md",
@@ -354,31 +354,31 @@
     },
     {
       "path": "instructor/papers/P25_t5.md",
-      "sha256_lf": "f66f1afe45af9824938bfcf7d3ff20df0021bb8f1107824af8b1ec9e7d14c99b"
+      "sha256_lf": "3e133368a33da32d13c23018c93eee92de3c6d796669ccfc46255e7cd78dee80"
     },
     {
       "path": "instructor/papers/P26_dqn.md",
-      "sha256_lf": "c1c38fbf347e02523b7cd8295417c4ebefeb6604aefa0dfd4e3b14ba9f868a9e"
+      "sha256_lf": "fa667c6ccfe38a260755794979560f3aee581c803ec7da40df2fe05b3cd34099"
     },
     {
       "path": "instructor/papers/P27_alphago.md",
-      "sha256_lf": "b03527876bf4986688e445109ad33e4bcbde6bdfef9913984f1f0368e0e1d6ac"
+      "sha256_lf": "76a1da4d15f88252e2ad66ab19afb9395fa50afbc2808f974af50ee0fedeecca"
     },
     {
       "path": "instructor/papers/P28_chain_of_thought.md",
-      "sha256_lf": "bbedfd0afcde6b89903bb199196d6e5b3b10d9e8f5788af612e45e034aee3913"
+      "sha256_lf": "dc7a91041edba862232a62506372a63122e66d0688eec98a4a845ed97a5be57c"
     },
     {
       "path": "instructor/papers/P29_tree_of_thoughts.md",
-      "sha256_lf": "cb2e19ec58e5ad5e75a8ce3421076b1e3f658e27043aa2d3f2c2336f616a2219"
+      "sha256_lf": "292ce83b06086e3938461d36f29ed0fb9889f8c3ed0d5b9875c819dc38d06eb0"
     },
     {
       "path": "instructor/papers/P30_reflexion.md",
-      "sha256_lf": "dfd513e2bfa90639fd124df13ede38787d7d0a595b4e655ff4f57e0cc04063db"
+      "sha256_lf": "cecd9cfd0ce9ce8e5c740ab040b92974a82bde234c7dac7ceb2f7a8040186a8d"
     },
     {
       "path": "instructor/papers/P31_generative_agents.md",
-      "sha256_lf": "14632f7bb2ee71006548204a1a346a4d38e156adfce1d92b46f7e5528b9947c5"
+      "sha256_lf": "ef0ba5bf1c9ff8fbe91b85687bacfe22af01c633bfd4b4a01b6973b4e7b08774"
     },
     {
       "path": "instructor/papers/P32_voyager.md",
@@ -386,7 +386,7 @@
     },
     {
       "path": "instructor/papers/P33_autogen.md",
-      "sha256_lf": "3da9ef1990c288ae55ed22f3d97a71a3e119f948b52c2b39b601b303bfeb491d"
+      "sha256_lf": "6d600b46670724516da726d59607a206236178fdb2b512b9dace7c8cc72e325a"
     },
     {
       "path": "instructor/papers/P34_rope.md",
@@ -398,23 +398,23 @@
     },
     {
       "path": "instructor/papers/P36_lost_in_middle.md",
-      "sha256_lf": "672e2152204dbc9c9e6e7fceefb12429c6ebdf0c2999c08ad8ef05107f473888"
+      "sha256_lf": "3814401db3c4aa5004ddf483a6a8cb86a5eee7305ef393d6d9573398d18ca944"
     },
     {
       "path": "instructor/papers/P37_memgpt.md",
-      "sha256_lf": "e01ef6f5e0eb8652320e1a02946c3b8ca3915b8b5073b451c907efd3c340c274"
+      "sha256_lf": "ddbafc730064bec4dc14b354f1e9012984fae51d2929f4924a4a15355e684f45"
     },
     {
       "path": "instructor/papers/P38_vae.md",
-      "sha256_lf": "95ae36fef5cf5796a4ce5503e3547d986fcdd05c0f1888cddd7366ebcf149e6f"
+      "sha256_lf": "2e5a5d7e2809800345ba48f9f245e2d619b2bd03a1d4d83dbf43b16cc41fb056"
     },
     {
       "path": "instructor/papers/P39_gan.md",
-      "sha256_lf": "3eac56ecc2dc61de40ce6e32ca8a9a4fcc4e9ddd21b60f6172d5fc6137ca7b3f"
+      "sha256_lf": "6effd53e7817efb8e73a435132376c606efb499d6d4d27d206a484b32f129829"
     },
     {
       "path": "instructor/papers/P40_dropout.md",
-      "sha256_lf": "7cc70c242a044e7452b9c411e4da6fab3984e8d1255117d1dacb6ef1e0046765"
+      "sha256_lf": "70ac85cb70519c454d2175e53ec60c2f2542a7fbea4393d3fdf1493f6518ff56"
     },
     {
       "path": "instructor/papers/P41_adam.md",
@@ -422,7 +422,7 @@
     },
     {
       "path": "instructor/papers/P42_adversarial.md",
-      "sha256_lf": "11b2f44bda7c3c5e9e3f1c9465802f98afbfdbebd37d8786737b1e71dd995e4f"
+      "sha256_lf": "1bedf548d438958b02f4603933c6b892a93b2aa8bfe7f0ba87d92c53c5f189b4"
     },
     {
       "path": "instructor/papers/P43_batchnorm.md",
@@ -430,7 +430,7 @@
     },
     {
       "path": "instructor/papers/P44_resnet.md",
-      "sha256_lf": "7cd9ecaaee63d8edeed0aa80f93aa6ed76eca400217518cc603d2b971f448b5b"
+      "sha256_lf": "c3a7e7d1deec500dfea94d4ff0bd7546396cd1d615ab67b95cea95082397e856"
     },
     {
       "path": "instructor/papers/P45_distillation.md",
@@ -438,7 +438,7 @@
     },
     {
       "path": "instructor/papers/P46_vit.md",
-      "sha256_lf": "1f17af18168e02dafa8cb248843acec023b387c919b0d76981ff0a23be678af2"
+      "sha256_lf": "7bf8e039d11d6e529efc11193b5186bb421a4dd5b59fb45be7ee83fd299a9c3e"
     },
     {
       "path": "instructor/papers/P47_alphafold.md",
@@ -454,15 +454,15 @@
     },
     {
       "path": "instructor/papers/P50_constitutional_ai.md",
-      "sha256_lf": "719ea0a3ea85dbcdf382bcfc7dfe9c107567ae8ce6424ea62812fb69611102b8"
+      "sha256_lf": "12595b647da9a5596b62b6ef3efe51e1661d66e43710f3e87acaeb2fa44273ce"
     },
     {
       "path": "instructor/papers/P51_swebench.md",
-      "sha256_lf": "925e24f38bfeac5347ac43e96940c850a3078753718671a7a9aec5677d7ec541"
+      "sha256_lf": "3e76782d8a4c53552040c38b4d3e77a61d0fa764902fd31d709bb939eb29b906"
     },
     {
       "path": "instructor/papers/P52_superposition.md",
-      "sha256_lf": "417823e7908c61982e50521d96845902acb45b4c40a639b43136d95a39cb270d"
+      "sha256_lf": "58af64d3da68773c54d2dea86c0b3b08eed61333bcfc1121c0417657c78b2c64"
     },
     {
       "path": "instructor/papers/README.md",
@@ -710,11 +710,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "63ee9cf887055b46cbea6acac4374edba9389151480536d2b74e4bdb96be45f9"
+      "sha256_lf": "6b4194522c634c5c301bf6cabdccff1817dcd99210f0b89add06208e1a8506aa"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "eee2df63f78fc5680d97200129e9aff36b3b57bea7a154972edac36ba1e027ce"
+      "sha256_lf": "7f88c0313463a316179881a08abace3883ab9d3952c26dfdba02ac48caab67c7"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -742,11 +742,11 @@
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "ccfcb84c747263c211f131748f76844a80b75c65a0f6fb8876f6b0119469692e"
+      "sha256_lf": "e6dda8119b0167a1d750ed7b420f762e791511f57a0f7817b60a5e5771127f4a"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "76054876dc1519e9a582d3a2bc982526d7c1ad5283a809006ebbfcdc9c32ecb7"
+      "sha256_lf": "ea0d4af11a19947ded57221abf79b8b2312fdd9a397ab8a4c493b9f449ada856"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -754,211 +754,211 @@
     },
     {
       "path": "papers/foundational/P01_perceptron/README.md",
-      "sha256_lf": "a251f5a3d462530d99afb25fdc4fb52ca79776070430b9ecc33960202889c86f"
+      "sha256_lf": "6c524b1a52a251e2af42292367607be94e47a33eb60c347418cb1e25ea0039b7"
     },
     {
       "path": "papers/foundational/P02_backpropagation/README.md",
-      "sha256_lf": "00f970dca3525fbd79265cefa4ce3346f17efedf87b24105b2b9e4f0cc3e435a"
+      "sha256_lf": "5d0cb95323706221064336ec5bf52565947c4a8a6c961ab506e3e23111a59041"
     },
     {
       "path": "papers/foundational/P03_lstm/README.md",
-      "sha256_lf": "1ff53e2bb8ed90beee013231411cd6ce5b4ac22aa25b4ec8a74987da9652d8ea"
+      "sha256_lf": "5fa2b226ff99b8dada29ecd1db3f73d3cd9dcc0289ed5f55418d37b8469df772"
     },
     {
       "path": "papers/foundational/P04_alexnet/README.md",
-      "sha256_lf": "f8a20836c189a493eb112be0a217095a44066cc54482e8bc77634355cf23b7e8"
+      "sha256_lf": "a28aae954c9985859d7e335cf7831250c5b53d936d0c93ebe09fcc23111b5a89"
     },
     {
       "path": "papers/foundational/P05_word2vec/README.md",
-      "sha256_lf": "e4bd70dd13657ecacefad384dcdd2e6a9b094df0e662ba66c2896bb6493d4c47"
+      "sha256_lf": "4671b3c082840b3827608d06e1911be9a91ba488356d7f2af480bd3a4a8efe59"
     },
     {
       "path": "papers/foundational/P06_seq2seq/README.md",
-      "sha256_lf": "de1ebc1f187b2d6cdd6b5c0d4056176cd213508ccd6b6bccdfb2d60bbde42939"
+      "sha256_lf": "50c7204e2ece90e20af9c4fd3e30e7bec9ab5096fcddbeffd9017c134d97f6a3"
     },
     {
       "path": "papers/foundational/P07_attention_bahdanau/README.md",
-      "sha256_lf": "950ff09f0967baed1429e34e3150227df6771b6e22a54ceead90549881c2af3e"
+      "sha256_lf": "6edf5a459045d074732c3c82eeb0a13aa538838f70b61553041dcf89b3218edf"
     },
     {
       "path": "papers/foundational/P08_transformer/README.md",
-      "sha256_lf": "89601cbae25562379294a927126d6a98ee3d31491152e85709f630c80de9aa49"
+      "sha256_lf": "2434a792723d525858193186c4fb7777a6e2683de9a2f4a33f4cfdda400eca4a"
     },
     {
       "path": "papers/foundational/P09_bert/README.md",
-      "sha256_lf": "97bceceb19c267a69c1672e2ab3504e1284dbd00b7eb574d4350a618547c47ca"
+      "sha256_lf": "fc8b55a024ea8c5820b74ade549ebd4b00164636e44c5a8eb01252519ea81532"
     },
     {
       "path": "papers/foundational/P10_gpt3/README.md",
-      "sha256_lf": "3ee0932f9203b063230d86204f76adc676fe515ff4c76aa3fd42b973a161cfad"
+      "sha256_lf": "d221a372d94befb146ac198e2dd0df780157256ec95734caa8881bc76b9ba0b7"
     },
     {
       "path": "papers/foundational/P11_rag/README.md",
-      "sha256_lf": "12b1d9904768458cd1399098d2a8191d18ddbcbd8d387bdb1a0c9a1b9720e11b"
+      "sha256_lf": "b98471563a48737d010bbaddd8077ed7e66ca5ed0e5333f7a3f659e4ad05c1ad"
     },
     {
       "path": "papers/foundational/P12_instructgpt_rlhf/README.md",
-      "sha256_lf": "cb43c2425aaffacf22699cb10e87b13c04e0b29676f81558ffe650465360ee0d"
+      "sha256_lf": "83081a44e808c8ea5ee07de43b4c54fec0eacd4d79986913bb3570a6aed4dc57"
     },
     {
       "path": "papers/foundational/P13_react/README.md",
-      "sha256_lf": "30ab1c152eb07765a6e4e2b8ac4f0f1e8d4e4c01c9bb0f45182525d0302c2182"
+      "sha256_lf": "4a1e7eb35bdb4cea0d74ba511d147286979c57ecea361e521f218ae7bdaad43f"
     },
     {
       "path": "papers/foundational/P14_toolformer/README.md",
-      "sha256_lf": "855e745e59f122aa2cb4edda02869d1415736d76ef919ada9e82d00f45fd33e6"
+      "sha256_lf": "c7cd24aaa7dc4fc724e73bfe8f8204f7a9c53268c4aae572f3c091c991bebbb2"
     },
     {
       "path": "papers/foundational/P15_dpo/README.md",
-      "sha256_lf": "745590ba0aeb2077d65f96b6c4181d72f0d39024db9df060b8ba3f0d96833ea3"
+      "sha256_lf": "fbd95fac0871d26fcd9d63520f0b2f8c04a89fbd4095786d0dd705e5f27ff3d0"
     },
     {
       "path": "papers/foundational/P16_agentic_systems/README.md",
-      "sha256_lf": "f3607b3155a448a459dbea4812e16d515cefbc216cf612dd486e293809e07f53"
+      "sha256_lf": "3f0ba65242626337104d8a093b13debc95c1c517faacdc0a52473a576b1d30bc"
     },
     {
       "path": "papers/foundational/P17_diffusion/README.md",
-      "sha256_lf": "b5d386a7e3d2d1aa2a81b1ae6fd1c3ef47fbc8e3051e60f48bc9afd2831e644c"
+      "sha256_lf": "a8733e9d24a69ebd98a3336d94709b7f2836cebb0ddef53933e71476d9e284b0"
     },
     {
       "path": "papers/foundational/P18_clip/README.md",
-      "sha256_lf": "5bb46c526d3ae673a7fd522fad5145746fe99b44a33d4a3ed7af225c9bee1d68"
+      "sha256_lf": "ac536b7e98fb91457431bcd0eb9426c6a92fb2989f844efff852bd4fd5c7f474"
     },
     {
       "path": "papers/foundational/P19_scaling_laws/README.md",
-      "sha256_lf": "1231564de8994d8ba915b8b92d794808c5fc202acc2062d525524bdfb8d9433b"
+      "sha256_lf": "de5e547b227c3c32c6db76198468d547cabc2836a852029d5e56e060fe1ddd9f"
     },
     {
       "path": "papers/foundational/P20_mamba/README.md",
-      "sha256_lf": "e6c57719ce71ada36ee50f9757f694026eecc87ba1cd86250351caef42d97c67"
+      "sha256_lf": "5a4123fb835cf1c7b5008f7e37866257d41bffdaed2443e8a6819ce63d31d730"
     },
     {
       "path": "papers/foundational/P21_moe/README.md",
-      "sha256_lf": "95c14251c382e77e278f7f97b0448c353d13c0aa599c5aee164232af14f63776"
+      "sha256_lf": "d5fb8bd34e0491357dc50f28d8fbb22ede714b570797e56032d0803670388c03"
     },
     {
       "path": "papers/foundational/P22_deepseek_r1/README.md",
-      "sha256_lf": "94d02a8d33c44bce20d71660d9e686b64b629e762dc50d64f5b8758358bcb3e6"
+      "sha256_lf": "53ee03796fff87199c3cb1fecc1134761e6652430e1517b5895217d7f9d33915"
     },
     {
       "path": "papers/foundational/P23_glove/README.md",
-      "sha256_lf": "6f295c7a06abb14395f41af7891073846319048bdebd9f6fbec4903fb4c57e7e"
+      "sha256_lf": "1c0d599bb75776c9246b0aea3d9fbf52fdf49ce38e6d10b9f05bb880d8438072"
     },
     {
       "path": "papers/foundational/P24_elmo/README.md",
-      "sha256_lf": "972f19c67b01ad73b5668ca6eb9b7148f528c279a35613709aca5337bedd9aa3"
+      "sha256_lf": "24a6786e45e696bb285716707b048d1810f5e0a17ea8bfa565fe4a01ff16c6f1"
     },
     {
       "path": "papers/foundational/P25_t5/README.md",
-      "sha256_lf": "53e0bf0ca54995d2776a2a182698768f1e242bd8bae78495d5b69b36e9d838b1"
+      "sha256_lf": "c6f88f4fd8a1d1ef2ef3c85555f35509b6ee66ab0e26c3c17a9af64adfe20339"
     },
     {
       "path": "papers/foundational/P26_dqn/README.md",
-      "sha256_lf": "bae302111ffd1eff5cf34ab854cf32c7a65ae1d052db577f2374f9d8394f4387"
+      "sha256_lf": "22e0d8c33b7a4e72b82fa59714c94693e0acc4ceaaa2cdb5824f7c4b71d15fcd"
     },
     {
       "path": "papers/foundational/P27_alphago/README.md",
-      "sha256_lf": "105a741899c74d0e7d7dad5cd03527131e45ab31dffe6d8c61168dfdf12b22a7"
+      "sha256_lf": "763b3d396135f35725138d97e8e4a1aa70bfac947778dfe4387cf4043f23441c"
     },
     {
       "path": "papers/foundational/P28_chain_of_thought/README.md",
-      "sha256_lf": "695f60465c7f2cc306a395f4e8b3212b77def7c3aa71d9f2dcde0e553981bc4e"
+      "sha256_lf": "f5fcdceafab9094c7b2dcb7e44f99a10c2567ea4803082c25c0f09bb7e454f7f"
     },
     {
       "path": "papers/foundational/P29_tree_of_thoughts/README.md",
-      "sha256_lf": "5b465b40621748b2081376912ae01834d02bebba30609c20ce2a20ea42731009"
+      "sha256_lf": "f7ac101d46263afb90bf1e016adf9962da756b1f20e8859898de99d730df3b01"
     },
     {
       "path": "papers/foundational/P30_reflexion/README.md",
-      "sha256_lf": "e74ee4745b52b6b0d89801d3028ce1bdf3dffc8f9c33ba4bc4b4115c0ad7be8c"
+      "sha256_lf": "0aacc24b00fb85851730a5265433c9899c6fc9187e9badfead5e0a6c0a09a4b8"
     },
     {
       "path": "papers/foundational/P31_generative_agents/README.md",
-      "sha256_lf": "6d4513bed2f9de6029d3b6c609363951de3211470b7b218befed7c7e3bc31ceb"
+      "sha256_lf": "d3a7a4f3260167f4784823466b4dd8f8054aa7d824a654ca1a2d1ad36a9e3cf4"
     },
     {
       "path": "papers/foundational/P32_voyager/README.md",
-      "sha256_lf": "b1fd6f4ea4e7a2b91df1fdc0028b462943d2b5ac7b11545bc0d4b1c1b811ff3e"
+      "sha256_lf": "6299a75e0044f206400211bf4a22c13859f8508f41bb94867972c15f61068fc7"
     },
     {
       "path": "papers/foundational/P33_autogen/README.md",
-      "sha256_lf": "d0a8c6a0b90ce15d6e5acd76b4971f2d52e799fc50195f9addee93be29b2bc79"
+      "sha256_lf": "ed8e9c3e35cd64c29a1841c087680b6002fe1f5e22f0bb7b177d8ebf2faf5d51"
     },
     {
       "path": "papers/foundational/P34_rope/README.md",
-      "sha256_lf": "d984efaff57d21cf5a9775404aa989d449e8a03fc7d3cd8ead624e221de617a6"
+      "sha256_lf": "a492599837b2074ea8263d17574654a5b3d97c9c4c4d1bb6271677a358965e3e"
     },
     {
       "path": "papers/foundational/P35_flashattention/README.md",
-      "sha256_lf": "5aef68059262fd5912483df7e60b4b9c2b60684e1e9e3d2210f0381ea81f048f"
+      "sha256_lf": "ee679d0f21ea22edf245791af20f97760825f36fa19ff3640f21d2d1de8d0474"
     },
     {
       "path": "papers/foundational/P36_lost_in_middle/README.md",
-      "sha256_lf": "4449c9a7d2ce989f6617490b53b7da601f8970deaa16011fd09416a72724e23b"
+      "sha256_lf": "fa8cce55b3d3cf4b58949332cd95977af53340e8408a6f3d1208298643c2c250"
     },
     {
       "path": "papers/foundational/P37_memgpt/README.md",
-      "sha256_lf": "d24dddbeb222ac2069d759c47a840cc8871875d48011ba47516f1c720df6c73c"
+      "sha256_lf": "983459ccf4ad488a8eaee10a40c0107d0507ecb2e94bf6fa0c1a0ae19d415a84"
     },
     {
       "path": "papers/foundational/P38_vae/README.md",
-      "sha256_lf": "9f66ab068de789e4e31fac1d3f15bc0d6a03e54ef4d8c8ab8db9fd16e6df20a5"
+      "sha256_lf": "4d5e2a2a045566aaf0cd365964d8e49262e1953a5009947b47edb66e0137909a"
     },
     {
       "path": "papers/foundational/P39_gan/README.md",
-      "sha256_lf": "83e0a139aa24a67e72b6aa952279e5a1e01e0942bf49549984d8da9be4e1a669"
+      "sha256_lf": "3b59f557aad4588268138e5418cc9e662c0365d7613deb32e8c2914a2c92559d"
     },
     {
       "path": "papers/foundational/P40_dropout/README.md",
-      "sha256_lf": "81f2c688617b0ca6518228d0ac682a74954e58839e33749fdec51290dc1c4d42"
+      "sha256_lf": "8c019f83e6168c44215d7079ea5a2d9d967e37aa21f9ca38e3d76de6493473f4"
     },
     {
       "path": "papers/foundational/P41_adam/README.md",
-      "sha256_lf": "e5bb2ae249ff1a6549ac72d080e84c212a4bea91fa96436b655af9d6c8e451cd"
+      "sha256_lf": "0f8cb21e1992cbd48ae551dffd86f5e93dcf6ce7cc71bf72607a40ff729accb4"
     },
     {
       "path": "papers/foundational/P42_adversarial/README.md",
-      "sha256_lf": "11e3517e3307b28096fb0898173b73f930c7e3ad40dc13e41c01d0cf9cdf7f79"
+      "sha256_lf": "e0e30cff8a602137a35a7b3f444e8f8fa27653454a90c52d7822f8a312d05031"
     },
     {
       "path": "papers/foundational/P43_batchnorm/README.md",
-      "sha256_lf": "c84452fb5658588fdc592361cd039df09535bd4614b21b28f95b131a40611ed3"
+      "sha256_lf": "fd1bfb4a588dab31ade6b184a9c9a4170536f60a334f22880b9ac5615b7d1bfb"
     },
     {
       "path": "papers/foundational/P44_resnet/README.md",
-      "sha256_lf": "4b47e01991f181f4898144088e97658e6b4c46bf5f0a1b410109fee8333d13d2"
+      "sha256_lf": "9b1c55827b0338f93f427889d9d8be8f1bc7c01b686ae84cc93be83af47b5f32"
     },
     {
       "path": "papers/foundational/P45_distillation/README.md",
-      "sha256_lf": "5258accf09f931e21ac99bd2da4da5c11c08d58cf69931979629c0ab4f5ac68c"
+      "sha256_lf": "72ff54329062d00560cb83b8e52a28cf39f86a9d7a29d1c9a6a911df0abf9b31"
     },
     {
       "path": "papers/foundational/P46_vit/README.md",
-      "sha256_lf": "ac29faa130bc78c93992559581438da07aa84377cd40e173ce05c83068ce0b08"
+      "sha256_lf": "0fc9111d30832606858b47bf12571531ac6ebf4be72669afba6417fc2a93eb8f"
     },
     {
       "path": "papers/foundational/P47_alphafold/README.md",
-      "sha256_lf": "7634f946f264186a5cb3c312eaea7b3eaedacf71afc57ad2bf6e0d14a34d342c"
+      "sha256_lf": "0b16172a41703b8a6a67aae46afb50e0c5146635a1baa08ad4c834b0d6bdc882"
     },
     {
       "path": "papers/foundational/P48_lora/README.md",
-      "sha256_lf": "0d5f2332a68c68c7a72797b4e12ca939e521c72fd2b069d844fdf9768c7e33bc"
+      "sha256_lf": "5c900ba973d26c6cfc6493644271311f72f39921f8ef1a3fe7832dc0bd2f1ba4"
     },
     {
       "path": "papers/foundational/P49_qlora/README.md",
-      "sha256_lf": "bf9fc0f470b226c262e076f888ee92fc2853f8de5c31a9d4bce3a9e066ee9b8e"
+      "sha256_lf": "028ac7cb0bdd52713d302d415f9310ff99092e8534637fad1fcec3fb278af034"
     },
     {
       "path": "papers/foundational/P50_constitutional_ai/README.md",
-      "sha256_lf": "beac4231819f1669af4b81fc8faca938ec0810e2829a79abaebdeee2768157a0"
+      "sha256_lf": "1ee6426e217795575ed8a71244e9decc6182824301ab675ce2434bcbbf14a805"
     },
     {
       "path": "papers/foundational/P51_swebench/README.md",
-      "sha256_lf": "9114fe5d9661546058b60d560aab526bccdfebe68174a6e7cbc9bfed98c2806f"
+      "sha256_lf": "c0ff5d55f084cfd155d151947b43d6b399f0c6c095230f6a7fbeb7931abd18cb"
     },
     {
       "path": "papers/foundational/P52_superposition/README.md",
-      "sha256_lf": "3ae7443828a7e65613e3804882e825c7ea838c918fbcd7b488090e0c047d5698"
+      "sha256_lf": "a3efff2ff7b88049d5d5836a1884525257d6e21dde75c7c232cd43fdeca17d02"
     },
     {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",

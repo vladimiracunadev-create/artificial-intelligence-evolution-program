@@ -70,6 +70,17 @@ El notebook lo hace explícito con factores fijados a mano: con 152 capas y un f
 capa, el gradiente sin atajo cae a **1,9e-11**; con `1 + (−0,02)` por bloque, se queda en
 **4,6e-02**. Nueve órdenes de magnitud de diferencia entre desaparecer y sobrevivir.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §4** · Por qué el gradiente se desvanece](../../annexes/A03_CALCULO_Y_GRADIENTES.md#4-por-qué-el-gradiente-se-desvanece) | por qué un producto de derivadas colapsa, y qué cambia al sumarle un 1 |
+| [**A03 §2** · Regla de la cadena](../../annexes/A03_CALCULO_Y_GRADIENTES.md#2-regla-de-la-cadena) | la regla de la cadena, de donde sale ese producto |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

@@ -34,8 +34,10 @@
 - Notebook: [`P05_word2vec.ipynb`](../../notebooks/papers/P05_word2vec.ipynb)
 - Evaluación: [`P05_word2vec.md`](../../assessments/papers/P05_word2vec.md)
 - Clases del programa relacionadas:
+- [064-tokenizacion-y-representacion-del-lenguaje](../../classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje/README.md)
 - [066-embeddings-semanticos-y-similitud](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 - [100-embeddings-y-busqueda-vectorial](../../classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial/README.md)
+- [166-sesgo-fairness-y-grupos-afectados](../../classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados/README.md)
 
 ---
 

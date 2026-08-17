@@ -62,6 +62,17 @@ Para cada par de coordenadas (2i, 2i+1) y posición m, con θᵢ = 10000^(−2i/
 La última igualdad sale de que las rotaciones componen: `R_mᵀ R_n = R_{n−m}`. Ahí está todo el
 paper.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §4** · Matrices como transformaciones](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#4-matrices-como-transformaciones) | una rotación es una matriz ortogonal: preserva la norma y cambia el ángulo |
+| [**A04** · la atención paso a paso](../../annexes/A04_ATENCION_PASO_A_PASO.md) | dónde entra exactamente la posición dentro del cálculo de la atención |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

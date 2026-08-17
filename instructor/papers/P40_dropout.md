@@ -34,8 +34,8 @@
 - Notebook: [`P40_dropout.ipynb`](../../notebooks/papers/P40_dropout.ipynb)
 - Evaluación: [`P40_dropout.md`](../../assessments/papers/P40_dropout.md)
 - Clases del programa relacionadas:
-- [052-optimizadores-regularizacion-y-schedulers](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 - [051-activaciones-inicializacion-y-normalizacion](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
+- [052-optimizadores-regularizacion-y-schedulers](../../classes/part-04-neural-networks-and-deep-learning/052-optimizadores-regularizacion-y-schedulers/README.md)
 
 ---
 

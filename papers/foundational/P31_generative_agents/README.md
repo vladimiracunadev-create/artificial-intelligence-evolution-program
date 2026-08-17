@@ -67,6 +67,16 @@ Se recuperan los `k` de mayor puntuación y **solo esos** entran al contexto. La
 necesarias: sin relevancia se recupera ruido, sin recencia se ignora lo que acaba de pasar, y sin
 importancia lo trivial reciente gana siempre.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §2** · Norma y coseno](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#2-norma-y-coseno) | el coseno, que es una de las tres señales de la puntuación de recuperación |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

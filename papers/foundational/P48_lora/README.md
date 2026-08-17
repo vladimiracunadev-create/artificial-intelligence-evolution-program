@@ -76,6 +76,17 @@ eso es una **apuesta** sobre la estructura del problema, no un teorema.
 `A` se inicializa aleatoria y `B` a cero, de modo que `BA = 0` al empezar: el ajuste arranca
 exactamente desde el modelo base.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A01 §4** · Matrices como transformaciones](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#4-matrices-como-transformaciones) | el **rango** de una matriz: toda la hipótesis del método está ahí |
+| [**A01 §5** · Proyección y subespacios](../../annexes/A01_ALGEBRA_Y_GEOMETRIA.md#5-proyección-y-subespacios) | subespacios: `BA` restringe la actualización a uno de dimensión `r` |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

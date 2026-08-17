@@ -34,8 +34,9 @@
 - Notebook: [`P51_swebench.ipynb`](../../notebooks/papers/P51_swebench.ipynb)
 - Evaluación: [`P51_swebench.md`](../../assessments/papers/P51_swebench.md)
 - Clases del programa relacionadas:
-- [160-diseno-de-evaluaciones-y-criterios-de-exito](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)
 - [122-evaluacion-y-depuracion-de-agentes](../../classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes/README.md)
+- [160-diseno-de-evaluaciones-y-criterios-de-exito](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md)
+- [178-ia-para-programacion-y-modernizacion](../../classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md)
 
 ---
 

@@ -34,8 +34,10 @@
 - Notebook: [`P36_lost_in_middle.ipynb`](../../notebooks/papers/P36_lost_in_middle.ipynb)
 - Evaluación: [`P36_lost_in_middle.md`](../../assessments/papers/P36_lost_in_middle.md)
 - Clases del programa relacionadas:
+- [101-segmentacion-metadatos-y-ventanas](../../classes/part-08-retrieval-context-memory-and-knowledge/101-segmentacion-metadatos-y-ventanas/README.md)
 - [109-compresion-de-contexto-y-caches-semanticos](../../classes/part-08-retrieval-context-memory-and-knowledge/109-compresion-de-contexto-y-caches-semanticos/README.md)
 - [110-evaluacion-de-fidelidad-cobertura-y-atribucion](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md)
+- [118-memoria-contexto-y-continuidad](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 
 ---
 

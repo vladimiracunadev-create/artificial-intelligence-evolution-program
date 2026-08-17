@@ -64,6 +64,17 @@ Accesos a memoria lenta:
 
 Como `M ≫ d`, el segundo es mucho menor. Y la salida es idéntica bit a bit salvo redondeo.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §3** · La cuenta que decide el hardware: memoria](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#3-la-cuenta-que-decide-el-hardware-memoria) | la cuenta de memoria y de ancho de banda, que es la tesis entera del paper |
+| [**A04** · la atención paso a paso](../../annexes/A04_ATENCION_PASO_A_PASO.md) | qué se calcula, para entender qué se está reorganizando sin aproximar |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

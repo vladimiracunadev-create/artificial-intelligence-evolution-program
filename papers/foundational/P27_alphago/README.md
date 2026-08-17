@@ -69,6 +69,17 @@ El término `u` decae con las visitas: al principio manda el prior, y conforme s
 evidencia manda `Q`. Es el compromiso explorar/explotar de [DQN](../P26_dqn/README.md), ahora
 dentro del árbol.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | el softmax de la red de política, que da la prior de la búsqueda |
+| [**A03 §6** · Gradiente de política (REINFORCE)](../../annexes/A03_CALCULO_Y_GRADIENTES.md#6-gradiente-de-política-reinforce) | el gradiente de política con el que se refina jugando |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

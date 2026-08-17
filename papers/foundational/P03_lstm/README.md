@@ -4,6 +4,7 @@
 > resoluble, sustituyendo una multiplicación encadenada por una suma con compuertas.
 
 **Nivel:** L2 · **Motor:** `lstm` · **Notebook:** [`P03_lstm.ipynb`](../../../notebooks/papers/P03_lstm.ipynb)
+· **Anexo:** [cálculo y gradientes](../../annexes/A03_CALCULO_Y_GRADIENTES.md)
 
 ## 1. Identificación
 
@@ -76,6 +77,16 @@ La clave está en la penúltima línea:
 Con f_t ≈ 1 durante T pasos:  ∂c_T/∂c_0 ≈ 1
 Con una RNN tanh y factor 0,4: 0,4⁴⁰ ≈ 1,2·10⁻¹⁶
 ```
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A03 §4** · Por qué el gradiente se desvanece](../../annexes/A03_CALCULO_Y_GRADIENTES.md#4-por-qué-el-gradiente-se-desvanece) | por qué un producto de derivadas menores que 1 colapsa, que es el problema exacto que la celda resuelve |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

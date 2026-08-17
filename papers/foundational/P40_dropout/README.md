@@ -71,6 +71,16 @@ una función que necesita 2 unidades concretas → disponible el 25 % de los pas
 una repartida entre 3 unidades cualesquiera   → disponible el 87,5 %
 ```
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | probabilidad de una máscara y valor esperado: de ahí sale el escalado en inferencia |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

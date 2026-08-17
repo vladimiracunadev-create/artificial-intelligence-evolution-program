@@ -34,8 +34,8 @@
 - Notebook: [`P20_mamba.ipynb`](../../notebooks/papers/P20_mamba.ipynb)
 - Evaluación: [`P20_mamba.md`](../../assessments/papers/P20_mamba.md)
 - Clases del programa relacionadas:
-- [055-atencion-y-arquitectura-transformer](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 - [054-rnn-lstm-y-secuencias](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
+- [055-atencion-y-arquitectura-transformer](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 
 ---
 

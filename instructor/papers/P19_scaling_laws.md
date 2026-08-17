@@ -35,6 +35,8 @@
 - Evaluación: [`P19_scaling_laws.md`](../../assessments/papers/P19_scaling_laws.md)
 - Clases del programa relacionadas:
 - [074-objetivos-de-preentrenamiento](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
+- [075-escalamiento-computo-y-leyes-empiricas](../../classes/part-06-foundation-models-and-llm-engineering/075-escalamiento-computo-y-leyes-empiricas/README.md)
+- [082-dimensionar-hardware-de-la-laptop-al-cluster](../../classes/part-06-foundation-models-and-llm-engineering/082-dimensionar-hardware-de-la-laptop-al-cluster/README.md)
 - [086-seleccion-de-modelo-costo-latencia-y-privacidad](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md)
 
 ---

@@ -4,6 +4,7 @@
 > estado de tamaño fijo, sin atención.
 
 **Nivel:** L4 · **Motor:** `ssm` · **Notebook:** [`P20_mamba.ipynb`](../../../notebooks/papers/P20_mamba.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 · **Anexo matemático:** [complejidad, coste y escalado](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 ## 1. Identificación
@@ -81,6 +82,16 @@ Coste y memoria, para longitud `n`, dimensión `d` y estado `N`:
 
 Las dos últimas columnas son el compromiso completo: memoria constante a cambio de perder el
 acceso directo a cualquier posición.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §2** · El cruce: atención frente a recurrencia](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#2-el-cruce-atención-frente-a-recurrencia) | el cruce entre O(n²) y O(n) es la razón de ser de esta arquitectura |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

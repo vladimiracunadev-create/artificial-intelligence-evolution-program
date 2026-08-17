@@ -75,6 +75,16 @@ ayudarte con eso, deberías replantearte por qué lo preguntas»* cumple el prin
 **viola los otros dos** —juzga al usuario y se niega sin explicar—. La revisión corrige ambos sin
 una sola etiqueta humana nueva.
 
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §5** · Bradley-Terry: aprender de comparaciones](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-bradley-terry-aprender-de-comparaciones) | Bradley-Terry, ahora con preferencias generadas por IA en vez de humanas |
+<!-- puente:fin -->
+
 ## 6. Arquitectura o flujo
 
 ```mermaid

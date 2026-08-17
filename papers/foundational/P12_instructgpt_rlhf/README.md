@@ -5,6 +5,7 @@
 > modelo.
 
 **Nivel:** L3 · **Motor:** `rlhf` · **Notebook:** [`P12_instructgpt_rlhf.ipynb`](../../../notebooks/papers/P12_instructgpt_rlhf.ipynb)
+· **Anexo:** [probabilidad y verosimilitud](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md)
 
 ## 1. Identificación
 
@@ -78,6 +79,17 @@ max_π  E_{y ~ π(·|x)} [ r(x, y) ]  −  β · KL( π(·|x) ‖ π_SFT(·|x) )
 
 El término KL es imprescindible: sin él la política deriva hacia texto degenerado que engaña al
 modelo de recompensa. `β` fija el precio de alejarse del modelo base.
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A02 §5** · Bradley-Terry: aprender de comparaciones](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-bradley-terry-aprender-de-comparaciones) | Bradley-Terry convierte comparaciones humanas en una escala numérica |
+| [**A03 §6** · Gradiente de política (REINFORCE)](../../annexes/A03_CALCULO_Y_GRADIENTES.md#6-gradiente-de-política-reinforce) | el gradiente de política, que es cómo se optimiza contra esa recompensa |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

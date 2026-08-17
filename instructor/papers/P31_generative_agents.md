@@ -35,6 +35,7 @@
 - Evaluación: [`P31_generative_agents.md`](../../assessments/papers/P31_generative_agents.md)
 - Clases del programa relacionadas:
 - [107-knowledge-graphs-y-graphrag](../../classes/part-08-retrieval-context-memory-and-knowledge/107-knowledge-graphs-y-graphrag/README.md)
+- [118-memoria-contexto-y-continuidad](../../classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md)
 
 ---
 

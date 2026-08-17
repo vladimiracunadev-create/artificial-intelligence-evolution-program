@@ -4,6 +4,7 @@
 > por token.
 
 **Nivel:** L3 · **Motor:** `moe` · **Notebook:** [`P21_moe.ipynb`](../../../notebooks/papers/P21_moe.ipynb)
+· **Anexo:** [complejidad y coste](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 · **Anexo matemático:** [complejidad, coste y escalado](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md)
 
 ## 1. Identificación
@@ -73,6 +74,16 @@ desequilibrio, medible con el coeficiente de variación de la carga:
 ```text
 CV = desviación_típica(carga) / media(carga)      →  0 = reparto perfecto
 ```
+
+<!-- puente:inicio -->
+> [!TIP]
+> **Puente matemático.** Esta sección da por sabido lo siguiente. Si algo no te suena,
+> léelo primero: está explicado una sola vez, en un solo sitio, y sirve para todas las fichas.
+
+| Dónde | Qué necesitas de ahí |
+|---|---|
+| [**A05 §7** · Dispersión: cuando los parámetros dejan de ser uno](../../annexes/A05_COMPLEJIDAD_Y_COSTE.md#7-dispersión-cuando-los-parámetros-dejan-de-ser-uno) | dispersión: cuándo un parámetro deja de contar como coste por token |
+<!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
 

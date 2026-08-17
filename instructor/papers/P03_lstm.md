@@ -34,6 +34,7 @@
 - Notebook: [`P03_lstm.ipynb`](../../notebooks/papers/P03_lstm.ipynb)
 - Evaluación: [`P03_lstm.md`](../../assessments/papers/P03_lstm.md)
 - Clases del programa relacionadas:
+- [028-modelos-ocultos-de-markov](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/028-modelos-ocultos-de-markov/README.md)
 - [054-rnn-lstm-y-secuencias](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
 
 ---

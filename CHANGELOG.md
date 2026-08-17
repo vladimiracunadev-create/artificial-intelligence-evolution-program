@@ -16,6 +16,41 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.9.0 — 2026-08-16
+
+Dos huecos que se veían al revisar el sitio publicado: los papers no llegaban a las clases que
+los necesitaban, y la línea matemática del eje no estaba conectada con las fichas.
+
+### Enlaces rotos en el sitio publicado
+
+**Cada enlace de una clase a su paper apuntaba a un blob de GitHub inexistente.** El catch-all de
+`generate_site.py` que manda las referencias del repo a GitHub volvía a capturar los enlaces que
+las reglas anteriores ya habían reescrito como páginas del sitio, porque seguían empezando por
+`../papers/`. Ahora excluye lo que termina en `.html`. Comprobados los **3 628** enlaces relativos
+del sitio: **0 rotos**.
+
+### El puente matemático, en las 52 fichas
+
+Los cinco anexos existían desde 0.4.x, pero **ninguna** ficha los enlazaba desde su sección de
+matemática y 22 no los mencionaban siquiera. Cada ficha lleva ahora, al final de la sección 5, un
+bloque que nombra los **apartados concretos** del anexo que da por sabidos y por qué hacen falta
+—`A03 §4` en ResNet porque explica por qué un producto de derivadas colapsa, `A01 §4` en LoRA
+porque el rango de una matriz es toda la hipótesis del método—. Las 78 anclas resuelven.
+
+### Cobertura clase → paper: de 50 a 81
+
+Faltaban asociaciones evidentes: refuerzo profundo sin DQN ni AlphaGo, leyes de escalado sin
+Chinchilla, razonamiento en tiempo de inferencia sin *Chain-of-Thought*, IA para programación sin
+SWE-bench, memoria y continuidad sin MemGPT. **45 enlaces nuevos** sobre 31 clases. La parte 08
+(recuperación, contexto y memoria) queda al 12/12 y la 06 al 12/15.
+
+Las partes que siguen sin papers —ML clásico, MLOps, robótica— lo están porque el eje no las
+cubre, no por olvido: son 52 papers de la línea de aprendizaje profundo y modelos de lenguaje.
+
+- **La clase 010, «Cómo leer papers, benchmarks y claims de IA», no enlazaba el eje de papers.**
+  Ahora apunta a las guías de lectura, al índice y a una ficha corta para practicar el contraste.
+- El PDF del eje pasa a **442 páginas** y el del programa completo a **1 157**.
+
 ## 0.8.1 — 2026-08-16
 
 Correcciones de coherencia encontradas con una auditoría **exhaustiva**: en vez de buscar los

@@ -36,6 +36,8 @@
 - Clases del programa relacionadas:
 - [090-modelos-de-difusion](../../classes/part-07-generative-ai-across-media/090-modelos-de-difusion/README.md)
 - [091-texto-a-imagen-y-condicionamiento](../../classes/part-07-generative-ai-across-media/091-texto-a-imagen-y-condicionamiento/README.md)
+- [092-control-estructural-y-edicion-generativa](../../classes/part-07-generative-ai-across-media/092-control-estructural-y-edicion-generativa/README.md)
+- [095-generacion-y-edicion-de-video](../../classes/part-07-generative-ai-across-media/095-generacion-y-edicion-de-video/README.md)
 
 ---
 
