@@ -194,6 +194,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Eiben, A. E. & Smith, J. E. (2015). *Introduction to Evolutionary Computing*, 2.ª ed. Springer. [https://doi.org/10.1007/978-3-662-44874-8](https://doi.org/10.1007/978-3-662-44874-8)
 - Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 4.1 (búsqueda local y evolutiva). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P90 · Algoritmos genéticos y la asignación óptima de ensayos](../../../papers/foundational/P90_algoritmos_geneticos/README.md) | 1973 | Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta. | [notebook](../../../notebooks/papers/P90_algoritmos_geneticos.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

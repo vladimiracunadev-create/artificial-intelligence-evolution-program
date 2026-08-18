@@ -236,6 +236,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Zhao, T. et al. (2023). Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA/ACT). arXiv:2304.13705](https://arxiv.org/abs/2304.13705)
 - [Sutton, R. & Barto, A. Reinforcement Learning: An Introduction, 2e — para contrastar con la señal de recompensa](http://incompleteideas.net/book/the-book-2nd.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P101 · Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento](../../../papers/foundational/P101_dagger/README.md) | 2011 | Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T. | [notebook](../../../notebooks/papers/P101_dagger.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

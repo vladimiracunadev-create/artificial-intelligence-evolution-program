@@ -233,6 +233,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [MLflow Documentation — tracking y evaluación de LLMs](https://mlflow.org/docs/latest/)
 - [Ribeiro et al. (2020), "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList" (arXiv:2005.04118)](https://arxiv.org/abs/2005.04118)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P116 · Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts](../../../papers/foundational/P116_gestion_de_prompts/README.md) | 2023 | Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente. | [notebook](../../../notebooks/papers/P116_gestion_de_prompts.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

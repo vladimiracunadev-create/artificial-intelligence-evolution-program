@@ -4854,6 +4854,1745 @@
         }
       ],
       "consultado": "2026-08-17"
+    },
+    {
+      "id": "P87",
+      "dir": "P87_bayes",
+      "slug": "teorema-de-bayes-1763",
+      "title": "An Essay towards solving a Problem in the Doctrine of Chances",
+      "title_es": "Ensayo para resolver un problema en la doctrina de las probabilidades",
+      "authors": [
+        "Thomas Bayes",
+        "Richard Price (editor)"
+      ],
+      "year": 1763,
+      "venue": "Philosophical Transactions of the Royal Society, 53, 370–418",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "bayes",
+      "hito": "La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto».",
+      "problema": "La probabilidad sabía calcular qué datos esperar dada una causa conocida. La pregunta inversa —qué causa es probable dados los datos observados— no tenía tratamiento, y es la que hace falta para aprender de la experiencia.",
+      "propuesta": "Tratar la causa desconocida como una cantidad con distribución previa, y actualizarla con la verosimilitud de lo observado. En forma de odds, la actualización es una multiplicación por la razón de verosimilitud.",
+      "keywords": [
+        "inferencia bayesiana",
+        "probabilidad condicional",
+        "previa",
+        "posterior",
+        "razón de verosimilitud"
+      ],
+      "anteriores": [
+        "De Moivre (1718), The Doctrine of Chances",
+        "Jacob Bernoulli (1713), ley de los grandes números"
+      ],
+      "posteriores": [
+        "P88",
+        "P91"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/026-teorema-de-bayes-y-actualizacion-de-creencias"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1098/rstl.1763.0053",
+          "url": "https://doi.org/10.1098/rstl.1763.0053"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Stigler (1983), quién descubrió realmente el teorema de Bayes",
+          "url": "https://doi.org/10.1080/00031305.1983.10483086"
+        },
+        {
+          "label": "Gigerenzer y Hoffrage (1995), por qué las frecuencias naturales se entienden mejor",
+          "url": "https://doi.org/10.1037/0033-295X.102.4.684"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P88",
+      "dir": "P88_cox",
+      "slug": "teorema-de-cox-1946",
+      "title": "Probability, Frequency and Reasonable Expectation",
+      "title_es": "Probabilidad, frecuencia y expectativa razonable",
+      "authors": [
+        "Richard T. Cox"
+      ],
+      "year": 1946,
+      "venue": "American Journal of Physics, 14(1), 1–13",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "cox",
+      "hito": "Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia.",
+      "problema": "Había —y hay— muchas propuestas para razonar con incertidumbre: frecuencias, grados de creencia, factores de certeza, posibilidades. Ninguna razón de principio decía por qué elegir una, y la discusión se resolvía por gusto o por escuela.",
+      "propuesta": "Enunciar tres desiderata mínimos —representar grados con números reales, ser consistente con la lógica en los casos extremos y dar el mismo resultado por cualquier camino de razonamiento— y demostrar que cualquier medida que los cumpla es isomorfa a la probabilidad.",
+      "keywords": [
+        "desiderata",
+        "consistencia",
+        "grados de creencia",
+        "regla de la suma",
+        "regla del producto"
+      ],
+      "anteriores": [
+        "P87",
+        "Keynes (1921), tratado sobre probabilidad",
+        "Ramsey (1926) y de Finetti (1937), coherencia y apuestas"
+      ],
+      "posteriores": [
+        "P91",
+        "P69"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/025-razonamiento-con-incertidumbre"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1119/1.1990764",
+          "url": "https://doi.org/10.1119/1.1990764"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Jaynes, Probability Theory: The Logic of Science — el desarrollo del programa de Cox",
+          "url": "https://doi.org/10.1017/CBO9780511790423"
+        },
+        {
+          "label": "Halpern (1999), una revisión crítica de los supuestos técnicos del teorema",
+          "url": "https://doi.org/10.1613/jair.644"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P89",
+      "dir": "P89_fuzzy",
+      "slug": "conjuntos-difusos-zadeh-1965",
+      "title": "Fuzzy Sets",
+      "title_es": "Conjuntos difusos",
+      "authors": [
+        "Lotfi A. Zadeh"
+      ],
+      "year": 1965,
+      "venue": "Information and Control, 8(3), 338–353",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "fuzzy",
+      "hito": "Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje.",
+      "problema": "La teoría de conjuntos es binaria: algo pertenece o no pertenece. Pero «alto», «caliente» o «cerca» no tienen frontera nítida, y forzarlos a un umbral produce sistemas que cambian de decisión ante una diferencia irrelevante.",
+      "propuesta": "Sustituir la función característica {0,1} por una función de pertenencia a [0,1], y definir sobre ella unión, intersección y complemento con máximo, mínimo y complemento a uno.",
+      "keywords": [
+        "conjunto difuso",
+        "función de pertenencia",
+        "vaguedad",
+        "control difuso",
+        "t-normas"
+      ],
+      "anteriores": [
+        "Łukasiewicz (1920), lógicas multivaluadas",
+        "Black (1937), vaguedad y perfiles de consistencia"
+      ],
+      "posteriores": [
+        "P69"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/032-logica-difusa-y-control-aproximado"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/S0019-9958(65)90241-X",
+          "url": "https://doi.org/10.1016/S0019-9958(65)90241-X"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Mamdani y Assilian (1975), el primer controlador difuso de un proceso real",
+          "url": "https://doi.org/10.1016/S0020-7373(75)80002-2"
+        },
+        {
+          "label": "Elkan (1993), «The Paradoxical Success of Fuzzy Logic» — la crítica más citada",
+          "url": "https://doi.org/10.1109/64.336150"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P90",
+      "dir": "P90_algoritmos_geneticos",
+      "slug": "algoritmos-geneticos-holland-1973",
+      "title": "Genetic Algorithms and the Optimal Allocation of Trials",
+      "title_es": "Algoritmos genéticos y la asignación óptima de ensayos",
+      "authors": [
+        "John H. Holland"
+      ],
+      "year": 1973,
+      "venue": "SIAM Journal on Computing, 2(2), 88–105",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "algoritmos_geneticos",
+      "hito": "Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta.",
+      "problema": "Buscar en un espacio enorme sin gradiente exige decidir constantemente entre explorar lo desconocido y explotar lo que ya funciona. No había un argumento formal de por qué una población con selección y recombinación resuelve bien ese reparto.",
+      "propuesta": "Analizar la población como un proceso que evalúa implícitamente muchos esquemas —patrones con comodines— a la vez, y mostrar que la reproducción proporcional a la aptitud asigna ensayos de forma cercana a la óptima del problema del bandido.",
+      "keywords": [
+        "algoritmo genético",
+        "esquemas",
+        "paralelismo implícito",
+        "cruce",
+        "exploración y explotación"
+      ],
+      "anteriores": [
+        "Fogel et al. (1966), programación evolutiva",
+        "Robbins (1952), el problema del bandido"
+      ],
+      "posteriores": [
+        "P92",
+        "P93"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/033-algoritmos-geneticos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1137/0202009",
+          "url": "https://doi.org/10.1137/0202009"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Goldberg y Holland (1988), la introducción que popularizó el método",
+          "url": "https://doi.org/10.1023/A:1022602019183"
+        },
+        {
+          "label": "Wolpert y Macready (1997), «No Free Lunch» — el límite de toda heurística",
+          "url": "https://doi.org/10.1109/4235.585893"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P91",
+      "dir": "P91_redes_bayesianas",
+      "slug": "redes-bayesianas-pearl-1986",
+      "title": "Fusion, Propagation, and Structuring in Belief Networks",
+      "title_es": "Fusión, propagación y estructuración en redes de creencia",
+      "authors": [
+        "Judea Pearl"
+      ],
+      "year": 1986,
+      "venue": "Artificial Intelligence, 29(3), 241–288",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "redes_bayesianas",
+      "hito": "Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente.",
+      "problema": "Aplicar probabilidad a un dominio con decenas de variables exige una tabla conjunta con 2ⁿ entradas: imposible de almacenar, de estimar y de actualizar. Esa fue la razón técnica por la que la IA de los setenta la abandonó en favor de los factores de certeza.",
+      "propuesta": "Representar las dependencias con un grafo dirigido acíclico. Las independencias condicionales que el grafo codifica reducen la conjunta a un producto de condicionales locales, y permiten propagar creencias por paso de mensajes entre nodos vecinos.",
+      "keywords": [
+        "red bayesiana",
+        "independencia condicional",
+        "propagación de creencias",
+        "explicar y descartar",
+        "grafo dirigido acíclico"
+      ],
+      "anteriores": [
+        "P87",
+        "P88",
+        "P69"
+      ],
+      "posteriores": [
+        "P95",
+        "P94"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/0004-3702(86)90072-X",
+          "url": "https://doi.org/10.1016/0004-3702(86)90072-X"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Pearl (1988), Probabilistic Reasoning in Intelligent Systems",
+          "url": "https://doi.org/10.1016/C2009-0-27609-4"
+        },
+        {
+          "label": "Lauritzen y Spiegelhalter (1988), el algoritmo del árbol de uniones",
+          "url": "https://doi.org/10.1111/j.2517-6161.1988.tb01721.x"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P92",
+      "dir": "P92_pso",
+      "slug": "optimizacion-por-enjambre-kennedy-eberhart-1995",
+      "title": "Particle Swarm Optimization",
+      "title_es": "Optimización por enjambre de partículas",
+      "authors": [
+        "James Kennedy",
+        "Russell Eberhart"
+      ],
+      "year": 1995,
+      "venue": "Proceedings of ICNN'95, 1942–1948",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "pso",
+      "hito": "Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo.",
+      "problema": "Muchas funciones objetivo no se pueden derivar —son simulaciones, cajas negras o tienen ruido— y los métodos de gradiente no se pueden aplicar. Las alternativas poblacionales existentes eran caras y difíciles de ajustar.",
+      "propuesta": "Un enjambre de partículas que se mueven por el espacio con una velocidad que combina inercia, atracción hacia su propio mejor histórico y atracción hacia el mejor del grupo. Sin cruce, sin mutación y sin selección.",
+      "keywords": [
+        "enjambre",
+        "inteligencia colectiva",
+        "sin gradiente",
+        "metaheurística",
+        "exploración y explotación"
+      ],
+      "anteriores": [
+        "P90",
+        "Reynolds (1987), simulación de bandadas"
+      ],
+      "posteriores": [
+        "P93"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/034-optimizacion-por-enjambre-y-colonia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/ICNN.1995.488968",
+          "url": "https://doi.org/10.1109/ICNN.1995.488968"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Shi y Eberhart (1998), el peso de inercia que hizo el método utilizable",
+          "url": "https://doi.org/10.1109/ICEC.1998.699146"
+        },
+        {
+          "label": "Wolpert y Macready (1997), «No Free Lunch»",
+          "url": "https://doi.org/10.1109/4235.585893"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P93",
+      "dir": "P93_aco",
+      "slug": "colonia-de-hormigas-dorigo-1996",
+      "title": "Ant System: Optimization by a Colony of Cooperating Agents",
+      "title_es": "Sistema de hormigas: optimización mediante una colonia de agentes cooperantes",
+      "authors": [
+        "Marco Dorigo",
+        "Vittorio Maniezzo",
+        "Alberto Colorni"
+      ],
+      "year": 1996,
+      "venue": "IEEE Transactions on Systems, Man and Cybernetics, Part B, 26(1), 29–41",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "aco",
+      "hito": "La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora.",
+      "problema": "En problemas combinatorios como el del viajante, las heurísticas golosas se quedan atrapadas en decisiones tempranas y no tienen forma de aprender de los intentos anteriores sin una memoria global costosa.",
+      "propuesta": "Agentes simples que construyen soluciones eligiendo el siguiente paso según una combinación de feromona acumulada y heurística local, y que depositan feromona proporcional a la calidad de la solución construida. La evaporación evita el estancamiento.",
+      "keywords": [
+        "estigmergia",
+        "feromona",
+        "optimización combinatoria",
+        "viajante de comercio",
+        "evaporación"
+      ],
+      "anteriores": [
+        "P90",
+        "P92",
+        "Grassé (1959), estigmergia en termitas"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/034-optimizacion-por-enjambre-y-colonia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/3477.484436",
+          "url": "https://doi.org/10.1109/3477.484436"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Dorigo y Gambardella (1997), Ant Colony System: la versión que compite de verdad",
+          "url": "https://doi.org/10.1109/4235.585892"
+        },
+        {
+          "label": "Applegate et al., Concorde — el estado del arte específico del viajante",
+          "url": "https://www.math.uwaterloo.ca/tsp/concorde.html"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P94",
+      "dir": "P94_programacion_probabilistica",
+      "slug": "stan-carpenter-2017",
+      "title": "Stan: A Probabilistic Programming Language",
+      "title_es": "Stan: un lenguaje de programación probabilística",
+      "authors": [
+        "Bob Carpenter",
+        "Andrew Gelman",
+        "Matthew D. Hoffman",
+        "Daniel Lee",
+        "Ben Goodrich",
+        "Michael Betancourt",
+        "Marcus Brubaker",
+        "Jiqiang Guo",
+        "Peter Li",
+        "Allen Riddell"
+      ],
+      "year": 2017,
+      "venue": "Journal of Statistical Software, 76(1)",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "programacion_probabilistica",
+      "hito": "Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior.",
+      "problema": "Cada modelo bayesiano nuevo exigía escribir a mano su propio muestreador, con la matemática y los errores que eso trae. El coste de probar una variante del modelo era el de reimplementar el algoritmo.",
+      "propuesta": "Un lenguaje declarativo para especificar el modelo —previas y verosimilitud— y un motor de inferencia general basado en Monte Carlo hamiltoniano con NUTS, más diagnósticos de convergencia integrados.",
+      "keywords": [
+        "programación probabilística",
+        "inferencia bayesiana",
+        "Monte Carlo hamiltoniano",
+        "posterior",
+        "diagnóstico de convergencia"
+      ],
+      "anteriores": [
+        "P91",
+        "Lunn et al. (2000), BUGS",
+        "Neal (2011), HMC"
+      ],
+      "posteriores": [
+        "P95"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.18637/jss.v076.i01",
+          "url": "https://doi.org/10.18637/jss.v076.i01"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Hoffman y Gelman (2014), el muestreador NUTS",
+          "url": "https://www.jmlr.org/papers/v15/hoffman14a.html"
+        },
+        {
+          "label": "Gelman et al., Bayesian Data Analysis",
+          "url": "http://www.stat.columbia.edu/~gelman/book/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P95",
+      "dir": "P95_causalidad",
+      "slug": "herramientas-causales-pearl-2019",
+      "title": "The Seven Tools of Causal Inference, with Reflections on Machine Learning",
+      "title_es": "Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático",
+      "authors": [
+        "Judea Pearl"
+      ],
+      "year": 2019,
+      "venue": "Communications of the ACM, 62(3), 54–60",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "causalidad",
+      "hito": "Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen.",
+      "problema": "El aprendizaje automático ajusta funciones sobre distribuciones observadas, y con eso responde preguntas de asociación. Pero las decisiones que importan son de intervención —«¿qué pasa si hago X?»— y esa pregunta no se puede responder solo con datos observacionales, por muchos que sean.",
+      "propuesta": "La escalera de la causalidad y siete herramientas asociadas: modelos gráficos, el operador do, el criterio de puerta trasera, la fórmula de ajuste, mediación, transportabilidad y datos faltantes. La estructura causal se declara; no se estima de la tabla.",
+      "keywords": [
+        "escalera de la causalidad",
+        "operador do",
+        "confusor",
+        "contrafáctico",
+        "paradoja de Simpson"
+      ],
+      "anteriores": [
+        "P91",
+        "P80",
+        "Rubin (1974), resultados potenciales"
+      ],
+      "posteriores": [
+        "P72"
+      ],
+      "clases_del_programa": [
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad",
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/036-proyecto-sistema-hibrido-para-decisiones"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3241036",
+          "url": "https://doi.org/10.1145/3241036"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Pearl y Mackenzie, The Book of Why — la versión divulgativa",
+          "url": "https://bayes.cs.ucla.edu/WHY/"
+        },
+        {
+          "label": "Schölkopf et al. (2021), hacia el aprendizaje de representaciones causales",
+          "url": "https://doi.org/10.1109/JPROC.2021.3058954"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P96",
+      "dir": "P96_kalman",
+      "slug": "filtro-de-kalman-1960",
+      "title": "A New Approach to Linear Filtering and Prediction Problems",
+      "title_es": "Un nuevo enfoque para los problemas de filtrado y predicción lineales",
+      "authors": [
+        "Rudolf E. Kálmán"
+      ],
+      "year": 1960,
+      "venue": "Journal of Basic Engineering, 82(1), 35–45",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "kalman",
+      "hito": "Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva.",
+      "problema": "Un sensor da medidas ruidosas y un modelo del movimiento acumula error. Promediarlos trata igual a los dos, e ignora que la confianza en cada uno cambia con el tiempo. Los métodos anteriores exigían guardar todo el historial.",
+      "propuesta": "Mantener una estimación y su varianza, predecir con el modelo, y corregir con la medida usando una ganancia que sale del cociente entre las dos incertidumbres. Recursivo: solo hace falta el estado anterior.",
+      "keywords": [
+        "filtro de Kalman",
+        "fusión de sensores",
+        "estimación de estado",
+        "ganancia",
+        "recursivo"
+      ],
+      "anteriores": [
+        "Wiener (1949), filtrado óptimo en el dominio de la frecuencia",
+        "P87"
+      ],
+      "posteriores": [
+        "P99"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/137-sensores-actuadores-y-fusion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1115/1.3662552",
+          "url": "https://doi.org/10.1115/1.3662552"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kalman y Bucy (1961), la versión en tiempo continuo",
+          "url": "https://doi.org/10.1115/1.3658902"
+        },
+        {
+          "label": "Grewal y Andrews (2010), el filtro en el programa Apollo",
+          "url": "https://doi.org/10.1109/MCS.2010.936465"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P97",
+      "dir": "P97_subsuncion",
+      "slug": "subsuncion-brooks-1986",
+      "title": "A Robust Layered Control System for a Mobile Robot",
+      "title_es": "Un sistema de control por capas robusto para un robot móvil",
+      "authors": [
+        "Rodney A. Brooks"
+      ],
+      "year": 1986,
+      "venue": "IEEE Journal of Robotics and Automation, 2(1), 14–23",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "subsuncion",
+      "hito": "Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central.",
+      "problema": "La arquitectura percibir-planificar-actuar construye un modelo del mundo, planifica sobre él y ejecuta el plan. Mantener ese modelo es caro, y cuando el mundo cambia a mitad de la ejecución, el plan se vuelve peligroso en vez de inútil.",
+      "propuesta": "Descomponer por comportamientos y no por funciones. Cada capa conecta percepción con acción de forma directa, y las capas inferiores —evitar obstáculos— pueden **subsumir** a las superiores. No hay representación compartida.",
+      "keywords": [
+        "subsunción",
+        "robótica situada",
+        "control por capas",
+        "sin representación",
+        "reactivo"
+      ],
+      "anteriores": [
+        "P58",
+        "Walter (1950), las tortugas cibernéticas"
+      ],
+      "posteriores": [
+        "P102",
+        "P106"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/JRA.1986.1087032",
+          "url": "https://doi.org/10.1109/JRA.1986.1087032"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Brooks (1990), «Elephants Don't Play Chess»",
+          "url": "https://doi.org/10.1016/S0921-8890(05)80025-9"
+        },
+        {
+          "label": "Brooks (1991), «Intelligence Without Representation»",
+          "url": "https://doi.org/10.1016/0004-3702(91)90053-M"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P98",
+      "dir": "P98_rrt",
+      "slug": "rrt-connect-kuffner-lavalle-2000",
+      "title": "RRT-Connect: An Efficient Approach to Single-Query Path Planning",
+      "title_es": "RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única",
+      "authors": [
+        "James J. Kuffner",
+        "Steven M. LaValle"
+      ],
+      "year": 2000,
+      "venue": "Proceedings of ICRA 2000, 995–1001",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "rrt",
+      "hito": "Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias.",
+      "problema": "Un brazo de siete articulaciones tiene un espacio de configuración de siete dimensiones. Discretizarlo para aplicar búsqueda en grafo produce un número de celdas astronómico, y los métodos de campos potenciales se quedan atrapados en mínimos locales.",
+      "propuesta": "Muestrear configuraciones al azar y extender el árbol desde el nodo más cercano hacia cada muestra. El árbol se sesga solo hacia las regiones no exploradas, y con dos árboles que crecen uno hacia el otro la convergencia es mucho más rápida.",
+      "keywords": [
+        "RRT",
+        "planificación de movimiento",
+        "espacio de configuración",
+        "muestreo",
+        "completitud probabilística"
+      ],
+      "anteriores": [
+        "P67",
+        "Kavraki et al. (1996), mapas de caminos probabilísticos"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/139-planificacion-de-movimiento-y-navegacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/ROBOT.2000.844730",
+          "url": "https://doi.org/10.1109/ROBOT.2000.844730"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Karaman y Frazzoli (2011), RRT*: optimalidad asintótica",
+          "url": "https://doi.org/10.1177/0278364911406761"
+        },
+        {
+          "label": "LaValle, Planning Algorithms — el manual abierto de referencia",
+          "url": "http://lavalle.pl/planning/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P99",
+      "dir": "P99_slam",
+      "slug": "slam-durrant-whyte-bailey-2006",
+      "title": "Simultaneous Localization and Mapping: Part I",
+      "title_es": "Localización y mapeo simultáneos: parte I",
+      "authors": [
+        "Hugh Durrant-Whyte",
+        "Tim Bailey"
+      ],
+      "year": 2006,
+      "venue": "IEEE Robotics & Automation Magazine, 13(2), 99–110",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "slam",
+      "hito": "Formaliza el problema circular de la robótica móvil: no se puede localizar sin mapa ni mapear sin localización, y hay que resolver ambos a la vez.",
+      "problema": "Un robot que se mueve acumula error de odometría sin límite. Corregirlo exige referencias externas; pero si el mapa no existe de antemano, hay que construirlo con la misma pose incierta que se quiere corregir.",
+      "propuesta": "Estimar el estado conjunto —pose y mapa— reconociendo que sus errores están **correlacionados**. El artículo formaliza la estructura de la covarianza, explica por qué converge y por qué el cierre de bucle corrige la trayectoria entera.",
+      "keywords": [
+        "SLAM",
+        "covarianza cruzada",
+        "cierre de bucle",
+        "asociación de datos",
+        "odometría"
+      ],
+      "anteriores": [
+        "P96",
+        "Smith, Self y Cheeseman (1990), relaciones espaciales inciertas"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/138-localizacion-mapeo-y-slam"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/MRA.2006.1638022",
+          "url": "https://doi.org/10.1109/MRA.2006.1638022"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Bailey y Durrant-Whyte (2006), parte II: el estado del arte",
+          "url": "https://doi.org/10.1109/MRA.2006.1678144"
+        },
+        {
+          "label": "Cadena et al. (2016), SLAM treinta años después",
+          "url": "https://doi.org/10.1109/TRO.2016.2624754"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P100",
+      "dir": "P100_seguridad_fisica",
+      "slug": "seguridad-fisica-haddadin-2009",
+      "title": "Requirements for Safe Robots: Measurements, Analysis and New Insights",
+      "title_es": "Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones",
+      "authors": [
+        "Sami Haddadin",
+        "Alin Albu-Schäffer",
+        "Gerd Hirzinger"
+      ],
+      "year": 2009,
+      "venue": "The International Journal of Robotics Research, 28(11–12), 1507–1527",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "seguridad_fisica",
+      "hito": "Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados.",
+      "problema": "La seguridad de los robots industriales se resolvía con vallas: separación física total. Para trabajar junto a personas hacía falta saber qué daño produce realmente un impacto, y ese dato no existía — se legislaba y se diseñaba a ojo.",
+      "propuesta": "Medir. Impactos instrumentados con maniquíes y voluntarios, análisis de los criterios de lesión de la industria del automóvil aplicados a la robótica, y la conclusión incómoda: la masa importa menos de lo que se creía y la velocidad, mucho más.",
+      "keywords": [
+        "seguridad física",
+        "cobot",
+        "criterios de lesión",
+        "impacto",
+        "ISO/TS 15066"
+      ],
+      "anteriores": [
+        "P97",
+        "Normativa ISO 10218 sobre robots industriales"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/143-robots-colaborativos-y-seguridad-fisica"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1177/0278364909343970",
+          "url": "https://doi.org/10.1177/0278364909343970"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "ISO/TS 15066:2016 — límites biomecánicos para robots colaborativos",
+          "url": "https://www.iso.org/standard/62996.html"
+        },
+        {
+          "label": "Haddadin y Croft (2016), interacción física humano-robot",
+          "url": "https://doi.org/10.1007/978-3-319-32552-1_69"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P101",
+      "dir": "P101_dagger",
+      "slug": "dagger-ross-2011",
+      "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning",
+      "title_es": "Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento",
+      "authors": [
+        "Stéphane Ross",
+        "Geoffrey J. Gordon",
+        "J. Andrew Bagnell"
+      ],
+      "year": 2011,
+      "venue": "AISTATS 2011 · arXiv:1011.0686",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "dagger",
+      "hito": "Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T.",
+      "problema": "Al clonar el comportamiento de un experto, el modelo se entrena con los estados que visita el EXPERTO y se ejecuta sobre los estados que visita ÉL MISMO. Un error lo saca de la distribución de entrenamiento, donde comete más errores, y la desviación se realimenta.",
+      "propuesta": "DAgger: ejecutar la política actual, recoger los estados que visita de verdad, pedir al experto la acción correcta **en esos estados**, y reentrenar sobre el conjunto acumulado. La distribución de entrenamiento converge a la de ejecución.",
+      "keywords": [
+        "aprendizaje por imitación",
+        "clonación de comportamiento",
+        "cambio de distribución",
+        "aprendizaje en línea",
+        "arrepentimiento"
+      ],
+      "anteriores": [
+        "Pomerleau (1989), ALVINN: conducción por clonación"
+      ],
+      "posteriores": [
+        "P102"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/141-aprendizaje-por-imitacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1011.0686",
+          "url": "https://arxiv.org/abs/1011.0686"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Pomerleau (1989), ALVINN — el caso original de clonación",
+          "url": "https://proceedings.neurips.cc/paper/1988/hash/812b4ba287f5ee0bc9d43bbf5bbe87fb-Abstract.html"
+        },
+        {
+          "label": "Chi et al. (2023), Diffusion Policy: imitación con modelos generativos",
+          "url": "https://arxiv.org/abs/2303.04137"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P102",
+      "dir": "P102_ppo",
+      "slug": "ppo-schulman-2017",
+      "title": "Proximal Policy Optimization Algorithms",
+      "title_es": "Algoritmos de optimización proximal de políticas",
+      "authors": [
+        "John Schulman",
+        "Filip Wolski",
+        "Prafulla Dhariwal",
+        "Alec Radford",
+        "Oleg Klimov"
+      ],
+      "year": 2017,
+      "venue": "arXiv:1707.06347",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "ppo",
+      "hito": "Consigue la estabilidad de TRPO con una función objetivo que se implementa en unas líneas y se optimiza con descenso de gradiente corriente.",
+      "problema": "En gradiente de políticas, un paso demasiado grande destruye la política: se vuelve casi determinista, deja de explorar y no puede recuperarse. TRPO lo resolvía con una restricción de divergencia KL, a costa de una optimización de segundo orden compleja.",
+      "propuesta": "Sustituir la restricción por un **recorte** del cociente de probabilidades entre la política nueva y la vieja. Pasado el umbral, mejorar más no aporta al objetivo, así que el gradiente deja de empujar. Sin restricciones, sin segundo orden.",
+      "keywords": [
+        "gradiente de políticas",
+        "recorte",
+        "región de confianza",
+        "aprendizaje por refuerzo",
+        "estabilidad"
+      ],
+      "anteriores": [
+        "P26",
+        "Schulman et al. (2015), TRPO",
+        "P101"
+      ],
+      "posteriores": [
+        "P12",
+        "P22"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/140-control-clasico-y-control-aprendido"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1707.06347",
+          "url": "https://arxiv.org/abs/1707.06347"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Schulman et al. (2015), TRPO: la garantía teórica que PPO simplifica",
+          "url": "https://arxiv.org/abs/1502.05477"
+        },
+        {
+          "label": "Engstrom et al. (2020), qué parte de PPO importa realmente",
+          "url": "https://arxiv.org/abs/2005.12729"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P103",
+      "dir": "P103_domain_randomization",
+      "slug": "aleatorizacion-de-dominio-tobin-2017",
+      "title": "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World",
+      "title_es": "Aleatorización de dominio para transferir redes profundas de la simulación al mundo real",
+      "authors": [
+        "Josh Tobin",
+        "Rachel Fong",
+        "Alex Ray",
+        "Jonas Schneider",
+        "Wojciech Zaremba",
+        "Pieter Abbeel"
+      ],
+      "year": 2017,
+      "venue": "IROS 2017, 23–30 · arXiv:1703.06907",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "domain_randomization",
+      "hito": "Invierte el objetivo del simulador: en vez de buscar fidelidad, busca que la realidad sea una variación más dentro del rango de entrenamiento.",
+      "problema": "Entrenar en simulación es barato y seguro; desplegar en el mundo real falla. El hueco entre simulación y realidad se atacaba mejorando el simulador, una carrera cara y sin final: siempre queda algo que no se modeló.",
+      "propuesta": "Aleatorizar agresivamente los parámetros del simulador —texturas, iluminación, posiciones de cámara, ruido— durante el entrenamiento. Si la variabilidad es suficiente, al modelo la realidad le parece una configuración más de las que ya vio.",
+      "keywords": [
+        "sim-to-real",
+        "aleatorización de dominio",
+        "transferencia",
+        "robustez",
+        "gemelo digital"
+      ],
+      "anteriores": [
+        "P102",
+        "P04"
+      ],
+      "posteriores": [
+        "P106"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/142-simulacion-sim-to-real-y-digital-twins"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1703.06907",
+          "url": "https://arxiv.org/abs/1703.06907"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "OpenAI et al. (2019), aleatorización automática para manipulación diestra",
+          "url": "https://arxiv.org/abs/1910.07113"
+        },
+        {
+          "label": "Peng et al. (2018), aleatorización de la dinámica, no solo del aspecto",
+          "url": "https://arxiv.org/abs/1710.06537"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P104",
+      "dir": "P104_webarena",
+      "slug": "webarena-zhou-2023",
+      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "title_es": "WebArena: un entorno web realista para construir agentes autónomos",
+      "authors": [
+        "Shuyan Zhou",
+        "Frank F. Xu",
+        "Hao Zhu",
+        "Xuhui Zhou",
+        "Robert Lo",
+        "y otros"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2307.13854 · ICLR 2024",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "webarena",
+      "hito": "Evalúa agentes de navegador comprobando el ESTADO del sitio al terminar, no lo que el agente dice haber hecho.",
+      "problema": "Los agentes de navegador se evaluaban con capturas, con juicios de un modelo o con el propio informe del agente. Un agente elocuente puntuaba alto sin haber completado la tarea, y los resultados no eran comparables entre trabajos.",
+      "propuesta": "Un entorno reproducible con sitios reales autoalojados —comercio, foro, repositorio, gestor de contenidos— y, para cada tarea, un verificador programático que inspecciona el estado final del sitio.",
+      "keywords": [
+        "agentes de navegador",
+        "verificación funcional",
+        "entorno reproducible",
+        "evaluación",
+        "tareas transaccionales"
+      ],
+      "anteriores": [
+        "P51",
+        "P62",
+        "Shi et al. (2017), World of Bits"
+      ],
+      "posteriores": [
+        "P105",
+        "P106"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/145-agentes-de-navegador"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2307.13854",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Deng et al. (2023), Mind2Web: generalización entre sitios",
+          "url": "https://arxiv.org/abs/2306.06070"
+        },
+        {
+          "label": "Shi et al. (2017), World of Bits: el antecedente",
+          "url": "https://proceedings.mlr.press/v70/shi17a.html"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P105",
+      "dir": "P105_seeclick",
+      "slug": "seeclick-cheng-2024",
+      "title": "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents",
+      "title_es": "SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica",
+      "authors": [
+        "Kanzhi Cheng",
+        "Qiushi Sun",
+        "Yougang Chu",
+        "Fangzhi Xu",
+        "Yantao Li",
+        "y otros"
+      ],
+      "year": 2024,
+      "venue": "ACL 2024 · arXiv:2401.10935",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "seeclick",
+      "hito": "Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla.",
+      "problema": "Los agentes de interfaz dependían del árbol de accesibilidad o del HTML: texto estructurado que muchas aplicaciones no exponen, y que no cubre los elementos que solo son un icono. Sin ese texto, el agente no puede ni referirse al botón.",
+      "propuesta": "Trabajar directamente sobre la captura de pantalla y entrenar específicamente el anclaje: dada una instrucción en lenguaje natural, devolver las coordenadas del elemento. Con un banco de pruebas propio para medir esa capacidad por separado.",
+      "keywords": [
+        "anclaje en interfaz",
+        "computer use",
+        "visión",
+        "coordenadas",
+        "agentes de GUI"
+      ],
+      "anteriores": [
+        "P18",
+        "P104"
+      ],
+      "posteriores": [
+        "P106"
+      ],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/144-computer-use-basado-en-vision"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2401.10935",
+          "url": "https://arxiv.org/abs/2401.10935"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Yang et al. (2023), Set-of-Mark: marcar la pantalla para poder señalarla",
+          "url": "https://arxiv.org/abs/2310.11441"
+        },
+        {
+          "label": "Zheng et al. (2024), SeeAct: agentes web con modelos multimodales",
+          "url": "https://arxiv.org/abs/2401.01614"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P106",
+      "dir": "P106_osworld",
+      "slug": "osworld-xie-2024",
+      "title": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+      "title_es": "OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales",
+      "authors": [
+        "Tianbao Xie",
+        "Danyang Zhang",
+        "Jixuan Chen",
+        "Xiaochuan Li",
+        "Siheng Zhao",
+        "y otros"
+      ],
+      "year": 2024,
+      "venue": "NeurIPS 2024 · arXiv:2404.07972",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "osworld",
+      "hito": "Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real.",
+      "problema": "Los bancos de pruebas de agentes se limitaban al navegador o a entornos de juguete. El trabajo de oficina real cruza aplicaciones —hoja de cálculo, ficheros, terminal, navegador— y ahí no había forma comparable de medir nada.",
+      "propuesta": "Un entorno de escritorio completo en máquina virtual con estado reiniciable, cientos de tareas reales recogidas de usuarios, y para cada una un script de verificación que inspecciona el estado final del sistema: una celda, un fichero, un código de salida.",
+      "keywords": [
+        "agentes de escritorio",
+        "RPA agéntica",
+        "verificación por ejecución",
+        "multiaplicación",
+        "evaluación"
+      ],
+      "anteriores": [
+        "P104",
+        "P105",
+        "P51"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-11-embodied-ai-robotics-and-computer-use/146-automatizacion-de-escritorio-y-rpa-agentica"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2404.07972",
+          "url": "https://arxiv.org/abs/2404.07972"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Anthropic (2024), uso de ordenador con Claude",
+          "url": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+        },
+        {
+          "label": "Zhou et al. (2023), WebArena: el antecedente acotado al navegador",
+          "url": "https://arxiv.org/abs/2307.13854"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P107",
+      "dir": "P107_dapper",
+      "slug": "dapper-sigelman-2010",
+      "title": "Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+      "title_es": "Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala",
+      "authors": [
+        "Benjamin H. Sigelman",
+        "Luiz André Barroso",
+        "Michael Burrows",
+        "Pat Stephenson",
+        "Manoj Plakal",
+        "Donald Beaver",
+        "Saul Jaspan",
+        "Chandan Shanbhag"
+      ],
+      "year": 2010,
+      "venue": "Google Technical Report",
+      "venue_type": "informe",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "trazas_distribuidas",
+      "hito": "Hace observable una petición que atraviesa decenas de servicios, con un identificador que viaja con ella y un muestreo que la hace asequible.",
+      "problema": "En una arquitectura distribuida, cada servicio tiene sus métricas y sus registros. Cuando una petición va lenta, nadie puede reconstruir por dónde pasó ni dónde se gastó el tiempo: se ve el total y nada más.",
+      "propuesta": "Propagar un identificador de traza con la petición por todos los servicios, registrar un span por operación con su relación padre-hijo, y muestrear una fracción de las trazas para que el coste sea asumible sin perder los agregados.",
+      "keywords": [
+        "trazado distribuido",
+        "span",
+        "observabilidad",
+        "muestreo",
+        "latencia"
+      ],
+      "anteriores": [
+        "P109"
+      ],
+      "posteriores": [
+        "P117"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "Informe técnico de Google",
+          "url": "https://research.google/pubs/pub36356/"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "OpenTelemetry — el estándar abierto que desciende de aquí",
+          "url": "https://opentelemetry.io/docs/concepts/signals/traces/"
+        },
+        {
+          "label": "Beyer et al., Site Reliability Engineering — capítulo de monitorización",
+          "url": "https://sre.google/sre-book/monitoring-distributed-systems/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P108",
+      "dir": "P108_cap",
+      "slug": "cap-doce-anos-despues-brewer-2012",
+      "title": "CAP Twelve Years Later: How the «Rules» Have Changed",
+      "title_es": "CAP doce años después: cómo han cambiado las «reglas»",
+      "authors": [
+        "Eric Brewer"
+      ],
+      "year": 2012,
+      "venue": "IEEE Computer, 45(2), 23–29",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "resiliencia",
+      "hito": "Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición.",
+      "problema": "El teorema CAP se citaba como «elige dos de consistencia, disponibilidad y tolerancia a particiones», y eso llevó a decisiones de arquitectura globales y rígidas: sistemas enteros declarados AP o CP.",
+      "propuesta": "Reformularlo con precisión: la tolerancia a particiones no es opcional, y la elección entre consistencia y disponibilidad solo aplica **durante** una partición. Se decide por operación, y hay que diseñar explícitamente la detección de la partición, el modo degradado y la reconciliación posterior.",
+      "keywords": [
+        "CAP",
+        "partición",
+        "consistencia",
+        "disponibilidad",
+        "reconciliación"
+      ],
+      "anteriores": [
+        "Brewer (2000), la conjetura original",
+        "Gilbert y Lynch (2002), la demostración formal"
+      ],
+      "posteriores": [
+        "P107",
+        "P109"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/158-resiliencia-idempotencia-rollback-y-recuperacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/MC.2012.37",
+          "url": "https://doi.org/10.1109/MC.2012.37"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Gilbert y Lynch (2002), la demostración formal del teorema",
+          "url": "https://doi.org/10.1145/564585.564601"
+        },
+        {
+          "label": "Helland (2007), «Life beyond Distributed Transactions»",
+          "url": "https://queue.acm.org/detail.cfm?id=3025012"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P109",
+      "dir": "P109_cola_larga",
+      "slug": "la-cola-a-escala-dean-barroso-2013",
+      "title": "The Tail at Scale",
+      "title_es": "La cola a escala",
+      "authors": [
+        "Jeffrey Dean",
+        "Luiz André Barroso"
+      ],
+      "year": 2013,
+      "venue": "Communications of the ACM, 56(2), 74–80",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "cola_larga",
+      "hito": "Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo.",
+      "problema": "Un servicio con un p99 excelente puede producir un sistema lento si la petición del usuario necesita respuesta de cientos de servidores: basta que uno vaya lento para que toda la petición lo vaya, y con cien servidores eso pasa casi siempre.",
+      "propuesta": "Tratar la variabilidad de latencia como propiedad de diseño y no como ruido. Técnicas de tolerancia a la cola —peticiones de cobertura, cancelación cruzada, micro-particionado, réplicas selectivas— que reducen la cola sin eliminar sus causas.",
+      "keywords": [
+        "latencia de cola",
+        "p99",
+        "abanico",
+        "peticiones de cobertura",
+        "sistemas a escala"
+      ],
+      "anteriores": [
+        "P107"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/152-serving-online-batch-y-streaming"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/2408776.2408794",
+          "url": "https://doi.org/10.1145/2408776.2408794"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Barroso et al., The Datacenter as a Computer",
+          "url": "https://doi.org/10.2200/S00874ED3V01Y201809CAC046"
+        },
+        {
+          "label": "Beyer et al., Site Reliability Engineering",
+          "url": "https://sre.google/sre-book/table-of-contents/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P110",
+      "dir": "P110_deriva",
+      "slug": "deriva-de-concepto-gama-2014",
+      "title": "A Survey on Concept Drift Adaptation",
+      "title_es": "Una revisión sobre adaptación a la deriva de concepto",
+      "authors": [
+        "João Gama",
+        "Indrė Žliobaitė",
+        "Albert Bifet",
+        "Mykola Pechenizkiy",
+        "Abdelhamid Bouchachia"
+      ],
+      "year": 2014,
+      "venue": "ACM Computing Surveys, 46(4), 1–37",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "deriva",
+      "hito": "Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse.",
+      "problema": "Un modelo se entrena con datos de un momento y se despliega sobre un flujo que cambia. La relación entre entradas y etiquetas puede cambiar sin que cambien las entradas, así que vigilar la distribución de entrada no basta y el modelo se degrada en silencio.",
+      "propuesta": "Una taxonomía de tipos de deriva —abrupta, gradual, incremental, recurrente— y de estrategias: detectores estadísticos sobre la tasa de error, ventanas adaptativas, conjuntos con reemplazo de miembros y reentrenamiento programado.",
+      "keywords": [
+        "deriva de concepto",
+        "flujo de datos",
+        "detección de cambio",
+        "reentrenamiento",
+        "evaluación continua"
+      ],
+      "anteriores": [
+        "P76",
+        "P82"
+      ],
+      "posteriores": [
+        "P112"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-deriva-feedback-y-evaluacion-continua"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/2523813",
+          "url": "https://doi.org/10.1145/2523813"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Gama et al. (2004), el detector DDM sobre la tasa de error",
+          "url": "https://doi.org/10.1007/978-3-540-28645-5_29"
+        },
+        {
+          "label": "Bifet y Gavaldà (2007), ADWIN: ventanas adaptativas",
+          "url": "https://doi.org/10.1137/1.9781611972771.42"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P111",
+      "dir": "P111_deuda_tecnica",
+      "slug": "deuda-tecnica-sculley-2015",
+      "title": "Hidden Technical Debt in Machine Learning Systems",
+      "title_es": "Deuda técnica oculta en los sistemas de aprendizaje automático",
+      "authors": [
+        "D. Sculley",
+        "Gary Holt",
+        "Daniel Golovin",
+        "Eugene Davydov",
+        "Todd Phillips",
+        "Dietmar Ebner",
+        "Vinay Chaudhary",
+        "Michael Young",
+        "Jean-François Crespo",
+        "Dan Dennison"
+      ],
+      "year": 2015,
+      "venue": "NeurIPS 2015",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "deuda_tecnica",
+      "hito": "Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta.",
+      "problema": "Los equipos medían su trabajo por la calidad del modelo mientras el sistema alrededor —ingestión, características, servicio, monitorización, configuración— crecía sin control. Y esa parte acumula formas de deuda que no tienen equivalente en software convencional: dependencias de datos que ningún compilador comprueba.",
+      "propuesta": "Un catálogo de antipatrones específicos del aprendizaje automático: dependencias de datos no declaradas, características huérfanas, bucles de realimentación ocultos, código de pegamento, deuda de configuración, y el principio CACE — cambiar cualquier cosa lo cambia todo.",
+      "keywords": [
+        "deuda técnica",
+        "MLOps",
+        "dependencias de datos",
+        "CACE",
+        "bucles de realimentación"
+      ],
+      "anteriores": [
+        "P80"
+      ],
+      "posteriores": [
+        "P112",
+        "P115"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ciclo-de-vida-de-datos-modelos-y-agentes"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "NeurIPS 2015",
+          "url": "https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sculley et al. (2014), la versión previa: «Machine Learning: The High-Interest Credit Card of Technical Debt»",
+          "url": "https://research.google/pubs/pub43146/"
+        },
+        {
+          "label": "Breck et al. (2017), la rúbrica que convierte esto en checklist",
+          "url": "https://doi.org/10.1109/BigData.2017.8258038"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P112",
+      "dir": "P112_ml_test_score",
+      "slug": "ml-test-score-breck-2017",
+      "title": "The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction",
+      "title_es": "La puntuación de pruebas de ML: una rúbrica de preparación para producción",
+      "authors": [
+        "Eric Breck",
+        "Shanqing Cai",
+        "Eric Nielsen",
+        "Michael Salib",
+        "D. Sculley"
+      ],
+      "year": 2017,
+      "venue": "IEEE Big Data 2017, 1123–1132",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "ml_test_score",
+      "hito": "Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil.",
+      "problema": "La decisión de promocionar un modelo a producción se tomaba mirando su métrica de calidad. Nada garantizaba que existieran pruebas de los datos, de la infraestructura, de la capacidad de revertir ni de la monitorización.",
+      "propuesta": "Una rúbrica con cuatro categorías —datos, modelo, infraestructura y monitorización— y siete pruebas en cada una, con una puntuación global que es el **mínimo** entre categorías: un sistema es tan robusto como su parte más débil.",
+      "keywords": [
+        "preparación para producción",
+        "pruebas",
+        "rúbrica",
+        "MLOps",
+        "promoción"
+      ],
+      "anteriores": [
+        "P111",
+        "P110"
+      ],
+      "posteriores": [
+        "P113",
+        "P114"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-ci-cd-y-pruebas-para-sistemas-de-ia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/BigData.2017.8258038",
+          "url": "https://doi.org/10.1109/BigData.2017.8258038"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sculley et al. (2015), el diagnóstico que esta rúbrica operacionaliza",
+          "url": "https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html"
+        },
+        {
+          "label": "Google, Rules of Machine Learning",
+          "url": "https://developers.google.com/machine-learning/guides/rules-of-ml"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P113",
+      "dir": "P113_trazabilidad",
+      "slug": "reproducibilidad-en-refuerzo-henderson-2018",
+      "title": "Deep Reinforcement Learning That Matters",
+      "title_es": "Aprendizaje por refuerzo profundo que importa",
+      "authors": [
+        "Peter Henderson",
+        "Riashat Islam",
+        "Philip Bachman",
+        "Joelle Pineau",
+        "Doina Precup",
+        "David Meger"
+      ],
+      "year": 2018,
+      "venue": "AAAI 2018",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "trazabilidad",
+      "hito": "Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación.",
+      "problema": "Los resultados en aprendizaje por refuerzo se comparaban con tres o cinco corridas, sin declarar semillas, implementación ni hiperparámetros. Con la varianza real entre semillas, ese protocolo no distingue algoritmos: produce rankings que se invierten al repetir el experimento.",
+      "propuesta": "Medirlo. Ejecutar los mismos algoritmos con muchas semillas, con distintas implementaciones y en distintos entornos, y cuantificar cuánto de la diferencia publicada es señal y cuánto es elección de semilla, de código o de entorno.",
+      "keywords": [
+        "reproducibilidad",
+        "semillas",
+        "varianza",
+        "trazabilidad",
+        "aprendizaje por refuerzo"
+      ],
+      "anteriores": [
+        "P63",
+        "P60",
+        "P102"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-experimentos-semillas-y-trazabilidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1609/aaai.v32i1.11694",
+          "url": "https://doi.org/10.1609/aaai.v32i1.11694"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Pineau et al. (2021), el programa de reproducibilidad de NeurIPS",
+          "url": "https://jmlr.org/papers/v22/20-303.html"
+        },
+        {
+          "label": "Agarwal et al. (2021), estadística para comparar agentes con pocas corridas",
+          "url": "https://arxiv.org/abs/2108.13264"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P114",
+      "dir": "P114_tarjetas_de_modelo",
+      "slug": "tarjetas-de-modelo-mitchell-2019",
+      "title": "Model Cards for Model Reporting",
+      "title_es": "Tarjetas de modelo para el reporte de modelos",
+      "authors": [
+        "Margaret Mitchell",
+        "Simone Wu",
+        "Andrew Zaldivar",
+        "Parker Barnes",
+        "Lucy Vasserman",
+        "Ben Hutchinson",
+        "Elena Spitzer",
+        "Inioluwa Deborah Raji",
+        "Timnit Gebru"
+      ],
+      "year": 2019,
+      "venue": "FAT* '19, 220–229",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "tarjetas_de_modelo",
+      "hito": "Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados.",
+      "problema": "Un modelo se publica con una cifra agregada de exactitud y sin decir para qué sirve, para qué no, con qué datos se evaluó ni a quién le funciona peor. Quien lo integra no tiene forma de saber si es adecuado para su caso.",
+      "propuesta": "Una tarjeta de una o dos páginas con secciones fijas: detalles del modelo, uso previsto, usos fuera de alcance, factores relevantes, métricas, datos de evaluación y entrenamiento, **análisis cuantitativo desagregado**, consideraciones éticas y advertencias.",
+      "keywords": [
+        "tarjeta de modelo",
+        "evaluación desagregada",
+        "transparencia",
+        "documentación",
+        "subgrupos"
+      ],
+      "anteriores": [
+        "P112",
+        "P82"
+      ],
+      "posteriores": [
+        "P115"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-registro-y-promocion-champion-challenger"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3287560.3287596",
+          "url": "https://doi.org/10.1145/3287560.3287596"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Gebru et al. (2021), Datasheets for Datasets: la pieza equivalente para datos",
+          "url": "https://doi.org/10.1145/3458723"
+        },
+        {
+          "label": "Buolamwini y Gebru (2018), Gender Shades: el estudio desagregado que lo motiva",
+          "url": "https://proceedings.mlr.press/v81/buolamwini18a.html"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P115",
+      "dir": "P115_hojas_de_datos",
+      "slug": "hojas-de-datos-gebru-2021",
+      "title": "Datasheets for Datasets",
+      "title_es": "Hojas de datos para conjuntos de datos",
+      "authors": [
+        "Timnit Gebru",
+        "Jamie Morgenstern",
+        "Briana Vecchione",
+        "Jennifer Wortman Vaughan",
+        "Hanna Wallach",
+        "Hal Daumé III",
+        "Kate Crawford"
+      ],
+      "year": 2021,
+      "venue": "Communications of the ACM, 64(12), 86–92",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "hojas_de_datos",
+      "hito": "Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve.",
+      "problema": "Los conjuntos de datos se comparten sin documentación sobre su origen, su composición, los filtros aplicados o los usos desaconsejados. Quien los reutiliza hereda supuestos que nadie escribió, y muchas de esas preguntas ya no se pueden responder a posteriori.",
+      "propuesta": "Un cuestionario que sigue el ciclo de vida del conjunto —motivación, composición, recogida, preprocesado, usos, distribución y mantenimiento— y que hay que responder **mientras se crea**, no después.",
+      "keywords": [
+        "hoja de datos",
+        "documentación de datos",
+        "procedencia",
+        "consentimiento",
+        "gobernanza"
+      ],
+      "anteriores": [
+        "P111",
+        "P114",
+        "P61"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ciclo-de-vida-de-datos-modelos-y-agentes"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3458723",
+          "url": "https://doi.org/10.1145/3458723"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Mitchell et al. (2019), tarjetas de modelo: la pieza equivalente para modelos",
+          "url": "https://doi.org/10.1145/3287560.3287596"
+        },
+        {
+          "label": "Dodge et al. (2021), documentar un corpus web real",
+          "url": "https://doi.org/10.18653/v1/2021.emnlp-main.98"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P116",
+      "dir": "P116_gestion_de_prompts",
+      "slug": "por-que-johnny-no-sabe-prompt-2023",
+      "title": "Why Johnny Can't Prompt: How Non-AI Experts Try (and Fail) to Design LLM Prompts",
+      "title_es": "Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts",
+      "authors": [
+        "J.D. Zamfirescu-Pereira",
+        "Richmond Y. Wong",
+        "Bjoern Hartmann",
+        "Qian Yang"
+      ],
+      "year": 2023,
+      "venue": "CHI '23",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "gestion_de_prompts",
+      "hito": "Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente.",
+      "problema": "Escribir prompts parece accesible a cualquiera, y por eso se hace sin ninguna disciplina de ingeniería: sin versionar, sin conjunto de evaluación y mirando dos o tres ejemplos. Con muestras pequeñas, el ruido tiene el mismo tamaño que las mejoras que se buscan.",
+      "propuesta": "Un estudio con participantes no expertos que documenta sus estrategias reales, identifica el patrón dominante —iteración oportunista basada en anécdotas— y argumenta que el prompt necesita las prácticas del software: versionado, evaluación fija y una hipótesis por cambio.",
+      "keywords": [
+        "prompts",
+        "LLMOps",
+        "evaluación",
+        "iteración",
+        "interacción persona-computador"
+      ],
+      "anteriores": [
+        "P62",
+        "P63"
+      ],
+      "posteriores": [
+        "P117"
+      ],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-llmops-y-gestion-de-prompts"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3544548.3581388",
+          "url": "https://doi.org/10.1145/3544548.3581388"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Liu et al. (2023), revisión sistemática de métodos de prompting",
+          "url": "https://doi.org/10.1145/3560815"
+        },
+        {
+          "label": "Chase, promptfoo y la familia de herramientas de evaluación de prompts",
+          "url": "https://www.promptfoo.dev/docs/intro/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P117",
+      "dir": "P117_agentops",
+      "slug": "agentbench-liu-2023",
+      "title": "AgentBench: Evaluating LLMs as Agents",
+      "title_es": "AgentBench: evaluar modelos de lenguaje como agentes",
+      "authors": [
+        "Xiao Liu",
+        "Hao Yu",
+        "Hanchen Zhang",
+        "Yifan Xu",
+        "Xuanyu Lei",
+        "y otros"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2308.03688 · ICLR 2024",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "agentops",
+      "hito": "Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan.",
+      "problema": "Los agentes se anunciaban con una cifra global de éxito. Esa cifra no dice en qué entornos sirven, en qué paso se pierden ni por qué modo fallan, que es exactamente lo que hace falta para operarlos y para decidir qué arreglar.",
+      "propuesta": "Un banco de pruebas multi-entorno —sistema operativo, base de datos, grafo de conocimiento, juegos, compras, navegación web— con evaluación por trayectoria y análisis de los modos de fallo, no solo de la tasa final.",
+      "keywords": [
+        "AgentOps",
+        "trayectorias",
+        "modos de fallo",
+        "evaluación multi-entorno",
+        "agentes"
+      ],
+      "anteriores": [
+        "P104",
+        "P106",
+        "P16"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias",
+        "classes/part-12-ai-engineering-mlops-llmops-and-agentops/159-proyecto-plataforma-de-ia-observable"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2308.03688",
+          "url": "https://arxiv.org/abs/2308.03688"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Yao et al. (2024), τ-bench: agentes en conversaciones con herramientas y reglas",
+          "url": "https://arxiv.org/abs/2406.12045"
+        },
+        {
+          "label": "Xie et al. (2024), OSWorld: el escritorio completo",
+          "url": "https://arxiv.org/abs/2404.07972"
+        }
+      ],
+      "consultado": "2026-08-17"
     }
   ],
   "ruta_ampliada": [
@@ -4875,7 +6614,10 @@
     "ruta_evaluacion": "P50–P52: cómo se decide que un modelo es aceptable — principios explícitos, criterios de evaluación verificables e interpretabilidad de lo que hay dentro.",
     "ruta_fundamentos": "P53–P63: de dónde sale el campo y con qué método se juzga. No es la cadena técnica: es el suelo —geometría, información, computabilidad, agencia— y el criterio con el que se lee todo lo demás (valor predictivo, validez de benchmark, reproducibilidad). Ordenada por año.",
     "ruta_simbolica": "P64–P72: la tradición que dominó el campo durante treinta años. Del análisis medios-fines a la planificación, pasando por la búsqueda con garantía, las dos lógicas, las restricciones y las ontologías; cierra con el intento de reconciliarla con el aprendizaje. Ordenada por año.",
-    "ruta_clasica": "P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año."
+    "ruta_clasica": "P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año.",
+    "ruta_probabilistica": "P87–P95: decidir sin certeza. Por qué la probabilidad es la única extensión coherente de la lógica, cómo se actualiza una creencia, qué hace tratable la conjunta, y las dos familias que buscan sin gradiente. Cierra con la distinción que el aprendizaje automático no resuelve: asociar no es intervenir. Ordenada por año.",
+    "ruta_encarnada": "P96–P106: cuando el sistema sale de la pantalla y equivocarse tiene consecuencias que no se deshacen. Estimar dónde se está, moverse sin chocar, aprender a controlar, cruzar el hueco entre simulación y realidad, y no hacer daño. Cierra con la vuelta a la pantalla ajena: agentes que operan navegadores y escritorios. Ordenada por año.",
+    "ruta_operacion": "P107–P117: lo que sostiene un sistema en producción y no aparece en ningún artículo de modelos. Ver qué pasa dentro, decidir qué se sacrifica cuando la red se parte, sobrevivir a la cola de latencia, detectar que el mundo cambió, y documentar datos y modelos para que alguien más pueda auditarlos. Cierra con la evaluación de agentes por trayectoria. Ordenada por año."
   },
   "ruta_representacion": [
     "P23",
@@ -4902,7 +6644,10 @@
     "ruta_evaluacion",
     "ruta_fundamentos",
     "ruta_simbolica",
-    "ruta_clasica"
+    "ruta_clasica",
+    "ruta_probabilistica",
+    "ruta_encarnada",
+    "ruta_operacion"
   ],
   "ruta_memoria": [
     "P34",
@@ -4969,5 +6714,42 @@
     "P84",
     "P85",
     "P86"
+  ],
+  "ruta_probabilistica": [
+    "P87",
+    "P88",
+    "P89",
+    "P90",
+    "P91",
+    "P92",
+    "P93",
+    "P94",
+    "P95"
+  ],
+  "ruta_encarnada": [
+    "P96",
+    "P97",
+    "P98",
+    "P99",
+    "P100",
+    "P101",
+    "P102",
+    "P103",
+    "P104",
+    "P105",
+    "P106"
+  ],
+  "ruta_operacion": [
+    "P107",
+    "P108",
+    "P109",
+    "P110",
+    "P111",
+    "P112",
+    "P113",
+    "P114",
+    "P115",
+    "P116",
+    "P117"
   ]
 }

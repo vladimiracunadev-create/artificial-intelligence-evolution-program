@@ -247,6 +247,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Russell, S. & Norvig, P. AIMA 4e — cap. 3 (búsqueda) y cap. 26 (robótica)](https://aima.cs.berkeley.edu/)
 - [Nav2 — Navigation Concepts (planificador global y local)](https://docs.nav2.org/concepts/index.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P98 · RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única](../../../papers/foundational/P98_rrt/README.md) | 2000 | Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias. | [notebook](../../../notebooks/papers/P98_rrt.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

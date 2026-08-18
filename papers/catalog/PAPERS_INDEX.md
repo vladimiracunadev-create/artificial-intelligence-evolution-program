@@ -2,7 +2,7 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 86 · **Actualizado:** 2026-08-17 · **Cobertura:** 1901–2025
+**Papers:** 117 · **Actualizado:** 2026-08-17 · **Cobertura:** 1763–2025
 
 > [!NOTE]
 > Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no
@@ -14,63 +14,89 @@
 
 | Año | # | Paper | Bloque | Nivel | Motor | Ficha | Notebook |
 |---:|---|---|---|:---:|---|---|---|
+| **1763** | P87 | Ensayo para resolver un problema en la doctrina de las probabilidades | ruta_probabilistica | L2 | `bayes` | [ficha](../foundational/P87_bayes/README.md) | [nb](../../notebooks/papers/P87_bayes.ipynb) |
 | **1901** | P53 | Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio | 🧭 fundamentos | L2 | `pca` | [ficha](../foundational/P53_pca/README.md) | [nb](../../notebooks/papers/P53_pca.ipynb) |
 | **1943** | P54 | Un cálculo lógico de las ideas inmanentes en la actividad nerviosa | 🧭 fundamentos | L1 | `mcculloch_pitts` | [ficha](../foundational/P54_mcculloch_pitts/README.md) | [nb](../../notebooks/papers/P54_mcculloch_pitts.ipynb) |
+| **1946** | P88 | Probabilidad, frecuencia y expectativa razonable | ruta_probabilistica | L3 | `cox` | [ficha](../foundational/P88_cox/README.md) | [nb](../../notebooks/papers/P88_cox.ipynb) |
 | **1948** | P55 | Una teoría matemática de la comunicación | 🧭 fundamentos | L2 | `shannon` | [ficha](../foundational/P55_shannon/README.md) | [nb](../../notebooks/papers/P55_shannon.ipynb) |
 | **1950** | P56 | Maquinaria computacional e inteligencia | 🧭 fundamentos | L1 | `turing` | [ficha](../foundational/P56_turing/README.md) | [nb](../../notebooks/papers/P56_turing.ipynb) |
 | **1955** | P57 | Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial | 🧭 fundamentos | L1 | `dartmouth` | [ficha](../foundational/P57_dartmouth/README.md) | [nb](../../notebooks/papers/P57_dartmouth.ipynb) |
 | **1958** | P01 | El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro | 🔗 cadena | L1 | `perceptron` | [ficha](../foundational/P01_perceptron/README.md) | [nb](../../notebooks/papers/P01_perceptron.ipynb) |
 | **1959** | P64 | Informe sobre un programa general de resolución de problemas | ♟️ simbólica | L2 | `gps` | [ficha](../foundational/P64_gps/README.md) | [nb](../../notebooks/papers/P64_gps.ipynb) |
+| **1960** | P96 | Un nuevo enfoque para los problemas de filtrado y predicción lineales | ruta_encarnada | L3 | `kalman` | [ficha](../foundational/P96_kalman/README.md) | [nb](../../notebooks/papers/P96_kalman.ipynb) |
 | **1962** | P65 | Un programa de máquina para demostración de teoremas | ♟️ simbólica | L2 | `dpll` | [ficha](../foundational/P65_dpll/README.md) | [nb](../../notebooks/papers/P65_dpll.ipynb) |
 | **1965** | P66 | Una lógica orientada a máquina basada en el principio de resolución | ♟️ simbólica | L3 | `resolucion` | [ficha](../foundational/P66_resolucion/README.md) | [nb](../../notebooks/papers/P66_resolucion.ipynb) |
+| **1965** | P89 | Conjuntos difusos | ruta_probabilistica | L2 | `fuzzy` | [ficha](../foundational/P89_fuzzy/README.md) | [nb](../../notebooks/papers/P89_fuzzy.ipynb) |
 | **1968** | P67 | Una base formal para la determinación heurística de caminos de coste mínimo | ♟️ simbólica | L3 | `a_estrella` | [ficha](../foundational/P67_a_estrella/README.md) | [nb](../../notebooks/papers/P67_a_estrella.ipynb) |
 | **1971** | P68 | STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas | ♟️ simbólica | L2 | `strips` | [ficha](../foundational/P68_strips/README.md) | [nb](../../notebooks/papers/P68_strips.ipynb) |
+| **1973** | P90 | Algoritmos genéticos y la asignación óptima de ensayos | ruta_probabilistica | L2 | `algoritmos_geneticos` | [ficha](../foundational/P90_algoritmos_geneticos/README.md) | [nb](../../notebooks/papers/P90_algoritmos_geneticos.ipynb) |
 | **1975** | P69 | Un modelo de razonamiento inexacto en medicina | ♟️ simbólica | L2 | `mycin` | [ficha](../foundational/P69_mycin/README.md) | [nb](../../notebooks/papers/P69_mycin.ipynb) |
 | **1976** | P58 | La informática como indagación empírica: símbolos y búsqueda | 🧭 fundamentos | L2 | `simbolos_y_busqueda` | [ficha](../foundational/P58_simbolos_y_busqueda/README.md) | [nb](../../notebooks/papers/P58_simbolos_y_busqueda.ipynb) |
 | **1977** | P70 | Consistencia en redes de relaciones | ♟️ simbólica | L3 | `arco_consistencia` | [ficha](../foundational/P70_arco_consistencia/README.md) | [nb](../../notebooks/papers/P70_arco_consistencia.ipynb) |
 | **1982** | P73 | Cuantización por mínimos cuadrados en PCM | 📈 clásica | L2 | `kmeans` | [ficha](../foundational/P73_kmeans/README.md) | [nb](../../notebooks/papers/P73_kmeans.ipynb) |
 | **1986** | P02 | Aprender representaciones retropropagando errores | 🔗 cadena | L2 | `backprop` | [ficha](../foundational/P02_backpropagation/README.md) | [nb](../../notebooks/papers/P02_backpropagation.ipynb) |
 | **1986** | P74 | Inducción de árboles de decisión | 📈 clásica | L2 | `id3` | [ficha](../foundational/P74_id3/README.md) | [nb](../../notebooks/papers/P74_id3.ipynb) |
+| **1986** | P91 | Fusión, propagación y estructuración en redes de creencia | ruta_probabilistica | L3 | `redes_bayesianas` | [ficha](../foundational/P91_redes_bayesianas/README.md) | [nb](../../notebooks/papers/P91_redes_bayesianas.ipynb) |
+| **1986** | P97 | Un sistema de control por capas robusto para un robot móvil | ruta_encarnada | L2 | `subsuncion` | [ficha](../foundational/P97_subsuncion/README.md) | [nb](../../notebooks/papers/P97_subsuncion.ipynb) |
 | **1993** | P71 | Un enfoque de traducción para especificaciones de ontologías portables | ♟️ simbólica | L1 | `ontologia` | [ficha](../foundational/P71_ontologia/README.md) | [nb](../../notebooks/papers/P71_ontologia.ipynb) |
 | **1995** | P59 | Agentes inteligentes: teoría y práctica | 🧭 fundamentos | L2 | `agente_racional` | [ficha](../foundational/P59_agente_racional/README.md) | [nb](../../notebooks/papers/P59_agente_racional.ipynb) |
 | **1995** | P75 | Redes de vectores soporte | 📈 clásica | L3 | `svm` | [ficha](../foundational/P75_svm/README.md) | [nb](../../notebooks/papers/P75_svm.ipynb) |
 | **1995** | P76 | Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos | 📈 clásica | L3 | `validacion_cruzada` | [ficha](../foundational/P76_validacion_cruzada/README.md) | [nb](../../notebooks/papers/P76_validacion_cruzada.ipynb) |
+| **1995** | P92 | Optimización por enjambre de partículas | ruta_probabilistica | L2 | `pso` | [ficha](../foundational/P92_pso/README.md) | [nb](../../notebooks/papers/P92_pso.ipynb) |
 | **1996** | P77 | Contracción y selección en regresión mediante el lasso | 📈 clásica | L3 | `lasso` | [ficha](../foundational/P77_lasso/README.md) | [nb](../../notebooks/papers/P77_lasso.ipynb) |
+| **1996** | P93 | Sistema de hormigas: optimización mediante una colonia de agentes cooperantes | ruta_probabilistica | L2 | `aco` | [ficha](../foundational/P93_aco/README.md) | [nb](../../notebooks/papers/P93_aco.ipynb) |
 | **1997** | P03 | Memoria larga de corto plazo | 🔗 cadena | L2 | `lstm` | [ficha](../foundational/P03_lstm/README.md) | [nb](../../notebooks/papers/P03_lstm.ipynb) |
 | **1997** | P78 | Una generalización decisional del aprendizaje en línea y su aplicación al boosting | 📈 clásica | L3 | `adaboost` | [ficha](../foundational/P78_adaboost/README.md) | [nb](../../notebooks/papers/P78_adaboost.ipynb) |
+| **2000** | P98 | RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única | ruta_encarnada | L3 | `rrt` | [ficha](../foundational/P98_rrt/README.md) | [nb](../../notebooks/papers/P98_rrt.ipynb) |
 | **2001** | P79 | Bosques aleatorios | 📈 clásica | L3 | `random_forest` | [ficha](../foundational/P79_random_forest/README.md) | [nb](../../notebooks/papers/P79_random_forest.ipynb) |
 | **2001** | P80 | Modelización estadística: las dos culturas | 📈 clásica | L1 | `dos_culturas` | [ficha](../foundational/P80_dos_culturas/README.md) | [nb](../../notebooks/papers/P80_dos_culturas.ipynb) |
 | **2003** | P81 | Introducción a la selección de variables y características | 📈 clásica | L3 | `seleccion_de_caracteristicas` | [ficha](../foundational/P81_seleccion_de_caracteristicas/README.md) | [nb](../../notebooks/papers/P81_seleccion_de_caracteristicas.ipynb) |
 | **2005** | P60 | Por qué la mayoría de los hallazgos publicados son falsos | 🧭 fundamentos | L3 | `valor_predictivo` | [ficha](../foundational/P60_valor_predictivo/README.md) | [nb](../../notebooks/papers/P60_valor_predictivo.ipynb) |
 | **2005** | P82 | Predecir buenas probabilidades con aprendizaje supervisado | 📈 clásica | L3 | `calibracion` | [ficha](../foundational/P82_calibracion/README.md) | [nb](../../notebooks/papers/P82_calibracion.ipynb) |
+| **2006** | P99 | Localización y mapeo simultáneos: parte I | ruta_encarnada | L3 | `slam` | [ficha](../foundational/P99_slam/README.md) | [nb](../../notebooks/papers/P99_slam.ipynb) |
 | **2008** | P83 | Visualizar datos con t-SNE | 📈 clásica | L3 | `tsne` | [ficha](../foundational/P83_tsne/README.md) | [nb](../../notebooks/papers/P83_tsne.ipynb) |
 | **2008** | P84 | Bosque de aislamiento | 📈 clásica | L2 | `isolation_forest` | [ficha](../foundational/P84_isolation_forest/README.md) | [nb](../../notebooks/papers/P84_isolation_forest.ipynb) |
+| **2009** | P100 | Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones | ruta_encarnada | L2 | `seguridad_fisica` | [ficha](../foundational/P100_seguridad_fisica/README.md) | [nb](../../notebooks/papers/P100_seguridad_fisica.ipynb) |
 | **2009** | P85 | Técnicas de factorización matricial para sistemas de recomendación | 📈 clásica | L3 | `factorizacion_matricial` | [ficha](../foundational/P85_factorizacion_matricial/README.md) | [nb](../../notebooks/papers/P85_factorizacion_matricial.ipynb) |
+| **2010** | P107 | Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala | ruta_operacion | L2 | `trazas_distribuidas` | [ficha](../foundational/P107_dapper/README.md) | [nb](../../notebooks/papers/P107_dapper.ipynb) |
+| **2011** | P101 | Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento | ruta_encarnada | L3 | `dagger` | [ficha](../foundational/P101_dagger/README.md) | [nb](../../notebooks/papers/P101_dagger.ipynb) |
 | **2012** | P04 | Clasificación de ImageNet con redes neuronales convolucionales profundas | 🔗 cadena | L3 | `convnet` | [ficha](../foundational/P04_alexnet/README.md) | [nb](../../notebooks/papers/P04_alexnet.ipynb) |
+| **2012** | P108 | CAP doce años después: cómo han cambiado las «reglas» | ruta_operacion | L2 | `resiliencia` | [ficha](../foundational/P108_cap/README.md) | [nb](../../notebooks/papers/P108_cap.ipynb) |
 | **2013** | P05 | Estimación eficiente de representaciones de palabras en un espacio vectorial | 🔗 cadena | L2 | `word2vec` | [ficha](../foundational/P05_word2vec/README.md) | [nb](../../notebooks/papers/P05_word2vec.ipynb) |
+| **2013** | P109 | La cola a escala | ruta_operacion | L2 | `cola_larga` | [ficha](../foundational/P109_cola_larga/README.md) | [nb](../../notebooks/papers/P109_cola_larga.ipynb) |
 | **2013** | P38 | Bayes variacional con autocodificación | 🏗️ arquitectura | L3 | `vae` | [ficha](../foundational/P38_vae/README.md) | [nb](../../notebooks/papers/P38_vae.ipynb) |
 | **2014** | P06 | Aprendizaje de secuencia a secuencia con redes neuronales | 🔗 cadena | L3 | `seq2seq` | [ficha](../foundational/P06_seq2seq/README.md) | [nb](../../notebooks/papers/P06_seq2seq.ipynb) |
 | **2014** | P07 | Traducción automática neuronal aprendiendo conjuntamente a alinear y traducir | 🔗 cadena | L3 | `bahdanau` | [ficha](../foundational/P07_attention_bahdanau/README.md) | [nb](../../notebooks/papers/P07_attention_bahdanau.ipynb) |
+| **2014** | P110 | Una revisión sobre adaptación a la deriva de concepto | ruta_operacion | L3 | `deriva` | [ficha](../foundational/P110_deriva/README.md) | [nb](../../notebooks/papers/P110_deriva.ipynb) |
 | **2014** | P23 | GloVe: vectores globales para representación de palabras | 🔤 representación | L2 | `glove` | [ficha](../foundational/P23_glove/README.md) | [nb](../../notebooks/papers/P23_glove.ipynb) |
 | **2014** | P39 | Redes generativas adversarias | 🏗️ arquitectura | L3 | `gan` | [ficha](../foundational/P39_gan/README.md) | [nb](../../notebooks/papers/P39_gan.ipynb) |
 | **2014** | P40 | Dropout: una forma simple de evitar el sobreajuste en redes neuronales | 🏗️ arquitectura | L2 | `dropout` | [ficha](../foundational/P40_dropout/README.md) | [nb](../../notebooks/papers/P40_dropout.ipynb) |
 | **2014** | P41 | Adam: un método de optimización estocástica | 🏗️ arquitectura | L2 | `adam` | [ficha](../foundational/P41_adam/README.md) | [nb](../../notebooks/papers/P41_adam.ipynb) |
 | **2014** | P42 | Explicar y aprovechar los ejemplos adversarios | 🏗️ arquitectura | L3 | `adversarial` | [ficha](../foundational/P42_adversarial/README.md) | [nb](../../notebooks/papers/P42_adversarial.ipynb) |
+| **2015** | P111 | Deuda técnica oculta en los sistemas de aprendizaje automático | ruta_operacion | L1 | `deuda_tecnica` | [ficha](../foundational/P111_deuda_tecnica/README.md) | [nb](../../notebooks/papers/P111_deuda_tecnica.ipynb) |
 | **2015** | P26 | Control a nivel humano mediante aprendizaje por refuerzo profundo | 🤖 agentes | L3 | `dqn` | [ficha](../foundational/P26_dqn/README.md) | [nb](../../notebooks/papers/P26_dqn.ipynb) |
 | **2015** | P43 | Normalización por lotes: acelerar el entrenamiento profundo | 🏗️ arquitectura | L2 | `batchnorm` | [ficha](../foundational/P43_batchnorm/README.md) | [nb](../../notebooks/papers/P43_batchnorm.ipynb) |
 | **2015** | P44 | Aprendizaje residual profundo para reconocimiento de imágenes | 🏗️ arquitectura | L3 | `resnet` | [ficha](../foundational/P44_resnet/README.md) | [nb](../../notebooks/papers/P44_resnet.ipynb) |
 | **2015** | P45 | Destilar el conocimiento de una red neuronal | 🏗️ arquitectura | L2 | `distillation` | [ficha](../foundational/P45_distillation/README.md) | [nb](../../notebooks/papers/P45_distillation.ipynb) |
 | **2016** | P27 | Dominar el go con redes neuronales profundas y búsqueda en árbol | 🤖 agentes | L4 | `alphago` | [ficha](../foundational/P27_alphago/README.md) | [nb](../../notebooks/papers/P27_alphago.ipynb) |
 | **2017** | P08 | La atención es todo lo que necesitas | 🔗 cadena | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [nb](../../notebooks/papers/P08_transformer.ipynb) |
+| **2017** | P102 | Algoritmos de optimización proximal de políticas | ruta_encarnada | L3 | `ppo` | [ficha](../foundational/P102_ppo/README.md) | [nb](../../notebooks/papers/P102_ppo.ipynb) |
+| **2017** | P103 | Aleatorización de dominio para transferir redes profundas de la simulación al mundo real | ruta_encarnada | L2 | `domain_randomization` | [ficha](../foundational/P103_domain_randomization/README.md) | [nb](../../notebooks/papers/P103_domain_randomization.ipynb) |
+| **2017** | P112 | La puntuación de pruebas de ML: una rúbrica de preparación para producción | ruta_operacion | L2 | `ml_test_score` | [ficha](../foundational/P112_ml_test_score/README.md) | [nb](../../notebooks/papers/P112_ml_test_score.ipynb) |
+| **2017** | P94 | Stan: un lenguaje de programación probabilística | ruta_probabilistica | L3 | `programacion_probabilistica` | [ficha](../foundational/P94_programacion_probabilistica/README.md) | [nb](../../notebooks/papers/P94_programacion_probabilistica.ipynb) |
 | **2018** | P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 🔗 cadena | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [nb](../../notebooks/papers/P09_bert.ipynb) |
+| **2018** | P113 | Aprendizaje por refuerzo profundo que importa | ruta_operacion | L3 | `trazabilidad` | [ficha](../foundational/P113_trazabilidad/README.md) | [nb](../../notebooks/papers/P113_trazabilidad.ipynb) |
 | **2018** | P24 | Representaciones profundas de palabras dependientes del contexto | 🔤 representación | L3 | `elmo` | [ficha](../foundational/P24_elmo/README.md) | [nb](../../notebooks/papers/P24_elmo.ipynb) |
 | **2018** | P86 | La competición M4: resultados, hallazgos, conclusiones y camino a seguir | 📈 clásica | L3 | `m4` | [ficha](../foundational/P86_m4/README.md) | [nb](../../notebooks/papers/P86_m4.ipynb) |
+| **2019** | P114 | Tarjetas de modelo para el reporte de modelos | ruta_operacion | L1 | `tarjetas_de_modelo` | [ficha](../foundational/P114_tarjetas_de_modelo/README.md) | [nb](../../notebooks/papers/P114_tarjetas_de_modelo.ipynb) |
 | **2019** | P25 | Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto | 🔤 representación | L3 | `t5` | [ficha](../foundational/P25_t5/README.md) | [nb](../../notebooks/papers/P25_t5.ipynb) |
+| **2019** | P95 | Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático | ruta_probabilistica | L3 | `causalidad` | [ficha](../foundational/P95_causalidad/README.md) | [nb](../../notebooks/papers/P95_causalidad.ipynb) |
 | **2020** | P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 🔗 cadena | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [nb](../../notebooks/papers/P10_gpt3.ipynb) |
 | **2020** | P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 🔗 cadena | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [nb](../../notebooks/papers/P11_rag.ipynb) |
 | **2020** | P17 | Modelos probabilísticos de difusión con eliminación de ruido | 📚 ampliada | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [nb](../../notebooks/papers/P17_diffusion.ipynb) |
 | **2020** | P46 | Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala | 🏗️ arquitectura | L3 | `vit` | [ficha](../foundational/P46_vit/README.md) | [nb](../../notebooks/papers/P46_vit.ipynb) |
 | **2020** | P72 | IA neuro-simbólica: la tercera ola | ♟️ simbólica | L5 | `neurosimbolico` | [ficha](../foundational/P72_neurosimbolico/README.md) | [nb](../../notebooks/papers/P72_neurosimbolico.ipynb) |
+| **2021** | P115 | Hojas de datos para conjuntos de datos | ruta_operacion | L1 | `hojas_de_datos` | [ficha](../foundational/P115_hojas_de_datos/README.md) | [nb](../../notebooks/papers/P115_hojas_de_datos.ipynb) |
 | **2021** | P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 📚 ampliada | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [nb](../../notebooks/papers/P18_clip.ipynb) |
 | **2021** | P34 | RoFormer: Transformer mejorado con codificación posicional rotatoria | 🧠 memoria | L3 | `rope` | [ficha](../foundational/P34_rope/README.md) | [nb](../../notebooks/papers/P34_rope.ipynb) |
 | **2021** | P47 | Predicción de estructura de proteínas de alta precisión con AlphaFold | 🏗️ arquitectura | L4 | `alphafold` | [ficha](../foundational/P47_alphafold/README.md) | [nb](../../notebooks/papers/P47_alphafold.ipynb) |
@@ -84,6 +110,9 @@
 | **2022** | P28 | El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | 🤖 agentes | L2 | `cot` | [ficha](../foundational/P28_chain_of_thought/README.md) | [nb](../../notebooks/papers/P28_chain_of_thought.ipynb) |
 | **2022** | P35 | FlashAttention: atención exacta, rápida y eficiente en memoria, consciente de la E/S | 🧠 memoria | L4 | `flashattention` | [ficha](../foundational/P35_flashattention/README.md) | [nb](../../notebooks/papers/P35_flashattention.ipynb) |
 | **2022** | P50 | IA constitucional: inocuidad a partir de retroalimentación de IA | 🛡️ evaluación | L4 | `constitutional_ai` | [ficha](../foundational/P50_constitutional_ai/README.md) | [nb](../../notebooks/papers/P50_constitutional_ai.ipynb) |
+| **2023** | P104 | WebArena: un entorno web realista para construir agentes autónomos | ruta_encarnada | L3 | `webarena` | [ficha](../foundational/P104_webarena/README.md) | [nb](../../notebooks/papers/P104_webarena.ipynb) |
+| **2023** | P116 | Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts | ruta_operacion | L2 | `gestion_de_prompts` | [ficha](../foundational/P116_gestion_de_prompts/README.md) | [nb](../../notebooks/papers/P116_gestion_de_prompts.ipynb) |
+| **2023** | P117 | AgentBench: evaluar modelos de lenguaje como agentes | ruta_operacion | L3 | `agentops` | [ficha](../foundational/P117_agentops/README.md) | [nb](../../notebooks/papers/P117_agentops.ipynb) |
 | **2023** | P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 🔗 cadena | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [nb](../../notebooks/papers/P14_toolformer.ipynb) |
 | **2023** | P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 🔗 cadena | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [nb](../../notebooks/papers/P15_dpo.ipynb) |
 | **2023** | P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 🔗 cadena | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [nb](../../notebooks/papers/P16_agentic_systems.ipynb) |
@@ -98,6 +127,8 @@
 | **2023** | P49 | QLoRA: ajuste fino eficiente de modelos cuantizados | 🏗️ arquitectura | L3 | `quantization` | [ficha](../foundational/P49_qlora/README.md) | [nb](../../notebooks/papers/P49_qlora.ipynb) |
 | **2023** | P51 | SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub? | 🛡️ evaluación | L3 | `swebench` | [ficha](../foundational/P51_swebench/README.md) | [nb](../../notebooks/papers/P51_swebench.ipynb) |
 | **2023** | P52 | Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario | 🛡️ evaluación | L5 | `superposition` | [ficha](../foundational/P52_superposition/README.md) | [nb](../../notebooks/papers/P52_superposition.ipynb) |
+| **2024** | P105 | SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica | ruta_encarnada | L2 | `seeclick` | [ficha](../foundational/P105_seeclick/README.md) | [nb](../../notebooks/papers/P105_seeclick.ipynb) |
+| **2024** | P106 | OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales | ruta_encarnada | L3 | `osworld` | [ficha](../foundational/P106_osworld/README.md) | [nb](../../notebooks/papers/P106_osworld.ipynb) |
 | **2024** | P21 | Mixtral: mezcla dispersa de expertos | 📚 ampliada | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [nb](../../notebooks/papers/P21_moe.ipynb) |
 | **2025** | P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 📚 ampliada | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [nb](../../notebooks/papers/P22_deepseek_r1.ipynb) |
 
@@ -241,7 +272,63 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **2009** · [P85 · Técnicas de factorización matricial para sistemas de recomendación](../foundational/P85_factorizacion_matricial/README.md) — El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos.
 - **2018** · [P86 · La competición M4: resultados, hallazgos, conclusiones y camino a seguir](../foundational/P86_m4/README.md) — Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo.
 
+### ruta_probabilistica
+
+P87–P95: decidir sin certeza. Por qué la probabilidad es la única extensión coherente de la lógica, cómo se actualiza una creencia, qué hace tratable la conjunta, y las dos familias que buscan sin gradiente. Cierra con la distinción que el aprendizaje automático no resuelve: asociar no es intervenir. Ordenada por año.
+
+- **1763** · [P87 · Ensayo para resolver un problema en la doctrina de las probabilidades](../foundational/P87_bayes/README.md) — La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto».
+- **1946** · [P88 · Probabilidad, frecuencia y expectativa razonable](../foundational/P88_cox/README.md) — Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia.
+- **1965** · [P89 · Conjuntos difusos](../foundational/P89_fuzzy/README.md) — Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje.
+- **1973** · [P90 · Algoritmos genéticos y la asignación óptima de ensayos](../foundational/P90_algoritmos_geneticos/README.md) — Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta.
+- **1986** · [P91 · Fusión, propagación y estructuración en redes de creencia](../foundational/P91_redes_bayesianas/README.md) — Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente.
+- **1995** · [P92 · Optimización por enjambre de partículas](../foundational/P92_pso/README.md) — Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo.
+- **1996** · [P93 · Sistema de hormigas: optimización mediante una colonia de agentes cooperantes](../foundational/P93_aco/README.md) — La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora.
+- **2017** · [P94 · Stan: un lenguaje de programación probabilística](../foundational/P94_programacion_probabilistica/README.md) — Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior.
+- **2019** · [P95 · Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático](../foundational/P95_causalidad/README.md) — Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen.
+
+### ruta_encarnada
+
+P96–P106: cuando el sistema sale de la pantalla y equivocarse tiene consecuencias que no se deshacen. Estimar dónde se está, moverse sin chocar, aprender a controlar, cruzar el hueco entre simulación y realidad, y no hacer daño. Cierra con la vuelta a la pantalla ajena: agentes que operan navegadores y escritorios. Ordenada por año.
+
+- **1960** · [P96 · Un nuevo enfoque para los problemas de filtrado y predicción lineales](../foundational/P96_kalman/README.md) — Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva.
+- **1986** · [P97 · Un sistema de control por capas robusto para un robot móvil](../foundational/P97_subsuncion/README.md) — Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central.
+- **2000** · [P98 · RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única](../foundational/P98_rrt/README.md) — Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias.
+- **2006** · [P99 · Localización y mapeo simultáneos: parte I](../foundational/P99_slam/README.md) — Formaliza el problema circular de la robótica móvil: no se puede localizar sin mapa ni mapear sin localización, y hay que resolver ambos a la vez.
+- **2009** · [P100 · Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones](../foundational/P100_seguridad_fisica/README.md) — Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados.
+- **2011** · [P101 · Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento](../foundational/P101_dagger/README.md) — Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T.
+- **2017** · [P102 · Algoritmos de optimización proximal de políticas](../foundational/P102_ppo/README.md) — Consigue la estabilidad de TRPO con una función objetivo que se implementa en unas líneas y se optimiza con descenso de gradiente corriente.
+- **2017** · [P103 · Aleatorización de dominio para transferir redes profundas de la simulación al mundo real](../foundational/P103_domain_randomization/README.md) — Invierte el objetivo del simulador: en vez de buscar fidelidad, busca que la realidad sea una variación más dentro del rango de entrenamiento.
+- **2023** · [P104 · WebArena: un entorno web realista para construir agentes autónomos](../foundational/P104_webarena/README.md) — Evalúa agentes de navegador comprobando el ESTADO del sitio al terminar, no lo que el agente dice haber hecho.
+- **2024** · [P105 · SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica](../foundational/P105_seeclick/README.md) — Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla.
+- **2024** · [P106 · OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales](../foundational/P106_osworld/README.md) — Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real.
+
+### ruta_operacion
+
+P107–P117: lo que sostiene un sistema en producción y no aparece en ningún artículo de modelos. Ver qué pasa dentro, decidir qué se sacrifica cuando la red se parte, sobrevivir a la cola de latencia, detectar que el mundo cambió, y documentar datos y modelos para que alguien más pueda auditarlos. Cierra con la evaluación de agentes por trayectoria. Ordenada por año.
+
+- **2010** · [P107 · Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala](../foundational/P107_dapper/README.md) — Hace observable una petición que atraviesa decenas de servicios, con un identificador que viaja con ella y un muestreo que la hace asequible.
+- **2012** · [P108 · CAP doce años después: cómo han cambiado las «reglas»](../foundational/P108_cap/README.md) — Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición.
+- **2013** · [P109 · La cola a escala](../foundational/P109_cola_larga/README.md) — Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo.
+- **2014** · [P110 · Una revisión sobre adaptación a la deriva de concepto](../foundational/P110_deriva/README.md) — Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse.
+- **2015** · [P111 · Deuda técnica oculta en los sistemas de aprendizaje automático](../foundational/P111_deuda_tecnica/README.md) — Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta.
+- **2017** · [P112 · La puntuación de pruebas de ML: una rúbrica de preparación para producción](../foundational/P112_ml_test_score/README.md) — Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil.
+- **2018** · [P113 · Aprendizaje por refuerzo profundo que importa](../foundational/P113_trazabilidad/README.md) — Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación.
+- **2019** · [P114 · Tarjetas de modelo para el reporte de modelos](../foundational/P114_tarjetas_de_modelo/README.md) — Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados.
+- **2021** · [P115 · Hojas de datos para conjuntos de datos](../foundational/P115_hojas_de_datos/README.md) — Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve.
+- **2023** · [P116 · Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts](../foundational/P116_gestion_de_prompts/README.md) — Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente.
+- **2023** · [P117 · AgentBench: evaluar modelos de lenguaje como agentes](../foundational/P117_agentops/README.md) — Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan.
+
 ## 📖 Qué resolvió cada uno
+
+### P87 · An Essay towards solving a Problem in the Doctrine of Chances (1763)
+
+- **Autoría:** Thomas Bayes, Richard Price (editor)
+- **Problema anterior:** La probabilidad sabía calcular qué datos esperar dada una causa conocida. La pregunta inversa —qué causa es probable dados los datos observados— no tenía tratamiento, y es la que hace falta para aprender de la experiencia.
+- **Propuesta:** Tratar la causa desconocida como una cantidad con distribución previa, y actualizarla con la verosimilitud de lo observado. En forma de odds, la actualización es una multiplicación por la razón de verosimilitud.
+- **Hito:** La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto».
+- **Conceptos:** inferencia bayesiana, probabilidad condicional, previa, posterior, razón de verosimilitud
+- **Clases del programa:** [026](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/026-teorema-de-bayes-y-actualizacion-de-creencias/README.md)
+- **Fuentes primarias:** [doi:10.1098/rstl.1763.0053](https://doi.org/10.1098/rstl.1763.0053)
 
 ### P53 · On Lines and Planes of Closest Fit to Systems of Points in Space (1901)
 
@@ -262,6 +349,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** neurona de umbral, lógica proposicional, computabilidad, inhibición, conexionismo
 - **Clases del programa:** [001](../../classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es/README.md), [007](../../classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional/README.md)
 - **Fuentes primarias:** [DOI (Bulletin of Mathematical Biophysics)](https://doi.org/10.1007/BF02478259)
+
+### P88 · Probability, Frequency and Reasonable Expectation (1946)
+
+- **Autoría:** Richard T. Cox
+- **Problema anterior:** Había —y hay— muchas propuestas para razonar con incertidumbre: frecuencias, grados de creencia, factores de certeza, posibilidades. Ninguna razón de principio decía por qué elegir una, y la discusión se resolvía por gusto o por escuela.
+- **Propuesta:** Enunciar tres desiderata mínimos —representar grados con números reales, ser consistente con la lógica en los casos extremos y dar el mismo resultado por cualquier camino de razonamiento— y demostrar que cualquier medida que los cumpla es isomorfa a la probabilidad.
+- **Hito:** Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia.
+- **Conceptos:** desiderata, consistencia, grados de creencia, regla de la suma, regla del producto
+- **Clases del programa:** [025](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/025-razonamiento-con-incertidumbre/README.md)
+- **Fuentes primarias:** [doi:10.1119/1.1990764](https://doi.org/10.1119/1.1990764)
 
 ### P55 · A Mathematical Theory of Communication (1948)
 
@@ -313,6 +410,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [013](../../classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas/README.md)
 - **Fuentes primarias:** [Registro archivístico (Carnegie Mellon University Archives)](https://findingaids.library.cmu.edu/repositories/2/archival_objects/22561) · [Actas del IFIP Congress 1959 (DBLP)](https://dblp.org/db/conf/ifip/ifip1959.html)
 
+### P96 · A New Approach to Linear Filtering and Prediction Problems (1960)
+
+- **Autoría:** Rudolf E. Kálmán
+- **Problema anterior:** Un sensor da medidas ruidosas y un modelo del movimiento acumula error. Promediarlos trata igual a los dos, e ignora que la confianza en cada uno cambia con el tiempo. Los métodos anteriores exigían guardar todo el historial.
+- **Propuesta:** Mantener una estimación y su varianza, predecir con el modelo, y corregir con la medida usando una ganancia que sale del cociente entre las dos incertidumbres. Recursivo: solo hace falta el estado anterior.
+- **Hito:** Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva.
+- **Conceptos:** filtro de Kalman, fusión de sensores, estimación de estado, ganancia, recursivo
+- **Clases del programa:** [137](../../classes/part-11-embodied-ai-robotics-and-computer-use/137-sensores-actuadores-y-fusion/README.md)
+- **Fuentes primarias:** [doi:10.1115/1.3662552](https://doi.org/10.1115/1.3662552)
+
 ### P65 · A Machine Program for Theorem-Proving (1962)
 
 - **Autoría:** Martin Davis, George Logemann, Donald Loveland
@@ -333,6 +440,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [020](../../classes/part-01-symbolic-ai-search-logic-and-planning/020-logica-de-primer-orden-y-unificacion/README.md)
 - **Fuentes primarias:** [doi:10.1145/321250.321253](https://doi.org/10.1145/321250.321253)
 
+### P89 · Fuzzy Sets (1965)
+
+- **Autoría:** Lotfi A. Zadeh
+- **Problema anterior:** La teoría de conjuntos es binaria: algo pertenece o no pertenece. Pero «alto», «caliente» o «cerca» no tienen frontera nítida, y forzarlos a un umbral produce sistemas que cambian de decisión ante una diferencia irrelevante.
+- **Propuesta:** Sustituir la función característica {0,1} por una función de pertenencia a [0,1], y definir sobre ella unión, intersección y complemento con máximo, mínimo y complemento a uno.
+- **Hito:** Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje.
+- **Conceptos:** conjunto difuso, función de pertenencia, vaguedad, control difuso, t-normas
+- **Clases del programa:** [032](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/032-logica-difusa-y-control-aproximado/README.md)
+- **Fuentes primarias:** [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958(65)90241-X)
+
 ### P67 · A Formal Basis for the Heuristic Determination of Minimum Cost Paths (1968)
 
 - **Autoría:** Peter E. Hart, Nils J. Nilsson, Bertram Raphael
@@ -352,6 +469,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** planificación, problema del marco, operadores, mundo de bloques, anomalía de Sussman
 - **Clases del programa:** [023](../../classes/part-01-symbolic-ai-search-logic-and-planning/023-planificacion-clasica-con-strips-y-pddl/README.md)
 - **Fuentes primarias:** [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5)
+
+### P90 · Genetic Algorithms and the Optimal Allocation of Trials (1973)
+
+- **Autoría:** John H. Holland
+- **Problema anterior:** Buscar en un espacio enorme sin gradiente exige decidir constantemente entre explorar lo desconocido y explotar lo que ya funciona. No había un argumento formal de por qué una población con selección y recombinación resuelve bien ese reparto.
+- **Propuesta:** Analizar la población como un proceso que evalúa implícitamente muchos esquemas —patrones con comodines— a la vez, y mostrar que la reproducción proporcional a la aptitud asigna ensayos de forma cercana a la óptima del problema del bandido.
+- **Hito:** Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta.
+- **Conceptos:** algoritmo genético, esquemas, paralelismo implícito, cruce, exploración y explotación
+- **Clases del programa:** [033](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/033-algoritmos-geneticos/README.md)
+- **Fuentes primarias:** [doi:10.1137/0202009](https://doi.org/10.1137/0202009)
 
 ### P69 · A Model of Inexact Reasoning in Medicine (1975)
 
@@ -413,6 +540,26 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [040](../../classes/part-03-classical-machine-learning/040-arboles-de-decision-y-reglas-interpretables/README.md)
 - **Fuentes primarias:** [doi:10.1007/BF00116251](https://doi.org/10.1007/BF00116251)
 
+### P91 · Fusion, Propagation, and Structuring in Belief Networks (1986)
+
+- **Autoría:** Judea Pearl
+- **Problema anterior:** Aplicar probabilidad a un dominio con decenas de variables exige una tabla conjunta con 2ⁿ entradas: imposible de almacenar, de estimar y de actualizar. Esa fue la razón técnica por la que la IA de los setenta la abandonó en favor de los factores de certeza.
+- **Propuesta:** Representar las dependencias con un grafo dirigido acíclico. Las independencias condicionales que el grafo codifica reducen la conjunta a un producto de condicionales locales, y permiten propagar creencias por paso de mensajes entre nodos vecinos.
+- **Hito:** Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente.
+- **Conceptos:** red bayesiana, independencia condicional, propagación de creencias, explicar y descartar, grafo dirigido acíclico
+- **Clases del programa:** [027](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional/README.md)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702(86)90072-X)
+
+### P97 · A Robust Layered Control System for a Mobile Robot (1986)
+
+- **Autoría:** Rodney A. Brooks
+- **Problema anterior:** La arquitectura percibir-planificar-actuar construye un modelo del mundo, planifica sobre él y ejecuta el plan. Mantener ese modelo es caro, y cuando el mundo cambia a mitad de la ejecución, el plan se vuelve peligroso en vez de inútil.
+- **Propuesta:** Descomponer por comportamientos y no por funciones. Cada capa conecta percepción con acción de forma directa, y las capas inferiores —evitar obstáculos— pueden **subsumir** a las superiores. No hay representación compartida.
+- **Hito:** Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central.
+- **Conceptos:** subsunción, robótica situada, control por capas, sin representación, reactivo
+- **Clases del programa:** [136](../../classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion/README.md)
+- **Fuentes primarias:** [doi:10.1109/JRA.1986.1087032](https://doi.org/10.1109/JRA.1986.1087032)
+
 ### P71 · A Translation Approach to Portable Ontology Specifications (1993)
 
 - **Autoría:** Thomas R. Gruber
@@ -453,6 +600,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [037](../../classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test/README.md)
 - **Fuentes primarias:** [Actas IJCAI'95 (PDF)](https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf)
 
+### P92 · Particle Swarm Optimization (1995)
+
+- **Autoría:** James Kennedy, Russell Eberhart
+- **Problema anterior:** Muchas funciones objetivo no se pueden derivar —son simulaciones, cajas negras o tienen ruido— y los métodos de gradiente no se pueden aplicar. Las alternativas poblacionales existentes eran caras y difíciles de ajustar.
+- **Propuesta:** Un enjambre de partículas que se mueven por el espacio con una velocidad que combina inercia, atracción hacia su propio mejor histórico y atracción hacia el mejor del grupo. Sin cruce, sin mutación y sin selección.
+- **Hito:** Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo.
+- **Conceptos:** enjambre, inteligencia colectiva, sin gradiente, metaheurística, exploración y explotación
+- **Clases del programa:** [034](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/034-optimizacion-por-enjambre-y-colonia/README.md)
+- **Fuentes primarias:** [doi:10.1109/ICNN.1995.488968](https://doi.org/10.1109/ICNN.1995.488968)
+
 ### P77 · Regression Shrinkage and Selection via the Lasso (1996)
 
 - **Autoría:** Robert Tibshirani
@@ -462,6 +619,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** lasso, L1, regularización, esparsidad, selección de variables
 - **Clases del programa:** [038](../../classes/part-03-classical-machine-learning/038-regresion-lineal-regularizacion-y-diagnostico/README.md)
 - **Fuentes primarias:** [doi:10.1111/j.2517-6161.1996.tb02080.x](https://doi.org/10.1111/j.2517-6161.1996.tb02080.x)
+
+### P93 · Ant System: Optimization by a Colony of Cooperating Agents (1996)
+
+- **Autoría:** Marco Dorigo, Vittorio Maniezzo, Alberto Colorni
+- **Problema anterior:** En problemas combinatorios como el del viajante, las heurísticas golosas se quedan atrapadas en decisiones tempranas y no tienen forma de aprender de los intentos anteriores sin una memoria global costosa.
+- **Propuesta:** Agentes simples que construyen soluciones eligiendo el siguiente paso según una combinación de feromona acumulada y heurística local, y que depositan feromona proporcional a la calidad de la solución construida. La evaporación evita el estancamiento.
+- **Hito:** La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora.
+- **Conceptos:** estigmergia, feromona, optimización combinatoria, viajante de comercio, evaporación
+- **Clases del programa:** [034](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/034-optimizacion-por-enjambre-y-colonia/README.md)
+- **Fuentes primarias:** [doi:10.1109/3477.484436](https://doi.org/10.1109/3477.484436)
 
 ### P03 · Long Short-Term Memory (1997)
 
@@ -482,6 +649,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** boosting, aprendiz débil, reponderación, conjunto, error exponencial
 - **Clases del programa:** [041](../../classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles/README.md)
 - **Fuentes primarias:** [doi:10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504)
+
+### P98 · RRT-Connect: An Efficient Approach to Single-Query Path Planning (2000)
+
+- **Autoría:** James J. Kuffner, Steven M. LaValle
+- **Problema anterior:** Un brazo de siete articulaciones tiene un espacio de configuración de siete dimensiones. Discretizarlo para aplicar búsqueda en grafo produce un número de celdas astronómico, y los métodos de campos potenciales se quedan atrapados en mínimos locales.
+- **Propuesta:** Muestrear configuraciones al azar y extender el árbol desde el nodo más cercano hacia cada muestra. El árbol se sesga solo hacia las regiones no exploradas, y con dos árboles que crecen uno hacia el otro la convergencia es mucho más rápida.
+- **Hito:** Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias.
+- **Conceptos:** RRT, planificación de movimiento, espacio de configuración, muestreo, completitud probabilística
+- **Clases del programa:** [139](../../classes/part-11-embodied-ai-robotics-and-computer-use/139-planificacion-de-movimiento-y-navegacion/README.md)
+- **Fuentes primarias:** [doi:10.1109/ROBOT.2000.844730](https://doi.org/10.1109/ROBOT.2000.844730)
 
 ### P79 · Random Forests (2001)
 
@@ -533,6 +710,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [047](../../classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error/README.md)
 - **Fuentes primarias:** [doi:10.1145/1102351.1102430](https://doi.org/10.1145/1102351.1102430)
 
+### P99 · Simultaneous Localization and Mapping: Part I (2006)
+
+- **Autoría:** Hugh Durrant-Whyte, Tim Bailey
+- **Problema anterior:** Un robot que se mueve acumula error de odometría sin límite. Corregirlo exige referencias externas; pero si el mapa no existe de antemano, hay que construirlo con la misma pose incierta que se quiere corregir.
+- **Propuesta:** Estimar el estado conjunto —pose y mapa— reconociendo que sus errores están **correlacionados**. El artículo formaliza la estructura de la covarianza, explica por qué converge y por qué el cierre de bucle corrige la trayectoria entera.
+- **Hito:** Formaliza el problema circular de la robótica móvil: no se puede localizar sin mapa ni mapear sin localización, y hay que resolver ambos a la vez.
+- **Conceptos:** SLAM, covarianza cruzada, cierre de bucle, asociación de datos, odometría
+- **Clases del programa:** [138](../../classes/part-11-embodied-ai-robotics-and-computer-use/138-localizacion-mapeo-y-slam/README.md)
+- **Fuentes primarias:** [doi:10.1109/MRA.2006.1638022](https://doi.org/10.1109/MRA.2006.1638022)
+
 ### P83 · Visualizing Data using t-SNE (2008)
 
 - **Autoría:** Laurens van der Maaten, Geoffrey Hinton
@@ -553,6 +740,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [044](../../classes/part-03-classical-machine-learning/044-deteccion-de-anomalias/README.md)
 - **Fuentes primarias:** [doi:10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17)
 
+### P100 · Requirements for Safe Robots: Measurements, Analysis and New Insights (2009)
+
+- **Autoría:** Sami Haddadin, Alin Albu-Schäffer, Gerd Hirzinger
+- **Problema anterior:** La seguridad de los robots industriales se resolvía con vallas: separación física total. Para trabajar junto a personas hacía falta saber qué daño produce realmente un impacto, y ese dato no existía — se legislaba y se diseñaba a ojo.
+- **Propuesta:** Medir. Impactos instrumentados con maniquíes y voluntarios, análisis de los criterios de lesión de la industria del automóvil aplicados a la robótica, y la conclusión incómoda: la masa importa menos de lo que se creía y la velocidad, mucho más.
+- **Hito:** Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados.
+- **Conceptos:** seguridad física, cobot, criterios de lesión, impacto, ISO/TS 15066
+- **Clases del programa:** [143](../../classes/part-11-embodied-ai-robotics-and-computer-use/143-robots-colaborativos-y-seguridad-fisica/README.md)
+- **Fuentes primarias:** [doi:10.1177/0278364909343970](https://doi.org/10.1177/0278364909343970)
+
 ### P85 · Matrix Factorization Techniques for Recommender Systems (2009)
 
 - **Autoría:** Yehuda Koren, Robert Bell, Chris Volinsky
@@ -562,6 +759,26 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** factores latentes, sesgos, descenso estocástico, regularización, recomendación
 - **Clases del programa:** [046](../../classes/part-03-classical-machine-learning/046-sistemas-de-recomendacion/README.md)
 - **Fuentes primarias:** [doi:10.1109/MC.2009.263](https://doi.org/10.1109/MC.2009.263)
+
+### P107 · Dapper, a Large-Scale Distributed Systems Tracing Infrastructure (2010)
+
+- **Autoría:** Benjamin H. Sigelman, Luiz André Barroso, Michael Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan, Chandan Shanbhag
+- **Problema anterior:** En una arquitectura distribuida, cada servicio tiene sus métricas y sus registros. Cuando una petición va lenta, nadie puede reconstruir por dónde pasó ni dónde se gastó el tiempo: se ve el total y nada más.
+- **Propuesta:** Propagar un identificador de traza con la petición por todos los servicios, registrar un span por operación con su relación padre-hijo, y muestrear una fracción de las trazas para que el coste sea asumible sin perder los agregados.
+- **Hito:** Hace observable una petición que atraviesa decenas de servicios, con un identificador que viaja con ella y un muestreo que la hace asequible.
+- **Conceptos:** trazado distribuido, span, observabilidad, muestreo, latencia
+- **Clases del programa:** [153](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)
+- **Fuentes primarias:** [Informe técnico de Google](https://research.google/pubs/pub36356/)
+
+### P101 · A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (2011)
+
+- **Autoría:** Stéphane Ross, Geoffrey J. Gordon, J. Andrew Bagnell
+- **Problema anterior:** Al clonar el comportamiento de un experto, el modelo se entrena con los estados que visita el EXPERTO y se ejecuta sobre los estados que visita ÉL MISMO. Un error lo saca de la distribución de entrenamiento, donde comete más errores, y la desviación se realimenta.
+- **Propuesta:** DAgger: ejecutar la política actual, recoger los estados que visita de verdad, pedir al experto la acción correcta **en esos estados**, y reentrenar sobre el conjunto acumulado. La distribución de entrenamiento converge a la de ejecución.
+- **Hito:** Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T.
+- **Conceptos:** aprendizaje por imitación, clonación de comportamiento, cambio de distribución, aprendizaje en línea, arrepentimiento
+- **Clases del programa:** [141](../../classes/part-11-embodied-ai-robotics-and-computer-use/141-aprendizaje-por-imitacion/README.md)
+- **Fuentes primarias:** [arXiv:1011.0686](https://arxiv.org/abs/1011.0686)
 
 ### P04 · ImageNet Classification with Deep Convolutional Neural Networks (2012)
 
@@ -573,6 +790,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [061](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md), [062](../../classes/part-05-language-vision-audio-and-multimodal-ai/062-deteccion-segmentacion-y-pose/README.md)
 - **Fuentes primarias:** [NeurIPS 2012 (proceedings)](https://papers.nips.cc/paper_files/paper/2012) · [DOI (versión Communications of the ACM, 2017)](https://doi.org/10.1145/3065386)
 
+### P108 · CAP Twelve Years Later: How the «Rules» Have Changed (2012)
+
+- **Autoría:** Eric Brewer
+- **Problema anterior:** El teorema CAP se citaba como «elige dos de consistencia, disponibilidad y tolerancia a particiones», y eso llevó a decisiones de arquitectura globales y rígidas: sistemas enteros declarados AP o CP.
+- **Propuesta:** Reformularlo con precisión: la tolerancia a particiones no es opcional, y la elección entre consistencia y disponibilidad solo aplica **durante** una partición. Se decide por operación, y hay que diseñar explícitamente la detección de la partición, el modo degradado y la reconciliación posterior.
+- **Hito:** Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición.
+- **Conceptos:** CAP, partición, consistencia, disponibilidad, reconciliación
+- **Clases del programa:** [158](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/158-resiliencia-idempotencia-rollback-y-recuperacion/README.md)
+- **Fuentes primarias:** [doi:10.1109/MC.2012.37](https://doi.org/10.1109/MC.2012.37)
+
 ### P05 · Efficient Estimation of Word Representations in Vector Space (2013)
 
 - **Autoría:** Tomas Mikolov, Kai Chen, Greg Corrado, Jeffrey Dean
@@ -582,6 +809,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** embeddings, skip-gram, CBOW, muestreo negativo, hipótesis distribucional, analogías
 - **Clases del programa:** [064](../../classes/part-05-language-vision-audio-and-multimodal-ai/064-tokenizacion-y-representacion-del-lenguaje/README.md), [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md), [100](../../classes/part-08-retrieval-context-memory-and-knowledge/100-embeddings-y-busqueda-vectorial/README.md), [166](../../classes/part-13-evaluation-safety-security-and-governance/166-sesgo-fairness-y-grupos-afectados/README.md)
 - **Fuentes primarias:** [arXiv:1301.3781](https://arxiv.org/abs/1301.3781) · [arXiv:1310.4546 (muestreo negativo y frases)](https://arxiv.org/abs/1310.4546)
+
+### P109 · The Tail at Scale (2013)
+
+- **Autoría:** Jeffrey Dean, Luiz André Barroso
+- **Problema anterior:** Un servicio con un p99 excelente puede producir un sistema lento si la petición del usuario necesita respuesta de cientos de servidores: basta que uno vaya lento para que toda la petición lo vaya, y con cien servidores eso pasa casi siempre.
+- **Propuesta:** Tratar la variabilidad de latencia como propiedad de diseño y no como ruido. Técnicas de tolerancia a la cola —peticiones de cobertura, cancelación cruzada, micro-particionado, réplicas selectivas— que reducen la cola sin eliminar sus causas.
+- **Hito:** Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo.
+- **Conceptos:** latencia de cola, p99, abanico, peticiones de cobertura, sistemas a escala
+- **Clases del programa:** [152](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/152-serving-online-batch-y-streaming/README.md)
+- **Fuentes primarias:** [doi:10.1145/2408776.2408794](https://doi.org/10.1145/2408776.2408794)
 
 ### P38 · Auto-Encoding Variational Bayes (2013)
 
@@ -612,6 +849,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** atención, alineación, vector de contexto dinámico, softmax, atención aditiva
 - **Clases del programa:** [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md), [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md)
 - **Fuentes primarias:** [arXiv:1409.0473](https://arxiv.org/abs/1409.0473)
+
+### P110 · A Survey on Concept Drift Adaptation (2014)
+
+- **Autoría:** João Gama, Indrė Žliobaitė, Albert Bifet, Mykola Pechenizkiy, Abdelhamid Bouchachia
+- **Problema anterior:** Un modelo se entrena con datos de un momento y se despliega sobre un flujo que cambia. La relación entre entradas y etiquetas puede cambiar sin que cambien las entradas, así que vigilar la distribución de entrada no basta y el modelo se degrada en silencio.
+- **Propuesta:** Una taxonomía de tipos de deriva —abrupta, gradual, incremental, recurrente— y de estrategias: detectores estadísticos sobre la tasa de error, ventanas adaptativas, conjuntos con reemplazo de miembros y reentrenamiento programado.
+- **Hito:** Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse.
+- **Conceptos:** deriva de concepto, flujo de datos, detección de cambio, reentrenamiento, evaluación continua
+- **Clases del programa:** [154](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/154-deriva-feedback-y-evaluacion-continua/README.md)
+- **Fuentes primarias:** [doi:10.1145/2523813](https://doi.org/10.1145/2523813)
 
 ### P23 · GloVe: Global Vectors for Word Representation (2014)
 
@@ -662,6 +909,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** ejemplos adversarios, FGSM, robustez, linealidad, entrenamiento adversario
 - **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [163](../../classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md)
 - **Fuentes primarias:** [arXiv:1412.6572](https://arxiv.org/abs/1412.6572)
+
+### P111 · Hidden Technical Debt in Machine Learning Systems (2015)
+
+- **Autoría:** D. Sculley, Gary Holt, Daniel Golovin, Eugene Davydov, Todd Phillips, Dietmar Ebner, Vinay Chaudhary, Michael Young, Jean-François Crespo, Dan Dennison
+- **Problema anterior:** Los equipos medían su trabajo por la calidad del modelo mientras el sistema alrededor —ingestión, características, servicio, monitorización, configuración— crecía sin control. Y esa parte acumula formas de deuda que no tienen equivalente en software convencional: dependencias de datos que ningún compilador comprueba.
+- **Propuesta:** Un catálogo de antipatrones específicos del aprendizaje automático: dependencias de datos no declaradas, características huérfanas, bucles de realimentación ocultos, código de pegamento, deuda de configuración, y el principio CACE — cambiar cualquier cosa lo cambia todo.
+- **Hito:** Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta.
+- **Conceptos:** deuda técnica, MLOps, dependencias de datos, CACE, bucles de realimentación
+- **Clases del programa:** [148](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ciclo-de-vida-de-datos-modelos-y-agentes/README.md)
+- **Fuentes primarias:** [NeurIPS 2015](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
 
 ### P26 · Human-level control through deep reinforcement learning (2015)
 
@@ -723,6 +980,46 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [055](../../classes/part-04-neural-networks-and-deep-learning/055-atencion-y-arquitectura-transformer/README.md), [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1706.03762](https://arxiv.org/abs/1706.03762) · [NeurIPS 2017 (proceedings)](https://papers.nips.cc/paper_files/paper/2017)
 
+### P102 · Proximal Policy Optimization Algorithms (2017)
+
+- **Autoría:** John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, Oleg Klimov
+- **Problema anterior:** En gradiente de políticas, un paso demasiado grande destruye la política: se vuelve casi determinista, deja de explorar y no puede recuperarse. TRPO lo resolvía con una restricción de divergencia KL, a costa de una optimización de segundo orden compleja.
+- **Propuesta:** Sustituir la restricción por un **recorte** del cociente de probabilidades entre la política nueva y la vieja. Pasado el umbral, mejorar más no aporta al objetivo, así que el gradiente deja de empujar. Sin restricciones, sin segundo orden.
+- **Hito:** Consigue la estabilidad de TRPO con una función objetivo que se implementa en unas líneas y se optimiza con descenso de gradiente corriente.
+- **Conceptos:** gradiente de políticas, recorte, región de confianza, aprendizaje por refuerzo, estabilidad
+- **Clases del programa:** [140](../../classes/part-11-embodied-ai-robotics-and-computer-use/140-control-clasico-y-control-aprendido/README.md)
+- **Fuentes primarias:** [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
+
+### P103 · Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World (2017)
+
+- **Autoría:** Josh Tobin, Rachel Fong, Alex Ray, Jonas Schneider, Wojciech Zaremba, Pieter Abbeel
+- **Problema anterior:** Entrenar en simulación es barato y seguro; desplegar en el mundo real falla. El hueco entre simulación y realidad se atacaba mejorando el simulador, una carrera cara y sin final: siempre queda algo que no se modeló.
+- **Propuesta:** Aleatorizar agresivamente los parámetros del simulador —texturas, iluminación, posiciones de cámara, ruido— durante el entrenamiento. Si la variabilidad es suficiente, al modelo la realidad le parece una configuración más de las que ya vio.
+- **Hito:** Invierte el objetivo del simulador: en vez de buscar fidelidad, busca que la realidad sea una variación más dentro del rango de entrenamiento.
+- **Conceptos:** sim-to-real, aleatorización de dominio, transferencia, robustez, gemelo digital
+- **Clases del programa:** [142](../../classes/part-11-embodied-ai-robotics-and-computer-use/142-simulacion-sim-to-real-y-digital-twins/README.md)
+- **Fuentes primarias:** [arXiv:1703.06907](https://arxiv.org/abs/1703.06907)
+
+### P112 · The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction (2017)
+
+- **Autoría:** Eric Breck, Shanqing Cai, Eric Nielsen, Michael Salib, D. Sculley
+- **Problema anterior:** La decisión de promocionar un modelo a producción se tomaba mirando su métrica de calidad. Nada garantizaba que existieran pruebas de los datos, de la infraestructura, de la capacidad de revertir ni de la monitorización.
+- **Propuesta:** Una rúbrica con cuatro categorías —datos, modelo, infraestructura y monitorización— y siete pruebas en cada una, con una puntuación global que es el **mínimo** entre categorías: un sistema es tan robusto como su parte más débil.
+- **Hito:** Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil.
+- **Conceptos:** preparación para producción, pruebas, rúbrica, MLOps, promoción
+- **Clases del programa:** [151](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-ci-cd-y-pruebas-para-sistemas-de-ia/README.md)
+- **Fuentes primarias:** [doi:10.1109/BigData.2017.8258038](https://doi.org/10.1109/BigData.2017.8258038)
+
+### P94 · Stan: A Probabilistic Programming Language (2017)
+
+- **Autoría:** Bob Carpenter, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus Brubaker, Jiqiang Guo, Peter Li, Allen Riddell
+- **Problema anterior:** Cada modelo bayesiano nuevo exigía escribir a mano su propio muestreador, con la matemática y los errores que eso trae. El coste de probar una variante del modelo era el de reimplementar el algoritmo.
+- **Propuesta:** Un lenguaje declarativo para especificar el modelo —previas y verosimilitud— y un motor de inferencia general basado en Monte Carlo hamiltoniano con NUTS, más diagnósticos de convergencia integrados.
+- **Hito:** Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior.
+- **Conceptos:** programación probabilística, inferencia bayesiana, Monte Carlo hamiltoniano, posterior, diagnóstico de convergencia
+- **Clases del programa:** [035](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad/README.md)
+- **Fuentes primarias:** [doi:10.18637/jss.v076.i01](https://doi.org/10.18637/jss.v076.i01)
+
 ### P09 · BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding (2018)
 
 - **Autoría:** Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova
@@ -732,6 +1029,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** BERT, MLM, bidireccional, preentrenamiento, fine-tuning, GLUE
 - **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1810.04805](https://arxiv.org/abs/1810.04805) · [ACL Anthology (NAACL 2019)](https://aclanthology.org/N19-1423/)
+
+### P113 · Deep Reinforcement Learning That Matters (2018)
+
+- **Autoría:** Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup, David Meger
+- **Problema anterior:** Los resultados en aprendizaje por refuerzo se comparaban con tres o cinco corridas, sin declarar semillas, implementación ni hiperparámetros. Con la varianza real entre semillas, ese protocolo no distingue algoritmos: produce rankings que se invierten al repetir el experimento.
+- **Propuesta:** Medirlo. Ejecutar los mismos algoritmos con muchas semillas, con distintas implementaciones y en distintos entornos, y cuantificar cuánto de la diferencia publicada es señal y cuánto es elección de semilla, de código o de entorno.
+- **Hito:** Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación.
+- **Conceptos:** reproducibilidad, semillas, varianza, trazabilidad, aprendizaje por refuerzo
+- **Clases del programa:** [149](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-experimentos-semillas-y-trazabilidad/README.md)
+- **Fuentes primarias:** [doi:10.1609/aaai.v32i1.11694](https://doi.org/10.1609/aaai.v32i1.11694)
 
 ### P24 · Deep Contextualized Word Representations (2018)
 
@@ -753,6 +1060,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Clases del programa:** [045](../../classes/part-03-classical-machine-learning/045-series-temporales-y-backtesting/README.md)
 - **Fuentes primarias:** [doi:10.1016/j.ijforecast.2018.06.001](https://doi.org/10.1016/j.ijforecast.2018.06.001)
 
+### P114 · Model Cards for Model Reporting (2019)
+
+- **Autoría:** Margaret Mitchell, Simone Wu, Andrew Zaldivar, Parker Barnes, Lucy Vasserman, Ben Hutchinson, Elena Spitzer, Inioluwa Deborah Raji, Timnit Gebru
+- **Problema anterior:** Un modelo se publica con una cifra agregada de exactitud y sin decir para qué sirve, para qué no, con qué datos se evaluó ni a quién le funciona peor. Quien lo integra no tiene forma de saber si es adecuado para su caso.
+- **Propuesta:** Una tarjeta de una o dos páginas con secciones fijas: detalles del modelo, uso previsto, usos fuera de alcance, factores relevantes, métricas, datos de evaluación y entrenamiento, **análisis cuantitativo desagregado**, consideraciones éticas y advertencias.
+- **Hito:** Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados.
+- **Conceptos:** tarjeta de modelo, evaluación desagregada, transparencia, documentación, subgrupos
+- **Clases del programa:** [150](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/150-registro-y-promocion-champion-challenger/README.md)
+- **Fuentes primarias:** [doi:10.1145/3287560.3287596](https://doi.org/10.1145/3287560.3287596)
+
 ### P25 · Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019)
 
 - **Autoría:** Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu
@@ -762,6 +1079,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** T5, texto a texto, transferencia, C4, encoder-decoder, estudio sistemático
 - **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [074](../../classes/part-06-foundation-models-and-llm-engineering/074-objetivos-de-preentrenamiento/README.md)
 - **Fuentes primarias:** [arXiv:1910.10683](https://arxiv.org/abs/1910.10683) · [JMLR 21(140)](https://jmlr.org/papers/v21/20-074.html)
+
+### P95 · The Seven Tools of Causal Inference, with Reflections on Machine Learning (2019)
+
+- **Autoría:** Judea Pearl
+- **Problema anterior:** El aprendizaje automático ajusta funciones sobre distribuciones observadas, y con eso responde preguntas de asociación. Pero las decisiones que importan son de intervención —«¿qué pasa si hago X?»— y esa pregunta no se puede responder solo con datos observacionales, por muchos que sean.
+- **Propuesta:** La escalera de la causalidad y siete herramientas asociadas: modelos gráficos, el operador do, el criterio de puerta trasera, la fórmula de ajuste, mediación, transportabilidad y datos faltantes. La estructura causal se declara; no se estima de la tabla.
+- **Hito:** Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen.
+- **Conceptos:** escalera de la causalidad, operador do, confusor, contrafáctico, paradoja de Simpson
+- **Clases del programa:** [035](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad/README.md), [036](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/036-proyecto-sistema-hibrido-para-decisiones/README.md)
+- **Fuentes primarias:** [doi:10.1145/3241036](https://doi.org/10.1145/3241036)
 
 ### P10 · Language Models are Few-Shot Learners (2020)
 
@@ -812,6 +1139,16 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** neuro-simbólico, razonamiento, explicabilidad, restricciones, integración de paradigmas
 - **Clases del programa:** [024](../../classes/part-01-symbolic-ai-search-logic-and-planning/024-proyecto-asistente-neuro-simbolico-explicable/README.md)
 - **Fuentes primarias:** [arXiv:2012.05876](https://arxiv.org/abs/2012.05876)
+
+### P115 · Datasheets for Datasets (2021)
+
+- **Autoría:** Timnit Gebru, Jamie Morgenstern, Briana Vecchione, Jennifer Wortman Vaughan, Hanna Wallach, Hal Daumé III, Kate Crawford
+- **Problema anterior:** Los conjuntos de datos se comparten sin documentación sobre su origen, su composición, los filtros aplicados o los usos desaconsejados. Quien los reutiliza hereda supuestos que nadie escribió, y muchas de esas preguntas ya no se pueden responder a posteriori.
+- **Propuesta:** Un cuestionario que sigue el ciclo de vida del conjunto —motivación, composición, recogida, preprocesado, usos, distribución y mantenimiento— y que hay que responder **mientras se crea**, no después.
+- **Hito:** Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve.
+- **Conceptos:** hoja de datos, documentación de datos, procedencia, consentimiento, gobernanza
+- **Clases del programa:** [148](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/148-ciclo-de-vida-de-datos-modelos-y-agentes/README.md)
+- **Fuentes primarias:** [doi:10.1145/3458723](https://doi.org/10.1145/3458723)
 
 ### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
 
@@ -942,6 +1279,36 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** IA constitucional, RLAIF, autocrítica, principios explícitos, inocuidad
 - **Clases del programa:** [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md), [161](../../classes/part-13-evaluation-safety-security-and-governance/161-golden-datasets-regresion-y-llm-as-judge/README.md)
 - **Fuentes primarias:** [arXiv:2212.08073](https://arxiv.org/abs/2212.08073)
+
+### P104 · WebArena: A Realistic Web Environment for Building Autonomous Agents (2023)
+
+- **Autoría:** Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou, Robert Lo, y otros
+- **Problema anterior:** Los agentes de navegador se evaluaban con capturas, con juicios de un modelo o con el propio informe del agente. Un agente elocuente puntuaba alto sin haber completado la tarea, y los resultados no eran comparables entre trabajos.
+- **Propuesta:** Un entorno reproducible con sitios reales autoalojados —comercio, foro, repositorio, gestor de contenidos— y, para cada tarea, un verificador programático que inspecciona el estado final del sitio.
+- **Hito:** Evalúa agentes de navegador comprobando el ESTADO del sitio al terminar, no lo que el agente dice haber hecho.
+- **Conceptos:** agentes de navegador, verificación funcional, entorno reproducible, evaluación, tareas transaccionales
+- **Clases del programa:** [145](../../classes/part-11-embodied-ai-robotics-and-computer-use/145-agentes-de-navegador/README.md)
+- **Fuentes primarias:** [arXiv:2307.13854](https://arxiv.org/abs/2307.13854)
+
+### P116 · Why Johnny Can't Prompt: How Non-AI Experts Try (and Fail) to Design LLM Prompts (2023)
+
+- **Autoría:** J.D. Zamfirescu-Pereira, Richmond Y. Wong, Bjoern Hartmann, Qian Yang
+- **Problema anterior:** Escribir prompts parece accesible a cualquiera, y por eso se hace sin ninguna disciplina de ingeniería: sin versionar, sin conjunto de evaluación y mirando dos o tres ejemplos. Con muestras pequeñas, el ruido tiene el mismo tamaño que las mejoras que se buscan.
+- **Propuesta:** Un estudio con participantes no expertos que documenta sus estrategias reales, identifica el patrón dominante —iteración oportunista basada en anécdotas— y argumenta que el prompt necesita las prácticas del software: versionado, evaluación fija y una hipótesis por cambio.
+- **Hito:** Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente.
+- **Conceptos:** prompts, LLMOps, evaluación, iteración, interacción persona-computador
+- **Clases del programa:** [155](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/155-llmops-y-gestion-de-prompts/README.md)
+- **Fuentes primarias:** [doi:10.1145/3544548.3581388](https://doi.org/10.1145/3544548.3581388)
+
+### P117 · AgentBench: Evaluating LLMs as Agents (2023)
+
+- **Autoría:** Xiao Liu, Hao Yu, Hanchen Zhang, Yifan Xu, Xuanyu Lei, y otros
+- **Problema anterior:** Los agentes se anunciaban con una cifra global de éxito. Esa cifra no dice en qué entornos sirven, en qué paso se pierden ni por qué modo fallan, que es exactamente lo que hace falta para operarlos y para decidir qué arreglar.
+- **Propuesta:** Un banco de pruebas multi-entorno —sistema operativo, base de datos, grafo de conocimiento, juegos, compras, navegación web— con evaluación por trayectoria y análisis de los modos de fallo, no solo de la tasa final.
+- **Hito:** Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan.
+- **Conceptos:** AgentOps, trayectorias, modos de fallo, evaluación multi-entorno, agentes
+- **Clases del programa:** [156](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias/README.md), [159](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/159-proyecto-plataforma-de-ia-observable/README.md)
+- **Fuentes primarias:** [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
 
 ### P14 · Toolformer: Language Models Can Teach Themselves to Use Tools (2023)
 
@@ -1082,6 +1449,26 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 - **Conceptos:** superposición, monosemanticidad, autoencoder disperso, interpretabilidad mecanicista, características
 - **Clases del programa:** [160](../../classes/part-13-evaluation-safety-security-and-governance/160-diseno-de-evaluaciones-y-criterios-de-exito/README.md), [162](../../classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md), [167](../../classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md)
 - **Fuentes primarias:** [Transformer Circuits Thread (2023)](https://transformer-circuits.pub/2023/monosemantic-features)
+
+### P105 · SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents (2024)
+
+- **Autoría:** Kanzhi Cheng, Qiushi Sun, Yougang Chu, Fangzhi Xu, Yantao Li, y otros
+- **Problema anterior:** Los agentes de interfaz dependían del árbol de accesibilidad o del HTML: texto estructurado que muchas aplicaciones no exponen, y que no cubre los elementos que solo son un icono. Sin ese texto, el agente no puede ni referirse al botón.
+- **Propuesta:** Trabajar directamente sobre la captura de pantalla y entrenar específicamente el anclaje: dada una instrucción en lenguaje natural, devolver las coordenadas del elemento. Con un banco de pruebas propio para medir esa capacidad por separado.
+- **Hito:** Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla.
+- **Conceptos:** anclaje en interfaz, computer use, visión, coordenadas, agentes de GUI
+- **Clases del programa:** [144](../../classes/part-11-embodied-ai-robotics-and-computer-use/144-computer-use-basado-en-vision/README.md)
+- **Fuentes primarias:** [arXiv:2401.10935](https://arxiv.org/abs/2401.10935)
+
+### P106 · OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments (2024)
+
+- **Autoría:** Tianbao Xie, Danyang Zhang, Jixuan Chen, Xiaochuan Li, Siheng Zhao, y otros
+- **Problema anterior:** Los bancos de pruebas de agentes se limitaban al navegador o a entornos de juguete. El trabajo de oficina real cruza aplicaciones —hoja de cálculo, ficheros, terminal, navegador— y ahí no había forma comparable de medir nada.
+- **Propuesta:** Un entorno de escritorio completo en máquina virtual con estado reiniciable, cientos de tareas reales recogidas de usuarios, y para cada una un script de verificación que inspecciona el estado final del sistema: una celda, un fichero, un código de salida.
+- **Hito:** Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real.
+- **Conceptos:** agentes de escritorio, RPA agéntica, verificación por ejecución, multiaplicación, evaluación
+- **Clases del programa:** [146](../../classes/part-11-embodied-ai-robotics-and-computer-use/146-automatizacion-de-escritorio-y-rpa-agentica/README.md)
+- **Fuentes primarias:** [arXiv:2404.07972](https://arxiv.org/abs/2404.07972)
 
 ### P21 · Mixtral of Experts (2024)
 

@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
   "catalog_updated": "2026-08-17",
-  "papers": 86,
-  "notebooks": 94,
+  "papers": 117,
+  "notebooks": 125,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -81,8 +81,80 @@
       "sha256_lf": "a818caa93d0d299f29f6abe00e79af41caf12bd5a2f25a5529945a870b52019a"
     },
     {
+      "path": "assessments/papers/P100_seguridad_fisica.md",
+      "sha256_lf": "c09b7afb732c613d15a3a10664a70797d7fb7d02d1a8342bcc8320b945fc7672"
+    },
+    {
+      "path": "assessments/papers/P101_dagger.md",
+      "sha256_lf": "4631ecb20a1803cf704b38aa7f869a29a3d04577bce00731ce7ef032f15b8da9"
+    },
+    {
+      "path": "assessments/papers/P102_ppo.md",
+      "sha256_lf": "3c6c02cb41f6087be33e2ac398ab9d7bdfd96379973a24e053ce920028d20996"
+    },
+    {
+      "path": "assessments/papers/P103_domain_randomization.md",
+      "sha256_lf": "581628d2abb7d27eca34ba0fbbb6274ba17f6d3aef6d2c3219966eada3b87938"
+    },
+    {
+      "path": "assessments/papers/P104_webarena.md",
+      "sha256_lf": "153f123e1c7d377f0261859c889d62239b389060277ec29de586325e83983576"
+    },
+    {
+      "path": "assessments/papers/P105_seeclick.md",
+      "sha256_lf": "34e3b6846169145fd8de52bc28d59f296a6e3c44a313108b04875fae91495840"
+    },
+    {
+      "path": "assessments/papers/P106_osworld.md",
+      "sha256_lf": "34cd4eaa6202fa0e2ffb22a9d7b450e039698f78ffbd6011aa2756a5a06f306f"
+    },
+    {
+      "path": "assessments/papers/P107_dapper.md",
+      "sha256_lf": "521210aa8bd30318822fa156de254e06800a7b988e0aebc6c1069e08898f28c9"
+    },
+    {
+      "path": "assessments/papers/P108_cap.md",
+      "sha256_lf": "9ddcccd38cd8ba8041a87b31a61800e913000268566efb0068a51282bb57a930"
+    },
+    {
+      "path": "assessments/papers/P109_cola_larga.md",
+      "sha256_lf": "101078ed05148def5d4c412223709c68d7e36a68fb96ca4ccad493226130e953"
+    },
+    {
       "path": "assessments/papers/P10_gpt3.md",
       "sha256_lf": "f8960a84c05b36db68b40d2372a9c8febe4648f8523f4d9baebf9ea772e02394"
+    },
+    {
+      "path": "assessments/papers/P110_deriva.md",
+      "sha256_lf": "177fd9960bfae5d588008c6810936e9776740ccab7128edbaa50086684db6c21"
+    },
+    {
+      "path": "assessments/papers/P111_deuda_tecnica.md",
+      "sha256_lf": "0aeed5f4f59953c2bd894b5217d2e124af241f2790fbc943e6856d877b679fa3"
+    },
+    {
+      "path": "assessments/papers/P112_ml_test_score.md",
+      "sha256_lf": "a34bc8739c282c6b0961ed56dea780914061218d7f267fcfc02aab47dc560f6b"
+    },
+    {
+      "path": "assessments/papers/P113_trazabilidad.md",
+      "sha256_lf": "886c7cf3bc6fc5fe3d437a6e461e83761c0994b78883c111e1ce7b4876481429"
+    },
+    {
+      "path": "assessments/papers/P114_tarjetas_de_modelo.md",
+      "sha256_lf": "154569b9f1ce181728dc2c3fd4470171c3fd0d175c7c2c130e7f87d6b8c19903"
+    },
+    {
+      "path": "assessments/papers/P115_hojas_de_datos.md",
+      "sha256_lf": "c0600f564aaba44c17bfdfc1fc5b9d3e8e7d30fca8ebe0f7b3f6fa870baf84a2"
+    },
+    {
+      "path": "assessments/papers/P116_gestion_de_prompts.md",
+      "sha256_lf": "2eaa728a46bf0038433693518cac267f0e50243d4ca3ae98b05a66d4da6061c5"
+    },
+    {
+      "path": "assessments/papers/P117_agentops.md",
+      "sha256_lf": "0a15e8dd28f35b4886bb332eeae9de2e0f0209cc188fce7987050fdfe8dd7043"
     },
     {
       "path": "assessments/papers/P11_rag.md",
@@ -389,8 +461,60 @@
       "sha256_lf": "be3250629b69c29018ea086016bfd8f36ca99664fadfc284ecad90fcf1d6a176"
     },
     {
+      "path": "assessments/papers/P87_bayes.md",
+      "sha256_lf": "f1bbea1365227f4226350421891e1334c661e53bd87a425fd89cc26000f9fcbc"
+    },
+    {
+      "path": "assessments/papers/P88_cox.md",
+      "sha256_lf": "617ceebc6f3311689f360d76d4ff5dd28d7540dddf722a48d55c06273db17e79"
+    },
+    {
+      "path": "assessments/papers/P89_fuzzy.md",
+      "sha256_lf": "e50236164fb006b007710fa0021b0c41cf3d8c83c09b5a97149e3bdcfa03eb21"
+    },
+    {
+      "path": "assessments/papers/P90_algoritmos_geneticos.md",
+      "sha256_lf": "e4a404d0e4b5203741e11ce3d64e84ea4688c167b3d011defe0fa9ad73d597c8"
+    },
+    {
+      "path": "assessments/papers/P91_redes_bayesianas.md",
+      "sha256_lf": "befb2455a2bc60ceb96ba034720cd5d2462a1857123ff98e338cd6cb294f0cce"
+    },
+    {
+      "path": "assessments/papers/P92_pso.md",
+      "sha256_lf": "e9b79404c2c311449e98ac3afee0df640bceb16e51a74c0718344e3918c89527"
+    },
+    {
+      "path": "assessments/papers/P93_aco.md",
+      "sha256_lf": "1dda887663a47ddb8001c083bef3e324d74a54d4298a38871f6c9e16289fad0f"
+    },
+    {
+      "path": "assessments/papers/P94_programacion_probabilistica.md",
+      "sha256_lf": "d740f70fa5558ff2ba843e304c1a30bd8dc13602dd04cf2567e54e0cde38fb21"
+    },
+    {
+      "path": "assessments/papers/P95_causalidad.md",
+      "sha256_lf": "f8669f4f43cf75e9bc256361fc0e0f9d681dadf26878ed0a07c1931c01c77ccd"
+    },
+    {
+      "path": "assessments/papers/P96_kalman.md",
+      "sha256_lf": "4295c006838c8549a089488a96b77d7329d2132146de57aced61049a82252a4f"
+    },
+    {
+      "path": "assessments/papers/P97_subsuncion.md",
+      "sha256_lf": "b95d0cafbba785c18e9ddbb1a7ffaeb170ae6131f1bd60841049094831bc9709"
+    },
+    {
+      "path": "assessments/papers/P98_rrt.md",
+      "sha256_lf": "36bf1a15c422756015b5ee4050723921a2424555cff9229c579bca15ab684036"
+    },
+    {
+      "path": "assessments/papers/P99_slam.md",
+      "sha256_lf": "ed928171b6c1c35e68bbf07c91ae748b8479900bb40844504724d1d575b7027e"
+    },
+    {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "df09808fca8aadaeb35386de179fa502bf3035f5175e56e4aeb2c72e1bae2fd1"
+      "sha256_lf": "a21a0d2c624f90ba19f3bfbdccc118662e1ac4600e8f030ac9c3c253cb240de9"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -429,8 +553,80 @@
       "sha256_lf": "7859d8c079f8cf9ee59395382cfcd688470204494587151a6b68b48099463d04"
     },
     {
+      "path": "instructor/papers/P100_seguridad_fisica.md",
+      "sha256_lf": "e1a5bfd5b628fb0cf9046cef282d9e3a13883edaf9a5573dfec50cad23ab7db5"
+    },
+    {
+      "path": "instructor/papers/P101_dagger.md",
+      "sha256_lf": "cc10ab5ae26b35c19105b134e6000498f9f0c5914e9520467042dc8d4309e93a"
+    },
+    {
+      "path": "instructor/papers/P102_ppo.md",
+      "sha256_lf": "5726b7e62eaa29cffca2a305c3db62230564f0da223ef75459b72471fbb5cd8b"
+    },
+    {
+      "path": "instructor/papers/P103_domain_randomization.md",
+      "sha256_lf": "a53a92ad801f0e0ce7647625282d4031517af821673fc1e4f40e1165689934a6"
+    },
+    {
+      "path": "instructor/papers/P104_webarena.md",
+      "sha256_lf": "8643019b95e66b51d7baa40cfb4e015cd6f07003cb90436420b6dd27d6b1029d"
+    },
+    {
+      "path": "instructor/papers/P105_seeclick.md",
+      "sha256_lf": "6c4e1a705c5d9b0a41366d3a70baf2d80687808ec14ae355fadfb30617784f60"
+    },
+    {
+      "path": "instructor/papers/P106_osworld.md",
+      "sha256_lf": "b4b59f984ae6a06cefa73fc729a23933aa45d127bf1a2d7bbef7c10b8a6db21e"
+    },
+    {
+      "path": "instructor/papers/P107_dapper.md",
+      "sha256_lf": "9a668d968fbe65945d05492fb085a59644187e86c6ae5a3e0d18a02f11e1d35d"
+    },
+    {
+      "path": "instructor/papers/P108_cap.md",
+      "sha256_lf": "b14e522a3db23424699f1330de13eae9e9608ff7a7d9b5608005e4de75c9ef9c"
+    },
+    {
+      "path": "instructor/papers/P109_cola_larga.md",
+      "sha256_lf": "22d36748e27325b609933960498da4e8b0e564171dd4b2f0bb94cf51a1cf2727"
+    },
+    {
       "path": "instructor/papers/P10_gpt3.md",
       "sha256_lf": "4a7451561bff519427d12fafc0ed274800411587b326d74c3cf8e0c9fb0526ad"
+    },
+    {
+      "path": "instructor/papers/P110_deriva.md",
+      "sha256_lf": "231e47e77c01ed4e6d2ea440439ef445186b93858b7c58f68c58066cdc5bc448"
+    },
+    {
+      "path": "instructor/papers/P111_deuda_tecnica.md",
+      "sha256_lf": "a33a299d69ebbc8f1d0d1fa9af3f0913e5f9b2836dbc557199384ea718902e3a"
+    },
+    {
+      "path": "instructor/papers/P112_ml_test_score.md",
+      "sha256_lf": "ac2baa153facd71dbb12b0cae43270be02f3eb7b776f388b29e4abb4a05cee5c"
+    },
+    {
+      "path": "instructor/papers/P113_trazabilidad.md",
+      "sha256_lf": "64255921643b6c08fa7a53c05bfff1467a8dc5dbacd8145a5e076d3e5391bdeb"
+    },
+    {
+      "path": "instructor/papers/P114_tarjetas_de_modelo.md",
+      "sha256_lf": "801d7472069ab51b7d0458f4f1e116d267814a1f800eb0a3a3dd228a1cf586d3"
+    },
+    {
+      "path": "instructor/papers/P115_hojas_de_datos.md",
+      "sha256_lf": "6f31bf501ec011f35a04d488f4eda8e2e7cf73e6172f69f4cfd4c4bbe23a93a7"
+    },
+    {
+      "path": "instructor/papers/P116_gestion_de_prompts.md",
+      "sha256_lf": "86d71814e24cdf2a0c215cc11d86a521c612d42e841dec88b1d33fd56e3f109b"
+    },
+    {
+      "path": "instructor/papers/P117_agentops.md",
+      "sha256_lf": "3208e7cba84ad15fd21bee62c72ce27cd08e12aea63e620ec8c0588764917ef2"
     },
     {
       "path": "instructor/papers/P11_rag.md",
@@ -737,8 +933,60 @@
       "sha256_lf": "81c92348335d96f01f4be73035f2b2a30e1cb292945bc8496b4bc09a9749bc10"
     },
     {
+      "path": "instructor/papers/P87_bayes.md",
+      "sha256_lf": "1e7f78f6d967a46a08884cfd69f3e1c39ee58e458a6167fff7453ba0323cb576"
+    },
+    {
+      "path": "instructor/papers/P88_cox.md",
+      "sha256_lf": "213df0de40d500b444a32f52d3e8d97223e1282e7a80e651163cddb34ee2b92f"
+    },
+    {
+      "path": "instructor/papers/P89_fuzzy.md",
+      "sha256_lf": "281ecda4de2ed3ebfb9e61cb9d6929c2d79011937910819efb6c2bdbd17b82f6"
+    },
+    {
+      "path": "instructor/papers/P90_algoritmos_geneticos.md",
+      "sha256_lf": "787f6619dce6f1ed5284ba6c9ccb8d1f0ed0a6c58517d6646dfb916e76b34da7"
+    },
+    {
+      "path": "instructor/papers/P91_redes_bayesianas.md",
+      "sha256_lf": "a72be267b6604031bdc1ed018daf0d8bc0fe31ed82142edafc397a055e85075f"
+    },
+    {
+      "path": "instructor/papers/P92_pso.md",
+      "sha256_lf": "dbe3bf13d55570fed18bc6d8cffa5ba19b8e24acd882c5af394798790e9176db"
+    },
+    {
+      "path": "instructor/papers/P93_aco.md",
+      "sha256_lf": "bf59567aa950653ddaab9fcd903b7d2dd753631de6b4b8cff74ca87fca3e604c"
+    },
+    {
+      "path": "instructor/papers/P94_programacion_probabilistica.md",
+      "sha256_lf": "c1e5542a382cbed84d44b3456a9866d63c4655ef81385d1e4b0499694db9c794"
+    },
+    {
+      "path": "instructor/papers/P95_causalidad.md",
+      "sha256_lf": "810354a9ff801ab9cd0a15b35dfb9da758f36c2425c0a0139ec2cdb64946a0f5"
+    },
+    {
+      "path": "instructor/papers/P96_kalman.md",
+      "sha256_lf": "6f1afb99cafbcd5ff42c153e554ab4d6a7feb0eb7c67aecd6de164e4e33e0c7a"
+    },
+    {
+      "path": "instructor/papers/P97_subsuncion.md",
+      "sha256_lf": "e6073b8c36ad9e6cbaecaa7c92e903fc345a0097e692d7c2f1af780646b1fc8d"
+    },
+    {
+      "path": "instructor/papers/P98_rrt.md",
+      "sha256_lf": "342585ff8964e4ef137854cec2018b2001731cf81841e78c9354b4ff388dfc42"
+    },
+    {
+      "path": "instructor/papers/P99_slam.md",
+      "sha256_lf": "48b9a15d0c952c0aa2e13901498826a8866367bbbfb06844dbc083401e4f6bb3"
+    },
+    {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "d3069771473730b569d43f9cbc8d76df0c3ff605682ca4f07862babeb015389e"
+      "sha256_lf": "7ad6c252d430b5cdbf914e1526b93cbdddb899d8fbe6fe0c879d19f57ab2a50f"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -777,8 +1025,80 @@
       "sha256_lf": "89870ee9d690a7aa32a59488c7f1c51b916d69b46ee1d2675da9640bc0944c27"
     },
     {
+      "path": "notebooks/papers/P100_seguridad_fisica.ipynb",
+      "sha256_lf": "3fb9c72d1379fe9ddd25d638f2ef3ba60172e71d4c91013111d51ca2d3d3cbcd"
+    },
+    {
+      "path": "notebooks/papers/P101_dagger.ipynb",
+      "sha256_lf": "43f87ca596e4c2833ef484cbb0dbb241254d82e19d6b6dd934cd9a1210794974"
+    },
+    {
+      "path": "notebooks/papers/P102_ppo.ipynb",
+      "sha256_lf": "c4d65c6359cecc4536f31c31516de466c9ab039d65df8bd0d451bc993229ba20"
+    },
+    {
+      "path": "notebooks/papers/P103_domain_randomization.ipynb",
+      "sha256_lf": "b29f51914be0e6c8728d0f81fbbe8a16846eedeb0dc0d16cedc901a5f23c1136"
+    },
+    {
+      "path": "notebooks/papers/P104_webarena.ipynb",
+      "sha256_lf": "d45172cacba4feef9be3de2edbf4d3695e670c94cfd03e3f3196b01e116aaed2"
+    },
+    {
+      "path": "notebooks/papers/P105_seeclick.ipynb",
+      "sha256_lf": "c39d47aeb5ab4b7873ee27f8ef1079db7786e9bd28219adc6e55a91e196bfcf1"
+    },
+    {
+      "path": "notebooks/papers/P106_osworld.ipynb",
+      "sha256_lf": "47175be2445f48c64bef5955c02a4cd0f52449cc523e15c2376029e5f5d6a696"
+    },
+    {
+      "path": "notebooks/papers/P107_dapper.ipynb",
+      "sha256_lf": "285ac344b64ffffb7bec06226e3c5eef82b59afd8ebb7b745e4c6d536b2e7b4f"
+    },
+    {
+      "path": "notebooks/papers/P108_cap.ipynb",
+      "sha256_lf": "20e1d637230bc47dadf11f2c23afa6a63e6f02b3ea3c682ecccf73dc39224ad1"
+    },
+    {
+      "path": "notebooks/papers/P109_cola_larga.ipynb",
+      "sha256_lf": "6f32e47c166ed716de238628e88e0dab46f8c17b2aaf0ce83b66b8909c043cea"
+    },
+    {
       "path": "notebooks/papers/P10_gpt3.ipynb",
       "sha256_lf": "05c126eb6d896694e5001c6e3f7b50ddbe935c4fbe07534191709114a34cab54"
+    },
+    {
+      "path": "notebooks/papers/P110_deriva.ipynb",
+      "sha256_lf": "e2f8615ec27625dabac54c4f27a3384193e4aed140492b383e81df8f4211f1f6"
+    },
+    {
+      "path": "notebooks/papers/P111_deuda_tecnica.ipynb",
+      "sha256_lf": "e2b74a7fdf0a0a0d6abfec064b4a38815e5601a2ffd86e5b91f5df4ec389c108"
+    },
+    {
+      "path": "notebooks/papers/P112_ml_test_score.ipynb",
+      "sha256_lf": "98b8fb3c3aa93cc6596a31a647ba0d197420524b5e7018910cbfd91f497a068e"
+    },
+    {
+      "path": "notebooks/papers/P113_trazabilidad.ipynb",
+      "sha256_lf": "bd17435543645bc3a80e2b7842ae67a1d24f92274957a14a794aa29fcced81b0"
+    },
+    {
+      "path": "notebooks/papers/P114_tarjetas_de_modelo.ipynb",
+      "sha256_lf": "1a7212956605e4633911f87d19e0c4ddb2116c86ce23e146e1697cdb2038e47d"
+    },
+    {
+      "path": "notebooks/papers/P115_hojas_de_datos.ipynb",
+      "sha256_lf": "46e752e8ad17428aaf02a50730ed8591675443e8aa48c352bb828e6cb0f29b5b"
+    },
+    {
+      "path": "notebooks/papers/P116_gestion_de_prompts.ipynb",
+      "sha256_lf": "c6b123d91b93e6cf06255f1a765d5a5f73a97229aa4be367af936c2330c109ab"
+    },
+    {
+      "path": "notebooks/papers/P117_agentops.ipynb",
+      "sha256_lf": "273dbe349a08572839e060ee2caec6c7b4c6475b93cdbcbd46547672c2ac369c"
     },
     {
       "path": "notebooks/papers/P11_rag.ipynb",
@@ -1085,6 +1405,58 @@
       "sha256_lf": "ac5432ad4a01bd041fb7c103c05b4e4c94a990cb38abd8ad2dabcec68b3b2cb7"
     },
     {
+      "path": "notebooks/papers/P87_bayes.ipynb",
+      "sha256_lf": "eb2ba97b8b4d1f55ea1b9059885e187bade6a10ecbe4974a9781ff6e50b3f764"
+    },
+    {
+      "path": "notebooks/papers/P88_cox.ipynb",
+      "sha256_lf": "dfc412785241bd9a536674088402cdefdaa1b08198900a3afa6334c0e67733c4"
+    },
+    {
+      "path": "notebooks/papers/P89_fuzzy.ipynb",
+      "sha256_lf": "e13cc0e618dd86f943222ddc19e7b8c2e8c82622b86941d29006a339915434bf"
+    },
+    {
+      "path": "notebooks/papers/P90_algoritmos_geneticos.ipynb",
+      "sha256_lf": "de8dc686805653eabcf792c764925aab3b6fb901a9439154264bd70ad7720706"
+    },
+    {
+      "path": "notebooks/papers/P91_redes_bayesianas.ipynb",
+      "sha256_lf": "b8691fb72fa32ebcbe9ea8f394eb2c18c129b9780d523e0cc96a15ccb9d109a7"
+    },
+    {
+      "path": "notebooks/papers/P92_pso.ipynb",
+      "sha256_lf": "ab20af2f8d5c30e82f4ac29994dce23e52da48fcc08aea468023f702e5ea8d05"
+    },
+    {
+      "path": "notebooks/papers/P93_aco.ipynb",
+      "sha256_lf": "9e5395dcaf61fec8bca313c6e4a720833a48bb8f32abbc4d294b875ef81df03e"
+    },
+    {
+      "path": "notebooks/papers/P94_programacion_probabilistica.ipynb",
+      "sha256_lf": "baabef7ef80f20cfa88f58278c2ee9ccc0308fa5d58165c5bc33255b0a515eef"
+    },
+    {
+      "path": "notebooks/papers/P95_causalidad.ipynb",
+      "sha256_lf": "696e3e45b55b0d0fa122bef3f6d2fad56aaaa1463629639a54ad258eb2f0f416"
+    },
+    {
+      "path": "notebooks/papers/P96_kalman.ipynb",
+      "sha256_lf": "78e3f55728e93f164758017d76bac7405eecde1855f07eecb8d7e2557fc0cc38"
+    },
+    {
+      "path": "notebooks/papers/P97_subsuncion.ipynb",
+      "sha256_lf": "4756da5dd10be775451fad6eda8691074786ae40d6514e85fadcdff3484d57db"
+    },
+    {
+      "path": "notebooks/papers/P98_rrt.ipynb",
+      "sha256_lf": "056fe21b6eaca96da32029bfa6bfa9fbfd2b25ef87d0c8abac4199f307a8591b"
+    },
+    {
+      "path": "notebooks/papers/P99_slam.ipynb",
+      "sha256_lf": "175133315110fef6ca161b3674ebbdc3d3ace064497ef84f2e9d8787c275630f"
+    },
+    {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
       "sha256_lf": "122e0fcf47ff9d7a5c8288450e39a7d4a5f486f1f0a607f79924c846666c4d5d"
     },
@@ -1118,11 +1490,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "640334921ba99f4b09b027e801699789541adc9dec27318cb25e4743a1db684c"
+      "sha256_lf": "d98061b26e6faf1ac66778dc182da53c7664526a2fab9e14e68dd882f25fe484"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "b80923718924d2293899dd19c7192cc2f77a37692be56f587d77ed5e19959040"
+      "sha256_lf": "596d612ee2ea8bb611525e2e400d15744d5bd39cdb7337e1471207da8062bb16"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -1146,19 +1518,19 @@
     },
     {
       "path": "papers/annexes/README.md",
-      "sha256_lf": "49195d72b0c8cf98bb0845fbd718388b8243cf70343d554f8b8288347b048768"
+      "sha256_lf": "a9749600d87e9c56bf53622a877b2f52cad35179eac3d8eab3fee489dc721034"
     },
     {
       "path": "papers/catalog/MATRIZ_CLASES_PAPERS.md",
-      "sha256_lf": "bf9c1e7cfe743964a88a646ec15ac45cdbb4cfa41cb3cb0137b6039bf51e05e5"
+      "sha256_lf": "1d749d0517c299a004789d2149c7612a6d227a3c0100c2f156084e1c4ef9d9fb"
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "c8de0695307ff531b2f4a5c6ad2620ae0f6ff4b56a072a0a83bdf67a78823173"
+      "sha256_lf": "a6b4389db3f89bfa2137d5fd820fec376cb7b090ebd9844856e5447dbb0f75e4"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "76c269794024fb04730320386dd6972867260411f6e3eb9c1d0b0d443efd1908"
+      "sha256_lf": "7d4bb35f9d4fb8e9e5b25874700ada9193361cba596bba784eaef227451e2755"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -1201,8 +1573,80 @@
       "sha256_lf": "fc8b55a024ea8c5820b74ade549ebd4b00164636e44c5a8eb01252519ea81532"
     },
     {
+      "path": "papers/foundational/P100_seguridad_fisica/README.md",
+      "sha256_lf": "8ec549728273825f396c208d9f79f82b2688d8789c814f00f0947b74ad622bf4"
+    },
+    {
+      "path": "papers/foundational/P101_dagger/README.md",
+      "sha256_lf": "c4908b84158b37f8353e1812b4f428123f9bb4119bb97a2aa2077a26feb3f34f"
+    },
+    {
+      "path": "papers/foundational/P102_ppo/README.md",
+      "sha256_lf": "f7af786f9025532cbbfe3b4e4599c9f97582d80e3c93ca8ff2eede6750012893"
+    },
+    {
+      "path": "papers/foundational/P103_domain_randomization/README.md",
+      "sha256_lf": "13e581490375c5f0d4abc1c35f33316540335a905fcbe6dedaf1c344e749c5d6"
+    },
+    {
+      "path": "papers/foundational/P104_webarena/README.md",
+      "sha256_lf": "0753a09d2a77f1ef1a7f516cea51d8aafa82f292ebf0b51935ed1e2d8de28fd1"
+    },
+    {
+      "path": "papers/foundational/P105_seeclick/README.md",
+      "sha256_lf": "3b906b4420888da7270f9be7ded9f6399cf890c70c8525a511e6486ed196e1b7"
+    },
+    {
+      "path": "papers/foundational/P106_osworld/README.md",
+      "sha256_lf": "e117130349874e21fe38eca588e3b64d23309cc61dc5c39b1ad9d55cf9b2e89d"
+    },
+    {
+      "path": "papers/foundational/P107_dapper/README.md",
+      "sha256_lf": "4c60ca510d9c75cc3a879b422d8ecaea457d51fcfca2fbdfed7c91e0e7285cd4"
+    },
+    {
+      "path": "papers/foundational/P108_cap/README.md",
+      "sha256_lf": "d9785ef5eeb92dd4f6b4cd34ebb353e418b26e4a8fd8002bdd0ce1f6efc3d672"
+    },
+    {
+      "path": "papers/foundational/P109_cola_larga/README.md",
+      "sha256_lf": "22dfd24b144fde38a1f44559317aa54a759f878b7354f0bf0155262daa441bb5"
+    },
+    {
       "path": "papers/foundational/P10_gpt3/README.md",
       "sha256_lf": "d221a372d94befb146ac198e2dd0df780157256ec95734caa8881bc76b9ba0b7"
+    },
+    {
+      "path": "papers/foundational/P110_deriva/README.md",
+      "sha256_lf": "f7e0610afa1c0c25a1d30b6ea1b720597cf2cd70c5706d1af002f68a62771c52"
+    },
+    {
+      "path": "papers/foundational/P111_deuda_tecnica/README.md",
+      "sha256_lf": "6032ccd449b624e57e24856fdb99175b0f1df57dd10ed91889ebac5e0f8e05f1"
+    },
+    {
+      "path": "papers/foundational/P112_ml_test_score/README.md",
+      "sha256_lf": "97688c0de7f4a3ebf468ded6949604548513eb44a1e05b0b72d4538f6c0cfb96"
+    },
+    {
+      "path": "papers/foundational/P113_trazabilidad/README.md",
+      "sha256_lf": "4bf8fb0b14ddb0fb31a03519f3ecaf8b73551ffdaef6d5055ae1d9fc24922d3b"
+    },
+    {
+      "path": "papers/foundational/P114_tarjetas_de_modelo/README.md",
+      "sha256_lf": "afcaea6fa7d912a1d50b9b74340410abe38d499283d1dc1bbb051d58acbadd31"
+    },
+    {
+      "path": "papers/foundational/P115_hojas_de_datos/README.md",
+      "sha256_lf": "cb2a4b548f4e08bd1d558b2d31857bdf08d87a482b9d4169d9eef2028b5414ec"
+    },
+    {
+      "path": "papers/foundational/P116_gestion_de_prompts/README.md",
+      "sha256_lf": "71d1dc51b3eee5745bcaef8b159817e17c2a8f3c303fdb141d889b261a5cb7e5"
+    },
+    {
+      "path": "papers/foundational/P117_agentops/README.md",
+      "sha256_lf": "552b5c6b2c63cd802cee90d4d53dc6906d4b214e9b11c3bcc44d96473d3177b7"
     },
     {
       "path": "papers/foundational/P11_rag/README.md",
@@ -1509,6 +1953,58 @@
       "sha256_lf": "6b75ef4c08fd6ccdc80f9a1b0bf7330cfab22fac185db5e29998d9b320b0937f"
     },
     {
+      "path": "papers/foundational/P87_bayes/README.md",
+      "sha256_lf": "2beb93caa62bf75dc636f8135f0d458cff4f7bb7ba289cf33c187ba0f545f7df"
+    },
+    {
+      "path": "papers/foundational/P88_cox/README.md",
+      "sha256_lf": "8ac673ef05a1eab119dbeb2290eacf80c87df48faf0fd8e48b4e2b8345947968"
+    },
+    {
+      "path": "papers/foundational/P89_fuzzy/README.md",
+      "sha256_lf": "0a074f447c615d66e052cd711a092cab2d38a96a56e7e8dc3813f497c4606ff5"
+    },
+    {
+      "path": "papers/foundational/P90_algoritmos_geneticos/README.md",
+      "sha256_lf": "f4166f8811b2bd5093c658cb83810aa2a1b661c984df9f74f1cef3041d21d8e6"
+    },
+    {
+      "path": "papers/foundational/P91_redes_bayesianas/README.md",
+      "sha256_lf": "3325e79ce43617f7024b3a6ff172e75b622f0be4c3023f2cb3e9b2d1aa25fe8d"
+    },
+    {
+      "path": "papers/foundational/P92_pso/README.md",
+      "sha256_lf": "d2ee6b78465a59885a468da641c0ba38241d7b027849c01489e384797e11fd13"
+    },
+    {
+      "path": "papers/foundational/P93_aco/README.md",
+      "sha256_lf": "8f892267a76e694422c667f0da51199f7385f4ce520345cc177f33c9c397f692"
+    },
+    {
+      "path": "papers/foundational/P94_programacion_probabilistica/README.md",
+      "sha256_lf": "f43fa0b6cc0aee935516c5a5f531dd8e3b52e928be0addaed3a62c47a386bf43"
+    },
+    {
+      "path": "papers/foundational/P95_causalidad/README.md",
+      "sha256_lf": "3923f81269579f153ff09f03bd2d162aed7e96a6f10c2da6d20ef887612bebb9"
+    },
+    {
+      "path": "papers/foundational/P96_kalman/README.md",
+      "sha256_lf": "1086f8d1ba436db1e825c4ccb67fc8c7fa8315583583fab82465327c5ce0c861"
+    },
+    {
+      "path": "papers/foundational/P97_subsuncion/README.md",
+      "sha256_lf": "b33cc6aa3a7e2518095f41fff658880469e65f1913e06ca58e786e2b7eeee753"
+    },
+    {
+      "path": "papers/foundational/P98_rrt/README.md",
+      "sha256_lf": "82422362acccc539dc4e18cf97c56b01dcbe85c53ca7d132b9262ef9724ff305"
+    },
+    {
+      "path": "papers/foundational/P99_slam/README.md",
+      "sha256_lf": "bb9a41ca793c5847d43e1c0f25ee4ed2b157b12cc10698a9956026c12e077410"
+    },
+    {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
       "sha256_lf": "e08d4427d94da4680598c41b0fe17a622b7d70e87aa28e095ac3997ea85b6e3c"
     },
@@ -1530,7 +2026,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "8983dc460616cb9a355916b092a0937c9ef600b212ba2bc3d2b51bde24ccf66b"
+      "sha256_lf": "1f1d6480c8e7d7702ad8e8abd7a5d3fa0d0de571431057f90f722517a460d83b"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -1569,8 +2065,80 @@
       "sha256_lf": "66069a0f8591c485455bb3fa95c20c1005611c70fa46df6997b33ff65d5ac6dd"
     },
     {
+      "path": "student/papers/P100_seguridad_fisica.md",
+      "sha256_lf": "c80e618726226f87fbfd32748dd3f71f1af82861e3279e0f9574faaf968a7c0f"
+    },
+    {
+      "path": "student/papers/P101_dagger.md",
+      "sha256_lf": "84689e8e8fe9e60dbf41333547ae3a484e943fcad7e1682c19f792ffe068e25b"
+    },
+    {
+      "path": "student/papers/P102_ppo.md",
+      "sha256_lf": "27cf64565e2c3d3c54100c8fee26a67c55f82f8fa662fbf5e6d690bffab15afd"
+    },
+    {
+      "path": "student/papers/P103_domain_randomization.md",
+      "sha256_lf": "41971f863dea9529d2ec06519cbca028d0b1db3468a6f9f47db481a173b56417"
+    },
+    {
+      "path": "student/papers/P104_webarena.md",
+      "sha256_lf": "6362b120bed2ceef8acf54f7d94dce1e435bd3878059f3ecc037bc962c502cb0"
+    },
+    {
+      "path": "student/papers/P105_seeclick.md",
+      "sha256_lf": "c6f85c313c2c8d138d02282cae1de84a2fa8fbb98c215c60a47834cef2ae0b1c"
+    },
+    {
+      "path": "student/papers/P106_osworld.md",
+      "sha256_lf": "6708337e93757f9114498527c5805b2a2e50a69de002f5138a7cb53e0df45966"
+    },
+    {
+      "path": "student/papers/P107_dapper.md",
+      "sha256_lf": "e1a1cf5446963a157b7bb2fd5b97535295f74909c1a0e66b20e47a1ab4e4a645"
+    },
+    {
+      "path": "student/papers/P108_cap.md",
+      "sha256_lf": "9394e51ab1b088ae736bcb1a4449e7d5f2083a8d285632ceed54a428f0ad381e"
+    },
+    {
+      "path": "student/papers/P109_cola_larga.md",
+      "sha256_lf": "d12dfb7315d1a7dec3f586a9efef7588d82aee36e4cd2d00e818400751529879"
+    },
+    {
       "path": "student/papers/P10_gpt3.md",
       "sha256_lf": "fa53af0bdb89b31368af44c3a39835b9de37eb83f03ca02fd41c72fb60afb9da"
+    },
+    {
+      "path": "student/papers/P110_deriva.md",
+      "sha256_lf": "3fe060846ff9e9bc2640b4950cdcb1affc734a4c943373bcc65694c8dd366980"
+    },
+    {
+      "path": "student/papers/P111_deuda_tecnica.md",
+      "sha256_lf": "bc1d85732808f62e1c9aa1cdbb003bd5ebd453904309e4c868f9c04b417ff4b8"
+    },
+    {
+      "path": "student/papers/P112_ml_test_score.md",
+      "sha256_lf": "4fccc84c3ef7edde57bed346021ed278d1f93ac034deffd404e0aca174084119"
+    },
+    {
+      "path": "student/papers/P113_trazabilidad.md",
+      "sha256_lf": "5b5d93eef33f5e2fa0ea937d182282aa3ce33ce73b3cf2da78c77bc1a1cb2db2"
+    },
+    {
+      "path": "student/papers/P114_tarjetas_de_modelo.md",
+      "sha256_lf": "8868890e547788e14ab488b662d5059cafac3b197b3e49bc5b62dfa2124a868b"
+    },
+    {
+      "path": "student/papers/P115_hojas_de_datos.md",
+      "sha256_lf": "c6d1b6a2f230d7690f6abd530baac43d88c57791883620ef592ba8683508c854"
+    },
+    {
+      "path": "student/papers/P116_gestion_de_prompts.md",
+      "sha256_lf": "0b93cfe629c58cc8a1ca30546444e8c74dac1158269056344497afad7a3771e9"
+    },
+    {
+      "path": "student/papers/P117_agentops.md",
+      "sha256_lf": "ef2361d0965e37c58417d01150ac24e6b2efb04e141790d7b1a75b6adb48392b"
     },
     {
       "path": "student/papers/P11_rag.md",
@@ -1877,8 +2445,60 @@
       "sha256_lf": "c059ee186beebabcf18b3dd9e53a8c7eae14784ec9e0649eb3571afadc88b386"
     },
     {
+      "path": "student/papers/P87_bayes.md",
+      "sha256_lf": "030100924b9dea5db15ffb1bd1029c2b4c3f48ff1da5e6f499f7f8178b140a79"
+    },
+    {
+      "path": "student/papers/P88_cox.md",
+      "sha256_lf": "e3d3457d1af7bb1d55b2566f05a169c2cb52f171056af1e8e59f4cfb60eda7e9"
+    },
+    {
+      "path": "student/papers/P89_fuzzy.md",
+      "sha256_lf": "c403a46da9745f8f85850d0a003e5d2ed482ba91a9639ed8c93f507d84a6b7a7"
+    },
+    {
+      "path": "student/papers/P90_algoritmos_geneticos.md",
+      "sha256_lf": "c2741e71cb5dad95f074188b8b207c7bf9ac8a90477d91a255a5443e22ee1149"
+    },
+    {
+      "path": "student/papers/P91_redes_bayesianas.md",
+      "sha256_lf": "609d77662398419aa3cd22efb04de03a2ceecf24873168d3004a844524a85a0b"
+    },
+    {
+      "path": "student/papers/P92_pso.md",
+      "sha256_lf": "b9d0c1d1a659d1a8886bcab074bbab69f37777fa2ab3e62cf40765025e6eaef7"
+    },
+    {
+      "path": "student/papers/P93_aco.md",
+      "sha256_lf": "4b5805116af751f71a562a4a2bcc89cb735956e51bb3a9bb3b1250bae167b696"
+    },
+    {
+      "path": "student/papers/P94_programacion_probabilistica.md",
+      "sha256_lf": "8f69fe5265b2bbca6760393492e4376cdf2f484c24246c379f3c86dd449c81f0"
+    },
+    {
+      "path": "student/papers/P95_causalidad.md",
+      "sha256_lf": "4d6ccbc4d18ab9e15480af9ef04eee45573313753330ae095619d4d8b1674843"
+    },
+    {
+      "path": "student/papers/P96_kalman.md",
+      "sha256_lf": "c15a368d2a953ad1541adc3fd9542093ccc561bfa0b1776e1b518c9026819fff"
+    },
+    {
+      "path": "student/papers/P97_subsuncion.md",
+      "sha256_lf": "b4ba723429864518754a19b63c3414c08ab5a51bdd6bf1c65f94791eb3f11afe"
+    },
+    {
+      "path": "student/papers/P98_rrt.md",
+      "sha256_lf": "c3d6b64393f7bf48a99884bc57ad86a6fd97fe469860e52d4155fdfcaa28dab0"
+    },
+    {
+      "path": "student/papers/P99_slam.md",
+      "sha256_lf": "af55153a3c83d0359e20c03836b529898e8b94f47300a6fee77df1aa3cea6ffc"
+    },
+    {
       "path": "student/papers/README.md",
-      "sha256_lf": "dedb60d7bc85a7ce62d93bc8f4029ad7fb89e78cba2b0ec52ec16d3562ee080a"
+      "sha256_lf": "e507354e70dcb848c7f0b4f21e1e3d0816639fd5deb1441bafad2a3b2a5d3ce3"
     }
   ]
 }

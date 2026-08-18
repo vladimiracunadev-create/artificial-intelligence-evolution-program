@@ -225,6 +225,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Great Expectations Documentation — validación de datos](https://docs.greatexpectations.io/)
 - [Fowler, "Continuous Integration"](https://martinfowler.com/articles/continuousIntegration.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P112 · La puntuación de pruebas de ML: una rúbrica de preparación para producción](../../../papers/foundational/P112_ml_test_score/README.md) | 2017 | Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil. | [notebook](../../../notebooks/papers/P112_ml_test_score.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -203,6 +203,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Gelman, A. et al. (2013). *Bayesian Data Analysis*, 3.ª ed. [http://www.stat.columbia.edu/~gelman/book/](http://www.stat.columbia.edu/~gelman/book/)
 - Jurafsky, D. & Martin, J. H. *Speech and Language Processing*, 3.ª ed. (draft), cap. de naive Bayes. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P87 · Ensayo para resolver un problema en la doctrina de las probabilidades](../../../papers/foundational/P87_bayes/README.md) | 1763 | La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto». | [notebook](../../../notebooks/papers/P87_bayes.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

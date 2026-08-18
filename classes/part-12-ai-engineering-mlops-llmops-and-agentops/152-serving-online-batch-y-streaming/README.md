@@ -225,6 +225,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
 - [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P109 · La cola a escala](../../../papers/foundational/P109_cola_larga/README.md) | 2013 | Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo. | [notebook](../../../notebooks/papers/P109_cola_larga.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

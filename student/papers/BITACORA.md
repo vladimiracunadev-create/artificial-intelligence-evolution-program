@@ -108,6 +108,37 @@ Pregunta que me quedó abierta:
 | P84 | | | ⬜ pendiente |
 | P85 | | | ⬜ pendiente |
 | P86 | | | ⬜ pendiente |
+| P87 | | | ⬜ pendiente |
+| P88 | | | ⬜ pendiente |
+| P89 | | | ⬜ pendiente |
+| P90 | | | ⬜ pendiente |
+| P91 | | | ⬜ pendiente |
+| P92 | | | ⬜ pendiente |
+| P93 | | | ⬜ pendiente |
+| P94 | | | ⬜ pendiente |
+| P95 | | | ⬜ pendiente |
+| P96 | | | ⬜ pendiente |
+| P97 | | | ⬜ pendiente |
+| P98 | | | ⬜ pendiente |
+| P99 | | | ⬜ pendiente |
+| P100 | | | ⬜ pendiente |
+| P101 | | | ⬜ pendiente |
+| P102 | | | ⬜ pendiente |
+| P103 | | | ⬜ pendiente |
+| P104 | | | ⬜ pendiente |
+| P105 | | | ⬜ pendiente |
+| P106 | | | ⬜ pendiente |
+| P107 | | | ⬜ pendiente |
+| P108 | | | ⬜ pendiente |
+| P109 | | | ⬜ pendiente |
+| P110 | | | ⬜ pendiente |
+| P111 | | | ⬜ pendiente |
+| P112 | | | ⬜ pendiente |
+| P113 | | | ⬜ pendiente |
+| P114 | | | ⬜ pendiente |
+| P115 | | | ⬜ pendiente |
+| P116 | | | ⬜ pendiente |
+| P117 | | | ⬜ pendiente |
 
 ---
 

@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **86 hitos · 94 notebooks ejecutables · 5 anexos matemáticos · de Pearson (1901) a 2025**
+## **117 hitos · 125 notebooks ejecutables · 5 anexos matemáticos · de Pearson (1901) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -20,7 +20,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 <!-- stats:inicio -->
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **86** | **94** | **86** | **5** | **L0–L5** | **116** |
+| **117** | **125** | **117** | **5** | **L0–L5** | **146** |
 <!-- stats:fin -->
 
 </div>
@@ -50,9 +50,9 @@ largas → la atención lo elimina → si la atención basta, sobra la recurrenc
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
 <!-- rutas:inicio -->
-## 🧭 Diez rutas · 86 papers
+## 🧭 13 rutas · 117 papers
 
-El eje tiene 10 bloques con propósitos distintos. **No se estudian igual.**
+El eje tiene 13 bloques con propósitos distintos. **No se estudian igual.**
 Dentro de cada uno, los papers van **en orden cronológico**; entre bloques no hay orden,
 porque responden a preguntas diferentes.
 
@@ -68,6 +68,9 @@ flowchart TD
     R8["🧭 fundamentos<br/>P53–P63 · 11 papers<br/>1901–2021"]
     R9["♟️ simbólica<br/>P64–P72 · 9 papers<br/>1959–2020"]
     R10["📈 clásica<br/>P73–P86 · 14 papers<br/>1982–2018"]
+    R11["ruta_probabilistica<br/>P87–P95 · 9 papers<br/>1763–2019"]
+    R12["ruta_encarnada<br/>P96–P106 · 11 papers<br/>1960–2024"]
+    R13["ruta_operacion<br/>P107–P117 · 11 papers<br/>2010–2023"]
     R1 -.->|"se estudia primero,<br/>en orden"| R2
 ```
 
@@ -226,6 +229,58 @@ P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir
 | [P84](foundational/P84_isolation_forest/README.md) | Bosque de aislamiento | 2008 | L2 | Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto. |
 | [P85](foundational/P85_factorizacion_matricial/README.md) | Factorización matricial | 2009 | L3 | El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos. |
 | [P86](foundational/P86_m4/README.md) | Competición M4 | 2018 | L3 | Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo. |
+
+### ruta_probabilistica
+
+P87–P95: decidir sin certeza. Por qué la probabilidad es la única extensión coherente de la lógica, cómo se actualiza una creencia, qué hace tratable la conjunta, y las dos familias que buscan sin gradiente. Cierra con la distinción que el aprendizaje automático no resuelve: asociar no es intervenir. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P87](foundational/P87_bayes/README.md) | Teorema de Bayes | 1763 | L2 | La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto». |
+| [P88](foundational/P88_cox/README.md) | Teorema de Cox | 1946 | L3 | Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia. |
+| [P89](foundational/P89_fuzzy/README.md) | Conjuntos difusos | 1965 | L2 | Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje. |
+| [P90](foundational/P90_algoritmos_geneticos/README.md) | Algoritmos genéticos | 1973 | L2 | Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta. |
+| [P91](foundational/P91_redes_bayesianas/README.md) | Redes bayesianas | 1986 | L3 | Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente. |
+| [P92](foundational/P92_pso/README.md) | Enjambre de partículas | 1995 | L2 | Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo. |
+| [P93](foundational/P93_aco/README.md) | Colonia de hormigas | 1996 | L2 | La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora. |
+| [P94](foundational/P94_programacion_probabilistica/README.md) | Programación probabilística | 2017 | L3 | Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior. |
+| [P95](foundational/P95_causalidad/README.md) | Herramientas causales | 2019 | L3 | Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen. |
+
+### ruta_encarnada
+
+P96–P106: cuando el sistema sale de la pantalla y equivocarse tiene consecuencias que no se deshacen. Estimar dónde se está, moverse sin chocar, aprender a controlar, cruzar el hueco entre simulación y realidad, y no hacer daño. Cierra con la vuelta a la pantalla ajena: agentes que operan navegadores y escritorios. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P96](foundational/P96_kalman/README.md) | Filtro de Kalman | 1960 | L3 | Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva. |
+| [P97](foundational/P97_subsuncion/README.md) | Subsunción | 1986 | L2 | Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central. |
+| [P98](foundational/P98_rrt/README.md) | RRT | 2000 | L3 | Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias. |
+| [P99](foundational/P99_slam/README.md) | SLAM | 2006 | L3 | Formaliza el problema circular de la robótica móvil: no se puede localizar sin mapa ni mapear sin localización, y hay que resolver ambos a la vez. |
+| [P100](foundational/P100_seguridad_fisica/README.md) | Seguridad física | 2009 | L2 | Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados. |
+| [P101](foundational/P101_dagger/README.md) | DAgger | 2011 | L3 | Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T. |
+| [P102](foundational/P102_ppo/README.md) | PPO | 2017 | L3 | Consigue la estabilidad de TRPO con una función objetivo que se implementa en unas líneas y se optimiza con descenso de gradiente corriente. |
+| [P103](foundational/P103_domain_randomization/README.md) | Aleatorización de dominio | 2017 | L2 | Invierte el objetivo del simulador: en vez de buscar fidelidad, busca que la realidad sea una variación más dentro del rango de entrenamiento. |
+| [P104](foundational/P104_webarena/README.md) | WebArena | 2023 | L3 | Evalúa agentes de navegador comprobando el ESTADO del sitio al terminar, no lo que el agente dice haber hecho. |
+| [P105](foundational/P105_seeclick/README.md) | SeeClick | 2024 | L2 | Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla. |
+| [P106](foundational/P106_osworld/README.md) | OSWorld | 2024 | L3 | Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real. |
+
+### ruta_operacion
+
+P107–P117: lo que sostiene un sistema en producción y no aparece en ningún artículo de modelos. Ver qué pasa dentro, decidir qué se sacrifica cuando la red se parte, sobrevivir a la cola de latencia, detectar que el mundo cambió, y documentar datos y modelos para que alguien más pueda auditarlos. Cierra con la evaluación de agentes por trayectoria. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P107](foundational/P107_dapper/README.md) | Dapper | 2010 | L2 | Hace observable una petición que atraviesa decenas de servicios, con un identificador que viaja con ella y un muestreo que la hace asequible. |
+| [P108](foundational/P108_cap/README.md) | CAP doce años después | 2012 | L2 | Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición. |
+| [P109](foundational/P109_cola_larga/README.md) | La cola a escala | 2013 | L2 | Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo. |
+| [P110](foundational/P110_deriva/README.md) | Deriva de concepto | 2014 | L3 | Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse. |
+| [P111](foundational/P111_deuda_tecnica/README.md) | Deuda técnica en ML | 2015 | L1 | Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta. |
+| [P112](foundational/P112_ml_test_score/README.md) | ML Test Score | 2017 | L2 | Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil. |
+| [P113](foundational/P113_trazabilidad/README.md) | Aprendizaje por refuerzo que importa | 2018 | L3 | Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación. |
+| [P114](foundational/P114_tarjetas_de_modelo/README.md) | Tarjetas de modelo | 2019 | L1 | Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados. |
+| [P115](foundational/P115_hojas_de_datos/README.md) | Hojas de datos | 2021 | L1 | Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve. |
+| [P116](foundational/P116_gestion_de_prompts/README.md) | Por qué Johnny no sabe hacer prompts | 2023 | L2 | Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente. |
+| [P117](foundational/P117_agentops/README.md) | AgentBench | 2023 | L3 | Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan. |
 <!-- rutas:fin -->
 
 ## ⏳ ¿Por qué el eje no llega a 2026?
@@ -286,7 +341,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **116 clases** enlazadas llevan un bloque generado por
+Las **146 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

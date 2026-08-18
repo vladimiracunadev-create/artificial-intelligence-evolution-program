@@ -225,6 +225,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Kohavi, Tang & Xu, *Trustworthy Online Controlled Experiments* (Cambridge UP)](https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59)
 - [Breck et al. (2017), "The ML Test Score", IEEE Big Data](https://research.google/pubs/pub46555/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P114 · Tarjetas de modelo para el reporte de modelos](../../../papers/foundational/P114_tarjetas_de_modelo/README.md) | 2019 | Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados. | [notebook](../../../notebooks/papers/P114_tarjetas_de_modelo.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -243,6 +243,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Cheng, K. et al. (2024). SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents. arXiv:2401.10935](https://arxiv.org/abs/2401.10935)
 - [OWASP — LLM01: Prompt Injection (riesgo aplicable a agentes que leen pantallas)](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P105 · SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica](../../../papers/foundational/P105_seeclick/README.md) | 2024 | Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla. | [notebook](../../../notebooks/papers/P105_seeclick.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

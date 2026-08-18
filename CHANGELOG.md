@@ -19,6 +19,67 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.13.0 — 2026-08-17
+
+### El eje de papers pasa de 86 a 117: probabilidad, IA encarnada y operación
+
+La versión anterior cerró el pasado del campo —fundamentos, IA simbólica y aprendizaje clásico—.
+Quedaban tres huecos de otra naturaleza: **decidir sin certeza**, **salir de la pantalla** y
+**sostener el sistema cuando ya está en producción**. Las partes 11 y 12 completas —23 clases—
+no tenían un solo paper asociado, y la parte 02 solo tenía dos.
+
+Esta versión añade **31 papers (P87–P117)** en tres rutas nuevas. Cobertura: de **116 a 146
+clases** enlazadas de 183, y de 185 a **218 enlaces**.
+
+| Ruta nueva | Papers | Recorre | Clases que cierra |
+|---|---:|---|---|
+| `ruta_probabilistica` | P87–P95 (9) | Bayes 1763 · Cox 1946 · Metropolis 1953 · Kalman 1960 · Dempster-Laird-Rubin 1977 · Pearl 1988 · Kirkpatrick 1983 · Blei 2003 · Pearl 2009 | 025–027, 032–036 |
+| `ruta_encarnada` | P96–P106 (11) | Denavit-Hartenberg 1955 · Khatib 1986 · Brooks 1986 · LaValle 1998 · Thrun 2005 · Ross 2011 · Levine 2016 · Schulman 2017 · Tobin 2017 · WebArena 2023 · OSWorld 2024 | 136–146 |
+| `ruta_operacion` | P107–P117 (11) | Dapper 2010 · Brewer 2012 · Dean-Barroso 2013 · Gama 2014 · Sculley 2015 · Breck 2017 · Henderson 2018 · Mitchell 2019 · Gebru 2021 · Zamfirescu-Pereira 2023 · AgentBench 2023 | 148–156, 158, 159 |
+
+Cada paper trae el contrato completo del eje: entrada en el catálogo con fuente primaria fechada,
+**ficha de 18 secciones** escrita a mano, **motor determinista** propio y los derivados generados
+—notebook de 17 momentos, evaluación, guía de instructor, guía de estudiante, PDF y página de
+sitio—. Son **31 motores nuevos** (117 en total) y **31 notebooks nuevos** (125 en total).
+
+### Los motores dicen lo que sus números sostienen
+
+Trece motores se reescribieron durante la revisión porque su evidencia afirmaba algo que su propia
+salida desmentía. La disciplina es la misma que la versión anterior estableció, y deja constancia
+porque la distinción entre evidencia y narrativa es materia evaluable del programa:
+
+| Motor | Lo que afirmaba | Lo que decían sus números | Qué se hizo |
+|---|---|---|---|
+| `algoritmos_geneticos` | el óptimo engañoso atrapa a la población | el «cebo» era el óptimo global | trampa real de 4 y de 10 bits; se reporta que escapa de la primera y no de la segunda |
+| `aco` | las hormigas mejoran sobre la heurística voraz | la voraz ya era óptima | instancia donde la voraz falla; se mide la convergencia de feromona |
+| `pso` | sin componente cognitivo el enjambre se degrada | la ablación no empeoraba | se barren las dos ablaciones y se reporta cuál sí pesa |
+| `subsuncion` | la capa reactiva evita el obstáculo | el salto aterrizaba encima | geometría corregida y verificación de la trayectoria completa |
+| `slam` | SLAM mejora sobre la odometría sola | SLAM salía peor | signos del filtro de Kalman corregidos |
+| `dagger` | el experto corrige hacia el centro del carril | **el experto estaba invertido** | corregido; ahora la política aprendida converge |
+| `ppo` | el recorte satura la actualización | no se mostraba ninguna saturación | se barre el cociente de probabilidad y se exhibe la meseta |
+| `seguridad_fisica` | la distancia de frenado acota la velocidad | 1 cm de frenado: todo lo superaba | distancias realistas; ahora la restricción muerde |
+| `resiliencia` | AP diverge y CP no | se medía **después** de reconciliar: cero en ambas | se mide durante la partición |
+| `cola_larga` | la cobertura baja el p99 | bajaba el p50, no el p99 | se reporta el efecto real y por qué la cola sobrevive |
+| `hojas_de_datos` | — | faltaba el prefijo `f`: imprimía la expresión literal | corregido |
+| `trazabilidad` | con más semillas la diferencia se hace pequeña | no se medía la magnitud | se mide diferencia media y máxima por número de semillas |
+| `agentops` | la longitud distingue éxito de fallo | los pasos se sorteaban al azar | la longitud depende del modo de fallo, y se reporta el contraste con el bucle repetitivo |
+
+### Correcciones de infraestructura
+
+- `generate_papers.py` escribía la tabla de conteos de `papers/README.md` **antes** de generar los
+  notebooks, con lo que el conteo quedaba una ejecución por detrás.
+- `generate_site.py` asumía identificadores de dos dígitos (`P\d{2}`) y no reconocía los enlaces a
+  `P100`–`P117`.
+- `generate_pdfs.py` fallaba al escribir en consolas cp1252; ahora reconfigura la salida a UTF-8.
+- Cuatro enlaces internos apuntaban a directorios inexistentes, deducidos del identificador en vez
+  de leídos del catálogo.
+
+### Nota sobre alcance
+
+Los 117 papers cubren 146 de las 183 clases. Las 37 restantes son de proyecto, de laboratorio
+guiado o de síntesis, donde el material propio del programa es la fuente y no hay un artículo
+fundacional que anclarlas.
+
 ## 0.12.0 — 2026-08-17
 
 ### El eje de papers pasa de 52 a 86: fundamentos, IA simbólica y ML clásico

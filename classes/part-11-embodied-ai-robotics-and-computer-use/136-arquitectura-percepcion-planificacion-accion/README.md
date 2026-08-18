@@ -244,6 +244,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [ROS 2 Documentation](https://docs.ros.org/en/rolling/)
 - [Nav2 (Navigation2) Documentation](https://docs.nav2.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P97 · Un sistema de control por capas robusto para un robot móvil](../../../papers/foundational/P97_subsuncion/README.md) | 1986 | Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central. | [notebook](../../../notebooks/papers/P97_subsuncion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

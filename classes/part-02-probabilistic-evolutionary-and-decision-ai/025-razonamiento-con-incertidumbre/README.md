@@ -198,6 +198,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Murphy, K. (2022). *Probabilistic Machine Learning: An Introduction*, cap. 2. [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html)
 - Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P88 · Probabilidad, frecuencia y expectativa razonable](../../../papers/foundational/P88_cox/README.md) | 1946 | Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia. | [notebook](../../../notebooks/papers/P88_cox.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

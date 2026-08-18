@@ -123,7 +123,7 @@ def rewrite_class_links(text: str, lesson_path: str) -> str:
     text = text.replace("(README.md)", "(#top)")
     # enlaces de vuelta al eje de papers, que sí tienen página propia en el sitio
     text = re.sub(
-        r"\((?:\.\./)+papers/foundational/(P\d{2}_[a-z0-9_]+)/README\.md\)",
+        r"\((?:\.\./)+papers/foundational/(P\d{2,3}_[a-z0-9_]+)/README\.md\)",
         r"(../papers/\1.html)",
         text,
     )
@@ -249,7 +249,7 @@ def paper_href(source_rel: str, target: str) -> str:
         return guide_page(posixpath.basename(resolved)) + suffix
     if resolved.startswith("papers/annexes/"):
         return annex_page(posixpath.basename(resolved)) + suffix
-    ficha = re.fullmatch(r"papers/foundational/(P\d{2}_[a-z0-9_]+)/README\.md", resolved)
+    ficha = re.fullmatch(r"papers/foundational/(P\d{2,3}_[a-z0-9_]+)/README\.md", resolved)
     if ficha:
         return f"{ficha.group(1)}.html{suffix}"
     lesson = re.fullmatch(r"classes/part-\d{2}-[^/]+/(\d{3})-[^/]+/README\.md", resolved)

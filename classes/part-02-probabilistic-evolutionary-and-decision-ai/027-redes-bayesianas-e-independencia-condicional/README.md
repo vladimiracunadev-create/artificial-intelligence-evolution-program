@@ -203,6 +203,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Cooper, G. F. (1990). "The computational complexity of probabilistic inference using Bayesian belief networks". *Artificial Intelligence*, 42(2-3), 393-405. [https://doi.org/10.1016/0004-3702(90)90060-D](https://doi.org/10.1016/0004-3702%2890%2990060-D)
 - Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2.ª ed., cap. 1. [https://bayes.cs.ucla.edu/BOOK-2K/](https://bayes.cs.ucla.edu/BOOK-2K/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P91 · Fusión, propagación y estructuración en redes de creencia](../../../papers/foundational/P91_redes_bayesianas/README.md) | 1986 | Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente. | [notebook](../../../notebooks/papers/P91_redes_bayesianas.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -198,6 +198,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Jang, J.-S. R. (1993). "ANFIS: adaptive-network-based fuzzy inference system". *IEEE Trans. SMC*, 23(3), 665-685. [https://doi.org/10.1109/21.256541](https://doi.org/10.1109/21.256541)
 - Ross, T. J. (2010). *Fuzzy Logic with Engineering Applications*, 3.ª ed. Wiley.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P89 · Conjuntos difusos](../../../papers/foundational/P89_fuzzy/README.md) | 1965 | Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje. | [notebook](../../../notebooks/papers/P89_fuzzy.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

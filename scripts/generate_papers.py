@@ -4706,6 +4706,1245 @@ SPECS.update({
 })
 
 
+SPECS.update({
+    "P87_bayes": _auto(
+        "bayes",
+        "Una prueba acierta el 99 % de las veces. Das positivo. ¿Qué probabilidad tienes de estar "
+        "enfermo? La respuesta intuitiva —99 %— es incorrecta, y a veces por un factor de diez. Falta "
+        "un dato que la pregunta no menciona: cuánta gente está enferma.",
+        "```text\nP(H|D) = P(D|H)·P(H) / P(D)\n\n"
+        "En odds, que es donde se ve mejor:\n"
+        "    odds posteriores = odds previas × razón de verosimilitud\n"
+        "    razón de verosimilitud = sensibilidad / (1 − especificidad)\n```",
+        "1. Con prevalencia 0,001 y prueba del 99 %, ¿qué probabilidad hay tras un positivo?\n"
+        "2. ¿Y con prevalencia 0,40, con la MISMA prueba?\n"
+        "3. ¿Qué pasa tras tres positivos independientes?",
+        "Con prevalencia 0,001 la respuesta es **0,0902**: de cada 100 positivos, 91 están sanos. Con "
+        "prevalencia 0,40 y la misma prueba sube a **0,9851**. La prueba no cambió; cambió a quién se "
+        "le aplica. Y tres positivos independientes llevan de 0,001 a 0,999.",
+        "Este es el error de razonamiento más caro y más común, y tiene nombre: negligencia de la tasa "
+        "base. Aparece en cribados médicos, en detección de fraude y en cualquier sistema que busque "
+        "algo raro. Un modelo con 99 % de exactitud sobre un evento del 0,1 % genera avisos que son "
+        "falsos nueve de cada diez veces, y eso no es un fallo del modelo.",
+        "Anti-patrón: leer P(dato | hipótesis) como si fuese P(hipótesis | dato).",
+        "print('P(positivo | enfermo) = 0,99   <- lo que mide la prueba')\n"
+        "print('P(enfermo | positivo) = 0,09   <- lo que le importa al paciente')\n"
+        "print('Son numeros distintos y confundirlos se llama falacia del fiscal.')",
+        "La cuenta completa, con la tasa base delante:",
+        "r = run_paper_lab('bayes', seed=7)['result']\n"
+        "for e in r['escenarios']:\n"
+        "    print(f\"{e['caso']:<36} prevalencia={e['prevalencia']:<7} \"\n"
+        "          f\"P(enfermo|+)={e['p_enfermo_dado_positivo']}\")\n"
+        "print()\n"
+        "print('simulacion sobre 100 000 personas:', r['simulacion_sobre_100000_personas'])",
+        "Comprueba en la simulación que contar personas y aplicar la fórmula dan lo mismo, y explica por "
+        "qué contar resulta más fácil de entender.",
+        "Aplica la regla a un detector de fraude de tu trabajo: estima la tasa base real, la sensibilidad "
+        "y la especificidad, y calcula qué proporción de las alertas serán falsas. Después compara con lo "
+        "que reporta el equipo.",
+        "Guarda la tabla de escenarios con su probabilidad posterior y tu explicación de por qué la tasa "
+        "base cambia la respuesta.",
+        "Ya sabemos actualizar una creencia. Falta justificar por qué hay que usar probabilidad y no "
+        "cualquier otra escala de plausibilidad.",
+    ),
+    "P88_cox": _auto(
+        "cox",
+        "¿Por qué probabilidad y no otra cosa? Cox no la defiende por tradición ni por frecuencias: "
+        "pide tres condiciones mínimas a cualquier medida razonable de creencia y demuestra que solo "
+        "hay una familia que las cumple. La probabilidad no se elige: se deduce.",
+        "```text\nDesiderata:\n"
+        "  1. los grados de creencia se representan con números reales\n"
+        "  2. en los casos extremos, las reglas coinciden con la lógica\n"
+        "  3. si una conclusión se alcanza por dos caminos, ambos dan el mismo grado\n\n"
+        "Teorema: cualquier medida que los cumpla es isomorfa a la probabilidad,\n"
+        "         es decir satisface la regla de la suma y la del producto.\n```",
+        "1. ¿Qué le pasa a quien cree 0,6 en «llueve» y 0,6 en «no llueve»?\n"
+        "2. ¿Y a quien cree 0,6 y 0,4?\n"
+        "3. ¿Es única la escala de la probabilidad?",
+        "El primero paga **120** por dos apuestas que le devuelven **100** pase lo que pase: pierde 20 "
+        "con certeza, sin que haga falta saber si llueve. El segundo no tiene arbitraje posible. Y la "
+        "escala no es única: elevar al cubo conserva el orden y sigue cumpliendo los desiderata — lo "
+        "que está fijado es la **estructura**.",
+        "La miniatura llega a la conclusión por la vía del libro holandés (Ramsey, de Finetti), que no "
+        "es el argumento de Cox pero se comprueba con una resta. Los dos caminos llevan al mismo sitio, "
+        "y esa convergencia es parte del interés: la coherencia interna y la inmunidad al arbitraje "
+        "resultan ser la misma exigencia.",
+        "Anti-patrón: tratar los grados de creencia como puntuaciones sueltas que no tienen que sumar.",
+        "print('Los factores de certeza de MYCIN (P69) no cumplen la regla de la suma.')\n"
+        "print('Es una decision de diseno consciente, con un coste declarado:')\n"
+        "print('el sistema puede llegar a conclusiones que un apostador explotaria.')",
+        "Lo que el teorema fija y lo que deja libre:",
+        "r = run_paper_lab('cox', seed=7)['result']\n"
+        "print('incoherente ->', r['apuesta_contra_el_incoherente'])\n"
+        "print('coherente   ->', r['apuesta_contra_el_coherente'])\n"
+        "print()\n"
+        "print('la escala NO es unica; la estructura si:')\n"
+        "for fila in r['reparametrizacion_monotona']:\n"
+        "    print('  ', fila)",
+        "Construye una tercera creencia incoherente —por ejemplo 0,3 y 0,3— y calcula cuánto perdería su "
+        "dueño con la misma apuesta.",
+        "Coge un sistema de puntuación que uses —un score de riesgo, una confianza de modelo— y comprueba "
+        "si sus números cumplen la regla de la suma sobre alternativas excluyentes. Documenta qué pasaría "
+        "si alguien apostara contra él.",
+        "Guarda los tres desiderata, el cálculo del arbitraje y tu conclusión sobre qué está fijado y qué "
+        "no.",
+        "Ya está justificada la probabilidad. Pero hay preguntas donde la incertidumbre no es "
+        "probabilística sino de VAGUEDAD, y ahí hace falta otra cosa.",
+    ),
+    "P89_fuzzy": _auto(
+        "fuzzy",
+        "«¿Hace calor?» no es una pregunta con respuesta sí o no, y tampoco es una pregunta sobre "
+        "probabilidad: a 25 °C no hay un 70 % de probabilidad de que haga calor, hace calor **en un "
+        "grado de 0,7**. Zadeh formaliza esa diferencia y construye un álgebra sobre ella.",
+        "```text\nConjunto clásico:  μ_A(x) ∈ {0, 1}\nConjunto difuso :  μ_A(x) ∈ [0, 1]\n\n"
+        "Operadores de Zadeh:\n"
+        "    A ∩ B  →  min(μ_A, μ_B)        A ∪ B  →  max(μ_A, μ_B)        ¬A  →  1 − μ_A\n\n"
+        "La suma de pertenencias NO tiene por qué ser 1: no es una distribución.\n```",
+        "1. ¿A qué conjuntos pertenece una temperatura de 25 °C?\n"
+        "2. ¿Suman 1 las pertenencias?\n"
+        "3. ¿Es idempotente el AND difuso?",
+        "A 25 °C la temperatura pertenece a la vez a «templado» y a «caluroso» con grados parciales. Las "
+        "pertenencias **no suman 1** —en la tabla dan 1,0, 0,65, 1,0, 0,786 y 1,0—, y por eso un grado "
+        "de pertenencia no es una probabilidad. El AND de Zadeh es el mínimo y es idempotente: "
+        "min(0,7 · 0,7) = 0,7, mientras el producto da 0,49.",
+        "El control difuso llegó a lavadoras, cámaras y al metro de Sendai antes que a los artículos "
+        "académicos, y por una razón práctica: interpola entre reglas escritas en el lenguaje del "
+        "experto, sin umbrales duros ni modelo del proceso. Su punto débil es el mismo: las funciones de "
+        "pertenencia las escribe una persona y no hay criterio objetivo para elegirlas.",
+        "Anti-patrón: leer un grado de pertenencia como una probabilidad.",
+        "print('«pertenece a CALUROSO con grado 0,7» NO es «hay un 70% de que haga calor».')\n"
+        "print('Lo primero es vaguedad del predicado; lo segundo, incertidumbre sobre un hecho.')\n"
+        "print('Se pueden combinar, pero no son la misma magnitud.')",
+        "La diferencia, con las dos álgebras en la misma pantalla:",
+        "r = run_paper_lab('fuzzy', seed=7)['result']\n"
+        "print('operadores:', r['operadores'])\n"
+        "print()\n"
+        "for p in r['pertenencias']:\n"
+        "    print(f\"{p['temperatura']:>3} C  frio={p['frío']:<6} templado={p['templado']:<6} \"\n"
+        "          f\"caluroso={p['caluroso']:<6} suma={p['suma']}\")",
+        "Sigue el controlador difuso a 16 °C y a 25 °C y explica de dónde sale cada valor de potencia.",
+        "Diseña un controlador difuso de tres reglas para un problema tuyo, con sus funciones de "
+        "pertenencia. Después mueve los vértices un 20 % y documenta cuánto cambia la salida.",
+        "Guarda la tabla de pertenencias con su suma y tu enunciado de la diferencia entre vaguedad e "
+        "incertidumbre.",
+        "Ya hay dos formas de tratar lo que no es blanco ni negro. Ahora, un problema distinto: buscar "
+        "cuando no hay gradiente ni forma de derivar nada.",
+    ),
+    "P90_algoritmos_geneticos": _auto(
+        "algoritmos_geneticos",
+        "Una población de soluciones que se reproducen: las mejores dejan más descendencia, los hijos "
+        "mezclan trozos de sus padres y de vez en cuando algo muta. No hay gradiente, no hay modelo del "
+        "problema. Holland demuestra que ese proceso reparte los ensayos casi como conviene.",
+        "```text\nBucle: evaluar → seleccionar → cruzar → mutar → repetir\n\n"
+        "Un ESQUEMA es un patrón con comodines: 11****…\n"
+        "La población evalúa implícitamente MUCHOS esquemas a la vez (paralelismo implícito),\n"
+        "y la reproducción proporcional a la aptitud les asigna ensayos de forma\n"
+        "cercana a la óptima del problema del bandido de dos brazos.\n```",
+        "1. ¿Bate el algoritmo genético a la búsqueda aleatoria con el mismo presupuesto?\n"
+        "2. ¿Escapa de una trampa deceptiva de 4 bits?\n"
+        "3. ¿Y de una de 10 bits?",
+        "Sin trampa, la aptitud media sube de 9,775 a 19,825 y alcanza el óptimo (20); la búsqueda "
+        "aleatoria con las mismas 1 600 evaluaciones se queda en 17. Con una trampa deceptiva de 4 bits "
+        "**sí escapa**; con una de 10 bits **no**: se queda en 19 frente al óptimo global 21.",
+        "Esa frontera es lo importante y casi nunca se enseña. El método no busca en el vacío: explota "
+        "la estructura que haya en la función. Cuando el gradiente de aptitud apunta al sitio "
+        "equivocado a una escala mayor que la que el cruce puede reensamblar por azar, la población "
+        "converge con toda confianza a la respuesta incorrecta.",
+        "Anti-patrón: presentar un algoritmo genético como un optimizador de propósito general.",
+        "print('El teorema No Free Lunch (Wolpert y Macready, 1997) lo dice sin rodeos:')\n"
+        "print('promediado sobre TODAS las funciones posibles, ningun optimizador bate al azar.')\n"
+        "print('Que uno funcione en tu problema es una afirmacion sobre tu problema, no sobre el metodo.')",
+        "Dónde está la frontera, medida:",
+        "r = run_paper_lab('algoritmos_geneticos', seed=7)['result']\n"
+        "print('sin trampa      :', r['experimento_1_sin_trampa']['mejor'], 'de 20')\n"
+        "print('azar mismo coste:', r['experimento_1_sin_trampa']['busqueda_aleatoria_mismo_presupuesto'])\n"
+        "print('trampa de 4  -> escapa:', r['escapa_con_trampa_de_4'])\n"
+        "print('trampa de 10 -> escapa:', r['escapa_con_trampa_de_10'])",
+        "Compara las dos curvas de la trampa y localiza en qué generación se decide el resultado.",
+        "Codifica un problema real de tu trabajo como cromosoma y función de aptitud. Ejecuta el "
+        "algoritmo y compáralo con una búsqueda aleatoria del mismo presupuesto. Si no la bate, "
+        "pregúntate qué estructura falta.",
+        "Guarda los dos experimentos con sus curvas y tu explicación de qué hace que una función sea "
+        "deceptiva.",
+        "La evolución explora recombinando. La otra familia de inspiración biológica no recombina nada: "
+        "comparte información mientras busca.",
+    ),
+    "P91_redes_bayesianas": _auto(
+        "redes_bayesianas",
+        "Con 30 variables binarias, la tabla de probabilidad conjunta tiene mil millones de entradas. "
+        "Nadie la puede estimar ni almacenar, y por eso la IA de los setenta abandonó la probabilidad. "
+        "Pearl la recupera con una observación: casi todas esas entradas son redundantes, porque casi "
+        "todo es condicionalmente independiente de casi todo.",
+        "```text\nGrafo dirigido acíclico + una tabla condicional por nodo\n\n"
+        "    P(x₁…xₙ) = Π P(xᵢ | padres(xᵢ))\n\n"
+        "Y dos patrones que el grafo codifica y la asociación no:\n"
+        "    causa común    : A ← C → B   son dependientes, e independientes DADO C\n"
+        "    efecto común   : A → E ← B   son independientes, y DEPENDIENTES dado E\n"
+        "                     (explicar y descartar)\n```",
+        "1. ¿Cuánto sube la probabilidad de lluvia al ver el césped mojado?\n"
+        "2. ¿Y si además sabemos que el aspersor estuvo encendido?\n"
+        "3. ¿Cuántos parámetros ahorra el grafo?",
+        "Ver el césped mojado sube la lluvia a **0,7079**. Saber además que el aspersor estuvo encendido "
+        "la **baja** a **0,3204**: una causa explica el efecto y descarta a la otra. Y la tabla conjunta "
+        "completa exige 15 parámetros frente a los 9 de la red — con 4 variables la diferencia es "
+        "pequeña; con 30 son mil millones frente a unas decenas.",
+        "«Explicar y descartar» es la firma del razonamiento causal y ningún modelo puramente asociativo "
+        "la produce: dos variables independientes se vuelven dependientes al observar su efecto común. "
+        "Esa asimetría entre grafo y correlación es lo que años después "
+        "[P95](../../papers/foundational/P95_causalidad/README.md) convierte en una escalera de tres "
+        "peldaños.",
+        "Anti-patrón: leer las flechas del grafo como si fueran correlaciones.",
+        "print('Aspersor y lluvia son INDEPENDIENTES a priori... si no sabes nada mas.')\n"
+        "print('Al observar el cesped mojado se vuelven dependientes: explicar y descartar.')\n"
+        "print('Condicionar sobre un efecto comun CREA dependencia. Eso no lo hace ninguna correlacion.')",
+        "Los dos patrones, medidos sobre la misma red:",
+        "r = run_paper_lab('redes_bayesianas', seed=7)['result']\n"
+        "print('P(lluvia | mojado)            =', r['P_lluvia_dado_mojado'])\n"
+        "print('P(lluvia | mojado, aspersor)  =', r['P_lluvia_dado_mojado_y_aspersor'])\n"
+        "print('independencia condicional:', r['independencia_condicional_se_cumple'])\n"
+        "print('parametros: conjunta', r['parametros_tabla_conjunta_completa'],\n"
+        "      'vs red', r['parametros_de_la_red'])",
+        "Comprueba en la salida que lluvia y aspersor son independientes dado «nublado», y explica por "
+        "qué eso es lo que ahorra parámetros.",
+        "Modela con una red bayesiana un diagnóstico de tu dominio: cuatro o cinco variables, con su "
+        "grafo y sus tablas. Después calcula una consulta con evidencia parcial y contrasta el resultado "
+        "con tu intuición.",
+        "Guarda las dos consultas —con y sin la información del aspersor— y tu explicación de explicar y "
+        "descartar.",
+        "El grafo hace tratable la inferencia. Volvemos a la búsqueda: dos familias que no recombinan "
+        "soluciones sino que comparten información mientras exploran.",
+    ),
+    "P92_pso": _auto(
+        "pso",
+        "Treinta partículas volando por el espacio de soluciones. Cada una recuerda el mejor sitio "
+        "donde ha estado, y todas conocen el mejor sitio que ha encontrado alguien. Su velocidad es una "
+        "mezcla de inercia y atracción hacia esos dos puntos. Eso es todo el algoritmo.",
+        "```text\nv ← w·v + c₁·r₁·(mejor_personal − x) + c₂·r₂·(mejor_global − x)\nx ← x + v\n\n"
+        "    w  inercia            c₁ memoria propia         c₂ memoria del grupo\n\n"
+        "Sin gradiente, sin cruce, sin selección. Solo posiciones y comparaciones.\n```",
+        "1. ¿Bate el enjambre a la búsqueda aleatoria con el mismo presupuesto?\n"
+        "2. ¿Qué pasa si se quita el término social?\n"
+        "3. ¿Y si se quita el cognitivo?",
+        "El enjambre completo llega a **0,0** —el óptimo global de Rastrigin— frente al **0,6546** de la "
+        "búsqueda aleatoria con las mismas 1 800 evaluaciones. Quitando el término social empeora a "
+        "**2,56**: sin compartir el hallazgo son treinta búsquedas locales independientes. Quitando el "
+        "cognitivo el resultado **no empeora**, y lo que cambia es la dispersión final: 0,0594 frente a "
+        "0,0081.",
+        "Ese último dato es el interesante y va contra la explicación de manual. En esta función el "
+        "término cognitivo no acelera nada; lo que hace es conservar diversidad. La diversidad no se "
+        "paga aquí porque Rastrigin tiene el óptimo en el centro, pero es el seguro contra quedarse "
+        "atrapado cuando no lo está.",
+        "Anti-patrón: presentar los parámetros w, c₁ y c₂ como si tuvieran valores canónicos.",
+        "print('Con w alto el enjambre no converge; con w bajo colapsa en la primera solucion decente.')\n"
+        "print('No hay teoria cerrada que los determine: se ajustan por experimento.')\n"
+        "print('Un articulo que reporta PSO sin declarar sus parametros no es reproducible.')",
+        "Lo que sí se puede afirmar, con las tres configuraciones medidas:",
+        "r = run_paper_lab('pso', seed=7)['result']\n"
+        "for nombre in ('enjambre_completo', 'solo_memoria_propia_c2_0', 'solo_memoria_del_grupo_c1_0'):\n"
+        "    e = r[nombre]\n"
+        "    print(f\"{nombre:<28} mejor={e['mejor_valor']:<10} dispersion={e['dispersion_final_del_enjambre']}\")\n"
+        "print('azar mismo presupuesto:', r['busqueda_aleatoria_mismo_presupuesto'])",
+        "Compara la dispersión final de las tres configuraciones y explica qué papel juega cada término.",
+        "Aplica PSO a una función objetivo tuya que no se pueda derivar —una simulación, por ejemplo—. "
+        "Barre el peso de inercia y documenta la frontera entre no converger y colapsar.",
+        "Guarda la comparación de las tres configuraciones con su dispersión y tu explicación de para qué "
+        "sirve cada memoria.",
+        "El enjambre comparte a través de una variable global. La siguiente familia comparte de otra "
+        "manera: dejando marcas en el propio entorno.",
+    ),
+    "P93_aco": _auto(
+        "aco",
+        "Las hormigas no se dicen nada. Dejan rastro al pasar, y el rastro se refuerza cuando la ruta "
+        "es buena y se evapora cuando nadie la usa. La solución no vive en ningún individuo: vive en el "
+        "entorno, y el entorno recuerda.",
+        "```text\nProbabilidad de ir de i a j:  ∝ τ(i,j)^α · η(i,j)^β\n\n"
+        "    τ  feromona acumulada (memoria compartida)\n"
+        "    η  heurística local (1 / distancia)\n\n"
+        "Tras cada ronda:  τ ← (1 − ρ)·τ  +  Σ aportes\n"
+        "                  evaporar         reforzar\n```",
+        "1. ¿Encuentra el óptimo la heurística golosa del vecino más cercano?\n"
+        "2. ¿Y el hormiguero?\n"
+        "3. ¿Qué le pasa al rastro con las iteraciones?",
+        "El óptimo mide **26,9634**. El vecino más cercano se queda en **29,5826** —un 9,7 % peor, "
+        "atrapado por una decisión temprana— y el hormiguero llega al óptimo. Y lo que crece no es la "
+        "cantidad de feromona sino su **concentración**: la mejor arista pasa de destacar 1,35× sobre "
+        "la media a 2,5×.",
+        "El mecanismo tiene dos mitades y las dos son necesarias. El refuerzo distingue lo bueno; la "
+        "evaporación borra lo que dejó de usarse. Sin evaporación el sistema se casa con la primera "
+        "ruta decente y deja de explorar — es el mismo fallo que la explotación pura en cualquier "
+        "problema de bandido.",
+        "Anti-patrón: usar un hormiguero para un problema que ya tiene un método específico.",
+        "print('Para el viajante existen Lin-Kernighan y Concorde, que resuelven instancias')\n"
+        "print('de decenas de miles de ciudades de forma optima o casi.')\n"
+        "print('El interes de ACO esta en problemas donde NO existe ese metodo especifico.')",
+        "Dónde sí aporta, y con qué evidencia:",
+        "r = run_paper_lab('aco', seed=7)['result']\n"
+        "print('optimo por fuerza bruta :', r['optimo_por_fuerza_bruta'])\n"
+        "print('vecino mas cercano      :', r['vecino_mas_cercano'])\n"
+        "print('mejor del hormiguero    :', r['mejor_del_hormiguero'])\n"
+        "for h in r['historia']:\n"
+        "    print('  ', h)",
+        "Sigue la columna de concentración del rastro y explica por qué crece aunque la feromona máxima "
+        "baje.",
+        "Modela un problema de rutas o de asignación de tu trabajo y aplica un hormiguero. Compara con "
+        "la heurística golosa que ya uses y documenta cuánta ventaja saca y a qué coste de cómputo.",
+        "Guarda la comparación entre óptimo, goloso y hormiguero, y tu explicación del papel de la "
+        "evaporación.",
+        "Ya hay formas de buscar sin gradiente. Volvemos a la probabilidad, y a una pregunta de "
+        "ingeniería: cómo escribir un modelo sin escribir también su algoritmo de inferencia.",
+    ),
+    "P94_programacion_probabilistica": _auto(
+        "programacion_probabilistica",
+        "Escribes lo que supones del mundo —una previa y una verosimilitud— y el motor devuelve la "
+        "posterior. No escribes el muestreador. Cambiar el modelo es cambiar dos líneas, no "
+        "reimplementar el algoritmo, y ese cambio de coste es lo que hace posible probar variantes.",
+        "```text\nModelo declarado:\n    theta ~ Beta(2, 2)\n    y[i]  ~ Bernoulli(theta)\n\n"
+        "El motor se encarga de:\n"
+        "    muestrear la posterior · diagnosticar convergencia · reportar incertidumbre\n\n"
+        "Separar QUÉ se supone de CÓMO se calcula.\n```",
+        "1. ¿Qué devuelve el motor: un número o una distribución?\n"
+        "2. ¿Coincide con el posterior analítico?\n"
+        "3. ¿Qué añade frente a la estimación puntual?",
+        "Devuelve la **posterior completa**: media 0,7936 e intervalo creíble del 90 % en [0,6844, "
+        "0,8835]. Coincide con el posterior analítico Beta(35, 9), de media 0,7955 — el motor no "
+        "inventa, resuelve lo que el modelo implica. Y la estimación puntual de máxima verosimilitud "
+        "(0,825) no dice **nada** sobre la incertidumbre.",
+        "Con 40 lanzamientos ese intervalo es ancho, y el ancho **es** el resultado: informa de cuánto "
+        "no sabemos. Reportar solo la media de una posterior desperdicia justamente lo que distingue a "
+        "este enfoque, y es lo que ocurre en la mayoría de los usos que se ven por ahí.",
+        "Anti-patrón: creerse una posterior sin mirar los diagnósticos de convergencia.",
+        "print('Una cadena que no ha convergido produce una posterior con aspecto perfecto.')\n"
+        "print('Antes de leer cualquier numero: R-hat, tamano efectivo de muestra y divergencias.')\n"
+        "print('Stan los reporta por defecto justamente porque nadie los miraria si no.')",
+        "Lo que el motor sí garantiza, comprobado contra la solución exacta:",
+        "r = run_paper_lab('programacion_probabilistica', seed=7)['result']\n"
+        "print('modelo declarado :', r['modelo_declarado'])\n"
+        "print('posterior muestreada:', r['posterior_por_muestreo'])\n"
+        "print('posterior analitico :', r['posterior_analitico_beta'])\n"
+        "print('coinciden:', r['coincide_muestreo_con_analitico'])",
+        "Cambia mentalmente la previa a Beta(20, 2) —una creencia fuerte en que la moneda está sesgada "
+        "hacia cara— y predice hacia dónde se moverá la posterior con los mismos 40 datos.",
+        "Escribe un modelo bayesiano de un problema tuyo en un lenguaje probabilístico real, con previas "
+        "justificadas. Reporta la posterior completa y los diagnósticos, no solo la media.",
+        "Guarda el modelo declarado, la posterior con su intervalo y tu comparación con la estimación "
+        "puntual.",
+        "Ya se puede declarar un modelo y obtener incertidumbre honesta. Queda la pregunta que ningún "
+        "modelo de asociación responde: qué pasa si intervengo.",
+    ),
+    "P95_causalidad": _auto(
+        "causalidad",
+        "Un tratamiento funciona en los pacientes leves. Funciona en los graves. Y en la tabla "
+        "completa, aparentemente, perjudica. No hay error de cálculo: los tres números son correctos. "
+        "Ningún análisis de los datos decide cuál hay que creer, y esa es la tesis.",
+        "```text\nEscalera de la causalidad:\n"
+        "  1. ASOCIACIÓN     P(Y | X)              ¿qué me dice ver X sobre Y?\n"
+        "  2. INTERVENCIÓN   P(Y | do(X))          ¿qué pasa si HAGO X?\n"
+        "  3. CONTRAFÁCTICO  P(Y_x | X', Y')       ¿qué habría pasado si...?\n\n"
+        "Subir de peldaño exige supuestos que NO están en los datos: el grafo causal.\n```",
+        "1. ¿Gana el tratamiento en cada subgrupo?\n"
+        "2. ¿Y en el agregado?\n"
+        "3. ¿Cuál de las dos lecturas es la correcta?",
+        "Gana en los leves (0,931 frente a 0,8667) y gana en los graves (0,73 frente a 0,6875). Y en el "
+        "agregado **pierde**: 0,78 frente a 0,8257. Es la paradoja de Simpson. Ajustando por la "
+        "gravedad —un confusor, porque influye en quién recibe tratamiento **y** en el resultado— el "
+        "efecto de intervenir es 0,8325 frente a 0,7789: el signo se invierte otra vez.",
+        "La respuesta a la tercera pregunta no está en los datos. Depende de si la gravedad es causa del "
+        "tratamiento —en cuyo caso hay que ajustar— o consecuencia suya —en cuyo caso ajustar es el "
+        "error—. Los números son idénticos en ambos casos. Hace falta declarar el grafo, y esa "
+        "declaración viene de fuera de la tabla.",
+        "Anti-patrón: resolver la paradoja mirando más datos o afinando el modelo.",
+        "print('Con mas datos la paradoja se vuelve mas nitida, no desaparece.')\n"
+        "print('Con un modelo mejor, tambien: ninguno de los dos puede saber que causa que.')\n"
+        "print('Ese supuesto se declara, se discute y se defiende. No se estima.')",
+        "El procedimiento correcto, con los tres peldaños separados:",
+        "r = run_paper_lab('causalidad', seed=7)['result']\n"
+        "for peldano, contenido in r['escalera_de_la_causalidad'].items():\n"
+        "    print(f\"{peldano}: {contenido['pregunta']}\")\n"
+        "    print(f\"   operacion: {contenido['operacion']}\")\n"
+        "print()\n"
+        "print('sin ajustar :', r['agregado_sin_ajustar'])\n"
+        "print('tras ajustar:', r['tras_ajustar_por_gravedad'])",
+        "Explica por qué el tercer peldaño —los contrafácticos— no se puede calcular con estos datos ni "
+        "con el grafo.",
+        "Busca en tu trabajo una decisión que se justifique con una correlación. Dibuja el grafo causal "
+        "que estás suponiendo sin decirlo, identifica los confusores y comprueba si el ajuste cambia la "
+        "conclusión.",
+        "Guarda la tabla por subgrupos, el agregado y el ajuste, con tu grafo causal explícito.",
+        "Aquí se cierra la ruta probabilística. Lo siguiente sale de la pantalla: sistemas que perciben "
+        "y actúan sobre el mundo físico, donde equivocarse tiene consecuencias que no se deshacen.",
+    ),
+})
+
+
+SPECS.update({
+    "P96_kalman": _auto(
+        "kalman",
+        "Tienes un modelo que dice dónde deberías estar y un sensor que dice dónde pareces estar. Los "
+        "dos mienten un poco. La respuesta no es promediarlos: es hacer más caso al que en este "
+        "momento sea menos incierto — y ese peso cambia solo, paso a paso.",
+        "```text\nPredecir:   x̂ ← x + u            P ← P + Q\n"
+        "Corregir:   K ← P / (P + R)        ← la GANANCIA sale de las dos varianzas\n"
+        "            x ← x̂ + K·(z − x̂)      P ← (1 − K)·P\n\n"
+        "    Q = incertidumbre del modelo      R = incertidumbre del sensor\n```",
+        "1. ¿Cuál será el error del sensor solo? ¿Y del modelo solo?\n"
+        "2. ¿Y el del filtro, que no usa ninguna información adicional?\n"
+        "3. ¿Qué le pasa a la ganancia con el tiempo?",
+        "El sensor solo da 1,8895 de error y el modelo sin corregir, 0,7943. El filtro —**las mismas dos "
+        "fuentes**— baja a 0,4559. Y la ganancia arranca en 0,208 y baja a 0,106: al principio la "
+        "estimación es mala y se hace caso al sensor; después el modelo ya sabe dónde está.",
+        "Lo importante es que nadie ajusta esa ponderación. Sale del cociente entre las varianzas, y por "
+        "eso con un sensor diez veces peor la ganancia cae sola a 0,034. Es un mecanismo de "
+        "**desconfianza automática**, y es la razón de que el mismo filtro sirva para un cohete y para "
+        "un GPS de móvil.",
+        "Anti-patrón: usar una media móvil donde hace falta un filtro.",
+        "print('Una media movil trata todas las medidas por igual e ignora que hay un modelo.')\n"
+        "print('Ademas introduce retraso: la estimacion va siempre por detras de la realidad.')\n"
+        "print('En la miniatura da 2.2179 de error frente a 0.4559 del filtro.')",
+        "La diferencia, con las cuatro estrategias sobre los mismos datos:",
+        "r = run_paper_lab('kalman', seed=7)['result']\n"
+        "for k in ('error_solo_sensor', 'error_solo_modelo', 'error_media_movil_5', 'error_filtro_de_kalman'):\n"
+        "    print(f'{k:<28} {r[k]}')\n"
+        "print()\n"
+        "print('ganancia inicial / final :', r['ganancia_inicial'], '/', r['ganancia_final'])\n"
+        "print('con sensor 10x peor      :', r['ganancia_con_sensor_10x_peor'])",
+        "Sigue la ganancia paso a paso y explica por qué baja aunque el sensor no cambie.",
+        "Implementa un filtro de Kalman para una señal real de tu trabajo —temperatura, latencia, "
+        "posición— estimando Q y R de los datos. Compara con una media móvil y documenta el retraso de "
+        "cada una.",
+        "Guarda la comparación de los cuatro estimadores y tu explicación de de dónde sale la ganancia.",
+        "Ya se sabe dónde está el robot. La pregunta siguiente es qué arquitectura lo hace actuar: "
+        "¿modelo del mundo y plan, o reflejos?",
+    ),
+    "P97_subsuncion": _auto(
+        "subsuncion",
+        "La arquitectura clásica construye un modelo del mundo, planifica sobre él y ejecuta el plan. "
+        "Brooks propone lo contrario: capas de reflejos conectadas directamente de sensor a actuador, "
+        "sin modelo y sin plan. Y construye robots que funcionan mejor.",
+        "```text\nPercibir → Modelar → Planificar → Ejecutar      ← clásico: una tubería\n\n"
+        "capa 2:  explorar\n"
+        "capa 1:  avanzar          ← cada capa conecta percepción con acción\n"
+        "capa 0:  evitar choques   ← y puede SUBSUMIR a las de arriba\n\n"
+        "Sin representación central. Sin plan. Sin estado compartido.\n```",
+        "1. ¿Llegan los dos al final con el mapa correcto?\n"
+        "2. ¿Cuánto estado interno guarda cada uno?\n"
+        "3. ¿Qué pasa si aparece un obstáculo que no estaba en el mapa?",
+        "Con el mapa correcto los dos llegan sin chocar. La diferencia está en el coste: la subsunción "
+        "guarda **cero** elementos de estado interno y el planificador necesita un mapa de tres "
+        "obstáculos. Y al aparecer un obstáculo no previsto, el planificador choca **1 vez** y el "
+        "reactivo, **0**.",
+        "«El mundo es su propio mejor modelo». La frase suena a eslogan y es un argumento de ingeniería: "
+        "mantener una representación actualizada cuesta, y equivocarse en ella cuesta más que no "
+        "tenerla. Ese razonamiento reaparece cada vez que un agente actúa sobre un entorno que cambia "
+        "mientras piensa.",
+        "Anti-patrón: leer el artículo como si dijera que planificar es un error.",
+        "print('Brooks no dice que planificar sea malo: dice que la tuberia clasica es fragil')\n"
+        "print('cuando el mundo cambia entre el modelado y la ejecucion.')\n"
+        "print('La propia comunidad acabo en arquitecturas HIBRIDAS: capa reactiva + capa deliberativa.')",
+        "La comparación honesta, con el planificador replanificando:",
+        "r = run_paper_lab('subsuncion', seed=7)['result']\n"
+        "print('mundo conocido -> subsuncion:', r['subsuncion_mundo_conocido']['colisiones'],\n"
+        "      '| planificador:', r['planificador_mundo_conocido']['colisiones'])\n"
+        "print('mundo cambiado -> subsuncion:', r['subsuncion_mundo_cambiado']['colisiones'],\n"
+        "      '| planificador:', r['planificador_mundo_cambiado']['colisiones'])\n"
+        "print('Si el planificador REPLANIFICA al detectar la discrepancia, empata.')",
+        "Sigue la traza de la subsunción y localiza dónde la capa 0 subsume a la capa 1.",
+        "Diseña la descomposición por capas de un agente tuyo: qué comportamiento va en cada capa y cuál "
+        "puede interrumpir a cuál. Después compáralo con la descomposición funcional que tenía.",
+        "Guarda la comparación en los dos mundos y tu explicación de qué cuesta mantener un modelo.",
+        "El robot ya reacciona. Para ir a un sitio concreto en un espacio con muchos grados de libertad "
+        "hace falta algo más que reflejos.",
+    ),
+    "P98_rrt": _auto(
+        "rrt",
+        "Un brazo de siete articulaciones tiene un espacio de configuración de siete dimensiones. "
+        "Discretizarlo es imposible: con diez pasos por eje son diez millones de celdas. RRT no lo "
+        "discretiza — lanza muestras al azar y crece un árbol hacia ellas.",
+        "```text\nrepetir:\n"
+        "    q_rand ← muestra aleatoria del espacio (a veces, la meta)\n"
+        "    q_near ← nodo del árbol más cercano a q_rand\n"
+        "    q_new  ← avanzar un paso desde q_near hacia q_rand\n"
+        "    si el segmento está libre: añadir q_new al árbol\n\n"
+        "El árbol se sesga SOLO hacia las regiones grandes no exploradas (Voronoi).\n```",
+        "1. ¿Cuántos nodos hacen falta frente a las celdas de una rejilla equivalente?\n"
+        "2. ¿Es óptimo el camino que devuelve?\n"
+        "3. ¿Qué aporta sesgar el muestreo hacia la meta?",
+        "El árbol encuentra un camino con **297 nodos** sobre un espacio continuo; una rejilla de 2×2 "
+        "unidades tendría 2 500 celdas. El camino mide 264 frente a los 127,3 de la línea recta: un "
+        "**107 % de exceso**. RRT es probabilísticamente completo, **no óptimo**. Y el sesgo importa: "
+        "sin él, 394 nodos; con un 20 %, 191.",
+        "Ese exceso del 107 % no es un defecto de implementación: es lo que hace RRT. Encuentra *un* "
+        "camino rápido, con aspecto de zigzag, y en la práctica se suaviza después. RRT* (2011) añade "
+        "optimalidad asintótica a costa de más cómputo, y esa es exactamente la misma disyuntiva que "
+        "planteaba [A*](../../papers/foundational/P67_a_estrella/README.md) entre voraz y óptimo.",
+        "Anti-patrón: usar el camino de RRT tal cual sale.",
+        "print('El camino de RRT tiene zigzags y nodos inutiles: no esta pensado para ejecutarse asi.')\n"
+        "print('En la practica se poda (quitar nodos intermedios visibles) y se suaviza.')\n"
+        "print('Saltarse ese paso produce trayectorias que el robot no puede seguir bien.')",
+        "Lo que RRT garantiza y lo que no:",
+        "r = run_paper_lab('rrt', seed=7)['result']\n"
+        "print('nodos expandidos      :', r['con_sesgo_5_por_ciento']['nodos_expandidos'])\n"
+        "print('celdas de una rejilla :', r['celdas_de_una_rejilla_equivalente'])\n"
+        "print('longitud del camino   :', r['con_sesgo_5_por_ciento']['longitud'],\n"
+        "      'vs recta', r['distancia_en_linea_recta'])\n"
+        "print('es optimo             :', r['es_optimo'])",
+        "Compara los nodos necesarios con sesgo 0 %, 5 % y 20 %, y explica por qué demasiado sesgo "
+        "también sería malo.",
+        "Implementa RRT sobre un espacio con un pasillo estrecho entre dos salas. Mide cuántos nodos "
+        "hacen falta y compáralo con un espacio abierto: ahí se ve el punto débil del muestreo uniforme.",
+        "Guarda la comparación de nodos frente a rejilla y tu explicación de completitud probabilística "
+        "frente a optimalidad.",
+        "Ya se puede planificar un camino. Pero todo esto supone saber dónde está el robot, y esa "
+        "suposición es justamente el problema.",
+    ),
+    "P99_slam": _auto(
+        "slam",
+        "Para saber dónde estás necesitas un mapa. Para hacer un mapa necesitas saber dónde estás. No "
+        "es un juego de palabras: es la estructura del problema, y la única salida es estimar las dos "
+        "cosas a la vez aceptando que sus errores están enredados.",
+        "```text\nOdometría sola:     la varianza de la pose CRECE sin techo\nCon balizas:        cada reencuentro reduce la varianza\n\n"
+        "La baliza se sitúa usando la pose  →  su error hereda el de la pose\n"
+        "La pose se corrige usando la baliza →  su error hereda el de la baliza\n\n"
+        "⟹ hay que estimar el estado CONJUNTO, con su covarianza cruzada\n```",
+        "1. ¿Hasta dónde crece el error con odometría sola?\n"
+        "2. ¿Y estimando pose y mapa a la vez?\n"
+        "3. ¿Qué aporta reencontrar una baliza vista al principio?",
+        "Solo con odometría el error llega a **1,227** y su varianza a **10,8**: crece sin techo porque "
+        "nada la corrige. Estimando pose y mapa a la vez baja a **1,0311** con varianza 5,7 — y las "
+        "balizas no se conocían de antemano. Al cerrar el bucle, el error final cae a **0,5043**.",
+        "El cierre de bucle es el evento más valioso de un recorrido y por eso los sistemas reales "
+        "invierten tanto en detectarlo: reconocer un sitio ya visitado corrige de golpe toda la deriva "
+        "acumulada desde entonces. Su contrapartida es que equivocarse al reconocerlo —creer que estás "
+        "en un sitio donde no estás— destruye el mapa entero.",
+        "Anti-patrón: tratar la asociación de datos como un detalle de implementación.",
+        "print('El problema DIFICIL de SLAM no es el filtro: es decidir si esta baliza')\n"
+        "print('es la misma que vi hace diez minutos. Se llama asociacion de datos.')\n"
+        "print('Un falso positivo ahi no degrada el mapa: lo rompe, y sin aviso.')",
+        "Lo que la miniatura sí demuestra:",
+        "r = run_paper_lab('slam', seed=7)['result']\n"
+        "print('solo odometria    :', r['solo_odometria']['error_pose_final'],\n"
+        "      '| varianza', r['solo_odometria']['varianza_pose_final'])\n"
+        "print('SLAM sin cierre   :', r['slam_sin_cierre_de_bucle']['error_pose_final'])\n"
+        "print('SLAM con cierre   :', r['slam_con_cierre_de_bucle']['error_pose_final'])\n"
+        "print('mapa estimado     :', r['slam_con_cierre_de_bucle']['mapa'])",
+        "Sigue la curva de varianza de la pose y localiza en qué pasos baja: coinciden con los "
+        "reencuentros de balizas.",
+        "Implementa SLAM en dos dimensiones con balizas indistinguibles entre sí, y comprueba qué pasa "
+        "cuando el sistema asocia mal dos de ellas. Documenta el efecto sobre el mapa completo.",
+        "Guarda la comparación de los tres escenarios y tu explicación de por qué los errores de pose y "
+        "mapa están correlacionados.",
+        "El robot ya sabe dónde está y sabe llegar. Falta lo que hace mientras se mueve: el control, y "
+        "si se escribe o se aprende.",
+    ),
+    "P100_seguridad_fisica": _auto(
+        "seguridad_fisica",
+        "«Robot colaborativo» suena a categoría de producto. No lo es: la energía que un brazo puede "
+        "transferir en un impacto depende de su masa y de su velocidad, y la velocidad entra al "
+        "cuadrado. El mismo robot es seguro o peligroso según a qué velocidad se le haga trabajar.",
+        "```text\nE = ½·m·v²          fuerza ≈ E / distancia de frenado\n\n"
+        "    la masa entra LINEAL\n"
+        "    la velocidad entra al CUADRADO\n\n"
+        "⟹ frenar rinde mucho más que aligerar, y suele ser más barato\n```",
+        "1. ¿Cuánta energía lleva un brazo de 120 kg a 1,5 m/s?\n"
+        "2. ¿Qué reduce más la energía: dividir la masa por 10 o la velocidad por 2?\n"
+        "3. ¿Cuántas configuraciones superan el umbral de la zona evaluada?",
+        "El brazo industrial lleva **135 J**; el mismo brazo a 0,25 m/s lleva **3,75 J** — un 2,8 % de "
+        "la energía. Dividir la masa por 10 deja 13,5 J; dividir la velocidad por 2 deja 33,75 J. Y con "
+        "los umbrales ilustrativos, **2 de 4** configuraciones los superan.",
+        "La consecuencia práctica es que la seguridad no se compra con el robot: se diseña en la célula. "
+        "Límites de velocidad por zona, detección de contacto, geometría sin aristas y una evaluación de "
+        "riesgos de la instalación concreta. La etiqueta del catálogo no evalúa tu tarea.",
+        "Anti-patrón: usar los umbrales de esta miniatura para decidir algo real.",
+        "print('Los umbrales de aqui son ILUSTRATIVOS y el modelo de fuerza es grosero.')\n"
+        "print('Los valores normativos estan en ISO/TS 15066, dependen de la zona del cuerpo,')\n"
+        "print('del tipo de contacto (transitorio o con aprisionamiento) y de la geometria.')\n"
+        "print('Cualquier evaluacion real parte de la norma y de un analisis de riesgos.')",
+        "Lo que sí es transferible del artículo:",
+        "r = run_paper_lab('seguridad_fisica', seed=7)['result']\n"
+        "for c in r['configuraciones']:\n"
+        "    print(f\"{c['escenario']:<36} {c['masa_kg']:>6} kg  {c['velocidad_ms']} m/s  \"\n"
+        "          f\"{c['energia_julios']:>7} J\")\n"
+        "print()\n"
+        "print('masa /10  ->', r['reducir_masa_10x'], 'J')\n"
+        "print('vel. /2   ->', r['reducir_velocidad_a_la_mitad'], 'J')",
+        "Calcula a qué velocidad tendría que ir el brazo de 120 kg para llevar la misma energía que el "
+        "cobot de 12 kg a 1,5 m/s.",
+        "Toma una célula robotizada real —o descrita en un catálogo— y calcula la energía de impacto en "
+        "cada fase de su ciclo. Identifica en qué fase habría que limitar la velocidad y por qué.",
+        "Guarda la tabla de energías y tu explicación de por qué frenar rinde más que aligerar.",
+        "La seguridad del contacto ya tiene números. Volvemos a cómo se obtiene el comportamiento: "
+        "copiando a un experto, que parece lo más fácil y tiene una trampa.",
+    ),
+    "P101_dagger": _auto(
+        "dagger",
+        "Clonar el comportamiento de un experto parece aprendizaje supervisado corriente: pares de "
+        "estado y acción, y a entrenar. La trampa es que el modelo se entrena con los estados que "
+        "visita el experto y luego se ejecuta sobre los estados que visita él mismo — y en cuanto se "
+        "equivoca una vez, ya no son los mismos.",
+        "```text\nClonación:  entrena con D ~ distribución del EXPERTO\n"
+        "            ejecuta sobre  distribución de la POLÍTICA\n\n"
+        "    un error → estado nuevo → sin ejemplos → más errores → más desviación\n"
+        "    error total ~ O(T²)   con T el horizonte\n\n"
+        "DAgger:     ejecutar la política, PREGUNTAR AL EXPERTO en los estados visitados,\n"
+        "            reentrenar sobre el acumulado   →   error ~ O(T)\n```",
+        "1. ¿Cuántos episodios completa la clonación de comportamiento?\n"
+        "2. ¿Cuántos estados cubre su entrenamiento?\n"
+        "3. ¿Qué pasa al ampliar la cobertura con los estados que la política visita de verdad?",
+        "La clonación completa **264 de 300** episodios (88 %), y su cobertura son los **25 estados** del "
+        "carril central: los únicos que el experto pisa. DAgger amplía la cobertura a **119 estados** y "
+        "la tasa sube de 0,903 a **1,0** en cinco iteraciones.",
+        "El fallo no es que la política sea mala: es que fuera del carril central **no tiene ejemplos**, "
+        "y ahí se equivoca más, lo que la aleja más. La desviación se realimenta. Ese mismo patrón "
+        "aparece en cualquier sistema que se entrene con trayectorias de éxito y se despliegue en un "
+        "bucle cerrado — incluidos los agentes con modelos de lenguaje.",
+        "Anti-patrón: evaluar una política clonada solo sobre las trayectorias del experto.",
+        "print('Sobre los estados del experto, la clonacion acierta casi siempre: no hay novedad ahi.')\n"
+        "print('La evaluacion honesta es EJECUTAR la politica y medir el resultado del episodio.')\n"
+        "print('La diferencia entre esas dos cifras es exactamente el problema del articulo.')",
+        "La medición correcta, ejecutando la política:",
+        "r = run_paper_lab('dagger', seed=7)['result']\n"
+        "print('clonacion:', r['clonacion_de_comportamiento'])\n"
+        "for h in r['dagger_por_iteracion']:\n"
+        "    print(f\"  iter {h['iteracion']}  exito {h['exito']}  cobertura {h['cobertura']}\"\n"
+        "          f\"  nuevos {h['estados_nuevos_etiquetados']}\")",
+        "Localiza en qué iteración deja de haber estados nuevos que etiquetar, y explica qué significa "
+        "eso sobre la distribución de la política.",
+        "Entrena una política por clonación sobre un entorno de control simple, mide su tasa de éxito "
+        "ejecutándola, y aplica una iteración de DAgger. Documenta cuántas consultas al experto hicieron "
+        "falta.",
+        "Guarda la evolución de cobertura y tasa de éxito, con tu explicación del cambio de distribución.",
+        "Copiar a un experto exige tener uno. Cuando no lo hay, la política tiene que salir de la propia "
+        "experiencia — y ahí el problema es que un solo paso malo destruya lo aprendido.",
+    ),
+    "P102_ppo": _auto(
+        "ppo",
+        "En gradiente de políticas, un lote con una estimación exagerada puede empujar la política hasta "
+        "volverla determinista. A partir de ahí deja de explorar y no puede rectificar. PPO lo evita con "
+        "un truco de una línea: si la política nueva se aleja demasiado de la vieja, el objetivo deja de "
+        "premiar el cambio.",
+        "```text\nr = π_nueva(a|s) / π_vieja(a|s)          ← cuánto ha cambiado la política\n\n"
+        "L = mín( r·A ,  clip(r, 1−ε, 1+ε)·A )\n\n"
+        "Con A > 0 y r > 1+ε  →  el objetivo se queda plano: el gradiente deja de empujar\n"
+        "Sin restricciones. Sin segundo orden. Sin divergencia KL que calcular.\n```",
+        "1. ¿Cuánto vale el objetivo sin recorte a ratio 5,0? ¿Y con recorte?\n"
+        "2. ¿Cuánto puede moverse la probabilidad en un solo paso?\n"
+        "3. ¿Qué pasa cuando la acción buena cambia a mitad del entrenamiento?",
+        "A ratio 5,0 el objetivo sin recorte vale **6,0** y el de PPO, **1,44** — el mismo valor que a "
+        "ratio 1,2. El salto máximo de probabilidad en un paso es **0,4382** sin recorte y **0,1727** "
+        "con él. Y tras el giro del entorno, la política sin recorte acaba en 0,9412 y la recortada en "
+        "**0,6909**.",
+        "Acotar el paso no es prudencia: es lo que conserva la capacidad de rectificar. Una política "
+        "saturada tiene gradiente casi nulo —la derivada de la sigmoide se anula en los extremos— así "
+        "que salir de ahí cuesta muchísimos pasos. Es el mismo motivo por el que "
+        "[RLHF](../../papers/foundational/P12_instructgpt/README.md) penaliza alejarse del modelo base.",
+        "Anti-patrón: creer que el recorte garantiza mejora monótona.",
+        "print('TRPO tenia una garantia teorica de mejora monotona bajo sus supuestos.')\n"
+        "print('PPO la cambia por simplicidad: NO hereda esa garantia.')\n"
+        "print('Se justifica por rendimiento empirico, y eso hay que decirlo al citarlo.')",
+        "Lo que el recorte sí hace, medido:",
+        "r = run_paper_lab('ppo', seed=7)['result']\n"
+        "print('salto maximo de p:', r['salto_maximo_de_probabilidad_en_un_paso'])\n"
+        "print('pasos saturados  :', r['pasos_saturados'])\n"
+        "print('p al final       :', r['p_al_final'])\n"
+        "for fila in r['comparacion_del_objetivo']:\n"
+        "    print(f\"  ratio {fila['ratio']:<5} sin recorte {fila['sin_recorte']:<7} con recorte {fila['con_recorte']}\")",
+        "Explica por qué el objetivo recortado usa el MÍNIMO entre las dos expresiones, y qué pasaría con "
+        "ventaja negativa si usara el máximo.",
+        "Entrena PPO sobre un entorno de control clásico barriendo epsilon entre 0,05 y 0,5. Documenta la "
+        "frontera entre aprender demasiado despacio y colapsar.",
+        "Guarda la comparación del objetivo con y sin recorte y tu explicación de por qué una política "
+        "saturada no se recupera.",
+        "El control ya se puede aprender. Pero entrenar sobre hardware real es lento, caro y peligroso: "
+        "hay que entrenar en simulación, y eso abre otro hueco.",
+    ),
+    "P103_domain_randomization": _auto(
+        "domain_randomization",
+        "El hueco entre simulación y realidad se atacaba mejorando el simulador: más física, mejores "
+        "texturas, más fidelidad. Es una carrera sin final, porque siempre queda algo que nadie modeló. "
+        "Tobin y sus coautores le dan la vuelta: si el simulador varía lo suficiente, la realidad es una "
+        "variación más.",
+        "```text\nEnfoque clásico:   simulador ≈ realidad          ← perseguir fidelidad\nAleatorización:    realidad ∈ rango(simulador)   ← perseguir COBERTURA\n\n"
+        "En cada episodio se sortean texturas, luces, posiciones de cámara, ruido…\n"
+        "El modelo no puede depender de ninguna de esas cosas para resolver la tarea.\n```",
+        "1. ¿Qué error tiene el modelo del simulador fijo en su propio simulador? ¿Y en la realidad?\n"
+        "2. ¿Y el modelo entrenado con parámetros aleatorizados?\n"
+        "3. ¿Cuál es el precio?",
+        "El modelo del simulador fijo tiene un error de **0,0501** en su propio simulador y de **0,8275** "
+        "en la realidad. El aleatorizado tiene un error **mayor** en su simulador (0,6828) y **menor** en "
+        "la realidad (0,5292).",
+        "Ese es el compromiso, y conviene decirlo entero: se cambia rendimiento en el caso nominal por "
+        "robustez ante el caso desconocido. Un modelo aleatorizado es peor en cualquier configuración "
+        "concreta. Solo compensa si de verdad no se sabe en qué configuración se va a desplegar — que es "
+        "la situación normal.",
+        "Anti-patrón: aleatorizar y dar por resuelto el hueco.",
+        "print('La aleatorizacion solo ayuda si la realidad cae DENTRO del rango que se sorteo.')\n"
+        "print('Si hay un fenomeno que nadie penso en aleatorizar, no aporta nada.')\n"
+        "print('Y aleatorizar de mas hace la tarea imposible de aprender: hay un equilibrio y no hay receta.')",
+        "El compromiso, con los cuatro números delante:",
+        "r = run_paper_lab('domain_randomization', seed=7)['result']\n"
+        "print('sim fijo   -> en su sim:', r['error_sim_fijo_en_su_propio_simulador'],\n"
+        "      '| en la realidad:', r['error_sim_fijo_en_la_realidad'])\n"
+        "print('aleatorio  -> en su sim:', r['error_aleatorizado_en_su_simulador'],\n"
+        "      '| en la realidad:', r['error_aleatorizado_en_la_realidad'])",
+        "Explica por qué el modelo aleatorizado es peor en su propio simulador, y por qué eso es esperable "
+        "y no un defecto.",
+        "Entrena un modelo sobre datos sintéticos con un solo conjunto de condiciones y otro con "
+        "condiciones aleatorizadas. Evalúa ambos sobre datos reales y documenta el compromiso.",
+        "Guarda la tabla de los cuatro errores y tu enunciado del compromiso entre caso nominal y "
+        "robustez.",
+        "El robot ya puede aprender en simulación y funcionar fuera. Queda el otro cuerpo que un agente "
+        "puede tener: la pantalla de otra persona.",
+    ),
+    "P104_webarena": _auto(
+        "webarena",
+        "Un agente de navegador dice que ha completado la tarea. ¿Lo ha hecho? Preguntárselo no es una "
+        "evaluación, y mirar una captura tampoco. WebArena responde comprobando el **estado del sitio**: "
+        "si el pedido se hizo, existe el pedido.",
+        "```text\nEvaluación por autoinforme    →  mide la elocuencia del agente\nEvaluación por captura        →  mide si la pantalla parece correcta\nEvaluación FUNCIONAL          →  un script inspecciona el estado final del sitio\n\n"
+        "Sitios reales autoalojados · estado reiniciable · un verificador por tarea\n```",
+        "1. ¿En cuántas tareas dice el agente haber terminado?\n"
+        "2. ¿En cuántas lo confirma la verificación del estado final?\n"
+        "3. ¿Qué tipo de tarea falla?",
+        "El agente declara haber terminado en **8 de 8** tareas, con una confianza media de 0,793. La "
+        "verificación dice que acertó en **4**. Por tipo: informacion 0,667 · navegacion 1,0 · "
+        "**transaccion 0,0**. Y el exceso medio de pasos es 5,12.",
+        "Las tareas que fallan son justamente las que **cambian el estado** del sitio. Consultar es "
+        "fácil; comprar, publicar o modificar exige mantener el objetivo a través de varios pasos "
+        "irreversibles. Y es exactamente la clase de tarea que interesa automatizar, así que la brecha "
+        "no es un detalle del banco de pruebas.",
+        "Anti-patrón: dejar que un agente decida si ha terminado.",
+        "print('Un agente que dice «listo» con confianza 0,95 y no hizo nada puntua igual')\n"
+        "print('que uno que lo hizo, si la evaluacion es su propio informe.')\n"
+        "print('Verificar el estado final cuesta escribir un comprobador por tarea. Ese es el precio.')",
+        "La diferencia entre declarado y verificado:",
+        "r = run_paper_lab('webarena', seed=7)['result']\n"
+        "print('declara haber terminado:', r['el_agente_declara_haber_terminado'])\n"
+        "print('verificado por estado  :', r['exito_verificado_por_estado_final'])\n"
+        "print('por tipo               :', r['por_tipo_de_tarea'])\n"
+        "print('exceso medio de pasos  :', r['exceso_medio_de_pasos'])",
+        "Explica por qué el exceso de pasos importa aunque la tarea acabe bien, y qué protege un límite "
+        "de pasos.",
+        "Define tres tareas de un sitio que uses, escribe su verificador programático y ejecútalas con un "
+        "agente. Documenta la diferencia entre lo que el agente dice y lo que el verificador confirma.",
+        "Guarda la comparación entre autoinforme y verificación, con la tasa por tipo de tarea.",
+        "Para operar un navegador hay que poder señalar los elementos. Y muchos elementos no tienen "
+        "texto que leer.",
+    ),
+    "P105_seeclick": _auto(
+        "seeclick",
+        "Un agente puede describir perfectamente una captura de pantalla y ser incapaz de usarla. Para "
+        "actuar hace falta convertir «abre los ajustes» en un par de coordenadas, y eso es una "
+        "capacidad distinta —el anclaje— que se puede medir por separado.",
+        "```text\nÁrbol de accesibilidad / HTML  →  solo ve lo que tiene texto\nAnclaje visual                 →  localiza cualquier elemento por su apariencia\n\n"
+        "    instrucción en lenguaje natural  ⟶  (x, y) donde pulsar\n\n"
+        "Los iconos sin etiqueta son invisibles para el primero.\n```",
+        "1. ¿Cuántos elementos de la interfaz no tienen etiqueta de texto?\n"
+        "2. ¿Cuántas instrucciones acierta un agente que solo lee texto?\n"
+        "3. ¿Y uno con anclaje visual?",
+        "**3 de 6** elementos son solo icono. El agente que solo lee el árbol de accesibilidad acierta "
+        "**2 de 5** instrucciones; el que ancla visualmente, **5 de 5**. La diferencia no está en el "
+        "razonamiento: está en si puede **señalar** el elemento.",
+        "Separar el anclaje del resto es lo más útil del artículo desde el punto de vista de ingeniería. "
+        "Permite saber si un agente falla porque no entiende la tarea o porque no encuentra el botón, y "
+        "esas dos cosas se arreglan de formas completamente distintas.",
+        "Anti-patrón: confundir anclaje con planificación.",
+        "print('Saber DONDE pulsar no dice QUE pulsar.')\n"
+        "print('Un agente con anclaje perfecto y mal plan se equivoca con puntería impecable.')\n"
+        "print('Son dos capacidades y conviene medirlas por separado para saber que arreglar.')",
+        "Las dos capacidades, medidas aparte:",
+        "r = run_paper_lab('seeclick', seed=7)['result']\n"
+        "print('elementos sin texto  :', r['elementos_solo_con_icono'])\n"
+        "print('solo texto           :', r['agente_solo_texto']['aciertos'])\n"
+        "print('con anclaje visual   :', r['agente_con_anclaje_visual']['aciertos'])\n"
+        "for d in r['agente_solo_texto']['detalle']:\n"
+        "    print('   ', d)",
+        "Identifica qué instrucciones falla el agente de solo texto y comprueba que todas apuntan a "
+        "elementos sin etiqueta.",
+        "Haz una captura de una aplicación que uses, lista sus elementos accionables y marca cuáles "
+        "tienen etiqueta de texto accesible. Calcula qué proporción quedaría fuera del alcance de un "
+        "agente sin anclaje visual.",
+        "Guarda el conteo de elementos sin texto y la comparación de aciertos, con tu distinción entre "
+        "anclaje y planificación.",
+        "Navegador y anclaje resueltos por separado. El escritorio completo —varias aplicaciones a la "
+        "vez— es donde se ve lo que falta.",
+    ),
+    "P106_osworld": _auto(
+        "osworld",
+        "El trabajo de oficina real cruza aplicaciones: descargar algo, abrirlo en una hoja de cálculo, "
+        "ejecutar un script y guardar el resultado donde toca. OSWorld pone al agente en un escritorio "
+        "completo y comprueba el resultado inspeccionando el sistema, no preguntando.",
+        "```text\nMáquina virtual con estado reiniciable\n"
+        "+ tareas reales recogidas de usuarios\n"
+        "+ UN VERIFICADOR POR TAREA que inspecciona el estado final:\n"
+        "      leer la celda B7 · comprobar que el fichero existe · código de salida\n\n"
+        "Nadie le pregunta al agente si lo consiguió.\n```",
+        "1. ¿Qué tasa consiguen las personas? ¿Y el agente?\n"
+        "2. ¿Dónde está la diferencia: en tareas de una aplicación o de varias?\n"
+        "3. ¿Qué hace comparables los resultados entre trabajos?",
+        "Las personas resuelven **8 de 8** y el agente **3 de 8**. Con una sola aplicación acierta 3 de "
+        "6; con varias, **0 de 2**. Lo que rompe no es la dificultad de cada paso: es mantener el "
+        "objetivo mientras se cambia de contexto.",
+        "El verificador por tarea es lo que hace honesta la evaluación y también lo que la limita: "
+        "escribir uno por tarea es caro, así que el banco de pruebas tiene cientos de tareas y no "
+        "millones. Es el mismo compromiso que en "
+        "[SWE-bench](../../papers/foundational/P51_swebench/README.md): la verificación ejecutable cuesta, "
+        "y es lo único que impide que un agente elocuente puntúe alto.",
+        "Anti-patrón: citar una tasa de éxito de agentes sin decir cómo se verificó.",
+        "print('«El agente resuelve el 40% de las tareas» no significa nada sin el protocolo.')\n"
+        "print('Verificado por estado final, por juicio de otro modelo o por su propio informe')\n"
+        "print('son tres numeros distintos, y el orden entre ellos es siempre el mismo.')",
+        "El protocolo que hace comparable el número:",
+        "r = run_paper_lab('osworld', seed=7)['result']\n"
+        "print('humanos:', r['tasa_humana'], '| agente:', r['tasa_del_agente'])\n"
+        "print('una app  :', r['una_sola_aplicacion'])\n"
+        "print('varias   :', r['varias_aplicaciones'])\n"
+        "print()\n"
+        "for v in r['verificadores'][:4]:\n"
+        "    print('  verificador:', v)",
+        "Explica por qué las tareas multiaplicación fallan más, y qué capacidad concreta les falta a los "
+        "agentes ahí.",
+        "Define dos tareas de escritorio de tu trabajo y escribe su verificador programático: qué "
+        "inspeccionar al final para saber si se hizo. Comprueba cuánto cuesta escribirlo.",
+        "Guarda la comparación humano-agente por tipo de tarea y tu verificador escrito para una tarea "
+        "propia.",
+        "Aquí termina la ruta encarnada. Lo que falta no es capacidad del modelo: es la ingeniería que "
+        "sostiene un sistema en producción — versionar, observar, detectar deriva y poder volver atrás.",
+    ),
+})
+
+
+SPECS.update({
+    "P107_dapper": _auto(
+        "trazas_distribuidas",
+        "Una petición tarda dos segundos. ¿Dónde se fueron? Cada servicio tiene sus propias métricas y "
+        "todas dicen que están bien. Sin un identificador que viaje **con la petición**, nadie puede "
+        "reconstruir su historia.",
+        "```text\nSpan: una operación con inicio, fin, servicio y padre\nTraza: el árbol de spans de UNA petición, unido por un identificador que viaja con ella\n\n"
+        "    puerta → autenticación → catálogo → recomendador → base_de_datos\n\n"
+        "Muestreo: guardar 1 de cada N trazas. Barato, y suficiente para los agregados.\n```",
+        "1. ¿Qué se puede diagnosticar viendo solo el tiempo total?\n"
+        "2. ¿Y con la traza desglosada por servicio?\n"
+        "3. ¿Se pierde precisión al muestrear el 1 % de las trazas?",
+        "Con el total solo se sabe que el p50 es 230,71 ms y el p99 1 147 ms — «el sistema a veces va "
+        "lento», que no es un diagnóstico. Con traza, el **recomendador** se lleva el 75,4 % del tiempo "
+        "y tiene un p99 de 1 078 ms frente a un p50 de 158,88. Y muestreando el 1 % de las trazas, la "
+        "estimación del p50 se desvía **5,12 ms** del valor real.",
+        "El muestreo es la decisión que hace viable el sistema y también su punto ciego: estima bien los "
+        "agregados y **pierde los casos raros**. Si el fallo ocurre en una de cada mil peticiones, "
+        "muestrear al 1 % probablemente no lo captura. Por eso hoy se usa muestreo dirigido por cola: "
+        "decidir si guardar la traza **después** de ver si fue lenta o falló.",
+        "Anti-patrón: montar métricas por servicio y llamarlo observabilidad.",
+        "print('Cada servicio con sus metricas responde: «yo estoy bien».')\n"
+        "print('Y la peticion del usuario tarda dos segundos.')\n"
+        "print('Sin identificador de traza propagado, no hay forma de unir la historia de UNA peticion.')",
+        "Lo que la traza permite y las métricas no:",
+        "r = run_paper_lab('trazas_distribuidas', seed=7)['result']\n"
+        "print('sin traza :', r['sin_traza'])\n"
+        "print()\n"
+        "for s in r['con_traza_por_servicio']:\n"
+        "    print(f\"  {s['servicio']:<18} p50={s['p50']:<8} p99={s['p99']:<9} cuota={s['cuota_del_total']} %\")",
+        "Compara el p50 y el p99 del recomendador y explica por qué la diferencia entre ambos es la señal "
+        "que importa.",
+        "Instrumenta con trazado distribuido una cadena de dos o tres servicios de tu trabajo y localiza "
+        "dónde se va el tiempo del p99. Después decide qué tasa de muestreo usarías y justifícala.",
+        "Guarda el desglose por servicio con su cuota del total y tu decisión de tasa de muestreo.",
+        "Ya se ve dónde se va el tiempo. La siguiente pregunta es qué hacer cuando una parte del sistema "
+        "deja de responder.",
+    ),
+    "P108_cap": _auto(
+        "resiliencia",
+        "El teorema CAP se cita como «elige dos de tres» y esa lectura ha producido decisiones de "
+        "arquitectura equivocadas durante una década. Brewer corrige su propia formulación doce años "
+        "después: la tolerancia a particiones no es opcional, y la elección solo existe **mientras dura "
+        "la partición**.",
+        "```text\nSin partición  →  no hay que elegir nada: consistencia Y disponibilidad\nCon partición  →  hay que elegir, y se elige POR OPERACIÓN\n\n"
+        "    CP: rechazar escrituras para no divergir\n"
+        "    AP: aceptarlas y reconciliar después\n\n"
+        "Diseñar explícitamente: detección · modo degradado · reconciliación\n```",
+        "1. ¿Qué pasa con las réplicas bajo la estrategia CP?\n"
+        "2. ¿Y bajo AP?\n"
+        "3. ¿Qué pasa si se reintenta una operación sin clave de idempotencia?",
+        "Con CP se rechazan **4 escrituras** durante la partición y las réplicas nunca divergen. Con AP "
+        "se sirven **4 escrituras** y las réplicas llegan a divergir en **2**. Y reintentar un cobro sin "
+        "clave de idempotencia cobra **3 veces** en lugar de una.",
+        "Ninguna de las dos estrategias es la correcta en abstracto: cobrar una tarjeta pide CP y mostrar "
+        "un contador de «me gusta» pide AP, **en el mismo sistema**. El matiz de 2012 es que la elección "
+        "no es una etiqueta de la arquitectura sino una decisión por operación, y que hay que diseñar "
+        "explícitamente qué se hace durante la partición y cómo se reconcilia después.",
+        "Anti-patrón: reintentar sin clave de idempotencia.",
+        "print('Un reintento tras un timeout no sabe si la operacion se ejecuto o no.')\n"
+        "print('Sin clave de idempotencia, reintentar tres veces cobra tres veces.')\n"
+        "print('La resiliencia no es reintentar: es que repetir NO cambie el resultado.')",
+        "El diseño que hace seguro el reintento:",
+        "r = run_paper_lab('resiliencia', seed=7)['result']\n"
+        "print('CP:', {k: v for k, v in r['estrategia_CP'].items() if k != 'historia'})\n"
+        "print('AP:', {k: v for k, v in r['estrategia_AP'].items() if k != 'historia'})\n"
+        "print('idempotencia:', r['idempotencia'])",
+        "Elige tres operaciones de un sistema que conozcas y decide, para cada una, si durante una "
+        "partición conviene CP o AP. Justifica cada decisión.",
+        "Revisa un servicio tuyo: ¿qué pasa si se parte la red entre él y su base de datos? Documenta el "
+        "modo degradado, el criterio de reconciliación y si sus operaciones son idempotentes.",
+        "Guarda la comparación entre CP y AP con la divergencia máxima, y tu tabla de decisión por "
+        "operación.",
+        "El sistema ya sobrevive a la partición. Queda el problema de rendimiento que aparece cuando una "
+        "petición depende de muchos servidores a la vez.",
+    ),
+    "P109_cola_larga": _auto(
+        "cola_larga",
+        "Cada uno de tus cien servidores tiene un p99 excelente. La petición del usuario necesita "
+        "respuesta de los cien. Y entonces la **mediana** de tu sistema es peor que la cola de "
+        "cualquiera de ellos, porque basta que uno vaya lento.",
+        "```text\nSi cada servidor se para con probabilidad p, la probabilidad de que\nALGUNO de n se pare es  1 − (1−p)ⁿ\n\n"
+        "    p = 1 %,  n = 100   →   63 %\n"
+        "    p = 1 %,  n = 1000  →   99,996 %\n\n"
+        "Con abanico grande, lo raro es lo normal.\n```",
+        "1. ¿Cuál es el p99 de un servidor solo?\n"
+        "2. ¿Cuál es el p50 de una petición que necesita 100 servidores?\n"
+        "3. ¿Cuánto ayuda pedir a una segunda réplica cuando la primera tarda?",
+        "Un servidor solo tiene un p99 de **70,4 ms**. Con 100 servidores en paralelo, el p50 de la "
+        "petición completa sube a **947 ms**: la mediana del conjunto es trece veces peor que la cola de "
+        "uno solo. Las peticiones de cobertura bajan esa mediana a **69,7 ms** —un factor de 13,6×— y el "
+        "p99 apenas se mueve, porque a veces fallan las dos réplicas.",
+        "Ese último detalle es el honesto: la cobertura **recorta** la cola, no la elimina. Y tiene un "
+        "coste de tráfico que hay que presupuestar. La conclusión operativa del artículo es que en "
+        "sistemas con abanico grande la latencia de cola no es un detalle de rendimiento: es la latencia "
+        "que ve el usuario, y hay que diseñarla.",
+        "Anti-patrón: optimizar la media cuando el problema es la cola.",
+        "print('Bajar el p50 de un servidor de 50 a 40 ms no cambia casi nada.')\n"
+        "print('Con 100 servidores, lo que ve el usuario lo determina el mas lento de los 100.')\n"
+        "print('Optimizar la media es trabajar sobre la parte que no manda.')",
+        "Dónde está el problema y dónde no:",
+        "r = run_paper_lab('cola_larga', seed=7)['result']\n"
+        "for f in r['escalado_por_abanico']:\n"
+        "    print(f\"  {f['servidores']:>5} servidores  p50={f['p50_ms']:<8} p99={f['p99_ms']:<8}\"\n"
+        "          f\"  P(alguno lento)={f['prob_alguno_lento']}\")\n"
+        "print()\n"
+        "print('con cobertura :', r['con_peticiones_de_cobertura_100_servidores'])",
+        "Calcula la probabilidad de que alguno de 1 000 servidores se pare si cada uno lo hace el 0,1 % "
+        "de las veces, y explica qué implica para el diseño.",
+        "Mide el p50 y el p99 de un servicio tuyo que haga llamadas en paralelo. Calcula cuántas hace y "
+        "estima la contribución de la cola de cada dependencia.",
+        "Guarda la tabla de escalado por abanico y tu cálculo de la probabilidad de cola para tu propio "
+        "sistema.",
+        "El sistema ya responde rápido y sobrevive a las particiones. Ahora el modelo: qué pasa cuando el "
+        "mundo cambia y él no.",
+    ),
+    "P110_deriva": _auto(
+        "deriva",
+        "El modelo no se ha tocado. Los datos de entrada tienen el mismo aspecto de siempre. Y la "
+        "exactitud se ha derrumbado. Lo que cambió no es el modelo ni las entradas: es la **relación** "
+        "entre entradas y etiquetas.",
+        "```text\nDeriva de datos     : cambia P(x)        ← se detecta mirando las entradas\nDeriva de concepto  : cambia P(y|x)      ← NO se detecta mirando las entradas\n\n"
+        "Detector tipo DDM: alarma cuando la tasa de error supera\n"
+        "                   su mínimo histórico + 3 desviaciones\n```",
+        "1. ¿Qué le pasa a la exactitud tras la deriva?\n"
+        "2. ¿Detecta el cambio vigilar la distribución de entrada?\n"
+        "3. ¿Con cuánto retraso avisa el detector?",
+        "La exactitud en ventana pasa de **1,0** a **0,4**. Y vigilar la distribución de entrada no "
+        "habría detectado nada: es deriva de **concepto**, las entradas siguen igual. El detector avisa "
+        "con un retraso de **1 muestra** en este caso limpio, y tras reentrenar la exactitud vuelve de "
+        "0,495 a 1,0.",
+        "Todo detector tiene retraso: es el precio de no dar falsas alarmas. Y detectar sirve de poco sin "
+        "un procedimiento de reentrenamiento detrás — con datos etiquetados, validación y promoción. "
+        "Esa cadena completa es lo que hace falta, y es la razón de que la monitorización sea una "
+        "categoría propia en la rúbrica de "
+        "[P112](../../papers/foundational/P112_ml_test_score/README.md).",
+        "Anti-patrón: vigilar solo la distribución de las entradas.",
+        "print('La deriva de datos se ve mirando las entradas. La de CONCEPTO no.')\n"
+        "print('En la miniatura las entradas no cambian: cambia que etiqueta les corresponde.')\n"
+        "print('Un panel de distribuciones de entrada habria seguido en verde todo el tiempo.')",
+        "Lo que sí detecta el cambio:",
+        "r = run_paper_lab('deriva', seed=7)['result']\n"
+        "for c in r['curva_de_exactitud']:\n"
+        "    print(f\"  instante {c['instante']:>4}  exactitud en ventana {c['exactitud_ventana']}\")\n"
+        "print()\n"
+        "print('deriva real en   :', r['instante_de_la_deriva'])\n"
+        "print('alarma en        :', r['alarma_del_detector_en'], '| retraso', r['retraso_de_deteccion'])\n"
+        "print('tras la alarma   :', r['tras_la_alarma'])",
+        "Explica por qué todo detector tiene retraso y qué se compra a cambio de aumentarlo.",
+        "Elige un modelo tuyo en producción y define qué señal vigilarías para detectar deriva de "
+        "concepto sin esperar a las etiquetas verdaderas. Documenta su retraso esperado.",
+        "Guarda la curva de exactitud con el instante de la deriva y de la alarma, y tu plan de "
+        "reentrenamiento.",
+        "El modelo ya se vigila. Ahora la pregunta incómoda: qué proporción del sistema es realmente el "
+        "modelo.",
+    ),
+    "P111_deuda_tecnica": _auto(
+        "deuda_tecnica",
+        "La figura más citada del artículo es una caja pequeña que pone «ML code» rodeada de cajas "
+        "enormes. El modelo es la parte diminuta. Todo lo demás —datos, características, servicio, "
+        "monitorización, configuración, pegamento— es el sistema, y acumula una deuda que ninguna "
+        "herramienta detecta.",
+        "```text\nDeuda específica del aprendizaje automático:\n"
+        "  · dependencias de DATOS que ningún compilador comprueba\n"
+        "  · características huérfanas que se calculan y nadie usa\n"
+        "  · bucles de realimentación ocultos\n"
+        "  · código de pegamento entre sistemas\n\n"
+        "CACE: Changing Anything Changes Everything\n```",
+        "1. ¿Qué porcentaje del sistema es el código del modelo?\n"
+        "2. ¿A cuántos consumidores afecta retirar una característica?\n"
+        "3. ¿Qué pasa aguas abajo si se cambia el umbral de un modelo?",
+        "El código del modelo son **800 líneas de 19 800**: el **4 %** del sistema. Retirar la "
+        "característica «f_precio» afecta a **3 consumidores** que nadie tenía apuntados, hay **1 "
+        "característica huérfana** que se sigue calculando sin que nadie la use, y bajar el umbral del "
+        "modelo A de 0,5 a 0,45 hace que el modelo B reciba un **36 % más de entradas** sin que nadie lo "
+        "haya tocado.",
+        "Las dependencias de datos son deuda invisible porque **no hay compilador que avise**. En "
+        "software convencional, quitar una función rompe la compilación; quitar una característica no "
+        "rompe nada hasta que un modelo empieza a predecir peor, semanas después y sin relación aparente "
+        "con el cambio.",
+        "Anti-patrón: medir el progreso del equipo por la calidad del modelo.",
+        "print('El modelo es el 4% del codigo y el 90% de la atencion del equipo.')\n"
+        "print('La deuda se acumula en el 96% restante, donde nadie mira.')\n"
+        "print('Y no se paga hasta que el sistema falla de una forma que nadie sabe explicar.')",
+        "Dónde está la deuda y cómo se hace visible:",
+        "r = run_paper_lab('deuda_tecnica', seed=7)['result']\n"
+        "for c in r['componentes']:\n"
+        "    print(f\"  {c['parte']:<38} {c['lineas']:>6} lineas  {c['porcentaje']:>5} %\")\n"
+        "print()\n"
+        "print('retirar', r['caracteristica_a_retirar'], '->', r['consumidores_afectados'])\n"
+        "print('huerfanas:', r['caracteristicas_huerfanas'])",
+        "Explica el principio CACE con el ejemplo del umbral, y por qué eso hace difícil razonar sobre "
+        "una cadena de modelos.",
+        "Dibuja el grafo de dependencias de datos de un sistema tuyo: qué característica alimenta a qué "
+        "modelo y a qué informe. Después busca las huérfanas.",
+        "Guarda el desglose por componente y tu grafo de dependencias con las características huérfanas "
+        "identificadas.",
+        "Ya está nombrada la deuda. La pregunta siguiente es cómo saber, antes de promocionar, si un "
+        "sistema está listo.",
+    ),
+    "P112_ml_test_score": _auto(
+        "ml_test_score",
+        "Dos equipos con la misma exactitud. Uno tiene pruebas de datos, de modelo, de infraestructura y "
+        "de monitorización; el otro no tiene ninguna. La métrica no los distingue, y son sistemas "
+        "completamente distintos.",
+        "```text\nCuatro categorías × siete pruebas cada una:\n"
+        "    datos · modelo · infraestructura · monitorización\n\n"
+        "Puntuación = MÍNIMO entre categorías (no la suma)\n"
+        "    un sistema es tan robusto como su categoría más débil\n```",
+        "1. ¿Distingue la exactitud a los dos equipos?\n"
+        "2. ¿Y la puntuación de la rúbrica?\n"
+        "3. ¿Por qué se usa el mínimo y no la suma?",
+        "Las exactitudes son **0,912** y **0,918** — el equipo sin pruebas es incluso ligeramente mejor. "
+        "Las puntuaciones son **1,5** y **0,0**. El equipo B no tiene ninguna prueba de monitorización: "
+        "su modelo puede degradarse durante meses sin que nadie se entere.",
+        "El mínimo entre categorías no es una elección estética. Un sistema con datos impecables y sin "
+        "capacidad de revertir no es robusto: es uno con un punto único de fallo bien documentado. "
+        "Sumar permitiría compensar la ausencia total de monitorización con pruebas de datos "
+        "excelentes, y eso no es cómo fallan los sistemas.",
+        "Anti-patrón: promocionar a producción por la métrica de calidad.",
+        "print('La exactitud mide el MODELO. La rubrica mide el SISTEMA.')\n"
+        "print('Promocionar por la primera es como se llega a produccion con lo segundo sin hacer.')\n"
+        "print('Y el coste no se paga el dia del despliegue: se paga el dia que algo cambia.')",
+        "La diferencia entre las dos preguntas:",
+        "r = run_paper_lab('ml_test_score', seed=7)['result']\n"
+        "for equipo, v in r['resultados'].items():\n"
+        "    print(f\"{equipo}: exactitud={v['exactitud']}  puntuacion={v['puntuacion_ml_test_score']}\")\n"
+        "    print('   por categoria:', v['por_categoria'])\n"
+        "    print('   nivel:', v['nivel'])",
+        "Explica por qué el equipo B, con mejor exactitud, es el que tiene más riesgo en producción.",
+        "Puntúa un sistema tuyo con las cuatro categorías. Identifica la más débil y escribe la prueba "
+        "concreta que subiría la puntuación.",
+        "Guarda la puntuación por categoría de tu sistema y la prueba que te falta escribir.",
+        "Ya hay rúbrica para promocionar. Falta la disciplina que hace comparables los experimentos que "
+        "llevan a esa decisión.",
+    ),
+    "P113_trazabilidad": _auto(
+        "trazabilidad",
+        "Dos algoritmos con exactamente el mismo rendimiento. Comparados con tres semillas cada uno, uno "
+        "parece claramente mejor. Repite el experimento y puede salir al revés. Eso no es un problema de "
+        "los algoritmos: es un problema del protocolo.",
+        "```text\nCon k semillas por algoritmo, la media observada tiene desviación σ/√k\n\n"
+        "    k = 3   →  el ruido tiene tamaño de hallazgo\n"
+        "    k = 30  →  el ruido se encoge y deja de parecerlo\n\n"
+        "El signo de la diferencia sigue siendo una moneda si los métodos son iguales.\n```",
+        "1. Con 3 semillas, ¿cuántas veces de 200 sale A por debajo de B?\n"
+        "2. ¿Baja esa proporción con 30 semillas?\n"
+        "3. ¿Qué sí baja?",
+        "Con 3 semillas, A sale por debajo en **99 de 200** comparaciones y por encima en 101: una "
+        "moneda al aire, porque los dos son idénticos. Con 30 semillas la proporción sigue rondando el "
+        "0,5. Lo que **sí** baja es la magnitud: la diferencia media observada pasa de **42,0** a "
+        "**12,2**, y la máxima de **131,5** a **40,6**.",
+        "Esa es la distinción que hay que tener clara. Con métodos iguales, el signo siempre es aleatorio "
+        "— y eso está bien. El problema con pocas semillas es que la **magnitud** del ruido tiene tamaño "
+        "de hallazgo: 131 puntos de diferencia parecen un descubrimiento y son azar.",
+        "Anti-patrón: reportar la mejor corrida de un método y la típica del otro.",
+        "print('Con 5 semillas por metodo, reportar el maximo de A y el minimo de B')\n"
+        "print('produce una «mejora» enorme sin que haya ninguna diferencia real.')\n"
+        "print('No hace falta mala fe: basta un formato que no obligue a declarar las corridas.')",
+        "El reporte mínimo que hace comparable un resultado:",
+        "r = run_paper_lab('trazabilidad', seed=7)['result']\n"
+        "for e in r['efecto_del_numero_de_semillas']:\n"
+        "    print(f\"  {e['semillas_por_algoritmo']:>2} semillas  inversiones={e['proporcion']}\"\n"
+        "          f\"  dif. media={e['diferencia_media_observada']:<6} dif. maxima={e['diferencia_maxima_observada']}\")\n"
+        "print()\n"
+        "print('optimista:', r['reporte_optimista'])\n"
+        "print('honesto  :', r['reporte_honesto'])",
+        "Explica por qué la proporción de inversiones NO baja con más semillas, y por qué eso no "
+        "contradice la utilidad de usar más.",
+        "Coge un experimento tuyo, ejecútalo con diez semillas y publica media, desviación, rango y "
+        "número de corridas. Comprueba si alguna conclusión previa sobrevive.",
+        "Guarda la tabla del efecto del número de semillas y tu reporte con los tres campos mínimos.",
+        "Los experimentos ya son comparables. Falta que el modelo que sale de ellos venga documentado "
+        "para quien lo va a usar.",
+    ),
+    "P114_tarjetas_de_modelo": _auto(
+        "tarjetas_de_modelo",
+        "Un modelo se publica con una exactitud del 91 %. Desagregada por subgrupo, va del 94 % al 58 %. "
+        "El grupo peor servido es el 2 % de la muestra, así que no mueve la cifra global — y por eso "
+        "nadie lo ve si nadie desagrega.",
+        "```text\nDiez secciones fijas, de una o dos páginas:\n"
+        "  detalles · uso previsto · usos FUERA DE ALCANCE · factores relevantes\n"
+        "  métricas · datos de evaluación · datos de entrenamiento\n"
+        "  ANÁLISIS CUANTITATIVO DESAGREGADO · consideraciones éticas · advertencias\n```",
+        "1. ¿Cuál es la exactitud global?\n"
+        "2. ¿Cuánto varía por subgrupo?\n"
+        "3. ¿Por qué el peor subgrupo no mueve la cifra global?",
+        "La global es **0,9118**. Por subgrupo va de **0,94** a **0,5778**: una brecha de **0,362**. Y el "
+        "grupo peor servido son **180 casos de 8 300** — el 2,2 % de la muestra —, así que su mal "
+        "resultado se diluye por completo en el agregado.",
+        "La sección clave de una tarjeta es el análisis cuantitativo **desagregado**, y es la que obliga "
+        "a publicar el número por subgrupo en vez de la media. Las otras nueve secciones responden "
+        "preguntas que normalmente se hacen tarde: para qué sirve, para qué **no**, con qué datos se "
+        "evaluó y qué advertencias tiene.",
+        "Anti-patrón: tratar la tarjeta como documentación decorativa.",
+        "print('Una tarjeta bien escrita no arregla un modelo sesgado: lo hace VISIBLE.')\n"
+        "print('Es transparencia, no mitigacion, y el articulo es explicito en eso.')\n"
+        "print('Pero sin ella, nadie sabe a quien le funciona mal hasta que se queja.')",
+        "Lo que la desagregación hace visible:",
+        "r = run_paper_lab('tarjetas_de_modelo', seed=7)['result']\n"
+        "print('exactitud global:', r['exactitud_global'])\n"
+        "for s in r['por_subgrupo']:\n"
+        "    print(f\"  grupo {s['grupo']}  n={s['n']:>5}  exactitud={s['exactitud']}\")\n"
+        "print('brecha:', r['brecha'])",
+        "Calcula qué proporción de la muestra es el peor subgrupo y explica por qué eso lo hace invisible "
+        "en la métrica agregada.",
+        "Escribe la tarjeta de un modelo tuyo, con evaluación desagregada por los subgrupos que sean "
+        "relevantes en tu dominio. Empieza por la sección de usos fuera de alcance.",
+        "Guarda la tabla desagregada con la brecha entre subgrupos y tu sección de usos fuera de alcance.",
+        "El modelo ya viene documentado. Falta la otra mitad: los datos con los que se hizo.",
+    ),
+    "P115_hojas_de_datos": _auto(
+        "hojas_de_datos",
+        "Cualquier componente electrónico viene con una hoja de características: qué es, qué tolerancias "
+        "tiene, en qué condiciones funciona. Los conjuntos de datos se comparten sin nada de eso, y hay "
+        "preguntas que después ya no se pueden responder.",
+        "```text\nSiete secciones que siguen el ciclo de vida del conjunto:\n"
+        "  motivación · composición · recogida · preprocesado\n"
+        "  usos · distribución · mantenimiento\n\n"
+        "La mitad de las preguntas NO se pueden responder a posteriori.\n```",
+        "1. ¿Cuántas preguntas se pueden responder mirando el conjunto ya hecho?\n"
+        "2. ¿Cuáles no?\n"
+        "3. ¿Qué consecuencia tiene cada hueco?",
+        "De las 10 preguntas, **5 se pueden responder** mirando el conjunto y **5 no**. Y las que no se "
+        "pueden reconstruir son justamente las que más importan: qué poblaciones están representadas, si "
+        "hubo consentimiento, qué dejaron fuera los filtros y para qué **no** debería usarse.",
+        "Sin saber qué poblaciones están representadas, no se puede desagregar la evaluación por "
+        "subgrupo — que es exactamente la sección clave de una tarjeta de modelo. Las dos piezas están "
+        "encadenadas: sin hoja de datos, la tarjeta de modelo no se puede rellenar bien.",
+        "Anti-patrón: escribir la hoja de datos al publicar el conjunto.",
+        "print('Al publicar ya no se sabe si hubo consentimiento, ni que filtro se aplico,')\n"
+        "print('ni a quien dejo fuera. Esas respuestas se pierden al recoger, no al publicar.')\n"
+        "print('Documentar el conjunto es parte de crearlo.')",
+        "Qué se pierde y qué cuesta:",
+        "r = run_paper_lab('hojas_de_datos', seed=7)['result']\n"
+        "for p in r['detalle']:\n"
+        "    marca = 'si ' if p['respondible'] else 'NO '\n"
+        "    print(f\"  [{marca}] {p['seccion']:<14} {p['pregunta']}\")\n"
+        "print()\n"
+        "for hueco, consecuencia in r['consecuencias'].items():\n"
+        "    print(f\"  sin {hueco:<28} -> {consecuencia}\")",
+        "Elige uno de los huecos no respondibles y explica qué decisión concreta se toma peor por no "
+        "tener esa información.",
+        "Escribe la hoja de datos de un conjunto que uses. Marca cuáles de las preguntas ya no puedes "
+        "responder y qué te impide eso hacer.",
+        "Guarda tu hoja de datos con las preguntas que quedaron sin respuesta y su consecuencia.",
+        "Datos y modelos ya vienen documentados. Queda la pieza más nueva y la que menos disciplina "
+        "tiene: el prompt.",
+    ),
+    "P116_gestion_de_prompts": _auto(
+        "gestion_de_prompts",
+        "Escribir prompts parece accesible a cualquiera, y por eso se hace sin ninguna disciplina: se "
+        "cambia algo, se miran dos ejemplos y se conserva lo que «va mejor». Con muestras pequeñas, el "
+        "ruido tiene exactamente el mismo tamaño que las mejoras que se buscan.",
+        "```text\nCon n ejemplos y calidad p, la desviación de la medida es √(p(1−p)/n)\n\n"
+        "    n = 20   →  ±0,10      ← comparable a la diferencia entre versiones\n"
+        "    n = 200  →  ±0,03\n\n"
+        "Iterar sobre 20 ejemplos es elegir ruido.\n```",
+        "1. Tres versiones tienen la misma calidad real y una es mejor. ¿Cuál elige quien mira 20 "
+        "ejemplos?\n"
+        "2. ¿Cuánto ruido tiene esa medida?\n"
+        "3. ¿Qué distingue la iteración sistemática de la oportunista?",
+        "Midiendo sobre 20 ejemplos se elige **v1**, y la mejor de verdad es **v3**: no acierta. La "
+        "desviación esperada con 20 ejemplos es **0,102**, comparable a la diferencia real entre "
+        "versiones; con 200 baja a **0,032**.",
+        "El artículo es un estudio con personas, no un experimento numérico, y su hallazgo es "
+        "conductual: los no expertos iteran de forma **oportunista** —cambian, miran un par de ejemplos, "
+        "se quedan con lo que parece mejor— y confunden ruido con mejora de forma sistemática. La "
+        "alternativa no es más talento redactando: es conjunto de evaluación fijo, una hipótesis por "
+        "cambio y versionar el prompt con el código.",
+        "Anti-patrón: iterar el prompt mirando ejemplos sueltos.",
+        "print('«Con este cambio responde mejor» tras mirar tres ejemplos no es una medida.')\n"
+        "print('Es la misma falacia que reportar la mejor semilla: se elige ruido con confianza.')\n"
+        "print('Y como el prompt no esta versionado, ni siquiera se puede volver atras.')",
+        "La disciplina mínima:",
+        "r = run_paper_lab('gestion_de_prompts', seed=7)['result']\n"
+        "for v in r['versiones']:\n"
+        "    print(f\"  {v['version']}  real={v['calidad_real']}  en 20={v['medido_en_20_ejemplos']}\"\n"
+        "          f\"  en 200={v['medido_en_200_ejemplos']}\")\n"
+        "print()\n"
+        "print('elegida con 20 ejemplos:', r['elegida_mirando_20_ejemplos'], '| mejor real:', r['mejor_real'])\n"
+        "print('practica sistematica   :', r['practicas']['sistematica'])",
+        "Calcula cuántos ejemplos harían falta para distinguir con confianza una mejora de 0,05.",
+        "Coge un prompt de tu trabajo, construye un conjunto de evaluación de al menos 100 casos con "
+        "respuesta esperada, y vuelve a medir las versiones que ya habías descartado.",
+        "Guarda tu conjunto de evaluación y la comparación de versiones medidas sobre él.",
+        "Los prompts ya se gestionan como código. Falta lo mismo un nivel más arriba: cómo se opera un "
+        "agente que da muchos pasos.",
+    ),
+    "P117_agentops": _auto(
+        "agentops",
+        "«El agente resuelve el 35 % de las tareas». Ese número no dice en qué entornos sirve, en qué "
+        "paso se pierde ni por qué modo falla — que es justo lo que hace falta para operarlo y para "
+        "saber qué arreglar.",
+        "```text\nDe la tasa agregada a la trayectoria:\n"
+        "  · tasa POR ENTORNO         ¿dónde sirve y dónde no?\n"
+        "  · MODO de fallo            ¿qué hay que arreglar?\n"
+        "  · PASO del fallo           ¿casi lo consigue o se pierde al principio?\n"
+        "  · LONGITUD de la trayectoria  ¿se puede cortar antes de saber el resultado?\n```",
+        "1. ¿Cuánto varía la tasa entre entornos?\n"
+        "2. ¿Cuál es el modo de fallo dominante?\n"
+        "3. ¿Sirve la longitud de la trayectoria como señal?",
+        "La tasa global es **0,35** y por entorno va de **0,16** a **0,565**: hay entornos donde el "
+        "agente sencillamente no sirve. El modo dominante es «formato de llamada inválido» con **19 de "
+        "78** fallos. Y sí sirve la longitud: los episodios con éxito duran **7,9 pasos** de media y los "
+        "que entran en bucle repetitivo, **26,1**.",
+        "Esa última cifra es la más útil en operación: permite **cortar antes de saber el resultado**. Un "
+        "agente cuya trayectoria se alarga por encima de la distribución de los éxitos casi seguro está "
+        "en un bucle, y cada paso extra cuesta dinero. Un límite de pasos no es una restricción "
+        "arbitraria: es el mecanismo que convierte un fallo en un fallo barato.",
+        "Anti-patrón: operar un agente vigilando solo su tasa de éxito.",
+        "print('La tasa llega tarde: se sabe cuando el episodio termino y ya se gasto todo.')\n"
+        "print('En operacion hay que vigilar la trayectoria: longitud, repeticiones, herramientas.')\n"
+        "print('Son las senales que permiten cortar a tiempo.')",
+        "Lo que hay que instrumentar:",
+        "r = run_paper_lab('agentops', seed=7)['result']\n"
+        "print('tasa global:', r['tasa_de_exito_global'])\n"
+        "print('por entorno:', r['por_entorno'])\n"
+        "print('modos de fallo:', r['modos_de_fallo'])\n"
+        "print('pasos medios exito/fallo:', r['pasos_medios_exito'], '/', r['pasos_medios_fallo'])",
+        "Explica por qué saber el modo de fallo dominante cambia qué se arregla primero, y qué se "
+        "arreglaría mirando solo la tasa.",
+        "Instrumenta un agente tuyo para registrar por trayectoria: entorno, número de pasos, "
+        "herramientas invocadas y motivo de terminación. Analiza veinte trayectorias fallidas y "
+        "clasifica sus modos.",
+        "Guarda el desglose por entorno y por modo de fallo, con tu criterio de corte por longitud de "
+        "trayectoria.",
+        "Aquí se cierra la ruta de operación y con ella la segunda tanda: fundamentos probabilísticos, "
+        "sistemas encarnados y la ingeniería que los sostiene en producción.",
+    ),
+})
+
+
 TRANSFORMER_SPECS: list[dict[str, Any]] = [
     {
         "id": "T01_recurrencia_vs_paralelismo",

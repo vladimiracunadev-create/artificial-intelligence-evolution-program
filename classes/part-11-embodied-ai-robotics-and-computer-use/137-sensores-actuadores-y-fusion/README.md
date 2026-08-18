@@ -254,6 +254,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [KalmanFilter.NET — tutorial ilustrado del filtro de Kalman (Alex Becker)](https://www.kalmanfilter.net/default.aspx)
 - [ROS 2 — robot_localization (fusión EKF/UKF en producción)](https://docs.ros.org/en/rolling/p/robot_localization/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P96 · Un nuevo enfoque para los problemas de filtrado y predicción lineales](../../../papers/foundational/P96_kalman/README.md) | 1960 | Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva. | [notebook](../../../notebooks/papers/P96_kalman.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

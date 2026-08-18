@@ -203,6 +203,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models*, cap. 21 (causalidad). [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)
 - Documentación de PyMC. [https://www.pymc.io/](https://www.pymc.io/) · Documentación de Stan. [https://mc-stan.org/](https://mc-stan.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P94 · Stan: un lenguaje de programación probabilística](../../../papers/foundational/P94_programacion_probabilistica/README.md) | 2017 | Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior. | [notebook](../../../notebooks/papers/P94_programacion_probabilistica.ipynb) |
+| [P95 · Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático](../../../papers/foundational/P95_causalidad/README.md) | 2019 | Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen. | [notebook](../../../notebooks/papers/P95_causalidad.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

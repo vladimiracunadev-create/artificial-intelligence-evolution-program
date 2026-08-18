@@ -1,6 +1,6 @@
 {
   "updated": "2026-08-17",
-  "paper_count": 86,
+  "paper_count": 117,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -2141,6 +2141,783 @@
         "evaluación fuera de muestra"
       ],
       "notebook": "notebooks/papers/P86_m4.ipynb"
+    },
+    {
+      "id": "P87",
+      "page": "P87_bayes.html",
+      "titulo": "Ensayo para resolver un problema en la doctrina de las probabilidades",
+      "original": "An Essay towards solving a Problem in the Doctrine of Chances",
+      "autoria": [
+        "Thomas Bayes",
+        "Richard Price (editor)"
+      ],
+      "anio": 1763,
+      "venue": "Philosophical Transactions of the Royal Society, 53, 370–418",
+      "nivel": "L2",
+      "motor": "bayes",
+      "hito": "La regla que invierte el condicional: pasar de «qué esperaría ver si la hipótesis fuese cierta» a «cuán probable es la hipótesis dado lo que he visto».",
+      "keywords": [
+        "inferencia bayesiana",
+        "probabilidad condicional",
+        "previa",
+        "posterior",
+        "razón de verosimilitud"
+      ],
+      "notebook": "notebooks/papers/P87_bayes.ipynb"
+    },
+    {
+      "id": "P88",
+      "page": "P88_cox.html",
+      "titulo": "Probabilidad, frecuencia y expectativa razonable",
+      "original": "Probability, Frequency and Reasonable Expectation",
+      "autoria": [
+        "Richard T. Cox"
+      ],
+      "anio": 1946,
+      "venue": "American Journal of Physics, 14(1), 1–13",
+      "nivel": "L3",
+      "motor": "cox",
+      "hito": "Demuestra que la probabilidad no es una convención entre varias: es la única forma consistente de extender la lógica a grados de creencia.",
+      "keywords": [
+        "desiderata",
+        "consistencia",
+        "grados de creencia",
+        "regla de la suma",
+        "regla del producto"
+      ],
+      "notebook": "notebooks/papers/P88_cox.ipynb"
+    },
+    {
+      "id": "P89",
+      "page": "P89_fuzzy.html",
+      "titulo": "Conjuntos difusos",
+      "original": "Fuzzy Sets",
+      "autoria": [
+        "Lotfi A. Zadeh"
+      ],
+      "anio": 1965,
+      "venue": "Information and Control, 8(3), 338–353",
+      "nivel": "L2",
+      "motor": "fuzzy",
+      "hito": "Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje.",
+      "keywords": [
+        "conjunto difuso",
+        "función de pertenencia",
+        "vaguedad",
+        "control difuso",
+        "t-normas"
+      ],
+      "notebook": "notebooks/papers/P89_fuzzy.ipynb"
+    },
+    {
+      "id": "P90",
+      "page": "P90_algoritmos_geneticos.html",
+      "titulo": "Algoritmos genéticos y la asignación óptima de ensayos",
+      "original": "Genetic Algorithms and the Optimal Allocation of Trials",
+      "autoria": [
+        "John H. Holland"
+      ],
+      "anio": 1973,
+      "venue": "SIAM Journal on Computing, 2(2), 88–105",
+      "nivel": "L2",
+      "motor": "algoritmos_geneticos",
+      "hito": "Conecta la evolución artificial con un problema de decisión clásico: cómo repartir ensayos entre alternativas cuando explorar cuesta.",
+      "keywords": [
+        "algoritmo genético",
+        "esquemas",
+        "paralelismo implícito",
+        "cruce",
+        "exploración y explotación"
+      ],
+      "notebook": "notebooks/papers/P90_algoritmos_geneticos.ipynb"
+    },
+    {
+      "id": "P91",
+      "page": "P91_redes_bayesianas.html",
+      "titulo": "Fusión, propagación y estructuración en redes de creencia",
+      "original": "Fusion, Propagation, and Structuring in Belief Networks",
+      "autoria": [
+        "Judea Pearl"
+      ],
+      "anio": 1986,
+      "venue": "Artificial Intelligence, 29(3), 241–288",
+      "nivel": "L3",
+      "motor": "redes_bayesianas",
+      "hito": "Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente.",
+      "keywords": [
+        "red bayesiana",
+        "independencia condicional",
+        "propagación de creencias",
+        "explicar y descartar",
+        "grafo dirigido acíclico"
+      ],
+      "notebook": "notebooks/papers/P91_redes_bayesianas.ipynb"
+    },
+    {
+      "id": "P92",
+      "page": "P92_pso.html",
+      "titulo": "Optimización por enjambre de partículas",
+      "original": "Particle Swarm Optimization",
+      "autoria": [
+        "James Kennedy",
+        "Russell Eberhart"
+      ],
+      "anio": 1995,
+      "venue": "Proceedings of ICNN'95, 1942–1948",
+      "nivel": "L2",
+      "motor": "pso",
+      "hito": "Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo.",
+      "keywords": [
+        "enjambre",
+        "inteligencia colectiva",
+        "sin gradiente",
+        "metaheurística",
+        "exploración y explotación"
+      ],
+      "notebook": "notebooks/papers/P92_pso.ipynb"
+    },
+    {
+      "id": "P93",
+      "page": "P93_aco.html",
+      "titulo": "Sistema de hormigas: optimización mediante una colonia de agentes cooperantes",
+      "original": "Ant System: Optimization by a Colony of Cooperating Agents",
+      "autoria": [
+        "Marco Dorigo",
+        "Vittorio Maniezzo",
+        "Alberto Colorni"
+      ],
+      "anio": 1996,
+      "venue": "IEEE Transactions on Systems, Man and Cybernetics, Part B, 26(1), 29–41",
+      "nivel": "L2",
+      "motor": "aco",
+      "hito": "La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora.",
+      "keywords": [
+        "estigmergia",
+        "feromona",
+        "optimización combinatoria",
+        "viajante de comercio",
+        "evaporación"
+      ],
+      "notebook": "notebooks/papers/P93_aco.ipynb"
+    },
+    {
+      "id": "P94",
+      "page": "P94_programacion_probabilistica.html",
+      "titulo": "Stan: un lenguaje de programación probabilística",
+      "original": "Stan: A Probabilistic Programming Language",
+      "autoria": [
+        "Bob Carpenter",
+        "Andrew Gelman",
+        "Matthew D. Hoffman",
+        "Daniel Lee",
+        "Ben Goodrich",
+        "Michael Betancourt",
+        "Marcus Brubaker",
+        "Jiqiang Guo",
+        "Peter Li",
+        "Allen Riddell"
+      ],
+      "anio": 2017,
+      "venue": "Journal of Statistical Software, 76(1)",
+      "nivel": "L3",
+      "motor": "programacion_probabilistica",
+      "hito": "Separa declarar el modelo de calcular la inferencia: se escribe qué se supone del mundo y el motor devuelve la posterior.",
+      "keywords": [
+        "programación probabilística",
+        "inferencia bayesiana",
+        "Monte Carlo hamiltoniano",
+        "posterior",
+        "diagnóstico de convergencia"
+      ],
+      "notebook": "notebooks/papers/P94_programacion_probabilistica.ipynb"
+    },
+    {
+      "id": "P95",
+      "page": "P95_causalidad.html",
+      "titulo": "Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático",
+      "original": "The Seven Tools of Causal Inference, with Reflections on Machine Learning",
+      "autoria": [
+        "Judea Pearl"
+      ],
+      "anio": 2019,
+      "venue": "Communications of the ACM, 62(3), 54–60",
+      "nivel": "L3",
+      "motor": "causalidad",
+      "hito": "Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen.",
+      "keywords": [
+        "escalera de la causalidad",
+        "operador do",
+        "confusor",
+        "contrafáctico",
+        "paradoja de Simpson"
+      ],
+      "notebook": "notebooks/papers/P95_causalidad.ipynb"
+    },
+    {
+      "id": "P96",
+      "page": "P96_kalman.html",
+      "titulo": "Un nuevo enfoque para los problemas de filtrado y predicción lineales",
+      "original": "A New Approach to Linear Filtering and Prediction Problems",
+      "autoria": [
+        "Rudolf E. Kálmán"
+      ],
+      "anio": 1960,
+      "venue": "Journal of Basic Engineering, 82(1), 35–45",
+      "nivel": "L3",
+      "motor": "kalman",
+      "hito": "Fusiona un modelo del movimiento con un sensor ruidoso ponderando cada fuente por su propia incertidumbre, y lo hace de forma recursiva.",
+      "keywords": [
+        "filtro de Kalman",
+        "fusión de sensores",
+        "estimación de estado",
+        "ganancia",
+        "recursivo"
+      ],
+      "notebook": "notebooks/papers/P96_kalman.ipynb"
+    },
+    {
+      "id": "P97",
+      "page": "P97_subsuncion.html",
+      "titulo": "Un sistema de control por capas robusto para un robot móvil",
+      "original": "A Robust Layered Control System for a Mobile Robot",
+      "autoria": [
+        "Rodney A. Brooks"
+      ],
+      "anio": 1986,
+      "venue": "IEEE Journal of Robotics and Automation, 2(1), 14–23",
+      "nivel": "L2",
+      "motor": "subsuncion",
+      "hito": "Demuestra que un robot puede comportarse de forma competente sin modelo del mundo, sin planificador y sin representación central.",
+      "keywords": [
+        "subsunción",
+        "robótica situada",
+        "control por capas",
+        "sin representación",
+        "reactivo"
+      ],
+      "notebook": "notebooks/papers/P97_subsuncion.ipynb"
+    },
+    {
+      "id": "P98",
+      "page": "P98_rrt.html",
+      "titulo": "RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única",
+      "original": "RRT-Connect: An Efficient Approach to Single-Query Path Planning",
+      "autoria": [
+        "James J. Kuffner",
+        "Steven M. LaValle"
+      ],
+      "anio": 2000,
+      "venue": "Proceedings of ICRA 2000, 995–1001",
+      "nivel": "L3",
+      "motor": "rrt",
+      "hito": "Planifica en espacios continuos de muchas dimensiones sin discretizarlos, creciendo un árbol hacia muestras aleatorias.",
+      "keywords": [
+        "RRT",
+        "planificación de movimiento",
+        "espacio de configuración",
+        "muestreo",
+        "completitud probabilística"
+      ],
+      "notebook": "notebooks/papers/P98_rrt.ipynb"
+    },
+    {
+      "id": "P99",
+      "page": "P99_slam.html",
+      "titulo": "Localización y mapeo simultáneos: parte I",
+      "original": "Simultaneous Localization and Mapping: Part I",
+      "autoria": [
+        "Hugh Durrant-Whyte",
+        "Tim Bailey"
+      ],
+      "anio": 2006,
+      "venue": "IEEE Robotics & Automation Magazine, 13(2), 99–110",
+      "nivel": "L3",
+      "motor": "slam",
+      "hito": "Formaliza el problema circular de la robótica móvil: no se puede localizar sin mapa ni mapear sin localización, y hay que resolver ambos a la vez.",
+      "keywords": [
+        "SLAM",
+        "covarianza cruzada",
+        "cierre de bucle",
+        "asociación de datos",
+        "odometría"
+      ],
+      "notebook": "notebooks/papers/P99_slam.ipynb"
+    },
+    {
+      "id": "P100",
+      "page": "P100_seguridad_fisica.html",
+      "titulo": "Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones",
+      "original": "Requirements for Safe Robots: Measurements, Analysis and New Insights",
+      "autoria": [
+        "Sami Haddadin",
+        "Alin Albu-Schäffer",
+        "Gerd Hirzinger"
+      ],
+      "anio": 2009,
+      "venue": "The International Journal of Robotics Research, 28(11–12), 1507–1527",
+      "nivel": "L2",
+      "motor": "seguridad_fisica",
+      "hito": "Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados.",
+      "keywords": [
+        "seguridad física",
+        "cobot",
+        "criterios de lesión",
+        "impacto",
+        "ISO/TS 15066"
+      ],
+      "notebook": "notebooks/papers/P100_seguridad_fisica.ipynb"
+    },
+    {
+      "id": "P101",
+      "page": "P101_dagger.html",
+      "titulo": "Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento",
+      "original": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning",
+      "autoria": [
+        "Stéphane Ross",
+        "Geoffrey J. Gordon",
+        "J. Andrew Bagnell"
+      ],
+      "anio": 2011,
+      "venue": "AISTATS 2011 · arXiv:1011.0686",
+      "nivel": "L3",
+      "motor": "dagger",
+      "hito": "Explica por qué la clonación de comportamiento se degrada con el horizonte, y da un algoritmo que reduce el error de orden T² a orden T.",
+      "keywords": [
+        "aprendizaje por imitación",
+        "clonación de comportamiento",
+        "cambio de distribución",
+        "aprendizaje en línea",
+        "arrepentimiento"
+      ],
+      "notebook": "notebooks/papers/P101_dagger.ipynb"
+    },
+    {
+      "id": "P102",
+      "page": "P102_ppo.html",
+      "titulo": "Algoritmos de optimización proximal de políticas",
+      "original": "Proximal Policy Optimization Algorithms",
+      "autoria": [
+        "John Schulman",
+        "Filip Wolski",
+        "Prafulla Dhariwal",
+        "Alec Radford",
+        "Oleg Klimov"
+      ],
+      "anio": 2017,
+      "venue": "arXiv:1707.06347",
+      "nivel": "L3",
+      "motor": "ppo",
+      "hito": "Consigue la estabilidad de TRPO con una función objetivo que se implementa en unas líneas y se optimiza con descenso de gradiente corriente.",
+      "keywords": [
+        "gradiente de políticas",
+        "recorte",
+        "región de confianza",
+        "aprendizaje por refuerzo",
+        "estabilidad"
+      ],
+      "notebook": "notebooks/papers/P102_ppo.ipynb"
+    },
+    {
+      "id": "P103",
+      "page": "P103_domain_randomization.html",
+      "titulo": "Aleatorización de dominio para transferir redes profundas de la simulación al mundo real",
+      "original": "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World",
+      "autoria": [
+        "Josh Tobin",
+        "Rachel Fong",
+        "Alex Ray",
+        "Jonas Schneider",
+        "Wojciech Zaremba",
+        "Pieter Abbeel"
+      ],
+      "anio": 2017,
+      "venue": "IROS 2017, 23–30 · arXiv:1703.06907",
+      "nivel": "L2",
+      "motor": "domain_randomization",
+      "hito": "Invierte el objetivo del simulador: en vez de buscar fidelidad, busca que la realidad sea una variación más dentro del rango de entrenamiento.",
+      "keywords": [
+        "sim-to-real",
+        "aleatorización de dominio",
+        "transferencia",
+        "robustez",
+        "gemelo digital"
+      ],
+      "notebook": "notebooks/papers/P103_domain_randomization.ipynb"
+    },
+    {
+      "id": "P104",
+      "page": "P104_webarena.html",
+      "titulo": "WebArena: un entorno web realista para construir agentes autónomos",
+      "original": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "autoria": [
+        "Shuyan Zhou",
+        "Frank F. Xu",
+        "Hao Zhu",
+        "Xuhui Zhou",
+        "Robert Lo",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2307.13854 · ICLR 2024",
+      "nivel": "L3",
+      "motor": "webarena",
+      "hito": "Evalúa agentes de navegador comprobando el ESTADO del sitio al terminar, no lo que el agente dice haber hecho.",
+      "keywords": [
+        "agentes de navegador",
+        "verificación funcional",
+        "entorno reproducible",
+        "evaluación",
+        "tareas transaccionales"
+      ],
+      "notebook": "notebooks/papers/P104_webarena.ipynb"
+    },
+    {
+      "id": "P105",
+      "page": "P105_seeclick.html",
+      "titulo": "SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica",
+      "original": "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents",
+      "autoria": [
+        "Kanzhi Cheng",
+        "Qiushi Sun",
+        "Yougang Chu",
+        "Fangzhi Xu",
+        "Yantao Li",
+        "y otros"
+      ],
+      "anio": 2024,
+      "venue": "ACL 2024 · arXiv:2401.10935",
+      "nivel": "L2",
+      "motor": "seeclick",
+      "hito": "Aísla el anclaje —de una instrucción a unas coordenadas— como la capacidad que separa describir una pantalla de poder operarla.",
+      "keywords": [
+        "anclaje en interfaz",
+        "computer use",
+        "visión",
+        "coordenadas",
+        "agentes de GUI"
+      ],
+      "notebook": "notebooks/papers/P105_seeclick.ipynb"
+    },
+    {
+      "id": "P106",
+      "page": "P106_osworld.html",
+      "titulo": "OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales",
+      "original": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+      "autoria": [
+        "Tianbao Xie",
+        "Danyang Zhang",
+        "Jixuan Chen",
+        "Xiaochuan Li",
+        "Siheng Zhao",
+        "y otros"
+      ],
+      "anio": 2024,
+      "venue": "NeurIPS 2024 · arXiv:2404.07972",
+      "nivel": "L3",
+      "motor": "osworld",
+      "hito": "Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real.",
+      "keywords": [
+        "agentes de escritorio",
+        "RPA agéntica",
+        "verificación por ejecución",
+        "multiaplicación",
+        "evaluación"
+      ],
+      "notebook": "notebooks/papers/P106_osworld.ipynb"
+    },
+    {
+      "id": "P107",
+      "page": "P107_dapper.html",
+      "titulo": "Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala",
+      "original": "Dapper, a Large-Scale Distributed Systems Tracing Infrastructure",
+      "autoria": [
+        "Benjamin H. Sigelman",
+        "Luiz André Barroso",
+        "Michael Burrows",
+        "Pat Stephenson",
+        "Manoj Plakal",
+        "Donald Beaver",
+        "Saul Jaspan",
+        "Chandan Shanbhag"
+      ],
+      "anio": 2010,
+      "venue": "Google Technical Report",
+      "nivel": "L2",
+      "motor": "trazas_distribuidas",
+      "hito": "Hace observable una petición que atraviesa decenas de servicios, con un identificador que viaja con ella y un muestreo que la hace asequible.",
+      "keywords": [
+        "trazado distribuido",
+        "span",
+        "observabilidad",
+        "muestreo",
+        "latencia"
+      ],
+      "notebook": "notebooks/papers/P107_dapper.ipynb"
+    },
+    {
+      "id": "P108",
+      "page": "P108_cap.html",
+      "titulo": "CAP doce años después: cómo han cambiado las «reglas»",
+      "original": "CAP Twelve Years Later: How the «Rules» Have Changed",
+      "autoria": [
+        "Eric Brewer"
+      ],
+      "anio": 2012,
+      "venue": "IEEE Computer, 45(2), 23–29",
+      "nivel": "L2",
+      "motor": "resiliencia",
+      "hito": "Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición.",
+      "keywords": [
+        "CAP",
+        "partición",
+        "consistencia",
+        "disponibilidad",
+        "reconciliación"
+      ],
+      "notebook": "notebooks/papers/P108_cap.ipynb"
+    },
+    {
+      "id": "P109",
+      "page": "P109_cola_larga.html",
+      "titulo": "La cola a escala",
+      "original": "The Tail at Scale",
+      "autoria": [
+        "Jeffrey Dean",
+        "Luiz André Barroso"
+      ],
+      "anio": 2013,
+      "venue": "Communications of the ACM, 56(2), 74–80",
+      "nivel": "L2",
+      "motor": "cola_larga",
+      "hito": "Muestra que con abanico grande la latencia de cola de cada componente se convierte en la latencia típica del sistema completo.",
+      "keywords": [
+        "latencia de cola",
+        "p99",
+        "abanico",
+        "peticiones de cobertura",
+        "sistemas a escala"
+      ],
+      "notebook": "notebooks/papers/P109_cola_larga.ipynb"
+    },
+    {
+      "id": "P110",
+      "page": "P110_deriva.html",
+      "titulo": "Una revisión sobre adaptación a la deriva de concepto",
+      "original": "A Survey on Concept Drift Adaptation",
+      "autoria": [
+        "João Gama",
+        "Indrė Žliobaitė",
+        "Albert Bifet",
+        "Mykola Pechenizkiy",
+        "Abdelhamid Bouchachia"
+      ],
+      "anio": 2014,
+      "venue": "ACM Computing Surveys, 46(4), 1–37",
+      "nivel": "L3",
+      "motor": "deriva",
+      "hito": "Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse.",
+      "keywords": [
+        "deriva de concepto",
+        "flujo de datos",
+        "detección de cambio",
+        "reentrenamiento",
+        "evaluación continua"
+      ],
+      "notebook": "notebooks/papers/P110_deriva.ipynb"
+    },
+    {
+      "id": "P111",
+      "page": "P111_deuda_tecnica.html",
+      "titulo": "Deuda técnica oculta en los sistemas de aprendizaje automático",
+      "original": "Hidden Technical Debt in Machine Learning Systems",
+      "autoria": [
+        "D. Sculley",
+        "Gary Holt",
+        "Daniel Golovin",
+        "Eugene Davydov",
+        "Todd Phillips",
+        "Dietmar Ebner",
+        "Vinay Chaudhary",
+        "Michael Young",
+        "Jean-François Crespo",
+        "Dan Dennison"
+      ],
+      "anio": 2015,
+      "venue": "NeurIPS 2015",
+      "nivel": "L1",
+      "motor": "deuda_tecnica",
+      "hito": "Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta.",
+      "keywords": [
+        "deuda técnica",
+        "MLOps",
+        "dependencias de datos",
+        "CACE",
+        "bucles de realimentación"
+      ],
+      "notebook": "notebooks/papers/P111_deuda_tecnica.ipynb"
+    },
+    {
+      "id": "P112",
+      "page": "P112_ml_test_score.html",
+      "titulo": "La puntuación de pruebas de ML: una rúbrica de preparación para producción",
+      "original": "The ML Test Score: A Rubric for ML Production Readiness and Technical Debt Reduction",
+      "autoria": [
+        "Eric Breck",
+        "Shanqing Cai",
+        "Eric Nielsen",
+        "Michael Salib",
+        "D. Sculley"
+      ],
+      "anio": 2017,
+      "venue": "IEEE Big Data 2017, 1123–1132",
+      "nivel": "L2",
+      "motor": "ml_test_score",
+      "hito": "Convierte «¿está listo para producción?» en una rúbrica de 28 pruebas concretas, puntuada por su categoría más débil.",
+      "keywords": [
+        "preparación para producción",
+        "pruebas",
+        "rúbrica",
+        "MLOps",
+        "promoción"
+      ],
+      "notebook": "notebooks/papers/P112_ml_test_score.ipynb"
+    },
+    {
+      "id": "P113",
+      "page": "P113_trazabilidad.html",
+      "titulo": "Aprendizaje por refuerzo profundo que importa",
+      "original": "Deep Reinforcement Learning That Matters",
+      "autoria": [
+        "Peter Henderson",
+        "Riashat Islam",
+        "Philip Bachman",
+        "Joelle Pineau",
+        "Doina Precup",
+        "David Meger"
+      ],
+      "anio": 2018,
+      "venue": "AAAI 2018",
+      "nivel": "L3",
+      "motor": "trazabilidad",
+      "hito": "Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación.",
+      "keywords": [
+        "reproducibilidad",
+        "semillas",
+        "varianza",
+        "trazabilidad",
+        "aprendizaje por refuerzo"
+      ],
+      "notebook": "notebooks/papers/P113_trazabilidad.ipynb"
+    },
+    {
+      "id": "P114",
+      "page": "P114_tarjetas_de_modelo.html",
+      "titulo": "Tarjetas de modelo para el reporte de modelos",
+      "original": "Model Cards for Model Reporting",
+      "autoria": [
+        "Margaret Mitchell",
+        "Simone Wu",
+        "Andrew Zaldivar",
+        "Parker Barnes",
+        "Lucy Vasserman",
+        "Ben Hutchinson",
+        "Elena Spitzer",
+        "Inioluwa Deborah Raji",
+        "Timnit Gebru"
+      ],
+      "anio": 2019,
+      "venue": "FAT* '19, 220–229",
+      "nivel": "L1",
+      "motor": "tarjetas_de_modelo",
+      "hito": "Propone un documento corto y estandarizado que acompaña a cada modelo, con evaluación **desagregada** por subgrupo y usos fuera de alcance declarados.",
+      "keywords": [
+        "tarjeta de modelo",
+        "evaluación desagregada",
+        "transparencia",
+        "documentación",
+        "subgrupos"
+      ],
+      "notebook": "notebooks/papers/P114_tarjetas_de_modelo.ipynb"
+    },
+    {
+      "id": "P115",
+      "page": "P115_hojas_de_datos.html",
+      "titulo": "Hojas de datos para conjuntos de datos",
+      "original": "Datasheets for Datasets",
+      "autoria": [
+        "Timnit Gebru",
+        "Jamie Morgenstern",
+        "Briana Vecchione",
+        "Jennifer Wortman Vaughan",
+        "Hanna Wallach",
+        "Hal Daumé III",
+        "Kate Crawford"
+      ],
+      "anio": 2021,
+      "venue": "Communications of the ACM, 64(12), 86–92",
+      "nivel": "L1",
+      "motor": "hojas_de_datos",
+      "hito": "Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve.",
+      "keywords": [
+        "hoja de datos",
+        "documentación de datos",
+        "procedencia",
+        "consentimiento",
+        "gobernanza"
+      ],
+      "notebook": "notebooks/papers/P115_hojas_de_datos.ipynb"
+    },
+    {
+      "id": "P116",
+      "page": "P116_gestion_de_prompts.html",
+      "titulo": "Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts",
+      "original": "Why Johnny Can't Prompt: How Non-AI Experts Try (and Fail) to Design LLM Prompts",
+      "autoria": [
+        "J.D. Zamfirescu-Pereira",
+        "Richmond Y. Wong",
+        "Bjoern Hartmann",
+        "Qian Yang"
+      ],
+      "anio": 2023,
+      "venue": "CHI '23",
+      "nivel": "L2",
+      "motor": "gestion_de_prompts",
+      "hito": "Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente.",
+      "keywords": [
+        "prompts",
+        "LLMOps",
+        "evaluación",
+        "iteración",
+        "interacción persona-computador"
+      ],
+      "notebook": "notebooks/papers/P116_gestion_de_prompts.ipynb"
+    },
+    {
+      "id": "P117",
+      "page": "P117_agentops.html",
+      "titulo": "AgentBench: evaluar modelos de lenguaje como agentes",
+      "original": "AgentBench: Evaluating LLMs as Agents",
+      "autoria": [
+        "Xiao Liu",
+        "Hao Yu",
+        "Hanchen Zhang",
+        "Yifan Xu",
+        "Xuanyu Lei",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2308.03688 · ICLR 2024",
+      "nivel": "L3",
+      "motor": "agentops",
+      "hito": "Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan.",
+      "keywords": [
+        "AgentOps",
+        "trayectorias",
+        "modos de fallo",
+        "evaluación multi-entorno",
+        "agentes"
+      ],
+      "notebook": "notebooks/papers/P117_agentops.ipynb"
     }
   ]
 }

@@ -230,6 +230,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Huyen — *Designing Machine Learning Systems* (O'Reilly, 2022): <https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/>
 - Nygard — *Release It!* (2.ª ed., 2018), patrones de estabilidad para la capa de resiliencia: <https://pragprog.com/titles/mnee2/release-it-second-edition/>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P117 · AgentBench: evaluar modelos de lenguaje como agentes](../../../papers/foundational/P117_agentops/README.md) | 2023 | Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan. | [notebook](../../../notebooks/papers/P117_agentops.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

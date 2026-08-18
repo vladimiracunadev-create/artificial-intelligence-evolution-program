@@ -248,6 +248,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — cap. de Physical Human-Robot Interaction](https://link.springer.com/book/10.1007/978-3-319-32552-1)
 - [Villani, V. et al. (2018). Survey on human-robot collaboration in industrial settings. Mechatronics. DOI 10.1016/j.mechatronics.2018.02.009](https://doi.org/10.1016/j.mechatronics.2018.02.009)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P100 · Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones](../../../papers/foundational/P100_seguridad_fisica/README.md) | 2009 | Sustituye la intuición sobre seguridad robótica por mediciones de impacto con maniquíes y criterios de lesión validados. | [notebook](../../../notebooks/papers/P100_seguridad_fisica.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

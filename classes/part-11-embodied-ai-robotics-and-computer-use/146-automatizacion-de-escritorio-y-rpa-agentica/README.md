@@ -245,6 +245,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Xie, T. et al. (2024). OSWorld: Benchmarking Multimodal Agents in Real Computer Environments. arXiv:2404.07972](https://arxiv.org/abs/2404.07972)
 - [Anthropic — Computer use tool (documentación oficial)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P106 · OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales](../../../papers/foundational/P106_osworld/README.md) | 2024 | Lleva la evaluación de agentes al escritorio completo, con tareas que cruzan aplicaciones y un verificador por tarea que inspecciona el sistema real. | [notebook](../../../notebooks/papers/P106_osworld.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

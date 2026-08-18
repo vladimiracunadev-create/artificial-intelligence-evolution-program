@@ -14,12 +14,12 @@ flowchart TD
     SRC --> LABS["🧪 labs.py<br/>20 motores de clases"]
     CLASSES -->|"lab.py llama a"| LABS
 
-    PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>86 fichas de 18 secciones"]
+    PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>117 fichas de 18 secciones"]
     PAP -.->|"generate_papers.py"| NB["📓 notebooks/papers/<br/>60 notebooks"]
     PAP -.->|"generate_papers.py"| AULA["👩‍🏫 instructor · 🎒 student · 📝 assessments"]
     PAP -.->|"generate_papers.py"| MAN[("🔐 papers/manifest.json<br/>hash por artefacto")]
     PAP --> SITE
-    SRC --> PLABS["🧪 papers_lab.py<br/>86 motores de papers"]
+    SRC --> PLABS["🧪 papers_lab.py<br/>117 motores de papers"]
     NB -->|"importan"| PLABS
     FICHAS -.->|"ancla en"| CLASSES
 
@@ -40,7 +40,7 @@ curriculum.yaml                    fuente de verdad del eje de clases
       ├── src/ai_evolution/        catálogo, CLI, validación y motores
       │      ├── labs.py           20 motores de clases
       │      ├── papers.py         contrato y validación del eje de papers
-      │      └── papers_lab.py     86 motores de papers
+      │      └── papers_lab.py     117 motores de papers
       ├── site/                    PWA generada
       ├── apps/desktop/            visor local
       ├── frontier/                conocimiento cambiante y fechado
@@ -48,7 +48,7 @@ curriculum.yaml                    fuente de verdad del eje de clases
 
 papers/catalog/papers.json         fuente de verdad del eje de papers
       │
-      ├── papers/foundational/     86 fichas escritas a mano (18 secciones)
+      ├── papers/foundational/     117 fichas escritas a mano (18 secciones)
       ├── papers/guides/           5 guías de lectura crítica
       ├── notebooks/papers/        60 notebooks    ← generados
       ├── instructor/papers/       plan de sesión  ← generados
@@ -85,7 +85,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 |---|---|---|
 | `scripts/generate_papers.py` | índice, 60 notebooks, aula y manifiesto del eje | `--check` en CI |
 | `scripts/generate_site.py` | PWA: 198 páginas de clase + 66 de papers + los dos JSON | `pages.yml` |
-| `scripts/generate_pdfs.py` | 103 PDFs: 17 del programa + 86 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
+| `scripts/generate_pdfs.py` | 134 PDFs: 17 del programa + 117 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
 | `scripts/generate_assets.py` | recursos derivados | — |
 | `scripts/validate_repository.py` | contrato completo de ambos ejes | `--strict` en CI |
 

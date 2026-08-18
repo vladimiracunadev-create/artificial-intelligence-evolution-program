@@ -234,7 +234,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 📜 Dónde practicar esto
 
 Este programa tiene un eje entero para aplicar lo de esta clase sobre papers reales:
-[**86 fichas fundacionales**](../../../papers/README.md), de Pearson (1901) a DeepSeek-R1 (2025),
+[**117 fichas fundacionales**](../../../papers/README.md), de Pearson (1901) a DeepSeek-R1 (2025),
 cada una con su fuente primaria, sus límites y sus errores comunes documentados.
 
 | Recurso | Para qué sirve aquí |
@@ -242,7 +242,7 @@ cada una con su fuente primaria, sus límites y sus errores comunes documentados
 | [Cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) | El método aplicado al vocabulario y las convenciones del campo |
 | [Método de lectura en 5 pasadas](../../../papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) | La extensión del método de Keshav que usa el eje |
 | [Fuentes y venues](../../../papers/guides/FUENTES_Y_VENUES.md) | Dónde buscar y cómo pesar arXiv frente a una conferencia revisada |
-| [Índice de papers](../../../papers/catalog/PAPERS_INDEX.md) | Los 86, por año y por bloque temático |
+| [Índice de papers](../../../papers/catalog/PAPERS_INDEX.md) | Los 117, por año y por bloque temático |
 
 Empieza por una ficha corta —[P01 Perceptrón](../../../papers/foundational/P01_perceptron/README.md)—
 y compara **tu** lectura del artículo original con lo que la ficha declara como fecha de consulta,

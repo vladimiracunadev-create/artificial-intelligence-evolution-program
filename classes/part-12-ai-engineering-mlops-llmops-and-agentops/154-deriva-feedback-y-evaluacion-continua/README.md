@@ -232,6 +232,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Breck et al. (2017), "The ML Test Score", IEEE Big Data — tests de monitoreo](https://research.google/pubs/pub46555/)
 - [Google, "Rules of Machine Learning" — reglas de monitoreo (parte III)](https://developers.google.com/machine-learning/guides/rules-of-ml)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P110 · Una revisión sobre adaptación a la deriva de concepto](../../../papers/foundational/P110_deriva/README.md) | 2014 | Ordena el problema de que el mundo cambie después de entrenar, y separa detectar de adaptarse. | [notebook](../../../notebooks/papers/P110_deriva.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

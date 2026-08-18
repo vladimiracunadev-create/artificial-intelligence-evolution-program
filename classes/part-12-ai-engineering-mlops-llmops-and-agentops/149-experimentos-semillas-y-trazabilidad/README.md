@@ -232,6 +232,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
 - [PyTorch — Reproducibility notes](https://pytorch.org/docs/stable/notes/randomness.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P113 · Aprendizaje por refuerzo profundo que importa](../../../papers/foundational/P113_trazabilidad/README.md) | 2018 | Demuestra empíricamente que con pocas semillas el ranking entre algoritmos es una moneda al aire, y que muchas mejoras publicadas no sobreviven a la comprobación. | [notebook](../../../notebooks/papers/P113_trazabilidad.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

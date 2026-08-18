@@ -3,7 +3,7 @@
 
 # 🧠 Artificial Intelligence Evolution Program
 
-## **15 partes · 183 clases · 86 papers fundacionales · de la IA simbólica a los sistemas agénticos**
+## **15 partes · 183 clases · 117 papers fundacionales · de la IA simbólica a los sistemas agénticos**
 
 **Programa evolutivo y verificable para comprender e implementar la historia completa
 de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilidad,
@@ -14,9 +14,9 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.12.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.13.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
-[![Papers](https://img.shields.io/badge/papers-86%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
+[![Papers](https://img.shields.io/badge/papers-117%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
@@ -60,7 +60,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Superficie | Estado |
 |---|---|
 | Currículo | ✅ 183/183 clases documentadas |
-| Papers | ✅ 86 fichas de 18 secciones + 94 notebooks + 86 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 116 clases |
+| Papers | ✅ 117 fichas de 18 secciones + 125 notebooks + 117 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 146 clases |
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
@@ -198,11 +198,11 @@ flowchart LR
 
 | Qué incluye | Detalle |
 |---|---|
-| 📄 **86 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
+| 📄 **117 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
 | 📓 **60 notebooks** | 52 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
 | 🧪 **52 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
 | 🧮 **5 anexos** | Toda la matemática del eje explicada una vez, con ejemplo resuelto a mano y su error común |
-| 🔁 **Ida y vuelta** | Las 86 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
+| 🔁 **Ida y vuelta** | Las 146 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
 | 📚 **5 guías** | [Cómo leer un paper](papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [método en 5 pasadas](papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) · [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) · [plantilla de ficha](papers/guides/PLANTILLA_FICHA_PAPER.md) · [glosario](papers/guides/GLOSARIO_PAPERS_IA.md) |
 | 🎓 **Niveles L0–L5** | De orientar sobre qué es un paper a leer la frontera con fecha y fuente |
 | 👩‍🏫 **Aula completa** | [Guías docentes](instructor/papers/README.md), [fichas de estudio](student/papers/README.md) y [evaluaciones con rúbrica](assessments/papers/README.md) |
@@ -229,7 +229,7 @@ ai-evolution validate
 ai-evolution run 001
 ai-evolution frontier
 
-ai-evolution papers              # los 86 hitos del eje
+ai-evolution papers              # los 117 hitos del eje
 ai-evolution paper P08           # ficha de Attention Is All You Need
 ai-evolution paper-lab P08       # ejecuta su miniatura
 ```
@@ -259,7 +259,7 @@ sin cuenta.
 | 🖥️ Escritorio (Windows) | 📱 Android · 🌐 PWA |
 |:---:|:---:|
 | <img src="docs/screenshots/app-escritorio.png" alt="App de escritorio: catálogo de las 183 clases con el detalle de la clase 055" width="520"> | <img src="docs/screenshots/app-movil-clase.png" alt="App móvil: la clase 055 en la interfaz del WebView" width="230"> |
-| Visor nativo del catálogo: busca, navega las 15 partes y abre el README o el sitio de cada clase | La app Android y la PWA cargan el mismo sitio: 183 clases, 86 papers y progreso local |
+| Visor nativo del catálogo: busca, navega las 15 partes y abre el README o el sitio de cada clase | La app Android y la PWA cargan el mismo sitio: 183 clases, 117 papers y progreso local |
 
 </div>
 
@@ -423,7 +423,7 @@ extiende**.
 ### ✅ Lo que sí es
 
 - 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
-- 📜 un **eje de 86 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Pearson (1901) a DeepSeek-R1 (2025), con bloques de fundamentos, IA simbólica, machine learning clásico, representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
+- 📜 un **eje de 117 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Pearson (1901) a DeepSeek-R1 (2025), con bloques de fundamentos, IA simbólica, machine learning clásico, representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
 - 🧪 material **ejecutable y verificable**: 595 notebooks (549 de clase + 46 de papers), 183 laboratorios locales y 72 motores deterministas con contratos JSON que declaran `evidence` y `limitations`;
 - 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 69 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;

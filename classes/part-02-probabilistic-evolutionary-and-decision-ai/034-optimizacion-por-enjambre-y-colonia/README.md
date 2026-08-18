@@ -200,6 +200,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Clerc, M. & Kennedy, J. (2002). "The particle swarm — explosion, stability, and convergence in a multidimensional complex space". *IEEE Trans. Evolutionary Computation*, 6(1), 58-73. [https://doi.org/10.1109/4235.985692](https://doi.org/10.1109/4235.985692)
 - Bonabeau, E., Dorigo, M. & Theraulaz, G. (1999). *Swarm Intelligence: From Natural to Artificial Systems*. Oxford University Press.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P92 · Optimización por enjambre de partículas](../../../papers/foundational/P92_pso/README.md) | 1995 | Optimiza sin gradiente con dos únicas memorias: lo mejor que ha encontrado cada individuo y lo mejor que ha encontrado el grupo. | [notebook](../../../notebooks/papers/P92_pso.ipynb) |
+| [P93 · Sistema de hormigas: optimización mediante una colonia de agentes cooperantes](../../../papers/foundational/P93_aco/README.md) | 1996 | La solución no está en ningún agente: está en el rastro que dejan en el entorno y que se refuerza y se evapora. | [notebook](../../../notebooks/papers/P93_aco.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

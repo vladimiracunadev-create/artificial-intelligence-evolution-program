@@ -203,6 +203,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Bellman, R. (1957) — "A Markovian Decision Process", *Journal of Mathematics and Mechanics*](https://www.jstor.org/stable/24900506)
 - [Kochenderfer, Wheeler & Wray — *Algorithms for Decision Making* (MIT Press, PDF oficial gratuito)](https://algorithmsbook.com/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P95 · Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático](../../../papers/foundational/P95_causalidad/README.md) | 2019 | Ordena en tres peldaños lo que un sistema puede responder —asociación, intervención y contrafáctico— y muestra que subir de peldaño exige supuestos que los datos no contienen. | [notebook](../../../notebooks/papers/P95_causalidad.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

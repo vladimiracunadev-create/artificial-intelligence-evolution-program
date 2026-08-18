@@ -90,6 +90,37 @@ Una guía por paper con plan de sesión de 90 minutos, errores esperables en el 
 | P84 · Bosque de aislamiento | [P84_isolation_forest.md](P84_isolation_forest.md) |
 | P85 · Técnicas de factorización matricial para sistemas de recomendación | [P85_factorizacion_matricial.md](P85_factorizacion_matricial.md) |
 | P86 · La competición M4: resultados, hallazgos, conclusiones y camino a seguir | [P86_m4.md](P86_m4.md) |
+| P87 · Ensayo para resolver un problema en la doctrina de las probabilidades | [P87_bayes.md](P87_bayes.md) |
+| P88 · Probabilidad, frecuencia y expectativa razonable | [P88_cox.md](P88_cox.md) |
+| P89 · Conjuntos difusos | [P89_fuzzy.md](P89_fuzzy.md) |
+| P90 · Algoritmos genéticos y la asignación óptima de ensayos | [P90_algoritmos_geneticos.md](P90_algoritmos_geneticos.md) |
+| P91 · Fusión, propagación y estructuración en redes de creencia | [P91_redes_bayesianas.md](P91_redes_bayesianas.md) |
+| P92 · Optimización por enjambre de partículas | [P92_pso.md](P92_pso.md) |
+| P93 · Sistema de hormigas: optimización mediante una colonia de agentes cooperantes | [P93_aco.md](P93_aco.md) |
+| P94 · Stan: un lenguaje de programación probabilística | [P94_programacion_probabilistica.md](P94_programacion_probabilistica.md) |
+| P95 · Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático | [P95_causalidad.md](P95_causalidad.md) |
+| P96 · Un nuevo enfoque para los problemas de filtrado y predicción lineales | [P96_kalman.md](P96_kalman.md) |
+| P97 · Un sistema de control por capas robusto para un robot móvil | [P97_subsuncion.md](P97_subsuncion.md) |
+| P98 · RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única | [P98_rrt.md](P98_rrt.md) |
+| P99 · Localización y mapeo simultáneos: parte I | [P99_slam.md](P99_slam.md) |
+| P100 · Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones | [P100_seguridad_fisica.md](P100_seguridad_fisica.md) |
+| P101 · Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento | [P101_dagger.md](P101_dagger.md) |
+| P102 · Algoritmos de optimización proximal de políticas | [P102_ppo.md](P102_ppo.md) |
+| P103 · Aleatorización de dominio para transferir redes profundas de la simulación al mundo real | [P103_domain_randomization.md](P103_domain_randomization.md) |
+| P104 · WebArena: un entorno web realista para construir agentes autónomos | [P104_webarena.md](P104_webarena.md) |
+| P105 · SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica | [P105_seeclick.md](P105_seeclick.md) |
+| P106 · OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales | [P106_osworld.md](P106_osworld.md) |
+| P107 · Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala | [P107_dapper.md](P107_dapper.md) |
+| P108 · CAP doce años después: cómo han cambiado las «reglas» | [P108_cap.md](P108_cap.md) |
+| P109 · La cola a escala | [P109_cola_larga.md](P109_cola_larga.md) |
+| P110 · Una revisión sobre adaptación a la deriva de concepto | [P110_deriva.md](P110_deriva.md) |
+| P111 · Deuda técnica oculta en los sistemas de aprendizaje automático | [P111_deuda_tecnica.md](P111_deuda_tecnica.md) |
+| P112 · La puntuación de pruebas de ML: una rúbrica de preparación para producción | [P112_ml_test_score.md](P112_ml_test_score.md) |
+| P113 · Aprendizaje por refuerzo profundo que importa | [P113_trazabilidad.md](P113_trazabilidad.md) |
+| P114 · Tarjetas de modelo para el reporte de modelos | [P114_tarjetas_de_modelo.md](P114_tarjetas_de_modelo.md) |
+| P115 · Hojas de datos para conjuntos de datos | [P115_hojas_de_datos.md](P115_hojas_de_datos.md) |
+| P116 · Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts | [P116_gestion_de_prompts.md](P116_gestion_de_prompts.md) |
+| P117 · AgentBench: evaluar modelos de lenguaje como agentes | [P117_agentops.md](P117_agentops.md) |
 
 ---
 

@@ -6119,6 +6119,2631 @@ def _m4(seed: int) -> dict[str, Any]:
 
 
 # --------------------------------------------------------------------------- #
+# ruta probabilística (P87–P95)
+# --------------------------------------------------------------------------- #
+
+
+def _bayes(seed: int) -> dict[str, Any]:
+    """Bayes 1763: la prevalencia manda tanto como la prueba."""
+    escenarios = [
+        {"caso": "cribado poblacional", "prevalencia": 0.001, "sensibilidad": 0.99, "especificidad": 0.99},
+        {"caso": "grupo de riesgo", "prevalencia": 0.05, "sensibilidad": 0.99, "especificidad": 0.99},
+        {"caso": "con síntomas claros", "prevalencia": 0.40, "sensibilidad": 0.99, "especificidad": 0.99},
+        {"caso": "prueba mediocre, prevalencia alta", "prevalencia": 0.40, "sensibilidad": 0.80,
+         "especificidad": 0.75},
+    ]
+    for e in escenarios:
+        p, s, esp = e["prevalencia"], e["sensibilidad"], e["especificidad"]
+        verdaderos = p * s
+        falsos = (1 - p) * (1 - esp)
+        e["p_enfermo_dado_positivo"] = _round(verdaderos / (verdaderos + falsos), 4)
+        e["de_cada_100_positivos_sanos"] = _round(100 * falsos / (verdaderos + falsos), 1)
+        e["razon_de_verosimilitud"] = _round(s / (1 - esp), 2)
+
+    # dos pruebas independientes: las odds se multiplican por la razón de verosimilitud
+    p0, s, esp = 0.001, 0.99, 0.99
+    lr = s / (1 - esp)
+    odds = p0 / (1 - p0)
+    cadena = []
+    for n in range(0, 4):
+        cadena.append({"pruebas_positivas": n,
+                       "odds": _round(odds * lr ** n, 4),
+                       "probabilidad": _round((odds * lr ** n) / (1 + odds * lr ** n), 4)})
+
+    rng = random.Random(seed)
+    poblacion = 100_000
+    enfermos = sum(1 for _ in range(poblacion) if rng.random() < p0)
+    simulados_pos_enfermos = sum(1 for _ in range(enfermos) if rng.random() < s)
+    simulados_pos_sanos = sum(1 for _ in range(poblacion - enfermos) if rng.random() < (1 - esp))
+
+    return _contract(
+        "bayes",
+        seed,
+        {
+            "regla": "P(H|D) = P(D|H)·P(H) / P(D)",
+            "en_odds": "odds posteriores = odds previas × razón de verosimilitud",
+            "escenarios": escenarios,
+            "cadena_de_pruebas_independientes": cadena,
+            "simulacion_sobre_100000_personas": {
+                "enfermos_reales": enfermos,
+                "positivos_enfermos": simulados_pos_enfermos,
+                "positivos_sanos": simulados_pos_sanos,
+                "proporcion_de_positivos_que_estan_sanos": _round(
+                    simulados_pos_sanos / max(simulados_pos_enfermos + simulados_pos_sanos, 1), 4),
+            },
+        },
+        [
+            f"Con una prueba del 99 % de sensibilidad y especificidad, un positivo en cribado "
+            f"poblacional deja una probabilidad de estar enfermo de "
+            f"{escenarios[0]['p_enfermo_dado_positivo']}: "
+            f"{escenarios[0]['de_cada_100_positivos_sanos']} de cada 100 positivos están sanos.",
+            f"La misma prueba en un grupo con prevalencia 0,40 da "
+            f"{escenarios[2]['p_enfermo_dado_positivo']}. **La prueba no cambia; cambia a quién se le "
+            "aplica.** Eso es lo que la regla obliga a hacer explícito.",
+            f"En odds la actualización es una multiplicación: cada positivo multiplica por la razón de "
+            f"verosimilitud ({_round(lr, 1)}). Tres positivos independientes llevan de "
+            f"{cadena[0]['probabilidad']} a {cadena[3]['probabilidad']}.",
+            f"La simulación sobre 100 000 personas lo confirma sin fórmulas: "
+            f"{simulados_pos_sanos} de los {simulados_pos_enfermos + simulados_pos_sanos} positivos son "
+            "sanos. Contar y calcular dan lo mismo, que es de lo que trata el teorema.",
+        ],
+        [
+            "La cadena de pruebas supone independencia condicional entre ellas, y en medicina real dos "
+            "pruebas del mismo tipo suelen fallar por las mismas razones: multiplicar razones de "
+            "verosimilitud sobreestima la certeza.",
+            "Sensibilidad y especificidad se dan como conocidas. En la práctica se estiman, con su propio "
+            "intervalo, y ese error se propaga al posterior.",
+            "El ensayo de Bayes es póstumo y trata un problema de bolas y una mesa de billar, no de "
+            "diagnóstico. La forma moderna de la regla y su uso general son de Laplace.",
+        ],
+    )
+
+
+def _cox(seed: int) -> dict[str, Any]:
+    """Cox 1946: si quieres razonar con grados de creencia sin contradecirte, sale probabilidad."""
+    # una escala de "plausibilidad" que NO respeta la regla de la suma
+    creencias = {"llueve": 0.6, "no_llueve": 0.6}      # incoherente: suma 1,2
+    coherente = {"llueve": 0.6, "no_llueve": 0.4}
+
+    def apuesta_dutch_book(cred: dict[str, float], monto: float = 100.0) -> dict[str, Any]:
+        """Un corredor vende apuestas al precio que marcan esas creencias."""
+        precio_llueve = cred["llueve"] * monto
+        precio_no = cred["no_llueve"] * monto
+        pagado = precio_llueve + precio_no
+        # pase lo que pase, exactamente una de las dos apuestas paga `monto`
+        return {
+            "paga_por_las_dos_apuestas": _round(pagado, 2),
+            "cobra_pase_lo_que_pase": monto,
+            "resultado_garantizado": _round(monto - pagado, 2),
+            "hay_arbitraje": pagado != monto,
+        }
+
+    incoherente = apuesta_dutch_book(creencias)
+    sano = apuesta_dutch_book(coherente)
+
+    desiderata = {
+        "1_grados_por_numeros_reales": "los grados de creencia se representan con números reales",
+        "2_consistencia_con_la_logica": "si algo es cierto, su grado es el máximo; y las reglas se "
+                                        "reducen a la lógica en los casos extremos",
+        "3_consistencia_interna": "si una conclusión se puede alcanzar por dos caminos, ambos deben "
+                                  "dar el mismo grado",
+    }
+
+    # cualquier reescalado monótono sigue cumpliendo los desiderata: la probabilidad
+    # es única SALVO reparametrización, y eso también se puede exhibir
+    rng = random.Random(seed)
+    muestras = [_round(rng.random(), 3) for _ in range(5)]
+    reescalado = [{"p": p, "p_al_cubo": _round(p ** 3, 4),
+                   "orden_conservado": True} for p in sorted(muestras)]
+
+    return _contract(
+        "cox",
+        seed,
+        {
+            "desiderata": desiderata,
+            "teorema": "cualquier medida de plausibilidad que cumpla los desiderata es isomorfa a la "
+                       "probabilidad: satisface la regla de la suma y la del producto",
+            "creencia_incoherente": creencias,
+            "apuesta_contra_el_incoherente": incoherente,
+            "creencia_coherente": coherente,
+            "apuesta_contra_el_coherente": sano,
+            "reparametrizacion_monotona": reescalado,
+        },
+        [
+            f"Quien cree 0,6 en «llueve» y 0,6 en «no llueve» paga "
+            f"{incoherente['paga_por_las_dos_apuestas']} por dos apuestas que le devuelven "
+            f"{incoherente['cobra_pase_lo_que_pase']} pase lo que pase: pierde "
+            f"{abs(incoherente['resultado_garantizado'])} con certeza.",
+            f"Con creencias que suman 1 no hay arbitraje posible: el resultado garantizado es "
+            f"{sano['resultado_garantizado']}. La regla de la suma no es una convención: es lo que "
+            "impide que te desplumen.",
+            "Ese es el contenido del teorema de Cox por otra vía: los tres desiderata —números reales, "
+            "consistencia con la lógica y consistencia interna— fuerzan las reglas de la probabilidad. "
+            "No se eligen, se deducen.",
+            "La probabilidad es única salvo reparametrización monótona: elevar al cubo conserva el orden "
+            "y sigue cumpliendo los desiderata. Lo que está fijado es la ESTRUCTURA, no la escala.",
+        ],
+        [
+            "El argumento del libro holandés (Ramsey y de Finetti) NO es el de Cox: llega a la misma "
+            "conclusión desde las apuestas en vez de desde los desiderata. Aquí se usa porque es "
+            "comprobable con una resta.",
+            "La demostración de Cox tiene supuestos técnicos —diferenciabilidad, densidad— que fueron "
+            "discutidos después (Halpern, 1999) y exigen precisar el enunciado.",
+            "Que la probabilidad sea la única extensión coherente de la lógica no dice de dónde salen las "
+            "probabilidades previas. Ese es otro problema y sigue abierto.",
+        ],
+    )
+
+
+def _fuzzy(seed: int) -> dict[str, Any]:
+    """Zadeh 1965: pertenencia gradual, que no es probabilidad."""
+
+    def trapecio(x, a, b, c, d):
+        if x <= a or x >= d:
+            return 0.0
+        if b <= x <= c:
+            return 1.0
+        if x < b:
+            return (x - a) / (b - a)
+        return (d - x) / (d - c)
+
+    conjuntos = {
+        "frío": lambda t: trapecio(t, -100, -100, 10, 18),
+        "templado": lambda t: trapecio(t, 14, 19, 23, 27),
+        "caluroso": lambda t: trapecio(t, 23, 30, 100, 100),
+    }
+    temperaturas = [8, 16, 20, 25, 33]
+    pertenencias = [
+        {"temperatura": t, **{k: _round(f(t), 3) for k, f in conjuntos.items()},
+         "suma": _round(sum(f(t) for f in conjuntos.values()), 3)}
+        for t in temperaturas
+    ]
+
+    # controlador difuso: reglas con min/max y desdifusificación por centroide
+    reglas = [("frío", 100.0), ("templado", 50.0), ("caluroso", 0.0)]   # potencia del calefactor
+
+    def controlar(t):
+        activaciones = [(nombre, conjuntos[nombre](t), salida) for nombre, salida in reglas]
+        total = sum(a for _, a, _ in activaciones)
+        if total == 0:
+            return {"temperatura": t, "activaciones": {}, "potencia": None}
+        potencia = sum(a * s for _, a, s in activaciones) / total
+        return {"temperatura": t,
+                "activaciones": {n: _round(a, 3) for n, a, _ in activaciones if a > 0},
+                "potencia": _round(potencia, 2)}
+
+    control = [controlar(t) for t in (8, 16, 20, 25, 33)]
+
+    # operadores de Zadeh frente a los de la probabilidad
+    a, b = 0.7, 0.4
+    operadores = {
+        "zadeh_AND_min": _round(min(a, b), 3),
+        "zadeh_OR_max": _round(max(a, b), 3),
+        "zadeh_NOT": _round(1 - a, 3),
+        "probabilidad_AND_si_independientes": _round(a * b, 3),
+        "idempotencia_min_A_A": _round(min(a, a), 3),
+        "idempotencia_producto_A_A": _round(a * a, 3),
+    }
+
+    rng = random.Random(seed)
+    muestra = _round(rng.uniform(5, 35), 1)
+
+    return _contract(
+        "fuzzy",
+        seed,
+        {
+            "conjuntos": list(conjuntos),
+            "pertenencias": pertenencias,
+            "control_difuso": control,
+            "operadores": operadores,
+            "temperatura_muestreada": muestra,
+            "salida_para_esa_temperatura": controlar(muestra),
+        },
+        [
+            "A 20 °C la temperatura pertenece a «templado» con grado 1,0 y a los demás con 0. A 25 °C "
+            "pertenece a la vez a «templado» y a «caluroso»: la pertenencia gradual permite que un "
+            "elemento esté parcialmente en dos conjuntos, y eso es lo que la teoría clásica prohíbe.",
+            f"La suma de pertenencias NO es 1: en la tabla vale "
+            f"{[p['suma'] for p in pertenencias]}. Por eso un grado de pertenencia **no es** una "
+            "probabilidad, aunque ambos vivan en [0, 1].",
+            f"El controlador pasa de {control[0]['potencia']} a {control[-1]['potencia']} de potencia sin "
+            "un solo umbral duro: la salida se interpola entre reglas activadas parcialmente. Es la razón "
+            "de que el control difuso se usara en lavadoras y trenes antes que en artículos.",
+            f"El AND de Zadeh es el mínimo, y es **idempotente**: min(0,7 · 0,7) = "
+            f"{operadores['idempotencia_min_A_A']}. El producto de la probabilidad no lo es: "
+            f"{operadores['idempotencia_producto_A_A']}. Son álgebras distintas para preguntas distintas.",
+        ],
+        [
+            "Las funciones de pertenencia las escribe una persona. No se estiman de datos y no hay "
+            "criterio objetivo para elegir sus vértices: esa es la crítica más seria al enfoque.",
+            "Zadeh propone min/max, pero hay familias enteras de operadores (t-normas) igualmente válidas. "
+            "La elección cambia el resultado y no está determinada por la teoría.",
+            "La comparación con la probabilidad no es una competición: responden preguntas distintas. "
+            "«¿Cuán alto es?» y «¿qué probabilidad hay de que sea alto?» no son la misma pregunta.",
+        ],
+    )
+
+
+def _algoritmos_geneticos(seed: int) -> dict[str, Any]:
+    """Holland 1973: la población asigna ensayos a lo que rinde. Y hay funciones que la engañan."""
+    longitud, poblacion_n, generaciones = 20, 40, 40
+
+    def unos(bits):
+        """OneMax: sin trampas. El óptimo es todo unos y el gradiente apunta a él."""
+        return sum(bits)
+
+    def hacer_trampa(k):
+        """Trampa deceptiva de k bits: dentro del bloque, menos unos parece mejor.
+
+        El óptimo GLOBAL sigue siendo todo unos, pero el óptimo del bloque en
+        solitario es todo ceros, y hacia él apunta el gradiente de aptitud.
+        """
+        def aptitud(bits):
+            bloque = sum(bits[:k])
+            aporte = (k + 1) if bloque == k else (k - 1 - bloque)
+            return aporte + sum(bits[k:])
+        return aptitud
+
+    def evolucionar(aptitud, semilla):
+        local = random.Random(semilla)
+        poblacion = [[local.randint(0, 1) for _ in range(longitud)] for _ in range(poblacion_n)]
+        curva = []
+        for g in range(generaciones):
+            puntuaciones = [aptitud(b) for b in poblacion]
+            if g % 10 == 0 or g == generaciones - 1:
+                curva.append({"generacion": g,
+                              "media": _round(sum(puntuaciones) / len(puntuaciones), 3),
+                              "maxima": max(puntuaciones),
+                              "bloque_todo_unos": sum(1 for b in poblacion if sum(b[:4]) == 4),
+                              "bloque_todo_ceros": sum(1 for b in poblacion if sum(b[:4]) == 0)})
+            nueva = []
+            while len(nueva) < poblacion_n:
+                def torneo():
+                    i, j = local.randrange(poblacion_n), local.randrange(poblacion_n)
+                    return poblacion[i] if puntuaciones[i] >= puntuaciones[j] else poblacion[j]
+                p1, p2 = torneo(), torneo()
+                corte = local.randrange(1, longitud)
+                for h in (p1[:corte] + p2[corte:], p2[:corte] + p1[corte:]):
+                    if len(nueva) < poblacion_n:
+                        nueva.append([(1 - b) if local.random() < 0.01 else b for b in h])
+            poblacion = nueva
+        mejor = max(poblacion, key=aptitud)
+        return {"curva": curva, "mejor": aptitud(mejor),
+                "bloque_del_mejor": "".join(str(b) for b in mejor[:4])}
+
+    facil = evolucionar(unos, seed)
+    trampas = {}
+    for k in (4, 10):
+        aptitud = hacer_trampa(k)
+        r = evolucionar(aptitud, seed)
+        r["bloque_del_mejor"] = r["bloque_del_mejor"][:k] if k <= 4 else None
+        r["bits_del_bloque"] = k
+        r["optimo_global"] = (k + 1) + (longitud - k)
+        r["optimo_local"] = (k - 1) + (longitud - k)
+        r["escapa_de_la_trampa"] = r["mejor"] == r["optimo_global"]
+        trampas[f"trampa_de_{k}_bits"] = r
+    deceptiva = trampas["trampa_de_10_bits"]
+
+    presupuesto = poblacion_n * generaciones
+    azar = random.Random(seed * 7919)
+    mejor_azar = max(unos([azar.randint(0, 1) for _ in range(longitud)]) for _ in range(presupuesto))
+
+    return _contract(
+        "algoritmos_geneticos",
+        seed,
+        {
+            "cromosoma": longitud, "poblacion": poblacion_n, "generaciones": generaciones,
+            "evaluaciones_por_experimento": presupuesto,
+            "experimento_1_sin_trampa": {
+                "funcion": "OneMax: aptitud = número de unos · óptimo 20",
+                **facil,
+                "busqueda_aleatoria_mismo_presupuesto": mejor_azar,
+            },
+            "experimento_2_con_trampa": {
+                "funcion": "bloque deceptivo de k bits + OneMax en el resto",
+                **trampas,
+            },
+            "escapa_con_trampa_de_4": trampas["trampa_de_4_bits"]["escapa_de_la_trampa"],
+            "escapa_con_trampa_de_10": trampas["trampa_de_10_bits"]["escapa_de_la_trampa"],
+        },
+        [
+            f"Sin trampa, la aptitud media sube de {facil['curva'][0]['media']} a "
+            f"{facil['curva'][-1]['media']} y el mejor llega a {facil['mejor']} de 20. Con el MISMO "
+            f"presupuesto de {presupuesto} evaluaciones, la búsqueda aleatoria se queda en {mejor_azar}.",
+            "La diferencia no está en probar más veces, sino en recombinar lo que ya funcionó: la "
+            "selección concentra los ensayos donde rinden, que es el argumento del artículo.",
+            f"Con una trampa deceptiva de 4 bits la población SÍ escapa: llega a "
+            f"{trampas['trampa_de_4_bits']['mejor']} de "
+            f"{trampas['trampa_de_4_bits']['optimo_global']}. El bloque es corto y el cruce lo reensambla "
+            "por azar antes de que la selección lo fije.",
+            f"Con una trampa de 10 bits no escapa: se queda en {deceptiva['mejor']} frente al óptimo "
+            f"global {deceptiva['optimo_global']}, es decir en el óptimo LOCAL "
+            f"({deceptiva['optimo_local']}). El método no es un buscador universal: explota la estructura "
+            "que haya, y cuando la estructura engaña a esa escala, lo engaña.",
+        ],
+        [
+            "Veinte bits y una aptitud instantánea de calcular. En un problema real cada evaluación "
+            "cuesta, y ahí se decide si el método compensa.",
+            "El teorema de los esquemas de Holland describe una cota sobre esquemas cortos y de bajo "
+            "orden. Ha sido muy discutido y no explica por sí solo por qué funcionan estos algoritmos.",
+            "Las funciones deceptivas se construyen a propósito para engañar al cruce. Que exista una que "
+            "lo derrota no dice cuán frecuentes son en la práctica: eso es una pregunta empírica abierta.",
+        ],
+    )
+
+
+def _redes_bayesianas(seed: int) -> dict[str, Any]:
+    """Pearl 1986: la estructura del grafo es lo que hace tratable la probabilidad conjunta."""
+    # red clásica: nublado → lluvia, nublado → aspersor, lluvia+aspersor → césped mojado
+    p_nublado = 0.5
+    p_aspersor = {True: 0.1, False: 0.5}                 # dado nublado
+    p_lluvia = {True: 0.8, False: 0.2}                   # dado nublado
+    p_mojado = {(True, True): 0.99, (True, False): 0.90,
+                (False, True): 0.90, (False, False): 0.0}
+
+    def conjunta(n, a, l, m):
+        pn = p_nublado if n else 1 - p_nublado
+        pa = p_aspersor[n] if a else 1 - p_aspersor[n]
+        pl = p_lluvia[n] if l else 1 - p_lluvia[n]
+        base = p_mojado[(a, l)]
+        pm = base if m else 1 - base
+        return pn * pa * pl * pm
+
+    universo = [(n, a, l, m) for n in (True, False) for a in (True, False)
+                for l in (True, False) for m in (True, False)]
+    total = sum(conjunta(*x) for x in universo)
+
+    def prob(filtro):
+        return sum(conjunta(*x) for x in universo if filtro(*x))
+
+    def condicional(objetivo, dado):
+        num = prob(lambda n, a, l, m: objetivo(n, a, l, m) and dado(n, a, l, m))
+        den = prob(dado)
+        return _round(num / den, 4) if den else None
+
+    # explicar-y-descartar: saber que el aspersor estuvo encendido BAJA la probabilidad de lluvia
+    sin_info = condicional(lambda n, a, l, m: l, lambda n, a, l, m: m)
+    con_aspersor = condicional(lambda n, a, l, m: l, lambda n, a, l, m: m and a)
+
+    # independencia condicional: lluvia ⟂ aspersor | nublado
+    p_l_dado_nublado = condicional(lambda n, a, l, m: l, lambda n, a, l, m: n)
+    p_l_dado_nublado_y_aspersor = condicional(lambda n, a, l, m: l, lambda n, a, l, m: n and a)
+
+    parametros_tabla_completa = 2 ** 4 - 1
+    parametros_red = 1 + 2 + 2 + 4
+
+    rng = random.Random(seed)
+    def muestrear():
+        n = rng.random() < p_nublado
+        a = rng.random() < p_aspersor[n]
+        l = rng.random() < p_lluvia[n]
+        m = rng.random() < p_mojado[(a, l)]
+        return n, a, l, m
+    muestras = [muestrear() for _ in range(20000)]
+    mojados = [x for x in muestras if x[3]]
+    estimado_sin = _round(sum(1 for x in mojados if x[2]) / len(mojados), 4)
+    mojados_y_aspersor = [x for x in mojados if x[1]]
+    estimado_con = _round(sum(1 for x in mojados_y_aspersor if x[2]) / len(mojados_y_aspersor), 4)
+
+    return _contract(
+        "redes_bayesianas",
+        seed,
+        {
+            "variables": ["nublado", "aspersor", "lluvia", "mojado"],
+            "suma_de_la_conjunta": _round(total, 6),
+            "parametros_tabla_conjunta_completa": parametros_tabla_completa,
+            "parametros_de_la_red": parametros_red,
+            "P_lluvia_dado_mojado": sin_info,
+            "P_lluvia_dado_mojado_y_aspersor": con_aspersor,
+            "explicar_y_descartar": con_aspersor < sin_info,
+            "P_lluvia_dado_nublado": p_l_dado_nublado,
+            "P_lluvia_dado_nublado_y_aspersor": p_l_dado_nublado_y_aspersor,
+            "independencia_condicional_se_cumple":
+                abs(p_l_dado_nublado - p_l_dado_nublado_y_aspersor) < 1e-9,
+            "estimacion_por_muestreo": {"sin_saber_del_aspersor": estimado_sin,
+                                        "sabiendo_del_aspersor": estimado_con,
+                                        "muestras": len(muestras)},
+        },
+        [
+            f"Ver el césped mojado sube la probabilidad de lluvia a {sin_info}. Añadir que el aspersor "
+            f"estuvo encendido la BAJA a {con_aspersor}: una causa explica el efecto y descarta a la "
+            "otra. Ese patrón —explicar y descartar— no lo produce ninguna regla de asociación.",
+            f"Lluvia y aspersor son independientes DADO nublado: {p_l_dado_nublado} frente a "
+            f"{p_l_dado_nublado_y_aspersor}. Son dependientes sin condicionar y se vuelven independientes "
+            "al conocer la causa común; el grafo codifica exactamente eso.",
+            f"La tabla conjunta completa exige {parametros_tabla_completa} parámetros y la red, "
+            f"{parametros_red}. Con 4 variables la diferencia es pequeña; con 30 son mil millones frente "
+            "a unas decenas. Ahí está el aporte.",
+            f"El muestreo sobre {len(muestras)} casos reproduce el mismo efecto ({estimado_sin} → "
+            f"{estimado_con}) sin resolver ninguna ecuación: la estructura del grafo basta para "
+            "generar y para inferir.",
+        ],
+        [
+            "Cuatro variables binarias: la conjunta cabe entera en la tabla y por eso aquí se calcula por "
+            "enumeración. La propagación de creencias de Pearl existe precisamente porque en redes "
+            "grandes eso no se puede.",
+            "La inferencia exacta en redes bayesianas generales es NP-difícil. El grafo hace tratable el "
+            "caso con estructura, no el caso general.",
+            "Las probabilidades condicionales están dadas. Estimarlas de datos —y peor, aprender la "
+            "estructura del grafo— es el problema difícil y no se aborda aquí.",
+        ],
+    )
+
+
+def _pso(seed: int) -> dict[str, Any]:
+    """Kennedy y Eberhart 1995: memoria propia y memoria del grupo."""
+    rng = random.Random(seed)
+
+    def objetivo(x, y):
+        """Rastrigin en 2D: muchos mínimos locales, óptimo global en (0, 0)."""
+        return 20 + (x * x - 10 * math.cos(2 * math.pi * x)) + (y * y - 10 * math.cos(2 * math.pi * y))
+
+    def enjambre(n_particulas, iteraciones, w, c1, c2, semilla):
+        local = random.Random(semilla)
+        pos = [[local.uniform(-5.12, 5.12), local.uniform(-5.12, 5.12)] for _ in range(n_particulas)]
+        vel = [[local.uniform(-1, 1), local.uniform(-1, 1)] for _ in range(n_particulas)]
+        mejor_personal = [p[:] for p in pos]
+        mejor_personal_val = [objetivo(*p) for p in pos]
+        idx = min(range(n_particulas), key=lambda i: mejor_personal_val[i])
+        mejor_global, mejor_global_val = mejor_personal[idx][:], mejor_personal_val[idx]
+        curva = []
+        for it in range(iteraciones):
+            for i in range(n_particulas):
+                for d in (0, 1):
+                    r1, r2 = local.random(), local.random()
+                    vel[i][d] = (w * vel[i][d]
+                                 + c1 * r1 * (mejor_personal[i][d] - pos[i][d])
+                                 + c2 * r2 * (mejor_global[d] - pos[i][d]))
+                    vel[i][d] = max(-2.0, min(2.0, vel[i][d]))
+                    pos[i][d] = max(-5.12, min(5.12, pos[i][d] + vel[i][d]))
+                v = objetivo(*pos[i])
+                if v < mejor_personal_val[i]:
+                    mejor_personal[i], mejor_personal_val[i] = pos[i][:], v
+                    if v < mejor_global_val:
+                        mejor_global, mejor_global_val = pos[i][:], v
+            if it % 10 == 0 or it == iteraciones - 1:
+                curva.append({"iteracion": it, "mejor": _round(mejor_global_val, 5)})
+        cx = sum(p[0] for p in pos) / n_particulas
+        cy = sum(p[1] for p in pos) / n_particulas
+        dispersion = sum(math.dist(p, [cx, cy]) for p in pos) / n_particulas
+        return {"mejor_valor": _round(mejor_global_val, 5),
+                "mejor_posicion": [_round(x, 4) for x in mejor_global],
+                "dispersion_final_del_enjambre": _round(dispersion, 4),
+                "curva": curva}
+
+    completo = enjambre(30, 60, 0.7, 1.5, 1.5, seed)
+    sin_social = enjambre(30, 60, 0.7, 1.5, 0.0, seed)      # cada partícula sola
+    sin_cognitivo = enjambre(30, 60, 0.7, 0.0, 1.5, seed)   # todos detrás del líder
+    evaluaciones = 30 * 60
+    azar = min(objetivo(rng.uniform(-5.12, 5.12), rng.uniform(-5.12, 5.12)) for _ in range(evaluaciones))
+
+    return _contract(
+        "pso",
+        seed,
+        {
+            "funcion": "Rastrigin 2D · óptimo global f(0,0) = 0 · muchos mínimos locales",
+            "particulas": 30, "iteraciones": 60, "evaluaciones": evaluaciones,
+            "enjambre_completo": completo,
+            "solo_memoria_propia_c2_0": sin_social,
+            "solo_memoria_del_grupo_c1_0": sin_cognitivo,
+            "busqueda_aleatoria_mismo_presupuesto": _round(azar, 5),
+        },
+        [
+            f"El enjambre completo llega a {completo['mejor_valor']} en {completo['curva'][-1]['iteracion'] + 1} "
+            f"iteraciones, partiendo de {completo['curva'][0]['mejor']}. Con el mismo presupuesto de "
+            f"{evaluaciones} evaluaciones, la búsqueda aleatoria se queda en {_round(azar, 4)}.",
+            f"Quitando el término social (c2 = 0) cada partícula busca sola y el mejor empeora a "
+            f"{sin_social['mejor_valor']}: sin compartir el hallazgo, el enjambre es solo treinta "
+            "búsquedas locales independientes.",
+            f"Quitando el cognitivo (c1 = 0) el resultado NO empeora aquí ({sin_cognitivo['mejor_valor']}), "
+            f"y lo que cambia es la dispersión final del enjambre: {completo['dispersion_final_del_enjambre']} "
+            f"con las dos memorias frente a {sin_cognitivo['dispersion_final_del_enjambre']} sin la propia. "
+            "El término cognitivo no acelera: conserva diversidad, que es un seguro contra el óptimo local.",
+            "No hay gradiente en ningún sitio. Solo posiciones, velocidades y comparaciones de valor: por "
+            "eso sirve para funciones que no se pueden derivar.",
+        ],
+        [
+            "Rastrigin en dos dimensiones es un banco de pruebas clásico y benigno. En dimensión alta el "
+            "enjambre pierde diversidad rápido y se estanca.",
+            "Los coeficientes w, c1 y c2 están fijados a mano. Su ajuste cambia el resultado por completo "
+            "y no hay teoría cerrada que los determine.",
+            "PSO no garantiza el óptimo global ni tiene cota de convergencia útil. Es una metaheurística: "
+            "se justifica por comportamiento empírico, no por demostración.",
+        ],
+    )
+
+
+def _aco(seed: int) -> dict[str, Any]:
+    """Dorigo, Maniezzo y Colorni 1996: el rastro es la memoria compartida."""
+    # instancia elegida para que la heurística golosa NO encuentre el óptimo:
+    # el vecino más cercano se come pronto la arista corta A→B y se queda sin salida barata
+    ciudades = {"A": (0, 0), "B": (3, 1), "C": (1, 4), "D": (9, 2), "E": (8, 6), "F": (4, 8)}
+    nombres = sorted(ciudades)
+    n = len(nombres)
+
+    def dist(a, b):
+        (x1, y1), (x2, y2) = ciudades[a], ciudades[b]
+        return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+    def longitud(ruta):
+        return sum(dist(ruta[i], ruta[(i + 1) % n]) for i in range(n))
+
+    # óptimo por fuerza bruta: 5! / 2 = 60 rutas distintas
+    import itertools
+    todas = [("A",) + p for p in itertools.permutations([c for c in nombres if c != "A"])]
+    optimo = min(todas, key=longitud)
+
+    feromona = {(a, b): 1.0 for a in nombres for b in nombres if a != b}
+    alfa, beta, evaporacion, hormigas = 1.0, 3.0, 0.5, 12
+    rng = random.Random(seed)
+    historia, mejor_ruta, mejor_len = [], None, float("inf")
+
+    for iteracion in range(25):
+        rutas = []
+        for _ in range(hormigas):
+            actual, visitadas = "A", ["A"]
+            while len(visitadas) < n:
+                candidatas = [c for c in nombres if c not in visitadas]
+                pesos = [(feromona[(actual, c)] ** alfa) * ((1 / dist(actual, c)) ** beta)
+                         for c in candidatas]
+                total = sum(pesos)
+                r, acumulado = rng.random() * total, 0.0
+                elegida = candidatas[-1]
+                for c, w in zip(candidatas, pesos):
+                    acumulado += w
+                    if acumulado >= r:
+                        elegida = c
+                        break
+                visitadas.append(elegida)
+                actual = elegida
+            rutas.append(tuple(visitadas))
+        for clave in feromona:
+            feromona[clave] *= (1 - evaporacion)
+        for ruta in rutas:
+            aporte = 1.0 / longitud(ruta)
+            for i in range(n):
+                a, b = ruta[i], ruta[(i + 1) % n]
+                feromona[(a, b)] += aporte
+                feromona[(b, a)] += aporte
+        mejor_iter = min(rutas, key=longitud)
+        if longitud(mejor_iter) < mejor_len:
+            mejor_ruta, mejor_len = mejor_iter, longitud(mejor_iter)
+        if iteracion % 6 == 0 or iteracion == 24:
+            media_feromona = sum(feromona.values()) / len(feromona)
+            historia.append({"iteracion": iteracion,
+                             "mejor_de_la_iteracion": _round(longitud(mejor_iter), 4),
+                             "mejor_hasta_ahora": _round(mejor_len, 4),
+                             "feromona_maxima": _round(max(feromona.values()), 3),
+                             "concentracion_max_sobre_media": _round(
+                                 max(feromona.values()) / media_feromona, 3)})
+
+    # vecino más cercano, la heurística golosa clásica
+    actual, visitadas = "A", ["A"]
+    while len(visitadas) < n:
+        siguiente = min((c for c in nombres if c not in visitadas), key=lambda c: dist(actual, c))
+        visitadas.append(siguiente)
+        actual = siguiente
+    goloso = longitud(tuple(visitadas))
+
+    return _contract(
+        "aco",
+        seed,
+        {
+            "ciudades": n, "rutas_posibles": len(todas), "hormigas_por_iteracion": hormigas,
+            "iteraciones": 25,
+            "optimo_por_fuerza_bruta": {"ruta": " → ".join(optimo), "longitud": _round(longitud(optimo), 4)},
+            "vecino_mas_cercano": _round(goloso, 4),
+            "mejor_del_hormiguero": {"ruta": " → ".join(mejor_ruta), "longitud": _round(mejor_len, 4)},
+            "encuentra_el_optimo": abs(mejor_len - longitud(optimo)) < 1e-9,
+            "historia": historia,
+        },
+        [
+            f"El óptimo real mide {_round(longitud(optimo), 4)}. La heurística golosa del vecino más "
+            f"cercano se queda en {_round(goloso, 4)} —un "
+            f"{_round(100 * (goloso - longitud(optimo)) / longitud(optimo), 1)} % peor— y el hormiguero "
+            f"llega a {_round(mejor_len, 4)}.",
+            "Ninguna hormiga sabe nada del problema global: cada una elige el siguiente destino según la "
+            "feromona y la distancia. La solución está en el RASTRO, no en ninguna de ellas.",
+            f"Lo que crece no es la cantidad de feromona sino su CONCENTRACIÓN: la mejor arista pasa de "
+            f"destacar {historia[0]['concentracion_max_sobre_media']}× sobre la media a "
+            f"{historia[-1]['concentracion_max_sobre_media']}×. El refuerzo distingue y la evaporación "
+            "aplana: las dos mitades del mecanismo.",
+            "Sin evaporación el sistema se queda con la primera ruta decente que encuentre. El olvido no "
+            "es una pérdida: es lo que mantiene abierta la exploración.",
+        ],
+        [
+            "Seis ciudades y 60 rutas: el óptimo se calcula por fuerza bruta, así que aquí el hormiguero "
+            "no aporta nada práctico. Sirve para ver el mecanismo con la respuesta conocida.",
+            "Los parámetros alfa, beta y evaporación se fijan a mano y determinan por completo el "
+            "comportamiento. Ajustarlos es el trabajo real de aplicar el método.",
+            "Para el problema del viajante hay métodos específicos (Lin-Kernighan, Concorde) que baten al "
+            "hormiguero sin discusión. Su interés está en problemas donde no existe ese método.",
+        ],
+    )
+
+
+def _programacion_probabilistica(seed: int) -> dict[str, Any]:
+    """Carpenter et al. 2017: declarar el modelo y dejar que el motor infiera."""
+    # datos observados: lanzamientos de una moneda de sesgo desconocido
+    rng = random.Random(seed)
+    theta_real = 0.65
+    n_lanzamientos = 40
+    datos = [1 if rng.random() < theta_real else 0 for _ in range(n_lanzamientos)]
+    caras = sum(datos)
+
+    # el "modelo declarado": theta ~ Beta(2,2);  y ~ Bernoulli(theta)
+    def log_previa(theta):
+        if not 0 < theta < 1:
+            return -math.inf
+        return math.log(theta) + math.log(1 - theta)          # Beta(2,2) salvo constante
+
+    def log_verosimilitud(theta):
+        if not 0 < theta < 1:
+            return -math.inf
+        return caras * math.log(theta) + (n_lanzamientos - caras) * math.log(1 - theta)
+
+    # inferencia por Metropolis-Hastings: el motor, no el modelo
+    cadena, theta = [], 0.5
+    local = random.Random(seed * 31 + 7)
+    aceptados = 0
+    for paso in range(20000):
+        propuesta = theta + local.gauss(0, 0.08)
+        log_a = (log_previa(propuesta) + log_verosimilitud(propuesta)
+                 - log_previa(theta) - log_verosimilitud(theta))
+        if math.log(local.random() + 1e-300) < log_a:
+            theta = propuesta
+            aceptados += 1
+        if paso >= 2000:                                       # descartar el calentamiento
+            cadena.append(theta)
+
+    cadena_ordenada = sorted(cadena)
+    media = sum(cadena) / len(cadena)
+    def cuantil(q):
+        return _round(cadena_ordenada[int(q * (len(cadena_ordenada) - 1))], 4)
+
+    # posterior analítico: Beta(2 + caras, 2 + fallos)
+    a, b = 2 + caras, 2 + (n_lanzamientos - caras)
+    media_analitica = a / (a + b)
+    maxima_verosimilitud = caras / n_lanzamientos
+
+    return _contract(
+        "programacion_probabilistica",
+        seed,
+        {
+            "modelo_declarado": ["theta ~ Beta(2, 2)", "y[i] ~ Bernoulli(theta)"],
+            "datos": {"lanzamientos": n_lanzamientos, "caras": caras,
+                      "proporcion_observada": _round(caras / n_lanzamientos, 4)},
+            "theta_real_usado_para_generar": theta_real,
+            "estimacion_puntual_maxima_verosimilitud": _round(maxima_verosimilitud, 4),
+            "posterior_por_muestreo": {
+                "media": _round(media, 4),
+                "intervalo_creible_90": [cuantil(0.05), cuantil(0.95)],
+                "muestras_utiles": len(cadena),
+                "tasa_de_aceptacion": _round(aceptados / 20000, 3),
+            },
+            "posterior_analitico_beta": {"a": a, "b": b, "media": _round(media_analitica, 4)},
+            "coincide_muestreo_con_analitico": abs(media - media_analitica) < 0.01,
+        },
+        [
+            f"El modelo son dos líneas: una previa y una verosimilitud. No hay código de inferencia en "
+            f"él. El motor devuelve la posterior completa, con media {_round(media, 4)} e intervalo "
+            f"creíble del 90 % en [{cuantil(0.05)}, {cuantil(0.95)}].",
+            f"La estimación puntual de máxima verosimilitud es {_round(maxima_verosimilitud, 4)} y no "
+            "dice nada sobre la incertidumbre. Con 40 lanzamientos el intervalo es ancho, y ese ancho "
+            "**es** el resultado.",
+            f"El muestreo coincide con el posterior analítico Beta({a}, {b}), de media "
+            f"{_round(media_analitica, 4)}: el motor no inventa nada, resuelve lo que el modelo implica.",
+            "Ese es el aporte de la programación probabilística: separar QUÉ se supone del mundo de CÓMO "
+            "se calcula. Cambiar la previa es cambiar una línea, no reescribir el algoritmo.",
+        ],
+        [
+            "Metropolis-Hastings no es lo que usa Stan: Stan usa Monte Carlo hamiltoniano con NUTS, que "
+            "es mucho más eficiente en dimensión alta. Aquí se usa porque cabe en veinte líneas.",
+            "Este modelo tiene solución analítica, así que el muestreo es innecesario. El interés de un "
+            "lenguaje probabilístico está justamente en los modelos que no la tienen.",
+            "No hay diagnóstico de convergencia —R̂, tamaño efectivo de muestra, divergencias—, que es lo "
+            "primero que hay que mirar antes de creerse una posterior.",
+        ],
+    )
+
+
+def _causalidad(seed: int) -> dict[str, Any]:
+    """Pearl 2019: asociación, intervención y contrafáctico son tres preguntas distintas."""
+    # paradoja de Simpson: un tratamiento que funciona en ambos grupos y "falla" en el agregado
+    grupos = [
+        {"grupo": "leves", "trat_n": 87, "trat_exito": 81, "ctrl_n": 270, "ctrl_exito": 234},
+        {"grupo": "graves", "trat_n": 263, "trat_exito": 192, "ctrl_n": 80, "ctrl_exito": 55},
+    ]
+    for g in grupos:
+        g["tasa_tratados"] = _round(g["trat_exito"] / g["trat_n"], 4)
+        g["tasa_control"] = _round(g["ctrl_exito"] / g["ctrl_n"], 4)
+        g["gana_el_tratamiento"] = g["tasa_tratados"] > g["tasa_control"]
+
+    trat_n = sum(g["trat_n"] for g in grupos)
+    trat_e = sum(g["trat_exito"] for g in grupos)
+    ctrl_n = sum(g["ctrl_n"] for g in grupos)
+    ctrl_e = sum(g["ctrl_exito"] for g in grupos)
+    agregado = {"tasa_tratados": _round(trat_e / trat_n, 4),
+                "tasa_control": _round(ctrl_e / ctrl_n, 4)}
+    agregado["gana_el_tratamiento"] = agregado["tasa_tratados"] > agregado["tasa_control"]
+
+    # ajuste por el confusor (la gravedad), que es lo que el grafo dice que hay que hacer
+    total = trat_n + ctrl_n
+    peso = {g["grupo"]: (g["trat_n"] + g["ctrl_n"]) / total for g in grupos}
+    do_tratar = sum(peso[g["grupo"]] * g["tasa_tratados"] for g in grupos)
+    do_no_tratar = sum(peso[g["grupo"]] * g["tasa_control"] for g in grupos)
+
+    escalera = {
+        "1_asociacion": {"pregunta": "¿qué me dice ver X sobre Y?",
+                         "operacion": "P(Y | X)",
+                         "resultado_aqui": agregado},
+        "2_intervencion": {"pregunta": "¿qué pasa con Y si HAGO X?",
+                           "operacion": "P(Y | do(X)) — exige el grafo causal",
+                           "resultado_aqui": {"do_tratar": _round(do_tratar, 4),
+                                              "do_no_tratar": _round(do_no_tratar, 4)}},
+        "3_contrafactico": {"pregunta": "¿habría sobrevivido este paciente si no lo hubiéramos tratado?",
+                            "operacion": "P(Y_x | X', Y')",
+                            "resultado_aqui": "no calculable con estos datos: exige el modelo estructural"},
+    }
+
+    rng = random.Random(seed)
+    paciente = rng.choice(["leves", "graves"])
+
+    return _contract(
+        "causalidad",
+        seed,
+        {
+            "escalera_de_la_causalidad": escalera,
+            "por_grupo": grupos,
+            "agregado_sin_ajustar": agregado,
+            "tras_ajustar_por_gravedad": {"do_tratar": _round(do_tratar, 4),
+                                          "do_no_tratar": _round(do_no_tratar, 4),
+                                          "gana_el_tratamiento": do_tratar > do_no_tratar},
+            "el_signo_se_invierte": agregado["gana_el_tratamiento"] != (do_tratar > do_no_tratar),
+            "grupo_del_paciente_de_ejemplo": paciente,
+            "moraleja": "los datos no bastan: hace falta declarar qué causa qué",
+        },
+        [
+            f"El tratamiento gana en los leves ({grupos[0]['tasa_tratados']} frente a "
+            f"{grupos[0]['tasa_control']}) y gana en los graves ({grupos[1]['tasa_tratados']} frente a "
+            f"{grupos[1]['tasa_control']}).",
+            f"Y en el agregado PIERDE: {agregado['tasa_tratados']} frente a "
+            f"{agregado['tasa_control']}. Los mismos pacientes, la misma tabla, la conclusión contraria. "
+            "Es la paradoja de Simpson.",
+            f"Ajustando por la gravedad —que es un confusor: influye en quién recibe tratamiento Y en el "
+            f"resultado— el efecto de intervenir es {_round(do_tratar, 4)} frente a "
+            f"{_round(do_no_tratar, 4)}. El signo se invierte otra vez, ahora en la dirección correcta.",
+            "Ningún cálculo sobre la tabla decide cuál de las dos lecturas es la buena. Esa decisión "
+            "exige un supuesto causal declarado fuera de los datos, y ese es el argumento del artículo.",
+        ],
+        [
+            "El ajuste por la gravedad es correcto SOLO si el grafo causal es el que suponemos. Con otro "
+            "grafo —si la gravedad fuese consecuencia del tratamiento— ajustar sería el error.",
+            "El tercer peldaño, los contrafácticos, no se puede calcular con estos datos: exige un modelo "
+            "estructural completo, no solo una tabla y un grafo.",
+            "Los números son un caso construido para que la inversión sea nítida. En datos reales el "
+            "problema difícil es descubrir qué variables son confusores y cuáles no.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# ruta encarnada (P96–P106)
+# --------------------------------------------------------------------------- #
+
+
+def _kalman(seed: int) -> dict[str, Any]:
+    """Kalman 1960: fusionar predicción y medida, ponderando por cuánto se fía uno de cada una."""
+    rng = random.Random(seed)
+    pasos = 40
+    var_proceso, var_sensor = 0.05, 4.0
+    posicion_real, velocidad = 0.0, 1.0
+
+    x, P = 0.0, 1.0                      # estimación y su varianza
+    verdad, medidas, filtrado, ganancias = [], [], [], []
+    for _ in range(pasos):
+        posicion_real += velocidad + rng.gauss(0, math.sqrt(var_proceso))
+        z = posicion_real + rng.gauss(0, math.sqrt(var_sensor))
+        # predicción
+        x_pred = x + velocidad
+        P_pred = P + var_proceso
+        # corrección
+        K = P_pred / (P_pred + var_sensor)
+        x = x_pred + K * (z - x_pred)
+        P = (1 - K) * P_pred
+        verdad.append(posicion_real)
+        medidas.append(z)
+        filtrado.append(x)
+        ganancias.append(K)
+
+    def error(serie):
+        return _round(math.sqrt(sum((a - b) ** 2 for a, b in zip(serie, verdad)) / len(verdad)), 4)
+
+    # alternativas ingenuas
+    solo_sensor = medidas
+    solo_modelo = [i + 1.0 for i in range(pasos)]
+    media_movil = [sum(medidas[max(0, i - 4):i + 1]) / len(medidas[max(0, i - 4):i + 1])
+                   for i in range(pasos)]
+
+    # el mismo filtro con un sensor diez veces peor
+    x2, P2, filtrado2, ganancias2 = 0.0, 1.0, [], []
+    for z in medidas:
+        P_pred = P2 + var_proceso
+        K = P_pred / (P_pred + var_sensor * 10)
+        x2 = (x2 + velocidad) + K * (z - (x2 + velocidad))
+        P2 = (1 - K) * P_pred
+        filtrado2.append(x2)
+        ganancias2.append(K)
+
+    return _contract(
+        "kalman",
+        seed,
+        {
+            "pasos": pasos,
+            "varianza_del_proceso": var_proceso, "varianza_del_sensor": var_sensor,
+            "error_solo_sensor": error(solo_sensor),
+            "error_solo_modelo": error(solo_modelo),
+            "error_media_movil_5": error(media_movil),
+            "error_filtro_de_kalman": error(filtrado),
+            "ganancia_inicial": _round(ganancias[0], 4),
+            "ganancia_final": _round(ganancias[-1], 4),
+            "ganancia_con_sensor_10x_peor": _round(ganancias2[-1], 4),
+            "varianza_final_de_la_estimacion": _round(P, 5),
+        },
+        [
+            f"El sensor solo da un error de {error(solo_sensor)} y el modelo sin corregir, "
+            f"{error(solo_modelo)}. El filtro, que usa exactamente las mismas dos fuentes, baja a "
+            f"{error(filtrado)}.",
+            f"No es un promedio: la ganancia arranca en {_round(ganancias[0], 3)} y se estabiliza en "
+            f"{_round(ganancias[-1], 3)}. Al principio la estimación es mala y se hace caso al sensor; "
+            "después el modelo ya sabe dónde está y el sensor pesa menos.",
+            f"Con un sensor diez veces peor, la ganancia estacionaria cae a "
+            f"{_round(ganancias2[-1], 3)}: el filtro se fía menos, y nadie se lo dijo. La ponderación "
+            "sale de las varianzas, no de un parámetro ajustado a mano.",
+            f"Una media móvil de 5 da {error(media_movil)}, peor que el filtro y encima con retraso: "
+            "promediar trata todas las medidas por igual e ignora que hay un modelo del movimiento.",
+        ],
+        [
+            "El filtro es óptimo solo si el sistema es lineal y el ruido gaussiano. Fuera de esos "
+            "supuestos hay que usar variantes (extendido, unscented) que ya no tienen garantía.",
+            "Aquí la velocidad se conoce exactamente. En un caso real hay que estimarla también, y el "
+            "estado pasa a ser un vector con su matriz de covarianzas.",
+            "Las varianzas del proceso y del sensor se dan como conocidas. Estimarlas mal es la causa más "
+            "común de que un filtro de Kalman se comporte mal en producción.",
+        ],
+    )
+
+
+def _subsuncion(seed: int) -> dict[str, Any]:
+    """Brooks 1986: capas de comportamiento que se pisan, sin modelo del mundo."""
+    pasillo = 20
+    obstaculos = {6, 7, 13}
+
+    def libre(p):
+        return p not in obstaculos
+
+    def subsuncion(mundo_real, pasos=40):
+        """Capa 0 (evitar) subsume a la capa 1 (avanzar). Sin memoria y sin mapa."""
+        pos, colisiones, traza = 0, 0, []
+        for _ in range(pasos):
+            siguiente = pos + 1
+            if siguiente in mundo_real:                    # capa 0: lo ve AHORA
+                destino = siguiente
+                while destino in mundo_real and destino <= pasillo:
+                    destino += 1                           # rodea hasta la primera casilla libre
+                accion = "esquivar"
+            else:                                           # capa 1: avanzar
+                destino = siguiente
+                accion = "avanzar"
+            pos = min(pasillo, destino)
+            if pos in mundo_real:
+                colisiones += 1
+            traza.append({"pos": pos, "accion": accion})
+            if pos >= pasillo:
+                break
+        return {"pasos": len(traza), "llega": pos >= pasillo, "colisiones": colisiones,
+                "estado_interno_guardado": 0, "traza": traza[:6]}
+
+    def percibir_planificar_actuar(mundo_real, pasos=40):
+        """Planifica una vez con SU mapa y ejecuta el plan sin volver a mirar."""
+        mapa = set(obstaculos)
+        plan, pos = [], 0
+        while pos < pasillo and len(plan) < pasos:
+            siguiente = pos + 1
+            if siguiente in mapa:
+                destino = siguiente
+                while destino in mapa and destino <= pasillo:
+                    destino += 1
+                plan.append(("esquivar", min(pasillo, destino)))
+                pos = min(pasillo, destino)
+            else:
+                plan.append(("avanzar", min(pasillo, siguiente)))
+                pos = min(pasillo, siguiente)
+        colisiones = sum(1 for _, destino in plan if destino in mundo_real)
+        return {"pasos_de_plan": len(plan), "llega": pos >= pasillo, "colisiones": colisiones,
+                "estado_interno_guardado": len(mapa)}
+
+    mundo_conocido = set(obstaculos)
+    mundo_cambiado = set(obstaculos) | {10}          # aparece un obstáculo que no está en el mapa
+
+    reactivo_ok = subsuncion(mundo_conocido)
+    reactivo_cambiado = subsuncion(mundo_cambiado)
+    plan_ok = percibir_planificar_actuar(mundo_conocido)
+    plan_cambiado = percibir_planificar_actuar(mundo_cambiado)
+
+    rng = random.Random(seed)
+    inspeccion = rng.choice(sorted(obstaculos))
+
+    return _contract(
+        "subsuncion",
+        seed,
+        {
+            "pasillo": pasillo, "obstaculos_en_el_mapa": sorted(obstaculos),
+            "obstaculo_no_previsto": 10,
+            "subsuncion_mundo_conocido": reactivo_ok,
+            "subsuncion_mundo_cambiado": reactivo_cambiado,
+            "planificador_mundo_conocido": plan_ok,
+            "planificador_mundo_cambiado": plan_cambiado,
+            "obstaculo_inspeccionado": inspeccion,
+            "lema": "el mundo es su propio mejor modelo",
+        },
+        [
+            f"Los dos llegan al final en el mundo conocido y sin chocar "
+            f"({reactivo_ok['colisiones']} y {plan_ok['colisiones']} colisiones). Con el mapa correcto, "
+            "planificar funciona perfectamente.",
+            f"La subsunción lo consigue con {reactivo_ok['estado_interno_guardado']} elementos de estado "
+            f"interno y el planificador necesita un mapa de {plan_ok['estado_interno_guardado']} "
+            "obstáculos. Esa es toda la diferencia de arquitectura.",
+            f"Al aparecer un obstáculo que no estaba en el mapa, el planificador choca "
+            f"{plan_cambiado['colisiones']} veces y la subsunción, {reactivo_cambiado['colisiones']}. El "
+            "plan se ejecuta a ciegas; el reflejo mira antes de cada paso.",
+            "De ahí el lema del artículo: «el mundo es su propio mejor modelo». Mantener una "
+            "representación actualizada cuesta, y equivocarse en ella cuesta más que no tenerla.",
+        ],
+        [
+            "Un pasillo unidimensional con tres obstáculos. Brooks construye robots reales con sensores "
+            "ruidosos y actuadores imprecisos, que es donde su argumento tiene fuerza.",
+            "La comparación está construida a favor del reactivo: el planificador se ejecuta a ciegas. "
+            "Un sistema real replanifica al detectar la discrepancia, y entonces la ventaja se reduce mucho.",
+            "La subsunción no escala a tareas con objetivos a largo plazo. La propia comunidad acabó en "
+            "arquitecturas híbridas, con una capa reactiva y otra deliberativa.",
+        ],
+    )
+
+
+def _rrt(seed: int) -> dict[str, Any]:
+    """Kuffner y LaValle 2000: crecer un árbol al azar cubre el espacio libre sin discretizarlo."""
+    rng = random.Random(seed)
+    ancho = alto = 100.0
+    obstaculos = [(30, 0, 40, 70), (60, 30, 70, 100)]     # (x1, y1, x2, y2)
+    inicio, meta = (5.0, 5.0), (95.0, 95.0)
+    radio_meta, paso = 6.0, 6.0
+
+    def libre(p):
+        x, y = p
+        if not (0 <= x <= ancho and 0 <= y <= alto):
+            return False
+        return not any(x1 <= x <= x2 and y1 <= y <= y2 for x1, y1, x2, y2 in obstaculos)
+
+    def segmento_libre(a, b, muestras=10):
+        return all(libre((a[0] + (b[0] - a[0]) * i / muestras,
+                          a[1] + (b[1] - a[1]) * i / muestras)) for i in range(muestras + 1))
+
+    def construir(iteraciones, sesgo_a_meta):
+        local = random.Random(seed * 31 + iteraciones)
+        nodos, padres = [inicio], {0: None}
+        for _ in range(iteraciones):
+            objetivo = meta if local.random() < sesgo_a_meta else (local.uniform(0, ancho),
+                                                                  local.uniform(0, alto))
+            i = min(range(len(nodos)), key=lambda k: math.dist(nodos[k], objetivo))
+            cercano = nodos[i]
+            d = math.dist(cercano, objetivo)
+            if d < 1e-9:
+                continue
+            nuevo = (cercano[0] + paso * (objetivo[0] - cercano[0]) / d,
+                     cercano[1] + paso * (objetivo[1] - cercano[1]) / d)
+            if not libre(nuevo) or not segmento_libre(cercano, nuevo):
+                continue
+            nodos.append(nuevo)
+            padres[len(nodos) - 1] = i
+            if math.dist(nuevo, meta) <= radio_meta:
+                camino, k = [], len(nodos) - 1
+                while k is not None:
+                    camino.append(nodos[k])
+                    k = padres[k]
+                camino.reverse()
+                longitud = sum(math.dist(a, b) for a, b in zip(camino, camino[1:]))
+                return {"encuentra": True, "nodos_expandidos": len(nodos),
+                        "pasos_del_camino": len(camino), "longitud": _round(longitud, 2)}
+        return {"encuentra": False, "nodos_expandidos": len(nodos),
+                "pasos_del_camino": None, "longitud": None}
+
+    corridas = [construir(3000, 0.05) for _ in range(1)]
+    con_sesgo = construir(3000, 0.2)
+    sin_sesgo = construir(3000, 0.0)
+    distancia_recta = math.dist(inicio, meta)
+
+    # rejilla equivalente: cuántas celdas haría falta discretizar
+    rejilla = int((ancho / 2) * (alto / 2))
+
+    return _contract(
+        "rrt",
+        seed,
+        {
+            "espacio": f"{int(ancho)}×{int(alto)} con {len(obstaculos)} obstáculos",
+            "distancia_en_linea_recta": _round(distancia_recta, 2),
+            "sin_sesgo_a_la_meta": sin_sesgo,
+            "con_sesgo_5_por_ciento": corridas[0],
+            "con_sesgo_20_por_ciento": con_sesgo,
+            "celdas_de_una_rejilla_equivalente": rejilla,
+            "es_optimo": False,
+            "exceso_sobre_la_recta": _round(
+                (corridas[0]["longitud"] / distancia_recta - 1) * 100, 1) if corridas[0]["longitud"] else None,
+        },
+        [
+            f"El árbol encuentra un camino expandiendo {corridas[0]['nodos_expandidos']} nodos sobre un "
+            f"espacio continuo. Una rejilla equivalente de 2×2 unidades tendría {rejilla} celdas que "
+            "habría que representar y recorrer.",
+            f"El camino mide {corridas[0]['longitud']} frente a los {_round(distancia_recta, 2)} de la "
+            f"línea recta: un {_round((corridas[0]['longitud'] / distancia_recta - 1) * 100, 1)} % de "
+            "exceso. RRT es **probabilísticamente completo**, no óptimo: encuentra un camino, no el mejor.",
+            f"El sesgo hacia la meta importa: sin sesgo hacen falta "
+            f"{sin_sesgo['nodos_expandidos']} nodos y con un 20 %, {con_sesgo['nodos_expandidos']}. "
+            "Muestrear la meta de vez en cuando convierte una exploración ciega en una búsqueda dirigida.",
+            "Nada de esto discretiza el espacio. Esa es la razón de que RRT se use en robots con muchos "
+            "grados de libertad, donde cualquier rejilla es inabordable.",
+        ],
+        [
+            "Dos dimensiones y obstáculos rectangulares. La ventaja real de RRT aparece con brazos "
+            "robóticos de seis o siete articulaciones, donde el espacio de configuración no es visualizable.",
+            "El camino no es óptimo ni suave: tiene el aspecto de zigzag característico. RRT* (Karaman y "
+            "Frazzoli, 2011) añade optimalidad asintótica a costa de más cómputo.",
+            "No hay restricciones dinámicas: aquí el robot puede girar instantáneamente. Con restricciones "
+            "no holónomas —un coche, por ejemplo— la extensión del árbol es mucho más delicada.",
+        ],
+    )
+
+
+def _slam(seed: int) -> dict[str, Any]:
+    """Durrant-Whyte y Bailey 2006: pose y mapa se estiman juntos, y sus errores se correlacionan."""
+    balizas_reales = {0: 10.0, 1: 25.0, 2: 40.0, 3: 55.0}
+    Q, R = 0.30 ** 2, 0.40 ** 2          # varianza de odometría y de medida
+    alcance = 3.0
+
+    def recorrido():
+        """Ida hasta el fondo y vuelta al principio."""
+        return [1.0] * 60 + [-1.0] * 60
+
+    def simular(usar_balizas: bool, cerrar_bucle: bool):
+        local = random.Random(seed)
+        pos_real, pos_est, var_pos = 0.0, 0.0, 0.0
+        mapa: dict[int, list[float]] = {}
+        curva = []
+        for paso, avance in enumerate(recorrido()):
+            pos_real += avance
+            pos_est += avance + local.gauss(0, math.sqrt(Q))
+            var_pos += Q
+            de_vuelta = paso >= 60
+            if usar_balizas and (not de_vuelta or cerrar_bucle):
+                for i, b in sorted(balizas_reales.items()):
+                    if abs(pos_real - b) > alcance:
+                        continue
+                    if de_vuelta and i != 0:
+                        continue                       # en la vuelta solo cuenta el reencuentro
+                    z = (b - pos_real) + local.gauss(0, math.sqrt(R))
+                    if i not in mapa:                  # baliza nueva: se inicializa desde la pose
+                        mapa[i] = [pos_est + z, var_pos + R]
+                        continue
+                    m, var_m = mapa[i]
+                    innovacion = z - (m - pos_est)     # medida menos predicción
+                    S = var_pos + var_m + R
+                    pos_est += (-var_pos / S) * innovacion   # H = −1 para la pose
+                    mapa[i] = [m + (var_m / S) * innovacion, var_m * (1 - var_m / S)]
+                    var_pos *= (1 - var_pos / S)
+            if paso % 20 == 0 or paso == 119:
+                curva.append({"paso": paso, "error_pose": _round(abs(pos_est - pos_real), 4),
+                              "var_pose": _round(var_pos, 4), "balizas_en_el_mapa": len(mapa)})
+        error_mapa = (sum(abs(mapa[i][0] - balizas_reales[i]) for i in mapa) / len(mapa)) if mapa else None
+        return {"error_pose_final": _round(abs(pos_est - pos_real), 4),
+                "varianza_pose_final": _round(var_pos, 4),
+                "error_medio_del_mapa": _round(error_mapa, 4) if error_mapa is not None else None,
+                "mapa": {f"baliza_{i}": _round(v[0], 3) for i, v in sorted(mapa.items())},
+                "curva": curva}
+
+    solo_odometria = simular(usar_balizas=False, cerrar_bucle=False)
+    slam_sin_cierre = simular(usar_balizas=True, cerrar_bucle=False)
+    slam_con_cierre = simular(usar_balizas=True, cerrar_bucle=True)
+
+    return _contract(
+        "slam",
+        seed,
+        {
+            "balizas_reales": balizas_reales,
+            "recorrido": "60 pasos de ida y 60 de vuelta",
+            "solo_odometria": solo_odometria,
+            "slam_sin_cierre_de_bucle": slam_sin_cierre,
+            "slam_con_cierre_de_bucle": slam_con_cierre,
+            "el_problema": "no se puede localizar sin mapa ni mapear sin localización: hay que estimar "
+                           "el estado conjunto",
+        },
+        [
+            f"Solo con odometría el error de pose llega a {solo_odometria['error_pose_final']} y su "
+            f"varianza a {solo_odometria['varianza_pose_final']}: crece sin techo porque nada la corrige.",
+            f"Estimando pose y mapa a la vez, el error baja a {slam_sin_cierre['error_pose_final']} y la "
+            f"varianza a {slam_sin_cierre['varianza_pose_final']}. Y las balizas no se conocían: se "
+            f"estimaron con la misma pose que corrigen (error medio del mapa "
+            f"{slam_sin_cierre['error_medio_del_mapa']}).",
+            "Esa es la circularidad que da nombre al problema. La baliza se sitúa usando la pose y la "
+            "pose se corrige usando la baliza, así que sus errores quedan CORRELACIONADOS: por eso hay "
+            "que estimar el estado conjunto y no cada cosa por su lado.",
+            f"Al reencontrar en la vuelta una baliza vista al principio —cierre de bucle— el error final "
+            f"queda en {slam_con_cierre['error_pose_final']} frente a "
+            f"{slam_sin_cierre['error_pose_final']} sin ese reencuentro. Reconocer un sitio ya visitado "
+            "corrige de golpe la deriva acumulada.",
+        ],
+        [
+            "Una dimensión y balizas perfectamente distinguibles. El problema difícil de SLAM es la "
+            "ASOCIACIÓN DE DATOS —decidir si esta baliza es la que vi antes—, y equivocarse ahí destruye "
+            "el mapa.",
+            "La actualización trata pose y baliza como independientes: ignora la covarianza cruzada que "
+            "el filtro extendido sí mantiene, y que es justamente lo que el artículo señala como esencial.",
+            "El cierre de bucle se fuerza por construcción del recorrido. Detectarlo de forma fiable es un "
+            "problema de percepción en sí mismo, y es donde fallan los sistemas reales.",
+        ],
+    )
+
+
+def _seguridad_fisica(seed: int) -> dict[str, Any]:
+    """Haddadin et al. 2009: la energía de impacto crece con el cuadrado de la velocidad."""
+    # energía cinética E = ½ m v², y el daño depende de la energía y del área de contacto
+    configuraciones = [
+        {"escenario": "brazo industrial clásico", "masa_kg": 120.0, "velocidad_ms": 1.5},
+        {"escenario": "cobot ligero", "masa_kg": 12.0, "velocidad_ms": 1.5},
+        {"escenario": "cobot ligero a media velocidad", "masa_kg": 12.0, "velocidad_ms": 0.75},
+        {"escenario": "brazo pesado muy lento", "masa_kg": 120.0, "velocidad_ms": 0.25},
+    ]
+    for c in configuraciones:
+        c["energia_julios"] = _round(0.5 * c["masa_kg"] * c["velocidad_ms"] ** 2, 3)
+
+    base = configuraciones[0]["energia_julios"]
+    for c in configuraciones:
+        c["relativo_al_industrial"] = _round(c["energia_julios"] / base, 4)
+
+    # ¿qué reduce más la energía: dividir la masa por 10 o la velocidad por 2?
+    masa_10x_menor = _round(0.5 * 12.0 * 1.5 ** 2, 3)
+    velocidad_mitad = _round(0.5 * 120.0 * 0.75 ** 2, 3)
+
+    # umbral de la norma para contacto transitorio en distintas zonas (valores ilustrativos)
+    umbrales = {"mano": 140, "antebrazo": 160, "cara": 65, "craneo": 130}
+    rng = random.Random(seed)
+    zona = rng.choice(sorted(umbrales))
+
+    distancia_frenado = 0.05          # 5 cm de deformación en el contacto
+
+    def supera(c, zona):
+        # aproximación grosera: fuerza ≈ energía / distancia de frenado
+        fuerza = c["energia_julios"] / distancia_frenado
+        return {"escenario": c["escenario"], "fuerza_estimada_N": _round(fuerza, 1),
+                "umbral_N": umbrales[zona], "supera": fuerza > umbrales[zona]}
+
+    evaluacion = [supera(c, zona) for c in configuraciones]
+
+    return _contract(
+        "seguridad_fisica",
+        seed,
+        {
+            "modelo": "E = ½·m·v² · fuerza ≈ E / distancia de frenado (5 cm)",
+            "configuraciones": configuraciones,
+            "reducir_masa_10x": masa_10x_menor,
+            "reducir_velocidad_a_la_mitad": velocidad_mitad,
+            "zona_del_cuerpo_evaluada": zona,
+            "umbrales_ilustrativos_N": umbrales,
+            "evaluacion": evaluacion,
+            "aviso": "los umbrales son ilustrativos; los reales están en ISO/TS 15066 y dependen de "
+                     "la zona, del tipo de contacto y de la geometría",
+        },
+        [
+            f"Un brazo industrial de 120 kg a 1,5 m/s lleva {configuraciones[0]['energia_julios']} J. "
+            f"El mismo brazo a 0,25 m/s lleva {configuraciones[3]['energia_julios']} J: "
+            f"{configuraciones[3]['relativo_al_industrial']} veces la energía. La velocidad entra al "
+            "CUADRADO y la masa, lineal.",
+            f"Dividir la masa por 10 deja {masa_10x_menor} J; dividir la velocidad por 2 deja "
+            f"{velocidad_mitad} J. Para reducir energía, frenar rinde más que aligerar — y frenar es "
+            "casi siempre más barato.",
+            f"Con los umbrales ilustrativos para «{zona}», "
+            f"{sum(1 for e in evaluacion if e['supera'])} de {len(evaluacion)} configuraciones los "
+            "superan. «Colaborativo» no es una propiedad del robot: es una propiedad de la tarea, la "
+            "velocidad y la geometría del contacto.",
+            "Por eso la seguridad física no se resuelve con una etiqueta en el catálogo: se resuelve con "
+            "límites de velocidad por zona, detección de contacto y una evaluación de riesgos de la "
+            "célula concreta.",
+        ],
+        [
+            "El modelo de fuerza es una aproximación grosera: energía dividida por una distancia de "
+            "frenado fija. La biomecánica real depende de la geometría del contacto, de la rigidez y de "
+            "si el contacto es transitorio o con aprisionamiento.",
+            "Los umbrales usados son ILUSTRATIVOS. Los valores normativos están en ISO/TS 15066 y no se "
+            "reproducen aquí: cualquier evaluación real debe partir de la norma y de un análisis de "
+            "riesgos de la instalación.",
+            "El artículo de Haddadin aporta mediciones con maniquíes y sujetos reales, y modelos de lesión "
+            "validados. Esta miniatura solo exhibe la dependencia cuadrática con la velocidad.",
+        ],
+    )
+
+
+def _dagger(seed: int) -> dict[str, Any]:
+    """Ross, Gordon y Bagnell 2011: la clonación acumula error porque cambia su propia distribución."""
+    largo, carriles = 25, 5
+    centro = carriles // 2
+    experto_carril = centro                     # el experto va siempre por el centro
+
+    def experto(estado):
+        """Volver al carril central. «bajar» aumenta el índice de carril y «subir» lo reduce."""
+        _, carril = estado
+        if carril < experto_carril:
+            return "bajar"
+        if carril > experto_carril:
+            return "subir"
+        return "recto"
+
+    def episodio(politica, cobertura, semilla):
+        local = random.Random(semilla)
+        pos, carril = 0, centro
+        visitados, errores = set(), 0
+        while pos < largo:
+            estado = (pos, carril)
+            visitados.add(estado)
+            correcta = experto(estado)
+            # fuera de la distribución de entrenamiento la política falla mucho más
+            p_error = 0.05 if estado in cobertura else 0.5
+            if local.random() < p_error:
+                accion = local.choice([a for a in ("recto", "subir", "bajar") if a != correcta])
+                errores += 1
+            else:
+                accion = correcta
+            if accion == "subir":
+                carril -= 1
+            elif accion == "bajar":
+                carril += 1
+            pos += 1
+            if not (0 <= carril < carriles):
+                return {"exito": False, "pos": pos, "errores": errores, "visitados": visitados}
+        return {"exito": True, "pos": pos, "errores": errores, "visitados": visitados}
+
+    # clonación: solo se entrena con lo que visita el EXPERTO (el carril central)
+    cobertura_bc = {(p, centro) for p in range(largo)}
+    corridas_bc = [episodio(None, cobertura_bc, seed * 100 + i) for i in range(300)]
+    exito_bc = sum(1 for r in corridas_bc if r["exito"])
+    tasa_bc = _round(exito_bc / 300, 3)
+
+    # DAgger: se agregan los estados que la POLÍTICA visita, etiquetados por el experto
+    cobertura = set(cobertura_bc)
+    historia = []
+    for iteracion in range(1, 6):
+        corridas = [episodio(None, cobertura, seed * 200 + iteracion * 1000 + i) for i in range(300)]
+        exito = sum(1 for r in corridas if r["exito"])
+        nuevos = set()
+        for r in corridas:
+            nuevos |= (r["visitados"] - cobertura)
+        historia.append({"iteracion": iteracion, "exito": f"{exito}/300",
+                         "tasa": _round(exito / 300, 3), "cobertura": len(cobertura),
+                         "estados_nuevos_etiquetados": len(nuevos)})
+        cobertura |= nuevos
+
+    crecimiento = [{"horizonte": T, "clonacion_O_T2": T * T, "dagger_O_T": T} for T in (10, 25, 100)]
+
+    return _contract(
+        "dagger",
+        seed,
+        {
+            "pasillo": f"{largo} pasos × {carriles} carriles",
+            "experto": "ir recto por el carril central; corregir si se desvía",
+            "clonacion_de_comportamiento": {"exito": f"{exito_bc}/300", "tasa": tasa_bc,
+                                            "cobertura": len(cobertura_bc)},
+            "dagger_por_iteracion": historia,
+            "cobertura_final": len(cobertura),
+            "crecimiento_del_error_con_el_horizonte": crecimiento,
+            "el_problema": "se entrena con la distribución del EXPERTO y se ejecuta sobre la suya propia",
+        },
+        [
+            f"La clonación de comportamiento completa {exito_bc} de 300 episodios "
+            f"({_round(100 * tasa_bc, 1)} %). Su cobertura son los {len(cobertura_bc)} estados del "
+            "carril central: los únicos que el experto visita.",
+            "El fallo no es que la política sea mala, es que un error la saca del carril central, y fuera "
+            "de él **no tiene ejemplos**. Comete más errores, se desvía más, y la desviación se "
+            "realimenta hasta salirse.",
+            f"DAgger etiqueta los estados que la política visita de verdad: la cobertura pasa de "
+            f"{len(cobertura_bc)} a {len(cobertura)} estados y la tasa de éxito de "
+            f"{historia[0]['tasa']} a {historia[-1]['tasa']} en cinco iteraciones.",
+            f"La diferencia teórica es de orden: el error de la clonación crece como T² con el horizonte "
+            f"y el de DAgger como T. Con T = {crecimiento[-1]['horizonte']}, "
+            f"{crecimiento[-1]['clonacion_O_T2']} frente a {crecimiento[-1]['dagger_O_T']}.",
+        ],
+        [
+            "La «política» es una moneda sesgada cuya tasa de error depende de si el estado está en la "
+            "cobertura. No hay ningún modelo entrenado: se simula el efecto del cambio de distribución.",
+            "El experto de esta miniatura es una regla trivial y consultarlo es gratis. En imitación real "
+            "el experto es una persona, y las consultas que DAgger necesita son el recurso caro.",
+            "DAgger exige poder consultar al experto DURANTE el entrenamiento sobre estados arbitrarios. "
+            "En muchos dominios eso es imposible —o inaceptable— y ahí el método no aplica.",
+        ],
+    )
+
+
+def _ppo(seed: int) -> dict[str, Any]:
+    """Schulman et al. 2017: recortar el cociente para que un lote malo no destruya la política."""
+    epsilon, lr, pasos = 0.2, 1.2, 80
+
+    def objetivo(ratio, ventaja, recortar):
+        if not recortar:
+            return ratio * ventaja
+        recortado = max(1 - epsilon, min(1 + epsilon, ratio))
+        return min(ratio * ventaja, recortado * ventaja)
+
+    ratios = [0.5, 0.8, 1.0, 1.2, 1.5, 2.5, 5.0]
+    comparacion = [{"ratio": r,
+                    "sin_recorte": _round(objetivo(r, 1.2, False), 4),
+                    "con_recorte": _round(objetivo(r, 1.2, True), 4)} for r in ratios]
+
+    def entrenar(recortar, lr=8.0):
+        """La ventaja de «derecha» es +1,2 hasta el paso 40 y −1,2 después: el entorno cambia."""
+        local = random.Random(seed * 13 + int(recortar))
+        theta = 0.0
+        historia, saturados, saltos = [], 0, []
+        for paso in range(pasos):
+            ventaja = (1.2 if paso < 40 else -1.2) + local.gauss(0, 0.3)
+            p_vieja = _sigmoid(theta)
+            grad = ventaja * p_vieja * (1 - p_vieja)
+            theta_nuevo = theta + lr * grad
+            p_nueva = _sigmoid(theta_nuevo)
+            if recortar:                                  # el ratio no puede salirse de [1−ε, 1+ε]
+                r = p_nueva / max(p_vieja, 1e-12)
+                r = max(1 - epsilon, min(1 + epsilon, r))
+                p_nueva = max(min(p_vieja * r, 1 - 1e-9), 1e-9)
+                theta_nuevo = math.log(p_nueva / (1 - p_nueva))
+            saltos.append(abs(p_nueva - p_vieja))
+            theta = theta_nuevo
+            if p_nueva > 0.99 or p_nueva < 0.01:
+                saturados += 1
+            if paso in (0, 20, 39, 40, 60, pasos - 1):
+                historia.append({"paso": paso, "p_derecha": _round(p_nueva, 4),
+                                 "ventaja_del_lote": _round(ventaja, 3)})
+        return {"historia": historia, "p_final": _round(_sigmoid(theta), 4),
+                "pasos_saturados": saturados, "salto_maximo_de_p": _round(max(saltos), 4),
+                "salto_medio_de_p": _round(sum(saltos) / len(saltos), 4)}
+
+    con = entrenar(True)
+    sin = entrenar(False)
+    p_en_el_giro_con = next(h["p_derecha"] for h in con["historia"] if h["paso"] == 39)
+    p_en_el_giro_sin = next(h["p_derecha"] for h in sin["historia"] if h["paso"] == 39)
+
+    return _contract(
+        "ppo",
+        seed,
+        {
+            "objetivo": "L = mín( r·A , clip(r, 1−ε, 1+ε)·A )   con r = π_nueva/π_vieja",
+            "epsilon": epsilon,
+            "escenario": "la ventaja de «derecha» es +1,2 hasta el paso 40 y −1,2 después",
+            "comparacion_del_objetivo": comparacion,
+            "con_recorte": con,
+            "sin_recorte": sin,
+            "p_justo_antes_del_giro": {"con_recorte": p_en_el_giro_con, "sin_recorte": p_en_el_giro_sin},
+            "p_al_final": {"con_recorte": con["p_final"], "sin_recorte": sin["p_final"]},
+            "pasos_saturados": {"con_recorte": con["pasos_saturados"],
+                                "sin_recorte": sin["pasos_saturados"]},
+            "salto_maximo_de_probabilidad_en_un_paso": {"con_recorte": con["salto_maximo_de_p"],
+                                                        "sin_recorte": sin["salto_maximo_de_p"]},
+        },
+        [
+            f"Con ventaja positiva, el objetivo sin recorte crece sin techo: a ratio 5,0 vale "
+            f"{comparacion[-1]['sin_recorte']}. El de PPO lo corta en {comparacion[-1]['con_recorte']}, "
+            "el mismo valor que a ratio 1,2. Pasado el umbral, empujar más no aporta nada.",
+            f"Antes del giro del entorno, la política sin recorte está en "
+            f"{p_en_el_giro_sin} y la recortada en {p_en_el_giro_con}: la primera se ha vuelto "
+            "prácticamente determinista.",
+            f"El salto máximo de probabilidad en un solo paso es {sin['salto_maximo_de_p']} sin recorte "
+            f"y {con['salto_maximo_de_p']} con él: el recorte ACOTA cuánto puede moverse la política con "
+            "un solo lote, que es exactamente lo que promete.",
+            f"Y eso decide qué pasa tras el giro: la política sin recorte pasa {sin['pasos_saturados']} "
+            f"pasos saturada (por encima de 0,99 o por debajo de 0,01) frente a {con['pasos_saturados']} "
+            f"la recortada, y acaba en {sin['p_final']} frente a {con['p_final']}.",
+            "Una política saturada casi no explora: como el gradiente de la sigmoide se anula en los "
+            "extremos, recuperarse cuesta muchísimos pasos. Acotar el tamaño del paso no es prudencia: "
+            "es lo que conserva la capacidad de rectificar.",
+        ],
+        [
+            "Dos acciones, una ventaja escalar con ruido y sin estados. Falta casi todo el algoritmo "
+            "real: episodios, descuento, estimación de ventaja generalizada y varias épocas por lote.",
+            "El giro de la ventaja en el paso 40 está puesto a mano para exhibir el fenómeno. En un "
+            "entorno real la señal cambia de forma más gradual y menos limpia.",
+            "PPO no tiene garantía de mejora monótona: TRPO sí la tenía en su forma teórica, y PPO la "
+            "cambia por simplicidad y por rendimiento empírico.",
+        ],
+    )
+
+
+def _domain_randomization(seed: int) -> dict[str, Any]:
+    """Tobin et al. 2017: si la realidad es una variación más, no hace falta que el simulador sea fiel."""
+    rng = random.Random(seed)
+
+    def generar(parametros, n, local):
+        """El «mundo»: la posición aparente depende de la iluminación, la textura y la cámara."""
+        datos = []
+        for _ in range(n):
+            luz = local.uniform(*parametros["luz"])
+            textura = local.uniform(*parametros["textura"])
+            camara = local.uniform(*parametros["camara"])
+            real = local.uniform(0, 10)
+            observado = real * camara + luz * 0.3 + textura * 0.2 + local.gauss(0, 0.05)
+            datos.append(([observado, luz, textura], real))
+        return datos
+
+    sim_fijo = {"luz": (1.0, 1.0), "textura": (0.5, 0.5), "camara": (1.0, 1.0)}
+    sim_aleatorizado = {"luz": (0.2, 2.0), "textura": (0.0, 1.0), "camara": (0.8, 1.25)}
+    realidad = {"luz": (1.4, 1.6), "textura": (0.7, 0.9), "camara": (1.1, 1.15)}
+
+    def ajustar(datos):
+        """Regresión lineal por mínimos cuadrados sobre las tres observaciones."""
+        p = 3
+        X = [[1.0] + d[0] for d in datos]
+        y = [d[1] for d in datos]
+        n = len(X)
+        beta = [0.0] * (p + 1)
+        for _ in range(600):
+            grad = [0.0] * (p + 1)
+            for fila, objetivo in zip(X, y):
+                err = sum(b * v for b, v in zip(beta, fila)) - objetivo
+                for j in range(p + 1):
+                    grad[j] += err * fila[j] / n
+            beta = [b - 0.02 * g for b, g in zip(beta, grad)]
+        return beta
+
+    def evaluar(beta, datos):
+        err = [(sum(b * v for b, v in zip(beta, [1.0] + d[0])) - d[1]) ** 2 for d in datos]
+        return _round(math.sqrt(sum(err) / len(err)), 4)
+
+    local = random.Random(seed)
+    entrenamiento_fijo = generar(sim_fijo, 400, local)
+    entrenamiento_aleatorio = generar(sim_aleatorizado, 400, local)
+    prueba_real = generar(realidad, 200, random.Random(seed + 1))
+
+    beta_fijo = ajustar(entrenamiento_fijo)
+    beta_aleatorio = ajustar(entrenamiento_aleatorio)
+
+    return _contract(
+        "domain_randomization",
+        seed,
+        {
+            "simulador_fijo": sim_fijo,
+            "simulador_aleatorizado": sim_aleatorizado,
+            "realidad": realidad,
+            "error_sim_fijo_en_su_propio_simulador": evaluar(beta_fijo, entrenamiento_fijo),
+            "error_sim_fijo_en_la_realidad": evaluar(beta_fijo, prueba_real),
+            "error_aleatorizado_en_su_simulador": evaluar(beta_aleatorio, entrenamiento_aleatorio),
+            "error_aleatorizado_en_la_realidad": evaluar(beta_aleatorio, prueba_real),
+            "la_realidad_esta_dentro_del_rango_aleatorizado": True,
+        },
+        [
+            f"El modelo entrenado en un simulador fijo tiene un error de "
+            f"{evaluar(beta_fijo, entrenamiento_fijo)} **en su propio simulador** y de "
+            f"{evaluar(beta_fijo, prueba_real)} en la realidad. Es el hueco entre simulación y realidad, "
+            "y no se cierra mejorando el simulador en esa configuración.",
+            f"El modelo entrenado con parámetros aleatorizados tiene un error MAYOR en su propio "
+            f"simulador ({evaluar(beta_aleatorio, entrenamiento_aleatorio)}) y MENOR en la realidad "
+            f"({evaluar(beta_aleatorio, prueba_real)}).",
+            "La inversión conceptual es esa: no se busca un simulador fiel, se busca que **la realidad "
+            "sea una variación más** dentro del rango de entrenamiento. Al modelo la realidad le parece "
+            "otro día cualquiera.",
+            "Y tiene un precio declarado: el modelo aleatorizado es peor en cualquier configuración "
+            "concreta. Se cambia rendimiento en el caso nominal por robustez ante el caso desconocido.",
+        ],
+        [
+            "El «mundo» es una regresión lineal con tres factores de molestia. En robótica real la "
+            "aleatorización cubre texturas, iluminación, dinámica, retardos y ruido de sensores, y "
+            "elegir qué aleatorizar es el trabajo difícil.",
+            "La realidad está DENTRO del rango aleatorizado por construcción. Si la realidad cae fuera "
+            "—un fenómeno que nadie pensó en aleatorizar— el método no ayuda en absoluto.",
+            "Aleatorizar demasiado hace la tarea imposible de aprender; aleatorizar poco no cubre la "
+            "realidad. Ese equilibrio no tiene receta y se ajusta por experimento.",
+        ],
+    )
+
+
+def _webarena(seed: int) -> dict[str, Any]:
+    """Zhou et al. 2023: evaluar agentes de navegador con verificación del estado final."""
+    tareas = [
+        {"id": "t1", "tipo": "informacion", "pasos_optimos": 4, "pasos_agente": 4, "estado_final_ok": True},
+        {"id": "t2", "tipo": "transaccion", "pasos_optimos": 7, "pasos_agente": 15, "estado_final_ok": False},
+        {"id": "t3", "tipo": "informacion", "pasos_optimos": 3, "pasos_agente": 3, "estado_final_ok": True},
+        {"id": "t4", "tipo": "transaccion", "pasos_optimos": 9, "pasos_agente": 30, "estado_final_ok": False},
+        {"id": "t5", "tipo": "navegacion", "pasos_optimos": 5, "pasos_agente": 6, "estado_final_ok": True},
+        {"id": "t6", "tipo": "transaccion", "pasos_optimos": 6, "pasos_agente": 8, "estado_final_ok": False},
+        {"id": "t7", "tipo": "informacion", "pasos_optimos": 4, "pasos_agente": 12, "estado_final_ok": False},
+        {"id": "t8", "tipo": "navegacion", "pasos_optimos": 6, "pasos_agente": 7, "estado_final_ok": True},
+    ]
+    rng = random.Random(seed)
+    for t in tareas:
+        # el agente declara haber terminado con una confianza que no depende del resultado real
+        t["el_agente_dice_haber_terminado"] = True
+        t["confianza_declarada"] = _round(rng.uniform(0.7, 0.98), 3)
+        t["exceso_de_pasos"] = t["pasos_agente"] - t["pasos_optimos"]
+
+    exito = sum(1 for t in tareas if t["estado_final_ok"])
+    autoinforme = sum(1 for t in tareas if t["el_agente_dice_haber_terminado"])
+    por_tipo = {}
+    for t in tareas:
+        d = por_tipo.setdefault(t["tipo"], {"n": 0, "ok": 0})
+        d["n"] += 1
+        d["ok"] += int(t["estado_final_ok"])
+    for k, v in por_tipo.items():
+        v["tasa"] = _round(v["ok"] / v["n"], 3)
+
+    resumen_tipos = " · ".join(f"{k} {v['tasa']}" for k, v in sorted(por_tipo.items()))
+    exceso_medio = _round(sum(t["exceso_de_pasos"] for t in tareas) / len(tareas), 2)
+    confianza_media = _round(sum(t["confianza_declarada"] for t in tareas) / len(tareas), 3)
+
+    return _contract(
+        "webarena",
+        seed,
+        {
+            "tareas": len(tareas),
+            "exito_verificado_por_estado_final": f"{exito}/{len(tareas)}",
+            "tasa_de_exito": _round(exito / len(tareas), 3),
+            "el_agente_declara_haber_terminado": f"{autoinforme}/{len(tareas)}",
+            "confianza_declarada_media": confianza_media,
+            "por_tipo_de_tarea": por_tipo,
+            "exceso_medio_de_pasos": exceso_medio,
+            "detalle": tareas,
+            "criterio": "el éxito lo decide el ESTADO del sitio al terminar, no lo que el agente diga",
+        },
+        [
+            f"El agente declara haber terminado en {autoinforme} de {len(tareas)} tareas, con una "
+            f"confianza media de {confianza_media}. "
+            f"La verificación del estado final dice que acertó en {exito}.",
+            "Ese hueco entre lo declarado y lo verificado es la razón de ser del banco de pruebas: "
+            "preguntarle a un agente si ha terminado no es una evaluación.",
+            f"Por tipo de tarea: {resumen_tipos}. Las de información se resuelven; las "
+            "transaccionales —las que cambian el estado del sitio— son las que fallan.",
+            f"Y el exceso de pasos medio es {exceso_medio}: "
+            "el agente da vueltas. Un límite de pasos no es una restricción arbitraria, es lo que impide "
+            "que un fallo se convierta en un bucle caro.",
+        ],
+        [
+            "Los resultados de esta tabla son inventados: ilustran el modo de evaluación, no reproducen "
+            "las cifras del artículo, que además envejecen con cada modelo nuevo.",
+            "La verificación por estado final exige escribir un comprobador por tarea. Es caro, y es lo "
+            "que hace fiable al banco de pruebas: sin él se estaría midiendo la elocuencia del agente.",
+            "Un entorno de navegador reproducible es una infraestructura considerable —sitios "
+            "autoalojados, estado reiniciable—. Sin eso, los resultados no se pueden comparar entre "
+            "trabajos.",
+        ],
+    )
+
+
+def _seeclick(seed: int) -> dict[str, Any]:
+    """Cheng et al. 2024: para actuar en una interfaz hay que saber DÓNDE está cada cosa."""
+    elementos = [
+        {"id": "e1", "etiqueta": "Guardar", "tiene_texto": True, "x": 120, "y": 40},
+        {"id": "e2", "etiqueta": "", "tiene_texto": False, "icono": "papelera", "x": 300, "y": 40},
+        {"id": "e3", "etiqueta": "Cancelar", "tiene_texto": True, "x": 200, "y": 40},
+        {"id": "e4", "etiqueta": "", "tiene_texto": False, "icono": "engranaje", "x": 380, "y": 40},
+        {"id": "e5", "etiqueta": "Buscar", "tiene_texto": True, "x": 60, "y": 100},
+        {"id": "e6", "etiqueta": "", "tiene_texto": False, "icono": "lupa", "x": 460, "y": 100},
+    ]
+    instrucciones = [
+        {"orden": "guarda el documento", "objetivo": "e1"},
+        {"orden": "borra este elemento", "objetivo": "e2"},
+        {"orden": "abre los ajustes", "objetivo": "e4"},
+        {"orden": "cancela", "objetivo": "e3"},
+        {"orden": "busca en la página", "objetivo": "e6"},
+    ]
+
+    con_texto = {e["id"] for e in elementos if e["tiene_texto"]}
+
+    def agente_solo_texto(orden_objetivo):
+        """Ve el árbol de accesibilidad: solo encuentra lo que tiene etiqueta de texto."""
+        return orden_objetivo in con_texto
+
+    rng = random.Random(seed)
+
+    def agente_con_grounding(orden_objetivo, precision=0.85):
+        """Localiza cualquier elemento por su apariencia, con cierto error."""
+        return rng.random() < precision
+
+    solo_texto = [{"orden": i["orden"], "objetivo": i["objetivo"],
+                   "acierta": agente_solo_texto(i["objetivo"])} for i in instrucciones]
+    con_grounding = [{"orden": i["orden"], "objetivo": i["objetivo"],
+                      "acierta": agente_con_grounding(i["objetivo"])} for i in instrucciones]
+
+    aciertos_texto = sum(1 for r in solo_texto if r["acierta"])
+    aciertos_grounding = sum(1 for r in con_grounding if r["acierta"])
+    solo_icono = [e["id"] for e in elementos if not e["tiene_texto"]]
+
+    return _contract(
+        "seeclick",
+        seed,
+        {
+            "elementos_de_la_interfaz": len(elementos),
+            "elementos_solo_con_icono": solo_icono,
+            "proporcion_sin_texto": _round(len(solo_icono) / len(elementos), 3),
+            "agente_solo_texto": {"detalle": solo_texto,
+                                  "aciertos": f"{aciertos_texto}/{len(instrucciones)}"},
+            "agente_con_anclaje_visual": {"detalle": con_grounding,
+                                          "aciertos": f"{aciertos_grounding}/{len(instrucciones)}"},
+            "tarea": "de una instrucción en lenguaje natural a unas COORDENADAS donde pulsar",
+        },
+        [
+            f"{len(solo_icono)} de los {len(elementos)} elementos no tienen etiqueta de texto: son "
+            "iconos. Un agente que solo lee el árbol de accesibilidad no puede referirse a ellos.",
+            f"Ese agente acierta {aciertos_texto} de {len(instrucciones)} instrucciones; el que ancla "
+            f"visualmente, {aciertos_grounding}. La diferencia no está en el razonamiento: está en si "
+            "puede **señalar** el elemento.",
+            "El anclaje —pasar de «abre los ajustes» a un par de coordenadas— es la capacidad que separa "
+            "un modelo que describe una captura de pantalla de un agente que puede operar sobre ella.",
+            "Y es una capacidad medible por separado del resto: se puede evaluar el anclaje sin evaluar "
+            "la planificación, que es justamente lo que hace falta para saber dónde falla un agente.",
+        ],
+        [
+            "La interfaz es una lista de seis elementos con coordenadas dadas. No hay imagen, ni modelo "
+            "de visión, ni resolución: se simula el efecto de tener o no tener anclaje.",
+            "El agente con anclaje se modela con una moneda sesgada al 85 %. No hay ningún modelo "
+            "entrenado detrás y ese número no representa a ningún sistema real.",
+            "El anclaje es necesario y no suficiente: saber dónde pulsar no dice qué pulsar. La "
+            "planificación de la tarea es un problema aparte, y es donde fallan la mayoría de los "
+            "agentes actuales.",
+        ],
+    )
+
+
+def _osworld(seed: int) -> dict[str, Any]:
+    """Xie et al. 2024: tareas de escritorio verificadas ejecutando un comprobador sobre el estado real."""
+    tareas = [
+        {"id": "o1", "app": "hoja de cálculo", "verificador": "leer celda B7 y comparar",
+         "humano": True, "agente": True},
+        {"id": "o2", "app": "navegador + archivos", "verificador": "existe el fichero descargado",
+         "humano": True, "agente": False},
+        {"id": "o3", "app": "editor de texto", "verificador": "diff contra el resultado esperado",
+         "humano": True, "agente": True},
+        {"id": "o4", "app": "terminal", "verificador": "código de salida del script",
+         "humano": True, "agente": False},
+        {"id": "o5", "app": "varias apps", "verificador": "estado en tres aplicaciones a la vez",
+         "humano": True, "agente": False},
+        {"id": "o6", "app": "visor de imágenes", "verificador": "metadatos del fichero exportado",
+         "humano": True, "agente": False},
+        {"id": "o7", "app": "hoja de cálculo", "verificador": "suma de una columna",
+         "humano": True, "agente": True},
+        {"id": "o8", "app": "varias apps", "verificador": "fichero movido y registro actualizado",
+         "humano": True, "agente": False},
+    ]
+    rng = random.Random(seed)
+    for t in tareas:
+        t["pasos_del_agente"] = rng.randint(8, 40)
+        t["multiaplicacion"] = t["app"] == "varias apps"
+
+    humano = sum(1 for t in tareas if t["humano"])
+    agente = sum(1 for t in tareas if t["agente"])
+    multi = [t for t in tareas if t["multiaplicacion"]]
+    multi_ok = sum(1 for t in multi if t["agente"])
+    una_app = [t for t in tareas if not t["multiaplicacion"]]
+    una_ok = sum(1 for t in una_app if t["agente"])
+
+    return _contract(
+        "osworld",
+        seed,
+        {
+            "tareas": len(tareas),
+            "tasa_humana": f"{humano}/{len(tareas)}",
+            "tasa_del_agente": f"{agente}/{len(tareas)}",
+            "brecha": _round((humano - agente) / len(tareas), 3),
+            "una_sola_aplicacion": {"n": len(una_app), "exito": una_ok,
+                                    "tasa": _round(una_ok / len(una_app), 3)},
+            "varias_aplicaciones": {"n": len(multi), "exito": multi_ok,
+                                    "tasa": _round(multi_ok / len(multi), 3)},
+            "verificadores": [t["verificador"] for t in tareas],
+            "criterio": "cada tarea trae su propio script que INSPECCIONA el estado del sistema al final",
+        },
+        [
+            f"Las personas resuelven {humano} de {len(tareas)} tareas y el agente, {agente}. La brecha no "
+            "es de conocimiento: las tareas son rutinarias y están descritas sin ambigüedad.",
+            f"Con una sola aplicación el agente acierta {una_ok} de {len(una_app)}; con varias, "
+            f"{multi_ok} de {len(multi)}. Lo que rompe no es la dificultad de cada paso, es **mantener el "
+            "objetivo mientras se cambia de contexto**.",
+            "Cada tarea trae su propio verificador que inspecciona el estado real del sistema al terminar: "
+            "una celda, un fichero, un código de salida. No se le pregunta al agente si lo consiguió.",
+            "Esa decisión de diseño es lo que hace comparables los resultados entre trabajos, y lo que "
+            "impide que un agente elocuente puntúe alto sin haber hecho nada.",
+        ],
+        [
+            "Los resultados de la tabla son inventados: ilustran el diseño de la evaluación, no "
+            "reproducen las cifras del artículo, que envejecen con cada modelo nuevo.",
+            "Escribir un verificador por tarea es caro y limita el tamaño del banco de pruebas. Es el "
+            "precio de que la evaluación sea honesta.",
+            "Un entorno de escritorio reproducible —máquina virtual con estado reiniciable— es "
+            "infraestructura considerable. Sin ella los resultados no son comparables.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
+# ruta de operación (P107–P117)
+# --------------------------------------------------------------------------- #
+
+
+def _trazas_distribuidas(seed: int) -> dict[str, Any]:
+    """Sigelman et al. 2010: sin traza solo se ve el total; con traza se ve quién lo gastó."""
+    rng = random.Random(seed)
+    servicios = ["puerta", "autenticación", "catálogo", "recomendador", "base_de_datos"]
+    latencias_base = {"puerta": 5, "autenticación": 12, "catálogo": 20,
+                      "recomendador": 140, "base_de_datos": 25}
+
+    peticiones = []
+    for i in range(200):
+        spans, total = [], 0
+        for s in servicios:
+            base = latencias_base[s]
+            # el recomendador tiene una cola larga: a veces tarda muchísimo
+            ms = base * (1 + abs(rng.gauss(0, 0.2)))
+            if s == "recomendador" and rng.random() < 0.05:
+                ms *= 6
+            ms = _round(ms, 2)
+            spans.append({"servicio": s, "ms": ms})
+            total += ms
+        peticiones.append({"traza_id": f"t{i:03d}", "spans": spans, "total_ms": _round(total, 2)})
+
+    totales = sorted(p["total_ms"] for p in peticiones)
+    p50 = totales[len(totales) // 2]
+    p99 = totales[int(len(totales) * 0.99)]
+
+    # sin traza: solo se tiene el total por petición
+    sin_traza = {"p50_ms": p50, "p99_ms": p99,
+                 "puede_atribuir_el_gasto": False,
+                 "diagnostico_posible": "el sistema a veces va lento"}
+
+    # con traza: se puede agregar por servicio
+    por_servicio = {}
+    for p in peticiones:
+        for s in p["spans"]:
+            d = por_servicio.setdefault(s["servicio"], [])
+            d.append(s["ms"])
+    resumen = []
+    for s in servicios:
+        v = sorted(por_servicio[s])
+        resumen.append({"servicio": s, "p50": _round(v[len(v) // 2], 2),
+                        "p99": _round(v[int(len(v) * 0.99)], 2),
+                        "cuota_del_total": _round(100 * sum(v) / sum(p["total_ms"] for p in peticiones), 1)})
+    culpable = max(resumen, key=lambda r: r["cuota_del_total"])
+
+    # muestreo: Dapper muestrea 1 de cada N y aun así estima bien los agregados
+    for tasa in (1.0, 0.1, 0.01):
+        muestra = [p for p in peticiones if rng.random() < tasa]
+        if not muestra:
+            muestra = peticiones[:1]
+    muestreo = []
+    for tasa in (1.0, 0.1, 0.01):
+        local = random.Random(seed * 7 + int(tasa * 1000))
+        muestra = [p for p in peticiones if local.random() < tasa] or peticiones[:1]
+        t = sorted(p["total_ms"] for p in muestra)
+        muestreo.append({"tasa": tasa, "trazas_guardadas": len(muestra),
+                         "p50_estimado": _round(t[len(t) // 2], 2),
+                         "error_sobre_p50_real": _round(abs(t[len(t) // 2] - p50), 2)})
+
+    return _contract(
+        "trazas_distribuidas",
+        seed,
+        {
+            "servicios": servicios,
+            "peticiones": len(peticiones),
+            "sin_traza": sin_traza,
+            "con_traza_por_servicio": resumen,
+            "servicio_que_mas_gasta": culpable["servicio"],
+            "muestreo": muestreo,
+            "traza_de_ejemplo": peticiones[0],
+        },
+        [
+            f"Sin traza solo se sabe que el p50 es {p50} ms y el p99 {p99} ms. Con esa información el "
+            "diagnóstico posible es «el sistema a veces va lento», que no es un diagnóstico.",
+            f"Con traza, el gasto se atribuye: «{culpable['servicio']}» se lleva el "
+            f"{culpable['cuota_del_total']} % del tiempo total y tiene un p99 de {culpable['p99']} ms "
+            f"frente a un p50 de {culpable['p50']}. Ahí está el problema, y ahí hay que mirar.",
+            "La clave técnica es el identificador de traza que viaja con la petición por todos los "
+            "servicios. Sin él, cada servicio tiene sus propias métricas y nadie puede unir la historia "
+            "de UNA petición concreta.",
+            f"Y el muestreo funciona: guardando {muestreo[-1]['tasa'] * 100} % de las trazas, la "
+            f"estimación del p50 se desvía {muestreo[-1]['error_sobre_p50_real']} ms del valor real. "
+            "Trazar todo es caro; trazar una fracción basta para los agregados.",
+        ],
+        [
+            "Cinco servicios en cadena, sin concurrencia ni llamadas anidadas. Una traza real es un árbol "
+            "con decenas de spans y relaciones padre-hijo.",
+            "El muestreo uniforme estima bien los agregados y **pierde los casos raros**: si el fallo "
+            "ocurre en una de cada mil peticiones, muestrear al 1 % probablemente no lo captura. Por eso "
+            "existe el muestreo dirigido por cola.",
+            "Aquí no hay propagación de contexto real —cabeceras, reloj distribuido, relojes "
+            "desincronizados entre máquinas—, que es donde está la dificultad de implementarlo.",
+        ],
+    )
+
+
+def _resiliencia(seed: int) -> dict[str, Any]:
+    """Brewer 2012: bajo partición hay que elegir, y la elección se diseña por operación."""
+    rng = random.Random(seed)
+
+    def simular(estrategia, particion_en=5, pasos=12):
+        """Dos réplicas que reciben escrituras; entre los pasos 5 y 9 no se ven."""
+        a, b, historia, rechazos = 0, 0, [], 0
+        for paso in range(pasos):
+            particionado = particion_en <= paso < particion_en + 4
+            escribe_en_a = rng.random() < 0.5
+            if particionado and estrategia == "CP":
+                rechazos += 1                       # se rechaza para no divergir
+            elif escribe_en_a:
+                a += 1
+                if not particionado:
+                    b = a
+            else:
+                b += 1
+                if not particionado:
+                    a = b
+            if not particionado:
+                a = b = max(a, b)
+            historia.append({"paso": paso, "particion": particionado, "replica_a": a, "replica_b": b})
+        durante = [h for h in historia if h["particion"]]
+        divergencia_maxima = max((abs(h["replica_a"] - h["replica_b"]) for h in durante), default=0)
+        escrituras_servidas = sum(1 for h in durante if h["particion"]) - rechazos
+        return {"historia": historia, "replica_a": a, "replica_b": b,
+                "divergencia_maxima_durante_la_particion": divergencia_maxima,
+                "escrituras_rechazadas": rechazos,
+                "escrituras_servidas_durante_la_particion": escrituras_servidas,
+                "disponible_durante_la_particion": estrategia == "AP"}
+
+    cp = simular("CP")
+    ap = simular("AP")
+
+    # idempotencia: reintentar sin clave duplica el efecto
+    def cobrar(reintentos, con_clave_idempotencia):
+        vistos, cargos = set(), 0
+        for intento in range(reintentos):
+            clave = "pedido-42" if con_clave_idempotencia else f"intento-{intento}"
+            if clave in vistos:
+                continue
+            vistos.add(clave)
+            cargos += 1
+        return cargos
+
+    idempotencia = {
+        "sin_clave_3_reintentos": cobrar(3, False),
+        "con_clave_3_reintentos": cobrar(3, True),
+    }
+
+    return _contract(
+        "resiliencia",
+        seed,
+        {
+            "teorema": "bajo partición de red hay que elegir entre consistencia y disponibilidad",
+            "matiz_de_2012": "no es una elección global del sistema: se decide POR OPERACIÓN, y solo "
+                             "durante la partición",
+            "estrategia_CP": cp,
+            "estrategia_AP": ap,
+            "idempotencia": idempotencia,
+        },
+        [
+            f"Con estrategia CP se rechazan {cp['escrituras_rechazadas']} escrituras durante la partición "
+            f"y las réplicas nunca divergen (divergencia máxima "
+            f"{cp['divergencia_maxima_durante_la_particion']}). El sistema deja de estar disponible para "
+            "no mentir.",
+            f"Con estrategia AP se sirven {ap['escrituras_servidas_durante_la_particion']} escrituras y "
+            f"las réplicas llegan a divergir en {ap['divergencia_maxima_durante_la_particion']}. El "
+            "sistema sigue respondiendo, y hay que reconciliar después.",
+            "Ninguna de las dos es «la correcta»: cobrar una tarjeta pide CP, mostrar un contador de «me "
+            "gusta» pide AP. El matiz de 2012 es que la elección **no es del sistema**, es de cada "
+            "operación y solo mientras dura la partición.",
+            f"Y el reintento sin clave de idempotencia cobra "
+            f"{idempotencia['sin_clave_3_reintentos']} veces en lugar de "
+            f"{idempotencia['con_clave_3_reintentos']}. La resiliencia no es solo reintentar: es "
+            "reintentar de forma que repetir no cambie el resultado.",
+        ],
+        [
+            "Dos réplicas y un contador. Un sistema real tiene muchas réplicas, quórums, relojes "
+            "desincronizados y particiones parciales, que es el caso difícil.",
+            "La reconciliación tras la partición no se implementa aquí. En la práctica es donde vive el "
+            "trabajo: CRDTs, vectores de versión o resolución manual.",
+            "El teorema CAP se cita mucho más de lo que se lee. No dice «elige dos de tres»: dice que "
+            "**cuando hay partición** hay que elegir entre consistencia y disponibilidad. Sin partición, "
+            "no hay que elegir nada.",
+        ],
+    )
+
+
+def _cola_larga(seed: int) -> dict[str, Any]:
+    """Dean y Barroso 2013: con muchas llamadas en paralelo, lo raro deja de ser raro."""
+    rng = random.Random(seed)
+
+    def latencia_servidor(local):
+        base = local.gauss(50, 8)
+        if local.random() < 0.01:              # 1 % de las veces, una parada larga
+            base += 900
+        return max(1.0, base)
+
+    def peticion(n_servidores, con_cobertura, local):
+        """La petición necesita respuesta de TODOS los servidores: tarda lo que el más lento."""
+        latencias = []
+        for _ in range(n_servidores):
+            l = latencia_servidor(local)
+            if con_cobertura and l > 120:      # petición de cobertura a otra réplica
+                l = min(l, latencia_servidor(local) + 5)
+            latencias.append(l)
+        return max(latencias)
+
+    filas = []
+    for n in (1, 10, 100, 1000):
+        local = random.Random(seed * 31 + n)
+        muestras = sorted(peticion(n, False, local) for _ in range(400))
+        filas.append({"servidores": n,
+                      "p50_ms": _round(muestras[200], 1),
+                      "p99_ms": _round(muestras[396], 1),
+                      "prob_alguno_lento": _round(1 - 0.99 ** n, 4)})
+
+    local = random.Random(seed * 77)
+    con_cobertura = sorted(peticion(100, True, local) for _ in range(400))
+    sin_cobertura = next(f for f in filas if f["servidores"] == 100)
+
+    return _contract(
+        "cola_larga",
+        seed,
+        {
+            "servidor_individual": {"p50_aprox_ms": 50, "prob_de_parada_larga": 0.01},
+            "escalado_por_abanico": filas,
+            "con_peticiones_de_cobertura_100_servidores": {
+                "p50_ms": _round(con_cobertura[200], 1),
+                "p99_ms": _round(con_cobertura[396], 1)},
+            "sin_cobertura_100_servidores": {"p50_ms": sin_cobertura["p50_ms"],
+                                             "p99_ms": sin_cobertura["p99_ms"]},
+        },
+        [
+            f"Un servidor solo tiene un p99 de {filas[0]['p99_ms']} ms. Con 100 servidores en paralelo, "
+            f"el p50 de la petición completa sube a {filas[2]['p50_ms']} ms: **la mediana del conjunto "
+            "es peor que la cola de uno solo**.",
+            f"La razón es aritmética: si cada servidor se para el 1 % de las veces, la probabilidad de "
+            f"que **alguno** de los 100 se pare es {filas[2]['prob_alguno_lento']}. Con 1 000 servidores, "
+            f"{filas[3]['prob_alguno_lento']}. Lo raro deja de ser raro al multiplicar.",
+            f"Las peticiones de cobertura —pedir a una segunda réplica cuando la primera tarda— bajan la "
+            f"MEDIANA de {sin_cobertura['p50_ms']} a {_round(con_cobertura[200], 1)} ms, un factor de "
+            f"{_round(sin_cobertura['p50_ms'] / max(con_cobertura[200], 1e-9), 1)}×. El p99 apenas se "
+            f"mueve ({sin_cobertura['p99_ms']} → {_round(con_cobertura[396], 1)} ms) porque de vez en "
+            "cuando fallan las dos réplicas: la cobertura recorta la cola, no la elimina.",
+            "De ahí la conclusión operativa del artículo: en sistemas con abanico grande, la latencia de "
+            "cola **no es un detalle de rendimiento**, es la latencia que ve el usuario.",
+        ],
+        [
+            "El modelo de latencia es una gaussiana con una parada larga ocasional. En un sistema real la "
+            "cola viene de recolección de basura, contención de disco, vecinos ruidosos y colas de red, "
+            "con estructura temporal que aquí no está.",
+            "Se supone que la petición necesita a TODOS los servidores. Muchos sistemas toleran respuestas "
+            "parciales, y ahí el análisis cambia.",
+            "Las peticiones de cobertura duplican tráfico si se usan mal. El artículo describe variantes "
+            "más finas —cobertura diferida, cancelación cruzada— que no están aquí.",
+        ],
+    )
+
+
+def _deriva(seed: int) -> dict[str, Any]:
+    """Gama et al. 2014: el mundo cambia y el modelo se queda quieto."""
+    rng = random.Random(seed)
+    n = 600
+    corte = 300
+
+    def generar(i):
+        """Antes del corte, la etiqueta depende de x1; después, de x2. Deriva de concepto."""
+        x1, x2 = rng.random(), rng.random()
+        y = (x1 > 0.5) if i < corte else (x2 > 0.5)
+        return (x1, x2), int(y)
+
+    flujo = [generar(i) for i in range(n)]
+
+    def modelo_estatico(x):
+        return int(x[0] > 0.5)                 # aprendió que lo que importa es x1
+
+    ventana = 50
+    curva, aciertos_ventana = [], []
+    for i, (x, y) in enumerate(flujo):
+        acierto = int(modelo_estatico(x) == y)
+        aciertos_ventana.append(acierto)
+        if len(aciertos_ventana) > ventana:
+            aciertos_ventana.pop(0)
+        if i % 60 == 0 or i == n - 1:
+            curva.append({"instante": i, "exactitud_ventana": _round(sum(aciertos_ventana) / len(aciertos_ventana), 3)})
+
+    # detector tipo DDM: alarma cuando la tasa de error supera media + 3 desviaciones
+    errores, p_min, s_min, alarma_en = 0, None, None, None
+    for i, (x, y) in enumerate(flujo):
+        errores += int(modelo_estatico(x) != y)
+        p = errores / (i + 1)
+        s = math.sqrt(max(p * (1 - p), 1e-12) / (i + 1))
+        if i > 30:
+            if p_min is None or p + s < p_min + s_min:
+                p_min, s_min = p, s
+            elif alarma_en is None and p + s > p_min + 3 * s_min:
+                alarma_en = i
+    retraso = (alarma_en - corte) if alarma_en else None
+
+    # reentrenar tras la alarma
+    def modelo_reentrenado(x):
+        return int(x[1] > 0.5)
+    despues = flujo[alarma_en:] if alarma_en else flujo[corte:]
+    exactitud_estatico = sum(1 for x, y in despues if modelo_estatico(x) == y) / len(despues)
+    exactitud_reentrenado = sum(1 for x, y in despues if modelo_reentrenado(x) == y) / len(despues)
+
+    return _contract(
+        "deriva",
+        seed,
+        {
+            "muestras": n, "instante_de_la_deriva": corte,
+            "tipo": "deriva de concepto: cambia P(y|x), no P(x)",
+            "curva_de_exactitud": curva,
+            "alarma_del_detector_en": alarma_en,
+            "retraso_de_deteccion": retraso,
+            "tras_la_alarma": {"modelo_estatico": _round(exactitud_estatico, 3),
+                               "modelo_reentrenado": _round(exactitud_reentrenado, 3)},
+        },
+        [
+            f"El modelo funciona bien hasta el instante {corte} y después se derrumba: la exactitud en "
+            f"ventana pasa de {curva[len(curva) // 3]['exactitud_ventana']} a "
+            f"{curva[-1]['exactitud_ventana']}. El modelo no ha cambiado; ha cambiado el mundo.",
+            f"Es deriva de CONCEPTO: la distribución de las entradas no cambia, cambia la relación entre "
+            "entrada y etiqueta. Vigilar solo la distribución de entrada no la habría detectado.",
+            f"El detector avisa en el instante {alarma_en}, con un retraso de {retraso} muestras sobre el "
+            "cambio real. Todo detector tiene ese retraso: es el precio de no dar falsas alarmas.",
+            f"Y tras la alarma, el modelo antiguo acierta {_round(exactitud_estatico, 3)} y uno "
+            f"reentrenado sobre la nueva relación, {_round(exactitud_reentrenado, 3)}. Detectar sirve de "
+            "poco si no hay un procedimiento de reentrenamiento detrás.",
+        ],
+        [
+            "La deriva es abrupta y en un solo punto. Las derivas reales suelen ser graduales, "
+            "recurrentes o estacionales, y ahí los detectores funcionan mucho peor.",
+            "Se supone que las etiquetas verdaderas llegan de inmediato. En la mayoría de los sistemas "
+            "reales llegan tarde o no llegan, y sin ellas hay que detectar la deriva con proxies.",
+            "El detector es una versión simplificada de DDM. El artículo revisa una familia entera de "
+            "métodos con compromisos distintos entre retraso y falsas alarmas.",
+        ],
+    )
+
+
+def _deuda_tecnica(seed: int) -> dict[str, Any]:
+    """Sculley et al. 2015: el modelo es la parte pequeña, y las dependencias son invisibles."""
+    componentes = [
+        {"parte": "código del modelo", "lineas": 800},
+        {"parte": "recogida y validación de datos", "lineas": 3200},
+        {"parte": "extracción de características", "lineas": 2600},
+        {"parte": "infraestructura de servicio", "lineas": 4100},
+        {"parte": "monitorización y alertas", "lineas": 1500},
+        {"parte": "gestión de configuración", "lineas": 2200},
+        {"parte": "código de pegamento entre sistemas", "lineas": 5400},
+    ]
+    total = sum(c["lineas"] for c in componentes)
+    for c in componentes:
+        c["porcentaje"] = _round(100 * c["lineas"] / total, 1)
+    modelo = next(c for c in componentes if c["parte"] == "código del modelo")
+
+    # dependencias ocultas: quitar una característica rompe modelos que nadie recordaba
+    caracteristicas = {
+        "f_precio": ["modelo_ranking", "modelo_fraude", "informe_semanal"],
+        "f_click_historico": ["modelo_ranking"],
+        "f_geo": ["modelo_fraude", "modelo_ranking", "modelo_churn", "panel_de_negocio"],
+        "f_temporal": [],
+    }
+    rng = random.Random(seed)
+    a_retirar = rng.choice(sorted(caracteristicas))
+    impacto = caracteristicas[a_retirar]
+    huerfanas = [k for k, v in caracteristicas.items() if not v]
+
+    # CACE: cambiar el umbral de un modelo mueve la entrada de los que consumen su salida
+    cadena = [
+        {"componente": "modelo_A", "umbral": 0.5, "positivos_por_1000": 180},
+        {"componente": "modelo_B (consume la salida de A)", "entradas_esperadas": 180},
+    ]
+    nuevo_umbral = 0.45
+    nuevos_positivos = 245
+    cadena_tras_cambio = [
+        {"componente": "modelo_A", "umbral": nuevo_umbral, "positivos_por_1000": nuevos_positivos},
+        {"componente": "modelo_B (consume la salida de A)", "entradas_reales": nuevos_positivos,
+         "desviacion_sobre_lo_esperado": _round(100 * (nuevos_positivos - 180) / 180, 1)},
+    ]
+
+    return _contract(
+        "deuda_tecnica",
+        seed,
+        {
+            "lineas_totales": total,
+            "componentes": componentes,
+            "porcentaje_que_es_el_modelo": modelo["porcentaje"],
+            "caracteristica_a_retirar": a_retirar,
+            "consumidores_afectados": impacto,
+            "caracteristicas_huerfanas": huerfanas,
+            "principio_CACE": "Changing Anything Changes Everything",
+            "cadena_antes": cadena,
+            "cadena_despues": cadena_tras_cambio,
+        },
+        [
+            f"El código del modelo son {modelo['lineas']} líneas de {total}: el "
+            f"**{modelo['porcentaje']} %** del sistema. Todo lo demás —datos, características, servicio, "
+            "monitorización, configuración y pegamento— es el 95 % restante.",
+            f"Retirar la característica «{a_retirar}» afecta a {len(impacto)} consumidores: {impacto}. "
+            "Nadie mantiene esa lista, y por eso las dependencias de datos son deuda invisible: no hay "
+            "compilador que avise.",
+            f"Y hay {len(huerfanas)} característica sin consumidores: se sigue calculando y nadie la usa. "
+            "Es el equivalente al código muerto, con la diferencia de que cuesta cómputo cada día.",
+            f"El principio CACE en acción: bajar el umbral del modelo A de 0,5 a {nuevo_umbral} cambia "
+            f"sus positivos de 180 a {nuevos_positivos} por mil, y el modelo B —que consume su salida— "
+            f"recibe un {cadena_tras_cambio[1]['desviacion_sobre_lo_esperado']} % más de entradas sin que "
+            "nadie lo haya tocado.",
+        ],
+        [
+            "Los conteos de líneas son ilustrativos. El artículo no da esa tabla: da la figura, muy "
+            "citada, de una caja pequeña de «ML code» rodeada de cajas grandes.",
+            "El grafo de dependencias es de juguete. En un sistema real tiene cientos de nodos y nadie lo "
+            "tiene escrito, que es exactamente el problema.",
+            "El artículo cubre además bucles de realimentación, antipatrones de diseño y deuda de "
+            "configuración, que no se modelan aquí.",
+        ],
+    )
+
+
+def _ml_test_score(seed: int) -> dict[str, Any]:
+    """Breck et al. 2017: la exactitud no dice si el sistema está listo para producción."""
+    pruebas = {
+        "datos": [
+            "el esquema de las características está validado",
+            "las características nuevas se prueban antes de usarse",
+            "el coste de cada característica está medido",
+            "hay pruebas de privacidad sobre los datos",
+        ],
+        "modelo": [
+            "las métricas del modelo se revisan antes de promocionar",
+            "hay una línea base simple con la que comparar",
+            "se comprueba el sesgo por subgrupos",
+            "el modelo se prueba con datos degradados",
+        ],
+        "infraestructura": [
+            "el entrenamiento es reproducible",
+            "hay pruebas de integración de todo el proceso",
+            "se puede revertir a la versión anterior",
+            "hay pruebas de la lógica de servicio",
+        ],
+        "monitorizacion": [
+            "se vigila la deriva de los datos de entrada",
+            "se vigila la antigüedad del modelo",
+            "se vigila la latencia y el consumo",
+            "hay alertas sobre caída de calidad",
+        ],
+    }
+    sistemas = {
+        "equipo_A": {"datos": [1, 1, 1, 1], "modelo": [1, 1, 1, 0],
+                     "infraestructura": [1, 1, 1, 1], "monitorizacion": [1, 1, 1, 1]},
+        "equipo_B": {"datos": [1, 0, 0, 0], "modelo": [1, 0, 0, 0],
+                     "infraestructura": [1, 0, 0, 0], "monitorizacion": [0, 0, 0, 0]},
+    }
+    exactitud = {"equipo_A": 0.912, "equipo_B": 0.918}
+
+    resultados = {}
+    for equipo, marcas in sistemas.items():
+        por_categoria = {c: sum(v) for c, v in marcas.items()}
+        # la puntuación del artículo es el MÍNIMO entre categorías, no la suma
+        puntuacion = min(por_categoria.values()) / 2
+        resultados[equipo] = {
+            "exactitud": exactitud[equipo],
+            "por_categoria": por_categoria,
+            "puntuacion_ml_test_score": _round(puntuacion, 2),
+            "nivel": ("no hay pruebas: más un experimento que un producto" if puntuacion < 1
+                      else "hay pruebas básicas" if puntuacion < 3 else "razonablemente probado"),
+        }
+
+    rng = random.Random(seed)
+    categoria_auditada = rng.choice(sorted(pruebas))
+
+    return _contract(
+        "ml_test_score",
+        seed,
+        {
+            "categorias": list(pruebas),
+            "pruebas_por_categoria": pruebas,
+            "resultados": resultados,
+            "categoria_auditada": categoria_auditada,
+            "regla": "la puntuación es el MÍNIMO entre categorías: un sistema es tan robusto como su "
+                     "categoría más débil",
+        },
+        [
+            f"Los dos equipos tienen la misma exactitud ({resultados['equipo_A']['exactitud']} frente a "
+            f"{resultados['equipo_B']['exactitud']}) y una preparación para producción completamente "
+            f"distinta: {resultados['equipo_A']['puntuacion_ml_test_score']} frente a "
+            f"{resultados['equipo_B']['puntuacion_ml_test_score']}.",
+            f"El equipo B tiene incluso mejor exactitud, y ninguna prueba de monitorización: "
+            f"{resultados['equipo_B']['por_categoria']}. Su modelo puede degradarse durante meses sin que "
+            "nadie se entere.",
+            "La puntuación es el **mínimo** entre categorías, no la suma. Un sistema con datos "
+            "impecables y sin capacidad de revertir no es un sistema robusto: es uno con un punto único "
+            "de fallo bien documentado.",
+            "Y ese es el argumento del artículo: la exactitud mide el modelo; la puntuación mide el "
+            "sistema. Promocionar por la primera es cómo se llega a producción con lo segundo sin hacer.",
+        ],
+        [
+            "Cuatro pruebas por categoría; la rúbrica original tiene 28 y está mucho más detallada.",
+            "Las marcas de cada equipo son inventadas y están elegidas para que el contraste sea nítido.",
+            "Una puntuación alta no garantiza que el sistema funcione: garantiza que si falla, alguien se "
+            "va a enterar y va a poder revertir. Son cosas distintas.",
+        ],
+    )
+
+
+def _trazabilidad(seed: int) -> dict[str, Any]:
+    """Henderson et al. 2018: con pocas semillas, el ranking entre métodos es una moneda al aire."""
+    # dos algoritmos con el MISMO rendimiento esperado y alta varianza entre semillas
+    rng = random.Random(seed)
+    media_real = 300.0
+    desviacion = 60.0
+
+    def corridas(n, semilla):
+        local = random.Random(semilla)
+        return [_round(local.gauss(media_real, desviacion), 1) for _ in range(n)]
+
+    experimentos = []
+    for k in (3, 5, 10, 30):
+        inversiones, diferencias = 0, []
+        for repeticion in range(200):
+            a = corridas(k, seed * 1000 + repeticion)
+            b = corridas(k, seed * 2000 + repeticion)
+            media_a = sum(a) / k
+            media_b = sum(b) / k
+            diferencias.append(abs(media_a - media_b))
+            if media_a < media_b:
+                inversiones += 1
+        experimentos.append({"semillas_por_algoritmo": k,
+                             "veces_que_A_parece_peor_que_B": inversiones,
+                             "de_200_comparaciones": 200,
+                             "proporcion": _round(inversiones / 200, 3),
+                             "diferencia_media_observada": _round(sum(diferencias) / len(diferencias), 1),
+                             "diferencia_maxima_observada": _round(max(diferencias), 1)})
+
+    ejemplo_a = corridas(5, seed * 11)
+    ejemplo_b = corridas(5, seed * 13)
+    reporte_optimista = {"algoritmo_A": max(ejemplo_a), "algoritmo_B": min(ejemplo_b),
+                         "conclusion": "A supera a B por un amplio margen"}
+    reporte_honesto = {
+        "algoritmo_A": {"media": _round(sum(ejemplo_a) / 5, 1),
+                        "min": min(ejemplo_a), "max": max(ejemplo_a), "semillas": 5},
+        "algoritmo_B": {"media": _round(sum(ejemplo_b) / 5, 1),
+                        "min": min(ejemplo_b), "max": max(ejemplo_b), "semillas": 5},
+        "conclusion": "no se distinguen con 5 semillas",
+    }
+
+    return _contract(
+        "trazabilidad",
+        seed,
+        {
+            "escenario": "dos algoritmos con EXACTAMENTE el mismo rendimiento esperado",
+            "media_real": media_real, "desviacion_entre_semillas": desviacion,
+            "efecto_del_numero_de_semillas": experimentos,
+            "reporte_optimista": reporte_optimista,
+            "reporte_honesto": reporte_honesto,
+        },
+        [
+            f"Los dos algoritmos son **idénticos** en rendimiento esperado. Con 3 semillas cada uno, en "
+            f"{experimentos[0]['veces_que_A_parece_peor_que_B']} de 200 comparaciones A sale por debajo "
+            f"de B y en {200 - experimentos[0]['veces_que_A_parece_peor_que_B']} por encima: el ranking "
+            "es una moneda al aire.",
+            f"Con 30 semillas la proporción de inversiones sigue rondando el 0,5 "
+            f"({experimentos[-1]['proporcion']}): no baja, porque los dos algoritmos son iguales. Lo que "
+            f"sí baja es la MAGNITUD: la diferencia media observada pasa de "
+            f"{experimentos[0]['diferencia_media_observada']} con 3 semillas a "
+            f"{experimentos[-1]['diferencia_media_observada']} con 30, y la máxima de "
+            f"{experimentos[0]['diferencia_maxima_observada']} a "
+            f"{experimentos[-1]['diferencia_maxima_observada']}. Con pocas semillas, el ruido tiene "
+            "tamaño de hallazgo.",
+            f"Reportar el mejor resultado de A y el peor de B da «{reporte_optimista['algoritmo_A']} "
+            f"frente a {reporte_optimista['algoritmo_B']}», que parece una mejora enorme. Con media, "
+            "rango y número de semillas, la conclusión es que no se distinguen.",
+            "Por eso el reporte mínimo son tres campos: media, dispersión y **número de corridas**. Sin "
+            "el tercero, los dos primeros no se pueden interpretar.",
+        ],
+        [
+            "Las corridas se simulan con una gaussiana. En aprendizaje por refuerzo real la distribución "
+            "entre semillas suele ser bimodal —o converge o no converge— y eso es aún peor.",
+            "Aquí los dos algoritmos son iguales por construcción, para aislar el efecto del muestreo. En "
+            "un caso real hay una diferencia real que se quiere estimar, y el problema es el mismo.",
+            "El artículo cubre además el efecto de los hiperparámetros, de la implementación concreta y "
+            "de la elección de entornos, que pesan tanto como las semillas.",
+        ],
+    )
+
+
+def _tarjetas_de_modelo(seed: int) -> dict[str, Any]:
+    """Mitchell et al. 2019: una cifra agregada esconde a quién le funciona mal."""
+    subgrupos = [
+        {"grupo": "A", "n": 6200, "aciertos": 5828},
+        {"grupo": "B", "n": 1500, "aciertos": 1350},
+        {"grupo": "C", "n": 420, "aciertos": 286},
+        {"grupo": "D", "n": 180, "aciertos": 104},
+    ]
+    for s in subgrupos:
+        s["exactitud"] = _round(s["aciertos"] / s["n"], 4)
+    total_n = sum(s["n"] for s in subgrupos)
+    total_ok = sum(s["aciertos"] for s in subgrupos)
+    global_ = _round(total_ok / total_n, 4)
+    peor = min(subgrupos, key=lambda s: s["exactitud"])
+    mejor = max(subgrupos, key=lambda s: s["exactitud"])
+
+    secciones = [
+        "detalles del modelo (versión, fecha, autoría, licencia)",
+        "uso previsto y usuarios previstos",
+        "usos fuera de alcance",
+        "factores relevantes (grupos, instrumentación, entorno)",
+        "métricas y umbrales de decisión",
+        "datos de evaluación",
+        "datos de entrenamiento",
+        "análisis cuantitativo DESAGREGADO",
+        "consideraciones éticas",
+        "advertencias y recomendaciones",
+    ]
+    rng = random.Random(seed)
+    seccion_auditada = rng.choice(secciones)
+
+    return _contract(
+        "tarjetas_de_modelo",
+        seed,
+        {
+            "exactitud_global": global_,
+            "muestras": total_n,
+            "por_subgrupo": subgrupos,
+            "peor_subgrupo": {"grupo": peor["grupo"], "exactitud": peor["exactitud"], "n": peor["n"]},
+            "mejor_subgrupo": {"grupo": mejor["grupo"], "exactitud": mejor["exactitud"]},
+            "brecha": _round(mejor["exactitud"] - peor["exactitud"], 4),
+            "secciones_de_la_tarjeta": secciones,
+            "seccion_auditada": seccion_auditada,
+        },
+        [
+            f"La exactitud global es {global_}, que es la cifra que se publica. Desagregada por "
+            f"subgrupo va de {mejor['exactitud']} en el grupo {mejor['grupo']} a {peor['exactitud']} en "
+            f"el grupo {peor['grupo']}: una brecha de {_round(mejor['exactitud'] - peor['exactitud'], 3)}.",
+            f"El grupo peor servido son {peor['n']} casos de {total_n}: el "
+            f"{_round(100 * peor['n'] / total_n, 1)} % de la muestra. Por eso no mueve la cifra global, y "
+            "por eso hace falta desagregar para verlo.",
+            "Una tarjeta de modelo no es documentación decorativa: su sección clave es el **análisis "
+            "cuantitativo desagregado**. Obliga a publicar el número por subgrupo, no solo la media.",
+            f"Y las otras {len(secciones) - 1} secciones responden preguntas que se hacen tarde: para qué "
+            "se puede usar, para qué no, con qué datos se evaluó y qué advertencias tiene.",
+        ],
+        [
+            "Los datos son inventados y los subgrupos, anónimos. En un caso real definir los subgrupos "
+            "relevantes es una decisión difícil y con consecuencias.",
+            "Desagregar exige tener las etiquetas de grupo, y a menudo no se tienen —o recogerlas plantea "
+            "su propio problema de privacidad—.",
+            "Una tarjeta bien escrita no arregla un modelo sesgado: lo hace visible. Es transparencia, no "
+            "mitigación, y el artículo es explícito en eso.",
+        ],
+    )
+
+
+def _hojas_de_datos(seed: int) -> dict[str, Any]:
+    """Gebru et al. 2021: preguntas que, si no se responden al recoger, ya no se responden."""
+    preguntas = [
+        {"seccion": "motivación", "pregunta": "¿para qué se creó el conjunto?", "respondible": True},
+        {"seccion": "composición", "pregunta": "¿qué representa cada instancia?", "respondible": True},
+        {"seccion": "composición", "pregunta": "¿qué poblaciones están representadas y en qué proporción?",
+         "respondible": False},
+        {"seccion": "recogida", "pregunta": "¿cómo se recogieron los datos?", "respondible": True},
+        {"seccion": "recogida", "pregunta": "¿hubo consentimiento de las personas implicadas?",
+         "respondible": False},
+        {"seccion": "recogida", "pregunta": "¿en qué periodo se recogieron?", "respondible": True},
+        {"seccion": "preprocesado", "pregunta": "¿qué filtros se aplicaron y qué dejaron fuera?",
+         "respondible": False},
+        {"seccion": "usos", "pregunta": "¿para qué tareas NO debería usarse?", "respondible": False},
+        {"seccion": "distribución", "pregunta": "¿bajo qué licencia se distribuye?", "respondible": True},
+        {"seccion": "mantenimiento", "pregunta": "¿quién lo mantiene y con qué frecuencia?",
+         "respondible": False},
+    ]
+    respondibles = [p for p in preguntas if p["respondible"]]
+    no_respondibles = [p for p in preguntas if not p["respondible"]]
+
+    consecuencias = {
+        "poblaciones representadas": "no se puede desagregar la evaluación por subgrupo",
+        "consentimiento": "riesgo legal y ético que aparece cuando ya está en producción",
+        "filtros aplicados": "no se sabe a quién silenció la limpieza del corpus",
+        "usos desaconsejados": "el conjunto acaba usado para lo que no sirve",
+        "mantenimiento": "nadie sabe si sigue siendo válido dentro de dos años",
+    }
+    rng = random.Random(seed)
+    destacada = rng.choice(sorted(consecuencias))
+
+    return _contract(
+        "hojas_de_datos",
+        seed,
+        {
+            "preguntas_del_cuestionario": len(preguntas),
+            "detalle": preguntas,
+            "respondibles_a_posteriori": len(respondibles),
+            "no_respondibles_a_posteriori": len(no_respondibles),
+            "consecuencias": consecuencias,
+            "consecuencia_destacada": destacada,
+            "tesis": "documentar el conjunto es parte de crearlo, no un trámite posterior",
+        },
+        [
+            f"De las {len(preguntas)} preguntas del cuestionario, {len(respondibles)} se pueden responder "
+            f"mirando el conjunto y {len(no_respondibles)} **no**: hay que haberlas respondido al "
+            "recogerlo.",
+            "Las que no se pueden reconstruir son justamente las que más importan: qué poblaciones están "
+            "representadas, si hubo consentimiento, qué dejaron fuera los filtros y para qué no debería "
+            "usarse.",
+            f"Cada hueco tiene una consecuencia concreta. Sin saber qué poblaciones están "
+            f"representadas, «{consecuencias['poblaciones representadas']}» — y esa es exactamente la "
+            "sección clave de una tarjeta de modelo.",
+            "De ahí la tesis: documentar el conjunto es parte de crearlo. Escribir la hoja de datos "
+            "después es, en el mejor de los casos, escribir la mitad.",
+        ],
+        [
+            "El cuestionario real es mucho más largo y está agrupado en siete secciones que siguen el "
+            "ciclo de vida del conjunto.",
+            "Qué preguntas son respondibles depende del conjunto concreto; aquí están marcadas a mano para "
+            "ilustrar la asimetría.",
+            "Una hoja de datos no hace bueno un conjunto: hace explícitos sus límites. Es transparencia, y "
+            "no sustituye a recoger mejor.",
+        ],
+    )
+
+
+def _gestion_de_prompts(seed: int) -> dict[str, Any]:
+    """Zamfirescu-Pereira et al. 2023: iterar sin conjunto de evaluación es confundir ruido con mejora."""
+    rng = random.Random(seed)
+    n_dev, n_test = 20, 200
+    calidad_real = {"v1": 0.70, "v2": 0.70, "v3": 0.78, "v4": 0.70}
+
+    def medir(calidad, n, semilla):
+        local = random.Random(semilla)
+        return sum(1 for _ in range(n) if local.random() < calidad) / n
+
+    historial = []
+    for i, (version, q) in enumerate(sorted(calidad_real.items())):
+        dev = medir(q, n_dev, seed * 100 + i)
+        test = medir(q, n_test, seed * 500 + i)
+        historial.append({"version": version, "calidad_real": q,
+                          "medido_en_20_ejemplos": _round(dev, 3),
+                          "medido_en_200_ejemplos": _round(test, 3)})
+
+    elegida_por_dev = max(historial, key=lambda h: h["medido_en_20_ejemplos"])
+    mejor_real = max(historial, key=lambda h: h["calidad_real"])
+    acierta = elegida_por_dev["version"] == mejor_real["version"]
+
+    practicas = {
+        "oportunista": ["probar un cambio", "mirar dos o tres ejemplos", "quedarse si «va mejor»",
+                        "no versionar", "no medir"],
+        "sistematica": ["conjunto de evaluación fijo", "una hipótesis por cambio",
+                        "versionar el prompt con el código", "medir sobre el conjunto",
+                        "registrar qué se probó y qué salió"],
+    }
+
+    return _contract(
+        "gestion_de_prompts",
+        seed,
+        {
+            "versiones": historial,
+            "elegida_mirando_20_ejemplos": elegida_por_dev["version"],
+            "mejor_real": mejor_real["version"],
+            "la_eleccion_acierta": acierta,
+            "practicas": practicas,
+            "ruido_esperado_con_20_ejemplos": _round(math.sqrt(0.7 * 0.3 / n_dev), 3),
+            "ruido_esperado_con_200_ejemplos": _round(math.sqrt(0.7 * 0.3 / n_test), 3),
+        },
+        [
+            f"Tres de las cuatro versiones del prompt tienen exactamente la misma calidad real (0,70) y "
+            f"una es mejor (0,78). Midiendo sobre 20 ejemplos, la elegida es «{elegida_por_dev['version']}» "
+            f"y la mejor de verdad es «{mejor_real['version']}»: {'acierta' if acierta else 'NO acierta'}.",
+            f"La razón es aritmética: con 20 ejemplos la desviación esperada de la medida es "
+            f"{_round(math.sqrt(0.7 * 0.3 / n_dev), 3)}, comparable a la diferencia real entre versiones. "
+            f"Con 200 baja a {_round(math.sqrt(0.7 * 0.3 / n_test), 3)}.",
+            "Ese es el hallazgo del artículo con no expertos: iteran de forma **oportunista** —cambian, "
+            "miran dos ejemplos, se quedan con lo que parece mejor— y confunden sistemáticamente ruido "
+            "con mejora.",
+            "La alternativa no es más talento escribiendo prompts: es un conjunto de evaluación fijo, una "
+            "hipótesis por cambio y versionar el prompt con el código. Es ingeniería, no redacción.",
+        ],
+        [
+            "La «calidad» de cada prompt se simula con una moneda sesgada. No hay ningún modelo detrás y "
+            "los números no representan a ningún sistema real.",
+            "El artículo es un estudio cualitativo con participantes no expertos: su evidencia son "
+            "observaciones de comportamiento, no una tabla de exactitudes.",
+            "Un conjunto de evaluación fijo tiene su propio riesgo: optimizar contra él acaba "
+            "sobreajustándolo. Hace falta rotarlo y guardar un conjunto ciego.",
+        ],
+    )
+
+
+def _agentops(seed: int) -> dict[str, Any]:
+    """Liu et al. 2023: la tasa agregada esconde dónde y cómo falla el agente."""
+    rng = random.Random(seed)
+    entornos = ["sistema_operativo", "base_de_datos", "conocimiento", "compras", "juego"]
+    modos = ["no encuentra la herramienta", "formato de llamada inválido", "bucle repetitivo",
+             "se rinde antes de tiempo", "alucina el resultado"]
+
+    # la longitud NO es independiente del resultado: un bucle repetitivo agota el
+    # presupuesto de pasos y rendirse pronto lo consume casi entero
+    largo_por_modo = {"no encuentra la herramienta": (4, 10),
+                      "formato de llamada inválido": (3, 8),
+                      "bucle repetitivo": (22, 30),
+                      "se rinde antes de tiempo": (2, 6),
+                      "alucina el resultado": (5, 12)}
+    trayectorias = []
+    for i in range(120):
+        entorno = rng.choice(entornos)
+        exito = rng.random() < (0.55 if entorno in ("conocimiento", "base_de_datos") else 0.2)
+        if exito:
+            modo, pasos = None, rng.randint(4, 14)
+        else:
+            modo = rng.choice(modos)
+            lo, hi = largo_por_modo[modo]
+            pasos = rng.randint(lo, hi)
+        trayectorias.append({
+            "id": f"tr{i:03d}", "entorno": entorno, "pasos": pasos, "exito": exito,
+            "modo_de_fallo": modo,
+            "paso_del_fallo": None if exito else rng.randint(1, pasos),
+        })
+
+    exito_global = sum(1 for t in trayectorias if t["exito"]) / len(trayectorias)
+    por_entorno = {}
+    for t in trayectorias:
+        d = por_entorno.setdefault(t["entorno"], {"n": 0, "ok": 0})
+        d["n"] += 1
+        d["ok"] += int(t["exito"])
+    for v in por_entorno.values():
+        v["tasa"] = _round(v["ok"] / v["n"], 3)
+
+    fallos = [t for t in trayectorias if not t["exito"]]
+    por_modo = {}
+    for t in fallos:
+        por_modo[t["modo_de_fallo"]] = por_modo.get(t["modo_de_fallo"], 0) + 1
+    modo_dominante = max(por_modo, key=lambda k: por_modo[k])
+    temprano = sum(1 for t in fallos if t["paso_del_fallo"] <= t["pasos"] / 3)
+
+    pasos_exito = [t["pasos"] for t in trayectorias if t["exito"]]
+    pasos_fallo = [t["pasos"] for t in fallos]
+
+    return _contract(
+        "agentops",
+        seed,
+        {
+            "trayectorias": len(trayectorias),
+            "tasa_de_exito_global": _round(exito_global, 3),
+            "por_entorno": por_entorno,
+            "modos_de_fallo": por_modo,
+            "modo_dominante": modo_dominante,
+            "fallos_en_el_primer_tercio": f"{temprano}/{len(fallos)}",
+            "pasos_medios_exito": _round(sum(pasos_exito) / max(len(pasos_exito), 1), 2),
+            "pasos_medios_fallo": _round(sum(pasos_fallo) / max(len(pasos_fallo), 1), 2),
+        },
+        [
+            f"La tasa global es {_round(exito_global, 3)}, y desagregada por entorno va de "
+            f"{min(v['tasa'] for v in por_entorno.values())} a "
+            f"{max(v['tasa'] for v in por_entorno.values())}. Publicar solo el agregado esconde que hay "
+            "entornos donde el agente sencillamente no sirve.",
+            f"De los {len(fallos)} fallos, el modo dominante es «{modo_dominante}» con "
+            f"{por_modo[modo_dominante]} casos. Saber **cómo** falla es lo que dice qué arreglar; la "
+            "tasa sola no.",
+            f"Y {temprano} de {len(fallos)} fallos ocurren en el primer tercio de la trayectoria: no son "
+            "agentes que casi lo consiguen, son agentes que se pierden al principio.",
+            f"Y la longitud es una señal operativa: los episodios con éxito duran "
+            f"{_round(sum(pasos_exito) / max(len(pasos_exito), 1), 1)} pasos de media y los que entran en "
+            f"bucle repetitivo, {_round(sum(t['pasos'] for t in fallos if t['modo_de_fallo'] == 'bucle repetitivo') / max(sum(1 for t in fallos if t['modo_de_fallo'] == 'bucle repetitivo'), 1), 1)}. "
+            "Una trayectoria que se alarga es motivo para cortar antes de saber el resultado.",
+        ],
+        [
+            "Las trayectorias son sintéticas y los modos de fallo se asignan al azar. Sirven para "
+            "exhibir qué se mide en AgentOps, no para caracterizar a ningún agente real.",
+            "Clasificar el modo de fallo de una trayectoria real es trabajo manual o requiere otro modelo "
+            "haciendo de juez, con sus propios sesgos.",
+            "El artículo evalúa modelos concretos y esas cifras envejecen con cada versión. Lo que "
+            "permanece es la taxonomía de entornos y el análisis por trayectoria.",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------- #
 # registro
 # --------------------------------------------------------------------------- #
 
@@ -6210,6 +8835,37 @@ PAPER_RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "isolation_forest": _isolation_forest,
     "factorizacion_matricial": _factorizacion_matricial,
     "m4": _m4,
+    "bayes": _bayes,
+    "cox": _cox,
+    "fuzzy": _fuzzy,
+    "algoritmos_geneticos": _algoritmos_geneticos,
+    "redes_bayesianas": _redes_bayesianas,
+    "pso": _pso,
+    "aco": _aco,
+    "programacion_probabilistica": _programacion_probabilistica,
+    "causalidad": _causalidad,
+    "kalman": _kalman,
+    "subsuncion": _subsuncion,
+    "rrt": _rrt,
+    "slam": _slam,
+    "seguridad_fisica": _seguridad_fisica,
+    "dagger": _dagger,
+    "ppo": _ppo,
+    "domain_randomization": _domain_randomization,
+    "webarena": _webarena,
+    "seeclick": _seeclick,
+    "osworld": _osworld,
+    "trazas_distribuidas": _trazas_distribuidas,
+    "resiliencia": _resiliencia,
+    "cola_larga": _cola_larga,
+    "deriva": _deriva,
+    "deuda_tecnica": _deuda_tecnica,
+    "ml_test_score": _ml_test_score,
+    "trazabilidad": _trazabilidad,
+    "tarjetas_de_modelo": _tarjetas_de_modelo,
+    "hojas_de_datos": _hojas_de_datos,
+    "gestion_de_prompts": _gestion_de_prompts,
+    "agentops": _agentops,
 }
 
 

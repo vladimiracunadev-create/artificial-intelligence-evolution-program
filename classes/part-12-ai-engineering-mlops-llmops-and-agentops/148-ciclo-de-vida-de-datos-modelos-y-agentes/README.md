@@ -250,6 +250,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [MLflow Documentation](https://mlflow.org/docs/latest/)
 - [Huyen, *Designing Machine Learning Systems* (O'Reilly, 2022)](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P111 · Deuda técnica oculta en los sistemas de aprendizaje automático](../../../papers/foundational/P111_deuda_tecnica/README.md) | 2015 | Nombra el hecho incómodo del área: el código del modelo es una fracción diminuta del sistema, y el resto acumula una deuda que ninguna herramienta detecta. | [notebook](../../../notebooks/papers/P111_deuda_tecnica.ipynb) |
+| [P115 · Hojas de datos para conjuntos de datos](../../../papers/foundational/P115_hojas_de_datos/README.md) | 2021 | Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve. | [notebook](../../../notebooks/papers/P115_hojas_de_datos.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

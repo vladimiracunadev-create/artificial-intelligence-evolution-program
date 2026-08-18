@@ -234,6 +234,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Google — *Site Reliability Engineering*, cap. «Addressing Cascading Failures», libro gratuito: <https://sre.google/sre-book/addressing-cascading-failures/>
 - Anthropic — manejo de errores y límites de tasa de la API (códigos de error y cabeceras de reintento): <https://docs.anthropic.com/en/api/errors>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P108 · CAP doce años después: cómo han cambiado las «reglas»](../../../papers/foundational/P108_cap/README.md) | 2012 | Corrige la lectura simplista de su propio teorema: no se eligen dos de tres, se elige por operación y solo mientras dura la partición. | [notebook](../../../notebooks/papers/P108_cap.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior
