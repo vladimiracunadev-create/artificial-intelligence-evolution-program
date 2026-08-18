@@ -213,6 +213,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - SWI-Prolog — implementación libre de referencia: [https://www.swi-prolog.org/](https://www.swi-prolog.org/)
 - Stanford Encyclopedia of Philosophy — "Classical Logic": [https://plato.stanford.edu/entries/logic-classical/](https://plato.stanford.edu/entries/logic-classical/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P66 · Una lógica orientada a máquina basada en el principio de resolución](../../../papers/foundational/P66_resolucion/README.md) | 1965 | Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general. | [notebook](../../../notebooks/papers/P66_resolucion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

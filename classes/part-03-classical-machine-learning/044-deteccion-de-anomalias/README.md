@@ -233,6 +233,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn User Guide — Novelty and Outlier Detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
 - [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), PDF oficial (contexto de densidad y vecinos, cap. 13-14)](https://hastie.su.domains/ElemStatLearn/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P84 · Bosque de aislamiento](../../../papers/foundational/P84_isolation_forest/README.md) | 2008 | Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto. | [notebook](../../../notebooks/papers/P84_isolation_forest.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
-  "catalog_updated": "2026-08-16",
-  "papers": 52,
-  "notebooks": 60,
+  "catalog_updated": "2026-08-17",
+  "papers": 86,
+  "notebooks": 94,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -253,8 +253,144 @@
       "sha256_lf": "816907a68d0107c40fcaa56cde4a560e28be5429f43fd768f9b840e07fcd302a"
     },
     {
+      "path": "assessments/papers/P53_pca.md",
+      "sha256_lf": "cb36cd11ef380bfca24d41ec2b60fd5b85334bfcc262c465ce0fd45fe6e64c90"
+    },
+    {
+      "path": "assessments/papers/P54_mcculloch_pitts.md",
+      "sha256_lf": "cc81ff274a851377c95b551b79ed0355590cffbe4e61ecc975ef2f3a100d7112"
+    },
+    {
+      "path": "assessments/papers/P55_shannon.md",
+      "sha256_lf": "fbb18e0993db4472b5f259918607b5089222c77f4bfc4fcd7652f07c9e980d21"
+    },
+    {
+      "path": "assessments/papers/P56_turing.md",
+      "sha256_lf": "fd65ce71b71fc5d50fa40bf7ff1edfca93c7037245e944febc5e839139f3eef7"
+    },
+    {
+      "path": "assessments/papers/P57_dartmouth.md",
+      "sha256_lf": "51750c206e0cc369892c1b5c8477f1a233bd41a16d0e2c62667182fa365694d6"
+    },
+    {
+      "path": "assessments/papers/P58_simbolos_y_busqueda.md",
+      "sha256_lf": "6e77a9ca6999159abfce40a67dfa6bd585fcf984ff7115ccec50ba6617d81cd3"
+    },
+    {
+      "path": "assessments/papers/P59_agente_racional.md",
+      "sha256_lf": "ca87639c0cbf8d49db9506ea954315ac19336015eeb1ac54c92ae6f8d4800c0f"
+    },
+    {
+      "path": "assessments/papers/P60_valor_predictivo.md",
+      "sha256_lf": "7b9fa723283fada24a2a32a460dec242e326e158b01b922bc24480a6893e1df8"
+    },
+    {
+      "path": "assessments/papers/P61_stochastic_parrots.md",
+      "sha256_lf": "8b2290b5d522cd09de4b868614081127ec6bef2793fa533e7bc708df83f71cca"
+    },
+    {
+      "path": "assessments/papers/P62_benchmark_validez.md",
+      "sha256_lf": "500c6bf0a5683cc66e29edd3ec1792bda07b75bffc0f0e49d38bd96bb25898ee"
+    },
+    {
+      "path": "assessments/papers/P63_reproducibilidad.md",
+      "sha256_lf": "ee0c28a554c7674fc6b16d588f2dd4dde1127ab64fb476633071d36dbc5618ed"
+    },
+    {
+      "path": "assessments/papers/P64_gps.md",
+      "sha256_lf": "d1ef15a7d3e18274122c332ac239ef1850062d02f58de9ca6a855fc9321908cf"
+    },
+    {
+      "path": "assessments/papers/P65_dpll.md",
+      "sha256_lf": "061c8eef01e5fb2a6dfffd28db85d0d2c3376a564c4b1b57115a8b9bf7e370d2"
+    },
+    {
+      "path": "assessments/papers/P66_resolucion.md",
+      "sha256_lf": "f5d2322f6297398e08841adf7ff2e7b00c6915c4246db0442f1480c47a25fb94"
+    },
+    {
+      "path": "assessments/papers/P67_a_estrella.md",
+      "sha256_lf": "e2839ac3338cdb6873ff57513832bdd2abfd6ebc3e12e458ec6822d9edb5c6b8"
+    },
+    {
+      "path": "assessments/papers/P68_strips.md",
+      "sha256_lf": "423db338041395815bbfcfbe18cc9c4fd093b0f21bb020aba767fac5f5825289"
+    },
+    {
+      "path": "assessments/papers/P69_mycin.md",
+      "sha256_lf": "e1c911174a0cb86cab348a6d981412e012e3ec8616ed035f2cd3f265695e8b81"
+    },
+    {
+      "path": "assessments/papers/P70_arco_consistencia.md",
+      "sha256_lf": "9688a867f35022f30b18b2a532d6f8b97cb1954d77918030487a9036fdc8b515"
+    },
+    {
+      "path": "assessments/papers/P71_ontologia.md",
+      "sha256_lf": "d603abd93dcb83754fe594df8edf460313591b3acec29eae4ccceabb96c85896"
+    },
+    {
+      "path": "assessments/papers/P72_neurosimbolico.md",
+      "sha256_lf": "b0e738bfd44f1d3e0379df98dca82e95833d8007bb3df571794846c3e540e664"
+    },
+    {
+      "path": "assessments/papers/P73_kmeans.md",
+      "sha256_lf": "4afbb11c7c1fa5db1aa634133743ca7443d6d6056ffa2099730435560c11b416"
+    },
+    {
+      "path": "assessments/papers/P74_id3.md",
+      "sha256_lf": "01ea1297b20a52ae2d4ca01a431fc016ca954425728b1a934147c50a9dfea201"
+    },
+    {
+      "path": "assessments/papers/P75_svm.md",
+      "sha256_lf": "2f1fe2262abc7c465695daa25f2464a1fa2c3d3d555282f59d30201a6ad56447"
+    },
+    {
+      "path": "assessments/papers/P76_validacion_cruzada.md",
+      "sha256_lf": "e42927e88e950c20ddc5fc825610d06deb1d29bc025eefb57e69eb93b8758570"
+    },
+    {
+      "path": "assessments/papers/P77_lasso.md",
+      "sha256_lf": "b4b60644d6181faac5d08bc57ff29673ee00489d5329fe494fee6bb2f014eb5a"
+    },
+    {
+      "path": "assessments/papers/P78_adaboost.md",
+      "sha256_lf": "aca02fa8d6d1885177e6eb879526913f5d1a4edd553f34cd4843b96556f6a043"
+    },
+    {
+      "path": "assessments/papers/P79_random_forest.md",
+      "sha256_lf": "639c2732a3ed02e87c44b55c21f8ba22fda7129cf3b27023fd8edafc28c2f283"
+    },
+    {
+      "path": "assessments/papers/P80_dos_culturas.md",
+      "sha256_lf": "6487be738e434ec00371c2d92668bfd5c0cdb5b1f39712830481d272075c84df"
+    },
+    {
+      "path": "assessments/papers/P81_seleccion_de_caracteristicas.md",
+      "sha256_lf": "446e134af395741d87c6a0e10d5e48642474b3f1b606e6aafb2b6e00f26ac9d5"
+    },
+    {
+      "path": "assessments/papers/P82_calibracion.md",
+      "sha256_lf": "9e214b3626a631cbd939908c9803c898681e4c20be66a097fd63c67964164ef4"
+    },
+    {
+      "path": "assessments/papers/P83_tsne.md",
+      "sha256_lf": "5058170c40ec2fdce7406579d80621c42a7eda6e2115afa7c84fdda86d683c19"
+    },
+    {
+      "path": "assessments/papers/P84_isolation_forest.md",
+      "sha256_lf": "329bb171149b7198ae628939fddd7f69f364b8a13e00b43ef1b33c3e24780996"
+    },
+    {
+      "path": "assessments/papers/P85_factorizacion_matricial.md",
+      "sha256_lf": "9ca12371fe78db5c086f473cf4c77f2ba9f7c803b086f3e1840736b7c7c20143"
+    },
+    {
+      "path": "assessments/papers/P86_m4.md",
+      "sha256_lf": "be3250629b69c29018ea086016bfd8f36ca99664fadfc284ecad90fcf1d6a176"
+    },
+    {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "f0eaf001c523f5df3b2f2f16e8f58c45135a81fefae7fda6b926e59a5658b319"
+      "sha256_lf": "df09808fca8aadaeb35386de179fa502bf3035f5175e56e4aeb2c72e1bae2fd1"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -465,8 +601,144 @@
       "sha256_lf": "58af64d3da68773c54d2dea86c0b3b08eed61333bcfc1121c0417657c78b2c64"
     },
     {
+      "path": "instructor/papers/P53_pca.md",
+      "sha256_lf": "5ed124a07602fbbb67ccdca90b8fb3a627818952bdd04168f9600bac28ec61fc"
+    },
+    {
+      "path": "instructor/papers/P54_mcculloch_pitts.md",
+      "sha256_lf": "e700a7b4943e34e1cc3ba9b0d67ed9bd151ba2e5b9f2f2c8c7bfc3960e0ac92e"
+    },
+    {
+      "path": "instructor/papers/P55_shannon.md",
+      "sha256_lf": "8bad7af61280b478582492d8720a2f1dcfe29d50b90afcce4a68f0bafd7c84d3"
+    },
+    {
+      "path": "instructor/papers/P56_turing.md",
+      "sha256_lf": "f38a740caa72faec4829678226733409b1ae60e2790818da8d847d6dbc137b7b"
+    },
+    {
+      "path": "instructor/papers/P57_dartmouth.md",
+      "sha256_lf": "cad03dc63ecbd3cc5fd1728fb847d1a7709611a5bcc393eacf97bb06aa305558"
+    },
+    {
+      "path": "instructor/papers/P58_simbolos_y_busqueda.md",
+      "sha256_lf": "57aec997ddd398290ca600ed07158b7aa9113cbd6648e4c3c7068ba4ec8593f5"
+    },
+    {
+      "path": "instructor/papers/P59_agente_racional.md",
+      "sha256_lf": "83f6aa2367f5137d82c0ab5360dfb3090489e94034897042fde4892f8bcb0407"
+    },
+    {
+      "path": "instructor/papers/P60_valor_predictivo.md",
+      "sha256_lf": "cac657b05b23ca574913a54e5e55e472fbc1346eea78d12cfabc6853a5629da1"
+    },
+    {
+      "path": "instructor/papers/P61_stochastic_parrots.md",
+      "sha256_lf": "657c4548a25e129668f3961ba7b66900a9774c64c119dec294c64b20304c81f7"
+    },
+    {
+      "path": "instructor/papers/P62_benchmark_validez.md",
+      "sha256_lf": "f1ce6b1addcfa8b7e28dd978efa7329b6bad3eec3a56622de2c54083b4ef9f1c"
+    },
+    {
+      "path": "instructor/papers/P63_reproducibilidad.md",
+      "sha256_lf": "2276c696dd740a90d6cfc24f4b51e7c97bb6e23640a151800be4bd7ec1045969"
+    },
+    {
+      "path": "instructor/papers/P64_gps.md",
+      "sha256_lf": "8a682eef1a5e0d5cf802c782f987189c91eb6fb66989f2dac203b4f0786ac76c"
+    },
+    {
+      "path": "instructor/papers/P65_dpll.md",
+      "sha256_lf": "3774d8b74d48bbd219703ca24beae85078d1e43650c306dd8609d790d368011a"
+    },
+    {
+      "path": "instructor/papers/P66_resolucion.md",
+      "sha256_lf": "924410350f2ca6c3675fc12827c8169e1befde81a86d1c03052a908808e34af6"
+    },
+    {
+      "path": "instructor/papers/P67_a_estrella.md",
+      "sha256_lf": "f58ad4ad5961a630f7102a1836c2222379cc3811a89e09d19cbf3b095fad113c"
+    },
+    {
+      "path": "instructor/papers/P68_strips.md",
+      "sha256_lf": "b6def347b6b6403e3d3bf3b53681072f3877340c68582f55188455591ff68bc0"
+    },
+    {
+      "path": "instructor/papers/P69_mycin.md",
+      "sha256_lf": "328a0398c9a89500bc96ea7295ca540124efac0dce732201713f4ebb57df57ff"
+    },
+    {
+      "path": "instructor/papers/P70_arco_consistencia.md",
+      "sha256_lf": "af26cd93fbcd57564fd43d0f251849a19fc12b6439be16b4ad260a6a4d547f96"
+    },
+    {
+      "path": "instructor/papers/P71_ontologia.md",
+      "sha256_lf": "2e5e224b86359835f4a1b26394367a5b83ddc1211a927b3eac6c7b71cb666672"
+    },
+    {
+      "path": "instructor/papers/P72_neurosimbolico.md",
+      "sha256_lf": "a5766e32befe315e3ea1d43b42358822c1f9eed1a71e38e7287b45ffb74bfbd7"
+    },
+    {
+      "path": "instructor/papers/P73_kmeans.md",
+      "sha256_lf": "900f70b501dcce95e7aa88bbaa4fc145dbd00a4cf78b5ee3a54174370df19475"
+    },
+    {
+      "path": "instructor/papers/P74_id3.md",
+      "sha256_lf": "0ad6008d82f57e4513c25bb2e8c6b8033022a7cfcb373597c6f9bf18f0d7fdba"
+    },
+    {
+      "path": "instructor/papers/P75_svm.md",
+      "sha256_lf": "fe10cbbfa59f3c356b628ee8e29248bcd94ede0f2d2f1cc14f59125ee6320a6e"
+    },
+    {
+      "path": "instructor/papers/P76_validacion_cruzada.md",
+      "sha256_lf": "321b33d91ebb1cfe455ebad52eeed5d7b6bd6697853c4e236ffe4df598216279"
+    },
+    {
+      "path": "instructor/papers/P77_lasso.md",
+      "sha256_lf": "8e0257d493e4b350517e933d030771abcd0cadfa7091246ea872718d4f45bd1e"
+    },
+    {
+      "path": "instructor/papers/P78_adaboost.md",
+      "sha256_lf": "869d2a6b9fd3740c4e8a1f5ff52312522c122e46ce5803533d0950eb71b46125"
+    },
+    {
+      "path": "instructor/papers/P79_random_forest.md",
+      "sha256_lf": "1881fae540c592d8d75b5c3afbb5952e42bc7be9e20efb829e4c36375af9076e"
+    },
+    {
+      "path": "instructor/papers/P80_dos_culturas.md",
+      "sha256_lf": "bb75092d268e5c747a50f9f56faec7a46090bb3df3f118a982878e254971d3dc"
+    },
+    {
+      "path": "instructor/papers/P81_seleccion_de_caracteristicas.md",
+      "sha256_lf": "cce2dec8ac37584a65c38436d94fa58f8960fd0af664276937f593947aef15f3"
+    },
+    {
+      "path": "instructor/papers/P82_calibracion.md",
+      "sha256_lf": "9a5d06099f1882553254865b400c854f2e18d4ed4187a2108c8be9c93e2357bd"
+    },
+    {
+      "path": "instructor/papers/P83_tsne.md",
+      "sha256_lf": "5399590979fe8117377076c0f51182604361f8e4603204ee3ca9405fdd98b2eb"
+    },
+    {
+      "path": "instructor/papers/P84_isolation_forest.md",
+      "sha256_lf": "1e004198fd2edf6778c4fab4a0b5a32cbbe0c2045a66e37f0c90e4892e661e3c"
+    },
+    {
+      "path": "instructor/papers/P85_factorizacion_matricial.md",
+      "sha256_lf": "5b0e8f0d3849f3636754d05c0d7091c7fe257e71c779e850cd8a4ed0a974def2"
+    },
+    {
+      "path": "instructor/papers/P86_m4.md",
+      "sha256_lf": "81c92348335d96f01f4be73035f2b2a30e1cb292945bc8496b4bc09a9749bc10"
+    },
+    {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "563b1df26d03d8cc1798351aa4b31210e3e01cbf40235764f747ba22633c4954"
+      "sha256_lf": "d3069771473730b569d43f9cbc8d76df0c3ff605682ca4f07862babeb015389e"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -674,7 +946,143 @@
     },
     {
       "path": "notebooks/papers/P52_superposition.ipynb",
-      "sha256_lf": "654cc8736b4526d41eb65b51f2a726397ac1ffb767c6a63555c496b13944082f"
+      "sha256_lf": "98b3f391a0ab1c23443476f60109fc34585c3d1468a34f8c0abef410c54fecea"
+    },
+    {
+      "path": "notebooks/papers/P53_pca.ipynb",
+      "sha256_lf": "4c7062c000c7174408aa4067ddddd6f207b77f83baa068f8246f0a7940494b19"
+    },
+    {
+      "path": "notebooks/papers/P54_mcculloch_pitts.ipynb",
+      "sha256_lf": "51d561d831a13fed0c9363991482b4263df0ee99164f83b315a90bb8fa436f5d"
+    },
+    {
+      "path": "notebooks/papers/P55_shannon.ipynb",
+      "sha256_lf": "a38640a947a02da77408dbcdd6669e49570fb1fd59601bcee675a144b4fabffc"
+    },
+    {
+      "path": "notebooks/papers/P56_turing.ipynb",
+      "sha256_lf": "fefcc557a2f9d58d2c2e89ffff6d2e3cb9b22af221db9b964d850a2e2f8f62e4"
+    },
+    {
+      "path": "notebooks/papers/P57_dartmouth.ipynb",
+      "sha256_lf": "ac798abe195001fc35d5dffb0900eae946050ed89e53856d070d23fcb489bc0b"
+    },
+    {
+      "path": "notebooks/papers/P58_simbolos_y_busqueda.ipynb",
+      "sha256_lf": "607dc5bbb83fe0bac563569f3ebf9c43ec44b0df0bd5a0a7ca46f5a4cfa33e2c"
+    },
+    {
+      "path": "notebooks/papers/P59_agente_racional.ipynb",
+      "sha256_lf": "a6bb185c84e994981750ba730879689f6d0790aa9cc3a9b00234af204ba8f98d"
+    },
+    {
+      "path": "notebooks/papers/P60_valor_predictivo.ipynb",
+      "sha256_lf": "7fb287f96778124170598fa441a44a50e14d4d3b8673da28367105dc53ba065c"
+    },
+    {
+      "path": "notebooks/papers/P61_stochastic_parrots.ipynb",
+      "sha256_lf": "a4a835533c37df7fa0da7a4656516b272c38d7fa503a9a88021bcad03c53e87f"
+    },
+    {
+      "path": "notebooks/papers/P62_benchmark_validez.ipynb",
+      "sha256_lf": "1264e3841ec98ecfadd0cdb5daefce63b13cea3871b6e77c7bc66629913518ac"
+    },
+    {
+      "path": "notebooks/papers/P63_reproducibilidad.ipynb",
+      "sha256_lf": "2c011a8cd38841238e745cb7005fc32746324efc57cb0e72df006e99f33cb80b"
+    },
+    {
+      "path": "notebooks/papers/P64_gps.ipynb",
+      "sha256_lf": "fdb2d0931f3f66a806b29e8ada46654cdd5fc060d86a60426764911fc92331cf"
+    },
+    {
+      "path": "notebooks/papers/P65_dpll.ipynb",
+      "sha256_lf": "529bdf0d928df9589642929cfd4c3325d87ca129c606b198538cb5c929a19cd4"
+    },
+    {
+      "path": "notebooks/papers/P66_resolucion.ipynb",
+      "sha256_lf": "510df0778e0b7a9e66396db2c81be8164ec3d8b5d35ceca96e9378d8cd20eded"
+    },
+    {
+      "path": "notebooks/papers/P67_a_estrella.ipynb",
+      "sha256_lf": "bf1de932019c80fd8718b23b2a5c846c2f347c884203158f1833d77524efb242"
+    },
+    {
+      "path": "notebooks/papers/P68_strips.ipynb",
+      "sha256_lf": "eab21d24ca623391340f736927956eafe736c2ccdf9748626751b99d1d1c1d07"
+    },
+    {
+      "path": "notebooks/papers/P69_mycin.ipynb",
+      "sha256_lf": "2b9880e1c7aa8245fe949197598fd131dd4583b83e65c744fdd599db7612759c"
+    },
+    {
+      "path": "notebooks/papers/P70_arco_consistencia.ipynb",
+      "sha256_lf": "d5b5163e2df22628671e746213ff1ef6a811bc650ace8e875c8ab9776c44d2f7"
+    },
+    {
+      "path": "notebooks/papers/P71_ontologia.ipynb",
+      "sha256_lf": "342fa251f0780fd4ad23861339726265d7a619226227c3cd50c857418d1acce8"
+    },
+    {
+      "path": "notebooks/papers/P72_neurosimbolico.ipynb",
+      "sha256_lf": "115d0afce77e2d1bb1b63ed22ca1e6238d03ce89a88f0d2fd4817689f01ac555"
+    },
+    {
+      "path": "notebooks/papers/P73_kmeans.ipynb",
+      "sha256_lf": "1a0a8d558155395138fda4e067ee38f21d9ea9250e7b6f3929f01c13f03e5683"
+    },
+    {
+      "path": "notebooks/papers/P74_id3.ipynb",
+      "sha256_lf": "d5a5a60ff1c44a582f966cf448b3bc42cc26b55581a194c62c02bdb638dd8238"
+    },
+    {
+      "path": "notebooks/papers/P75_svm.ipynb",
+      "sha256_lf": "a5dfd83341723cf20944181a6a5052d3eb8dd37df9662cdc7708e9cc5741ea58"
+    },
+    {
+      "path": "notebooks/papers/P76_validacion_cruzada.ipynb",
+      "sha256_lf": "7f58f38f0ab71d0117232d86a683e5e8f93d1803cd414ea6203ad5717866894b"
+    },
+    {
+      "path": "notebooks/papers/P77_lasso.ipynb",
+      "sha256_lf": "b01316333048937cf8a727c61489ab9c0e14f20c03c95d2275341d6511ec9352"
+    },
+    {
+      "path": "notebooks/papers/P78_adaboost.ipynb",
+      "sha256_lf": "d5320220be81915c9078fcf4a7b4b1ff05128baca99931bb80e1cf620b275cff"
+    },
+    {
+      "path": "notebooks/papers/P79_random_forest.ipynb",
+      "sha256_lf": "1c12d57f759133a26ab7efac6533488d2dc8e9010dbedcc238d814c7bf7f3ab2"
+    },
+    {
+      "path": "notebooks/papers/P80_dos_culturas.ipynb",
+      "sha256_lf": "6b360fd4495a8853f08a9838e25245566e313734ae3abfefceced20bd8a7eae9"
+    },
+    {
+      "path": "notebooks/papers/P81_seleccion_de_caracteristicas.ipynb",
+      "sha256_lf": "2609bcfadd2ebf1ec39d686443e3804f38ecc54733d1377a141d547cd885f2e8"
+    },
+    {
+      "path": "notebooks/papers/P82_calibracion.ipynb",
+      "sha256_lf": "b9dcaf87914e7a547d5203e861dd31664f3cc0b5df096a82337413856fe116cc"
+    },
+    {
+      "path": "notebooks/papers/P83_tsne.ipynb",
+      "sha256_lf": "cce985433984b67e1dd4019ad99de1650255db6cfa075094129c245c4a2790f5"
+    },
+    {
+      "path": "notebooks/papers/P84_isolation_forest.ipynb",
+      "sha256_lf": "d44126bd14b2fa39bbad58e0bfabddc0a87f0348327593f9717a5737a1c59f12"
+    },
+    {
+      "path": "notebooks/papers/P85_factorizacion_matricial.ipynb",
+      "sha256_lf": "29b01f44703b6f2ca204ac8f9132442c193659aed5ab9967f410708bf69277c0"
+    },
+    {
+      "path": "notebooks/papers/P86_m4.ipynb",
+      "sha256_lf": "ac5432ad4a01bd041fb7c103c05b4e4c94a990cb38abd8ad2dabcec68b3b2cb7"
     },
     {
       "path": "notebooks/papers/T01_recurrencia_vs_paralelismo.ipynb",
@@ -710,7 +1118,7 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "c6ee1bf5aecd3cb4cfeb3073204755a0efe04759233fdd4d61dc192210376f81"
+      "sha256_lf": "640334921ba99f4b09b027e801699789541adc9dec27318cb25e4743a1db684c"
     },
     {
       "path": "papers/ROADMAP.md",
@@ -738,19 +1146,19 @@
     },
     {
       "path": "papers/annexes/README.md",
-      "sha256_lf": "98cab58a6493f206606754c7601f2fe3a2ea8b09ba098af5df7dc48af31b9e0c"
+      "sha256_lf": "49195d72b0c8cf98bb0845fbd718388b8243cf70343d554f8b8288347b048768"
     },
     {
       "path": "papers/catalog/MATRIZ_CLASES_PAPERS.md",
-      "sha256_lf": "f37744dfef0126c3449d668747f8c182074ece37eedc1bdbc7d20b2aed240980"
+      "sha256_lf": "bf9c1e7cfe743964a88a646ec15ac45cdbb4cfa41cb3cb0137b6039bf51e05e5"
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "ba83b590900c6543bcb064ffb4ed9404eade0ffd83163f4fab9fa541be534b9b"
+      "sha256_lf": "c8de0695307ff531b2f4a5c6ad2620ae0f6ff4b56a072a0a83bdf67a78823173"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "0aa725a28449d7c5c6208e12e4727de57958900baf7fe6a6331b0012a36fc629"
+      "sha256_lf": "76c269794024fb04730320386dd6972867260411f6e3eb9c1d0b0d443efd1908"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -962,7 +1370,143 @@
     },
     {
       "path": "papers/foundational/P52_superposition/README.md",
-      "sha256_lf": "8f3fb9d824b82fdb1743dcbb778fcd3bee28f6f92065130a528278a8c5270073"
+      "sha256_lf": "5a1489f86783e68f3621431576a43301cea1bf4c207c7f0cecaefad926b5f98f"
+    },
+    {
+      "path": "papers/foundational/P53_pca/README.md",
+      "sha256_lf": "ac1c832d684a1b55749aad2570a8c886888fba1bd2937c4affd2fb8ece573481"
+    },
+    {
+      "path": "papers/foundational/P54_mcculloch_pitts/README.md",
+      "sha256_lf": "c52b2f2d0deff4ccbca7b5c95b3bc6b402d2a125eb90843b0c3798e64639a4cf"
+    },
+    {
+      "path": "papers/foundational/P55_shannon/README.md",
+      "sha256_lf": "2f11af7162f8c808797cea2ebdf969b61600672504e74f99c2f9b847c6ebb693"
+    },
+    {
+      "path": "papers/foundational/P56_turing/README.md",
+      "sha256_lf": "1cf73b7798eee66835ac9beeed3a075771c1c1cfd2531ec2c96be3ae195ab1c4"
+    },
+    {
+      "path": "papers/foundational/P57_dartmouth/README.md",
+      "sha256_lf": "54985f39a1b9093c8934ac2dacbf716d5d9bc70ab77eea47b94f51309e3b4030"
+    },
+    {
+      "path": "papers/foundational/P58_simbolos_y_busqueda/README.md",
+      "sha256_lf": "c381dd64e6212568b3c248c2b6ca4c59ca7080d2716269e1a44cc179dcbbcb9d"
+    },
+    {
+      "path": "papers/foundational/P59_agente_racional/README.md",
+      "sha256_lf": "77e49a56a000d0e79de7a9be7d60bcf4636987c5b28b908289946058e9f6ae70"
+    },
+    {
+      "path": "papers/foundational/P60_valor_predictivo/README.md",
+      "sha256_lf": "4af4c73acdda511c43cd3dfc6f369ae7bed970f80b3545e395c13d045bb02c9c"
+    },
+    {
+      "path": "papers/foundational/P61_stochastic_parrots/README.md",
+      "sha256_lf": "fe202f29796e5291065df0fc5a646b3aeac3ac6e86099b9d46d88e58195f4799"
+    },
+    {
+      "path": "papers/foundational/P62_benchmark_validez/README.md",
+      "sha256_lf": "6414dbb5f089402e27b3b1c231c06ccff22059d8aaffe0c8318d880f2953e2c7"
+    },
+    {
+      "path": "papers/foundational/P63_reproducibilidad/README.md",
+      "sha256_lf": "ca9891118eab242845a7219d14524def09408d49ed87c1249eb24d322e61515b"
+    },
+    {
+      "path": "papers/foundational/P64_gps/README.md",
+      "sha256_lf": "da2767764e0a9e9086065e3762531b1e7f7430a18d3aeecd5ee79d7fa03f0be7"
+    },
+    {
+      "path": "papers/foundational/P65_dpll/README.md",
+      "sha256_lf": "bc545cdbf0d7eb13ba15b7f6f28963b87fd6b6e5ce3c954b55c9bc5685683a8e"
+    },
+    {
+      "path": "papers/foundational/P66_resolucion/README.md",
+      "sha256_lf": "4007d8e1817884f4e4b109996685ffb3646b7ede1266e556a134369071d86fc1"
+    },
+    {
+      "path": "papers/foundational/P67_a_estrella/README.md",
+      "sha256_lf": "c42f80d35fef5b2dc7906dd842bc5fc52a56ba3f9cbf2f8cb688cbfed31a5456"
+    },
+    {
+      "path": "papers/foundational/P68_strips/README.md",
+      "sha256_lf": "746a3de127e0c1e9f2f9cda684f3786c79a60680adf6c6d13fab375d71309e78"
+    },
+    {
+      "path": "papers/foundational/P69_mycin/README.md",
+      "sha256_lf": "58c24f1d8e5f4383bd0090f2dbeaf0274527dba2528ded827c3d35e464d4e3ef"
+    },
+    {
+      "path": "papers/foundational/P70_arco_consistencia/README.md",
+      "sha256_lf": "c30aeb5b41943c25f54739a189cfb013b474aa2f743208ac08c326db481ebdb0"
+    },
+    {
+      "path": "papers/foundational/P71_ontologia/README.md",
+      "sha256_lf": "30b3a46ae29974349bd2f0d8547ffd08f67a1625280848f496315f438919ee7a"
+    },
+    {
+      "path": "papers/foundational/P72_neurosimbolico/README.md",
+      "sha256_lf": "5936ccfc8f887382c59898095bfa141421c5f91a2874c4e38423bcc4b9fb719c"
+    },
+    {
+      "path": "papers/foundational/P73_kmeans/README.md",
+      "sha256_lf": "8fd3367fa738f9db7e2ac3aed1aa108c28a9a54b8575b187fe465e8290547c7d"
+    },
+    {
+      "path": "papers/foundational/P74_id3/README.md",
+      "sha256_lf": "4cae3ebaec68efd931fbf7af760d95508f035f361432f7bd5ed91db13e7e51af"
+    },
+    {
+      "path": "papers/foundational/P75_svm/README.md",
+      "sha256_lf": "7dd2cfba7b80374515ba551e0ccbff81af53e56847b789ebce06f2fd21136655"
+    },
+    {
+      "path": "papers/foundational/P76_validacion_cruzada/README.md",
+      "sha256_lf": "0992cedf2b7e3160b30ce4db5f9ee6aa6ecf00112592c304a0e74a528c9fac25"
+    },
+    {
+      "path": "papers/foundational/P77_lasso/README.md",
+      "sha256_lf": "a6da43499a7f0fd3caa36a772fc30613ca035bf315443bc2c61634340a2a7860"
+    },
+    {
+      "path": "papers/foundational/P78_adaboost/README.md",
+      "sha256_lf": "8708b47e958656e27df76c09a19eb9c65cda2b6d61d7dc809f5d659bf2b1778e"
+    },
+    {
+      "path": "papers/foundational/P79_random_forest/README.md",
+      "sha256_lf": "e277cd1c8d4cf4651bf3e60d9eac46df57e16cd18706e605b3d9a9f662d3ad78"
+    },
+    {
+      "path": "papers/foundational/P80_dos_culturas/README.md",
+      "sha256_lf": "559387f4680f0b7bc251aae0c15115a0780fbf9c67f463fb7f05c1ce45e77783"
+    },
+    {
+      "path": "papers/foundational/P81_seleccion_de_caracteristicas/README.md",
+      "sha256_lf": "d557b414677606db18ef907a723306231eaa66dd543501e1a5efc80e4dc4cc3e"
+    },
+    {
+      "path": "papers/foundational/P82_calibracion/README.md",
+      "sha256_lf": "cb6f432e5b396eff52e5cde2ed26d750c990d6e230ce2b7014202cb355c757d8"
+    },
+    {
+      "path": "papers/foundational/P83_tsne/README.md",
+      "sha256_lf": "97e214570904e29090abd24ea26eadf5ea4edba1917239a001d022c87c9d7c1f"
+    },
+    {
+      "path": "papers/foundational/P84_isolation_forest/README.md",
+      "sha256_lf": "e0561e7c833f62361c1d1f8fcaa2e31ff694c6bee7b8109ab09c3424e86f9c58"
+    },
+    {
+      "path": "papers/foundational/P85_factorizacion_matricial/README.md",
+      "sha256_lf": "d22b422ac36378f604abb112d49d917389d0f071766c70d79a569280fdb87d98"
+    },
+    {
+      "path": "papers/foundational/P86_m4/README.md",
+      "sha256_lf": "6b75ef4c08fd6ccdc80f9a1b0bf7330cfab22fac185db5e29998d9b320b0937f"
     },
     {
       "path": "papers/guides/COMO_LEER_UN_PAPER_DE_IA.md",
@@ -986,7 +1530,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "a00d5de4d6543b91a20d5d9c9af993dd833145747689954484086164134074ea"
+      "sha256_lf": "8983dc460616cb9a355916b092a0937c9ef600b212ba2bc3d2b51bde24ccf66b"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -1197,8 +1741,144 @@
       "sha256_lf": "45688d812564733146105152e8f78a7829c91b89cef6e6a9268a26484a82fde1"
     },
     {
+      "path": "student/papers/P53_pca.md",
+      "sha256_lf": "2f9ffe294aaf3158a8b0de845f75ef59d05e9c6a71638d9b679e1515aebd0dd7"
+    },
+    {
+      "path": "student/papers/P54_mcculloch_pitts.md",
+      "sha256_lf": "244d4dc44f8d95fba4f02520157bb1997334c2a70164dd283d1838647b9fb762"
+    },
+    {
+      "path": "student/papers/P55_shannon.md",
+      "sha256_lf": "d3658a1af7594ddb02d25396dda60fd19e31bc40aa094c8b4ab3459acc213dc9"
+    },
+    {
+      "path": "student/papers/P56_turing.md",
+      "sha256_lf": "4bc9f82cfdb40ac7cb4e2e7ca233e6ff7422db3f290913b605d961544a08d1ba"
+    },
+    {
+      "path": "student/papers/P57_dartmouth.md",
+      "sha256_lf": "fa872a12a15fa29c926708736be5cc4b5be1e40c8fe29d30eae1a68a2b6998f6"
+    },
+    {
+      "path": "student/papers/P58_simbolos_y_busqueda.md",
+      "sha256_lf": "51863dd6f17fb048a9738144f25b54eecd8d325a1d71ebca3d1fd260dc42224a"
+    },
+    {
+      "path": "student/papers/P59_agente_racional.md",
+      "sha256_lf": "8f5ef9178b4e56ff90029000bf2957b810b42ed2a0a9256d7fcae0f115003e89"
+    },
+    {
+      "path": "student/papers/P60_valor_predictivo.md",
+      "sha256_lf": "590892c47d5f2bad3122f1a955f267a6ac81c080c96922b3796cde49c8aff896"
+    },
+    {
+      "path": "student/papers/P61_stochastic_parrots.md",
+      "sha256_lf": "28d186f35d13e191bb0a5b764d79f8a3e3d5215179acb4a24e836ca6b5c00d16"
+    },
+    {
+      "path": "student/papers/P62_benchmark_validez.md",
+      "sha256_lf": "95de69f18307fe2c1c7410e7b7b32541cf90023e1f9ac46fec0e190d307f628b"
+    },
+    {
+      "path": "student/papers/P63_reproducibilidad.md",
+      "sha256_lf": "35fc91dae0d7d8593c41023ad317760198c21d0a958c7a5a04dce3840b0eda10"
+    },
+    {
+      "path": "student/papers/P64_gps.md",
+      "sha256_lf": "512d15c90474e98703c0966738fa32109ab0ecb60d0dcde81928783b9d556a34"
+    },
+    {
+      "path": "student/papers/P65_dpll.md",
+      "sha256_lf": "945aecb66ce2ff9549f85b991fc3b2ac0dbceaa6fb431518920b5a323269710d"
+    },
+    {
+      "path": "student/papers/P66_resolucion.md",
+      "sha256_lf": "6c0f02d2baa6b370c98033a235570f2727b01663b642af8525e1c174e5a3cdcd"
+    },
+    {
+      "path": "student/papers/P67_a_estrella.md",
+      "sha256_lf": "44a78849cc785c2e1642850f83bf2766db74098340cc97fc99d152d6f9ab5294"
+    },
+    {
+      "path": "student/papers/P68_strips.md",
+      "sha256_lf": "35b2f6f93e293a08fccf2e23c0dfcbaaf9ce69a76b5d5d7f288d955f728a9c6b"
+    },
+    {
+      "path": "student/papers/P69_mycin.md",
+      "sha256_lf": "2c09b15de9dfcdfdb20bca7fdbbd5589f87e365b4fa3644f899fa691e009893b"
+    },
+    {
+      "path": "student/papers/P70_arco_consistencia.md",
+      "sha256_lf": "9a107aa5eacb748f5bf655a14b71d6ff19198dfab75ebaaaf1a52bc360ae18cf"
+    },
+    {
+      "path": "student/papers/P71_ontologia.md",
+      "sha256_lf": "7b80dffa344b2f9f2384fec8aec3b4c809b0eb3a7f62c27fa2b13ea25b10a393"
+    },
+    {
+      "path": "student/papers/P72_neurosimbolico.md",
+      "sha256_lf": "c8412a7f01f1eb3f12f1503f38bc4fbd60326bef04eea548f66fb6d6ef4898ae"
+    },
+    {
+      "path": "student/papers/P73_kmeans.md",
+      "sha256_lf": "8e277cef0a223d8965580d22b811a983b8d91ffd5df149aa904b1f9392626a05"
+    },
+    {
+      "path": "student/papers/P74_id3.md",
+      "sha256_lf": "14f6c00c942685ef8d22a40910010a674d515e0d87d1de8c0823a86c809b860d"
+    },
+    {
+      "path": "student/papers/P75_svm.md",
+      "sha256_lf": "dfd7ddab30deb13d8f6883a4fc609b62212794181ae54dbb79e50ef4fa75fce2"
+    },
+    {
+      "path": "student/papers/P76_validacion_cruzada.md",
+      "sha256_lf": "f8ed4dd099e36a4dc275ed271a8bb3901fdf60b9b5a23d81870ab3b47b885053"
+    },
+    {
+      "path": "student/papers/P77_lasso.md",
+      "sha256_lf": "791dc225a4d4faf57104d771a42502819c86ad1f82c3493b633c34abf6391dc1"
+    },
+    {
+      "path": "student/papers/P78_adaboost.md",
+      "sha256_lf": "5849d5e14022968c1946a8b8c9cbbe5b79f2cd5cdc7312c46835cf210fcced92"
+    },
+    {
+      "path": "student/papers/P79_random_forest.md",
+      "sha256_lf": "953a7b575dc0cf62c86bf363c317fd0bd579225e6a53248f831cf53d04a92a1c"
+    },
+    {
+      "path": "student/papers/P80_dos_culturas.md",
+      "sha256_lf": "d0ae32098f33db7accb94efb74dcbbe4c506277364a78620a2caed8a0aadef66"
+    },
+    {
+      "path": "student/papers/P81_seleccion_de_caracteristicas.md",
+      "sha256_lf": "03e4a53925034675c1d64055188895b1fe2d12a8559ed6670467154dc87efbd6"
+    },
+    {
+      "path": "student/papers/P82_calibracion.md",
+      "sha256_lf": "e1f98272397e871938984ae6afce2e8746fed20a4a6cc0cb9d56659d487664c2"
+    },
+    {
+      "path": "student/papers/P83_tsne.md",
+      "sha256_lf": "02f9a8221b4fe639795ac71fddf608bee22ddb9fa39e611303c6c1a0698c3039"
+    },
+    {
+      "path": "student/papers/P84_isolation_forest.md",
+      "sha256_lf": "965e423225a8b17c5e51ef92f61a042e4e91485ce3ed9b1ec34866acf31823ee"
+    },
+    {
+      "path": "student/papers/P85_factorizacion_matricial.md",
+      "sha256_lf": "fb60215a15540b2a45c69c98532f93047df8ed7aed576833dd73f4289026717d"
+    },
+    {
+      "path": "student/papers/P86_m4.md",
+      "sha256_lf": "c059ee186beebabcf18b3dd9e53a8c7eae14784ec9e0649eb3571afadc88b386"
+    },
+    {
       "path": "student/papers/README.md",
-      "sha256_lf": "02fac6fd25c12cf033532968fc791c1254310909f88ae5c8e9414927d2c100d5"
+      "sha256_lf": "dedb60d7bc85a7ce62d93bc8f4029ad7fb89e78cba2b0ec52ec16d3562ee080a"
     }
   ]
 }

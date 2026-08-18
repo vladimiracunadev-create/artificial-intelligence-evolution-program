@@ -10,9 +10,9 @@
 |---|---|
 | Versión | **0.11.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
-| Eje de papers | 52 fichas · 60 notebooks · 52 motores · 5 anexos · 52 PDFs |
-| Motores didácticos | 20 de clases + 52 de papers |
-| PDFs | 69: 17 del programa (15 partes + completo + eje) y 52 individuales, uno por paper |
+| Eje de papers | 86 fichas · 94 notebooks · 86 motores · 5 anexos · 86 PDFs |
+| Motores didácticos | 20 de clases + 86 de papers |
+| PDFs | 103: 17 del programa (15 partes + completo + eje) y 86 individuales, uno por paper |
 | Aplicaciones | Windows en 4 formatos (instalador, MSI, portable, exe único) y APK de Android, con checksums |
 | Tests | 39 |
 

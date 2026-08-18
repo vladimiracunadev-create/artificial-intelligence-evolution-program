@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-16",
-  "paper_count": 52,
+  "updated": "2026-08-17",
+  "paper_count": 86,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -1353,6 +1353,794 @@
         "características"
       ],
       "notebook": "notebooks/papers/P52_superposition.ipynb"
+    },
+    {
+      "id": "P53",
+      "page": "P53_pca.html",
+      "titulo": "Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio",
+      "original": "On Lines and Planes of Closest Fit to Systems of Points in Space",
+      "autoria": [
+        "Karl Pearson"
+      ],
+      "anio": 1901,
+      "venue": "Philosophical Magazine, Series 6, 2(11), 559–572",
+      "nivel": "L2",
+      "motor": "pca",
+      "hito": "La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable.",
+      "keywords": [
+        "componentes principales",
+        "reducción de dimensionalidad",
+        "geometría",
+        "varianza",
+        "mínimos cuadrados ortogonales"
+      ],
+      "notebook": "notebooks/papers/P53_pca.ipynb"
+    },
+    {
+      "id": "P54",
+      "page": "P54_mcculloch_pitts.html",
+      "titulo": "Un cálculo lógico de las ideas inmanentes en la actividad nerviosa",
+      "original": "A Logical Calculus of the Ideas Immanent in Nervous Activity",
+      "autoria": [
+        "Warren S. McCulloch",
+        "Walter Pitts"
+      ],
+      "anio": 1943,
+      "venue": "Bulletin of Mathematical Biophysics, 5, 115–133",
+      "nivel": "L1",
+      "motor": "mcculloch_pitts",
+      "hito": "Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación.",
+      "keywords": [
+        "neurona de umbral",
+        "lógica proposicional",
+        "computabilidad",
+        "inhibición",
+        "conexionismo"
+      ],
+      "notebook": "notebooks/papers/P54_mcculloch_pitts.ipynb"
+    },
+    {
+      "id": "P55",
+      "page": "P55_shannon.html",
+      "titulo": "Una teoría matemática de la comunicación",
+      "original": "A Mathematical Theory of Communication",
+      "autoria": [
+        "Claude E. Shannon"
+      ],
+      "anio": 1948,
+      "venue": "Bell System Technical Journal, 27(3–4), 379–423 y 623–656",
+      "nivel": "L2",
+      "motor": "shannon",
+      "hito": "Define la información como reducción de incertidumbre y le pone unidad, cota y límite: el bit, la entropía y la capacidad del canal.",
+      "keywords": [
+        "entropía",
+        "bit",
+        "compresión",
+        "capacidad de canal",
+        "redundancia"
+      ],
+      "notebook": "notebooks/papers/P55_shannon.ipynb"
+    },
+    {
+      "id": "P56",
+      "page": "P56_turing.html",
+      "titulo": "Maquinaria computacional e inteligencia",
+      "original": "Computing Machinery and Intelligence",
+      "autoria": [
+        "Alan M. Turing"
+      ],
+      "anio": 1950,
+      "venue": "Mind, LIX(236), 433–460",
+      "nivel": "L1",
+      "motor": "turing",
+      "hito": "Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir.",
+      "keywords": [
+        "juego de imitación",
+        "test de Turing",
+        "objeciones",
+        "aprendizaje de máquina",
+        "máquina niño"
+      ],
+      "notebook": "notebooks/papers/P56_turing.ipynb"
+    },
+    {
+      "id": "P57",
+      "page": "P57_dartmouth.html",
+      "titulo": "Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial",
+      "original": "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
+      "autoria": [
+        "John McCarthy",
+        "Marvin L. Minsky",
+        "Nathaniel Rochester",
+        "Claude E. Shannon"
+      ],
+      "anio": 1955,
+      "venue": "Solicitud a la Fundación Rockefeller · reimpresa en AI Magazine 27(4), 2006",
+      "nivel": "L1",
+      "motor": "dartmouth",
+      "hito": "Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación.",
+      "keywords": [
+        "inteligencia artificial",
+        "agenda de investigación",
+        "automejora",
+        "abstracción",
+        "historia del campo"
+      ],
+      "notebook": "notebooks/papers/P57_dartmouth.ipynb"
+    },
+    {
+      "id": "P58",
+      "page": "P58_simbolos_y_busqueda.html",
+      "titulo": "La informática como indagación empírica: símbolos y búsqueda",
+      "original": "Computer Science as Empirical Inquiry: Symbols and Search",
+      "autoria": [
+        "Allen Newell",
+        "Herbert A. Simon"
+      ],
+      "anio": 1976,
+      "venue": "Communications of the ACM, 19(3), 113–126 · conferencia del premio Turing",
+      "nivel": "L2",
+      "motor": "simbolos_y_busqueda",
+      "hito": "Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística.",
+      "keywords": [
+        "sistema de símbolos físicos",
+        "búsqueda heurística",
+        "espacio de estados",
+        "explosión combinatoria",
+        "IA simbólica"
+      ],
+      "notebook": "notebooks/papers/P58_simbolos_y_busqueda.ipynb"
+    },
+    {
+      "id": "P59",
+      "page": "P59_agente_racional.html",
+      "titulo": "Agentes inteligentes: teoría y práctica",
+      "original": "Intelligent Agents: Theory and Practice",
+      "autoria": [
+        "Michael Wooldridge",
+        "Nicholas R. Jennings"
+      ],
+      "anio": 1995,
+      "venue": "The Knowledge Engineering Review, 10(2), 115–152",
+      "nivel": "L2",
+      "motor": "agente_racional",
+      "hito": "Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan.",
+      "keywords": [
+        "agente",
+        "autonomía",
+        "reactividad",
+        "medida de desempeño",
+        "arquitecturas de agentes"
+      ],
+      "notebook": "notebooks/papers/P59_agente_racional.ipynb"
+    },
+    {
+      "id": "P60",
+      "page": "P60_valor_predictivo.html",
+      "titulo": "Por qué la mayoría de los hallazgos publicados son falsos",
+      "original": "Why Most Published Research Findings Are False",
+      "autoria": [
+        "John P. A. Ioannidis"
+      ],
+      "anio": 2005,
+      "venue": "PLoS Medicine, 2(8), e124",
+      "nivel": "L3",
+      "motor": "valor_predictivo",
+      "hito": "Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p.",
+      "keywords": [
+        "valor predictivo positivo",
+        "poder estadístico",
+        "sesgo",
+        "reproducibilidad",
+        "valor p"
+      ],
+      "notebook": "notebooks/papers/P60_valor_predictivo.ipynb"
+    },
+    {
+      "id": "P61",
+      "page": "P61_stochastic_parrots.html",
+      "titulo": "Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje?",
+      "original": "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?",
+      "autoria": [
+        "Emily M. Bender",
+        "Timnit Gebru",
+        "Angelina McMillan-Major",
+        "Shmargaret Shmitchell"
+      ],
+      "anio": 2021,
+      "venue": "FAccT '21 · ACM Conference on Fairness, Accountability, and Transparency",
+      "nivel": "L1",
+      "motor": "stochastic_parrots",
+      "hito": "Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión.",
+      "keywords": [
+        "corpus",
+        "sesgo de representación",
+        "coste ambiental",
+        "documentación de datos",
+        "significado"
+      ],
+      "notebook": "notebooks/papers/P61_stochastic_parrots.ipynb"
+    },
+    {
+      "id": "P62",
+      "page": "P62_benchmark_validez.html",
+      "titulo": "La IA y el benchmark del todo en el mundo entero",
+      "original": "AI and the Everything in the Whole Wide World Benchmark",
+      "autoria": [
+        "Inioluwa Deborah Raji",
+        "Emily M. Bender",
+        "Amandalynne Paullada",
+        "Emily Denton",
+        "Alex Hanna"
+      ],
+      "anio": 2021,
+      "venue": "NeurIPS 2021 · Datasets and Benchmarks Track · arXiv:2111.15366",
+      "nivel": "L3",
+      "motor": "benchmark_validez",
+      "hito": "Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir.",
+      "keywords": [
+        "validez de constructo",
+        "benchmark",
+        "atajos",
+        "generalidad",
+        "evaluación"
+      ],
+      "notebook": "notebooks/papers/P62_benchmark_validez.ipynb"
+    },
+    {
+      "id": "P63",
+      "page": "P63_reproducibilidad.html",
+      "titulo": "Mejorar la reproducibilidad en la investigación en aprendizaje automático",
+      "original": "Improving Reproducibility in Machine Learning Research (A Report from the NeurIPS 2019 Reproducibility Program)",
+      "autoria": [
+        "Joelle Pineau",
+        "Philippe Vincent-Lamarre",
+        "Koustuv Sinha",
+        "Vincent Larivière",
+        "Alina Beygelzimer",
+        "Florence d'Alché-Buc",
+        "Emily Fox",
+        "Hugo Larochelle"
+      ],
+      "anio": 2021,
+      "venue": "Journal of Machine Learning Research, 22(164), 1–20",
+      "nivel": "L3",
+      "motor": "reproducibilidad",
+      "hito": "Convierte la reproducibilidad en un requisito operativo del proceso de publicación, con checklist, código y revisión.",
+      "keywords": [
+        "reproducibilidad",
+        "checklist",
+        "semillas",
+        "varianza",
+        "revisión por pares"
+      ],
+      "notebook": "notebooks/papers/P63_reproducibilidad.ipynb"
+    },
+    {
+      "id": "P64",
+      "page": "P64_gps.html",
+      "titulo": "Informe sobre un programa general de resolución de problemas",
+      "original": "Report on a General Problem-Solving Program",
+      "autoria": [
+        "Allen Newell",
+        "J. C. Shaw",
+        "Herbert A. Simon"
+      ],
+      "anio": 1959,
+      "venue": "IFIP Congress 1959, París, 256–264",
+      "nivel": "L2",
+      "motor": "gps",
+      "hito": "Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce.",
+      "keywords": [
+        "análisis medios-fines",
+        "subobjetivos",
+        "espacio de estados",
+        "generalidad",
+        "resolución de problemas"
+      ],
+      "notebook": "notebooks/papers/P64_gps.ipynb"
+    },
+    {
+      "id": "P65",
+      "page": "P65_dpll.html",
+      "titulo": "Un programa de máquina para demostración de teoremas",
+      "original": "A Machine Program for Theorem-Proving",
+      "autoria": [
+        "Martin Davis",
+        "George Logemann",
+        "Donald Loveland"
+      ],
+      "anio": 1962,
+      "venue": "Communications of the ACM, 5(7), 394–397",
+      "nivel": "L2",
+      "motor": "dpll",
+      "hito": "El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer.",
+      "keywords": [
+        "SAT",
+        "propagación unitaria",
+        "literal puro",
+        "retroceso",
+        "forma normal conjuntiva"
+      ],
+      "notebook": "notebooks/papers/P65_dpll.ipynb"
+    },
+    {
+      "id": "P66",
+      "page": "P66_resolucion.html",
+      "titulo": "Una lógica orientada a máquina basada en el principio de resolución",
+      "original": "A Machine-Oriented Logic Based on the Resolution Principle",
+      "autoria": [
+        "J. A. Robinson"
+      ],
+      "anio": 1965,
+      "venue": "Journal of the ACM, 12(1), 23–41",
+      "nivel": "L3",
+      "motor": "resolucion",
+      "hito": "Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general.",
+      "keywords": [
+        "resolución",
+        "unificación",
+        "unificador más general",
+        "refutación",
+        "cláusulas"
+      ],
+      "notebook": "notebooks/papers/P66_resolucion.ipynb"
+    },
+    {
+      "id": "P67",
+      "page": "P67_a_estrella.html",
+      "titulo": "Una base formal para la determinación heurística de caminos de coste mínimo",
+      "original": "A Formal Basis for the Heuristic Determination of Minimum Cost Paths",
+      "autoria": [
+        "Peter E. Hart",
+        "Nils J. Nilsson",
+        "Bertram Raphael"
+      ],
+      "anio": 1968,
+      "venue": "IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107",
+      "nivel": "L3",
+      "motor": "a_estrella",
+      "hito": "Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo.",
+      "keywords": [
+        "A*",
+        "admisibilidad",
+        "optimalidad",
+        "heurística",
+        "caminos de coste mínimo"
+      ],
+      "notebook": "notebooks/papers/P67_a_estrella.ipynb"
+    },
+    {
+      "id": "P68",
+      "page": "P68_strips.html",
+      "titulo": "STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas",
+      "original": "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving",
+      "autoria": [
+        "Richard E. Fikes",
+        "Nils J. Nilsson"
+      ],
+      "anio": 1971,
+      "venue": "Artificial Intelligence, 2(3–4), 189–208",
+      "nivel": "L2",
+      "motor": "strips",
+      "hito": "Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco.",
+      "keywords": [
+        "planificación",
+        "problema del marco",
+        "operadores",
+        "mundo de bloques",
+        "anomalía de Sussman"
+      ],
+      "notebook": "notebooks/papers/P68_strips.ipynb"
+    },
+    {
+      "id": "P69",
+      "page": "P69_mycin.html",
+      "titulo": "Un modelo de razonamiento inexacto en medicina",
+      "original": "A Model of Inexact Reasoning in Medicine",
+      "autoria": [
+        "Edward H. Shortliffe",
+        "Bruce G. Buchanan"
+      ],
+      "anio": 1975,
+      "venue": "Mathematical Biosciences, 23(3–4), 351–379",
+      "nivel": "L2",
+      "motor": "mycin",
+      "hito": "El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen.",
+      "keywords": [
+        "sistemas expertos",
+        "factores de certeza",
+        "encadenamiento",
+        "explicabilidad",
+        "motor de reglas"
+      ],
+      "notebook": "notebooks/papers/P69_mycin.ipynb"
+    },
+    {
+      "id": "P70",
+      "page": "P70_arco_consistencia.html",
+      "titulo": "Consistencia en redes de relaciones",
+      "original": "Consistency in Networks of Relations",
+      "autoria": [
+        "Alan K. Mackworth"
+      ],
+      "anio": 1977,
+      "venue": "Artificial Intelligence, 8(1), 99–118",
+      "nivel": "L3",
+      "motor": "arco_consistencia",
+      "hito": "Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca.",
+      "keywords": [
+        "CSP",
+        "consistencia de arco",
+        "AC-3",
+        "propagación",
+        "retroceso"
+      ],
+      "notebook": "notebooks/papers/P70_arco_consistencia.ipynb"
+    },
+    {
+      "id": "P71",
+      "page": "P71_ontologia.html",
+      "titulo": "Un enfoque de traducción para especificaciones de ontologías portables",
+      "original": "A Translation Approach to Portable Ontology Specifications",
+      "autoria": [
+        "Thomas R. Gruber"
+      ],
+      "anio": 1993,
+      "venue": "Knowledge Acquisition, 5(2), 199–220",
+      "nivel": "L1",
+      "motor": "ontologia",
+      "hito": "Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla.",
+      "keywords": [
+        "ontología",
+        "conceptualización",
+        "compromiso ontológico",
+        "subsunción",
+        "interoperabilidad"
+      ],
+      "notebook": "notebooks/papers/P71_ontologia.ipynb"
+    },
+    {
+      "id": "P72",
+      "page": "P72_neurosimbolico.html",
+      "titulo": "IA neuro-simbólica: la tercera ola",
+      "original": "Neurosymbolic AI: The 3rd Wave",
+      "autoria": [
+        "Artur d'Avila Garcez",
+        "Luis C. Lamb"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2012.05876 · Artificial Intelligence Review (2023)",
+      "nivel": "L5",
+      "motor": "neurosimbolico",
+      "hito": "Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos.",
+      "keywords": [
+        "neuro-simbólico",
+        "razonamiento",
+        "explicabilidad",
+        "restricciones",
+        "integración de paradigmas"
+      ],
+      "notebook": "notebooks/papers/P72_neurosimbolico.ipynb"
+    },
+    {
+      "id": "P73",
+      "page": "P73_kmeans.html",
+      "titulo": "Cuantización por mínimos cuadrados en PCM",
+      "original": "Least Squares Quantization in PCM",
+      "autoria": [
+        "Stuart P. Lloyd"
+      ],
+      "anio": 1982,
+      "venue": "IEEE Transactions on Information Theory, 28(2), 129–137",
+      "nivel": "L2",
+      "motor": "kmeans",
+      "hito": "El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global.",
+      "keywords": [
+        "k-medias",
+        "cuantización",
+        "inercia",
+        "óptimo local",
+        "agrupamiento"
+      ],
+      "notebook": "notebooks/papers/P73_kmeans.ipynb"
+    },
+    {
+      "id": "P74",
+      "page": "P74_id3.html",
+      "titulo": "Inducción de árboles de decisión",
+      "original": "Induction of Decision Trees",
+      "autoria": [
+        "J. Ross Quinlan"
+      ],
+      "anio": 1986,
+      "venue": "Machine Learning, 1(1), 81–106",
+      "nivel": "L2",
+      "motor": "id3",
+      "hito": "Aprende un modelo que una persona puede leer, eligiendo cada pregunta por cuánta incertidumbre elimina.",
+      "keywords": [
+        "árbol de decisión",
+        "ganancia de información",
+        "entropía",
+        "razón de ganancia",
+        "interpretabilidad"
+      ],
+      "notebook": "notebooks/papers/P74_id3.ipynb"
+    },
+    {
+      "id": "P75",
+      "page": "P75_svm.html",
+      "titulo": "Redes de vectores soporte",
+      "original": "Support-Vector Networks",
+      "autoria": [
+        "Corinna Cortes",
+        "Vladimir Vapnik"
+      ],
+      "anio": 1995,
+      "venue": "Machine Learning, 20(3), 273–297",
+      "nivel": "L3",
+      "motor": "svm",
+      "hito": "Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen.",
+      "keywords": [
+        "margen máximo",
+        "vectores soporte",
+        "núcleo",
+        "riesgo estructural",
+        "margen blando"
+      ],
+      "notebook": "notebooks/papers/P75_svm.ipynb"
+    },
+    {
+      "id": "P76",
+      "page": "P76_validacion_cruzada.html",
+      "titulo": "Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos",
+      "original": "A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection",
+      "autoria": [
+        "Ron Kohavi"
+      ],
+      "anio": 1995,
+      "venue": "IJCAI'95, 1137–1143",
+      "nivel": "L3",
+      "motor": "validacion_cruzada",
+      "hito": "Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre.",
+      "keywords": [
+        "validación cruzada",
+        "bootstrap",
+        "sesgo y varianza",
+        "estratificación",
+        "selección de modelo"
+      ],
+      "notebook": "notebooks/papers/P76_validacion_cruzada.ipynb"
+    },
+    {
+      "id": "P77",
+      "page": "P77_lasso.html",
+      "titulo": "Contracción y selección en regresión mediante el lasso",
+      "original": "Regression Shrinkage and Selection via the Lasso",
+      "autoria": [
+        "Robert Tibshirani"
+      ],
+      "anio": 1996,
+      "venue": "Journal of the Royal Statistical Society, Series B, 58(1), 267–288",
+      "nivel": "L3",
+      "motor": "lasso",
+      "hito": "Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero.",
+      "keywords": [
+        "lasso",
+        "L1",
+        "regularización",
+        "esparsidad",
+        "selección de variables"
+      ],
+      "notebook": "notebooks/papers/P77_lasso.ipynb"
+    },
+    {
+      "id": "P78",
+      "page": "P78_adaboost.html",
+      "titulo": "Una generalización decisional del aprendizaje en línea y su aplicación al boosting",
+      "original": "A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting",
+      "autoria": [
+        "Yoav Freund",
+        "Robert E. Schapire"
+      ],
+      "anio": 1997,
+      "venue": "Journal of Computer and System Sciences, 55(1), 119–139",
+      "nivel": "L3",
+      "motor": "adaboost",
+      "hito": "Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace.",
+      "keywords": [
+        "boosting",
+        "aprendiz débil",
+        "reponderación",
+        "conjunto",
+        "error exponencial"
+      ],
+      "notebook": "notebooks/papers/P78_adaboost.ipynb"
+    },
+    {
+      "id": "P79",
+      "page": "P79_random_forest.html",
+      "titulo": "Bosques aleatorios",
+      "original": "Random Forests",
+      "autoria": [
+        "Leo Breiman"
+      ],
+      "anio": 2001,
+      "venue": "Machine Learning, 45(1), 5–32",
+      "nivel": "L3",
+      "motor": "random_forest",
+      "hito": "Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo.",
+      "keywords": [
+        "bagging",
+        "subespacio aleatorio",
+        "correlación",
+        "out-of-bag",
+        "importancia de variables"
+      ],
+      "notebook": "notebooks/papers/P79_random_forest.ipynb"
+    },
+    {
+      "id": "P80",
+      "page": "P80_dos_culturas.html",
+      "titulo": "Modelización estadística: las dos culturas",
+      "original": "Statistical Modeling: The Two Cultures",
+      "autoria": [
+        "Leo Breiman"
+      ],
+      "anio": 2001,
+      "venue": "Statistical Science, 16(3), 199–231",
+      "nivel": "L1",
+      "motor": "dos_culturas",
+      "hito": "Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir.",
+      "keywords": [
+        "modelo de datos",
+        "cultura algorítmica",
+        "efecto Rashomon",
+        "exactitud predictiva",
+        "interpretabilidad"
+      ],
+      "notebook": "notebooks/papers/P80_dos_culturas.ipynb"
+    },
+    {
+      "id": "P81",
+      "page": "P81_seleccion_de_caracteristicas.html",
+      "titulo": "Introducción a la selección de variables y características",
+      "original": "An Introduction to Variable and Feature Selection",
+      "autoria": [
+        "Isabelle Guyon",
+        "André Elisseeff"
+      ],
+      "anio": 2003,
+      "venue": "Journal of Machine Learning Research, 3, 1157–1182",
+      "nivel": "L3",
+      "motor": "seleccion_de_caracteristicas",
+      "hito": "Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones.",
+      "keywords": [
+        "selección de variables",
+        "filtros",
+        "envolturas",
+        "redundancia",
+        "complementariedad"
+      ],
+      "notebook": "notebooks/papers/P81_seleccion_de_caracteristicas.ipynb"
+    },
+    {
+      "id": "P82",
+      "page": "P82_calibracion.html",
+      "titulo": "Predecir buenas probabilidades con aprendizaje supervisado",
+      "original": "Predicting Good Probabilities with Supervised Learning",
+      "autoria": [
+        "Alexandru Niculescu-Mizil",
+        "Rich Caruana"
+      ],
+      "anio": 2005,
+      "venue": "ICML '05, 625–632",
+      "nivel": "L3",
+      "motor": "calibracion",
+      "hito": "Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno.",
+      "keywords": [
+        "calibración",
+        "diagrama de fiabilidad",
+        "Brier",
+        "escalado de Platt",
+        "regresión isotónica"
+      ],
+      "notebook": "notebooks/papers/P82_calibracion.ipynb"
+    },
+    {
+      "id": "P83",
+      "page": "P83_tsne.html",
+      "titulo": "Visualizar datos con t-SNE",
+      "original": "Visualizing Data using t-SNE",
+      "autoria": [
+        "Laurens van der Maaten",
+        "Geoffrey Hinton"
+      ],
+      "anio": 2008,
+      "venue": "Journal of Machine Learning Research, 9, 2579–2605",
+      "nivel": "L3",
+      "motor": "tsne",
+      "hito": "Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos.",
+      "keywords": [
+        "t-SNE",
+        "visualización",
+        "apiñamiento",
+        "vecindad",
+        "divergencia KL"
+      ],
+      "notebook": "notebooks/papers/P83_tsne.ipynb"
+    },
+    {
+      "id": "P84",
+      "page": "P84_isolation_forest.html",
+      "titulo": "Bosque de aislamiento",
+      "original": "Isolation Forest",
+      "autoria": [
+        "Fei Tony Liu",
+        "Kai Ming Ting",
+        "Zhi-Hua Zhou"
+      ],
+      "anio": 2008,
+      "venue": "ICDM 2008, 413–422",
+      "nivel": "L2",
+      "motor": "isolation_forest",
+      "hito": "Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto.",
+      "keywords": [
+        "detección de anomalías",
+        "aislamiento",
+        "longitud de camino",
+        "submuestreo",
+        "no supervisado"
+      ],
+      "notebook": "notebooks/papers/P84_isolation_forest.ipynb"
+    },
+    {
+      "id": "P85",
+      "page": "P85_factorizacion_matricial.html",
+      "titulo": "Técnicas de factorización matricial para sistemas de recomendación",
+      "original": "Matrix Factorization Techniques for Recommender Systems",
+      "autoria": [
+        "Yehuda Koren",
+        "Robert Bell",
+        "Chris Volinsky"
+      ],
+      "anio": 2009,
+      "venue": "IEEE Computer, 42(8), 30–37",
+      "nivel": "L3",
+      "motor": "factorizacion_matricial",
+      "hito": "El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos.",
+      "keywords": [
+        "factores latentes",
+        "sesgos",
+        "descenso estocástico",
+        "regularización",
+        "recomendación"
+      ],
+      "notebook": "notebooks/papers/P85_factorizacion_matricial.ipynb"
+    },
+    {
+      "id": "P86",
+      "page": "P86_m4.html",
+      "titulo": "La competición M4: resultados, hallazgos, conclusiones y camino a seguir",
+      "original": "The M4 Competition: Results, findings, conclusion and way forward",
+      "autoria": [
+        "Spyros Makridakis",
+        "Evangelos Spiliotis",
+        "Vassilios Assimakopoulos"
+      ],
+      "anio": 2018,
+      "venue": "International Journal of Forecasting, 34(4), 802–808",
+      "nivel": "L3",
+      "motor": "m4",
+      "hito": "Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo.",
+      "keywords": [
+        "series temporales",
+        "backtesting",
+        "combinación de métodos",
+        "líneas base",
+        "evaluación fuera de muestra"
+      ],
+      "notebook": "notebooks/papers/P86_m4.ipynb"
     }
   ]
 }

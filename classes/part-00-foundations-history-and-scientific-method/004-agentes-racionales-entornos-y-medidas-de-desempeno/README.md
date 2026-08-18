@@ -248,6 +248,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Sutton, R. & Barto, A. *Reinforcement Learning: An Introduction*, 2.ª ed., cap. 1 (agente-entorno-recompensa)](http://incompleteideas.net/book/the-book-2nd.html)
 - [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P59 · Agentes inteligentes: teoría y práctica](../../../papers/foundational/P59_agente_racional/README.md) | 1995 | Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan. | [notebook](../../../notebooks/papers/P59_agente_racional.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

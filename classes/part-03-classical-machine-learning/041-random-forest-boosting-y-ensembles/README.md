@@ -241,6 +241,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 10 (boosting) y 15 (random forests), PDF oficial](https://hastie.su.domains/ElemStatLearn/)
 - [scikit-learn User Guide — Ensembles: bagging, forests, AdaBoost, gradient boosting](https://scikit-learn.org/stable/modules/ensemble.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P78 · Una generalización decisional del aprendizaje en línea y su aplicación al boosting](../../../papers/foundational/P78_adaboost/README.md) | 1997 | Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace. | [notebook](../../../notebooks/papers/P78_adaboost.ipynb) |
+| [P79 · Bosques aleatorios](../../../papers/foundational/P79_random_forest/README.md) | 2001 | Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo. | [notebook](../../../notebooks/papers/P79_random_forest.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

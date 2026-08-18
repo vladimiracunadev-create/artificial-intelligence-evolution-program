@@ -206,6 +206,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.5 "Informed (Heuristic) Search Strategies". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
 - Pearl, J. (1984). *Heuristics: Intelligent Search Strategies for Computer Problem Solving*. Addison-Wesley — análisis formal de A* y sus variantes.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P67 · Una base formal para la determinación heurística de caminos de coste mínimo](../../../papers/foundational/P67_a_estrella/README.md) | 1968 | Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo. | [notebook](../../../notebooks/papers/P67_a_estrella.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

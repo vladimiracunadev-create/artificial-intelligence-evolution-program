@@ -200,6 +200,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Cook, S. A. (1971). "The complexity of theorem-proving procedures". *Proc. STOC '71*. [https://doi.org/10.1145/800157.805047](https://doi.org/10.1145/800157.805047)
 - Biere, A., Heule, M., van Maaren, H. y Walsh, T. (eds.) (2021). *Handbook of Satisfiability* (2.ª ed.). IOS Press.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P65 · Un programa de máquina para demostración de teoremas](../../../papers/foundational/P65_dpll/README.md) | 1962 | El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer. | [notebook](../../../notebooks/papers/P65_dpll.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

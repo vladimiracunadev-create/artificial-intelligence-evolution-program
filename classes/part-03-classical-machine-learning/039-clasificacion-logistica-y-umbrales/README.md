@@ -248,6 +248,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 | Paper | Año | Qué desbloqueó | Miniatura |
 |---|---:|---|---|
 | [P01 · El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro](../../../papers/foundational/P01_perceptron/README.md) | 1958 | Primera máquina que aprende sus propios pesos a partir de ejemplos en lugar de ejecutar reglas escritas por una persona. | [notebook](../../../notebooks/papers/P01_perceptron.ipynb) |
+| [P75 · Redes de vectores soporte](../../../papers/foundational/P75_svm/README.md) | 1995 | Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen. | [notebook](../../../notebooks/papers/P75_svm.ipynb) |
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->

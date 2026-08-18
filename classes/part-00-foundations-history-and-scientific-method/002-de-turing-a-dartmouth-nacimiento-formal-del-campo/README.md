@@ -223,6 +223,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Samuel, A. (1959). Some Studies in Machine Learning Using the Game of Checkers. *IBM Journal*](https://doi.org/10.1147/rd.33.0210)
 - [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., cap. 1 (historia del campo)](https://aima.cs.berkeley.edu/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P56 · Maquinaria computacional e inteligencia](../../../papers/foundational/P56_turing/README.md) | 1950 | Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir. | [notebook](../../../notebooks/papers/P56_turing.ipynb) |
+| [P57 · Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial](../../../papers/foundational/P57_dartmouth/README.md) | 1955 | Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación. | [notebook](../../../notebooks/papers/P57_dartmouth.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

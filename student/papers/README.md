@@ -56,6 +56,40 @@ Una ficha por paper con ruta de trabajo y checklist de comprensión. Tu registro
 | P50 · IA constitucional: inocuidad a partir de retroalimentación de IA | [P50_constitutional_ai.md](P50_constitutional_ai.md) |
 | P51 · SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub? | [P51_swebench.md](P51_swebench.md) |
 | P52 · Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario | [P52_superposition.md](P52_superposition.md) |
+| P53 · Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio | [P53_pca.md](P53_pca.md) |
+| P54 · Un cálculo lógico de las ideas inmanentes en la actividad nerviosa | [P54_mcculloch_pitts.md](P54_mcculloch_pitts.md) |
+| P55 · Una teoría matemática de la comunicación | [P55_shannon.md](P55_shannon.md) |
+| P56 · Maquinaria computacional e inteligencia | [P56_turing.md](P56_turing.md) |
+| P57 · Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial | [P57_dartmouth.md](P57_dartmouth.md) |
+| P58 · La informática como indagación empírica: símbolos y búsqueda | [P58_simbolos_y_busqueda.md](P58_simbolos_y_busqueda.md) |
+| P59 · Agentes inteligentes: teoría y práctica | [P59_agente_racional.md](P59_agente_racional.md) |
+| P60 · Por qué la mayoría de los hallazgos publicados son falsos | [P60_valor_predictivo.md](P60_valor_predictivo.md) |
+| P61 · Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje? | [P61_stochastic_parrots.md](P61_stochastic_parrots.md) |
+| P62 · La IA y el benchmark del todo en el mundo entero | [P62_benchmark_validez.md](P62_benchmark_validez.md) |
+| P63 · Mejorar la reproducibilidad en la investigación en aprendizaje automático | [P63_reproducibilidad.md](P63_reproducibilidad.md) |
+| P64 · Informe sobre un programa general de resolución de problemas | [P64_gps.md](P64_gps.md) |
+| P65 · Un programa de máquina para demostración de teoremas | [P65_dpll.md](P65_dpll.md) |
+| P66 · Una lógica orientada a máquina basada en el principio de resolución | [P66_resolucion.md](P66_resolucion.md) |
+| P67 · Una base formal para la determinación heurística de caminos de coste mínimo | [P67_a_estrella.md](P67_a_estrella.md) |
+| P68 · STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas | [P68_strips.md](P68_strips.md) |
+| P69 · Un modelo de razonamiento inexacto en medicina | [P69_mycin.md](P69_mycin.md) |
+| P70 · Consistencia en redes de relaciones | [P70_arco_consistencia.md](P70_arco_consistencia.md) |
+| P71 · Un enfoque de traducción para especificaciones de ontologías portables | [P71_ontologia.md](P71_ontologia.md) |
+| P72 · IA neuro-simbólica: la tercera ola | [P72_neurosimbolico.md](P72_neurosimbolico.md) |
+| P73 · Cuantización por mínimos cuadrados en PCM | [P73_kmeans.md](P73_kmeans.md) |
+| P74 · Inducción de árboles de decisión | [P74_id3.md](P74_id3.md) |
+| P75 · Redes de vectores soporte | [P75_svm.md](P75_svm.md) |
+| P76 · Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos | [P76_validacion_cruzada.md](P76_validacion_cruzada.md) |
+| P77 · Contracción y selección en regresión mediante el lasso | [P77_lasso.md](P77_lasso.md) |
+| P78 · Una generalización decisional del aprendizaje en línea y su aplicación al boosting | [P78_adaboost.md](P78_adaboost.md) |
+| P79 · Bosques aleatorios | [P79_random_forest.md](P79_random_forest.md) |
+| P80 · Modelización estadística: las dos culturas | [P80_dos_culturas.md](P80_dos_culturas.md) |
+| P81 · Introducción a la selección de variables y características | [P81_seleccion_de_caracteristicas.md](P81_seleccion_de_caracteristicas.md) |
+| P82 · Predecir buenas probabilidades con aprendizaje supervisado | [P82_calibracion.md](P82_calibracion.md) |
+| P83 · Visualizar datos con t-SNE | [P83_tsne.md](P83_tsne.md) |
+| P84 · Bosque de aislamiento | [P84_isolation_forest.md](P84_isolation_forest.md) |
+| P85 · Técnicas de factorización matricial para sistemas de recomendación | [P85_factorizacion_matricial.md](P85_factorizacion_matricial.md) |
+| P86 · La competición M4: resultados, hallazgos, conclusiones y camino a seguir | [P86_m4.md](P86_m4.md) |
 
 ## Contrato de estudio
 

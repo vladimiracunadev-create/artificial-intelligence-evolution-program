@@ -208,6 +208,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Nilsson, N. J. (1980). *Principles of Artificial Intelligence*. Morgan Kaufmann — caps. 1-2 sobre representación por espacios de estados.
 - Stanford Encyclopedia of Philosophy — "Logic and Artificial Intelligence". [https://plato.stanford.edu/entries/logic-ai/](https://plato.stanford.edu/entries/logic-ai/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P58 · La informática como indagación empírica: símbolos y búsqueda](../../../papers/foundational/P58_simbolos_y_busqueda/README.md) | 1976 | Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística. | [notebook](../../../notebooks/papers/P58_simbolos_y_busqueda.ipynb) |
+| [P64 · Informe sobre un programa general de resolución de problemas](../../../papers/foundational/P64_gps/README.md) | 1959 | Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce. | [notebook](../../../notebooks/papers/P64_gps.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

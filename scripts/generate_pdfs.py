@@ -247,6 +247,12 @@ def build_paper_pdfs(browser: str, tmp: Path) -> None:
 
 
 def main() -> None:
+    # las consolas de Windows heredan cp1252 y la flecha «→» de los avisos las hace
+    # reventar a mitad de la generación, dejando el lote incompleto sin decirlo
+    for flujo in (sys.stdout, sys.stderr):
+        if hasattr(flujo, "reconfigure"):
+            flujo.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(description="Genera los PDFs imprimibles del programa")
     parser.add_argument("--papers", action="store_true", help="solo el eje de papers")
     parser.add_argument("--clases", action="store_true", help="solo partes y programa completo")

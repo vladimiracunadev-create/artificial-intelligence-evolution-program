@@ -1,6 +1,6 @@
 # 🧮 Anexos matemáticos del eje de papers
 
-> Toda la matemática que aparece en las 52 fichas, explicada una sola vez y en un solo sitio.
+> Toda la matemática que aparece en las 86 fichas, explicada una sola vez y en un solo sitio.
 > Cada anexo dice **qué es**, **por qué aparece**, **dónde se usa** y trae un **ejemplo resuelto
 > a mano** que puedes comprobar con lápiz antes de ejecutar nada.
 

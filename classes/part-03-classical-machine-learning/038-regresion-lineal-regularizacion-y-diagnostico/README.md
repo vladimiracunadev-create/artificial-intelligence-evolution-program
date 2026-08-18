@@ -238,6 +238,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Hoerl & Kennard (1970), "Ridge Regression: Biased Estimation for Nonorthogonal Problems", Technometrics. DOI 10.1080/00401706.1970.10488634](https://doi.org/10.1080/00401706.1970.10488634)
 - [scikit-learn User Guide — Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P77 · Contracción y selección en regresión mediante el lasso](../../../papers/foundational/P77_lasso/README.md) | 1996 | Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero. | [notebook](../../../notebooks/papers/P77_lasso.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

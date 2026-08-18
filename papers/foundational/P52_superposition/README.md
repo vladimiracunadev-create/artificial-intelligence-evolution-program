@@ -241,4 +241,4 @@ ai-evolution paper-lab P52 --seed 7
 [📇 Índice](../../catalog/PAPERS_INDEX.md) ·
 [📝 Evaluación](../../../assessments/papers/P52_superposition.md) ·
 [🏫 Clase 167 · Explicabilidad, incertidumbre y calibración](../../../classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md) ·
-[➡️ Índice de papers](../../catalog/PAPERS_INDEX.md)
+[➡️ Siguiente: P53 PCA](../P53_pca/README.md)

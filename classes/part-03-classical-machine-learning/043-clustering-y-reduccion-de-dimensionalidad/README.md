@@ -241,6 +241,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn User Guide — Clustering](https://scikit-learn.org/stable/modules/clustering.html)
 - [scikit-learn User Guide — Decomposing signals: PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P53 · Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio](../../../papers/foundational/P53_pca/README.md) | 1901 | La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable. | [notebook](../../../notebooks/papers/P53_pca.ipynb) |
+| [P73 · Cuantización por mínimos cuadrados en PCM](../../../papers/foundational/P73_kmeans/README.md) | 1982 | El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global. | [notebook](../../../notebooks/papers/P73_kmeans.ipynb) |
+| [P83 · Visualizar datos con t-SNE](../../../papers/foundational/P83_tsne/README.md) | 2008 | Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos. | [notebook](../../../notebooks/papers/P83_tsne.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

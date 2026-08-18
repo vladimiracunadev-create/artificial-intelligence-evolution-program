@@ -230,6 +230,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Strang, G. MIT OCW 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
 - [NumPy: documentación oficial de álgebra lineal](https://numpy.org/doc/stable/reference/routines.linalg.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P53 · Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio](../../../papers/foundational/P53_pca/README.md) | 1901 | La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable. | [notebook](../../../notebooks/papers/P53_pca.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

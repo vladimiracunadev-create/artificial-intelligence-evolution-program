@@ -256,6 +256,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Chouldechova (2017), "Fair Prediction with Disparate Impact", *Big Data* 5(2). DOI 10.1089/big.2016.0047](https://doi.org/10.1089/big.2016.0047)
 - [scikit-learn User Guide — Metrics and scoring](https://scikit-learn.org/stable/modules/model_evaluation.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P80 · Modelización estadística: las dos culturas](../../../papers/foundational/P80_dos_culturas/README.md) | 2001 | Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir. | [notebook](../../../notebooks/papers/P80_dos_culturas.ipynb) |
+| [P82 · Predecir buenas probabilidades con aprendizaje supervisado](../../../papers/foundational/P82_calibracion/README.md) | 2005 | Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno. | [notebook](../../../notebooks/papers/P82_calibracion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

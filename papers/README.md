@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **52 hitos · 60 notebooks ejecutables · 5 anexos matemáticos · de Rosenblatt (1958) a 2025**
+## **86 hitos · 94 notebooks ejecutables · 5 anexos matemáticos · de Pearson (1901) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -20,7 +20,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 <!-- stats:inicio -->
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **52** | **60** | **52** | **5** | **L0–L5** | **86** |
+| **86** | **94** | **86** | **5** | **L0–L5** | **116** |
 <!-- stats:fin -->
 
 </div>
@@ -50,9 +50,9 @@ largas → la atención lo elimina → si la atención basta, sobra la recurrenc
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
 <!-- rutas:inicio -->
-## 🧭 Siete rutas · 52 papers
+## 🧭 Diez rutas · 86 papers
 
-El eje tiene 7 bloques con propósitos distintos. **No se estudian igual.**
+El eje tiene 10 bloques con propósitos distintos. **No se estudian igual.**
 Dentro de cada uno, los papers van **en orden cronológico**; entre bloques no hay orden,
 porque responden a preguntas diferentes.
 
@@ -65,6 +65,9 @@ flowchart TD
     R5["🧠 memoria<br/>P34–P37 · 4 papers<br/>2021–2023"]
     R6["🏗️ arquitectura<br/>P38–P49 · 12 papers<br/>2013–2023"]
     R7["🛡️ evaluación<br/>P50–P52 · 3 papers<br/>2022–2023"]
+    R8["🧭 fundamentos<br/>P53–P63 · 11 papers<br/>1901–2021"]
+    R9["♟️ simbólica<br/>P64–P72 · 9 papers<br/>1959–2020"]
+    R10["📈 clásica<br/>P73–P86 · 14 papers<br/>1982–2018"]
     R1 -.->|"se estudia primero,<br/>en orden"| R2
 ```
 
@@ -168,6 +171,61 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 | [P50](foundational/P50_constitutional_ai/README.md) | IA constitucional | 2022 | L4 | Sustituye parte del juicio humano por un conjunto de principios explícitos y auditables, y por la autocrítica del modelo. |
 | [P51](foundational/P51_swebench/README.md) | SWE-bench | 2023 | L3 | Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan. |
 | [P52](foundational/P52_superposition/README.md) | Superposición y autoencoders dispersos | 2023 | L5 | Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables. |
+
+### 🧭 Ruta de fundamentos — de dónde sale el campo y con qué método se juzga
+
+P53–P63: de dónde sale el campo y con qué método se juzga. No es la cadena técnica: es el suelo —geometría, información, computabilidad, agencia— y el criterio con el que se lee todo lo demás (valor predictivo, validez de benchmark, reproducibilidad). Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P53](foundational/P53_pca/README.md) | PCA | 1901 | L2 | La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable. |
+| [P54](foundational/P54_mcculloch_pitts/README.md) | Neurona lógica | 1943 | L1 | Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación. |
+| [P55](foundational/P55_shannon/README.md) | Teoría de la información | 1948 | L2 | Define la información como reducción de incertidumbre y le pone unidad, cota y límite: el bit, la entropía y la capacidad del canal. |
+| [P56](foundational/P56_turing/README.md) | Juego de imitación | 1950 | L1 | Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir. |
+| [P57](foundational/P57_dartmouth/README.md) | Propuesta de Dartmouth | 1955 | L1 | Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación. |
+| [P58](foundational/P58_simbolos_y_busqueda/README.md) | Símbolos y búsqueda | 1976 | L2 | Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística. |
+| [P59](foundational/P59_agente_racional/README.md) | Agentes inteligentes | 1995 | L2 | Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan. |
+| [P60](foundational/P60_valor_predictivo/README.md) | Valor predictivo | 2005 | L3 | Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p. |
+| [P61](foundational/P61_stochastic_parrots/README.md) | Loros estocásticos | 2021 | L1 | Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión. |
+| [P62](foundational/P62_benchmark_validez/README.md) | Validez de benchmarks | 2021 | L3 | Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir. |
+| [P63](foundational/P63_reproducibilidad/README.md) | Reproducibilidad | 2021 | L3 | Convierte la reproducibilidad en un requisito operativo del proceso de publicación, con checklist, código y revisión. |
+
+### ♟️ Ruta simbólica — buscar, deducir, planificar y acordar
+
+P64–P72: la tradición que dominó el campo durante treinta años. Del análisis medios-fines a la planificación, pasando por la búsqueda con garantía, las dos lógicas, las restricciones y las ontologías; cierra con el intento de reconciliarla con el aprendizaje. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P64](foundational/P64_gps/README.md) | General Problem Solver | 1959 | L2 | Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce. |
+| [P65](foundational/P65_dpll/README.md) | DPLL | 1962 | L2 | El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer. |
+| [P66](foundational/P66_resolucion/README.md) | Resolución | 1965 | L3 | Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general. |
+| [P67](foundational/P67_a_estrella/README.md) | A* | 1968 | L3 | Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo. |
+| [P68](foundational/P68_strips/README.md) | STRIPS | 1971 | L2 | Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco. |
+| [P69](foundational/P69_mycin/README.md) | Factores de certeza | 1975 | L2 | El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen. |
+| [P70](foundational/P70_arco_consistencia/README.md) | Consistencia de arco | 1977 | L3 | Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca. |
+| [P71](foundational/P71_ontologia/README.md) | Ontologías | 1993 | L1 | Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla. |
+| [P72](foundational/P72_neurosimbolico/README.md) | Neuro-simbólico | 2020 | L5 | Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos. |
+
+### 📈 Ruta clásica — aprender la regla de los datos, y medirla bien
+
+P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P73](foundational/P73_kmeans/README.md) | k-medias | 1982 | L2 | El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global. |
+| [P74](foundational/P74_id3/README.md) | Árboles de decisión | 1986 | L2 | Aprende un modelo que una persona puede leer, eligiendo cada pregunta por cuánta incertidumbre elimina. |
+| [P75](foundational/P75_svm/README.md) | Vectores soporte | 1995 | L3 | Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen. |
+| [P76](foundational/P76_validacion_cruzada/README.md) | Validación cruzada | 1995 | L3 | Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre. |
+| [P77](foundational/P77_lasso/README.md) | Lasso | 1996 | L3 | Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero. |
+| [P78](foundational/P78_adaboost/README.md) | AdaBoost | 1997 | L3 | Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace. |
+| [P79](foundational/P79_random_forest/README.md) | Bosques aleatorios | 2001 | L3 | Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo. |
+| [P80](foundational/P80_dos_culturas/README.md) | Las dos culturas | 2001 | L1 | Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir. |
+| [P81](foundational/P81_seleccion_de_caracteristicas/README.md) | Selección de variables | 2003 | L3 | Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones. |
+| [P82](foundational/P82_calibracion/README.md) | Calibración | 2005 | L3 | Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno. |
+| [P83](foundational/P83_tsne/README.md) | t-SNE | 2008 | L3 | Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos. |
+| [P84](foundational/P84_isolation_forest/README.md) | Bosque de aislamiento | 2008 | L2 | Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto. |
+| [P85](foundational/P85_factorizacion_matricial/README.md) | Factorización matricial | 2009 | L3 | El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos. |
+| [P86](foundational/P86_m4/README.md) | Competición M4 | 2018 | L3 | Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo. |
 <!-- rutas:fin -->
 
 ## ⏳ ¿Por qué el eje no llega a 2026?
@@ -228,7 +286,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **86 clases** enlazadas llevan un bloque generado por
+Las **116 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

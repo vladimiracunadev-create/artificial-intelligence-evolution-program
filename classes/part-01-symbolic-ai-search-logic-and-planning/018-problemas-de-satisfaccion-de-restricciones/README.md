@@ -215,6 +215,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Rossi, F., van Beek, P. y Walsh, T. (eds.) (2006). *Handbook of Constraint Programming*. Elsevier.
 - MiniZinc — lenguaje de modelado de restricciones: [https://www.minizinc.org/](https://www.minizinc.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P70 · Consistencia en redes de relaciones](../../../papers/foundational/P70_arco_consistencia/README.md) | 1977 | Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca. | [notebook](../../../notebooks/papers/P70_arco_consistencia.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -10,12 +10,12 @@ ai-evolution validate
 ```
 
 Requiere Python 3.11 o superior. La única dependencia del núcleo es `PyYAML`:
-las 183 clases y los 52 papers se ejecutan con la biblioteca estándar.
+las 183 clases y los 86 papers se ejecutan con la biblioteca estándar.
 
 ## 📜 Eje de papers
 
 ```bash
-ai-evolution papers                 # los 52 hitos del eje
+ai-evolution papers                 # los 86 hitos del eje
 ai-evolution paper P08              # ficha de Attention Is All You Need
 ai-evolution paper-lab P08 --seed 7 # ejecuta su miniatura
 jupyter lab notebooks/papers/       # los 60 notebooks

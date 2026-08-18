@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "eje": "papers",
   "programa": "Artificial Intelligence Evolution Program",
-  "updated": "2026-08-16",
+  "updated": "2026-08-17",
   "idioma": "es",
   "politica_de_copyright": "Este catálogo enlaza a las fuentes primarias. No redistribuye PDFs con restricciones de licencia.",
   "niveles": {
@@ -2970,6 +2970,1890 @@
         }
       ],
       "consultado": "2026-08-16"
+    },
+    {
+      "id": "P53",
+      "dir": "P53_pca",
+      "slug": "pca-pearson-1901",
+      "title": "On Lines and Planes of Closest Fit to Systems of Points in Space",
+      "title_es": "Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio",
+      "authors": [
+        "Karl Pearson"
+      ],
+      "year": 1901,
+      "venue": "Philosophical Magazine, Series 6, 2(11), 559–572",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "pca",
+      "hito": "La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable.",
+      "problema": "Los mínimos cuadrados miden el error en vertical, y por tanto tratan una variable como causa y la otra como efecto. Cuando ninguna de las dos lo es, hay dos rectas distintas y ningún criterio para elegir.",
+      "propuesta": "Buscar la recta —o el plano— que minimiza la distancia perpendicular a los puntos. Esa dirección es simétrica en todas las variables y da los ejes principales.",
+      "keywords": [
+        "componentes principales",
+        "reducción de dimensionalidad",
+        "geometría",
+        "varianza",
+        "mínimos cuadrados ortogonales"
+      ],
+      "anteriores": [
+        "Gauss y Legendre (1805–1809), mínimos cuadrados",
+        "Galton (1886), regresión y correlación"
+      ],
+      "posteriores": [
+        "P05",
+        "P43"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/005-vectores-matrices-y-geometria-para-ia",
+        "classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Philosophical Magazine)",
+          "url": "https://doi.org/10.1080/14786440109462720"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Hotelling (1933), la formulación moderna en términos de varianza",
+          "url": "https://doi.org/10.1037/h0071325"
+        },
+        {
+          "label": "Jolliffe y Cadima (2016), revisión de PCA un siglo después",
+          "url": "https://doi.org/10.1098/rsta.2015.0202"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P54",
+      "dir": "P54_mcculloch_pitts",
+      "slug": "neurona-logica-mcculloch-pitts-1943",
+      "title": "A Logical Calculus of the Ideas Immanent in Nervous Activity",
+      "title_es": "Un cálculo lógico de las ideas inmanentes en la actividad nerviosa",
+      "authors": [
+        "Warren S. McCulloch",
+        "Walter Pitts"
+      ],
+      "year": 1943,
+      "venue": "Bulletin of Mathematical Biophysics, 5, 115–133",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L1",
+      "lab": "mcculloch_pitts",
+      "hito": "Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación.",
+      "problema": "La actividad nerviosa se describía en términos fisiológicos. No existía un modelo formal que permitiera preguntarse qué puede y qué no puede computar un cerebro.",
+      "propuesta": "Modelar la neurona como una unidad de umbral con entradas excitatorias e inhibitorias, y demostrar que las redes de esas unidades realizan proposiciones lógicas.",
+      "keywords": [
+        "neurona de umbral",
+        "lógica proposicional",
+        "computabilidad",
+        "inhibición",
+        "conexionismo"
+      ],
+      "anteriores": [
+        "Turing (1936), máquinas y computabilidad",
+        "Whitehead y Russell (1910), lógica formal"
+      ],
+      "posteriores": [
+        "P01"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es",
+        "classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Bulletin of Mathematical Biophysics)",
+          "url": "https://doi.org/10.1007/BF02478259"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kleene (1956), autómatas finitos y redes nerviosas",
+          "url": "https://doi.org/10.1515/9781400882618-002"
+        },
+        {
+          "label": "Piccinini (2004), lectura crítica del alcance del artículo",
+          "url": "https://doi.org/10.1023/B:SYNT.0000029946.34028.f4"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P55",
+      "dir": "P55_shannon",
+      "slug": "teoria-de-la-informacion-shannon-1948",
+      "title": "A Mathematical Theory of Communication",
+      "title_es": "Una teoría matemática de la comunicación",
+      "authors": [
+        "Claude E. Shannon"
+      ],
+      "year": 1948,
+      "venue": "Bell System Technical Journal, 27(3–4), 379–423 y 623–656",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "shannon",
+      "hito": "Define la información como reducción de incertidumbre y le pone unidad, cota y límite: el bit, la entropía y la capacidad del canal.",
+      "problema": "Se sabía transmitir señales, pero no había forma de medir cuánta información llevaban ni de saber cuánto se podía comprimir o transmitir sin error.",
+      "propuesta": "Separar la información del significado y medirla por la sorpresa de cada símbolo. De ahí salen la entropía como cota inferior de compresión y la capacidad como cota de canal.",
+      "keywords": [
+        "entropía",
+        "bit",
+        "compresión",
+        "capacidad de canal",
+        "redundancia"
+      ],
+      "anteriores": [
+        "Nyquist (1924) y Hartley (1928), tasa de transmisión",
+        "Boltzmann y Gibbs, entropía en física estadística"
+      ],
+      "posteriores": [
+        "P05",
+        "P45"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/006-probabilidad-incertidumbre-y-estadistica-basica"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Bell System Technical Journal)",
+          "url": "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Cover y Thomas, Elements of Information Theory — el manual de referencia",
+          "url": "https://doi.org/10.1002/047174882X"
+        },
+        {
+          "label": "Shannon (1951), la entropía del inglés impreso",
+          "url": "https://doi.org/10.1002/j.1538-7305.1951.tb01366.x"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P56",
+      "dir": "P56_turing",
+      "slug": "juego-de-imitacion-turing-1950",
+      "title": "Computing Machinery and Intelligence",
+      "title_es": "Maquinaria computacional e inteligencia",
+      "authors": [
+        "Alan M. Turing"
+      ],
+      "year": 1950,
+      "venue": "Mind, LIX(236), 433–460",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L1",
+      "lab": "turing",
+      "hito": "Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir.",
+      "problema": "«¿Pueden pensar las máquinas?» exige definir «máquina» y «pensar». Ninguna de las dos definiciones estaba disponible, y discutirlas no llevaba a ningún experimento.",
+      "propuesta": "Sustituir la pregunta por el juego de imitación: si un interrogador no distingue las respuestas de una máquina de las de una persona, la pregunta original pierde interés.",
+      "keywords": [
+        "juego de imitación",
+        "test de Turing",
+        "objeciones",
+        "aprendizaje de máquina",
+        "máquina niño"
+      ],
+      "anteriores": [
+        "Turing (1936), computabilidad y la máquina universal",
+        "Descartes (1637), la prueba del lenguaje como criterio de mente"
+      ],
+      "posteriores": [
+        "P57",
+        "P10"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es",
+        "classes/part-00-foundations-history-and-scientific-method/002-de-turing-a-dartmouth-nacimiento-formal-del-campo"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Mind)",
+          "url": "https://doi.org/10.1093/mind/LIX.236.433"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Searle (1980), la habitación china — la objeción más citada",
+          "url": "https://doi.org/10.1017/S0140525X00005756"
+        },
+        {
+          "label": "Moor (2001), el test como experimento mental y no como métrica",
+          "url": "https://doi.org/10.1023/A:1011218925467"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P57",
+      "dir": "P57_dartmouth",
+      "slug": "propuesta-dartmouth-1955",
+      "title": "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
+      "title_es": "Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial",
+      "authors": [
+        "John McCarthy",
+        "Marvin L. Minsky",
+        "Nathaniel Rochester",
+        "Claude E. Shannon"
+      ],
+      "year": 1955,
+      "venue": "Solicitud a la Fundación Rockefeller · reimpresa en AI Magazine 27(4), 2006",
+      "venue_type": "informe",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "dartmouth",
+      "hito": "Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación.",
+      "problema": "Los trabajos sobre autómatas, redes nerviosas, teoría de la información y resolución de problemas avanzaban por separado y sin un nombre común ni una agenda compartida.",
+      "propuesta": "Reunir a diez investigadores durante dos meses sobre la conjetura de que todo aspecto del aprendizaje puede describirse con precisión suficiente para simularlo.",
+      "keywords": [
+        "inteligencia artificial",
+        "agenda de investigación",
+        "automejora",
+        "abstracción",
+        "historia del campo"
+      ],
+      "anteriores": [
+        "P56",
+        "Shannon (1948), teoría de la información",
+        "Wiener (1948), cibernética"
+      ],
+      "posteriores": [
+        "P01",
+        "P58"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/002-de-turing-a-dartmouth-nacimiento-formal-del-campo",
+        "classes/part-00-foundations-history-and-scientific-method/003-inviernos-resurgimientos-y-ciclos-de-expectativas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "Texto original (archivo de John McCarthy, Stanford)",
+          "url": "http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf"
+        },
+        {
+          "label": "DOI de la reimpresión en AI Magazine (2006)",
+          "url": "https://doi.org/10.1609/aimag.v27i4.1904"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Moor (2006), los cincuenta años del proyecto de Dartmouth",
+          "url": "https://doi.org/10.1609/aimag.v27i4.1911"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P58",
+      "dir": "P58_simbolos_y_busqueda",
+      "slug": "simbolos-y-busqueda-newell-simon-1976",
+      "title": "Computer Science as Empirical Inquiry: Symbols and Search",
+      "title_es": "La informática como indagación empírica: símbolos y búsqueda",
+      "authors": [
+        "Allen Newell",
+        "Herbert A. Simon"
+      ],
+      "year": 1976,
+      "venue": "Communications of the ACM, 19(3), 113–126 · conferencia del premio Turing",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "simbolos_y_busqueda",
+      "hito": "Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística.",
+      "problema": "Había programas que jugaban, demostraban teoremas y resolvían problemas, pero no una tesis explícita sobre qué tenían en común ni sobre qué se estaba afirmando del pensamiento.",
+      "propuesta": "Dos hipótesis empíricas y falsables: un sistema de símbolos físicos basta para la acción inteligente general, y la resolución de problemas procede por búsqueda heurística en un espacio de estados.",
+      "keywords": [
+        "sistema de símbolos físicos",
+        "búsqueda heurística",
+        "espacio de estados",
+        "explosión combinatoria",
+        "IA simbólica"
+      ],
+      "anteriores": [
+        "Newell, Shaw y Simon (1959), General Problem Solver",
+        "P57"
+      ],
+      "posteriores": [
+        "P27",
+        "P13"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional",
+        "classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (Communications of the ACM)",
+          "url": "https://doi.org/10.1145/360018.360022"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Brooks (1990), «Elephants Don't Play Chess» — la réplica situada",
+          "url": "https://doi.org/10.1016/S0921-8890(05)80025-9"
+        },
+        {
+          "label": "Nilsson (2007), balance de la hipótesis treinta años después",
+          "url": "https://doi.org/10.1609/aimag.v28i4.2077"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P59",
+      "dir": "P59_agente_racional",
+      "slug": "agentes-inteligentes-wooldridge-jennings-1995",
+      "title": "Intelligent Agents: Theory and Practice",
+      "title_es": "Agentes inteligentes: teoría y práctica",
+      "authors": [
+        "Michael Wooldridge",
+        "Nicholas R. Jennings"
+      ],
+      "year": 1995,
+      "venue": "The Knowledge Engineering Review, 10(2), 115–152",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "agente_racional",
+      "hito": "Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan.",
+      "problema": "«Agente» se usaba para cosas incompatibles entre sí. Sin una definición operativa no se podía comparar arquitecturas ni evaluar si una era mejor que otra.",
+      "propuesta": "Un agente es un sistema situado en un entorno, autónomo, reactivo, proactivo y social. Su racionalidad se juzga siempre respecto de una medida de desempeño y de un entorno.",
+      "keywords": [
+        "agente",
+        "autonomía",
+        "reactividad",
+        "medida de desempeño",
+        "arquitecturas de agentes"
+      ],
+      "anteriores": [
+        "Rao y Georgeff (1991), arquitectura BDI",
+        "Brooks (1986), arquitectura de subsunción"
+      ],
+      "posteriores": [
+        "P13",
+        "P16",
+        "P33"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/004-agentes-racionales-entornos-y-medidas-de-desempeno"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (The Knowledge Engineering Review)",
+          "url": "https://doi.org/10.1017/S0269888900008122"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Russell y Norvig, Artificial Intelligence: A Modern Approach — capítulo 2",
+          "url": "https://aima.cs.berkeley.edu/"
+        },
+        {
+          "label": "Franklin y Graesser (1996), «Is it an Agent, or just a Program?»",
+          "url": "https://doi.org/10.1007/BFb0013570"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P60",
+      "dir": "P60_valor_predictivo",
+      "slug": "hallazgos-falsos-ioannidis-2005",
+      "title": "Why Most Published Research Findings Are False",
+      "title_es": "Por qué la mayoría de los hallazgos publicados son falsos",
+      "authors": [
+        "John P. A. Ioannidis"
+      ],
+      "year": 2005,
+      "venue": "PLoS Medicine, 2(8), e124",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "valor_predictivo",
+      "hito": "Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p.",
+      "problema": "La significancia estadística se leía como sinónimo de verdad. Nadie ponía número a la pregunta que de verdad importa: dado que se publicó, ¿qué probabilidad hay de que sea cierto?",
+      "propuesta": "Modelar el valor predictivo positivo en función de las odds previas, el poder estadístico, el nivel de significancia, el sesgo y el número de equipos que compiten.",
+      "keywords": [
+        "valor predictivo positivo",
+        "poder estadístico",
+        "sesgo",
+        "reproducibilidad",
+        "valor p"
+      ],
+      "anteriores": [
+        "Neyman y Pearson (1933), contraste de hipótesis",
+        "Sterling (1959), sesgo de publicación"
+      ],
+      "posteriores": [
+        "P63",
+        "P62"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/008-datos-evidencia-hipotesis-y-falsabilidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (PLoS Medicine)",
+          "url": "https://doi.org/10.1371/journal.pmed.0020124"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Open Science Collaboration (2015), reproducción de 100 estudios de psicología",
+          "url": "https://doi.org/10.1126/science.aac4716"
+        },
+        {
+          "label": "Wasserstein y Lazar (2016), declaración de la ASA sobre los valores p",
+          "url": "https://doi.org/10.1080/00031305.2016.1154108"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P61",
+      "dir": "P61_stochastic_parrots",
+      "slug": "loros-estocasticos-bender-2021",
+      "title": "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?",
+      "title_es": "Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje?",
+      "authors": [
+        "Emily M. Bender",
+        "Timnit Gebru",
+        "Angelina McMillan-Major",
+        "Shmargaret Shmitchell"
+      ],
+      "year": 2021,
+      "venue": "FAccT '21 · ACM Conference on Fairness, Accountability, and Transparency",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "stochastic_parrots",
+      "hito": "Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión.",
+      "problema": "El crecimiento de los modelos de lenguaje se justificaba solo por la mejora en benchmarks. Los costes ambientales, la composición del corpus y las afirmaciones sobre comprensión no se auditaban.",
+      "propuesta": "Un análisis de riesgos previo al entrenamiento: documentar el corpus, contabilizar el coste, y no confundir fluidez estadística con acceso al significado.",
+      "keywords": [
+        "corpus",
+        "sesgo de representación",
+        "coste ambiental",
+        "documentación de datos",
+        "significado"
+      ],
+      "anteriores": [
+        "Gebru et al. (2018), Datasheets for Datasets",
+        "Bender y Koller (2020), significado y forma"
+      ],
+      "posteriores": [
+        "P50",
+        "P52"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/011-etica-desde-el-diseno-y-limites-de-automatizacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "DOI (ACM FAccT 2021)",
+          "url": "https://doi.org/10.1145/3442188.3445922"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Bender y Koller (2020), «Climbing towards NLU»",
+          "url": "https://doi.org/10.18653/v1/2020.acl-main.463"
+        },
+        {
+          "label": "Dodge et al. (2021), documentación del corpus C4",
+          "url": "https://doi.org/10.18653/v1/2021.emnlp-main.98"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P62",
+      "dir": "P62_benchmark_validez",
+      "slug": "validez-de-benchmarks-raji-2021",
+      "title": "AI and the Everything in the Whole Wide World Benchmark",
+      "title_es": "La IA y el benchmark del todo en el mundo entero",
+      "authors": [
+        "Inioluwa Deborah Raji",
+        "Emily M. Bender",
+        "Amandalynne Paullada",
+        "Emily Denton",
+        "Alex Hanna"
+      ],
+      "year": 2021,
+      "venue": "NeurIPS 2021 · Datasets and Benchmarks Track · arXiv:2111.15366",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "benchmark_validez",
+      "hito": "Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir.",
+      "problema": "Los benchmarks se presentaban como pruebas de capacidades generales —«comprensión», «razonamiento»— cuando sus ítems cubren una porción estrecha y a menudo admiten atajos.",
+      "propuesta": "Evaluar los benchmarks como instrumentos de medida: preguntar qué constructo dicen medir, qué cubren realmente sus ítems y qué estrategias los superan sin la capacidad.",
+      "keywords": [
+        "validez de constructo",
+        "benchmark",
+        "atajos",
+        "generalidad",
+        "evaluación"
+      ],
+      "anteriores": [
+        "Torralba y Efros (2011), sesgo de los conjuntos de datos",
+        "P51"
+      ],
+      "posteriores": [
+        "P51"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/010-como-leer-papers-benchmarks-y-claims-de-ia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2111.15366",
+          "url": "https://arxiv.org/abs/2111.15366"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Bowman y Dahl (2021), qué va mal al comparar modelos con benchmarks",
+          "url": "https://doi.org/10.18653/v1/2021.naacl-main.385"
+        },
+        {
+          "label": "Geirhos et al. (2020), aprendizaje por atajos en redes profundas",
+          "url": "https://doi.org/10.1038/s42256-020-00257-z"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P63",
+      "dir": "P63_reproducibilidad",
+      "slug": "reproducibilidad-pineau-2021",
+      "title": "Improving Reproducibility in Machine Learning Research (A Report from the NeurIPS 2019 Reproducibility Program)",
+      "title_es": "Mejorar la reproducibilidad en la investigación en aprendizaje automático",
+      "authors": [
+        "Joelle Pineau",
+        "Philippe Vincent-Lamarre",
+        "Koustuv Sinha",
+        "Vincent Larivière",
+        "Alina Beygelzimer",
+        "Florence d'Alché-Buc",
+        "Emily Fox",
+        "Hugo Larochelle"
+      ],
+      "year": 2021,
+      "venue": "Journal of Machine Learning Research, 22(164), 1–20",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "reproducibilidad",
+      "hito": "Convierte la reproducibilidad en un requisito operativo del proceso de publicación, con checklist, código y revisión.",
+      "problema": "Los resultados se comparaban sin declarar semillas, entorno, búsqueda de hiperparámetros ni número de corridas. Muchas mejoras publicadas no sobrevivían a un intento de repetirlas.",
+      "propuesta": "Un checklist obligatorio en el envío, un desafío de reproducibilidad y política de código, con evidencia empírica de su efecto sobre lo que se publica.",
+      "keywords": [
+        "reproducibilidad",
+        "checklist",
+        "semillas",
+        "varianza",
+        "revisión por pares"
+      ],
+      "anteriores": [
+        "P60",
+        "Henderson et al. (2018), reproducibilidad en aprendizaje por refuerzo"
+      ],
+      "posteriores": [
+        "P51"
+      ],
+      "clases_del_programa": [
+        "classes/part-00-foundations-history-and-scientific-method/009-entornos-python-git-y-experimentos-reproducibles"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "JMLR 22(164)",
+          "url": "https://jmlr.org/papers/v22/20-303.html"
+        },
+        {
+          "label": "arXiv:2003.12206",
+          "url": "https://arxiv.org/abs/2003.12206"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Henderson et al. (2018), «Deep RL that Matters»",
+          "url": "https://doi.org/10.1609/aaai.v32i1.11694"
+        },
+        {
+          "label": "Gundersen y Kjensmo (2018), estado de la reproducibilidad en IA",
+          "url": "https://doi.org/10.1609/aaai.v32i1.11503"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P64",
+      "dir": "P64_gps",
+      "slug": "general-problem-solver-newell-1959",
+      "title": "Report on a General Problem-Solving Program",
+      "title_es": "Informe sobre un programa general de resolución de problemas",
+      "authors": [
+        "Allen Newell",
+        "J. C. Shaw",
+        "Herbert A. Simon"
+      ],
+      "year": 1959,
+      "venue": "IFIP Congress 1959, París, 256–264",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "gps",
+      "hito": "Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce.",
+      "problema": "Cada programa de los años cincuenta resolvía un problema y solo uno. No existía un método general que pudiera aplicarse a dominios distintos sin reescribirlo entero.",
+      "propuesta": "Representar el problema como diferencias entre el estado actual y la meta, y asociar cada tipo de diferencia con los operadores que la reducen. Si el operador no es aplicable, se crea un subobjetivo para hacerlo aplicable.",
+      "keywords": [
+        "análisis medios-fines",
+        "subobjetivos",
+        "espacio de estados",
+        "generalidad",
+        "resolución de problemas"
+      ],
+      "anteriores": [
+        "Newell, Shaw y Simon (1957), Logic Theory Machine",
+        "P57"
+      ],
+      "posteriores": [
+        "P58",
+        "P68"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "Registro archivístico (Carnegie Mellon University Archives)",
+          "url": "https://findingaids.library.cmu.edu/repositories/2/archival_objects/22561"
+        },
+        {
+          "label": "Actas del IFIP Congress 1959 (DBLP)",
+          "url": "https://dblp.org/db/conf/ifip/ifip1959.html"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Newell y Simon (1976), el balance de esta línea veinte años después",
+          "url": "https://doi.org/10.1145/360018.360022"
+        },
+        {
+          "label": "Fikes y Nilsson (1971), la formalización del mismo esquema en STRIPS",
+          "url": "https://doi.org/10.1016/0004-3702(71)90010-5"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P65",
+      "dir": "P65_dpll",
+      "slug": "dpll-davis-logemann-loveland-1962",
+      "title": "A Machine Program for Theorem-Proving",
+      "title_es": "Un programa de máquina para demostración de teoremas",
+      "authors": [
+        "Martin Davis",
+        "George Logemann",
+        "Donald Loveland"
+      ],
+      "year": 1962,
+      "venue": "Communications of the ACM, 5(7), 394–397",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "dpll",
+      "hito": "El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer.",
+      "problema": "El procedimiento de Davis y Putnam (1960) era correcto pero consumía memoria de forma impracticable al eliminar variables por resolución.",
+      "propuesta": "Sustituir la eliminación por una búsqueda en profundidad con retroceso, apoyada en dos reglas que no requieren elegir: propagación de cláusulas unitarias y literales puros.",
+      "keywords": [
+        "SAT",
+        "propagación unitaria",
+        "literal puro",
+        "retroceso",
+        "forma normal conjuntiva"
+      ],
+      "anteriores": [
+        "Davis y Putnam (1960), procedimiento por eliminación",
+        "Herbrand (1930), semidecidibilidad de primer orden"
+      ],
+      "posteriores": [
+        "P66"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/019-logica-proposicional-e-inferencia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/368273.368557",
+          "url": "https://doi.org/10.1145/368273.368557"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Marques-Silva y Sakallah (1999), GRASP y el aprendizaje de cláusulas",
+          "url": "https://doi.org/10.1109/12.769433"
+        },
+        {
+          "label": "Biere et al., Handbook of Satisfiability",
+          "url": "https://doi.org/10.3233/FAIA336"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P66",
+      "dir": "P66_resolucion",
+      "slug": "resolucion-robinson-1965",
+      "title": "A Machine-Oriented Logic Based on the Resolution Principle",
+      "title_es": "Una lógica orientada a máquina basada en el principio de resolución",
+      "authors": [
+        "J. A. Robinson"
+      ],
+      "year": 1965,
+      "venue": "Journal of the ACM, 12(1), 23–41",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "resolucion",
+      "hito": "Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general.",
+      "problema": "Los cálculos lógicos existentes tenían muchas reglas pensadas para el razonamiento humano. Aplicarlas a máquina generaba una explosión de caminos sin criterio.",
+      "propuesta": "Una única regla —la resolución— sobre cláusulas, junto con el algoritmo de unificación que calcula el unificador más general: la sustitución mínima que iguala dos términos sin comprometer nada de más.",
+      "keywords": [
+        "resolución",
+        "unificación",
+        "unificador más general",
+        "refutación",
+        "cláusulas"
+      ],
+      "anteriores": [
+        "P65",
+        "Herbrand (1930), teorema de Herbrand",
+        "Prawitz (1960), unificación implícita"
+      ],
+      "posteriores": [
+        "P69",
+        "P71"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/020-logica-de-primer-orden-y-unificacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/321250.321253",
+          "url": "https://doi.org/10.1145/321250.321253"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kowalski (1974), la lógica como lenguaje de programación",
+          "url": "https://dl.acm.org/doi/10.5555/1398413"
+        },
+        {
+          "label": "Colmerauer y Roussel (1996), el nacimiento de Prolog",
+          "url": "https://doi.org/10.1145/234286.1057820"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P67",
+      "dir": "P67_a_estrella",
+      "slug": "a-estrella-hart-nilsson-raphael-1968",
+      "title": "A Formal Basis for the Heuristic Determination of Minimum Cost Paths",
+      "title_es": "Una base formal para la determinación heurística de caminos de coste mínimo",
+      "authors": [
+        "Peter E. Hart",
+        "Nils J. Nilsson",
+        "Bertram Raphael"
+      ],
+      "year": 1968,
+      "venue": "IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "a_estrella",
+      "hito": "Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo.",
+      "problema": "La búsqueda guiada por heurística era rápida pero no garantizaba nada. La búsqueda exhaustiva garantizaba optimalidad y no escalaba. No había teoría que uniera las dos.",
+      "propuesta": "Evaluar cada nodo por `f(n) = g(n) + h(n)` —coste acumulado más estimación restante— y demostrar que si `h` es admisible (nunca sobrestima), el algoritmo devuelve el camino de coste mínimo, y que es óptimamente eficiente entre los que usan la misma información.",
+      "keywords": [
+        "A*",
+        "admisibilidad",
+        "optimalidad",
+        "heurística",
+        "caminos de coste mínimo"
+      ],
+      "anteriores": [
+        "Dijkstra (1959), caminos mínimos sin heurística",
+        "P64"
+      ],
+      "posteriores": [
+        "P27",
+        "P68"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/015-costo-uniforme-busqueda-voraz-y-a"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/TSSC.1968.300136",
+          "url": "https://doi.org/10.1109/TSSC.1968.300136"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Hart, Nilsson y Raphael (1972), corrección sobre la condición de consistencia",
+          "url": "https://doi.org/10.1145/1056777.1056779"
+        },
+        {
+          "label": "Korf (1985), IDA*: A* con memoria acotada",
+          "url": "https://doi.org/10.1016/0004-3702(85)90084-0"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P68",
+      "dir": "P68_strips",
+      "slug": "strips-fikes-nilsson-1971",
+      "title": "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving",
+      "title_es": "STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas",
+      "authors": [
+        "Richard E. Fikes",
+        "Nils J. Nilsson"
+      ],
+      "year": 1971,
+      "venue": "Artificial Intelligence, 2(3–4), 189–208",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "strips",
+      "hito": "Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco.",
+      "problema": "Describir en lógica qué cambia y qué no al ejecutar una acción exigía escribir un axioma por cada literal que permanece igual. Es el problema del marco, y hacía inviable planificar con un demostrador de teoremas.",
+      "propuesta": "Describir cada operador con tres listas —precondiciones, literales que añade y literales que borra— y adoptar el supuesto de que todo lo no mencionado persiste.",
+      "keywords": [
+        "planificación",
+        "problema del marco",
+        "operadores",
+        "mundo de bloques",
+        "anomalía de Sussman"
+      ],
+      "anteriores": [
+        "P64",
+        "P66",
+        "McCarthy y Hayes (1969), el problema del marco"
+      ],
+      "posteriores": [
+        "P13",
+        "P32"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/023-planificacion-clasica-con-strips-y-pddl"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/0004-3702(71)90010-5",
+          "url": "https://doi.org/10.1016/0004-3702(71)90010-5"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "McDermott et al. (1998), PDDL: el lenguaje que estandariza esta representación",
+          "url": "https://www.cs.cmu.edu/~mmv/planning/readings/98aips-PDDL.pdf"
+        },
+        {
+          "label": "Sacerdoti (1975), planificación no lineal y la respuesta a la anomalía",
+          "url": "https://doi.org/10.1016/0004-3702(75)90005-4"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P69",
+      "dir": "P69_mycin",
+      "slug": "factores-de-certeza-shortliffe-buchanan-1975",
+      "title": "A Model of Inexact Reasoning in Medicine",
+      "title_es": "Un modelo de razonamiento inexacto en medicina",
+      "authors": [
+        "Edward H. Shortliffe",
+        "Bruce G. Buchanan"
+      ],
+      "year": 1975,
+      "venue": "Mathematical Biosciences, 23(3–4), 351–379",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "mycin",
+      "hito": "El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen.",
+      "problema": "El conocimiento médico está lleno de indicios que no son ni ciertos ni falsos. Aplicar probabilidad bayesiana exigía distribuciones conjuntas que nadie podía estimar ni declarar.",
+      "propuesta": "Los factores de certeza: un número en [−1, 1] por regla, con un álgebra de combinación que satura y admite evidencia en contra, más una traza que hace explicable cada conclusión.",
+      "keywords": [
+        "sistemas expertos",
+        "factores de certeza",
+        "encadenamiento",
+        "explicabilidad",
+        "motor de reglas"
+      ],
+      "anteriores": [
+        "Feigenbaum et al. (1971), DENDRAL",
+        "P66"
+      ],
+      "posteriores": [
+        "P52",
+        "P72"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/022-sistemas-expertos-y-motores-de-reglas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/0025-5564(75)90047-4",
+          "url": "https://doi.org/10.1016/0025-5564(75)90047-4"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Heckerman y Shortliffe (1992), revisión crítica de los factores de certeza",
+          "url": "https://doi.org/10.1016/0933-3657(92)90020-Q"
+        },
+        {
+          "label": "Pearl (1988), la alternativa probabilística que acabó imponiéndose",
+          "url": "https://doi.org/10.1016/C2009-0-27609-4"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P70",
+      "dir": "P70_arco_consistencia",
+      "slug": "consistencia-de-arco-mackworth-1977",
+      "title": "Consistency in Networks of Relations",
+      "title_es": "Consistencia en redes de relaciones",
+      "authors": [
+        "Alan K. Mackworth"
+      ],
+      "year": 1977,
+      "venue": "Artificial Intelligence, 8(1), 99–118",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "arco_consistencia",
+      "hito": "Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca.",
+      "problema": "El retroceso cronológico repetía una y otra vez el mismo descubrimiento: que cierto valor era incompatible con sus vecinos. La información se hallaba y se tiraba en cada rama.",
+      "propuesta": "Hacer la red consistente de arco antes de asignar nada: eliminar de cada dominio los valores sin compañero legal en algún vecino, y repropagar en cascada. Los algoritmos AC-1, AC-2 y AC-3 formalizan el procedimiento.",
+      "keywords": [
+        "CSP",
+        "consistencia de arco",
+        "AC-3",
+        "propagación",
+        "retroceso"
+      ],
+      "anteriores": [
+        "Waltz (1972), filtrado de etiquetas en escenas",
+        "Montanari (1974), redes de restricciones"
+      ],
+      "posteriores": [
+        "P65"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/018-problemas-de-satisfaccion-de-restricciones"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/0004-3702(77)90007-8",
+          "url": "https://doi.org/10.1016/0004-3702(77)90007-8"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Freuder (1982), redes con estructura de árbol y búsqueda sin retroceso",
+          "url": "https://doi.org/10.1145/322290.322292"
+        },
+        {
+          "label": "Bessière y Régin (2001), AC-2001 y el coste óptimo",
+          "url": "https://doi.org/10.1016/S0004-3702(01)00074-5"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P71",
+      "dir": "P71_ontologia",
+      "slug": "ontologias-gruber-1993",
+      "title": "A Translation Approach to Portable Ontology Specifications",
+      "title_es": "Un enfoque de traducción para especificaciones de ontologías portables",
+      "authors": [
+        "Thomas R. Gruber"
+      ],
+      "year": 1993,
+      "venue": "Knowledge Acquisition, 5(2), 199–220",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L1",
+      "lab": "ontologia",
+      "hito": "Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla.",
+      "problema": "Dos sistemas podían usar el mismo término y significar cosas distintas. Sin un acuerdo explícito sobre qué designa cada símbolo, compartir conocimiento entre sistemas era imposible.",
+      "propuesta": "Tratar la ontología como un compromiso: no una descripción del mundo, sino un acuerdo sobre qué se dirá de él. Y cinco criterios de diseño —claridad, coherencia, extensibilidad, sesgo de codificación mínimo y compromiso ontológico mínimo—.",
+      "keywords": [
+        "ontología",
+        "conceptualización",
+        "compromiso ontológico",
+        "subsunción",
+        "interoperabilidad"
+      ],
+      "anteriores": [
+        "P66",
+        "Brachman y Schmolze (1985), KL-ONE",
+        "Miller (1995), WordNet"
+      ],
+      "posteriores": [
+        "P11"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/021-representacion-del-conocimiento-y-ontologias"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1006/knac.1993.1008",
+          "url": "https://doi.org/10.1006/knac.1993.1008"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Berners-Lee, Hendler y Lassila (2001), la web semántica",
+          "url": "https://doi.org/10.1038/scientificamerican0501-34"
+        },
+        {
+          "label": "W3C, OWL 2 Web Ontology Language",
+          "url": "https://www.w3.org/TR/owl2-overview/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P72",
+      "dir": "P72_neurosimbolico",
+      "slug": "neurosimbolico-garcez-lamb-2020",
+      "title": "Neurosymbolic AI: The 3rd Wave",
+      "title_es": "IA neuro-simbólica: la tercera ola",
+      "authors": [
+        "Artur d'Avila Garcez",
+        "Luis C. Lamb"
+      ],
+      "year": 2020,
+      "venue": "arXiv:2012.05876 · Artificial Intelligence Review (2023)",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L5",
+      "lab": "neurosimbolico",
+      "hito": "Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos.",
+      "problema": "Las redes profundas aprenden de datos pero no razonan con reglas ni explican; los sistemas simbólicos razonan y explican pero no aprenden de datos ruidosos. Cada tradición tiene exactamente el punto ciego de la otra.",
+      "propuesta": "Una hoja de ruta para sistemas donde la percepción estima y los símbolos restringen, con requisitos explícitos: representación, aprendizaje, razonamiento y explicación en un mismo sistema.",
+      "keywords": [
+        "neuro-simbólico",
+        "razonamiento",
+        "explicabilidad",
+        "restricciones",
+        "integración de paradigmas"
+      ],
+      "anteriores": [
+        "P69",
+        "P58",
+        "Garcez, Broda y Gabbay (2002), sistemas neuro-simbólicos"
+      ],
+      "posteriores": [
+        "P28",
+        "P29"
+      ],
+      "clases_del_programa": [
+        "classes/part-01-symbolic-ai-search-logic-and-planning/024-proyecto-asistente-neuro-simbolico-explicable"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2012.05876",
+          "url": "https://arxiv.org/abs/2012.05876"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Manhaeve et al. (2018), DeepProbLog: lógica probabilística con redes",
+          "url": "https://arxiv.org/abs/1805.10872"
+        },
+        {
+          "label": "Marcus (2020), el argumento a favor de la hibridación",
+          "url": "https://arxiv.org/abs/2002.06177"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P73",
+      "dir": "P73_kmeans",
+      "slug": "k-medias-lloyd-1982",
+      "title": "Least Squares Quantization in PCM",
+      "title_es": "Cuantización por mínimos cuadrados en PCM",
+      "authors": [
+        "Stuart P. Lloyd"
+      ],
+      "year": 1982,
+      "venue": "IEEE Transactions on Information Theory, 28(2), 129–137",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "kmeans",
+      "hito": "El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global.",
+      "problema": "Resumir un conjunto de puntos con k representantes exige elegirlos minimizando el error cuadrático. El problema es combinatorio y su solución exacta, inabordable.",
+      "propuesta": "Alternar dos pasos que cada uno reduce el error: asignar cada punto a su representante más cercano, y recolocar cada representante en el centro de los puntos que le tocaron.",
+      "keywords": [
+        "k-medias",
+        "cuantización",
+        "inercia",
+        "óptimo local",
+        "agrupamiento"
+      ],
+      "anteriores": [
+        "Steinhaus (1956), partición óptima",
+        "P53"
+      ],
+      "posteriores": [
+        "P83"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/TIT.1982.1056489",
+          "url": "https://doi.org/10.1109/TIT.1982.1056489"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Arthur y Vassilvitskii (2007), k-means++ y la inicialización",
+          "url": "https://dl.acm.org/doi/10.5555/1283383.1283494"
+        },
+        {
+          "label": "MacQueen (1967), el nombre «k-means» y la versión en línea",
+          "url": "https://projecteuclid.org/euclid.bsmsp/1200512992"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P74",
+      "dir": "P74_id3",
+      "slug": "arboles-de-decision-quinlan-1986",
+      "title": "Induction of Decision Trees",
+      "title_es": "Inducción de árboles de decisión",
+      "authors": [
+        "J. Ross Quinlan"
+      ],
+      "year": 1986,
+      "venue": "Machine Learning, 1(1), 81–106",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "id3",
+      "hito": "Aprende un modelo que una persona puede leer, eligiendo cada pregunta por cuánta incertidumbre elimina.",
+      "problema": "Los clasificadores de la época eran cajas de números. En dominios donde alguien tiene que justificar la decisión, un modelo que no se puede leer no se puede usar.",
+      "propuesta": "Construir el árbol de arriba abajo eligiendo en cada nodo el atributo con mayor ganancia de información, y documentar el sesgo del criterio hacia los atributos con muchos valores.",
+      "keywords": [
+        "árbol de decisión",
+        "ganancia de información",
+        "entropía",
+        "razón de ganancia",
+        "interpretabilidad"
+      ],
+      "anteriores": [
+        "P55",
+        "Hunt et al. (1966), Concept Learning System"
+      ],
+      "posteriores": [
+        "P78",
+        "P79"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/040-arboles-de-decision-y-reglas-interpretables"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1007/BF00116251",
+          "url": "https://doi.org/10.1007/BF00116251"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Quinlan (1993), C4.5: valores continuos, ausentes y poda",
+          "url": "https://doi.org/10.1016/C2009-0-27846-9"
+        },
+        {
+          "label": "Breiman et al. (1984), CART: la otra familia de árboles",
+          "url": "https://doi.org/10.1201/9781315139470"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P75",
+      "dir": "P75_svm",
+      "slug": "maquinas-de-vectores-soporte-cortes-vapnik-1995",
+      "title": "Support-Vector Networks",
+      "title_es": "Redes de vectores soporte",
+      "authors": [
+        "Corinna Cortes",
+        "Vladimir Vapnik"
+      ],
+      "year": 1995,
+      "venue": "Machine Learning, 20(3), 273–297",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "svm",
+      "hito": "Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen.",
+      "problema": "Cuando varios clasificadores separan perfectamente los datos de entrenamiento, la exactitud no distingue entre ellos, y sin embargo generalizan de forma muy distinta.",
+      "propuesta": "Elegir el hiperplano de margen máximo —el que más lejos queda de los puntos de ambas clases— y extender la idea a fronteras no lineales con el truco del núcleo y a datos no separables con el margen blando.",
+      "keywords": [
+        "margen máximo",
+        "vectores soporte",
+        "núcleo",
+        "riesgo estructural",
+        "margen blando"
+      ],
+      "anteriores": [
+        "Vapnik y Chervonenkis (1974), teoría del aprendizaje estadístico",
+        "P01"
+      ],
+      "posteriores": [
+        "P80"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1007/BF00994018",
+          "url": "https://doi.org/10.1007/BF00994018"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Boser, Guyon y Vapnik (1992), el clasificador de margen óptimo",
+          "url": "https://doi.org/10.1145/130385.130401"
+        },
+        {
+          "label": "Schölkopf y Smola, Learning with Kernels",
+          "url": "https://mitpress.mit.edu/9780262536578/learning-with-kernels/"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P76",
+      "dir": "P76_validacion_cruzada",
+      "slug": "validacion-cruzada-kohavi-1995",
+      "title": "A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection",
+      "title_es": "Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos",
+      "authors": [
+        "Ron Kohavi"
+      ],
+      "year": 1995,
+      "venue": "IJCAI'95, 1137–1143",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "validacion_cruzada",
+      "hito": "Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre.",
+      "problema": "Se reportaban exactitudes sin decir cómo se habían estimado. Holdout, validación cruzada y bootstrap dan números distintos sobre los mismos datos, y nadie había medido cuál era preferible ni por qué.",
+      "propuesta": "Comparar empíricamente los estimadores en sesgo y varianza sobre conjuntos reales, y recomendar validación cruzada estratificada de diez pliegues como compromiso entre ambos.",
+      "keywords": [
+        "validación cruzada",
+        "bootstrap",
+        "sesgo y varianza",
+        "estratificación",
+        "selección de modelo"
+      ],
+      "anteriores": [
+        "Stone (1974), validación cruzada",
+        "Efron (1979), bootstrap"
+      ],
+      "posteriores": [
+        "P63",
+        "P80"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "Actas IJCAI'95 (PDF)",
+          "url": "https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Varma y Simon (2006), sesgo al seleccionar y evaluar con la misma validación",
+          "url": "https://doi.org/10.1186/1471-2105-7-91"
+        },
+        {
+          "label": "Cawley y Talbot (2010), sobreajuste en la selección de modelo",
+          "url": "https://www.jmlr.org/papers/v11/cawley10a.html"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P77",
+      "dir": "P77_lasso",
+      "slug": "lasso-tibshirani-1996",
+      "title": "Regression Shrinkage and Selection via the Lasso",
+      "title_es": "Contracción y selección en regresión mediante el lasso",
+      "authors": [
+        "Robert Tibshirani"
+      ],
+      "year": 1996,
+      "venue": "Journal of the Royal Statistical Society, Series B, 58(1), 267–288",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "lasso",
+      "hito": "Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero.",
+      "problema": "La regresión por mínimos cuadrados con muchas variables sobreajusta y produce modelos imposibles de interpretar. La selección por subconjuntos es inestable y la penalización de cresta encoge todos los coeficientes pero no elimina ninguno.",
+      "propuesta": "Penalizar la suma de los valores absolutos de los coeficientes. La geometría de esa restricción tiene esquinas sobre los ejes, y el óptimo tiende a caer en ellas: los coeficientes irrelevantes quedan exactamente en cero.",
+      "keywords": [
+        "lasso",
+        "L1",
+        "regularización",
+        "esparsidad",
+        "selección de variables"
+      ],
+      "anteriores": [
+        "Hoerl y Kennard (1970), regresión de cresta",
+        "Breiman (1995), garrote no negativo"
+      ],
+      "posteriores": [
+        "P48",
+        "P81"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/038-regresion-lineal-regularizacion-y-diagnostico"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1111/j.2517-6161.1996.tb02080.x",
+          "url": "https://doi.org/10.1111/j.2517-6161.1996.tb02080.x"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Zou y Hastie (2005), red elástica: el lasso con variables correlacionadas",
+          "url": "https://doi.org/10.1111/j.1467-9868.2005.00503.x"
+        },
+        {
+          "label": "Efron et al. (2004), LARS y el camino de regularización completo",
+          "url": "https://doi.org/10.1214/009053604000000067"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P78",
+      "dir": "P78_adaboost",
+      "slug": "adaboost-freund-schapire-1997",
+      "title": "A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting",
+      "title_es": "Una generalización decisional del aprendizaje en línea y su aplicación al boosting",
+      "authors": [
+        "Yoav Freund",
+        "Robert E. Schapire"
+      ],
+      "year": 1997,
+      "venue": "Journal of Computer and System Sciences, 55(1), 119–139",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "adaboost",
+      "hito": "Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace.",
+      "problema": "Kearns y Valiant habían preguntado si un aprendiz «débil» —apenas mejor que el azar— puede convertirse en uno «fuerte». La respuesta afirmativa existía pero era impracticable: exigía conocer de antemano la ventaja del aprendiz débil.",
+      "propuesta": "AdaBoost: entrenar clasificadores en serie, subiendo el peso de los ejemplos que el anterior falló, y ponderar el voto de cada uno por su error. Se adapta solo a la calidad de cada aprendiz, sin conocerla de antemano.",
+      "keywords": [
+        "boosting",
+        "aprendiz débil",
+        "reponderación",
+        "conjunto",
+        "error exponencial"
+      ],
+      "anteriores": [
+        "Schapire (1990), la fuerza del aprendizaje débil",
+        "P74"
+      ],
+      "posteriores": [
+        "P79"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1006/jcss.1997.1504",
+          "url": "https://doi.org/10.1006/jcss.1997.1504"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Friedman, Hastie y Tibshirani (2000), boosting como modelo aditivo",
+          "url": "https://doi.org/10.1214/aos/1016218223"
+        },
+        {
+          "label": "Chen y Guestrin (2016), XGBoost: la versión que domina los datos tabulares",
+          "url": "https://doi.org/10.1145/2939672.2939785"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P79",
+      "dir": "P79_random_forest",
+      "slug": "random-forests-breiman-2001",
+      "title": "Random Forests",
+      "title_es": "Bosques aleatorios",
+      "authors": [
+        "Leo Breiman"
+      ],
+      "year": 2001,
+      "venue": "Machine Learning, 45(1), 5–32",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "random_forest",
+      "hito": "Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo.",
+      "problema": "El bagging reducía la varianza promediando árboles entrenados sobre remuestreos, pero los árboles seguían pareciéndose demasiado: ante los mismos datos elegían casi siempre las mismas variables.",
+      "propuesta": "Añadir una segunda fuente de azar: en cada nodo, considerar solo un subconjunto aleatorio de variables. Los árboles empeoran individualmente y se descorrelacionan, y la cota del error del bosque mejora.",
+      "keywords": [
+        "bagging",
+        "subespacio aleatorio",
+        "correlación",
+        "out-of-bag",
+        "importancia de variables"
+      ],
+      "anteriores": [
+        "Breiman (1996), bagging",
+        "Ho (1998), subespacios aleatorios",
+        "P74"
+      ],
+      "posteriores": [
+        "P80"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1023/A:1010933404324",
+          "url": "https://doi.org/10.1023/A:1010933404324"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Fernández-Delgado et al. (2014), 179 clasificadores sobre 121 conjuntos",
+          "url": "https://www.jmlr.org/papers/v15/delgado14a.html"
+        },
+        {
+          "label": "Strobl et al. (2007), sesgo de la importancia de variables",
+          "url": "https://doi.org/10.1186/1471-2105-8-25"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P80",
+      "dir": "P80_dos_culturas",
+      "slug": "dos-culturas-breiman-2001",
+      "title": "Statistical Modeling: The Two Cultures",
+      "title_es": "Modelización estadística: las dos culturas",
+      "authors": [
+        "Leo Breiman"
+      ],
+      "year": 2001,
+      "venue": "Statistical Science, 16(3), 199–231",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "dos_culturas",
+      "hito": "Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir.",
+      "problema": "La estadística académica suponía que los datos venían de un modelo con forma conocida y juzgaba los métodos por el ajuste a ese supuesto. Si el supuesto es falso —y casi siempre lo es— las conclusiones sobre el mecanismo no valen nada.",
+      "propuesta": "Distinguir dos culturas y sus criterios: la del modelo de datos, que valida supuestos, y la algorítmica, que trata el mecanismo como desconocido y se juzga por exactitud predictiva medida fuera de muestra.",
+      "keywords": [
+        "modelo de datos",
+        "cultura algorítmica",
+        "efecto Rashomon",
+        "exactitud predictiva",
+        "interpretabilidad"
+      ],
+      "anteriores": [
+        "P76",
+        "P79",
+        "P75"
+      ],
+      "posteriores": [
+        "P82",
+        "P62"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test",
+        "classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1214/ss/1009213726",
+          "url": "https://doi.org/10.1214/ss/1009213726"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Efron (2020), las dos culturas veinte años después",
+          "url": "https://doi.org/10.1080/01621459.2020.1762613"
+        },
+        {
+          "label": "Rudin (2019), contra explicar cajas negras en decisiones de alto riesgo",
+          "url": "https://doi.org/10.1038/s42256-019-0048-x"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P81",
+      "dir": "P81_seleccion_de_caracteristicas",
+      "slug": "seleccion-de-variables-guyon-elisseeff-2003",
+      "title": "An Introduction to Variable and Feature Selection",
+      "title_es": "Introducción a la selección de variables y características",
+      "authors": [
+        "Isabelle Guyon",
+        "André Elisseeff"
+      ],
+      "year": 2003,
+      "venue": "Journal of Machine Learning Research, 3, 1157–1182",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "seleccion_de_caracteristicas",
+      "hito": "Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones.",
+      "problema": "Con miles de variables y pocas muestras hay que reducir. El método habitual —ordenar las variables por su correlación con la etiqueta y quedarse con las primeras— tiene modos de fallo que casi nadie enunciaba.",
+      "propuesta": "Un marco con tres familias —filtros, envolturas y métodos embebidos— y dos advertencias con contraejemplo: una variable inútil por separado puede ser imprescindible en compañía, y dos variables redundantes pueden ser mejores juntas que cualquiera sola.",
+      "keywords": [
+        "selección de variables",
+        "filtros",
+        "envolturas",
+        "redundancia",
+        "complementariedad"
+      ],
+      "anteriores": [
+        "P77",
+        "Kohavi y John (1997), envolturas"
+      ],
+      "posteriores": [
+        "P52"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/042-ingenieria-y-seleccion-de-caracteristicas"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "JMLR 3:1157–1182",
+          "url": "https://www.jmlr.org/papers/v3/guyon03a.html"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kohavi y John (1997), envolturas para la selección de subconjuntos",
+          "url": "https://doi.org/10.1016/S0004-3702(97)00043-X"
+        },
+        {
+          "label": "Lundberg y Lee (2017), SHAP: atribución con garantías",
+          "url": "https://arxiv.org/abs/1705.07874"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P82",
+      "dir": "P82_calibracion",
+      "slug": "calibracion-niculescu-mizil-caruana-2005",
+      "title": "Predicting Good Probabilities with Supervised Learning",
+      "title_es": "Predecir buenas probabilidades con aprendizaje supervisado",
+      "authors": [
+        "Alexandru Niculescu-Mizil",
+        "Rich Caruana"
+      ],
+      "year": 2005,
+      "venue": "ICML '05, 625–632",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "calibracion",
+      "hito": "Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno.",
+      "problema": "Las salidas de un clasificador se usan como probabilidades para decidir con umbrales de coste o para combinarlas con otras. Pero un modelo puede tener un AUC excelente y probabilidades sistemáticamente sesgadas, y nadie lo estaba midiendo.",
+      "propuesta": "Medir la calibración con diagramas de fiabilidad y puntuaciones propias, caracterizar cómo se descalibra cada familia de modelos, y corregirla con escalado de Platt o regresión isotónica sin alterar el orden.",
+      "keywords": [
+        "calibración",
+        "diagrama de fiabilidad",
+        "Brier",
+        "escalado de Platt",
+        "regresión isotónica"
+      ],
+      "anteriores": [
+        "Platt (1999), salidas probabilísticas para SVM",
+        "P80"
+      ],
+      "posteriores": [
+        "P50"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/1102351.1102430",
+          "url": "https://doi.org/10.1145/1102351.1102430"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Guo et al. (2017), la descalibración de las redes profundas modernas",
+          "url": "https://arxiv.org/abs/1706.04599"
+        },
+        {
+          "label": "Brier (1950), la puntuación que lleva su nombre",
+          "url": "https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P83",
+      "dir": "P83_tsne",
+      "slug": "t-sne-van-der-maaten-hinton-2008",
+      "title": "Visualizing Data using t-SNE",
+      "title_es": "Visualizar datos con t-SNE",
+      "authors": [
+        "Laurens van der Maaten",
+        "Geoffrey Hinton"
+      ],
+      "year": 2008,
+      "venue": "Journal of Machine Learning Research, 9, 2579–2605",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "tsne",
+      "hito": "Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos.",
+      "problema": "Al proyectar de muchas dimensiones a dos, los puntos moderadamente distantes se apiñan en el centro: en dimensión alta hay mucho más «sitio lejos» que cerca, y una gaussiana en el mapa no puede acomodarlo. Es el problema del apiñamiento.",
+      "propuesta": "Convertir distancias en probabilidades de vecindad, y usar en el mapa una distribución t de Student de un grado de libertad. Su cola pesada deja sitio a los puntos lejanos sin comprimir los cercanos.",
+      "keywords": [
+        "t-SNE",
+        "visualización",
+        "apiñamiento",
+        "vecindad",
+        "divergencia KL"
+      ],
+      "anteriores": [
+        "Hinton y Roweis (2002), SNE",
+        "P53",
+        "P73"
+      ],
+      "posteriores": [
+        "P05",
+        "P18"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "JMLR 9:2579–2605",
+          "url": "https://www.jmlr.org/papers/v9/vandermaaten08a.html"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Wattenberg et al. (2016), «How to Use t-SNE Effectively»",
+          "url": "https://doi.org/10.23915/distill.00002"
+        },
+        {
+          "label": "McInnes et al. (2018), UMAP",
+          "url": "https://arxiv.org/abs/1802.03426"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P84",
+      "dir": "P84_isolation_forest",
+      "slug": "isolation-forest-liu-2008",
+      "title": "Isolation Forest",
+      "title_es": "Bosque de aislamiento",
+      "authors": [
+        "Fei Tony Liu",
+        "Kai Ming Ting",
+        "Zhi-Hua Zhou"
+      ],
+      "year": 2008,
+      "venue": "ICDM 2008, 413–422",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "isolation_forest",
+      "hito": "Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto.",
+      "problema": "Los métodos de detección de anomalías construían un modelo de la normalidad y medían la distancia a él. Eso cuesta caro, supone una forma para la distribución normal y dedica casi todo el esfuerzo a los puntos que no interesan.",
+      "propuesta": "Cortar el espacio al azar y contar cuántos cortes hacen falta para dejar cada punto solo. Lo raro vive en zonas poco pobladas y se aísla antes; la longitud media del camino, normalizada, es la puntuación de anomalía.",
+      "keywords": [
+        "detección de anomalías",
+        "aislamiento",
+        "longitud de camino",
+        "submuestreo",
+        "no supervisado"
+      ],
+      "anteriores": [
+        "Breunig et al. (2000), factor de anomalía local",
+        "P79"
+      ],
+      "posteriores": [
+        "P42"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/044-deteccion-de-anomalias"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/ICDM.2008.17",
+          "url": "https://doi.org/10.1109/ICDM.2008.17"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Breunig et al. (2000), LOF: anomalías locales",
+          "url": "https://doi.org/10.1145/335191.335388"
+        },
+        {
+          "label": "Liu, Ting y Zhou (2012), la versión extendida con análisis del submuestreo",
+          "url": "https://doi.org/10.1145/2133360.2133363"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P85",
+      "dir": "P85_factorizacion_matricial",
+      "slug": "factorizacion-matricial-koren-2009",
+      "title": "Matrix Factorization Techniques for Recommender Systems",
+      "title_es": "Técnicas de factorización matricial para sistemas de recomendación",
+      "authors": [
+        "Yehuda Koren",
+        "Robert Bell",
+        "Chris Volinsky"
+      ],
+      "year": 2009,
+      "venue": "IEEE Computer, 42(8), 30–37",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "factorizacion_matricial",
+      "hito": "El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos.",
+      "problema": "Recomendar exige predecir puntuaciones en una matriz usuario×artículo donde falta el 99 % de las celdas. Los métodos por vecindad escalaban mal y no capturaban estructura latente.",
+      "propuesta": "Aprender un vector de factores latentes por usuario y por artículo, ajustados solo sobre las celdas observadas por descenso de gradiente, con regularización y con términos de sesgo explícitos para usuario y artículo.",
+      "keywords": [
+        "factores latentes",
+        "sesgos",
+        "descenso estocástico",
+        "regularización",
+        "recomendación"
+      ],
+      "anteriores": [
+        "P53",
+        "Sarwar et al. (2001), filtrado colaborativo por artículos"
+      ],
+      "posteriores": [
+        "P05"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/046-sistemas-de-recomendacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/MC.2009.263",
+          "url": "https://doi.org/10.1109/MC.2009.263"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Bell y Koren (2007), lecciones del Netflix Prize",
+          "url": "https://doi.org/10.1145/1345448.1345465"
+        },
+        {
+          "label": "Rendle et al. (2019), las líneas base bien ajustadas siguen ganando",
+          "url": "https://doi.org/10.1145/3298689.3347058"
+        }
+      ],
+      "consultado": "2026-08-17"
+    },
+    {
+      "id": "P86",
+      "dir": "P86_m4",
+      "slug": "competicion-m4-makridakis-2018",
+      "title": "The M4 Competition: Results, findings, conclusion and way forward",
+      "title_es": "La competición M4: resultados, hallazgos, conclusiones y camino a seguir",
+      "authors": [
+        "Spyros Makridakis",
+        "Evangelos Spiliotis",
+        "Vassilios Assimakopoulos"
+      ],
+      "year": 2018,
+      "venue": "International Journal of Forecasting, 34(4), 802–808",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "m4",
+      "hito": "Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo.",
+      "problema": "Cada artículo de predicción reportaba mejoras sobre sus propias series y sus propias líneas base. Sin una evaluación común y a ciegas, el campo no podía saber qué funcionaba de verdad.",
+      "propuesta": "Una competición abierta con 100 000 series reales de dominios distintos, horizontes fijos, métricas declaradas de antemano y evaluación fuera de muestra sobre datos que los participantes no ven.",
+      "keywords": [
+        "series temporales",
+        "backtesting",
+        "combinación de métodos",
+        "líneas base",
+        "evaluación fuera de muestra"
+      ],
+      "anteriores": [
+        "Makridakis y Hibon (2000), la competición M3",
+        "P76"
+      ],
+      "posteriores": [
+        "P62"
+      ],
+      "clases_del_programa": [
+        "classes/part-03-classical-machine-learning/045-series-temporales-y-backtesting"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/j.ijforecast.2018.06.001",
+          "url": "https://doi.org/10.1016/j.ijforecast.2018.06.001"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Makridakis et al. (2020), el análisis extendido de la M4",
+          "url": "https://doi.org/10.1016/j.ijforecast.2019.04.014"
+        },
+        {
+          "label": "Hyndman y Athanasopoulos, Forecasting: Principles and Practice",
+          "url": "https://otexts.com/fpp3/"
+        }
+      ],
+      "consultado": "2026-08-17"
     }
   ],
   "ruta_ampliada": [
@@ -2988,7 +4872,10 @@
     "ruta_agentes": "P26–P33: decisión secuencial y agentes. Empieza en el refuerzo profundo y la búsqueda guiada —de donde viene la idea de agente— y llega al razonamiento deliberado, la memoria, las habilidades reutilizables y el multiagente. Ordenada por año.",
     "ruta_memoria": "P34–P37: cómo se codifica la posición, por qué el contexto largo es viable, por qué tenerlo no basta y cómo se gestiona como memoria jerárquica.",
     "ruta_arquitectura": "P38–P49: el andamiaje que hace entrenable todo lo demás — generativa clásica, regularización, optimización, robustez, normalización, profundidad, compresión, visión con Transformer, ciencia aplicada y adaptación eficiente.",
-    "ruta_evaluacion": "P50–P52: cómo se decide que un modelo es aceptable — principios explícitos, criterios de evaluación verificables e interpretabilidad de lo que hay dentro."
+    "ruta_evaluacion": "P50–P52: cómo se decide que un modelo es aceptable — principios explícitos, criterios de evaluación verificables e interpretabilidad de lo que hay dentro.",
+    "ruta_fundamentos": "P53–P63: de dónde sale el campo y con qué método se juzga. No es la cadena técnica: es el suelo —geometría, información, computabilidad, agencia— y el criterio con el que se lee todo lo demás (valor predictivo, validez de benchmark, reproducibilidad). Ordenada por año.",
+    "ruta_simbolica": "P64–P72: la tradición que dominó el campo durante treinta años. Del análisis medios-fines a la planificación, pasando por la búsqueda con garantía, las dos lógicas, las restricciones y las ontologías; cierra con el intento de reconciliarla con el aprendizaje. Ordenada por año.",
+    "ruta_clasica": "P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año."
   },
   "ruta_representacion": [
     "P23",
@@ -3012,7 +4899,10 @@
     "ruta_agentes",
     "ruta_memoria",
     "ruta_arquitectura",
-    "ruta_evaluacion"
+    "ruta_evaluacion",
+    "ruta_fundamentos",
+    "ruta_simbolica",
+    "ruta_clasica"
   ],
   "ruta_memoria": [
     "P34",
@@ -3039,5 +4929,45 @@
     "P51",
     "P52"
   ],
-  "orden_de_estudio": "Los identificadores son ESTABLES, no un orden de lectura: se asignan al incorporar un paper y nunca se renumeran, para no romper enlaces ni evaluaciones. Para leer, usa la vista cronológica o la temática de PAPERS_INDEX.md."
+  "orden_de_estudio": "Los identificadores son ESTABLES, no un orden de lectura: se asignan al incorporar un paper y nunca se renumeran, para no romper enlaces ni evaluaciones. Para leer, usa la vista cronológica o la temática de PAPERS_INDEX.md.",
+  "ruta_fundamentos": [
+    "P53",
+    "P54",
+    "P55",
+    "P56",
+    "P57",
+    "P58",
+    "P59",
+    "P60",
+    "P61",
+    "P62",
+    "P63"
+  ],
+  "ruta_simbolica": [
+    "P64",
+    "P65",
+    "P66",
+    "P67",
+    "P68",
+    "P69",
+    "P70",
+    "P71",
+    "P72"
+  ],
+  "ruta_clasica": [
+    "P73",
+    "P74",
+    "P75",
+    "P76",
+    "P77",
+    "P78",
+    "P79",
+    "P80",
+    "P81",
+    "P82",
+    "P83",
+    "P84",
+    "P85",
+    "P86"
+  ]
 }

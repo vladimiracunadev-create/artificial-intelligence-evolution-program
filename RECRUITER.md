@@ -3,10 +3,10 @@
 Este repositorio demuestra:
 
 - diseño curricular de 183 clases en 15 partes;
-- comprensión de la evolución completa de la IA, anclada en 52 papers
+- comprensión de la evolución completa de la IA, anclada en 86 papers
   fundacionales leídos en su fuente primaria;
 - separación entre modelos, tools, skills, workflows y agentes;
-- 72 motores didácticos reutilizables con contratos uniformes (20 de clase + 52 de papers)
+- 106 motores didácticos reutilizables con contratos uniformes (20 de clase + 86 de papers)
   (20 de clases + 16 de papers), deterministas y sin dependencias;
 - contratos verificados por código, no declarados: 18 secciones por ficha,
   17 momentos por notebook y un manifiesto con hash por artefacto;

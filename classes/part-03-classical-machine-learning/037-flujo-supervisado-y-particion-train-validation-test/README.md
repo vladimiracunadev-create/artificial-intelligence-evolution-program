@@ -238,6 +238,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn — Common pitfalls: data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)
 - [Kaufman et al. (2012), "Leakage in Data Mining: Formulation, Detection, and Avoidance", ACM TKDD. DOI 10.1145/2382577.2382579](https://doi.org/10.1145/2382577.2382579)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P76 · Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos](../../../papers/foundational/P76_validacion_cruzada/README.md) | 1995 | Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre. | [notebook](../../../notebooks/papers/P76_validacion_cruzada.ipynb) |
+| [P80 · Modelización estadística: las dos culturas](../../../papers/foundational/P80_dos_culturas/README.md) | 2001 | Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir. | [notebook](../../../notebooks/papers/P80_dos_culturas.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

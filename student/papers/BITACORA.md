@@ -74,6 +74,40 @@ Pregunta que me quedó abierta:
 | P50 | | | ⬜ pendiente |
 | P51 | | | ⬜ pendiente |
 | P52 | | | ⬜ pendiente |
+| P53 | | | ⬜ pendiente |
+| P54 | | | ⬜ pendiente |
+| P55 | | | ⬜ pendiente |
+| P56 | | | ⬜ pendiente |
+| P57 | | | ⬜ pendiente |
+| P58 | | | ⬜ pendiente |
+| P59 | | | ⬜ pendiente |
+| P60 | | | ⬜ pendiente |
+| P61 | | | ⬜ pendiente |
+| P62 | | | ⬜ pendiente |
+| P63 | | | ⬜ pendiente |
+| P64 | | | ⬜ pendiente |
+| P65 | | | ⬜ pendiente |
+| P66 | | | ⬜ pendiente |
+| P67 | | | ⬜ pendiente |
+| P68 | | | ⬜ pendiente |
+| P69 | | | ⬜ pendiente |
+| P70 | | | ⬜ pendiente |
+| P71 | | | ⬜ pendiente |
+| P72 | | | ⬜ pendiente |
+| P73 | | | ⬜ pendiente |
+| P74 | | | ⬜ pendiente |
+| P75 | | | ⬜ pendiente |
+| P76 | | | ⬜ pendiente |
+| P77 | | | ⬜ pendiente |
+| P78 | | | ⬜ pendiente |
+| P79 | | | ⬜ pendiente |
+| P80 | | | ⬜ pendiente |
+| P81 | | | ⬜ pendiente |
+| P82 | | | ⬜ pendiente |
+| P83 | | | ⬜ pendiente |
+| P84 | | | ⬜ pendiente |
+| P85 | | | ⬜ pendiente |
+| P86 | | | ⬜ pendiente |
 
 ---
 

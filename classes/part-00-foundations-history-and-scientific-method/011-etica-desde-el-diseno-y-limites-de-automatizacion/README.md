@@ -236,6 +236,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Kleinberg, Mullainathan & Raghavan (2016). Inherent Trade-Offs in the Fair Determination of Risk Scores](https://arxiv.org/abs/1609.05807)
 - [ACM Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P61 · Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje?](../../../papers/foundational/P61_stochastic_parrots/README.md) | 2021 | Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión. | [notebook](../../../notebooks/papers/P61_stochastic_parrots.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

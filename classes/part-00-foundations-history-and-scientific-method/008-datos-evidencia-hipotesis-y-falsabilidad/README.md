@@ -236,6 +236,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research. *PLoS Comp Bio*](https://doi.org/10.1371/journal.pcbi.1003285)
 - [Pineau et al. (2021). Improving Reproducibility in Machine Learning Research](https://arxiv.org/abs/2003.12206)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P60 · Por qué la mayoría de los hallazgos publicados son falsos](../../../papers/foundational/P60_valor_predictivo/README.md) | 2005 | Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p. | [notebook](../../../notebooks/papers/P60_valor_predictivo.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

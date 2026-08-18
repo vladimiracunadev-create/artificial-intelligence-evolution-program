@@ -29,14 +29,14 @@ NOTEBOOKS = ROOT / "notebooks" / "papers"
 
 
 class CatalogTests(unittest.TestCase):
-    def test_catalog_is_valid_json_with_52_papers(self):
+    def test_catalog_is_valid_json_with_86_papers(self):
         data = load_papers()
-        self.assertEqual(len(data["papers"]), 52)
+        self.assertEqual(len(data["papers"]), 86)
         esperado = []
         for bloque in data["rutas"]:
             esperado.extend(data[bloque])
         self.assertEqual(esperado, [item["id"] for item in data["papers"]])
-        self.assertEqual(len(data["rutas"]), 7)
+        self.assertEqual(len(data["rutas"]), 10)
 
     def test_sources_yaml_parses(self):
         sources = load_sources()
@@ -76,8 +76,8 @@ class ContractTests(unittest.TestCase):
     def test_repository_contract(self):
         result = validate_papers(strict=True)
         self.assertTrue(result["ok"], result["errors"][:10])
-        self.assertEqual(result["papers"], 52)
-        self.assertEqual(result["notebooks"], 60)
+        self.assertEqual(result["papers"], 86)
+        self.assertEqual(result["notebooks"], 94)
         self.assertEqual(result["notebooks_transformer"], 8)
 
     def test_every_ficha_has_the_18_sections_in_order(self):
@@ -118,8 +118,8 @@ class ContractTests(unittest.TestCase):
 
     def test_manifest_hashes_are_current(self):
         manifest = json.loads((ROOT / "papers" / "manifest.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["papers"], 52)
-        self.assertEqual(manifest["notebooks"], 60)
+        self.assertEqual(manifest["papers"], 86)
+        self.assertEqual(manifest["notebooks"], 94)
         for entry in manifest["files"]:
             target = ROOT / entry["path"]
             with self.subTest(file=entry["path"]):

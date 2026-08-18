@@ -238,6 +238,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn — TimeSeriesSplit (validación con orden temporal)](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)
 - [statsmodels — Time Series Analysis (ARIMA, descomposición, ACF/PACF)](https://www.statsmodels.org/stable/tsa.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P86 · La competición M4: resultados, hallazgos, conclusiones y camino a seguir](../../../papers/foundational/P86_m4/README.md) | 2018 | Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo. | [notebook](../../../notebooks/papers/P86_m4.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -209,6 +209,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - W3C (2012). *OWL 2 Web Ontology Language — Overview* (2.ª ed.): [https://www.w3.org/TR/owl2-overview/](https://www.w3.org/TR/owl2-overview/)
 - Minsky, M. (1974). "A Framework for Representing Knowledge". MIT AI Memo 306. [https://dspace.mit.edu/handle/1721.1/6089](https://dspace.mit.edu/handle/1721.1/6089)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P71 · Un enfoque de traducción para especificaciones de ontologías portables](../../../papers/foundational/P71_ontologia/README.md) | 1993 | Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla. | [notebook](../../../notebooks/papers/P71_ontologia.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

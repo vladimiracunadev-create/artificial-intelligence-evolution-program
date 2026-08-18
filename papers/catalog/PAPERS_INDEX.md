@@ -2,7 +2,7 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 52 · **Actualizado:** 2026-08-16 · **Cobertura:** 1958–2025
+**Papers:** 86 · **Actualizado:** 2026-08-17 · **Cobertura:** 1901–2025
 
 > [!NOTE]
 > Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no
@@ -14,9 +14,38 @@
 
 | Año | # | Paper | Bloque | Nivel | Motor | Ficha | Notebook |
 |---:|---|---|---|:---:|---|---|---|
+| **1901** | P53 | Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio | 🧭 fundamentos | L2 | `pca` | [ficha](../foundational/P53_pca/README.md) | [nb](../../notebooks/papers/P53_pca.ipynb) |
+| **1943** | P54 | Un cálculo lógico de las ideas inmanentes en la actividad nerviosa | 🧭 fundamentos | L1 | `mcculloch_pitts` | [ficha](../foundational/P54_mcculloch_pitts/README.md) | [nb](../../notebooks/papers/P54_mcculloch_pitts.ipynb) |
+| **1948** | P55 | Una teoría matemática de la comunicación | 🧭 fundamentos | L2 | `shannon` | [ficha](../foundational/P55_shannon/README.md) | [nb](../../notebooks/papers/P55_shannon.ipynb) |
+| **1950** | P56 | Maquinaria computacional e inteligencia | 🧭 fundamentos | L1 | `turing` | [ficha](../foundational/P56_turing/README.md) | [nb](../../notebooks/papers/P56_turing.ipynb) |
+| **1955** | P57 | Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial | 🧭 fundamentos | L1 | `dartmouth` | [ficha](../foundational/P57_dartmouth/README.md) | [nb](../../notebooks/papers/P57_dartmouth.ipynb) |
 | **1958** | P01 | El perceptrón: un modelo probabilístico de almacenamiento y organización de información en el cerebro | 🔗 cadena | L1 | `perceptron` | [ficha](../foundational/P01_perceptron/README.md) | [nb](../../notebooks/papers/P01_perceptron.ipynb) |
+| **1959** | P64 | Informe sobre un programa general de resolución de problemas | ♟️ simbólica | L2 | `gps` | [ficha](../foundational/P64_gps/README.md) | [nb](../../notebooks/papers/P64_gps.ipynb) |
+| **1962** | P65 | Un programa de máquina para demostración de teoremas | ♟️ simbólica | L2 | `dpll` | [ficha](../foundational/P65_dpll/README.md) | [nb](../../notebooks/papers/P65_dpll.ipynb) |
+| **1965** | P66 | Una lógica orientada a máquina basada en el principio de resolución | ♟️ simbólica | L3 | `resolucion` | [ficha](../foundational/P66_resolucion/README.md) | [nb](../../notebooks/papers/P66_resolucion.ipynb) |
+| **1968** | P67 | Una base formal para la determinación heurística de caminos de coste mínimo | ♟️ simbólica | L3 | `a_estrella` | [ficha](../foundational/P67_a_estrella/README.md) | [nb](../../notebooks/papers/P67_a_estrella.ipynb) |
+| **1971** | P68 | STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas | ♟️ simbólica | L2 | `strips` | [ficha](../foundational/P68_strips/README.md) | [nb](../../notebooks/papers/P68_strips.ipynb) |
+| **1975** | P69 | Un modelo de razonamiento inexacto en medicina | ♟️ simbólica | L2 | `mycin` | [ficha](../foundational/P69_mycin/README.md) | [nb](../../notebooks/papers/P69_mycin.ipynb) |
+| **1976** | P58 | La informática como indagación empírica: símbolos y búsqueda | 🧭 fundamentos | L2 | `simbolos_y_busqueda` | [ficha](../foundational/P58_simbolos_y_busqueda/README.md) | [nb](../../notebooks/papers/P58_simbolos_y_busqueda.ipynb) |
+| **1977** | P70 | Consistencia en redes de relaciones | ♟️ simbólica | L3 | `arco_consistencia` | [ficha](../foundational/P70_arco_consistencia/README.md) | [nb](../../notebooks/papers/P70_arco_consistencia.ipynb) |
+| **1982** | P73 | Cuantización por mínimos cuadrados en PCM | 📈 clásica | L2 | `kmeans` | [ficha](../foundational/P73_kmeans/README.md) | [nb](../../notebooks/papers/P73_kmeans.ipynb) |
 | **1986** | P02 | Aprender representaciones retropropagando errores | 🔗 cadena | L2 | `backprop` | [ficha](../foundational/P02_backpropagation/README.md) | [nb](../../notebooks/papers/P02_backpropagation.ipynb) |
+| **1986** | P74 | Inducción de árboles de decisión | 📈 clásica | L2 | `id3` | [ficha](../foundational/P74_id3/README.md) | [nb](../../notebooks/papers/P74_id3.ipynb) |
+| **1993** | P71 | Un enfoque de traducción para especificaciones de ontologías portables | ♟️ simbólica | L1 | `ontologia` | [ficha](../foundational/P71_ontologia/README.md) | [nb](../../notebooks/papers/P71_ontologia.ipynb) |
+| **1995** | P59 | Agentes inteligentes: teoría y práctica | 🧭 fundamentos | L2 | `agente_racional` | [ficha](../foundational/P59_agente_racional/README.md) | [nb](../../notebooks/papers/P59_agente_racional.ipynb) |
+| **1995** | P75 | Redes de vectores soporte | 📈 clásica | L3 | `svm` | [ficha](../foundational/P75_svm/README.md) | [nb](../../notebooks/papers/P75_svm.ipynb) |
+| **1995** | P76 | Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos | 📈 clásica | L3 | `validacion_cruzada` | [ficha](../foundational/P76_validacion_cruzada/README.md) | [nb](../../notebooks/papers/P76_validacion_cruzada.ipynb) |
+| **1996** | P77 | Contracción y selección en regresión mediante el lasso | 📈 clásica | L3 | `lasso` | [ficha](../foundational/P77_lasso/README.md) | [nb](../../notebooks/papers/P77_lasso.ipynb) |
 | **1997** | P03 | Memoria larga de corto plazo | 🔗 cadena | L2 | `lstm` | [ficha](../foundational/P03_lstm/README.md) | [nb](../../notebooks/papers/P03_lstm.ipynb) |
+| **1997** | P78 | Una generalización decisional del aprendizaje en línea y su aplicación al boosting | 📈 clásica | L3 | `adaboost` | [ficha](../foundational/P78_adaboost/README.md) | [nb](../../notebooks/papers/P78_adaboost.ipynb) |
+| **2001** | P79 | Bosques aleatorios | 📈 clásica | L3 | `random_forest` | [ficha](../foundational/P79_random_forest/README.md) | [nb](../../notebooks/papers/P79_random_forest.ipynb) |
+| **2001** | P80 | Modelización estadística: las dos culturas | 📈 clásica | L1 | `dos_culturas` | [ficha](../foundational/P80_dos_culturas/README.md) | [nb](../../notebooks/papers/P80_dos_culturas.ipynb) |
+| **2003** | P81 | Introducción a la selección de variables y características | 📈 clásica | L3 | `seleccion_de_caracteristicas` | [ficha](../foundational/P81_seleccion_de_caracteristicas/README.md) | [nb](../../notebooks/papers/P81_seleccion_de_caracteristicas.ipynb) |
+| **2005** | P60 | Por qué la mayoría de los hallazgos publicados son falsos | 🧭 fundamentos | L3 | `valor_predictivo` | [ficha](../foundational/P60_valor_predictivo/README.md) | [nb](../../notebooks/papers/P60_valor_predictivo.ipynb) |
+| **2005** | P82 | Predecir buenas probabilidades con aprendizaje supervisado | 📈 clásica | L3 | `calibracion` | [ficha](../foundational/P82_calibracion/README.md) | [nb](../../notebooks/papers/P82_calibracion.ipynb) |
+| **2008** | P83 | Visualizar datos con t-SNE | 📈 clásica | L3 | `tsne` | [ficha](../foundational/P83_tsne/README.md) | [nb](../../notebooks/papers/P83_tsne.ipynb) |
+| **2008** | P84 | Bosque de aislamiento | 📈 clásica | L2 | `isolation_forest` | [ficha](../foundational/P84_isolation_forest/README.md) | [nb](../../notebooks/papers/P84_isolation_forest.ipynb) |
+| **2009** | P85 | Técnicas de factorización matricial para sistemas de recomendación | 📈 clásica | L3 | `factorizacion_matricial` | [ficha](../foundational/P85_factorizacion_matricial/README.md) | [nb](../../notebooks/papers/P85_factorizacion_matricial.ipynb) |
 | **2012** | P04 | Clasificación de ImageNet con redes neuronales convolucionales profundas | 🔗 cadena | L3 | `convnet` | [ficha](../foundational/P04_alexnet/README.md) | [nb](../../notebooks/papers/P04_alexnet.ipynb) |
 | **2013** | P05 | Estimación eficiente de representaciones de palabras en un espacio vectorial | 🔗 cadena | L2 | `word2vec` | [ficha](../foundational/P05_word2vec/README.md) | [nb](../../notebooks/papers/P05_word2vec.ipynb) |
 | **2013** | P38 | Bayes variacional con autocodificación | 🏗️ arquitectura | L3 | `vae` | [ficha](../foundational/P38_vae/README.md) | [nb](../../notebooks/papers/P38_vae.ipynb) |
@@ -35,15 +64,20 @@
 | **2017** | P08 | La atención es todo lo que necesitas | 🔗 cadena | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [nb](../../notebooks/papers/P08_transformer.ipynb) |
 | **2018** | P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 🔗 cadena | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [nb](../../notebooks/papers/P09_bert.ipynb) |
 | **2018** | P24 | Representaciones profundas de palabras dependientes del contexto | 🔤 representación | L3 | `elmo` | [ficha](../foundational/P24_elmo/README.md) | [nb](../../notebooks/papers/P24_elmo.ipynb) |
+| **2018** | P86 | La competición M4: resultados, hallazgos, conclusiones y camino a seguir | 📈 clásica | L3 | `m4` | [ficha](../foundational/P86_m4/README.md) | [nb](../../notebooks/papers/P86_m4.ipynb) |
 | **2019** | P25 | Explorar los límites del aprendizaje por transferencia con un Transformer unificado texto a texto | 🔤 representación | L3 | `t5` | [ficha](../foundational/P25_t5/README.md) | [nb](../../notebooks/papers/P25_t5.ipynb) |
 | **2020** | P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 🔗 cadena | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [nb](../../notebooks/papers/P10_gpt3.ipynb) |
 | **2020** | P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 🔗 cadena | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [nb](../../notebooks/papers/P11_rag.ipynb) |
 | **2020** | P17 | Modelos probabilísticos de difusión con eliminación de ruido | 📚 ampliada | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [nb](../../notebooks/papers/P17_diffusion.ipynb) |
 | **2020** | P46 | Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala | 🏗️ arquitectura | L3 | `vit` | [ficha](../foundational/P46_vit/README.md) | [nb](../../notebooks/papers/P46_vit.ipynb) |
+| **2020** | P72 | IA neuro-simbólica: la tercera ola | ♟️ simbólica | L5 | `neurosimbolico` | [ficha](../foundational/P72_neurosimbolico/README.md) | [nb](../../notebooks/papers/P72_neurosimbolico.ipynb) |
 | **2021** | P18 | Aprender modelos visuales transferibles con supervisión de lenguaje natural | 📚 ampliada | L3 | `clip` | [ficha](../foundational/P18_clip/README.md) | [nb](../../notebooks/papers/P18_clip.ipynb) |
 | **2021** | P34 | RoFormer: Transformer mejorado con codificación posicional rotatoria | 🧠 memoria | L3 | `rope` | [ficha](../foundational/P34_rope/README.md) | [nb](../../notebooks/papers/P34_rope.ipynb) |
 | **2021** | P47 | Predicción de estructura de proteínas de alta precisión con AlphaFold | 🏗️ arquitectura | L4 | `alphafold` | [ficha](../foundational/P47_alphafold/README.md) | [nb](../../notebooks/papers/P47_alphafold.ipynb) |
 | **2021** | P48 | LoRA: adaptación de rango bajo de modelos de lenguaje grandes | 🏗️ arquitectura | L3 | `lora` | [ficha](../foundational/P48_lora/README.md) | [nb](../../notebooks/papers/P48_lora.ipynb) |
+| **2021** | P61 | Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje? | 🧭 fundamentos | L1 | `stochastic_parrots` | [ficha](../foundational/P61_stochastic_parrots/README.md) | [nb](../../notebooks/papers/P61_stochastic_parrots.ipynb) |
+| **2021** | P62 | La IA y el benchmark del todo en el mundo entero | 🧭 fundamentos | L3 | `benchmark_validez` | [ficha](../foundational/P62_benchmark_validez/README.md) | [nb](../../notebooks/papers/P62_benchmark_validez.ipynb) |
+| **2021** | P63 | Mejorar la reproducibilidad en la investigación en aprendizaje automático | 🧭 fundamentos | L3 | `reproducibilidad` | [ficha](../foundational/P63_reproducibilidad/README.md) | [nb](../../notebooks/papers/P63_reproducibilidad.ipynb) |
 | **2022** | P12 | Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana | 🔗 cadena | L3 | `rlhf` | [ficha](../foundational/P12_instructgpt_rlhf/README.md) | [nb](../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
 | **2022** | P13 | ReAct: sinergia entre razonar y actuar en modelos de lenguaje | 🔗 cadena | L2 | `react` | [ficha](../foundational/P13_react/README.md) | [nb](../../notebooks/papers/P13_react.ipynb) |
 | **2022** | P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 📚 ampliada | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [nb](../../notebooks/papers/P19_scaling_laws.ipynb) |
@@ -158,7 +192,106 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **2023** · [P51 · SWE-bench: ¿pueden los modelos resolver incidencias reales de GitHub?](../foundational/P51_swebench/README.md) — Cambia el criterio de evaluación: no si el código parece bien, sino si los tests del repositorio real pasan.
 - **2023** · [P52 · Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario](../foundational/P52_superposition/README.md) — Explica por qué una neurona no significa una cosa, y propone una forma de descomponer las activaciones en características interpretables.
 
+### 🧭 fundamentos
+
+P53–P63: de dónde sale el campo y con qué método se juzga. No es la cadena técnica: es el suelo —geometría, información, computabilidad, agencia— y el criterio con el que se lee todo lo demás (valor predictivo, validez de benchmark, reproducibilidad). Ordenada por año.
+
+- **1901** · [P53 · Sobre las líneas y planos de ajuste más próximo a sistemas de puntos en el espacio](../foundational/P53_pca/README.md) — La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable.
+- **1943** · [P54 · Un cálculo lógico de las ideas inmanentes en la actividad nerviosa](../foundational/P54_mcculloch_pitts/README.md) — Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación.
+- **1948** · [P55 · Una teoría matemática de la comunicación](../foundational/P55_shannon/README.md) — Define la información como reducción de incertidumbre y le pone unidad, cota y límite: el bit, la entropía y la capacidad del canal.
+- **1950** · [P56 · Maquinaria computacional e inteligencia](../foundational/P56_turing/README.md) — Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir.
+- **1955** · [P57 · Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial](../foundational/P57_dartmouth/README.md) — Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación.
+- **1976** · [P58 · La informática como indagación empírica: símbolos y búsqueda](../foundational/P58_simbolos_y_busqueda/README.md) — Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística.
+- **1995** · [P59 · Agentes inteligentes: teoría y práctica](../foundational/P59_agente_racional/README.md) — Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan.
+- **2005** · [P60 · Por qué la mayoría de los hallazgos publicados son falsos](../foundational/P60_valor_predictivo/README.md) — Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p.
+- **2021** · [P61 · Sobre los peligros de los loros estocásticos: ¿pueden ser demasiado grandes los modelos de lenguaje?](../foundational/P61_stochastic_parrots/README.md) — Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión.
+- **2021** · [P62 · La IA y el benchmark del todo en el mundo entero](../foundational/P62_benchmark_validez/README.md) — Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir.
+- **2021** · [P63 · Mejorar la reproducibilidad en la investigación en aprendizaje automático](../foundational/P63_reproducibilidad/README.md) — Convierte la reproducibilidad en un requisito operativo del proceso de publicación, con checklist, código y revisión.
+
+### ♟️ simbólica
+
+P64–P72: la tradición que dominó el campo durante treinta años. Del análisis medios-fines a la planificación, pasando por la búsqueda con garantía, las dos lógicas, las restricciones y las ontologías; cierra con el intento de reconciliarla con el aprendizaje. Ordenada por año.
+
+- **1959** · [P64 · Informe sobre un programa general de resolución de problemas](../foundational/P64_gps/README.md) — Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce.
+- **1962** · [P65 · Un programa de máquina para demostración de teoremas](../foundational/P65_dpll/README.md) — El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer.
+- **1965** · [P66 · Una lógica orientada a máquina basada en el principio de resolución](../foundational/P66_resolucion/README.md) — Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general.
+- **1968** · [P67 · Una base formal para la determinación heurística de caminos de coste mínimo](../foundational/P67_a_estrella/README.md) — Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo.
+- **1971** · [P68 · STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas](../foundational/P68_strips/README.md) — Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco.
+- **1975** · [P69 · Un modelo de razonamiento inexacto en medicina](../foundational/P69_mycin/README.md) — El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen.
+- **1977** · [P70 · Consistencia en redes de relaciones](../foundational/P70_arco_consistencia/README.md) — Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca.
+- **1993** · [P71 · Un enfoque de traducción para especificaciones de ontologías portables](../foundational/P71_ontologia/README.md) — Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla.
+- **2020** · [P72 · IA neuro-simbólica: la tercera ola](../foundational/P72_neurosimbolico/README.md) — Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos.
+
+### 📈 clásica
+
+P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año.
+
+- **1982** · [P73 · Cuantización por mínimos cuadrados en PCM](../foundational/P73_kmeans/README.md) — El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global.
+- **1986** · [P74 · Inducción de árboles de decisión](../foundational/P74_id3/README.md) — Aprende un modelo que una persona puede leer, eligiendo cada pregunta por cuánta incertidumbre elimina.
+- **1995** · [P75 · Redes de vectores soporte](../foundational/P75_svm/README.md) — Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen.
+- **1995** · [P76 · Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos](../foundational/P76_validacion_cruzada/README.md) — Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre.
+- **1996** · [P77 · Contracción y selección en regresión mediante el lasso](../foundational/P77_lasso/README.md) — Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero.
+- **1997** · [P78 · Una generalización decisional del aprendizaje en línea y su aplicación al boosting](../foundational/P78_adaboost/README.md) — Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace.
+- **2001** · [P79 · Bosques aleatorios](../foundational/P79_random_forest/README.md) — Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo.
+- **2001** · [P80 · Modelización estadística: las dos culturas](../foundational/P80_dos_culturas/README.md) — Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir.
+- **2003** · [P81 · Introducción a la selección de variables y características](../foundational/P81_seleccion_de_caracteristicas/README.md) — Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones.
+- **2005** · [P82 · Predecir buenas probabilidades con aprendizaje supervisado](../foundational/P82_calibracion/README.md) — Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno.
+- **2008** · [P83 · Visualizar datos con t-SNE](../foundational/P83_tsne/README.md) — Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos.
+- **2008** · [P84 · Bosque de aislamiento](../foundational/P84_isolation_forest/README.md) — Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto.
+- **2009** · [P85 · Técnicas de factorización matricial para sistemas de recomendación](../foundational/P85_factorizacion_matricial/README.md) — El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos.
+- **2018** · [P86 · La competición M4: resultados, hallazgos, conclusiones y camino a seguir](../foundational/P86_m4/README.md) — Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo.
+
 ## 📖 Qué resolvió cada uno
+
+### P53 · On Lines and Planes of Closest Fit to Systems of Points in Space (1901)
+
+- **Autoría:** Karl Pearson
+- **Problema anterior:** Los mínimos cuadrados miden el error en vertical, y por tanto tratan una variable como causa y la otra como efecto. Cuando ninguna de las dos lo es, hay dos rectas distintas y ningún criterio para elegir.
+- **Propuesta:** Buscar la recta —o el plano— que minimiza la distancia perpendicular a los puntos. Esa dirección es simétrica en todas las variables y da los ejes principales.
+- **Hito:** La primera respuesta al problema de resumir una nube de puntos con menos dimensiones sin privilegiar ninguna variable.
+- **Conceptos:** componentes principales, reducción de dimensionalidad, geometría, varianza, mínimos cuadrados ortogonales
+- **Clases del programa:** [005](../../classes/part-00-foundations-history-and-scientific-method/005-vectores-matrices-y-geometria-para-ia/README.md), [043](../../classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad/README.md)
+- **Fuentes primarias:** [DOI (Philosophical Magazine)](https://doi.org/10.1080/14786440109462720)
+
+### P54 · A Logical Calculus of the Ideas Immanent in Nervous Activity (1943)
+
+- **Autoría:** Warren S. McCulloch, Walter Pitts
+- **Problema anterior:** La actividad nerviosa se describía en términos fisiológicos. No existía un modelo formal que permitiera preguntarse qué puede y qué no puede computar un cerebro.
+- **Propuesta:** Modelar la neurona como una unidad de umbral con entradas excitatorias e inhibitorias, y demostrar que las redes de esas unidades realizan proposiciones lógicas.
+- **Hito:** Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación.
+- **Conceptos:** neurona de umbral, lógica proposicional, computabilidad, inhibición, conexionismo
+- **Clases del programa:** [001](../../classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es/README.md), [007](../../classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional/README.md)
+- **Fuentes primarias:** [DOI (Bulletin of Mathematical Biophysics)](https://doi.org/10.1007/BF02478259)
+
+### P55 · A Mathematical Theory of Communication (1948)
+
+- **Autoría:** Claude E. Shannon
+- **Problema anterior:** Se sabía transmitir señales, pero no había forma de medir cuánta información llevaban ni de saber cuánto se podía comprimir o transmitir sin error.
+- **Propuesta:** Separar la información del significado y medirla por la sorpresa de cada símbolo. De ahí salen la entropía como cota inferior de compresión y la capacidad como cota de canal.
+- **Hito:** Define la información como reducción de incertidumbre y le pone unidad, cota y límite: el bit, la entropía y la capacidad del canal.
+- **Conceptos:** entropía, bit, compresión, capacidad de canal, redundancia
+- **Clases del programa:** [006](../../classes/part-00-foundations-history-and-scientific-method/006-probabilidad-incertidumbre-y-estadistica-basica/README.md)
+- **Fuentes primarias:** [DOI (Bell System Technical Journal)](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
+
+### P56 · Computing Machinery and Intelligence (1950)
+
+- **Autoría:** Alan M. Turing
+- **Problema anterior:** «¿Pueden pensar las máquinas?» exige definir «máquina» y «pensar». Ninguna de las dos definiciones estaba disponible, y discutirlas no llevaba a ningún experimento.
+- **Propuesta:** Sustituir la pregunta por el juego de imitación: si un interrogador no distingue las respuestas de una máquina de las de una persona, la pregunta original pierde interés.
+- **Hito:** Cambia una pregunta metafísica —¿pueden pensar las máquinas?— por un procedimiento que se puede ejecutar y discutir.
+- **Conceptos:** juego de imitación, test de Turing, objeciones, aprendizaje de máquina, máquina niño
+- **Clases del programa:** [001](../../classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es/README.md), [002](../../classes/part-00-foundations-history-and-scientific-method/002-de-turing-a-dartmouth-nacimiento-formal-del-campo/README.md)
+- **Fuentes primarias:** [DOI (Mind)](https://doi.org/10.1093/mind/LIX.236.433)
+
+### P57 · A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence (1955)
+
+- **Autoría:** John McCarthy, Marvin L. Minsky, Nathaniel Rochester, Claude E. Shannon
+- **Problema anterior:** Los trabajos sobre autómatas, redes nerviosas, teoría de la información y resolución de problemas avanzaban por separado y sin un nombre común ni una agenda compartida.
+- **Propuesta:** Reunir a diez investigadores durante dos meses sobre la conjetura de que todo aspecto del aprendizaje puede describirse con precisión suficiente para simularlo.
+- **Hito:** Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación.
+- **Conceptos:** inteligencia artificial, agenda de investigación, automejora, abstracción, historia del campo
+- **Clases del programa:** [002](../../classes/part-00-foundations-history-and-scientific-method/002-de-turing-a-dartmouth-nacimiento-formal-del-campo/README.md), [003](../../classes/part-00-foundations-history-and-scientific-method/003-inviernos-resurgimientos-y-ciclos-de-expectativas/README.md)
+- **Fuentes primarias:** [Texto original (archivo de John McCarthy, Stanford)](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf) · [DOI de la reimpresión en AI Magazine (2006)](https://doi.org/10.1609/aimag.v27i4.1904)
 
 ### P01 · The Perceptron: A Probabilistic Model for Information Storage and Organization in the Brain (1958)
 
@@ -170,6 +303,96 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Clases del programa:** [039](../../classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales/README.md), [049](../../classes/part-04-neural-networks-and-deep-learning/049-perceptron-y-limites-de-separabilidad/README.md)
 - **Fuentes primarias:** [DOI (Psychological Review)](https://doi.org/10.1037/h0042519)
 
+### P64 · Report on a General Problem-Solving Program (1959)
+
+- **Autoría:** Allen Newell, J. C. Shaw, Herbert A. Simon
+- **Problema anterior:** Cada programa de los años cincuenta resolvía un problema y solo uno. No existía un método general que pudiera aplicarse a dominios distintos sin reescribirlo entero.
+- **Propuesta:** Representar el problema como diferencias entre el estado actual y la meta, y asociar cada tipo de diferencia con los operadores que la reducen. Si el operador no es aplicable, se crea un subobjetivo para hacerlo aplicable.
+- **Hito:** Separa por primera vez el método de resolución del dominio concreto: el análisis medios-fines elige el operador por la diferencia que reduce.
+- **Conceptos:** análisis medios-fines, subobjetivos, espacio de estados, generalidad, resolución de problemas
+- **Clases del programa:** [013](../../classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas/README.md)
+- **Fuentes primarias:** [Registro archivístico (Carnegie Mellon University Archives)](https://findingaids.library.cmu.edu/repositories/2/archival_objects/22561) · [Actas del IFIP Congress 1959 (DBLP)](https://dblp.org/db/conf/ifip/ifip1959.html)
+
+### P65 · A Machine Program for Theorem-Proving (1962)
+
+- **Autoría:** Martin Davis, George Logemann, Donald Loveland
+- **Problema anterior:** El procedimiento de Davis y Putnam (1960) era correcto pero consumía memoria de forma impracticable al eliminar variables por resolución.
+- **Propuesta:** Sustituir la eliminación por una búsqueda en profundidad con retroceso, apoyada en dos reglas que no requieren elegir: propagación de cláusulas unitarias y literales puros.
+- **Hito:** El algoritmo que sigue siendo el esqueleto de todo solucionador SAT moderno: propagar primero, ramificar solo cuando no queda deducción por hacer.
+- **Conceptos:** SAT, propagación unitaria, literal puro, retroceso, forma normal conjuntiva
+- **Clases del programa:** [019](../../classes/part-01-symbolic-ai-search-logic-and-planning/019-logica-proposicional-e-inferencia/README.md)
+- **Fuentes primarias:** [doi:10.1145/368273.368557](https://doi.org/10.1145/368273.368557)
+
+### P66 · A Machine-Oriented Logic Based on the Resolution Principle (1965)
+
+- **Autoría:** J. A. Robinson
+- **Problema anterior:** Los cálculos lógicos existentes tenían muchas reglas pensadas para el razonamiento humano. Aplicarlas a máquina generaba una explosión de caminos sin criterio.
+- **Propuesta:** Una única regla —la resolución— sobre cláusulas, junto con el algoritmo de unificación que calcula el unificador más general: la sustitución mínima que iguala dos términos sin comprometer nada de más.
+- **Hito:** Reduce toda la inferencia de primer orden a una sola regla, y hace la unificación computable con el unificador más general.
+- **Conceptos:** resolución, unificación, unificador más general, refutación, cláusulas
+- **Clases del programa:** [020](../../classes/part-01-symbolic-ai-search-logic-and-planning/020-logica-de-primer-orden-y-unificacion/README.md)
+- **Fuentes primarias:** [doi:10.1145/321250.321253](https://doi.org/10.1145/321250.321253)
+
+### P67 · A Formal Basis for the Heuristic Determination of Minimum Cost Paths (1968)
+
+- **Autoría:** Peter E. Hart, Nils J. Nilsson, Bertram Raphael
+- **Problema anterior:** La búsqueda guiada por heurística era rápida pero no garantizaba nada. La búsqueda exhaustiva garantizaba optimalidad y no escalaba. No había teoría que uniera las dos.
+- **Propuesta:** Evaluar cada nodo por `f(n) = g(n) + h(n)` —coste acumulado más estimación restante— y demostrar que si `h` es admisible (nunca sobrestima), el algoritmo devuelve el camino de coste mínimo, y que es óptimamente eficiente entre los que usan la misma información.
+- **Hito:** Convierte la heurística de recurso práctico en garantía demostrable: si nunca sobrestima, el camino encontrado es óptimo.
+- **Conceptos:** A*, admisibilidad, optimalidad, heurística, caminos de coste mínimo
+- **Clases del programa:** [015](../../classes/part-01-symbolic-ai-search-logic-and-planning/015-costo-uniforme-busqueda-voraz-y-a/README.md)
+- **Fuentes primarias:** [doi:10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136)
+
+### P68 · STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving (1971)
+
+- **Autoría:** Richard E. Fikes, Nils J. Nilsson
+- **Problema anterior:** Describir en lógica qué cambia y qué no al ejecutar una acción exigía escribir un axioma por cada literal que permanece igual. Es el problema del marco, y hacía inviable planificar con un demostrador de teoremas.
+- **Propuesta:** Describir cada operador con tres listas —precondiciones, literales que añade y literales que borra— y adoptar el supuesto de que todo lo no mencionado persiste.
+- **Hito:** Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco.
+- **Conceptos:** planificación, problema del marco, operadores, mundo de bloques, anomalía de Sussman
+- **Clases del programa:** [023](../../classes/part-01-symbolic-ai-search-logic-and-planning/023-planificacion-clasica-con-strips-y-pddl/README.md)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5)
+
+### P69 · A Model of Inexact Reasoning in Medicine (1975)
+
+- **Autoría:** Edward H. Shortliffe, Bruce G. Buchanan
+- **Problema anterior:** El conocimiento médico está lleno de indicios que no son ni ciertos ni falsos. Aplicar probabilidad bayesiana exigía distribuciones conjuntas que nadie podía estimar ni declarar.
+- **Propuesta:** Los factores de certeza: un número en [−1, 1] por regla, con un álgebra de combinación que satura y admite evidencia en contra, más una traza que hace explicable cada conclusión.
+- **Hito:** El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen.
+- **Conceptos:** sistemas expertos, factores de certeza, encadenamiento, explicabilidad, motor de reglas
+- **Clases del programa:** [022](../../classes/part-01-symbolic-ai-search-logic-and-planning/022-sistemas-expertos-y-motores-de-reglas/README.md)
+- **Fuentes primarias:** [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564(75)90047-4)
+
+### P58 · Computer Science as Empirical Inquiry: Symbols and Search (1976)
+
+- **Autoría:** Allen Newell, Herbert A. Simon
+- **Problema anterior:** Había programas que jugaban, demostraban teoremas y resolvían problemas, pero no una tesis explícita sobre qué tenían en común ni sobre qué se estaba afirmando del pensamiento.
+- **Propuesta:** Dos hipótesis empíricas y falsables: un sistema de símbolos físicos basta para la acción inteligente general, y la resolución de problemas procede por búsqueda heurística en un espacio de estados.
+- **Hito:** Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística.
+- **Conceptos:** sistema de símbolos físicos, búsqueda heurística, espacio de estados, explosión combinatoria, IA simbólica
+- **Clases del programa:** [007](../../classes/part-00-foundations-history-and-scientific-method/007-logica-algoritmos-y-complejidad-computacional/README.md), [013](../../classes/part-01-symbolic-ai-search-logic-and-planning/013-espacios-de-estados-y-formulacion-de-problemas/README.md)
+- **Fuentes primarias:** [DOI (Communications of the ACM)](https://doi.org/10.1145/360018.360022)
+
+### P70 · Consistency in Networks of Relations (1977)
+
+- **Autoría:** Alan K. Mackworth
+- **Problema anterior:** El retroceso cronológico repetía una y otra vez el mismo descubrimiento: que cierto valor era incompatible con sus vecinos. La información se hallaba y se tiraba en cada rama.
+- **Propuesta:** Hacer la red consistente de arco antes de asignar nada: eliminar de cada dominio los valores sin compañero legal en algún vecino, y repropagar en cascada. Los algoritmos AC-1, AC-2 y AC-3 formalizan el procedimiento.
+- **Hito:** Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca.
+- **Conceptos:** CSP, consistencia de arco, AC-3, propagación, retroceso
+- **Clases del programa:** [018](../../classes/part-01-symbolic-ai-search-logic-and-planning/018-problemas-de-satisfaccion-de-restricciones/README.md)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8)
+
+### P73 · Least Squares Quantization in PCM (1982)
+
+- **Autoría:** Stuart P. Lloyd
+- **Problema anterior:** Resumir un conjunto de puntos con k representantes exige elegirlos minimizando el error cuadrático. El problema es combinatorio y su solución exacta, inabordable.
+- **Propuesta:** Alternar dos pasos que cada uno reduce el error: asignar cada punto a su representante más cercano, y recolocar cada representante en el centro de los puntos que le tocaron.
+- **Hito:** El algoritmo de agrupamiento más usado del mundo, con la demostración de que converge —y de que converge a un óptimo local, no al global.
+- **Conceptos:** k-medias, cuantización, inercia, óptimo local, agrupamiento
+- **Clases del programa:** [043](../../classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad/README.md)
+- **Fuentes primarias:** [doi:10.1109/TIT.1982.1056489](https://doi.org/10.1109/TIT.1982.1056489)
+
 ### P02 · Learning representations by back-propagating errors (1986)
 
 - **Autoría:** David E. Rumelhart, Geoffrey E. Hinton, Ronald J. Williams
@@ -180,6 +403,66 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Clases del programa:** [050](../../classes/part-04-neural-networks-and-deep-learning/050-mlp-y-backpropagation/README.md), [051](../../classes/part-04-neural-networks-and-deep-learning/051-activaciones-inicializacion-y-normalizacion/README.md)
 - **Fuentes primarias:** [DOI (Nature)](https://doi.org/10.1038/323533a0)
 
+### P74 · Induction of Decision Trees (1986)
+
+- **Autoría:** J. Ross Quinlan
+- **Problema anterior:** Los clasificadores de la época eran cajas de números. En dominios donde alguien tiene que justificar la decisión, un modelo que no se puede leer no se puede usar.
+- **Propuesta:** Construir el árbol de arriba abajo eligiendo en cada nodo el atributo con mayor ganancia de información, y documentar el sesgo del criterio hacia los atributos con muchos valores.
+- **Hito:** Aprende un modelo que una persona puede leer, eligiendo cada pregunta por cuánta incertidumbre elimina.
+- **Conceptos:** árbol de decisión, ganancia de información, entropía, razón de ganancia, interpretabilidad
+- **Clases del programa:** [040](../../classes/part-03-classical-machine-learning/040-arboles-de-decision-y-reglas-interpretables/README.md)
+- **Fuentes primarias:** [doi:10.1007/BF00116251](https://doi.org/10.1007/BF00116251)
+
+### P71 · A Translation Approach to Portable Ontology Specifications (1993)
+
+- **Autoría:** Thomas R. Gruber
+- **Problema anterior:** Dos sistemas podían usar el mismo término y significar cosas distintas. Sin un acuerdo explícito sobre qué designa cada símbolo, compartir conocimiento entre sistemas era imposible.
+- **Propuesta:** Tratar la ontología como un compromiso: no una descripción del mundo, sino un acuerdo sobre qué se dirá de él. Y cinco criterios de diseño —claridad, coherencia, extensibilidad, sesgo de codificación mínimo y compromiso ontológico mínimo—.
+- **Hito:** Da la definición que se sigue citando —una ontología es una especificación explícita de una conceptualización— y cinco criterios para juzgarla.
+- **Conceptos:** ontología, conceptualización, compromiso ontológico, subsunción, interoperabilidad
+- **Clases del programa:** [021](../../classes/part-01-symbolic-ai-search-logic-and-planning/021-representacion-del-conocimiento-y-ontologias/README.md)
+- **Fuentes primarias:** [doi:10.1006/knac.1993.1008](https://doi.org/10.1006/knac.1993.1008)
+
+### P59 · Intelligent Agents: Theory and Practice (1995)
+
+- **Autoría:** Michael Wooldridge, Nicholas R. Jennings
+- **Problema anterior:** «Agente» se usaba para cosas incompatibles entre sí. Sin una definición operativa no se podía comparar arquitecturas ni evaluar si una era mejor que otra.
+- **Propuesta:** Un agente es un sistema situado en un entorno, autónomo, reactivo, proactivo y social. Su racionalidad se juzga siempre respecto de una medida de desempeño y de un entorno.
+- **Hito:** Fija qué es un agente y qué propiedades lo definen, y separa la teoría de las arquitecturas y de los lenguajes que la implementan.
+- **Conceptos:** agente, autonomía, reactividad, medida de desempeño, arquitecturas de agentes
+- **Clases del programa:** [004](../../classes/part-00-foundations-history-and-scientific-method/004-agentes-racionales-entornos-y-medidas-de-desempeno/README.md)
+- **Fuentes primarias:** [DOI (The Knowledge Engineering Review)](https://doi.org/10.1017/S0269888900008122)
+
+### P75 · Support-Vector Networks (1995)
+
+- **Autoría:** Corinna Cortes, Vladimir Vapnik
+- **Problema anterior:** Cuando varios clasificadores separan perfectamente los datos de entrenamiento, la exactitud no distingue entre ellos, y sin embargo generalizan de forma muy distinta.
+- **Propuesta:** Elegir el hiperplano de margen máximo —el que más lejos queda de los puntos de ambas clases— y extender la idea a fronteras no lineales con el truco del núcleo y a datos no separables con el margen blando.
+- **Hito:** Convierte la elección entre clasificadores que aciertan igual en un criterio con justificación teórica: el margen.
+- **Conceptos:** margen máximo, vectores soporte, núcleo, riesgo estructural, margen blando
+- **Clases del programa:** [039](../../classes/part-03-classical-machine-learning/039-clasificacion-logistica-y-umbrales/README.md)
+- **Fuentes primarias:** [doi:10.1007/BF00994018](https://doi.org/10.1007/BF00994018)
+
+### P76 · A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection (1995)
+
+- **Autoría:** Ron Kohavi
+- **Problema anterior:** Se reportaban exactitudes sin decir cómo se habían estimado. Holdout, validación cruzada y bootstrap dan números distintos sobre los mismos datos, y nadie había medido cuál era preferible ni por qué.
+- **Propuesta:** Comparar empíricamente los estimadores en sesgo y varianza sobre conjuntos reales, y recomendar validación cruzada estratificada de diez pliegues como compromiso entre ambos.
+- **Hito:** Fija la práctica estándar de evaluación —diez pliegues estratificados— con evidencia empírica en lugar de costumbre.
+- **Conceptos:** validación cruzada, bootstrap, sesgo y varianza, estratificación, selección de modelo
+- **Clases del programa:** [037](../../classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test/README.md)
+- **Fuentes primarias:** [Actas IJCAI'95 (PDF)](https://www.ijcai.org/Proceedings/95-2/Papers/016.pdf)
+
+### P77 · Regression Shrinkage and Selection via the Lasso (1996)
+
+- **Autoría:** Robert Tibshirani
+- **Problema anterior:** La regresión por mínimos cuadrados con muchas variables sobreajusta y produce modelos imposibles de interpretar. La selección por subconjuntos es inestable y la penalización de cresta encoge todos los coeficientes pero no elimina ninguno.
+- **Propuesta:** Penalizar la suma de los valores absolutos de los coeficientes. La geometría de esa restricción tiene esquinas sobre los ejes, y el óptimo tiende a caer en ellas: los coeficientes irrelevantes quedan exactamente en cero.
+- **Hito:** Una penalización que estima y selecciona a la vez: pone coeficientes exactamente en cero.
+- **Conceptos:** lasso, L1, regularización, esparsidad, selección de variables
+- **Clases del programa:** [038](../../classes/part-03-classical-machine-learning/038-regresion-lineal-regularizacion-y-diagnostico/README.md)
+- **Fuentes primarias:** [doi:10.1111/j.2517-6161.1996.tb02080.x](https://doi.org/10.1111/j.2517-6161.1996.tb02080.x)
+
 ### P03 · Long Short-Term Memory (1997)
 
 - **Autoría:** Sepp Hochreiter, Jürgen Schmidhuber
@@ -189,6 +472,96 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Conceptos:** LSTM, gradiente desvaneciente, puertas, estado de celda, dependencias largas
 - **Clases del programa:** [028](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/028-modelos-ocultos-de-markov/README.md), [054](../../classes/part-04-neural-networks-and-deep-learning/054-rnn-lstm-y-secuencias/README.md)
 - **Fuentes primarias:** [DOI (Neural Computation)](https://doi.org/10.1162/neco.1997.9.8.1735)
+
+### P78 · A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting (1997)
+
+- **Autoría:** Yoav Freund, Robert E. Schapire
+- **Problema anterior:** Kearns y Valiant habían preguntado si un aprendiz «débil» —apenas mejor que el azar— puede convertirse en uno «fuerte». La respuesta afirmativa existía pero era impracticable: exigía conocer de antemano la ventaja del aprendiz débil.
+- **Propuesta:** AdaBoost: entrenar clasificadores en serie, subiendo el peso de los ejemplos que el anterior falló, y ponderar el voto de cada uno por su error. Se adapta solo a la calidad de cada aprendiz, sin conocerla de antemano.
+- **Hito:** Demuestra que muchos clasificadores apenas mejores que el azar se combinan en uno arbitrariamente bueno, y da el algoritmo que lo hace.
+- **Conceptos:** boosting, aprendiz débil, reponderación, conjunto, error exponencial
+- **Clases del programa:** [041](../../classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles/README.md)
+- **Fuentes primarias:** [doi:10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504)
+
+### P79 · Random Forests (2001)
+
+- **Autoría:** Leo Breiman
+- **Problema anterior:** El bagging reducía la varianza promediando árboles entrenados sobre remuestreos, pero los árboles seguían pareciéndose demasiado: ante los mismos datos elegían casi siempre las mismas variables.
+- **Propuesta:** Añadir una segunda fuente de azar: en cada nodo, considerar solo un subconjunto aleatorio de variables. Los árboles empeoran individualmente y se descorrelacionan, y la cota del error del bosque mejora.
+- **Hito:** Demuestra que el error de un conjunto depende de la fuerza de sus miembros Y de su correlación, y que empeorarlos a propósito puede mejorarlo.
+- **Conceptos:** bagging, subespacio aleatorio, correlación, out-of-bag, importancia de variables
+- **Clases del programa:** [041](../../classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles/README.md)
+- **Fuentes primarias:** [doi:10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324)
+
+### P80 · Statistical Modeling: The Two Cultures (2001)
+
+- **Autoría:** Leo Breiman
+- **Problema anterior:** La estadística académica suponía que los datos venían de un modelo con forma conocida y juzgaba los métodos por el ajuste a ese supuesto. Si el supuesto es falso —y casi siempre lo es— las conclusiones sobre el mecanismo no valen nada.
+- **Propuesta:** Distinguir dos culturas y sus criterios: la del modelo de datos, que valida supuestos, y la algorítmica, que trata el mecanismo como desconocido y se juzga por exactitud predictiva medida fuera de muestra.
+- **Hito:** Nombra la división que organiza el campo: suponer un mecanismo generador frente a medir la capacidad de predecir.
+- **Conceptos:** modelo de datos, cultura algorítmica, efecto Rashomon, exactitud predictiva, interpretabilidad
+- **Clases del programa:** [037](../../classes/part-03-classical-machine-learning/037-flujo-supervisado-y-particion-train-validation-test/README.md), [047](../../classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error/README.md)
+- **Fuentes primarias:** [doi:10.1214/ss/1009213726](https://doi.org/10.1214/ss/1009213726)
+
+### P81 · An Introduction to Variable and Feature Selection (2003)
+
+- **Autoría:** Isabelle Guyon, André Elisseeff
+- **Problema anterior:** Con miles de variables y pocas muestras hay que reducir. El método habitual —ordenar las variables por su correlación con la etiqueta y quedarse con las primeras— tiene modos de fallo que casi nadie enunciaba.
+- **Propuesta:** Un marco con tres familias —filtros, envolturas y métodos embebidos— y dos advertencias con contraejemplo: una variable inútil por separado puede ser imprescindible en compañía, y dos variables redundantes pueden ser mejores juntas que cualquiera sola.
+- **Hito:** Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones.
+- **Conceptos:** selección de variables, filtros, envolturas, redundancia, complementariedad
+- **Clases del programa:** [042](../../classes/part-03-classical-machine-learning/042-ingenieria-y-seleccion-de-caracteristicas/README.md)
+- **Fuentes primarias:** [JMLR 3:1157–1182](https://www.jmlr.org/papers/v3/guyon03a.html)
+
+### P60 · Why Most Published Research Findings Are False (2005)
+
+- **Autoría:** John P. A. Ioannidis
+- **Problema anterior:** La significancia estadística se leía como sinónimo de verdad. Nadie ponía número a la pregunta que de verdad importa: dado que se publicó, ¿qué probabilidad hay de que sea cierto?
+- **Propuesta:** Modelar el valor predictivo positivo en función de las odds previas, el poder estadístico, el nivel de significancia, el sesgo y el número de equipos que compiten.
+- **Hito:** Muestra con un modelo explícito que la probabilidad de que un hallazgo publicado sea cierto depende del diseño y de los incentivos, no del valor p.
+- **Conceptos:** valor predictivo positivo, poder estadístico, sesgo, reproducibilidad, valor p
+- **Clases del programa:** [008](../../classes/part-00-foundations-history-and-scientific-method/008-datos-evidencia-hipotesis-y-falsabilidad/README.md)
+- **Fuentes primarias:** [DOI (PLoS Medicine)](https://doi.org/10.1371/journal.pmed.0020124)
+
+### P82 · Predicting Good Probabilities with Supervised Learning (2005)
+
+- **Autoría:** Alexandru Niculescu-Mizil, Rich Caruana
+- **Problema anterior:** Las salidas de un clasificador se usan como probabilidades para decidir con umbrales de coste o para combinarlas con otras. Pero un modelo puede tener un AUC excelente y probabilidades sistemáticamente sesgadas, y nadie lo estaba midiendo.
+- **Propuesta:** Medir la calibración con diagramas de fiabilidad y puntuaciones propias, caracterizar cómo se descalibra cada familia de modelos, y corregirla con escalado de Platt o regresión isotónica sin alterar el orden.
+- **Hito:** Separa dos cosas que se confundían: ordenar bien los ejemplos y estimar bien la probabilidad de cada uno.
+- **Conceptos:** calibración, diagrama de fiabilidad, Brier, escalado de Platt, regresión isotónica
+- **Clases del programa:** [047](../../classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error/README.md)
+- **Fuentes primarias:** [doi:10.1145/1102351.1102430](https://doi.org/10.1145/1102351.1102430)
+
+### P83 · Visualizing Data using t-SNE (2008)
+
+- **Autoría:** Laurens van der Maaten, Geoffrey Hinton
+- **Problema anterior:** Al proyectar de muchas dimensiones a dos, los puntos moderadamente distantes se apiñan en el centro: en dimensión alta hay mucho más «sitio lejos» que cerca, y una gaussiana en el mapa no puede acomodarlo. Es el problema del apiñamiento.
+- **Propuesta:** Convertir distancias en probabilidades de vecindad, y usar en el mapa una distribución t de Student de un grado de libertad. Su cola pesada deja sitio a los puntos lejanos sin comprimir los cercanos.
+- **Hito:** Hace visibles las estructuras locales de datos de alta dimensión, y con ello se convierte en la figura por defecto de media década de artículos.
+- **Conceptos:** t-SNE, visualización, apiñamiento, vecindad, divergencia KL
+- **Clases del programa:** [043](../../classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad/README.md)
+- **Fuentes primarias:** [JMLR 9:2579–2605](https://www.jmlr.org/papers/v9/vandermaaten08a.html)
+
+### P84 · Isolation Forest (2008)
+
+- **Autoría:** Fei Tony Liu, Kai Ming Ting, Zhi-Hua Zhou
+- **Problema anterior:** Los métodos de detección de anomalías construían un modelo de la normalidad y medían la distancia a él. Eso cuesta caro, supone una forma para la distribución normal y dedica casi todo el esfuerzo a los puntos que no interesan.
+- **Propuesta:** Cortar el espacio al azar y contar cuántos cortes hacen falta para dejar cada punto solo. Lo raro vive en zonas poco pobladas y se aísla antes; la longitud media del camino, normalizada, es la puntuación de anomalía.
+- **Hito:** Invierte el planteamiento de la detección de anomalías: en vez de modelar lo normal, mide lo fácil que es aislar cada punto.
+- **Conceptos:** detección de anomalías, aislamiento, longitud de camino, submuestreo, no supervisado
+- **Clases del programa:** [044](../../classes/part-03-classical-machine-learning/044-deteccion-de-anomalias/README.md)
+- **Fuentes primarias:** [doi:10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17)
+
+### P85 · Matrix Factorization Techniques for Recommender Systems (2009)
+
+- **Autoría:** Yehuda Koren, Robert Bell, Chris Volinsky
+- **Problema anterior:** Recomendar exige predecir puntuaciones en una matriz usuario×artículo donde falta el 99 % de las celdas. Los métodos por vecindad escalaban mal y no capturaban estructura latente.
+- **Propuesta:** Aprender un vector de factores latentes por usuario y por artículo, ajustados solo sobre las celdas observadas por descenso de gradiente, con regularización y con términos de sesgo explícitos para usuario y artículo.
+- **Hito:** El método que ganó el Netflix Prize, explicado con lo que de verdad importa: los sesgos antes que los gustos.
+- **Conceptos:** factores latentes, sesgos, descenso estocástico, regularización, recomendación
+- **Clases del programa:** [046](../../classes/part-03-classical-machine-learning/046-sistemas-de-recomendacion/README.md)
+- **Fuentes primarias:** [doi:10.1109/MC.2009.263](https://doi.org/10.1109/MC.2009.263)
 
 ### P04 · ImageNet Classification with Deep Convolutional Neural Networks (2012)
 
@@ -370,6 +743,16 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Clases del programa:** [065](../../classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md), [066](../../classes/part-05-language-vision-audio-and-multimodal-ai/066-embeddings-semanticos-y-similitud/README.md)
 - **Fuentes primarias:** [ACL Anthology (NAACL 2018)](https://aclanthology.org/N18-1202/)
 
+### P86 · The M4 Competition: Results, findings, conclusion and way forward (2018)
+
+- **Autoría:** Spyros Makridakis, Evangelos Spiliotis, Vassilios Assimakopoulos
+- **Problema anterior:** Cada artículo de predicción reportaba mejoras sobre sus propias series y sus propias líneas base. Sin una evaluación común y a ciegas, el campo no podía saber qué funcionaba de verdad.
+- **Propuesta:** Una competición abierta con 100 000 series reales de dominios distintos, horizontes fijos, métricas declaradas de antemano y evaluación fuera de muestra sobre datos que los participantes no ven.
+- **Hito:** Cien mil series y sesenta y un métodos para responder empíricamente qué funciona al predecir series temporales — y la respuesta incomoda a todo el mundo.
+- **Conceptos:** series temporales, backtesting, combinación de métodos, líneas base, evaluación fuera de muestra
+- **Clases del programa:** [045](../../classes/part-03-classical-machine-learning/045-series-temporales-y-backtesting/README.md)
+- **Fuentes primarias:** [doi:10.1016/j.ijforecast.2018.06.001](https://doi.org/10.1016/j.ijforecast.2018.06.001)
+
 ### P25 · Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer (2019)
 
 - **Autoría:** Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu
@@ -420,6 +803,16 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Clases del programa:** [053](../../classes/part-04-neural-networks-and-deep-learning/053-cnn-y-aprendizaje-espacial/README.md), [061](../../classes/part-05-language-vision-audio-and-multimodal-ai/061-clasificacion-y-representacion-visual/README.md), [069](../../classes/part-05-language-vision-audio-and-multimodal-ai/069-modelos-vision-lenguaje/README.md)
 - **Fuentes primarias:** [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)
 
+### P72 · Neurosymbolic AI: The 3rd Wave (2020)
+
+- **Autoría:** Artur d'Avila Garcez, Luis C. Lamb
+- **Problema anterior:** Las redes profundas aprenden de datos pero no razonan con reglas ni explican; los sistemas simbólicos razonan y explican pero no aprenden de datos ruidosos. Cada tradición tiene exactamente el punto ciego de la otra.
+- **Propuesta:** Una hoja de ruta para sistemas donde la percepción estima y los símbolos restringen, con requisitos explícitos: representación, aprendizaje, razonamiento y explicación en un mismo sistema.
+- **Hito:** Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos.
+- **Conceptos:** neuro-simbólico, razonamiento, explicabilidad, restricciones, integración de paradigmas
+- **Clases del programa:** [024](../../classes/part-01-symbolic-ai-search-logic-and-planning/024-proyecto-asistente-neuro-simbolico-explicable/README.md)
+- **Fuentes primarias:** [arXiv:2012.05876](https://arxiv.org/abs/2012.05876)
+
 ### P18 · Learning Transferable Visual Models From Natural Language Supervision (2021)
 
 - **Autoría:** Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, y otros (OpenAI)
@@ -459,6 +852,36 @@ P50–P52: cómo se decide que un modelo es aceptable — principios explícitos
 - **Conceptos:** LoRA, rango bajo, adaptación eficiente, PEFT, adaptadores
 - **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md), [077](../../classes/part-06-foundation-models-and-llm-engineering/077-lora-qlora-y-adaptacion-eficiente/README.md)
 - **Fuentes primarias:** [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
+
+### P61 · On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? (2021)
+
+- **Autoría:** Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, Shmargaret Shmitchell
+- **Problema anterior:** El crecimiento de los modelos de lenguaje se justificaba solo por la mejora en benchmarks. Los costes ambientales, la composición del corpus y las afirmaciones sobre comprensión no se auditaban.
+- **Propuesta:** Un análisis de riesgos previo al entrenamiento: documentar el corpus, contabilizar el coste, y no confundir fluidez estadística con acceso al significado.
+- **Hito:** Pone por escrito el coste de la carrera por el tamaño: quién paga, quién queda representado y qué se afirma de más sobre la comprensión.
+- **Conceptos:** corpus, sesgo de representación, coste ambiental, documentación de datos, significado
+- **Clases del programa:** [011](../../classes/part-00-foundations-history-and-scientific-method/011-etica-desde-el-diseno-y-limites-de-automatizacion/README.md)
+- **Fuentes primarias:** [DOI (ACM FAccT 2021)](https://doi.org/10.1145/3442188.3445922)
+
+### P62 · AI and the Everything in the Whole Wide World Benchmark (2021)
+
+- **Autoría:** Inioluwa Deborah Raji, Emily M. Bender, Amandalynne Paullada, Emily Denton, Alex Hanna
+- **Problema anterior:** Los benchmarks se presentaban como pruebas de capacidades generales —«comprensión», «razonamiento»— cuando sus ítems cubren una porción estrecha y a menudo admiten atajos.
+- **Propuesta:** Evaluar los benchmarks como instrumentos de medida: preguntar qué constructo dicen medir, qué cubren realmente sus ítems y qué estrategias los superan sin la capacidad.
+- **Hito:** Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir.
+- **Conceptos:** validez de constructo, benchmark, atajos, generalidad, evaluación
+- **Clases del programa:** [010](../../classes/part-00-foundations-history-and-scientific-method/010-como-leer-papers-benchmarks-y-claims-de-ia/README.md)
+- **Fuentes primarias:** [arXiv:2111.15366](https://arxiv.org/abs/2111.15366)
+
+### P63 · Improving Reproducibility in Machine Learning Research (A Report from the NeurIPS 2019 Reproducibility Program) (2021)
+
+- **Autoría:** Joelle Pineau, Philippe Vincent-Lamarre, Koustuv Sinha, Vincent Larivière, Alina Beygelzimer, Florence d'Alché-Buc, Emily Fox, Hugo Larochelle
+- **Problema anterior:** Los resultados se comparaban sin declarar semillas, entorno, búsqueda de hiperparámetros ni número de corridas. Muchas mejoras publicadas no sobrevivían a un intento de repetirlas.
+- **Propuesta:** Un checklist obligatorio en el envío, un desafío de reproducibilidad y política de código, con evidencia empírica de su efecto sobre lo que se publica.
+- **Hito:** Convierte la reproducibilidad en un requisito operativo del proceso de publicación, con checklist, código y revisión.
+- **Conceptos:** reproducibilidad, checklist, semillas, varianza, revisión por pares
+- **Clases del programa:** [009](../../classes/part-00-foundations-history-and-scientific-method/009-entornos-python-git-y-experimentos-reproducibles/README.md)
+- **Fuentes primarias:** [JMLR 22(164)](https://jmlr.org/papers/v22/20-303.html) · [arXiv:2003.12206](https://arxiv.org/abs/2003.12206)
 
 ### P12 · Training language models to follow instructions with human feedback (2022)
 

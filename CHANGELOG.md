@@ -19,6 +19,65 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.12.0 — 2026-08-17
+
+### El eje de papers pasa de 52 a 86: fundamentos, IA simbólica y ML clásico
+
+El eje cubría bien la cadena que lleva al Transformer y a los agentes. Todo lo que queda **antes**
+—de dónde sale el campo y con qué método se juzga— y las dos tradiciones que el aprendizaje
+profundo dejó atrás estaban sin una sola fuente primaria. Se cerraban así **97 de las 183 clases
+sin ningún paper asociado**, y tres partes enteras del temario sin ninguno.
+
+Esta versión añade **34 papers (P53–P86)** en tres rutas nuevas y cierra por completo las partes
+00, 01 y 03. Cobertura: de **86 a 116 clases** enlazadas de 183, y de 145 a **185 enlaces**.
+
+| Ruta nueva | Papers | Recorre | Clases que cierra |
+|---|---:|---|---|
+| `ruta_fundamentos` | P53–P63 (11) | Pearson 1901 · McCulloch-Pitts 1943 · Shannon 1948 · Turing 1950 · Dartmouth 1955 · Newell-Simon 1976 · Wooldridge-Jennings 1995 · Ioannidis 2005 · Bender 2021 · Raji 2021 · Pineau 2021 | 001–011 |
+| `ruta_simbolica` | P64–P72 (9) | GPS 1959 · DPLL 1962 · Robinson 1965 · A* 1968 · STRIPS 1971 · MYCIN 1975 · Mackworth 1977 · Gruber 1993 · Garcez-Lamb 2020 | 013, 015, 018–024 |
+| `ruta_clasica` | P73–P86 (14) | Lloyd 1982 · Quinlan 1986 · SVM 1995 · Kohavi 1995 · Lasso 1996 · AdaBoost 1997 · Random Forests 2001 · Two Cultures 2001 · Guyon 2003 · calibración 2005 · t-SNE 2008 · Isolation Forest 2008 · Koren 2009 · M4 2018 | 037–047 |
+
+Cada paper trae el contrato completo del eje: entrada en el catálogo con fuente primaria fechada,
+**ficha de 18 secciones** escrita a mano, **motor determinista** propio y los derivados generados
+—notebook de 17 momentos, evaluación, guía de instructor, guía de estudiante, PDF y página de
+sitio—. Son **34 motores nuevos** (86 en total) y **34 notebooks nuevos** (94 en total).
+
+### Los motores dicen lo que sus números sostienen
+
+Ocho motores se reescribieron durante la revisión porque su evidencia afirmaba algo que su propia
+salida desmentía. Queda constancia de cada caso porque la distinción entre evidencia y narrativa es
+materia evaluable del programa:
+
+- **`arco_consistencia`** comparaba dos búsquedas que expandían los mismos 6 nodos. Ahora usa una
+  red en cadena, donde la propiedad es fuerte y verificable: **233 nodos y 226 retrocesos sin poda
+  frente a 7 nodos y 0 retrocesos** con AC-3.
+- **`strips`** afirmaba que el resultado «depende del orden» de las submetas cuando los dos órdenes
+  daban 1/2. La anomalía de Sussman es que **ningún** orden lineal resuelve, y existe un plan
+  intercalado de 3 pasos que sí: eso es lo que ahora se mide.
+- **`id3`** decía que la razón de ganancia desbanca al identificador de fila. No lo hace. Se añadió
+  un atributo realista de siete valores —donde la corrección **sí** funciona— y se declara que con
+  un identificador dentro no la salva ningún criterio: la solución es no incluirlo.
+- **`random_forest`** afirmaba que descorrelacionar gana, y en los datos ganaba lo contrario. Ahora
+  barre el número de variables por árbol y reporta las dos relaciones que **sí** son monótonas —el
+  acuerdo baja, el árbol individual empeora— y que por eso existe un óptimo que hay que buscar.
+- **`neurosimbolico`**, **`adaboost`**, **`validacion_cruzada`**, **`factorizacion_matricial`**:
+  mismo tipo de corrección, cada uno con su rediseño de datos o de líneas base.
+
+### Corregido
+
+- **La tabla de conteos del eje se escribía antes de generar los notebooks**, así que en cada tanda
+  nueva contaba de menos (marcaba 80 cuando había 94). Ahora se escribe después.
+- **Cuatro enlaces internos rotos** en fichas nuevas por nombres de directorio supuestos
+  (`P19_chinchilla`, `P17_ddpm`, `P42_adversarial_examples`); corregidos a los reales.
+- El pie de navegación de **P52** apuntaba al índice; ahora encadena con P53.
+
+### Verificación
+
+Las **11 fuentes primarias con DOI** del bloque simbólico y las **11** del clásico se comprobaron
+una a una contra la API de Crossref antes de escribirlas. Tanda de CI completa en verde: 39 tests,
+`validate_repository --strict`, `generate_papers --check`, `link_papers_to_classes --check` y
+`compileall`.
+
 ## 0.11.0 — 2026-08-17
 
 ### Documentación y protección de la rama

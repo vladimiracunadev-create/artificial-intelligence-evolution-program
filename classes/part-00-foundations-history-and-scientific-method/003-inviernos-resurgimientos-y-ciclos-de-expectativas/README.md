@@ -223,6 +223,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Gartner Hype Cycle (metodología, para uso crítico)](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle)
 - [McCulloch & Pitts → perceptrón: contexto en Goodfellow et al., *Deep Learning*, cap. 1](https://www.deeplearningbook.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P57 · Propuesta para el proyecto de investigación de verano de Dartmouth sobre inteligencia artificial](../../../papers/foundational/P57_dartmouth/README.md) | 1955 | Bautiza el campo y fija su agenda: siete temas que aún organizan buena parte de la investigación. | [notebook](../../../notebooks/papers/P57_dartmouth.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

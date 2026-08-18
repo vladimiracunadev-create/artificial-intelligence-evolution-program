@@ -213,6 +213,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [CLIPS — motor de reglas de dominio público (documentación oficial)](https://www.clipsrules.net/)
 - [Drools — documentación oficial del motor de reglas (Rete/PHREAK)](https://www.drools.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P69 · Un modelo de razonamiento inexacto en medicina](../../../papers/foundational/P69_mycin/README.md) | 1975 | El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen. | [notebook](../../../notebooks/papers/P69_mycin.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -235,6 +235,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Clay Mathematics Institute. P vs NP (problema del milenio)](https://www.claymath.org/millennium/p-vs-np/)
 - [Nilsson, N. (2010). *The Quest for Artificial Intelligence*, caps. sobre razonamiento lógico (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P54 · Un cálculo lógico de las ideas inmanentes en la actividad nerviosa](../../../papers/foundational/P54_mcculloch_pitts/README.md) | 1943 | Establece que una red de neuronas de umbral puede calcular cualquier función lógica: el puente entre biología y computación. | [notebook](../../../notebooks/papers/P54_mcculloch_pitts.ipynb) |
+| [P58 · La informática como indagación empírica: símbolos y búsqueda](../../../papers/foundational/P58_simbolos_y_busqueda/README.md) | 1976 | Enuncia las dos hipótesis que resumen veinte años de IA simbólica: el sistema de símbolos físicos y la búsqueda heurística. | [notebook](../../../notebooks/papers/P58_simbolos_y_busqueda.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

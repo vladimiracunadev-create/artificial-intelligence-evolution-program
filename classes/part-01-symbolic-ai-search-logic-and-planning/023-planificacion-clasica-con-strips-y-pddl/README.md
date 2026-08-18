@@ -212,6 +212,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Referencia de sintaxis PDDL](https://planning.wiki/ref/pddl)
 - [Fast Downward — planificador de referencia (documentación oficial)](https://www.fast-downward.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P68 · STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas](../../../papers/foundational/P68_strips/README.md) | 1971 | Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco. | [notebook](../../../notebooks/papers/P68_strips.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -227,6 +227,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn User Guide — Feature selection](https://scikit-learn.org/stable/modules/feature_selection.html)
 - [scikit-learn User Guide — Pipelines and composite estimators](https://scikit-learn.org/stable/modules/compose.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P81 · Introducción a la selección de variables y características](../../../papers/foundational/P81_seleccion_de_caracteristicas/README.md) | 2003 | Ordena el problema de elegir variables y demuestra por qué el ranking de una en una falla en las dos direcciones. | [notebook](../../../notebooks/papers/P81_seleccion_de_caracteristicas.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

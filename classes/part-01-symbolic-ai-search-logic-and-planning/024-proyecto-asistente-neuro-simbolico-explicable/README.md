@@ -212,6 +212,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — caps. 7-11 (los componentes simbólicos integrados aquí)](https://aima.cs.berkeley.edu/)
 - [Silver et al. (2016). "Mastering the game of Go with deep neural networks and tree search". *Nature* 529 — ejemplo canónico Symbolic[Neuro]](https://doi.org/10.1038/nature16961)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P72 · IA neuro-simbólica: la tercera ola](../../../papers/foundational/P72_neurosimbolico/README.md) | 2020 | Ordena la agenda de integrar aprendizaje y razonamiento en vez de elegir uno de los dos. | [notebook](../../../notebooks/papers/P72_neurosimbolico.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

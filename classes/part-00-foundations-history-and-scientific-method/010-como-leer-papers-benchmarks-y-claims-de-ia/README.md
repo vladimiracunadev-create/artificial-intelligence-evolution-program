@@ -234,7 +234,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 📜 Dónde practicar esto
 
 Este programa tiene un eje entero para aplicar lo de esta clase sobre papers reales:
-[**52 fichas fundacionales**](../../../papers/README.md), de Rosenblatt (1958) a DeepSeek-R1 (2025),
+[**86 fichas fundacionales**](../../../papers/README.md), de Pearson (1901) a DeepSeek-R1 (2025),
 cada una con su fuente primaria, sus límites y sus errores comunes documentados.
 
 | Recurso | Para qué sirve aquí |
@@ -242,7 +242,7 @@ cada una con su fuente primaria, sus límites y sus errores comunes documentados
 | [Cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) | El método aplicado al vocabulario y las convenciones del campo |
 | [Método de lectura en 5 pasadas](../../../papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) | La extensión del método de Keshav que usa el eje |
 | [Fuentes y venues](../../../papers/guides/FUENTES_Y_VENUES.md) | Dónde buscar y cómo pesar arXiv frente a una conferencia revisada |
-| [Índice de papers](../../../papers/catalog/PAPERS_INDEX.md) | Los 52, por año y por bloque temático |
+| [Índice de papers](../../../papers/catalog/PAPERS_INDEX.md) | Los 86, por año y por bloque temático |
 
 Empieza por una ficha corta —[P01 Perceptrón](../../../papers/foundational/P01_perceptron/README.md)—
 y compara **tu** lectura del artículo original con lo que la ficha declara como fecha de consulta,
@@ -256,6 +256,20 @@ evidencia y límites. Ese contraste es el ejercicio.
 - [Kapoor, S. & Narayanan, A. (2023). Leakage and the Reproducibility Crisis in ML-based Science](https://arxiv.org/abs/2207.07048)
 - [Ioannidis, J. (2005). Why Most Published Research Findings Are False](https://doi.org/10.1371/journal.pmed.0020124)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P62 · La IA y el benchmark del todo en el mundo entero](../../../papers/foundational/P62_benchmark_validez/README.md) | 2021 | Traslada al campo el concepto de validez de constructo: un número alto no prueba la capacidad que el benchmark dice medir. | [notebook](../../../notebooks/papers/P62_benchmark_validez.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior
