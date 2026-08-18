@@ -8743,6 +8743,2766 @@ def _agentops(seed: int) -> dict[str, Any]:
     )
 
 
+def _bpe(seed: int) -> dict[str, Any]:
+    """Sennrich 2016: no hay palabras desconocidas si la unidad es más pequeña que la palabra."""
+    rng = random.Random(seed)
+    raices = ["cas", "libr", "flor", "camin", "cant", "dorm", "com", "beb", "corr", "salt"]
+    sufijos = ["a", "o", "as", "os", "ita", "ito", "ero", "era", "ando", "iendo", "able", "mente"]
+
+    def palabras(n: int, rr: random.Random) -> list[str]:
+        return [rr.choice(raices) + rr.choice(sufijos) for _ in range(n)]
+
+    entrenamiento = palabras(220, random.Random(seed))
+    prueba = palabras(120, random.Random(seed + 991))
+
+    # --- vocabulario de palabras completas -----------------------------------
+    vocab_palabras = sorted(set(entrenamiento))
+    desconocidas = [p for p in prueba if p not in vocab_palabras]
+
+    # --- aprendizaje de fusiones BPE ----------------------------------------
+    corpus: dict[tuple[str, ...], int] = {}
+    for p in entrenamiento:
+        clave = tuple(p) + ("</w>",)
+        corpus[clave] = corpus.get(clave, 0) + 1
+
+    fusiones: list[tuple[str, str]] = []
+    traza: list[dict[str, Any]] = []
+    for paso in range(60):
+        pares: dict[tuple[str, str], int] = {}
+        for simbolos, cuenta in corpus.items():
+            for i in range(len(simbolos) - 1):
+                par = (simbolos[i], simbolos[i + 1])
+                pares[par] = pares.get(par, 0) + cuenta
+        if not pares:
+            break
+        mejor = max(sorted(pares), key=lambda k: pares[k])
+        fusiones.append(mejor)
+        if paso < 6:
+            traza.append({"paso": paso + 1, "fusion": mejor[0] + mejor[1], "frecuencia": pares[mejor]})
+        nuevo: dict[tuple[str, ...], int] = {}
+        for simbolos, cuenta in corpus.items():
+            fundido: list[str] = []
+            i = 0
+            while i < len(simbolos):
+                if i < len(simbolos) - 1 and (simbolos[i], simbolos[i + 1]) == mejor:
+                    fundido.append(simbolos[i] + simbolos[i + 1])
+                    i += 2
+                else:
+                    fundido.append(simbolos[i])
+                    i += 1
+            clave = tuple(fundido)
+            nuevo[clave] = nuevo.get(clave, 0) + cuenta
+        corpus = nuevo
+
+    orden = {par: i for i, par in enumerate(fusiones)}
+
+    def segmentar(palabra: str) -> list[str]:
+        simbolos = list(palabra) + ["</w>"]
+        while len(simbolos) > 1:
+            candidatos = [(orden[(simbolos[i], simbolos[i + 1])], i)
+                          for i in range(len(simbolos) - 1)
+                          if (simbolos[i], simbolos[i + 1]) in orden]
+            if not candidatos:
+                break
+            _, i = min(candidatos)
+            simbolos = simbolos[:i] + [simbolos[i] + simbolos[i + 1]] + simbolos[i + 2:]
+        return simbolos
+
+    # el vocabulario de BPE es el alfabeto mas todo simbolo que una fusion puede
+    # producir: por eso el peor caso es deletrear y nunca hay trozo desconocido
+    alfabeto = set("abcdefghijklmnopqrstuvwxyz") | {"</w>"}
+    vocab_bpe = sorted(alfabeto | {a + b for a, b in fusiones})
+    piezas = [segmentar(p) for p in prueba]
+    fuera_de_vocab = [s for trozos in piezas for s in trozos if s not in vocab_bpe]
+    piezas_por_palabra = sum(len(t) for t in piezas) / len(piezas)
+
+    ejemplos = [{"palabra": p, "trozos": segmentar(p), "estaba_en_entrenamiento": p in vocab_palabras}
+                for p in sorted(set(desconocidas))[:4]]
+
+    return _contract(
+        "bpe", seed,
+        {
+            "palabras_de_entrenamiento": len(entrenamiento),
+            "palabras_de_prueba": len(prueba),
+            "vocabulario_de_palabras": len(vocab_palabras),
+            "desconocidas_con_vocabulario_de_palabras": len(desconocidas),
+            "tasa_de_desconocidas": _round(len(desconocidas) / len(prueba), 3),
+            "fusiones_aprendidas": len(fusiones),
+            "primeras_fusiones": traza,
+            "vocabulario_bpe": len(vocab_bpe),
+            "trozos_fuera_de_vocabulario": len(fuera_de_vocab),
+            "piezas_por_palabra": _round(piezas_por_palabra, 2),
+            "ejemplos_de_palabras_nuevas": ejemplos,
+        },
+        [
+            f"Con vocabulario de palabras completas, {len(desconocidas)} de {len(prueba)} palabras de "
+            f"prueba son desconocidas ({_round(100 * len(desconocidas) / len(prueba), 1)} %). Todas ellas "
+            "están formadas por raíces y sufijos que el modelo SÍ vio: lo que falta es la combinación, no "
+            "las partes.",
+            f"Con {len(fusiones)} fusiones BPE, el vocabulario es de {len(vocab_bpe)} unidades —menos que "
+            f"las {len(vocab_palabras)} palabras— y los trozos fuera de vocabulario son "
+            f"{len(fuera_de_vocab)}. La cobertura es total porque el peor caso es deletrear letra a "
+            "letra.",
+            f"El precio es la longitud: cada palabra ocupa {_round(piezas_por_palabra, 2)} piezas en vez "
+            "de 1. Un vocabulario más pequeño se paga en secuencias más largas, y esa es la única "
+            "perilla del método.",
+            "Las primeras fusiones son las parejas de letras más frecuentes del corpus; las últimas ya "
+            "son morfemas completos. Nadie le dijo al algoritmo qué es un sufijo: la frecuencia lo "
+            "descubre.",
+        ],
+        [
+            "El corpus es sintético y morfológicamente regular, así que BPE encuentra los morfemas "
+            "limpiamente. En texto real las fusiones frecuentes cruzan fronteras de morfema y los trozos "
+            "no son interpretables.",
+            "Se mide cobertura y longitud, no calidad de traducción. El artículo original demuestra su "
+            "tesis con BLEU sobre traducción automática, que aquí no hay.",
+            "La segmentación voraz por orden de fusión no es la de mínima longitud. SentencePiece con "
+            "modelo unigrama plantea la segmentación como inferencia, y da resultados distintos.",
+        ],
+    )
+
+
+def _wavenet(seed: int) -> dict[str, Any]:
+    """van den Oord 2016: dilatar la convolución hace crecer el contexto de forma exponencial."""
+
+    def campo_receptivo(capas: int, k: int, dilatado: bool) -> int:
+        campo = 1
+        for i in range(capas):
+            d = (2 ** i) if dilatado else 1
+            campo += (k - 1) * d
+        return campo
+
+    k = 2
+    tabla = []
+    for capas in (1, 2, 4, 8, 10, 12):
+        tabla.append({
+            "capas": capas,
+            "campo_sin_dilatar": campo_receptivo(capas, k, False),
+            "campo_dilatado": campo_receptivo(capas, k, True),
+        })
+
+    objetivo = 16000  # un segundo a 16 kHz
+    capas_dilatadas = next(c for c in range(1, 200) if campo_receptivo(c, k, True) >= objetivo)
+    capas_planas = next(c for c in range(1, 100000) if campo_receptivo(c, k, False) >= objetivo)
+
+    # causalidad: la salida del instante t solo puede depender de entradas <= t
+    largo = 24
+    senal = [1.0 if i == 12 else 0.0 for i in range(largo)]
+
+    def convolucion_causal(x: list[float], d: int) -> list[float]:
+        salida = []
+        for t in range(len(x)):
+            anterior = x[t - d] if t - d >= 0 else 0.0
+            salida.append(0.5 * x[t] + 0.5 * anterior)
+        return salida
+
+    y = senal
+    for i in range(3):
+        y = convolucion_causal(y, 2 ** i)
+    respuesta = [i for i, v in enumerate(y) if v > 0]
+
+    # cuantización mu-law: 16 bits -> 8 bits sin que la voz suene rota
+    def mu_law(x: float, mu: int = 255) -> int:
+        signo = 1 if x >= 0 else -1
+        comprimido = signo * math.log(1 + mu * abs(x)) / math.log(1 + mu)
+        return int(round((comprimido + 1) / 2 * mu))
+
+    # barrido denso: cuantos de los 256 codigos gasta cada esquema en la zona baja,
+    # que es donde vive la voz
+    muestras = [(i / 2000) * 2 - 1 for i in range(2001)]
+    niveles_lineales = len({int(round((x + 1) / 2 * 255)) for x in muestras})
+    niveles_mu = len({mu_law(x) for x in muestras})
+    pequenas = [x for x in muestras if abs(x) <= 0.1]
+    resolucion_lineal = len({int(round((x + 1) / 2 * 255)) for x in pequenas})
+    resolucion_mu = len({mu_law(x) for x in pequenas})
+
+    return _contract(
+        "wavenet", seed,
+        {
+            "tasa_de_muestreo_hz": 16000,
+            "crecimiento_del_campo_receptivo": tabla,
+            "capas_para_cubrir_un_segundo": {"dilatadas": capas_dilatadas, "sin_dilatar": capas_planas},
+            "impulso_en_la_muestra": 12,
+            "muestras_afectadas_por_el_impulso": respuesta,
+            "ninguna_anterior_al_impulso": all(i >= 12 for i in respuesta),
+            "cuantizacion": {
+                "niveles_distintos_lineal": niveles_lineales,
+                "niveles_distintos_mu_law": niveles_mu,
+                "resolucion_en_amplitudes_pequenas_lineal": resolucion_lineal,
+                "resolucion_en_amplitudes_pequenas_mu_law": resolucion_mu,
+            },
+        },
+        [
+            f"Con núcleo de {k} y dilatación duplicada por capa, el campo receptivo crece de forma "
+            f"exponencial: {tabla[0]['campo_dilatado']} muestras con 1 capa y "
+            f"{tabla[-1]['campo_dilatado']} con {tabla[-1]['capas']}. Sin dilatar, esas mismas "
+            f"{tabla[-1]['capas']} capas solo alcanzan {tabla[-1]['campo_sin_dilatar']}.",
+            f"Para cubrir un segundo de audio a 16 kHz hacen falta {capas_dilatadas} capas dilatadas "
+            f"frente a {capas_planas} sin dilatar. Ese factor de "
+            f"{_round(capas_planas / capas_dilatadas, 0):.0f}× es lo que hace viable modelar la forma de "
+            "onda directamente.",
+            f"La convolución es causal: un impulso en la muestra 12 solo afecta a las muestras "
+            f"{respuesta[0]}–{respuesta[-1]}, ninguna anterior. Sin esa restricción el modelo se "
+            "entrenaría mirando el futuro y no serviría para generar.",
+            f"La cuantización μ-law reparte los 256 niveles de forma logarítmica. El 10 % central de "
+            f"la amplitud —donde vive la voz— se lleva {resolucion_mu} códigos con μ-law y solo "
+            f"{resolucion_lineal} con la lineal: "
+            f"{_round(resolucion_mu / resolucion_lineal, 1)}× más resolución donde hace falta, con el "
+            "mismo presupuesto de 8 bits.",
+        ],
+        [
+            "Aquí no se entrena nada: se calcula la geometría de las convoluciones y la aritmética de la "
+            "cuantización. El coste real de WaveNet está en generar muestra a muestra, que es lo que lo "
+            "hacía lentísimo.",
+            "El campo receptivo dice qué PUEDE ver el modelo, no qué usa. Que alcance un segundo no "
+            "significa que el segundo entero influya en la predicción.",
+            "No hay condicionamiento por texto ni por hablante, que es lo que convierte a WaveNet en un "
+            "sintetizador y no en un generador de balbuceo.",
+        ],
+    )
+
+
+def _gcn(seed: int) -> dict[str, Any]:
+    """Kipf y Welling 2017: con pocas etiquetas, la estructura del grafo vale más que los rasgos."""
+    rng = random.Random(seed)
+    n_por_grupo, grupos = 40, 3
+    n = n_por_grupo * grupos
+    comunidad = [i // n_por_grupo for i in range(n)]
+
+    # rasgos ruidosos: solos no bastan
+    rasgos = []
+    for i in range(n):
+        base = [0.0] * grupos
+        base[comunidad[i]] = 1.0
+        rasgos.append([v + rng.gauss(0, 1.15) for v in base])
+
+    # grafo con estructura de comunidad clara
+    vecinos: dict[int, set[int]] = {i: set() for i in range(n)}
+    for i in range(n):
+        for _ in range(6):
+            j = rng.randrange(n_por_grupo) + comunidad[i] * n_por_grupo
+            if j != i:
+                vecinos[i].add(j); vecinos[j].add(i)
+        for _ in range(2):
+            j = rng.randrange(n)
+            if comunidad[j] != comunidad[i]:
+                vecinos[i].add(j); vecinos[j].add(i)
+
+    def propagar(x: list[list[float]], pasos: int) -> list[list[float]]:
+        actual = [fila[:] for fila in x]
+        for _ in range(pasos):
+            siguiente = []
+            for i in range(n):
+                acumulado = [actual[i][d] for d in range(grupos)]
+                for j in vecinos[i]:
+                    for d in range(grupos):
+                        acumulado[d] += actual[j][d]
+                grado = len(vecinos[i]) + 1
+                siguiente.append([v / grado for v in acumulado])
+            actual = siguiente
+        return actual
+
+    etiquetados = []
+    for g in range(grupos):
+        etiquetados += rng.sample(range(g * n_por_grupo, (g + 1) * n_por_grupo), 2)
+    resto = [i for i in range(n) if i not in etiquetados]
+
+    # suelo de precision: ningun sistema real resuelve diferencias arbitrariamente
+    # pequenas. Sin el, el sobre-suavizado no se ve, porque colapsar la escala no
+    # cambia el orden relativo de los nodos.
+    PRECISION = 0.02
+
+    def evaluar(x: list[list[float]]) -> float:
+        ruido = random.Random(seed * 31 + 17)
+        medido = [[v + ruido.gauss(0, PRECISION) for v in fila] for fila in x]
+        centros = []
+        for g in range(grupos):
+            miembros = [i for i in etiquetados if comunidad[i] == g]
+            centros.append([sum(medido[i][d] for i in miembros) / len(miembros) for d in range(grupos)])
+        aciertos = 0
+        for i in resto:
+            dists = [sum((medido[i][d] - centros[g][d]) ** 2 for d in range(grupos)) for g in range(grupos)]
+            if dists.index(min(dists)) == comunidad[i]:
+                aciertos += 1
+        return aciertos / len(resto)
+
+    por_capas = [{"capas_de_propagacion": k, "exactitud": _round(evaluar(propagar(rasgos, k)), 3)}
+                 for k in (0, 1, 2, 3, 5, 10, 20)]
+    sin_propagar = por_capas[0]["exactitud"]
+    mejor = max(por_capas, key=lambda d: d["exactitud"])
+    muchas = por_capas[-1]
+
+    # sobre-suavizado: cuánto se parecen entre sí los nodos de comunidades distintas
+    def separacion(x: list[list[float]]) -> float:
+        cen = []
+        for g in range(grupos):
+            miembros = [i for i in range(n) if comunidad[i] == g]
+            cen.append([sum(x[i][d] for i in miembros) / len(miembros) for d in range(grupos)])
+        pares = [math.dist(cen[a], cen[b]) for a in range(grupos) for b in range(a + 1, grupos)]
+        return sum(pares) / len(pares)
+
+    separaciones = [{"capas_de_propagacion": k, "distancia_entre_centros": _round(separacion(propagar(rasgos, k)), 3)}
+                    for k in (0, 2, 10, 20)]
+
+    return _contract(
+        "gcn", seed,
+        {
+            "nodos": n, "comunidades": grupos,
+            "nodos_etiquetados": len(etiquetados),
+            "fraccion_etiquetada": _round(len(etiquetados) / n, 3),
+            "aristas": sum(len(v) for v in vecinos.values()) // 2,
+            "suelo_de_precision": 0.02,
+            "exactitud_por_numero_de_capas": por_capas,
+            "mejor": mejor,
+            "sobre_suavizado": separaciones,
+        },
+        [
+            f"Con solo {len(etiquetados)} nodos etiquetados de {n} "
+            f"({_round(100 * len(etiquetados) / n, 1)} %), clasificar por los rasgos sin mirar el grafo "
+            f"acierta {sin_propagar}. Los rasgos son demasiado ruidosos para decidir por sí solos.",
+            f"Promediar con los vecinos sube la exactitud a {mejor['exactitud']} con "
+            f"{mejor['capas_de_propagacion']} capas de propagación. La información que faltaba no estaba "
+            "en más etiquetas: estaba en quién es vecino de quién.",
+            f"Pero propagar de más destruye la señal: la distancia entre los centros de las "
+            f"comunidades pasa de {separaciones[1]['distancia_entre_centros']} con 2 capas a "
+            f"{separaciones[-1]['distancia_entre_centros']} con {separaciones[-1]['capas_de_propagacion']}, "
+            f"un colapso de {_round(separaciones[1]['distancia_entre_centros'] / max(separaciones[-1]['distancia_entre_centros'], 1e-9), 0):.0f}×. "
+            "Es el sobre-suavizado: todos los nodos acaban pareciéndose.",
+            f"Y ese colapso mata la clasificación en cuanto hay un suelo de precisión. Con ±0,02 de "
+            f"ruido de medida, la exactitud cae de {mejor['exactitud']} a {muchas['exactitud']} con "
+            f"{muchas['capas_de_propagacion']} capas: peor que no propagar ({sin_propagar}) y cerca del "
+            f"azar ({_round(1 / grupos, 3)}).",
+            "Por eso las redes convolucionales de grafo que funcionan son de dos o tres capas. No es una "
+            "limitación de ingeniería: apilar más borra justamente lo que se quiere medir.",
+        ],
+        [
+            "No hay pesos entrenados: se propaga y se clasifica por centroide. Un GCN real aprende una "
+            "transformación lineal en cada capa, y eso cambia las cifras aunque no el fenómeno.",
+            "El grafo tiene comunidades muy limpias por construcción. En grafos reales la homofilia es "
+            "mucho más débil, y hay grafos heterófilos donde propagar EMPEORA.",
+            "El sobre-suavizado se mide con la distancia entre centroides, que es un indicador burdo. La "
+            "literatura posterior lo formaliza mejor y propone remedios —conexiones residuales, "
+            "propagación personalizada— que aquí no están.",
+        ],
+    )
+
+
+def _mobilenets(seed: int) -> dict[str, Any]:
+    """Howard 2017: separar la convolución en dos pasos barata el 90 % del cómputo."""
+    capas = [
+        {"nombre": "conv1", "entrada": 3, "salida": 32, "espacial": 112},
+        {"nombre": "conv2", "entrada": 32, "salida": 64, "espacial": 112},
+        {"nombre": "conv3", "entrada": 64, "salida": 128, "espacial": 56},
+        {"nombre": "conv4", "entrada": 128, "salida": 256, "espacial": 28},
+        {"nombre": "conv5", "entrada": 256, "salida": 512, "espacial": 14},
+    ]
+    k = 3
+    detalle, total_est, total_sep = [], 0, 0
+    for c in capas:
+        m, n_sal, s = c["entrada"], c["salida"], c["espacial"]
+        estandar = k * k * m * n_sal * s * s
+        profundidad = k * k * m * s * s
+        punto = m * n_sal * s * s
+        separable = profundidad + punto
+        total_est += estandar
+        total_sep += separable
+        detalle.append({
+            "capa": c["nombre"],
+            "estandar_millones": _round(estandar / 1e6, 1),
+            "separable_millones": _round(separable / 1e6, 1),
+            "razon": _round(estandar / separable, 2),
+        })
+
+    prediccion = [{"canales_de_salida": n_sal, "formula_1_sobre_n_mas_1_sobre_k2": _round(1 / n_sal + 1 / (k * k), 4)}
+                  for n_sal in (32, 64, 256, 512, 1024)]
+
+    # multiplicador de anchura: el cómputo cae con el cuadrado
+    anchura = []
+    for alfa in (1.0, 0.75, 0.5, 0.25):
+        coste = 0
+        for c in capas:
+            m = max(1, int(c["entrada"] * alfa)); n_sal = max(1, int(c["salida"] * alfa)); s = c["espacial"]
+            coste += k * k * m * s * s + m * n_sal * s * s
+        anchura.append({"alfa": alfa, "millones_de_operaciones": _round(coste / 1e6, 1),
+                        "fraccion_del_total": _round(coste / total_sep, 3)})
+
+    return _contract(
+        "mobilenets", seed,
+        {
+            "nucleo": k,
+            "por_capa": detalle,
+            "total_estandar_millones": _round(total_est / 1e6, 1),
+            "total_separable_millones": _round(total_sep / 1e6, 1),
+            "razon_global": _round(total_est / total_sep, 2),
+            "prediccion_teorica": prediccion,
+            "multiplicador_de_anchura": anchura,
+        },
+        [
+            f"La red completa cuesta {_round(total_est / 1e6, 1)} millones de multiplicaciones con "
+            f"convolución estándar y {_round(total_sep / 1e6, 1)} con separable: una razón de "
+            f"{_round(total_est / total_sep, 2)}×, con el mismo tamaño de núcleo y las mismas salidas.",
+            f"El ahorro sigue exactamente la fórmula 1/N + 1/k²: con k=3 y N=512 canales predice "
+            f"{prediccion[-2]['formula_1_sobre_n_mas_1_sobre_k2']}, y la capa conv5 medida da "
+            f"{_round(1 / detalle[-1]['razon'], 4)}. El término dominante es 1/k², así que el ahorro se "
+            "satura cerca de 9× por mucho que crezcan los canales.",
+            f"El multiplicador de anchura da la segunda perilla: con α=0,5 el coste baja a "
+            f"{anchura[2]['fraccion_del_total']} del total —aproximadamente el cuadrado de α— y con "
+            f"α=0,25, a {anchura[3]['fraccion_del_total']}.",
+            "Las dos perillas son independientes y explícitas. Esa es la aportación práctica: no un "
+            "modelo, sino una familia parametrizada donde el ingeniero elige el punto.",
+        ],
+        [
+            "Se cuentan multiplicaciones-acumulaciones, no tiempo. El tiempo real depende de cómo el "
+            "hardware ejecuta la convolución en profundidad, que suele aprovechar mucho peor la memoria "
+            "que la estándar.",
+            "No se mide exactitud. El artículo muestra que la pérdida es pequeña; aquí solo se exhibe el "
+            "ahorro, que es la mitad del argumento.",
+            "La arquitectura es una maqueta de cinco capas, no MobileNet. Los números absolutos no "
+            "corresponden a ninguna red publicada.",
+        ],
+    )
+
+
+def _tacotron(seed: int) -> dict[str, Any]:
+    """Shen 2018: partir la síntesis en dos etapas con el espectrograma como interfaz."""
+    rng = random.Random(seed)
+    hz, segundos = 22050, 3.0
+    muestras = int(hz * segundos)
+    salto, bandas = 256, 80
+    marcos = muestras // salto
+    valores_mel = marcos * bandas
+
+    texto = "hola que tal"
+    caracteres = len(texto)
+
+    # alineación monótona correcta frente a una que se atasca
+    def sintetizar(alineacion: list[int]) -> dict[str, Any]:
+        emitido = [texto[min(i, caracteres - 1)] for i in alineacion]
+        return {"cadena": "".join(emitido), "correcta": "".join(emitido) == texto}
+
+    por_caracter = max(1, marcos // caracteres)
+    monotona, pos = [], 0
+    for c in range(caracteres):
+        monotona += [c] * por_caracter
+    atascada = []
+    for c in range(caracteres):
+        repeticiones = por_caracter * (4 if c == 5 else 1)
+        atascada += [c] * repeticiones
+    atascada = atascada[:len(monotona)]
+
+    def a_texto(alineacion: list[int]) -> str:
+        salida, ultimo = [], None
+        for c in alineacion:
+            if c != ultimo:
+                salida.append(texto[c]); ultimo = c
+        return "".join(salida)
+
+    dicho_bien = a_texto(monotona)
+    dicho_mal = a_texto(atascada)
+    caracteres_perdidos = caracteres - len(dicho_mal)
+
+    return _contract(
+        "tacotron", seed,
+        {
+            "audio": {"hz": hz, "segundos": segundos, "muestras": muestras},
+            "espectrograma": {"salto": salto, "bandas": bandas, "marcos": marcos, "valores": valores_mel},
+            "compresion_en_valores": _round(muestras / valores_mel, 2),
+            "compresion_en_pasos_de_tiempo": _round(muestras / marcos, 1),
+            "texto": texto, "caracteres": caracteres,
+            "marcos_por_caracter": por_caracter,
+            "alineacion_monotona": {"dice": dicho_bien, "correcta": dicho_bien == texto},
+            "alineacion_atascada": {"dice": dicho_mal, "correcta": dicho_mal == texto,
+                                    "caracteres_perdidos": caracteres_perdidos},
+            "etapas": ["texto → espectrograma mel (modelo con atención)",
+                       "espectrograma mel → forma de onda (vocoder neuronal)"],
+        },
+        [
+            f"Tres segundos de audio a {hz} Hz son {muestras} muestras. Como espectrograma mel de "
+            f"{bandas} bandas son {valores_mel} valores: solo {_round(muestras / valores_mel, 2)}× menos "
+            f"datos. Lo que se comprime de verdad son los PASOS: de {muestras} a {marcos}, un factor de "
+            f"{_round(muestras / marcos, 0):.0f}×.",
+            f"Y esa es la compresión que importa, porque el modelo con atención es autorregresivo: "
+            f"predecir {marcos} marcos es tratable y predecir {muestras} muestras una a una no lo es. El "
+            "mel no ahorra memoria, ahorra longitud de secuencia.",
+            f"La atención tiene que ser monótona. Con una alineación que avanza carácter a carácter, la "
+            f"salida dice «{dicho_bien}». Con una que se atasca en un carácter, dice «{dicho_mal}» y se "
+            f"pierden {caracteres_perdidos} caracteres del final.",
+            "Ese es el modo de fallo característico de la síntesis con atención —repetir o saltarse "
+            "trozos— y por eso los sistemas posteriores fuerzan la monotonía en vez de esperar que se "
+            "aprenda.",
+        ],
+        [
+            "No hay ningún modelo entrenado: se calcula la aritmética del espectrograma y se simulan dos "
+            "alineaciones a mano. La dificultad real está en que la alineación se aprende sin "
+            "supervisión.",
+            "El vocoder es la mitad del sistema y aquí no aparece. Convertir mel en forma de onda es "
+            "justamente lo que WaveNet resolvió y lo que hace que el resultado suene a persona.",
+            "No se evalúa calidad percibida. La métrica del artículo es la opinión media de oyentes "
+            "humanos, que ningún cálculo sustituye.",
+        ],
+    )
+
+
+def _sentencepiece(seed: int) -> dict[str, Any]:
+    """Kudo y Richardson 2018: tokenizar el flujo crudo, sin suponer que hay espacios."""
+    frases = {
+        "español": "el gato duerme",
+        "japonés (sin espacios)": "猫が寝ている",
+        "con espacio doble": "el  gato duerme",
+    }
+
+    def por_espacios(t: str) -> list[str]:
+        return t.split()
+
+    def flujo_crudo(t: str) -> list[str]:
+        # el espacio se codifica como un símbolo más: la detokenización es exacta
+        return list(t.replace(" ", "▁"))
+
+    filas = []
+    for nombre, t in frases.items():
+        a = por_espacios(t)
+        b = flujo_crudo(t)
+        filas.append({
+            "texto": nombre,
+            "piezas_por_espacios": len(a),
+            "reconstruye_por_espacios": " ".join(a) == t,
+            "piezas_flujo_crudo": len(b),
+            "reconstruye_flujo_crudo": "".join(b).replace("▁", " ") == t,
+        })
+
+    reversibles_espacios = sum(1 for f in filas if f["reconstruye_por_espacios"])
+    reversibles_crudo = sum(1 for f in filas if f["reconstruye_flujo_crudo"])
+    japones = filas[1]
+
+    # modelo unigrama: la misma cadena admite varias segmentaciones, con probabilidad distinta
+    piezas = {"in": -1.8, "tern": -3.2, "internacional": -2.4, "nacional": -2.6,
+              "i": -4.0, "n": -4.1, "ter": -3.6, "cional": -3.0, "na": -4.2}
+    palabra = "internacional"
+
+    def segmentaciones(resto: str, actual: list[str]) -> list[list[str]]:
+        if not resto:
+            return [actual]
+        salidas = []
+        for p in piezas:
+            if resto.startswith(p):
+                salidas += segmentaciones(resto[len(p):], actual + [p])
+        return salidas
+
+    candidatas = segmentaciones(palabra, [])
+    puntuadas = sorted(({"segmentacion": c, "log_prob": _round(sum(piezas[p] for p in c), 2)}
+                        for c in candidatas), key=lambda d: -d["log_prob"])
+
+    return _contract(
+        "sentencepiece", seed,
+        {
+            "comparacion": filas,
+            "reversibles_por_espacios": f"{reversibles_espacios}/{len(filas)}",
+            "reversibles_flujo_crudo": f"{reversibles_crudo}/{len(filas)}",
+            "palabra_de_ejemplo": palabra,
+            "segmentaciones_posibles": len(candidatas),
+            "mejores_segmentaciones": puntuadas[:3],
+            "peor_segmentacion": puntuadas[-1],
+        },
+        [
+            f"Partir por espacios reconstruye el original en {reversibles_espacios} de {len(filas)} "
+            f"casos; codificar el espacio como un símbolo más, en {reversibles_crudo} de {len(filas)}. "
+            "La detokenización deja de ser un conjunto de reglas por idioma y pasa a ser exacta.",
+            f"El caso japonés lo hace evidente: sin espacios, partir por espacios da "
+            f"{japones['piezas_por_espacios']} pieza para la frase entera. Tratar la entrada como flujo "
+            f"crudo da {japones['piezas_flujo_crudo']}, y el método no necesita saber en qué idioma "
+            "está.",
+            f"Con un modelo unigrama, «{palabra}» admite {len(candidatas)} segmentaciones distintas. La "
+            f"más probable es {puntuadas[0]['segmentacion']} con log-probabilidad "
+            f"{puntuadas[0]['log_prob']}; la peor, {puntuadas[-1]['segmentacion']} con "
+            f"{puntuadas[-1]['log_prob']}.",
+            "Que haya varias segmentaciones válidas no es un defecto: muestrear entre ellas durante el "
+            "entrenamiento es regularización, y es lo que el artículo llama regularización de subpalabra.",
+        ],
+        [
+            "El vocabulario de piezas y sus probabilidades están escritos a mano. En SentencePiece se "
+            "estiman con EM sobre el corpus, que es donde está el trabajo.",
+            "Solo se comparan tres cadenas. Las ventajas reales aparecen en corpus multilingües grandes, "
+            "con puntuación, emojis y escrituras mezcladas.",
+            "La reversibilidad exacta tiene un coste: el espacio ocupa un token, y en textos con mucho "
+            "formato eso infla la secuencia.",
+        ],
+    )
+
+
+def _gat(seed: int) -> dict[str, Any]:
+    """Veličković 2018: pesar a cada vecino en vez de promediarlos a todos por igual."""
+    rng = random.Random(seed)
+    resultados = []
+    for ruidosos in (0, 1, 2, 4, 6):
+        aciertos_media, aciertos_atencion, casos = 0, 0, 160
+        for caso in range(casos):
+            r = random.Random(seed * 7919 + caso)
+            clase = r.choice([0, 1])
+            senal = 1.0 if clase == 1 else -1.0
+            # vecinos útiles: comparten clase. vecinos ruidosos: valor arbitrario
+            utiles = [senal + r.gauss(0, 0.35) for _ in range(3)]
+            basura = [r.gauss(0, 2.6) for _ in range(ruidosos)]
+            propio = senal + r.gauss(0, 0.9)
+            vecinos = utiles + basura
+
+            media = (propio + sum(vecinos)) / (1 + len(vecinos))
+
+            # atención: parecido con el nodo propio -> softmax
+            puntuaciones = [-abs(v - propio) for v in ([propio] + vecinos)]
+            techo = max(puntuaciones)
+            pesos = [math.exp(p - techo) for p in puntuaciones]
+            suma = sum(pesos)
+            pesos = [p / suma for p in pesos]
+            atendida = sum(p * v for p, v in zip(pesos, [propio] + vecinos))
+
+            if (media > 0) == (clase == 1):
+                aciertos_media += 1
+            if (atendida > 0) == (clase == 1):
+                aciertos_atencion += 1
+        resultados.append({
+            "vecinos_ruidosos": ruidosos,
+            "vecinos_utiles": 3,
+            "exactitud_media_uniforme": _round(aciertos_media / casos, 3),
+            "exactitud_con_atencion": _round(aciertos_atencion / casos, 3),
+        })
+
+    # un caso concreto, para ver los pesos
+    r = random.Random(seed * 7919 + 3)
+    propio = 1.0
+    vecinos = [1.1, 0.9, 1.05, -3.4, 2.9]
+    puntuaciones = [-abs(v - propio) for v in ([propio] + vecinos)]
+    techo = max(puntuaciones)
+    pesos = [math.exp(p - techo) for p in puntuaciones]
+    suma = sum(pesos)
+    pesos = [_round(p / suma, 3) for p in pesos]
+
+    limpio = resultados[0]
+    sucio = resultados[-1]
+    return _contract(
+        "gat", seed,
+        {
+            "por_nivel_de_ruido": resultados,
+            "ejemplo": {
+                "valor_propio": propio,
+                "vecinos": vecinos,
+                "peso_uniforme": _round(1 / (1 + len(vecinos)), 3),
+                "pesos_de_atencion": pesos,
+                "peso_del_vecino_mas_discrepante": pesos[4],
+            },
+        },
+        [
+            f"Sin vecinos ruidosos, la media uniforme es LIGERAMENTE MEJOR que la atención "
+            f"({limpio['exactitud_media_uniforme']} frente a {limpio['exactitud_con_atencion']}). "
+            "Cuando todos los vecinos son informativos, ponderar solo puede desequilibrar un promedio "
+            "que ya era el correcto: atender tiene un coste cuando no hay nada que filtrar.",
+            f"Con {sucio['vecinos_ruidosos']} vecinos ruidosos por cada 3 útiles, la media uniforme cae a "
+            f"{sucio['exactitud_media_uniforme']} y la atención se sostiene en "
+            f"{sucio['exactitud_con_atencion']}. La diferencia aparece exactamente donde el grafo es "
+            "sucio, que es el caso real.",
+            f"En el ejemplo concreto, el peso uniforme sería {_round(1 / (1 + len(vecinos)), 3)} para "
+            f"cada vecino. La atención le da {pesos[4]} al vecino más discrepante: no lo elimina, lo "
+            "atenúa.",
+            "Y a diferencia de la convolución de grafo, los pesos no dependen del grado ni de la "
+            "estructura global: se calculan por pareja. Por eso el método se aplica a nodos que no se "
+            "vieron al entrenar.",
+        ],
+        [
+            "La «atención» aquí es una función fija del parecido, no una capa aprendida. En un GAT los "
+            "coeficientes salen de un vector de pesos entrenado, y pueden aprender criterios que no son "
+            "el parecido.",
+            "El experimento es de un solo salto y con un único rasgo escalar. Los efectos interesantes "
+            "de GAT aparecen con varias cabezas y varias capas.",
+            "Que la atención resista el ruido en esta maqueta no dice que lo haga en general: hay "
+            "trabajos que muestran que las atenciones aprendidas a menudo acaban siendo casi uniformes.",
+        ],
+    )
+
+
+def _layoutlm(seed: int) -> dict[str, Any]:
+    """Xu 2020: en un documento, dónde está escrito algo es parte de lo que significa."""
+    # una factura de dos columnas: el orden de lectura lineal mezcla las columnas
+    campos = [
+        {"texto": "Factura n.º",      "x": 40,  "y": 60,  "col": "izq", "papel": "clave"},
+        {"texto": "A-2291",           "x": 190, "y": 60,  "col": "izq", "papel": "valor"},
+        {"texto": "Fecha",            "x": 400, "y": 60,  "col": "der", "papel": "clave"},
+        {"texto": "2026-03-14",       "x": 520, "y": 60,  "col": "der", "papel": "valor"},
+        {"texto": "Cliente",          "x": 40,  "y": 110, "col": "izq", "papel": "clave"},
+        {"texto": "Cooperativa Sur",  "x": 190, "y": 110, "col": "izq", "papel": "valor"},
+        {"texto": "Vencimiento",      "x": 400, "y": 110, "col": "der", "papel": "clave"},
+        {"texto": "2026-04-14",       "x": 520, "y": 110, "col": "der", "papel": "valor"},
+    ]
+    # el OCR entrega por filas, cruzando columnas
+    orden_ocr = sorted(campos, key=lambda c: (c["y"], c["x"]))
+    cadena = " ".join(c["texto"] for c in orden_ocr)
+
+    # emparejar clave->valor solo con el texto: "el siguiente token"
+    solo_texto, aciertos_texto = [], 0
+    for i, c in enumerate(orden_ocr):
+        if c["papel"] != "clave":
+            continue
+        siguiente = orden_ocr[i + 1] if i + 1 < len(orden_ocr) else None
+        correcto = next(v for v in campos if v["papel"] == "valor" and v["col"] == c["col"] and v["y"] == c["y"])
+        ok = siguiente is not None and siguiente["texto"] == correcto["texto"]
+        aciertos_texto += ok
+        solo_texto.append({"clave": c["texto"], "elige": siguiente["texto"] if siguiente else None,
+                           "correcto": correcto["texto"], "acierta": ok})
+
+    # emparejar con posición: el valor más cercano a la derecha, en la misma banda vertical
+    con_layout, aciertos_layout = [], 0
+    for c in campos:
+        if c["papel"] != "clave":
+            continue
+        candidatos = [v for v in campos if v["papel"] == "valor" and abs(v["y"] - c["y"]) < 20 and v["x"] > c["x"]]
+        elegido = min(candidatos, key=lambda v: v["x"] - c["x"]) if candidatos else None
+        correcto = next(v for v in campos if v["papel"] == "valor" and v["col"] == c["col"] and v["y"] == c["y"])
+        ok = elegido is not None and elegido["texto"] == correcto["texto"]
+        aciertos_layout += ok
+        con_layout.append({"clave": c["texto"], "elige": elegido["texto"] if elegido else None,
+                           "correcto": correcto["texto"], "acierta": ok})
+
+    claves = sum(1 for c in campos if c["papel"] == "clave")
+    return _contract(
+        "layoutlm", seed,
+        {
+            "campos": len(campos), "claves": claves,
+            "orden_de_lectura_del_ocr": cadena,
+            "emparejado_solo_con_texto": solo_texto,
+            "aciertos_solo_texto": f"{aciertos_texto}/{claves}",
+            "emparejado_con_posicion": con_layout,
+            "aciertos_con_posicion": f"{aciertos_layout}/{claves}",
+        },
+        [
+            f"El OCR entrega el documento en una sola cadena por filas: «{cadena[:64]}…». En un diseño de "
+            "dos columnas, esa linealización intercala campos que no tienen nada que ver.",
+            f"Emparejando clave y valor con la regla textual «el siguiente token», se aciertan "
+            f"{aciertos_texto} de {claves}. Los fallos no son de lectura: el texto está bien reconocido y "
+            "aun así el emparejado es incorrecto.",
+            f"Con la posición en la página —misma banda vertical, el valor más cercano a la derecha— se "
+            f"aciertan {aciertos_layout} de {claves}. La información que faltaba eran las coordenadas, no "
+            "más texto.",
+            "Esa es la tesis del artículo: incorporar la posición 2D como una incrustación más, junto a "
+            "la del token, en lugar de tratar el documento como una secuencia plana.",
+        ],
+        [
+            "La regla de posición está escrita a mano. LayoutLM no programa esa regla: la aprende "
+            "preentrenando sobre millones de documentos escaneados.",
+            "Un documento de ocho campos y dos columnas limpias. Los formularios reales tienen tablas "
+            "anidadas, casillas, sellos y texto rotado.",
+            "No se usa la imagen. LayoutLMv2 y posteriores añaden rasgos visuales —tipografía, líneas, "
+            "color— que aquí no están y que pesan mucho.",
+        ],
+    )
+
+
+def _donut(seed: int) -> dict[str, Any]:
+    """Kim 2022: si el OCR es una etapa aparte, sus errores llegan intactos al final."""
+    rng = random.Random(seed)
+    documentos = 300
+    campos_por_documento = 6
+    caracteres_por_campo = 9
+
+    filas = []
+    for tasa_error_ocr in (0.0, 0.005, 0.01, 0.02, 0.05):
+        r = random.Random(seed * 104729 + int(tasa_error_ocr * 10000))
+        docs_ok, campos_ok, campos_totales = 0, 0, 0
+        for _ in range(documentos):
+            documento_limpio = True
+            for _ in range(campos_por_documento):
+                campos_totales += 1
+                erroneo = any(r.random() < tasa_error_ocr for _ in range(caracteres_por_campo))
+                if erroneo:
+                    documento_limpio = False
+                else:
+                    campos_ok += 1
+            docs_ok += documento_limpio
+        filas.append({
+            "tasa_de_error_por_caracter": tasa_error_ocr,
+            "campos_correctos": _round(campos_ok / campos_totales, 3),
+            "documentos_enteros_correctos": _round(docs_ok / documentos, 3),
+        })
+
+    # el mismo presupuesto de error, gastado de una vez en un modelo de extremo a extremo
+    comparacion = []
+    for f in filas[1:]:
+        p = f["tasa_de_error_por_caracter"]
+        caracteres = campos_por_documento * caracteres_por_campo
+        cascada = (1 - p) ** caracteres
+        comparacion.append({
+            "tasa_de_error_por_caracter": p,
+            "documento_correcto_en_cascada": _round(cascada, 3),
+            "medido": f["documentos_enteros_correctos"],
+        })
+
+    peor = filas[-1]
+    leve = filas[2]
+    return _contract(
+        "donut", seed,
+        {
+            "documentos": documentos,
+            "campos_por_documento": campos_por_documento,
+            "caracteres_por_campo": caracteres_por_campo,
+            "caracteres_por_documento": campos_por_documento * caracteres_por_campo,
+            "cascada_ocr_mas_analizador": filas,
+            "prediccion_frente_a_medicion": comparacion,
+        },
+        [
+            f"Un OCR con {leve['tasa_de_error_por_caracter'] * 100:.1f} % de error por carácter suena "
+            f"excelente. Sobre documentos de {campos_por_documento * caracteres_por_campo} caracteres, "
+            f"deja {leve['campos_correctos']} de campos correctos y solo "
+            f"{leve['documentos_enteros_correctos']} de documentos enteros sin un solo error.",
+            f"Con {peor['tasa_de_error_por_caracter'] * 100:.0f} % por carácter, los documentos enteros "
+            f"correctos caen a {peor['documentos_enteros_correctos']}. El error no se suma: se compone, "
+            "carácter a carácter, y la etapa siguiente no tiene forma de recuperarlo.",
+            f"La medición sigue a la predicción (1−p) elevado al número de caracteres: para "
+            f"{comparacion[1]['tasa_de_error_por_caracter']} predice "
+            f"{comparacion[1]['documento_correcto_en_cascada']} y mide {comparacion[1]['medido']}. No es "
+            "mala suerte, es la aritmética de encadenar etapas.",
+            "De ahí el argumento de prescindir del OCR: un modelo que va de imagen a salida estructurada "
+            "no hereda los errores de una etapa que no puede corregir, porque esa etapa no existe.",
+        ],
+        [
+            "Se modela la cascada, no se compara con Donut. Que quitar la etapa evite ESTOS errores no "
+            "demuestra que el modelo de extremo a extremo sea mejor: introduce los suyos.",
+            "Los errores de OCR se suponen independientes por carácter. En la práctica van en ráfagas "
+            "—una zona borrosa, una tipografía rara— y eso concentra el daño en menos documentos.",
+            "Un analizador robusto puede corregir parte de los errores con contexto y validaciones de "
+            "formato. Aquí se asume que ninguno se recupera, que es el caso pesimista.",
+        ],
+    )
+
+
+def _jukebox(seed: int) -> dict[str, Any]:
+    """Dhariwal 2020: comprimir el audio a códigos discretos antes de modelarlo."""
+    rng = random.Random(seed)
+    hz, segundos = 44100, 240.0
+    muestras = int(hz * segundos)
+
+    niveles = []
+    for nombre, factor in (("nivel superior", 128), ("nivel medio", 32), ("nivel inferior", 8)):
+        codigos = muestras // factor
+        niveles.append({"nivel": nombre, "compresion": factor, "codigos": codigos,
+                        "segundos_por_codigo": _round(factor / hz, 6)})
+
+    # fidelidad: cuanto mas se comprime, mas detalle se pierde. Se mide reconstruyendo
+    # una senal de juguete con la media de cada bloque.
+    senal = [math.sin(i / 7.0) + 0.45 * math.sin(i / 1.3) for i in range(4096)]
+
+    def reconstruir(factor: int) -> float:
+        error = 0.0
+        for inicio in range(0, len(senal), factor):
+            bloque = senal[inicio:inicio + factor]
+            media = sum(bloque) / len(bloque)
+            error += sum((v - media) ** 2 for v in bloque)
+        return error / len(senal)
+
+    fidelidad = [{"compresion": f, "error_cuadratico_medio": _round(reconstruir(f), 4)}
+                 for f in (8, 32, 128)]
+
+    contexto = 8192
+    cobertura = []
+    for n in niveles:
+        segundos_vistos = contexto * n["compresion"] / hz
+        cobertura.append({"nivel": n["nivel"], "segundos_que_abarca_el_contexto": _round(segundos_vistos, 1),
+                          "cubre_la_cancion": segundos_vistos >= segundos})
+
+    return _contract(
+        "jukebox", seed,
+        {
+            "cancion": {"hz": hz, "segundos": segundos, "muestras_en_crudo": muestras},
+            "jerarquia": niveles,
+            "fidelidad_por_compresion": fidelidad,
+            "ventana_de_contexto_en_codigos": contexto,
+            "cobertura_temporal_por_nivel": cobertura,
+        },
+        [
+            f"Cuatro minutos de audio a {hz} Hz son {muestras} muestras. Ningún modelo autorregresivo "
+            "opera sobre esa longitud: hay que comprimir antes de modelar, y esa es la primera decisión "
+            "del sistema.",
+            f"La jerarquía da tres longitudes: {niveles[0]['codigos']} códigos a compresión "
+            f"{niveles[0]['compresion']}×, {niveles[1]['codigos']} a {niveles[1]['compresion']}× y "
+            f"{niveles[2]['codigos']} a {niveles[2]['compresion']}×. Cada nivel es un compromiso "
+            "distinto entre cuánto abarca y cuánto detalle guarda.",
+            f"Y el compromiso se mide: reconstruir con compresión {fidelidad[0]['compresion']}× deja un "
+            f"error de {fidelidad[0]['error_cuadratico_medio']} y con "
+            f"{fidelidad[-1]['compresion']}×, de {fidelidad[-1]['error_cuadratico_medio']} — "
+            f"{_round(fidelidad[-1]['error_cuadratico_medio'] / max(fidelidad[0]['error_cuadratico_medio'], 1e-9), 1)}× "
+            "peor. Comprimir para poder modelar cuesta fidelidad.",
+            f"Con una ventana de {contexto} códigos, el nivel superior abarca "
+            f"{cobertura[0]['segundos_que_abarca_el_contexto']} s y el inferior solo "
+            f"{cobertura[-1]['segundos_que_abarca_el_contexto']} s: "
+            f"{_round(cobertura[0]['segundos_que_abarca_el_contexto'] / cobertura[-1]['segundos_que_abarca_el_contexto'], 0):.0f}× "
+            "de diferencia. Por eso hay tres niveles y no uno: la estructura larga y el timbre no caben "
+            "en la misma escala.",
+            f"Y ni siquiera el nivel superior cubre la canción: {cobertura[0]['segundos_que_abarca_el_contexto']} s "
+            f"de {segundos:.0f}. Hay que generar por ventanas solapadas, y esa es exactamente la razón "
+            "de que a Jukebox se le note la falta de estructura a escala de canción.",
+        ],
+        [
+            "La reconstrucción se hace promediando bloques, no con un VQ-VAE entrenado. El error real de "
+            "un cuantizador vectorial es mucho menor y depende del tamaño del diccionario.",
+            "No se genera música: se exhibe la aritmética de la jerarquía. Lo que Jukebox demuestra "
+            "—que un modelo de códigos produce canciones con voz reconocible— aquí no está.",
+            "La señal de juguete es la suma de dos senoidales. El audio real tiene una estructura "
+            "espectral mucho más rica, y qué se pierde al comprimir depende de ella.",
+        ],
+    )
+
+
+def _nerf(seed: int) -> dict[str, Any]:
+    """Mildenhall 2020: la escena como función continua en vez de como rejilla."""
+    del_ = seed
+    filas = []
+    for lado in (64, 128, 256, 512, 1024):
+        celdas = lado ** 3
+        # color RGB + densidad, en 4 bytes por valor
+        bytes_rejilla = celdas * 4 * 4
+        filas.append({"lado_de_la_rejilla": lado, "celdas": celdas,
+                      "megabytes": _round(bytes_rejilla / 1e6, 1)})
+
+    # un perceptron multicapa: 8 capas de 256, entrada de 60 (posicion codificada)
+    capas, ancho, entrada = 8, 256, 60
+    parametros = entrada * ancho + ancho
+    for _ in range(capas - 1):
+        parametros += ancho * ancho + ancho
+    parametros += ancho * 4 + 4
+    megabytes_mlp = _round(parametros * 4 / 1e6, 2)
+
+    # composicion por transmitancia a lo largo de un rayo: lo de delante tapa lo de atras
+    muestras = [
+        {"t": 1.0, "densidad": 0.0, "color": 0.1},
+        {"t": 2.0, "densidad": 0.0, "color": 0.1},
+        {"t": 3.0, "densidad": 2.5, "color": 0.9},   # superficie roja
+        {"t": 4.0, "densidad": 2.5, "color": 0.2},   # detras: no deberia verse
+        {"t": 5.0, "densidad": 0.5, "color": 0.2},
+    ]
+    delta = 1.0
+    transmitancia, color_final, aportes = 1.0, 0.0, []
+    for m in muestras:
+        alfa = 1 - math.exp(-m["densidad"] * delta)
+        peso = transmitancia * alfa
+        color_final += peso * m["color"]
+        aportes.append({"t": m["t"], "densidad": m["densidad"], "peso": _round(peso, 4)})
+        transmitancia *= (1 - alfa)
+
+    delante = aportes[2]["peso"]
+    detras = aportes[3]["peso"]
+
+    # codificacion posicional: sin ella, un MLP no representa alta frecuencia
+    def sin_codificar(x: float) -> list[float]:
+        return [x]
+
+    def codificado(x: float, l: int = 10) -> list[float]:
+        salida = []
+        for i in range(l):
+            salida += [math.sin(2 ** i * math.pi * x), math.cos(2 ** i * math.pi * x)]
+        return salida
+
+    a, b = 0.500, 0.505
+    dist_sin = abs(sin_codificar(a)[0] - sin_codificar(b)[0])
+    dist_con = math.dist(codificado(a), codificado(b))
+
+    return _contract(
+        "nerf", seed,
+        {
+            "rejilla_explicita": filas,
+            "mlp": {"capas": capas, "ancho": ancho, "parametros": parametros, "megabytes": megabytes_mlp},
+            "composicion_del_rayo": aportes,
+            "color_final": _round(color_final, 4),
+            "peso_de_la_superficie": _round(delante, 4),
+            "peso_de_lo_que_hay_detras": _round(detras, 4),
+            "codificacion_posicional": {
+                "puntos": [a, b],
+                "distancia_sin_codificar": _round(dist_sin, 4),
+                "distancia_codificada": _round(dist_con, 4),
+            },
+        },
+        [
+            f"Guardar la escena como rejilla explícita cuesta O(n³): "
+            f"{filas[0]['megabytes']} MB con lado {filas[0]['lado_de_la_rejilla']} y "
+            f"{filas[-1]['megabytes']} MB con lado {filas[-1]['lado_de_la_rejilla']}. La resolución se "
+            "paga al cubo, y por eso las rejillas de alta resolución no caben.",
+            f"El mismo contenido como función continua son {parametros} parámetros: {megabytes_mlp} MB, "
+            f"y NO dependen de la resolución. Se puede consultar en cualquier punto, con la precisión "
+            "que se pida.",
+            f"La composición por transmitancia resuelve la oclusión sola: la superficie a t=3 aporta "
+            f"{_round(delante, 4)} al color y lo que hay justo detrás, a t=4, aporta "
+            f"{_round(detras, 4)} — {_round(delante / max(detras, 1e-9), 0):.0f}× menos. Nadie programó "
+            "«lo de delante tapa lo de atrás»: sale de la integral.",
+            f"Y la codificación posicional es imprescindible: dos puntos a 0,005 de distancia están a "
+            f"{_round(dist_sin, 4)} sin codificar y a {_round(dist_con, 4)} codificados, "
+            f"{_round(dist_con / max(dist_sin, 1e-9), 0):.0f}× más separados. Sin ella el perceptrón "
+            "solo puede representar variaciones suaves, y una escena tiene bordes.",
+        ],
+        [
+            "No se entrena ningún NeRF: se calculan los costes de memoria, la integral de un rayo con "
+            "cinco muestras y el efecto de la codificación. Entrenar una escena real tardaba horas.",
+            "El coste que el motor NO muestra es el de renderizar: cada píxel exige decenas de "
+            "consultas al perceptrón a lo largo de su rayo, y eso es lo que hace lento a NeRF.",
+            "La rejilla explícita se compara en memoria bruta, sin compresión ni estructuras dispersas. "
+            "Los métodos basados en rejilla usan octrees y tablas hash, y la diferencia real es menor.",
+        ],
+    )
+
+
+def _musiclm(seed: int) -> dict[str, Any]:
+    """Agostinelli 2023: dos escalas de token, porque estructura y timbre no caben en una."""
+    rng = random.Random(seed)
+    # una pieza con estructura larga: motivo A, contraste B, vuelta a A
+    compases = 96
+    forma = ["A"] * 32 + ["B"] * 32 + ["A"] * 32
+    tokens_acusticos_por_compas = 50
+    tokens_semanticos_por_compas = 2
+
+    total_acustico = compases * tokens_acusticos_por_compas
+    total_semantico = compases * tokens_semanticos_por_compas
+    ventana = 1024
+
+    def abarca(por_compas: int) -> float:
+        return ventana / por_compas
+
+    compases_acustico = abarca(tokens_acusticos_por_compas)
+    compases_semantico = abarca(tokens_semanticos_por_compas)
+
+    # ¿puede el modelo "ver" la vuelta al motivo A en el compas 32?
+    distancia_al_retorno = 64
+    ve_acustico = compases_acustico >= distancia_al_retorno
+    ve_semantico = compases_semantico >= distancia_al_retorno
+
+    # coherencia medida: se predice el compas 32 mirando solo lo que cabe en la ventana
+    def coherencia(por_compas: int) -> dict[str, Any]:
+        # al reexponer el motivo A, ¿queda la A anterior dentro de la ventana?
+        alcance = int(abarca(por_compas))
+        con_referencia, casos = 0, 0
+        fin_de_la_exposicion = 32     # la A original ocupa los compases 0-31
+        for t in range(distancia_al_retorno, compases):
+            casos += 1
+            inicio_visible = max(0, t - alcance)
+            # ¿alcanza la ventana la EXPOSICION original, no la reexposicion actual?
+            con_referencia += (inicio_visible < fin_de_la_exposicion)
+        return {"alcance_en_compases": alcance,
+                "compases_con_el_motivo_a_la_vista": con_referencia, "casos": casos,
+                "fraccion": _round(con_referencia / casos, 3)}
+
+    con_acustico = coherencia(tokens_acusticos_por_compas)
+    con_semantico = coherencia(tokens_semanticos_por_compas)
+
+    # el otro problema: pares texto-musica escasos
+    pares = [{"descripciones_por_clip": n, "clips": 5500, "pares": 5500 * n} for n in (1, 4)]
+
+    return _contract(
+        "musiclm", seed,
+        {
+            "pieza": {"compases": compases, "forma": "".join(forma)},
+            "tokens_acusticos": {"por_compas": tokens_acusticos_por_compas, "total": total_acustico},
+            "tokens_semanticos": {"por_compas": tokens_semanticos_por_compas, "total": total_semantico},
+            "ventana_del_modelo": ventana,
+            "alcance_acustico_en_compases": _round(compases_acustico, 1),
+            "alcance_semantico_en_compases": _round(compases_semantico, 1),
+            "ve_el_retorno_del_motivo": {"acustico": ve_acustico, "semantico": ve_semantico},
+            "coherencia_solo_acustico": con_acustico,
+            "coherencia_con_semantico": con_semantico,
+            "escasez_de_pares_texto_musica": pares,
+        },
+        [
+            f"La pieza dura {compases} compases y vuelve al motivo inicial en el compás "
+            f"{distancia_al_retorno}. Con tokens acústicos ({tokens_acusticos_por_compas} por compás), "
+            f"una ventana de {ventana} abarca {_round(compases_acustico, 1)} compases: no llega, así "
+            "que el modelo no puede ver que hubo un motivo al que volver.",
+            f"Con tokens semánticos ({tokens_semanticos_por_compas} por compás), la misma ventana abarca "
+            f"{_round(compases_semantico, 1)} compases y sí lo ve. Esa es la razón de las dos escalas: "
+            "no son dos calidades, son dos horizontes.",
+            f"Medido compás a compás durante la reexposición: con alcance acústico el motivo anterior "
+            f"queda a la vista en {con_acustico['compases_con_el_motivo_a_la_vista']} de "
+            f"{con_acustico['casos']} compases (fracción {con_acustico['fraccion']}); con alcance "
+            f"semántico, en {con_semantico['compases_con_el_motivo_a_la_vista']} de "
+            f"{con_semantico['casos']} ({con_semantico['fraccion']}). La estructura larga solo existe "
+            "en la escala gruesa.",
+            f"Y el segundo problema es de datos: incluso con {pares[1]['descripciones_por_clip']} "
+            f"descripciones por clip, el conjunto de referencia son {pares[1]['pares']} pares "
+            "texto-música. Comparado con los miles de millones de pares texto-imagen, describir música "
+            "con palabras es un recurso escaso.",
+        ],
+        [
+            "No hay audio ni modelo: se simula la forma de una pieza con etiquetas de sección y se mide "
+            "qué alcanza cada ventana. La coherencia real de MusicLM se evalúa con oyentes.",
+            "La predicción por sección más frecuente es un sustituto burdo de un modelo autorregresivo. "
+            "Sirve para exhibir el efecto del horizonte, no para estimar calidad.",
+            "El artículo aporta además MusicCaps, un conjunto anotado por músicos profesionales, y una "
+            "discusión sobre memorización y derechos que aquí no se toca.",
+        ],
+    )
+
+
+def _vall_e(seed: int) -> dict[str, Any]:
+    """Wang 2023: tres segundos bastan para copiar una voz, y eso es el problema."""
+    rng = random.Random(seed)
+    hablantes = 40
+    # cada hablante tiene un vector de identidad estable; una muestra lo estima con ruido
+    identidades = {}
+    for h in range(hablantes):
+        r = random.Random(seed * 7717 + h)
+        identidades[h] = [r.gauss(0, 1) for _ in range(12)]
+
+    def estimar(h: int, segundos: float, sorteo: int) -> list[float]:
+        # cuanto mas audio, mejor la estimacion: el ruido cae con la raiz del tiempo
+        r = random.Random(seed * 104729 + h * 97 + sorteo)
+        ruido = 1.35 / math.sqrt(max(segundos, 0.05))
+        return [v + r.gauss(0, ruido) for v in identidades[h]]
+
+    filas = []
+    for segundos in (0.5, 1.0, 3.0, 10.0, 30.0):
+        aciertos, casos = 0, 0
+        for h in range(hablantes):
+            for sorteo in range(6):
+                casos += 1
+                muestra = estimar(h, segundos, sorteo)
+                mejor = min(range(hablantes),
+                            key=lambda c: sum((muestra[d] - identidades[c][d]) ** 2 for d in range(12)))
+                aciertos += (mejor == h)
+        filas.append({"segundos_de_muestra": segundos, "aciertos": aciertos, "casos": casos,
+                      "identificacion_correcta": _round(aciertos / casos, 3)})
+
+    tres = next(f for f in filas if f["segundos_de_muestra"] == 3.0)
+    medio = filas[0]
+    treinta = filas[-1]
+
+    # cuanto audio hace falta para el enfoque anterior: adaptar un modelo entrenando
+    comparacion = [
+        {"enfoque": "adaptación por ajuste fino", "audio_necesario": "30 min – varias horas",
+         "requiere_entrenamiento": True},
+        {"enfoque": "aviso en contexto (VALL-E)", "audio_necesario": "3 s",
+         "requiere_entrenamiento": False},
+    ]
+
+    return _contract(
+        "vall_e", seed,
+        {
+            "hablantes": hablantes,
+            "dimensiones_de_identidad": 12,
+            "identificacion_por_duracion": filas,
+            "comparacion_de_enfoques": comparacion,
+        },
+        [
+            f"Con {medio['segundos_de_muestra']} s de audio, la identidad del hablante se recupera "
+            f"correctamente el {_round(100 * medio['identificacion_correcta'], 1)} % de las veces. Con "
+            f"{tres['segundos_de_muestra']} s sube al "
+            f"{_round(100 * tres['identificacion_correcta'], 1)} %.",
+            f"Y ahí se satura: con {treinta['segundos_de_muestra']} s la cifra es "
+            f"{_round(100 * treinta['identificacion_correcta'], 1)} %, apenas "
+            f"{_round(100 * (treinta['identificacion_correcta'] - tres['identificacion_correcta']), 1)} "
+            "puntos más. Tres segundos ya contienen casi toda la información de identidad.",
+            "Eso es exactamente lo que cambia el artículo: el enfoque anterior adaptaba el modelo con "
+            "media hora de grabaciones y un entrenamiento; aquí la voz entra como aviso en contexto, sin "
+            "entrenar nada.",
+            "El resultado técnico y el problema ético son el mismo hecho. Tres segundos de la voz de "
+            "cualquiera están en cualquier vídeo público, y no hay consentimiento que se haya pedido.",
+        ],
+        [
+            "La identidad se modela como un vector de 12 dimensiones con ruido gaussiano. Ni el timbre "
+            "real tiene esa forma ni la identificación es tan limpia: aquí solo se exhibe que la "
+            "información se satura pronto.",
+            "No hay síntesis: el motor mide reconocimiento, no generación. Que la identidad sea "
+            "recuperable con 3 s no demuestra que se pueda sintetizar con 3 s, aunque el artículo sí lo "
+            "demuestra.",
+            "Tampoco se modela la detección de voz sintética, que es la contramedida y un problema "
+            "abierto: los detectores envejecen con cada generación de sintetizadores.",
+        ],
+    )
+
+
+def _marcas_de_agua(seed: int) -> dict[str, Any]:
+    """Kirchenbauer 2023: sesgar la elección de token deja una firma estadística."""
+    vocabulario = 512
+    gamma = 0.25          # fraccion de la lista verde
+    largo_texto = 200
+
+    def lista_verde(token_anterior: int) -> set[int]:
+        r = random.Random(token_anterior * 2654435761 % (2 ** 32))
+        return set(r.sample(range(vocabulario), int(gamma * vocabulario)))
+
+    def generar(marcado: bool, sorteo: int, largo: int) -> list[int]:
+        r = random.Random(seed * 7919 + sorteo)
+        texto = [r.randrange(vocabulario)]
+        for _ in range(largo - 1):
+            verdes = lista_verde(texto[-1])
+            if marcado and r.random() < 0.20:      # el sesgo delta empuja hacia la lista verde
+                texto.append(r.choice(sorted(verdes)))
+            else:
+                texto.append(r.randrange(vocabulario))
+        return texto
+
+    def puntuacion_z(texto: list[int]) -> float:
+        verdes = sum(1 for i in range(1, len(texto)) if texto[i] in lista_verde(texto[i - 1]))
+        n = len(texto) - 1
+        esperados = gamma * n
+        desviacion = math.sqrt(n * gamma * (1 - gamma))
+        return (verdes - esperados) / desviacion
+
+    z_marcado = [puntuacion_z(generar(True, s, largo_texto)) for s in range(30)]
+    z_humano = [puntuacion_z(generar(False, s + 500, largo_texto)) for s in range(30)]
+    umbral = 4.0
+
+    detectados = sum(1 for z in z_marcado if z > umbral)
+    falsos = sum(1 for z in z_humano if z > umbral)
+
+    # ¿cuanto texto hace falta?
+    por_largo = []
+    for largo in (25, 50, 100, 200):
+        zs = [puntuacion_z(generar(True, s, largo)) for s in range(30)]
+        por_largo.append({"tokens": largo, "z_media": _round(sum(zs) / len(zs), 2),
+                          "detectados_de_30": sum(1 for z in zs if z > umbral)})
+
+    # robustez: reescribir una fraccion de los tokens
+    robustez = []
+    for fraccion in (0.0, 0.1, 0.3, 0.5):
+        zs = []
+        for s in range(30):
+            texto = generar(True, s, largo_texto)
+            r = random.Random(seed * 31337 + s)
+            editado = [t if r.random() > fraccion else r.randrange(vocabulario) for t in texto]
+            zs.append(puntuacion_z(editado))
+        robustez.append({"fraccion_reescrita": fraccion, "z_media": _round(sum(zs) / len(zs), 2),
+                         "detectados_de_30": sum(1 for z in zs if z > umbral)})
+
+    return _contract(
+        "marcas_de_agua", seed,
+        {
+            "vocabulario": vocabulario, "fraccion_verde": gamma,
+            "umbral_de_deteccion": umbral,
+            "z_media_texto_marcado": _round(sum(z_marcado) / len(z_marcado), 2),
+            "z_media_texto_no_marcado": _round(sum(z_humano) / len(z_humano), 2),
+            "detectados_de_30": detectados,
+            "falsos_positivos_de_30": falsos,
+            "efecto_de_la_longitud": por_largo,
+            "robustez_a_la_reescritura": robustez,
+        },
+        [
+            f"Un texto marcado da una puntuación z media de "
+            f"{_round(sum(z_marcado) / len(z_marcado), 2)} y uno no marcado, de "
+            f"{_round(sum(z_humano) / len(z_humano), 2)}. Con umbral {umbral} se detectan "
+            f"{detectados} de 30 marcados y hay {falsos} falsos positivos de 30.",
+            "La detección no necesita el modelo ni la clave privada de nadie: basta la función que "
+            "define la lista verde. Se puede verificar sin acceso a quien generó el texto.",
+            f"Pero necesita longitud: con {por_largo[0]['tokens']} tokens la z media es "
+            f"{por_largo[0]['z_media']} y se detectan {por_largo[0]['detectados_de_30']} de 30; con "
+            f"{por_largo[-1]['tokens']}, la z sube a {por_largo[-1]['z_media']} y se detectan "
+            f"{por_largo[-1]['detectados_de_30']}. Un tuit no se puede marcar.",
+            f"Y se degrada al editar: reescribiendo el {int(robustez[2]['fraccion_reescrita'] * 100)} % "
+            f"de los tokens la z cae a {robustez[2]['z_media']} y los detectados a "
+            f"{robustez[2]['detectados_de_30']} de 30; con el "
+            f"{int(robustez[-1]['fraccion_reescrita'] * 100)} %, a {robustez[-1]['z_media']}. Parafrasear "
+            "es un ataque barato.",
+        ],
+        [
+            "El «modelo» es un generador aleatorio, no un modelo de lenguaje. Un sesgo real hacia la "
+            "lista verde degrada la calidad del texto, y ese compromiso —el parámetro delta— aquí no se "
+            "mide.",
+            "El ataque simulado sustituye tokens al azar. Un parafraseo con otro modelo es más eficaz y "
+            "conserva mejor el significado, así que la robustez real es peor que la medida.",
+            "La marca de agua identifica al generador, no al autor ni la intención. No dice si el texto "
+            "es cierto, ni si quien lo publicó sabía que era generado.",
+        ],
+    )
+
+
+def _gaussian_splatting(seed: int) -> dict[str, Any]:
+    """Kerbl 2023: primitivas explícitas y rasterización en vez de marchar rayos por un MLP."""
+    del_ = seed
+    ancho, alto = 1920, 1080
+    pixeles = ancho * alto
+
+    # NeRF: por cada pixel, N muestras a lo largo del rayo, cada una una pasada del MLP
+    muestras_por_rayo = 192
+    capas, ancho_mlp = 8, 256
+    operaciones_mlp = capas * ancho_mlp * ancho_mlp
+    coste_nerf = pixeles * muestras_por_rayo * operaciones_mlp
+
+    # splatting: se proyectan las gaussianas y cada pixel mezcla las que le caen encima
+    gaussianas = 1_000_000
+    solapes_por_pixel = 12
+    operaciones_por_mezcla = 40
+    coste_splat = pixeles * solapes_por_pixel * operaciones_por_mezcla + gaussianas * 200
+
+    # memoria: el MLP es diminuto, la nube de gaussianas no
+    parametros_mlp = capas * ancho_mlp * ancho_mlp
+    bytes_por_gaussiana = 59 * 4   # posicion, escala, rotacion, opacidad, armonicos esfericos
+    memoria = {
+        "mlp_megabytes": _round(parametros_mlp * 4 / 1e6, 1),
+        "gaussianas_megabytes": _round(gaussianas * bytes_por_gaussiana / 1e6, 1),
+    }
+
+    # la otra diferencia: el splatting ordena por profundidad y mezcla, sin muestrear el vacio
+    ocupacion = []
+    for densidad in (0.01, 0.05, 0.20):
+        utiles = muestras_por_rayo * densidad
+        ocupacion.append({"fraccion_de_escena_ocupada": densidad,
+                          "muestras_utiles_por_rayo": _round(utiles, 1),
+                          "muestras_desperdiciadas": _round(muestras_por_rayo - utiles, 1)})
+
+    return _contract(
+        "gaussian_splatting", seed,
+        {
+            "resolucion": f"{ancho}x{alto}", "pixeles": pixeles,
+            "nerf": {"muestras_por_rayo": muestras_por_rayo,
+                     "operaciones_por_muestra": operaciones_mlp,
+                     "operaciones_por_fotograma": coste_nerf},
+            "splatting": {"gaussianas": gaussianas, "solapes_por_pixel": solapes_por_pixel,
+                          "operaciones_por_fotograma": coste_splat},
+            "razon_de_coste": _round(coste_nerf / coste_splat, 1),
+            "memoria": memoria,
+            "muestreo_del_vacio": ocupacion,
+        },
+        [
+            f"Renderizar un fotograma a {ancho}×{alto} con marcha de rayos exige "
+            f"{muestras_por_rayo} consultas al perceptrón por cada uno de los {pixeles} píxeles: "
+            f"{coste_nerf:.3g} operaciones aritméticas. Con splatting son {coste_splat:.3g}. La razón "
+            f"bruta es enorme ({coste_nerf / coste_splat:.3g}×) y NO es la aceleración real: el "
+            "artículo mide del orden de mil veces, porque este conteo ignora el muestreo jerárquico y "
+            "cómo aprovecha cada método la GPU.",
+            f"La razón no es que las gaussianas sean mejores: es que el marchado de rayos **muestrea el "
+            f"vacío**. Con una escena ocupada al "
+            f"{int(ocupacion[0]['fraccion_de_escena_ocupada'] * 100)} %, "
+            f"{ocupacion[0]['muestras_desperdiciadas']} de las {muestras_por_rayo} muestras por rayo "
+            "caen donde no hay nada.",
+            f"El precio es la memoria: el perceptrón ocupa {memoria['mlp_megabytes']} MB y el millón de "
+            f"gaussianas, {memoria['gaussianas_megabytes']} MB — "
+            f"{_round(memoria['gaussianas_megabytes'] / memoria['mlp_megabytes'], 0):.0f}× más. Se "
+            "cambia cómputo por almacenamiento.",
+            "Y hay una consecuencia de diseño: como las primitivas son explícitas, la escena se puede "
+            "editar, recortar y mezclar. Una función continua aprendida no se edita.",
+        ],
+        [
+            "Son conteos de operaciones sobre supuestos razonables, no mediciones. El rendimiento real "
+            "depende de la rasterización en GPU, que es donde está el trabajo de ingeniería del "
+            "artículo.",
+            "No se implementa ni el ajuste de las gaussianas ni la rasterización ordenada por "
+            "profundidad. Lo que se exhibe es por qué el coste cambia de orden.",
+            "El número de gaussianas y los solapes por píxel dependen mucho de la escena. Escenas "
+            "grandes o con mucha transparencia empeoran ambos.",
+        ],
+    )
+
+
+def _colapso_de_modelo(seed: int) -> dict[str, Any]:
+    """Shumailov 2024: entrenar con lo generado por el modelo anterior estrecha la distribución."""
+    generaciones = 30
+    muestras = 25
+
+    def ajustar(datos: list[float]) -> tuple[float, float]:
+        media = sum(datos) / len(datos)
+        var = sum((x - media) ** 2 for x in datos) / len(datos)
+        return media, math.sqrt(var)
+
+    # generacion 0: datos reales
+    r0 = random.Random(seed)
+    reales = [r0.gauss(0, 1) for _ in range(muestras)]
+    media_real, desv_real = ajustar(reales)
+    # con pocas muestras la fraccion mas alla de 2 sigma no es observable: lo que si
+    # se mide, y es justo "los extremos desaparecen", es el rango de lo generado
+    cola_real = max(reales) - min(reales)
+
+    historia = [{"generacion": 0, "media": _round(media_real, 3), "desviacion": _round(desv_real, 3),
+                 "rango": _round(cola_real, 3), "extremo": _round(max(abs(x - media_real) for x in reales), 3),
+                 "solo_generado": False}]
+
+    datos = reales
+    for g in range(1, generaciones + 1):
+        media, desv = ajustar(datos)
+        rg = random.Random(seed * 6547 + g)
+        datos = [rg.gauss(media, desv) for _ in range(muestras)]
+        m2, d2 = ajustar(datos)
+        historia.append({"generacion": g, "media": _round(m2, 3), "desviacion": _round(d2, 3),
+                         "rango": _round(max(datos) - min(datos), 3),
+                         "extremo": _round(max(abs(x - media_real) for x in datos), 3),
+                         "solo_generado": True})
+
+    # el remedio: conservar una fraccion de datos reales en cada generacion
+    con_reales = []
+    for fraccion_real in (0.0, 0.1, 0.25):
+        datos_m = list(reales)
+        for g in range(1, generaciones + 1):
+            media, desv = ajustar(datos_m)
+            rg = random.Random(seed * 6547 + g)
+            n_real = int(muestras * fraccion_real)
+            rf = random.Random(seed * 3571 + g)
+            frescos = [rf.gauss(0, 1) for _ in range(n_real)]
+            datos_m = frescos + [rg.gauss(media, desv) for _ in range(muestras - n_real)]
+        _, dfin = ajustar(datos_m)
+        con_reales.append({"fraccion_de_datos_reales": fraccion_real,
+                           "desviacion_final": _round(dfin, 3),
+                           "fraccion_de_la_original": _round(dfin / desv_real, 3)})
+
+    final = historia[-1]
+    return _contract(
+        "colapso_de_modelo", seed,
+        {
+            "generaciones": generaciones, "muestras_por_generacion": muestras,
+            "historia": historia,
+            "desviacion_inicial": _round(desv_real, 3),
+            "desviacion_final": final["desviacion"],
+            "fraccion_conservada": _round(final["desviacion"] / desv_real, 3),
+            "efecto_de_conservar_datos_reales": con_reales,
+        },
+        [
+            f"Partiendo de datos reales con desviación {_round(desv_real, 3)}, y entrenando cada "
+            f"generación solo con lo que generó la anterior, tras {generaciones} generaciones la "
+            f"desviación es {final['desviacion']}: se conserva el "
+            f"{_round(100 * final['desviacion'] / desv_real, 1)} % de la variedad original.",
+            f"Lo que se estrecha es el rango: de {historia[0]['rango']} a {final['rango']}, "
+            f"{_round(historia[0]['rango'] / max(final['rango'], 1e-9), 1)}× menos. Lo raro es lo que "
+            "menos se muestrea, así que es lo primero que deja de aparecer.",
+            f"Y hay un segundo efecto que suele pasarse por alto: la distribución no solo se estrecha, "
+            f"también **deriva**. La media pasa de {historia[0]['media']} a {final['media']}, un paseo "
+            "aleatorio que ninguna generación puede detectar desde dentro porque cada una ajusta bien "
+            "los datos que recibe.",
+            "Y el mecanismo no exige ningún fallo del modelo: cada generación estima bien los "
+            "parámetros de la anterior. El error de muestreo, acumulado, basta para estrechar la "
+            "distribución generación tras generación.",
+            f"Conservar datos reales lo frena: con un {int(con_reales[-1]['fraccion_de_datos_reales'] * 100)} % "
+            f"de muestras reales en cada generación, la desviación final es "
+            f"{con_reales[-1]['desviacion_final']} frente a {con_reales[0]['desviacion_final']} sin "
+            "ninguna. Los datos anteriores a la IA generativa se vuelven un recurso con valor.",
+        ],
+        [
+            "El modelo es una gaussiana ajustada por momentos, no una red. El artículo demuestra el "
+            "fenómeno en modelos de lenguaje, autocodificadores variacionales y mezclas de gaussianas, "
+            "donde el mecanismo es el mismo pero el efecto es más rico.",
+            "Aquí cada generación entrena SOLO con lo generado. En la práctica el corpus se contamina "
+            "parcialmente, y cuánto de rápido colapsa depende de esa proporción.",
+            "No se modela el filtrado de calidad: si alguien selecciona las mejores salidas para "
+            "reentrenar, el resultado cambia — puede mejorar la calidad media y estrechar aún más la "
+            "distribución.",
+        ],
+    )
+
+
+def _minimo_privilegio(seed: int) -> dict[str, Any]:
+    """Saltzer y Schroeder 1975: el valor por defecto decide el radio de daño."""
+    rng = random.Random(seed)
+    recursos = [f"r{i:02d}" for i in range(40)]
+    # lo que el agente necesita de verdad para su tarea
+    necesarios = sorted(random.Random(seed * 13).sample(recursos, 6))
+    # la politica escrita a mano cubre lo que alguien se acordo de listar
+    permitidos_explicitos = sorted(set(necesarios) | set(random.Random(seed * 17).sample(recursos, 6)))
+    denegados_explicitos = sorted(random.Random(seed * 19).sample(recursos, 5))
+
+    denegar_por_defecto = [r for r in recursos if r in permitidos_explicitos]
+    permitir_por_defecto = [r for r in recursos if r not in denegados_explicitos]
+
+    # un token de sesion largo frente a uno por tarea
+    tareas = 12
+    recursos_por_tarea = []
+    for t in range(tareas):
+        rt = random.Random(seed * 7919 + t)
+        recursos_por_tarea.append(sorted(rt.sample(recursos, 3)))
+    token_amplio = sorted({r for lista in recursos_por_tarea for r in lista})
+    exposicion_amplio = len(token_amplio)
+    exposicion_por_tarea = sum(len(l) for l in recursos_por_tarea) / tareas
+
+    # mediacion completa: comprobar una vez al principio frente a en cada acceso
+    revocado_en_el_paso = 4
+    accesos = 10
+    con_comprobacion_unica = accesos              # sigue accediendo despues de revocar
+    con_mediacion_completa = revocado_en_el_paso  # se corta en cuanto se revoca
+
+    principios = [
+        "economía de mecanismo: el diseño más simple que funcione",
+        "valores por defecto a prueba de fallos: denegar salvo permiso explícito",
+        "mediación completa: comprobar CADA acceso, no solo el primero",
+        "diseño abierto: la seguridad no depende de que el diseño sea secreto",
+        "separación de privilegio: dos condiciones mejor que una",
+        "mínimo privilegio: lo justo para la tarea, ni un permiso más",
+        "mecanismo mínimo compartido: cuanto menos se comparta, menos se filtra",
+        "aceptabilidad psicológica: si estorba, la gente lo rodea",
+    ]
+
+    return _contract(
+        "minimo_privilegio", seed,
+        {
+            "recursos_totales": len(recursos),
+            "recursos_que_la_tarea_necesita": len(necesarios),
+            "reglas_de_permiso_escritas": len(permitidos_explicitos),
+            "reglas_de_denegacion_escritas": len(denegados_explicitos),
+            "alcance_denegar_por_defecto": len(denegar_por_defecto),
+            "alcance_permitir_por_defecto": len(permitir_por_defecto),
+            "exceso_sobre_lo_necesario": {
+                "denegar_por_defecto": len(denegar_por_defecto) - len(necesarios),
+                "permitir_por_defecto": len(permitir_por_defecto) - len(necesarios),
+            },
+            "token_de_sesion": {"tareas": tareas, "recursos_expuestos": exposicion_amplio},
+            "token_por_tarea": {"tareas": tareas,
+                                "recursos_expuestos_de_media": _round(exposicion_por_tarea, 1)},
+            "mediacion": {"accesos": accesos, "permiso_revocado_en_el_paso": revocado_en_el_paso,
+                          "accesos_servidos_con_comprobacion_unica": con_comprobacion_unica,
+                          "accesos_servidos_con_mediacion_completa": con_mediacion_completa},
+            "los_ocho_principios": principios,
+        },
+        [
+            f"La tarea necesita {len(necesarios)} de {len(recursos)} recursos. Con **denegar por "
+            f"defecto** quedan accesibles {len(denegar_por_defecto)}; con **permitir por defecto**, "
+            f"{len(permitir_por_defecto)}. La política escrita es la misma: lo que cambia es qué pasa "
+            "con lo que nadie listó.",
+            f"El exceso sobre lo estrictamente necesario es de "
+            f"{len(denegar_por_defecto) - len(necesarios)} recursos frente a "
+            f"{len(permitir_por_defecto) - len(necesarios)}: "
+            f"{_round((len(permitir_por_defecto) - len(necesarios)) / max(len(denegar_por_defecto) - len(necesarios), 1), 1)}× "
+            "más superficie por una sola decisión de diseño.",
+            f"Con un token de sesión para {tareas} tareas quedan expuestos {exposicion_amplio} recursos "
+            f"a la vez; con un token por tarea, {_round(exposicion_por_tarea, 1)} de media. El radio de "
+            "daño de una credencial filtrada es el número que hay que mirar, no el número de permisos.",
+            f"Y la mediación completa importa: si el permiso se revoca en el paso "
+            f"{revocado_en_el_paso}, comprobar solo al principio sirve {con_comprobacion_unica} accesos "
+            f"y comprobar cada uno sirve {con_mediacion_completa}. Una autorización caduca no sirve de "
+            "nada si nadie la vuelve a mirar.",
+        ],
+        [
+            "Los recursos y la política son sintéticos. En un sistema real lo difícil es saber qué "
+            "necesita de verdad una tarea, y ese descubrimiento es el trabajo.",
+            "No se modela la usabilidad, que es el octavo principio y el que más despliegues hunde: una "
+            "política que estorba se rodea, y entonces protege menos que una laxa que se respeta.",
+            "El artículo cubre además criptografía, listas de control de acceso y capacidades, con un "
+            "detalle técnico que aquí no aparece.",
+        ],
+    )
+
+
+def _pizarra(seed: int) -> dict[str, Any]:
+    """Erman 1980: fuentes de conocimiento independientes sobre una estructura compartida."""
+    objetivo = ["el", "gato", "come", "pescado"]
+    # cada fuente ve una parte y ninguna resuelve sola
+    evidencia = {
+        "acústica": {0: ["el", "él"], 1: ["gato", "pato", "rato"], 2: ["come", "corre"], 3: ["pescado", "pesado"]},
+        "léxica": {1: ["gato", "pato", "rato", "pescado"], 3: ["pescado", "pesado", "helado"]},
+        "sintáctica": {0: ["el"], 2: ["come", "corre", "salta"]},
+        "semántica": {1: ["gato", "perro"], 2: ["come", "bebe"], 3: ["pescado", "helado"]},
+    }
+    posiciones = [0, 1, 2, 3]
+
+    def intersectar(fuentes: list[str]) -> dict[int, list[str]]:
+        salida = {}
+        for p in posiciones:
+            candidatos = None
+            for f in fuentes:
+                if p in evidencia[f]:
+                    conjunto = set(evidencia[f][p])
+                    candidatos = conjunto if candidatos is None else (candidatos & conjunto)
+            salida[p] = sorted(candidatos) if candidatos else []
+        return salida
+
+    todas = list(evidencia)
+    por_fuente_sola = []
+    for f in todas:
+        r = intersectar([f])
+        resueltas = sum(1 for p in posiciones if len(r[p]) == 1)
+        por_fuente_sola.append({"fuente": f, "posiciones_resueltas": resueltas,
+                                "de": len(posiciones), "hipotesis": r})
+
+    combinada = intersectar(todas)
+    resueltas_combinada = sum(1 for p in posiciones if len(combinada[p]) == 1)
+    frase = [combinada[p][0] if len(combinada[p]) == 1 else "?" for p in posiciones]
+
+    # en una tuberia cada etapa se COMPROMETE con su mejor candidato y las siguientes
+    # ya no pueden revisarlo: por eso un error temprano llega intacto al final
+    orden = ["acústica", "léxica", "sintáctica", "semántica"]
+    tuberia: dict[int, list[str]] = {}
+    for f in orden:
+        parcial = intersectar([f])
+        for p in posiciones:
+            if p not in tuberia and parcial[p]:
+                tuberia[p] = [parcial[p][0]]     # decide con lo que sabe, y no vuelve
+    for p in posiciones:
+        tuberia.setdefault(p, [])
+    resueltas_tuberia = sum(1 for p in posiciones if len(tuberia[p]) == 1)
+    frase_tuberia = [tuberia[p][0] if len(tuberia[p]) == 1 else "?" for p in posiciones]
+    aciertos_tuberia = sum(1 for i, p in enumerate(posiciones)
+                           if len(tuberia[p]) == 1 and tuberia[p][0] == objetivo[i])
+
+    return _contract(
+        "pizarra", seed,
+        {
+            "frase_objetivo": " ".join(objetivo),
+            "fuentes_de_conocimiento": todas,
+            "cada_fuente_por_separado": por_fuente_sola,
+            "pizarra_compartida": {"hipotesis": combinada, "posiciones_resueltas": resueltas_combinada,
+                                   "reconstruye": " ".join(frase),
+                                   "correcta": frase == objetivo},
+            "tuberia_de_orden_fijo": {"orden": orden, "posiciones_resueltas": resueltas_tuberia,
+                                      "posiciones_correctas": aciertos_tuberia,
+                                      "reconstruye": " ".join(frase_tuberia),
+                                      "correcta": frase_tuberia == objetivo},
+        },
+        [
+            f"Ninguna fuente resuelve la frase sola: la mejor por separado deja "
+            f"{max(f['posiciones_resueltas'] for f in por_fuente_sola)} de {len(posiciones)} posiciones "
+            "decididas. Cada una sabe algo parcial y ninguna tiene autoridad sobre el resultado.",
+            f"Publicando todas sus hipótesis en una estructura compartida, se resuelven "
+            f"{resueltas_combinada} de {len(posiciones)} y la frase reconstruida es «{' '.join(frase)}»: "
+            f"{'correcta' if frase == objetivo else 'incorrecta'}. La solución no está en ninguna "
+            "fuente; está en la intersección.",
+            f"El contraste está en la alternativa: una tubería donde cada etapa se compromete con su "
+            f"mejor candidato y las siguientes no pueden revisarlo reconstruye "
+            f"«{' '.join(frase_tuberia)}» — {aciertos_tuberia} de {len(posiciones)} correctas. El error "
+            "de la primera etapa llega intacto al final aunque las siguientes tuvieran con qué "
+            "corregirlo.",
+            "Esa es la idea de la pizarra: las fuentes no se llaman entre sí ni conocen el orden en que "
+            "actuarán, y nada se decide hasta que todas han escrito. El control es oportunista: elige a "
+            "quién invocar según lo que ya hay.",
+            "Y es lo que permite añadir una fuente nueva sin tocar ninguna existente: no hay grafo de "
+            "llamadas que actualizar, solo un lector más de la misma estructura.",
+        ],
+        [
+            "Las fuentes se combinan por intersección de conjuntos. En Hearsay-II las hipótesis llevan "
+            "puntuación de credibilidad y el control decide con ellas, que es bastante más rico.",
+            "No hay control oportunista real: aquí se aplican todas las fuentes. Lo que hacía "
+            "interesante al sistema era decidir A QUIÉN invocar en cada momento según el estado de la "
+            "pizarra.",
+            "Cuatro posiciones y cuatro fuentes es una maqueta. El sistema original manejaba miles de "
+            "hipótesis compitiendo, con poda y con revisión de decisiones anteriores.",
+        ],
+    )
+
+
+def _red_de_contratos(seed: int) -> dict[str, Any]:
+    """Smith 1980: anunciar, recibir ofertas y adjudicar, cuando nadie sabe quién puede."""
+    rng = random.Random(seed)
+    n_nodos, n_tareas = 6, 18
+    # cada nodo es bueno en unas tareas y malo en otras; el coordinador NO lo sabe
+    habilidad = {}
+    for n in range(n_nodos):
+        r = random.Random(seed * 3571 + n)
+        habilidad[n] = [_round(r.uniform(0.5, 4.0), 2) for _ in range(n_tareas)]
+
+    carga_asignacion_ciega: dict[int, float] = {n: 0.0 for n in range(n_nodos)}
+    for t in range(n_tareas):
+        n = t % n_nodos                       # reparto circular: ignora la habilidad
+        carga_asignacion_ciega[n] += habilidad[n][t]
+
+    carga_contratos: dict[int, float] = {n: 0.0 for n in range(n_nodos)}
+    mensajes = 0
+    adjudicaciones = []
+    for t in range(n_tareas):
+        mensajes += n_nodos                   # anuncio a todos
+        ofertas = []
+        for n in range(n_nodos):
+            # cada nodo oferta su coste real MÁS lo que ya tiene encima
+            ofertas.append((habilidad[n][t] + 0.35 * carga_contratos[n], n))
+            mensajes += 1                     # una oferta por nodo
+        ofertas.sort()
+        _, ganador = ofertas[0]
+        mensajes += 1                         # adjudicacion
+        carga_contratos[ganador] += habilidad[ganador][t]
+        adjudicaciones.append({"tarea": t, "adjudicada_a": ganador,
+                               "coste": habilidad[ganador][t]})
+
+    fin_ciego = _round(max(carga_asignacion_ciega.values()), 2)
+    fin_contratos = _round(max(carga_contratos.values()), 2)
+    mensajes_ciego = n_tareas                 # una orden por tarea
+
+    desequilibrio_ciego = _round(max(carga_asignacion_ciega.values()) - min(carga_asignacion_ciega.values()), 2)
+    desequilibrio_contratos = _round(max(carga_contratos.values()) - min(carga_contratos.values()), 2)
+
+    return _contract(
+        "red_de_contratos", seed,
+        {
+            "nodos": n_nodos, "tareas": n_tareas,
+            "asignacion_ciega": {"tiempo_de_finalizacion": fin_ciego, "mensajes": mensajes_ciego,
+                                 "desequilibrio": desequilibrio_ciego},
+            "red_de_contratos": {"tiempo_de_finalizacion": fin_contratos, "mensajes": mensajes,
+                                 "desequilibrio": desequilibrio_contratos},
+            "mejora_de_tiempo": _round(fin_ciego / max(fin_contratos, 1e-9), 2),
+            "coste_en_mensajes": _round(mensajes / max(mensajes_ciego, 1), 1),
+            "primeras_adjudicaciones": adjudicaciones[:5],
+        },
+        [
+            f"Repartiendo las {n_tareas} tareas por turno riguroso, la última termina en "
+            f"{fin_ciego}; con anuncio, ofertas y adjudicación, en {fin_contratos}: "
+            f"{_round(fin_ciego / max(fin_contratos, 1e-9), 2)}× mejor. El coordinador no sabía quién "
+            "era bueno en qué — y no le hizo falta.",
+            f"El desequilibrio de carga entre nodos pasa de {desequilibrio_ciego} a "
+            f"{desequilibrio_contratos}, porque cada nodo incorpora a su oferta lo que ya tiene "
+            "encima. La coordinación emerge de las ofertas, sin planificador central.",
+            f"Y eso se paga en comunicación: {mensajes} mensajes frente a {mensajes_ciego}, "
+            f"{_round(mensajes / max(mensajes_ciego, 1), 1)}× más. La red de contratos cambia cómputo "
+            "central por conversación distribuida.",
+            "El protocolo tiene además una propiedad que no se ve en los números: **no hay lista de "
+            "capacidades que mantener**. Un nodo nuevo empieza a ofertar y ya está, y uno que se "
+            "degrada simplemente deja de ganar.",
+        ],
+        [
+            "Los nodos ofertan su coste verdadero. En un sistema abierto pueden mentir para ganar "
+            "contratos, y el protocolo original no tiene defensa contra eso.",
+            "Se cuentan mensajes, no latencia. Con nodos lentos o red saturada, la ronda de ofertas "
+            "añade un retardo por tarea que aquí no aparece.",
+            "El reparto circular es un punto de comparación débil a propósito. Un planificador central "
+            "que SÍ conociera las habilidades lo haría mejor que la red de contratos; el supuesto del "
+            "artículo es que no las conoce.",
+        ],
+    )
+
+
+def _metarrazonamiento(seed: int) -> dict[str, Any]:
+    """Russell y Wefald 1991: deliberar tiene coste, y ese coste entra en la decisión."""
+    instancias = 300
+    coste_por_paso = 0.9
+
+    def calidad(pasos: int) -> float:
+        # rendimientos decrecientes: pensar mas mejora, cada vez menos
+        return 26.0 * (1 - math.exp(-pasos / 4.0))
+
+    filas = []
+    for presupuesto in (1, 3, 6, 10, 20):
+        neto = calidad(presupuesto) - coste_por_paso * presupuesto
+        filas.append({"pasos_fijos": presupuesto, "calidad": _round(calidad(presupuesto), 2),
+                      "coste": _round(coste_por_paso * presupuesto, 2), "utilidad_neta": _round(neto, 2)})
+
+    mejor_fijo = max(filas, key=lambda f: f["utilidad_neta"])
+
+    # regla de valor de la computacion: seguir mientras la mejora esperada del
+    # siguiente paso supere lo que ese paso cuesta
+    pasos, historia = 0, []
+    while pasos < 40:
+        ganancia = calidad(pasos + 1) - calidad(pasos)
+        historia.append({"paso": pasos + 1, "ganancia_esperada": _round(ganancia, 3),
+                         "coste_del_paso": coste_por_paso, "sigue": ganancia > coste_por_paso})
+        if ganancia <= coste_por_paso:
+            break
+        pasos += 1
+    neto_adaptativo = calidad(pasos) - coste_por_paso * pasos
+
+    # con instancias de dificultad variable, el presupuesto fijo se equivoca en las dos direcciones
+    rng = random.Random(seed)
+    exceso, defecto, aciertos = 0, 0, 0
+    fijo = mejor_fijo["pasos_fijos"]
+    for i in range(instancias):
+        r = random.Random(seed * 104729 + i)
+        escala = r.uniform(1.5, 9.0)          # esta instancia satura antes o despues
+
+        def calidad_i(p: int, s: float = escala) -> float:
+            return 26.0 * (1 - math.exp(-p / s))
+
+        optimo = 0
+        while optimo < 40 and (calidad_i(optimo + 1) - calidad_i(optimo)) > coste_por_paso:
+            optimo += 1
+        if fijo > optimo:
+            exceso += 1
+        elif fijo < optimo:
+            defecto += 1
+        else:
+            aciertos += 1
+
+    return _contract(
+        "metarrazonamiento", seed,
+        {
+            "coste_por_paso_de_deliberacion": coste_por_paso,
+            "presupuestos_fijos": filas,
+            "mejor_presupuesto_fijo": mejor_fijo,
+            "regla_de_valor_de_la_computacion": historia,
+            "pasos_elegidos_por_la_regla": pasos,
+            "utilidad_neta_de_la_regla": _round(neto_adaptativo, 2),
+            "sobre_instancias_de_dificultad_variable": {
+                "instancias": instancias, "presupuesto_fijo_usado": fijo,
+                "veces_que_piensa_de_mas": exceso, "veces_que_piensa_de_menos": defecto,
+                "veces_que_acierta": aciertos,
+            },
+        },
+        [
+            f"Deliberar mejora la decisión con rendimientos decrecientes y cuesta "
+            f"{coste_por_paso} por paso. Con presupuesto fijo, el mejor es "
+            f"{mejor_fijo['pasos_fijos']} pasos y da una utilidad neta de "
+            f"{mejor_fijo['utilidad_neta']}; con 20 pasos, la utilidad cae a "
+            f"{filas[-1]['utilidad_neta']}. Pensar de más es una forma de equivocarse.",
+            f"La regla de valor de la computación —seguir solo mientras la mejora esperada del "
+            f"siguiente paso supere su coste— para en el paso {pasos} con utilidad neta "
+            f"{_round(neto_adaptativo, 2)}. No hay que elegir presupuesto: se deduce de la curva.",
+            f"Y sobre {instancias} instancias de dificultad variable, el presupuesto fijo de {fijo} "
+            f"pasos piensa de más en {exceso} casos y de menos en {defecto}, acertando solo en "
+            f"{aciertos}. Un número fijo no puede ser correcto para instancias distintas.",
+            "Esa es la tesis: la decisión de **cuánto pensar** es en sí misma una decisión, y hay que "
+            "tomarla con el mismo criterio que las demás. Un agente que no la toma, la toma igual — por "
+            "omisión y mal.",
+        ],
+        [
+            "La curva de calidad es una exponencial conocida. En un problema real no se sabe cuánto "
+            "mejorará el siguiente paso, y estimarlo es el problema difícil que el artículo llama "
+            "«metanivel».",
+            "Se supone que el coste de deliberar es constante y conocido. Con llamadas a modelos, el "
+            "coste varía por paso y depende del contexto acumulado.",
+            "El propio metarrazonamiento cuesta. Si estimar el valor de la computación es caro, se entra "
+            "en una regresión que el artículo discute y no cierra.",
+        ],
+    )
+
+
+def _kqml(seed: int) -> dict[str, Any]:
+    """Finin 1994: separar QUÉ se dice de QUÉ se pretende al decirlo."""
+    del_ = seed
+    contenido = "puerta(abierta)"
+    interpretaciones = [
+        {"performativa": "tell", "significado": "te informo de que la puerta está abierta",
+         "respuesta_esperada": "ninguna, o un acuse"},
+        {"performativa": "ask-if", "significado": "¿está la puerta abierta?",
+         "respuesta_esperada": "sí o no"},
+        {"performativa": "achieve", "significado": "haz que la puerta esté abierta",
+         "respuesta_esperada": "actuar y confirmar"},
+        {"performativa": "deny", "significado": "no es cierto que la puerta esté abierta",
+         "respuesta_esperada": "revisar creencias"},
+        {"performativa": "subscribe", "significado": "avísame cuando cambie",
+         "respuesta_esperada": "flujo de notificaciones"},
+    ]
+
+    # coste de integracion: N agentes con M lenguajes de contenido
+    filas = []
+    for n_agentes, m_lenguajes in ((3, 2), (6, 4), (12, 6), (30, 10)):
+        sin_capa = n_agentes * (n_agentes - 1) * m_lenguajes   # cada pareja, cada lenguaje
+        con_capa = n_agentes + m_lenguajes                      # cada uno habla con la capa comun
+        filas.append({"agentes": n_agentes, "lenguajes_de_contenido": m_lenguajes,
+                      "adaptadores_sin_capa_comun": sin_capa,
+                      "adaptadores_con_capa_comun": con_capa,
+                      "razon": _round(sin_capa / con_capa, 1)})
+
+    capas = [
+        {"capa": "contenido", "responde a": "qué se dice", "ejemplo": contenido},
+        {"capa": "mensaje", "responde a": "qué se pretende y en qué lenguaje", "ejemplo": "tell · prolog"},
+        {"capa": "comunicación", "responde a": "quién a quién y con qué identificador",
+         "ejemplo": "sender=a1 receiver=a2 reply-with=m17"},
+    ]
+
+    grande = filas[-1]
+    return _contract(
+        "kqml", seed,
+        {
+            "contenido_ambiguo": contenido,
+            "interpretaciones_posibles": interpretaciones,
+            "numero_de_interpretaciones": len(interpretaciones),
+            "capas_del_mensaje": capas,
+            "coste_de_integracion": filas,
+        },
+        [
+            f"La misma cadena «{contenido}» admite {len(interpretaciones)} lecturas incompatibles: "
+            "informar, preguntar, ordenar, negar o suscribirse. El contenido no basta — hace falta "
+            "declarar qué se pretende al decirlo.",
+            "Eso es una **performativa**: una etiqueta que separa el acto de habla del contenido, "
+            "tomada de la filosofía del lenguaje. Con ella, el receptor sabe qué se espera de él sin "
+            "tener que inferirlo.",
+            f"Y la capa común ahorra integraciones: con {grande['agentes']} agentes y "
+            f"{grande['lenguajes_de_contenido']} lenguajes de contenido hacen falta "
+            f"{grande['adaptadores_sin_capa_comun']} adaptadores punto a punto frente a "
+            f"{grande['adaptadores_con_capa_comun']} con capa común: "
+            f"{grande['razon']}× menos.",
+            "El diseño en tres capas —contenido, mensaje y comunicación— es lo que permite cambiar el "
+            "lenguaje de contenido sin tocar el transporte, y el transporte sin tocar la semántica. "
+            "Treinta años después, el mismo problema y la misma forma de resolverlo.",
+        ],
+        [
+            "El conteo de adaptadores supone que cada pareja necesita uno por lenguaje, que es el peor "
+            "caso. En la práctica se comparten bibliotecas y la diferencia real es menor.",
+            "KQML nunca fijó una semántica formal de sus performativas, y esa ambigüedad es su crítica "
+            "más citada: dos implementaciones podían entender «tell» de forma distinta.",
+            "No se modela el descubrimiento —cómo un agente encuentra a otro— que es la otra mitad del "
+            "problema y lo que los facilitadores de KQML intentaban resolver.",
+        ],
+    )
+
+
+def _niveles_de_automatizacion(seed: int) -> dict[str, Any]:
+    """Parasuraman y Sheridan 2000: automatizar más no es automatizar mejor."""
+    rng = random.Random(seed)
+    decisiones = 2000
+    tasa_de_error_del_sistema = 0.08
+
+    niveles = [
+        (1, "el humano decide todo", 1.00),
+        (3, "el sistema propone y el humano elige", 0.85),
+        (5, "el sistema sugiere una y el humano aprueba", 0.55),
+        (7, "el sistema actúa y avisa después", 0.20),
+        (9, "el sistema actúa y avisa solo si se lo piden", 0.05),
+        (10, "el sistema actúa e ignora al humano", 0.00),
+    ]
+
+    # MISMA secuencia de fallos para todos los niveles: si cada uno sorteara la suya,
+    # las detecciones no serian comparables entre niveles
+    rf = random.Random(seed * 7717)
+    fallos = [rf.random() < tasa_de_error_del_sistema for _ in range(decisiones)]
+    errores_totales = sum(fallos)
+
+    filas = []
+    for nivel, descripcion, fraccion_revisada in niveles:
+        r = random.Random(seed * 104729 + nivel)
+        errores, detectados, revisiones = errores_totales, 0, 0
+        for fallo in fallos:
+            revisado = r.random() < fraccion_revisada
+            revisiones += 1 if revisado else 0
+            if fallo and revisado:
+                # la deteccion tambien se degrada: menos practica, menos criterio
+                if r.random() < (0.55 + 0.4 * fraccion_revisada):
+                    detectados += 1
+        filas.append({
+            "nivel": nivel, "descripcion": descripcion,
+            "fraccion_revisada_por_el_humano": fraccion_revisada,
+            "errores_del_sistema": errores,
+            "errores_detectados": detectados,
+            "errores_que_pasan": errores - detectados,
+            "carga_de_revision": revisiones,
+        })
+
+    mejor_deteccion = max(filas, key=lambda f: f["errores_detectados"])
+    menor_carga = min(filas, key=lambda f: f["carga_de_revision"])
+    # equilibrio: errores que pasan por unidad de carga humana
+    for f in filas:
+        f["errores_que_pasan_por_cada_100_revisiones"] = _round(
+            100 * f["errores_que_pasan"] / max(f["carga_de_revision"], 1), 2)
+
+    etapas = ["adquisición de información", "análisis de la información",
+              "decisión y selección de la acción", "ejecución de la acción"]
+
+    return _contract(
+        "niveles_de_automatizacion", seed,
+        {
+            "decisiones": decisiones,
+            "tasa_de_error_del_sistema": tasa_de_error_del_sistema,
+            "cuatro_etapas_automatizables": etapas,
+            "por_nivel": filas,
+            "mejor_deteccion": {"nivel": mejor_deteccion["nivel"],
+                                "detectados": mejor_deteccion["errores_detectados"]},
+            "menor_carga": {"nivel": menor_carga["nivel"], "carga": menor_carga["carga_de_revision"]},
+        },
+        [
+            f"Con una tasa de error del sistema del "
+            f"{_round(100 * tasa_de_error_del_sistema, 0):.0f} %, el nivel más bajo detecta "
+            f"{filas[0]['errores_detectados']} errores de {filas[0]['errores_del_sistema']} y el más "
+            f"alto, {filas[-1]['errores_detectados']}. Automatizar la aprobación no elimina los "
+            "errores: elimina a quien los veía.",
+            f"Y la degradación no es proporcional a la revisión: al nivel 5 se revisa el "
+            f"{_round(100 * filas[2]['fraccion_revisada_por_el_humano'], 0):.0f} % de los casos y se "
+            f"detectan {filas[2]['errores_detectados']}, mientras que al nivel 7 se revisa el "
+            f"{_round(100 * filas[3]['fraccion_revisada_por_el_humano'], 0):.0f} % y se detectan "
+            f"{filas[3]['errores_detectados']}. Quien revisa menos, además revisa peor: sin práctica no "
+            "hay criterio.",
+            f"La carga humana sí cae limpiamente: de {filas[0]['carga_de_revision']} revisiones al "
+            f"nivel {filas[0]['nivel']} a {filas[-1]['carga_de_revision']} al nivel "
+            f"{filas[-1]['nivel']}. Ese es el beneficio real de automatizar, y hay que ponerlo al lado "
+            "del coste, no en su lugar.",
+            "Por eso el artículo insiste en que el nivel se elige **por etapa** —adquirir, analizar, "
+            "decidir, ejecutar— y no para el sistema entero. Automatizar la adquisición de información "
+            "casi nunca tiene coste; automatizar la decisión, casi siempre.",
+        ],
+        [
+            "La degradación de la capacidad de detección se modela con una fórmula inventada. El "
+            "artículo la documenta cualitativamente a partir de estudios de factores humanos, no con "
+            "esta curva.",
+            "No se modela el coste de un error que pasa, que es lo que decide de verdad el nivel "
+            "adecuado. Un falso negativo en diagnóstico médico y en un filtro de correo no cuestan lo "
+            "mismo.",
+            "Faltan los otros dos criterios del artículo: la carga mental y la confianza calibrada del "
+            "operador, que interactúan con el nivel de formas que este conteo no captura.",
+        ],
+    )
+
+
+def _mapreduce(seed: int) -> dict[str, Any]:
+    """Dean y Ghemawat 2004: el modelo es simple; el sesgo de los datos, no."""
+    rng = random.Random(seed)
+    reductores = 8
+    n_claves = 5000
+
+    # claves uniformes frente a claves con ley de potencias (lo normal en datos reales)
+    uniformes = [rng.randrange(200) for _ in range(n_claves)]
+    sesgadas = []
+    for _ in range(n_claves):
+        u = rng.random()
+        # una clave se lleva el 40 % del trafico
+        sesgadas.append(0 if u < 0.40 else rng.randrange(1, 200))
+
+    def hash_estable(k: int) -> int:
+        # hash() de Python esta aleatorizado por proceso; aqui hace falta determinismo
+        h = 2166136261
+        for c in str(k).encode():
+            h = ((h ^ c) * 16777619) & 0xFFFFFFFF
+        return h
+
+    def repartir(claves: list[int]) -> dict[int, int]:
+        carga = {r: 0 for r in range(reductores)}
+        for k in claves:
+            carga[hash_estable(k) % reductores] += 1
+        return carga
+
+    def informe(claves: list[int], etiqueta: str) -> dict[str, Any]:
+        carga = repartir(claves)
+        valores = sorted(carga.values(), reverse=True)
+        ideal = len(claves) / reductores
+        return {"reparto": etiqueta, "carga_por_reductor": valores,
+                "el_mas_cargado": valores[0], "el_menos_cargado": valores[-1],
+                "carga_ideal": _round(ideal, 1),
+                "tiempo_de_finalizacion": valores[0],
+                "sobre_el_ideal": _round(valores[0] / ideal, 2)}
+
+    caso_uniforme = informe(uniformes, "claves uniformes")
+    caso_sesgado = informe(sesgadas, "una clave se lleva el 40 %")
+
+    # el combinador agrega en el mapa antes de mover datos por la red
+    def con_combinador(claves: list[int]) -> dict[str, Any]:
+        mapeadores = 16
+        trafico = 0
+        por_mapeador: dict[int, dict[int, int]] = {m: {} for m in range(mapeadores)}
+        for i, k in enumerate(claves):
+            m = i % mapeadores
+            por_mapeador[m][k] = por_mapeador[m].get(k, 0) + 1
+        for m in por_mapeador:
+            trafico += len(por_mapeador[m])   # una pareja por clave distinta, no por registro
+        return {"registros": len(claves), "trafico_sin_combinador": len(claves),
+                "trafico_con_combinador": trafico,
+                "reduccion": _round(len(claves) / max(trafico, 1), 2)}
+
+    combinador = con_combinador(sesgadas)
+
+    return _contract(
+        "mapreduce", seed,
+        {
+            "reductores": reductores, "registros": n_claves,
+            "caso_uniforme": caso_uniforme,
+            "caso_sesgado": caso_sesgado,
+            "efecto_del_combinador": combinador,
+        },
+        [
+            f"Con claves uniformes, el reductor más cargado recibe {caso_uniforme['el_mas_cargado']} "
+            f"registros frente a un ideal de {caso_uniforme['carga_ideal']}: solo "
+            f"{caso_uniforme['sobre_el_ideal']}× por encima. El reparto por hash funciona bien cuando "
+            "los datos son planos.",
+            f"Con una sola clave que se lleva el 40 % del tráfico, el más cargado recibe "
+            f"{caso_sesgado['el_mas_cargado']} y el menos, {caso_sesgado['el_menos_cargado']}: "
+            f"{caso_sesgado['sobre_el_ideal']}× el ideal. Y como el trabajo termina cuando termina el "
+            "último, ese reductor **es** el tiempo total.",
+            f"Añadir reductores no arregla nada: la clave caliente sigue cayendo en uno solo. El sesgo "
+            "no es un problema de escala, es un problema de partición — y por eso los sistemas reales "
+            "acaban con particionadores a medida.",
+            f"El combinador sí ayuda, en otra dimensión: agregar en el mapeador antes de mover datos "
+            f"baja el tráfico de {combinador['trafico_sin_combinador']} parejas a "
+            f"{combinador['trafico_con_combinador']}, {combinador['reduccion']}× menos por la red.",
+        ],
+        [
+            "Se cuenta número de registros por reductor, no tiempo. Un reductor puede ser lento por "
+            "otras razones —disco, vecinos ruidosos— y eso es el problema de los rezagados, que el "
+            "artículo resuelve con tareas de respaldo.",
+            "El combinador solo aplica si la operación de reducción es asociativa y conmutativa. "
+            "Contar sí; calcular una mediana, no.",
+            "No se modela la tolerancia a fallos, que es la otra mitad del artículo: reejecutar tareas "
+            "perdidas es lo que hace viable el modelo sobre miles de máquinas baratas.",
+        ],
+    )
+
+
+def _dos_sigma(seed: int) -> dict[str, Any]:
+    """Bloom 1984: la tutoría uno a uno mueve la media dos desviaciones típicas."""
+    rng = random.Random(seed)
+    alumnos = 400
+
+    condiciones = [
+        ("clase convencional", 0.0),
+        ("aprendizaje para el dominio", 1.0),
+        ("tutoría uno a uno", 2.0),
+    ]
+
+    filas = []
+    for nombre, desplazamiento in condiciones:
+        r = random.Random(seed * 7919 + int(desplazamiento * 10))
+        notas = [r.gauss(desplazamiento, 1.0) for _ in range(alumnos)]
+        media = sum(notas) / alumnos
+        # el corte es la media de la clase convencional: cuantos la superan
+        por_encima = sum(1 for n in notas if n > 0.0) / alumnos
+        filas.append({"condicion": nombre, "desplazamiento_en_sigmas": desplazamiento,
+                      "media": _round(media, 3),
+                      "fraccion_por_encima_del_alumno_medio_convencional": _round(por_encima, 3)})
+
+    convencional, dominio, tutoria = filas
+
+    # que la tutoria funcione no la hace desplegable: cuesta un tutor por alumno
+    coste = []
+    for nombre, alumnos_por_docente in (("clase convencional", 30), ("aprendizaje para el dominio", 30),
+                                        ("tutoría uno a uno", 1)):
+        coste.append({"condicion": nombre, "alumnos_por_docente": alumnos_por_docente,
+                      "docentes_para_400_alumnos": math.ceil(alumnos / alumnos_por_docente)})
+
+    return _contract(
+        "dos_sigma", seed,
+        {
+            "alumnos_por_condicion": alumnos,
+            "condiciones": filas,
+            "coste_de_cada_condicion": coste,
+            "el_problema": "encontrar métodos de instrucción grupal tan eficaces como la tutoría "
+                           "uno a uno",
+        },
+        [
+            f"Con tutoría uno a uno, el alumno medio queda "
+            f"{tutoria['desplazamiento_en_sigmas']} desviaciones por encima del alumno medio de una "
+            f"clase convencional: el {_round(100 * tutoria['fraccion_por_encima_del_alumno_medio_convencional'], 1)} % "
+            f"de los tutorizados supera al alumno medio convencional, frente al "
+            f"{_round(100 * convencional['fraccion_por_encima_del_alumno_medio_convencional'], 1)} % "
+            "esperable por azar.",
+            f"El aprendizaje para el dominio —corregir antes de avanzar, sin tutor individual— consigue "
+            f"{dominio['desplazamiento_en_sigmas']} desviación: el "
+            f"{_round(100 * dominio['fraccion_por_encima_del_alumno_medio_convencional'], 1)} %. Es la "
+            "mitad del efecto sin la mitad del coste, y por eso es la parte aplicable.",
+            f"Porque la tutoría no es desplegable: exige {coste[2]['docentes_para_400_alumnos']} "
+            f"docentes para {alumnos} alumnos frente a {coste[0]['docentes_para_400_alumnos']}. Ese es "
+            "literalmente el problema que da título al artículo — no demostrar que la tutoría funciona, "
+            "sino encontrar cómo conseguir su efecto en grupo.",
+            "El desplazamiento se mide en desviaciones típicas y no en puntos porque así se puede "
+            "comparar entre asignaturas y exámenes distintos. Es la misma razón por la que hoy se "
+            "reporta el tamaño del efecto y no solo la diferencia de medias.",
+        ],
+        [
+            "Las distribuciones son gaussianas simuladas con el desplazamiento que reporta el artículo. "
+            "No se reproduce ningún estudio: se exhibe qué significa «dos sigmas» en fracción de "
+            "alumnos.",
+            "El propio Bloom advierte que los estudios eran de duración corta y en asignaturas "
+            "concretas. Réplicas posteriores encuentran efectos menores, y el 2 sigma se cita con más "
+            "confianza de la que el artículo pide.",
+            "No se modela nada de lo que hace un tutor: adaptar el ritmo, detectar el malentendido "
+            "concreto, motivar. Sin eso, el número no dice qué habría que automatizar.",
+        ],
+    )
+
+
+def _olvido_catastrofico(seed: int) -> dict[str, Any]:
+    """McCloskey y Cohen 1989: aprender lo nuevo borra lo viejo, y no poco a poco."""
+    rng = random.Random(seed)
+    dimensiones = 20
+
+    # la REGLA de cada tarea se fija aparte de los datos: si no, el conjunto de
+    # prueba acaba teniendo otra regla y no se mide lo que se cree medir
+    # el generador se crea UNA vez: dentro de la comprension daria un vector constante
+    ra, rb = random.Random(seed * 13), random.Random(seed * 29)
+    regla_a = [ra.gauss(0, 1) for _ in range(dimensiones)]
+    regla_b = [rb.gauss(0, 1) for _ in range(dimensiones)]
+
+    def tarea(regla: list[float], n: int, semilla: int) -> list[tuple[list[float], int]]:
+        r = random.Random(semilla)
+        datos = []
+        for _ in range(n):
+            x = [r.gauss(0, 1) for _ in range(dimensiones)]
+            y = 1 if sum(a * b for a, b in zip(regla, x)) > 0 else 0
+            datos.append((x, y))
+        return datos
+
+    tarea_a = tarea(regla_a, 300, seed * 101)
+    tarea_b = tarea(regla_b, 300, seed * 103)
+    prueba_a = tarea(regla_a, 200, seed * 107)   # MISMA regla que A, datos distintos
+
+    def entrenar(pesos: list[float], datos: list[tuple[list[float], int]], epocas: int,
+                 tasa: float = 0.08) -> list[float]:
+        w = list(pesos)
+        for _ in range(epocas):
+            for x, y in datos:
+                z = sum(a * b for a, b in zip(w, x))
+                p = _sigmoid(z)
+                err = p - y
+                for i in range(dimensiones):
+                    w[i] -= tasa * err * x[i]
+        return w
+
+    def exactitud(pesos: list[float], datos: list[tuple[list[float], int]]) -> float:
+        ok = 0
+        for x, y in datos:
+            z = sum(a * b for a, b in zip(pesos, x))
+            ok += ((1 if z > 0 else 0) == y)
+        return ok / len(datos)
+
+    w = [0.0] * dimensiones
+    w = entrenar(w, tarea_a, 12)
+    tras_a = exactitud(w, prueba_a)
+
+    curva = [{"epocas_en_B": 0, "exactitud_en_A": _round(tras_a, 3)}]
+    w_secuencial, vistas = list(w), 0
+    for epocas in (1, 2, 4, 8):
+        w_secuencial = entrenar(w_secuencial, tarea_b, epocas - vistas)
+        vistas = epocas
+        curva.append({"epocas_en_B": epocas, "exactitud_en_A": _round(exactitud(w_secuencial, prueba_a), 3)})
+
+    tras_b = curva[-1]["exactitud_en_A"]
+    prueba_b = tarea(regla_b, 200, seed * 113)
+    b_final = exactitud(w_secuencial, prueba_b)
+
+    # entrenar con las dos mezcladas no olvida: el problema es la SECUENCIA, no la capacidad
+    mezcla = list(tarea_a) + list(tarea_b)
+    random.Random(seed * 211).shuffle(mezcla)
+    w_mezcla = entrenar([0.0] * dimensiones, mezcla, 12)
+    con_mezcla = exactitud(w_mezcla, prueba_a)
+
+    return _contract(
+        "olvido_catastrofico", seed,
+        {
+            "dimensiones": dimensiones,
+            "exactitud_en_A_tras_aprender_A": _round(tras_a, 3),
+            "curva_de_olvido": curva,
+            "exactitud_en_A_tras_aprender_B": tras_b,
+            "exactitud_en_B_tras_aprender_B": _round(b_final, 3),
+            "caida": _round(tras_a - tras_b, 3),
+            "exactitud_en_A_entrenando_A_y_B_MEZCLADAS": _round(con_mezcla, 3),
+            "azar": 0.5,
+        },
+        [
+            f"Tras aprender la tarea A, la exactitud en A es {_round(tras_a, 3)}. Tras aprender la "
+            f"tarea B sobre la misma red, cae a {tras_b} —una pérdida de "
+            f"{_round(tras_a - tras_b, 3)} puntos— mientras B alcanza {_round(b_final, 3)}. Nadie tocó "
+            "la tarea A ni sus datos: aprender lo nuevo borró lo viejo.",
+            f"Y el olvido es rápido, no gradual: con una sola época de B la exactitud en A ya está en "
+            f"{curva[1]['exactitud_en_A']}. Por eso se llama **catastrófico** y no «interferencia»: no "
+            "es una degradación suave.",
+            f"Entrenando con A y B **mezcladas** desde el principio, la exactitud en A es "
+            f"{_round(con_mezcla, 3)}: muy por encima del {tras_b} secuencial. El orden en que llegan "
+            "los datos importa, y eso es lo que el aprendizaje por gradiente da por supuesto.",
+            f"Ahora bien, {_round(con_mezcla, 3)} tampoco es {_round(tras_a, 3)}: un clasificador "
+            "lineal **no tiene capacidad** para dos reglas distintas, así que mezclar solo puede "
+            "repartir el error. En una red con capacidad de sobra, mezclar recupera las dos por "
+            "completo y la secuencia sigue olvidando — el mecanismo es el mismo y esta maqueta se "
+            "queda corta para separarlo.",
+            "Ese es el resultado incómodo: el aprendizaje por gradiente supone que las muestras están "
+            "mezcladas, y un flujo de tareas rompe ese supuesto sin avisar. Lo que en un experimento es "
+            "un artefacto, en producción es el caso normal.",
+        ],
+        [
+            "Es un clasificador lineal, no una red profunda. El fenómeno es el mismo pero en redes "
+            "grandes interactúa con la sobreparametrización de formas que aquí no aparecen.",
+            "Las dos tareas son independientes por construcción. Cuando comparten estructura, la "
+            "transferencia positiva compite con la interferencia y el resultado no es tan limpio.",
+            "No se prueba ningún remedio salvo mezclar. El artículo tampoco: su aportación es "
+            "documentar el problema, y las soluciones —repetición, regularización, arquitectura— "
+            "llegaron décadas después.",
+        ],
+    )
+
+
+def _privacidad_diferencial(seed: int) -> dict[str, Any]:
+    """Dwork 2006: el ruido calibrado a la sensibilidad acota lo que se puede deducir."""
+    rng = random.Random(seed)
+    n = 1000
+    base = [1 if random.Random(seed * 31 + i).random() < 0.23 else 0 for i in range(n)]
+    verdad = sum(base)
+
+    # ataque de diferenciación: dos consultas que solo se diferencian en una persona
+    sin_ana = base[:-1]
+    con_ana = base
+    diferencia_real = sum(con_ana) - sum(sin_ana)
+
+    def laplace(escala: float, r: random.Random) -> float:
+        u = r.random() - 0.5
+        return -escala * math.copysign(1.0, u) * math.log(1 - 2 * abs(u))
+
+    sensibilidad = 1.0     # una persona cambia el conteo en 1 como mucho
+    filas = []
+    for epsilon in (10.0, 1.0, 0.5, 0.1):
+        escala = sensibilidad / epsilon
+        errores, aciertos_del_ataque, repeticiones = [], 0, 400
+        for k in range(repeticiones):
+            r = random.Random(seed * 104729 + int(epsilon * 100) * 1000 + k)
+            ruidoso = verdad + laplace(escala, r)
+            errores.append(abs(ruidoso - verdad))
+            # el atacante compara las dos consultas y deduce el dato de Ana
+            q1 = sum(con_ana) + laplace(escala, r)
+            q2 = sum(sin_ana) + laplace(escala, r)
+            deduce = 1 if (q1 - q2) > 0.5 else 0
+            aciertos_del_ataque += (deduce == diferencia_real)
+        filas.append({
+            "epsilon": epsilon, "escala_del_ruido": _round(escala, 2),
+            "error_medio_de_la_consulta": _round(sum(errores) / len(errores), 2),
+            "error_relativo": _round(sum(errores) / len(errores) / verdad, 4),
+            "acierto_del_ataque_de_diferenciacion": _round(aciertos_del_ataque / repeticiones, 3),
+        })
+
+    sin_ruido = {"epsilon": "∞ (sin privacidad)", "escala_del_ruido": 0.0,
+                 "error_medio_de_la_consulta": 0.0, "error_relativo": 0.0,
+                 "acierto_del_ataque_de_diferenciacion": 1.0}
+
+    laxo, estricto = filas[0], filas[-1]
+    return _contract(
+        "privacidad_diferencial", seed,
+        {
+            "personas": n, "conteo_verdadero": verdad,
+            "sensibilidad_de_la_consulta": sensibilidad,
+            "sin_privacidad": sin_ruido,
+            "por_epsilon": filas,
+            "ataque": "dos consultas que solo difieren en una persona; la resta revela su dato",
+        },
+        [
+            f"Sin ruido, dos consultas que solo difieren en una persona revelan su dato con certeza: el "
+            f"ataque de diferenciación acierta el {_round(100 * sin_ruido['acierto_del_ataque_de_diferenciacion'], 0):.0f} %. "
+            "Publicar agregados exactos no protege a nadie.",
+            f"Con ruido de Laplace calibrado a la sensibilidad y ε = {estricto['epsilon']}, el "
+            f"ataque cae a {_round(100 * estricto['acierto_del_ataque_de_diferenciacion'], 1)} % — "
+            "indistinguible de adivinar. La garantía es matemática, no una esperanza sobre lo que el "
+            "atacante sepa.",
+            f"Pero ε no es un adorno: con ε = {laxo['epsilon']} el ataque sigue acertando el "
+            f"{_round(100 * laxo['acierto_del_ataque_de_diferenciacion'], 1)} %. Un ε laxo cumple la "
+            "definición formal y no protege nada, y por eso el valor concreto es una decisión de "
+            "política que hay que publicar.",
+            f"Y lo que se paga es exactitud: el error medio de la consulta pasa de "
+            f"{laxo['error_medio_de_la_consulta']} con ε = {laxo['epsilon']} a "
+            f"{estricto['error_medio_de_la_consulta']} con ε = {estricto['epsilon']}. Sobre un conteo "
+            f"de {verdad}, eso es un error relativo de {estricto['error_relativo']}.",
+            "La garantía no depende de qué sepa el atacante ni de con qué otros datos cruce el "
+            "resultado. Esa es la diferencia con la anonimización: no se protege el dato, se acota "
+            "cuánto puede cambiar la salida por la presencia de una persona.",
+        ],
+        [
+            "Se mide una sola consulta. La garantía real se degrada al hacer muchas: el presupuesto de "
+            "privacidad se compone, y administrarlo es el problema práctico.",
+            "La sensibilidad de un conteo es 1 y es fácil. Para consultas como una media o un máximo, "
+            "acotar la sensibilidad es difícil y es donde se cometen los errores.",
+            "Elegir ε es una decisión de política, no técnica, y el artículo no da criterio. Los "
+            "despliegues reales usan valores que muchos investigadores consideran demasiado laxos.",
+        ],
+    )
+
+
+def _ml_en_seguridad(seed: int) -> dict[str, Any]:
+    """Sommer y Paxson 2010: la clase base decide si un detector sirve."""
+    rng = random.Random(seed)
+    eventos = 1_000_000
+
+    filas = []
+    for tasa_de_ataque in (0.5, 0.01, 0.0001):
+        ataques = int(eventos * tasa_de_ataque)
+        benignos = eventos - ataques
+        for sensibilidad, especificidad in ((0.99, 0.99), (0.99, 0.999), (0.90, 0.9999)):
+            verdaderos_positivos = ataques * sensibilidad
+            falsos_positivos = benignos * (1 - especificidad)
+            precision = verdaderos_positivos / max(verdaderos_positivos + falsos_positivos, 1e-9)
+            filas.append({
+                "proporcion_de_ataques": tasa_de_ataque,
+                "sensibilidad": sensibilidad, "especificidad": especificidad,
+                "alertas_al_dia": int(verdaderos_positivos + falsos_positivos),
+                "de_ellas_reales": int(verdaderos_positivos),
+                "falsas_alarmas": int(falsos_positivos),
+                "precision": _round(precision, 4),
+                "alertas_por_cada_ataque_real": _round(
+                    (verdaderos_positivos + falsos_positivos) / max(verdaderos_positivos, 1e-9), 1),
+            })
+
+    equilibrado = filas[0]
+    realista = [f for f in filas if f["proporcion_de_ataques"] == 0.0001 and f["especificidad"] == 0.99][0]
+    exigente = [f for f in filas if f["proporcion_de_ataques"] == 0.0001 and f["especificidad"] == 0.9999][0]
+
+    diferencias = [
+        "el coste de un error es asimétrico y no está en la función de pérdida",
+        "no hay datos de entrenamiento representativos: los ataques nuevos no están",
+        "el adversario se adapta al detector, así que la distribución cambia a propósito",
+        "la interpretabilidad no es opcional: alguien tiene que actuar sobre la alerta",
+        "la clase base es extremadamente desequilibrada",
+    ]
+
+    return _contract(
+        "ml_en_seguridad", seed,
+        {
+            "eventos_analizados": eventos,
+            "escenarios": filas,
+            "por_que_la_seguridad_es_distinta": diferencias,
+        },
+        [
+            f"Un detector con {_round(100 * equilibrado['sensibilidad'], 0):.0f} % de sensibilidad y "
+            f"{_round(100 * equilibrado['especificidad'], 0):.0f} % de especificidad suena excelente. "
+            f"Con clases equilibradas su precisión es {equilibrado['precision']}.",
+            f"Con la proporción real de ataques —{realista['proporcion_de_ataques']}, uno de cada "
+            f"10 000 eventos— y la misma especificidad, produce {realista['alertas_al_dia']} alertas de "
+            f"las que solo {realista['de_ellas_reales']} son reales: precisión "
+            f"{realista['precision']}, es decir {realista['alertas_por_cada_ataque_real']} alertas por "
+            "cada ataque de verdad. Un equipo humano no puede con eso.",
+            f"Para que sea operable hace falta una especificidad de "
+            f"{exigente['especificidad']}: incluso así son {exigente['alertas_al_dia']} alertas diarias "
+            f"con {exigente['falsas_alarmas']} falsas. La exigencia no es «buen modelo», es «tasa de "
+            "falsos positivos absurdamente baja».",
+            "Y esa es solo una de las cinco razones del artículo. Las otras cuatro —coste asimétrico, "
+            "ausencia de datos representativos de ataques nuevos, adversario que se adapta, y "
+            "necesidad de explicar la alerta a quien actúa— no se arreglan con más datos.",
+        ],
+        [
+            "Se calculan precisiones a partir de sensibilidad y especificidad supuestas. No hay ningún "
+            "detector ni tráfico real: se exhibe la aritmética de la clase base.",
+            "El artículo es de 2010 y sus ejemplos son de detección de intrusiones en red. La crítica se "
+            "traslada, pero las cifras concretas de la época no.",
+            "No se modela el coste de una alerta perdida frente al de una falsa, que es lo que decidiría "
+            "el umbral. Ese coste es asimétrico y depende del contexto.",
+        ],
+    )
+
+
+def _ewc(seed: int) -> dict[str, Any]:
+    """Kirkpatrick 2017: frenar los pesos que importaban, dejar libres los demás."""
+    rng = random.Random(seed)
+    dimensiones = 12
+
+    r0 = random.Random(seed * 13)
+    w_a = [r0.gauss(0, 1) for _ in range(dimensiones)]
+    r1 = random.Random(seed * 29)
+    w_b = [r1.gauss(0, 1) for _ in range(dimensiones)]
+
+    def datos(w: list[float], n: int, semilla: int) -> list[tuple[list[float], int]]:
+        r = random.Random(semilla)
+        salida = []
+        for _ in range(n):
+            x = [r.gauss(0, 1) for _ in range(dimensiones)]
+            y = 1 if sum(a * b for a, b in zip(w, x)) > 0 else 0
+            salida.append((x, y))
+        return salida
+
+    tarea_a = datos(w_a, 400, seed * 101)
+    prueba_a = datos(w_a, 200, seed * 103)
+    tarea_b = datos(w_b, 400, seed * 107)
+    prueba_b = datos(w_b, 200, seed * 109)
+
+    def exactitud(pesos, datos_) -> float:
+        ok = 0
+        for x, y in datos_:
+            ok += ((1 if sum(a * b for a, b in zip(pesos, x)) > 0 else 0) == y)
+        return ok / len(datos_)
+
+    def entrenar(w0, datos_, epocas, ancla=None, importancia=None, lam=0.0, tasa=0.06):
+        w = list(w0)
+        for _ in range(epocas):
+            for x, y in datos_:
+                p = _sigmoid(sum(a * b for a, b in zip(w, x)))
+                err = p - y
+                for i in range(dimensiones):
+                    g = err * x[i]
+                    if ancla is not None:
+                        # penalizacion elastica: tira de w hacia el valor anterior,
+                        # con fuerza proporcional a lo que ese peso importaba
+                        g += lam * importancia[i] * (w[i] - ancla[i])
+                    w[i] -= tasa * g
+        return w
+
+    w = entrenar([0.0] * dimensiones, tarea_a, 15)
+    a_inicial = exactitud(w, prueba_a)
+
+    # importancia de cada peso = informacion de Fisher aproximada por el gradiente al cuadrado
+    importancia = [0.0] * dimensiones
+    for x, y in tarea_a:
+        p = _sigmoid(sum(a * b for a, b in zip(w, x)))
+        err = p - y
+        for i in range(dimensiones):
+            importancia[i] += (err * x[i]) ** 2
+    maximo = max(importancia) or 1.0
+    importancia = [v / maximo for v in importancia]
+
+    filas = []
+    for lam in (0.0, 1.0, 10.0, 60.0):
+        w2 = entrenar(w, tarea_b, 15, ancla=w, importancia=importancia, lam=lam)
+        filas.append({"lambda": lam,
+                      "exactitud_en_A": _round(exactitud(w2, prueba_a), 3),
+                      "exactitud_en_B": _round(exactitud(w2, prueba_b), 3),
+                      "media": _round((exactitud(w2, prueba_a) + exactitud(w2, prueba_b)) / 2, 3)})
+
+    sin_ewc = filas[0]
+    mejor = max(filas, key=lambda f: f["media"])
+    rigido = filas[-1]
+
+    return _contract(
+        "ewc", seed,
+        {
+            "dimensiones": dimensiones,
+            "exactitud_en_A_antes_de_aprender_B": _round(a_inicial, 3),
+            "importancia_de_los_pesos": [_round(v, 3) for v in importancia],
+            "pesos_muy_importantes": sum(1 for v in importancia if v > 0.5),
+            "por_lambda": filas,
+            "mejor_equilibrio": mejor,
+        },
+        [
+            f"Tras aprender A, la exactitud en A es {_round(a_inicial, 3)}. Aprendiendo B sin "
+            f"protección (λ = 0) cae a {sin_ewc['exactitud_en_A']} mientras B llega a "
+            f"{sin_ewc['exactitud_en_B']}: el olvido catastrófico, medido.",
+            f"Con la penalización elástica en λ = {mejor['lambda']}, A se recupera hasta "
+            f"{mejor['exactitud_en_A']} y B se queda en {mejor['exactitud_en_B']}: la media sube de "
+            f"{sin_ewc['media']} a {mejor['media']}. No es gratis — B paga "
+            f"{_round(sin_ewc['exactitud_en_B'] - mejor['exactitud_en_B'], 3)} puntos por lo que A "
+            "recupera. Es un intercambio explícito, y esa es la aportación.",
+            f"La penalización **no es uniforme**: la importancia va de "
+            f"{min(importancia):.3f} a {max(importancia):.3f} según el peso. Pero en un clasificador "
+            f"lineal casi todos los pesos sirven al único hiperplano que hay "
+            f"({sum(1 for v in importancia if v > 0.5)} de {dimensiones} por encima de 0,5), así que "
+            "queda poco margen libre y B lo nota. En una red profunda hay muchísimo más margen, y ahí "
+            "es donde el método luce.",
+            f"Y apretar de más rompe las dos: con λ = {rigido['lambda']}, A queda en "
+            f"{rigido['exactitud_en_A']} y B en {rigido['exactitud_en_B']} — ambas en el azar. La "
+            "penalización domina al gradiente y no se aprende nada. λ no es «cuanto más, mejor».",
+        ],
+        [
+            "Es un clasificador lineal y la importancia se aproxima con el gradiente al cuadrado. En "
+            "una red profunda, la información de Fisher es mucho más cara de estimar y la aproximación "
+            "diagonal ignora las correlaciones entre pesos.",
+            "Dos tareas. Con muchas en secuencia, las penalizaciones se acumulan y acaban congelando la "
+            "red: el método frena la degradación, no la elimina.",
+            "Se supone que se sabe cuándo termina una tarea y empieza otra. En un flujo continuo sin "
+            "fronteras marcadas, calcular la importancia es otro problema.",
+        ],
+    )
+
+
+def _federado(seed: int) -> dict[str, Any]:
+    """McMahan 2017: promediar modelos en vez de recoger datos."""
+    rng = random.Random(seed)
+    dimensiones = 10
+    clientes = 20
+
+    r0 = random.Random(seed * 17)
+    w_real = [r0.gauss(0, 1) for _ in range(dimensiones)]
+
+    def datos_cliente(c: int, n: int, sesgo: float) -> list[tuple[list[float], int]]:
+        # el sesgo que rompe el promediado es el de ETIQUETA: cada cliente ve casi
+        # solo una clase. Desplazar el centro no mueve una frontera lineal.
+        r = random.Random(seed * 7919 + c)
+        preferida = c % 2
+        salida = []
+        while len(salida) < n:
+            x = [r.gauss(0, 1) for _ in range(dimensiones)]
+            y = 1 if sum(a * b for a, b in zip(w_real, x)) > 0 else 0
+            if sesgo > 0 and y != preferida and r.random() < sesgo:
+                continue          # se descarta: el cliente casi no ve esta clase
+            salida.append((x, y))
+        return salida
+
+    prueba = []
+    rp = random.Random(seed * 977)
+    for _ in range(600):
+        x = [rp.gauss(0, 1.6) for _ in range(dimensiones)]
+        prueba.append((x, 1 if sum(a * b for a, b in zip(w_real, x)) > 0 else 0))
+
+    def exactitud(w) -> float:
+        ok = 0
+        for x, y in prueba:
+            ok += ((1 if sum(a * b for a, b in zip(w, x)) > 0 else 0) == y)
+        return ok / len(prueba)
+
+    def paso_local(w0, datos_, epocas, tasa=0.05):
+        w = list(w0)
+        for _ in range(epocas):
+            for x, y in datos_:
+                p = _sigmoid(sum(a * b for a, b in zip(w, x)))
+                err = p - y
+                for i in range(dimensiones):
+                    w[i] -= tasa * err * x[i]
+        return w
+
+    resultados = []
+    for sesgo, etiqueta in ((0.0, "datos homogéneos"), (1.0, "datos heterogéneos")):
+        locales = {c: datos_cliente(c, 60, sesgo) for c in range(clientes)}
+        for epocas_locales in (1, 5):
+            w = [0.0] * dimensiones
+            historia = []
+            for ronda in range(12):
+                actualizados = []
+                for c in range(clientes):
+                    actualizados.append(paso_local(w, locales[c], epocas_locales))
+                w = [sum(u[i] for u in actualizados) / clientes for i in range(dimensiones)]
+                if ronda in (0, 3, 11):
+                    historia.append({"ronda": ronda + 1, "exactitud": _round(exactitud(w), 3)})
+            resultados.append({"distribucion": etiqueta, "epocas_locales": epocas_locales,
+                               "rondas": 12, "historia": historia,
+                               "exactitud_final": _round(exactitud(w), 3)})
+
+    homogeneo_1 = resultados[0]
+    homogeneo_5 = resultados[1]
+    heterogeneo_5 = resultados[3]
+
+    comunicacion = [
+        {"enfoque": "centralizar los datos",
+         "se_transmite": f"{clientes * 60} registros con datos personales"},
+        {"enfoque": "promediado federado",
+         "se_transmite": f"{clientes * 12} vectores de {dimensiones} pesos, sin datos"},
+    ]
+
+    return _contract(
+        "federado", seed,
+        {
+            "clientes": clientes, "registros_por_cliente": 60, "rondas": 12,
+            "resultados": resultados,
+            "coste_de_comunicacion": comunicacion,
+        },
+        [
+            f"Promediando modelos entrenados en local, sin que ningún dato salga del cliente, la "
+            f"exactitud llega a {homogeneo_5['exactitud_final']} en 12 rondas con "
+            f"{homogeneo_5['epocas_locales']} épocas locales. Nunca se transmitió un solo registro.",
+            f"Más cómputo local significa menos rondas de comunicación: con "
+            f"{homogeneo_1['epocas_locales']} época local se llega a "
+            f"{homogeneo_1['exactitud_final']} y con {homogeneo_5['epocas_locales']}, a "
+            f"{homogeneo_5['exactitud_final']}. Esa es la palanca del método — la comunicación es el "
+            "recurso caro, no el cómputo.",
+            f"Y aquí un resultado que conviene leer con cuidado: con cada cliente viendo **una sola "
+            f"clase**, la exactitud final es {heterogeneo_5['exactitud_final']} frente a "
+            f"{homogeneo_5['exactitud_final']} homogéneo — apenas "
+            f"{_round(homogeneo_5['exactitud_final'] - heterogeneo_5['exactitud_final'], 3)} puntos. "
+            "Esta maqueta NO reproduce el fallo por heterogeneidad que documenta la literatura.",
+            f"La razón es la propia maqueta: con {clientes} clientes repartidos simétricamente entre "
+            "las dos clases y un modelo lineal, promediar cancela los sesgos locales casi por "
+            "completo. El fallo real aparece con redes profundas, participación desigual y clientes "
+            "que no se compensan entre sí — y ahí el promedio deja de ser un buen punto de encuentro.",
+            f"Y lo que se transmite cambia de naturaleza: {comunicacion[0]['se_transmite']} frente a "
+            f"{comunicacion[1]['se_transmite']}. Que no salgan datos no es lo mismo que privacidad —los "
+            "gradientes filtran— pero es una superficie muy distinta.",
+        ],
+        [
+            "Es regresión logística sobre datos sintéticos. Con redes profundas, promediar pesos de "
+            "modelos que han divergido funciona bastante peor que aquí.",
+            "No se modela ni la caída de clientes, ni la asimetría de sus capacidades, ni el ataque de "
+            "un cliente malicioso que envía actualizaciones envenenadas.",
+            "Y no reproduce la degradación por heterogeneidad, que es el problema práctico central del "
+            "aprendizaje federado. El motor lo dice en su propia evidencia en vez de fingir que sí.",
+            "El promediado federado NO da garantía de privacidad por sí solo: de los gradientes se "
+            "pueden reconstruir datos. Hace falta combinarlo con privacidad diferencial o agregación "
+            "segura.",
+        ],
+    )
+
+
+def _world_models(seed: int) -> dict[str, Any]:
+    """Ha y Schmidhuber 2018: aprender un modelo del mundo y entrenar la política dentro."""
+    rng = random.Random(seed)
+
+    # entorno de juguete: una posicion que hay que llevar al centro
+    def dinamica_real(estado: float, accion: float) -> float:
+        return estado + 0.35 * accion - 0.05 * estado
+
+    # modelo aprendido: aproximado, con un sesgo que la politica puede explotar
+    def dinamica_modelo(estado: float, accion: float, error: float) -> float:
+        return estado + (0.35 + error) * accion - 0.05 * estado
+
+    def evaluar(politica_k: float, dinamica, pasos: int = 40) -> float:
+        total = 0.0
+        for inicio in (-2.0, -1.0, 1.0, 2.0):
+            s = inicio
+            for _ in range(pasos):
+                a = max(-1.0, min(1.0, -politica_k * s))
+                s = dinamica(s, a)
+                total += abs(s)
+        return -total / (4 * pasos)
+
+    # buscar la mejor politica DENTRO del modelo, y luego probarla en el mundo real
+    filas = []
+    for error in (0.0, 0.05, 0.15, 0.30):
+        mejor_k, mejor_v = 0.0, -1e9
+        for paso in range(1, 61):
+            k = paso * 0.05
+            v = evaluar(k, lambda s, a, e=error: dinamica_modelo(s, a, e))
+            if v > mejor_v:
+                mejor_k, mejor_v = k, v
+        real = evaluar(mejor_k, dinamica_real)
+        filas.append({"error_del_modelo": error, "politica_encontrada": _round(mejor_k, 2),
+                      "recompensa_en_el_modelo": _round(mejor_v, 3),
+                      "recompensa_en_el_mundo_real": _round(real, 3),
+                      "brecha": _round(mejor_v - real, 3)})
+
+    # cuanto cuesta cada iteracion en cada sitio
+    coste = {"interacciones_reales_por_evaluacion": 160,
+             "evaluaciones_para_buscar_la_politica": 60,
+             "interacciones_reales_si_se_busca_en_el_mundo": 160 * 60,
+             "interacciones_reales_si_se_busca_en_el_modelo": 0}
+
+    perfecto, sesgado = filas[0], filas[-1]
+    return _contract(
+        "world_models", seed,
+        {
+            "busqueda_dentro_del_modelo": filas,
+            "coste_de_la_busqueda": coste,
+        },
+        [
+            f"Buscando la política dentro de un modelo **exacto** del entorno, la recompensa en el "
+            f"mundo real es {perfecto['recompensa_en_el_mundo_real']} y la brecha con lo prometido por "
+            f"el modelo es {perfecto['brecha']}. Si el modelo es fiel, entrenar dentro equivale a "
+            "entrenar fuera.",
+            f"Con un modelo sesgado en {sesgado['error_del_modelo']}, el modelo promete "
+            f"{sesgado['recompensa_en_el_modelo']} y el mundo real entrega "
+            f"{sesgado['recompensa_en_el_mundo_real']}: una brecha de {sesgado['brecha']}. La política "
+            "se ha optimizado contra los errores del modelo, no contra el entorno.",
+            f"Y el ahorro es lo que justifica el riesgo: buscar la política en el mundo real costaría "
+            f"{coste['interacciones_reales_si_se_busca_en_el_mundo']} interacciones, y dentro del "
+            f"modelo, {coste['interacciones_reales_si_se_busca_en_el_modelo']}. En un robot, esa "
+            "diferencia es entre semanas y minutos.",
+            "Ese es el compromiso central de aprender con modelo: **el modelo es más barato que el "
+            "mundo y también menos fiel**, y la política encuentra sus grietas si se la deja buscar lo "
+            "suficiente.",
+        ],
+        [
+            "El «modelo del mundo» es aquí una fórmula con un sesgo controlado. En el artículo se "
+            "aprende con un autocodificador variacional y una red recurrente mixta, y sus errores no "
+            "son un parámetro escalar.",
+            "El entorno es unidimensional y determinista. Los entornos del artículo son visuales y "
+            "estocásticos, donde el modelo tiene que comprimir la imagen antes de predecir.",
+            "No se modela el remedio que el artículo propone: añadir incertidumbre al modelo para que "
+            "la política no pueda explotar sus grietas. Ese ajuste es la mitad del resultado.",
+        ],
+    )
+
+
+def _auditoria_interna(seed: int) -> dict[str, Any]:
+    """Raji 2020: la auditoría llega tarde si empieza cuando el sistema ya está hecho."""
+    del_ = seed
+    etapas = [
+        {"etapa": "alcance", "artefacto": "declaración de caso de uso y de riesgos",
+         "coste_de_cambiar_aqui": 1},
+        {"etapa": "correspondencia", "artefacto": "mapa de interesados y de responsabilidades",
+         "coste_de_cambiar_aqui": 2},
+        {"etapa": "recogida de artefactos", "artefacto": "hojas de datos y tarjetas de modelo",
+         "coste_de_cambiar_aqui": 5},
+        {"etapa": "pruebas", "artefacto": "resultados desagregados y pruebas adversarias",
+         "coste_de_cambiar_aqui": 13},
+        {"etapa": "reflexión", "artefacto": "análisis de riesgo y plan de mitigación",
+         "coste_de_cambiar_aqui": 34},
+    ]
+
+    # dos organizaciones: una audita desde el principio, otra solo antes de lanzar
+    hallazgos = [
+        {"hallazgo": "el caso de uso no estaba acotado", "aparece_en": "alcance"},
+        {"hallazgo": "nadie definió a quién afecta", "aparece_en": "correspondencia"},
+        {"hallazgo": "faltan las etiquetas de subgrupo", "aparece_en": "recogida de artefactos"},
+        {"hallazgo": "brecha de exactitud entre subgrupos", "aparece_en": "pruebas"},
+        {"hallazgo": "no hay plan si el sistema falla", "aparece_en": "reflexión"},
+    ]
+    coste = {e["etapa"]: e["coste_de_cambiar_aqui"] for e in etapas}
+
+    coste_continua = sum(coste[h["aparece_en"]] for h in hallazgos)
+    coste_al_final = len(hallazgos) * coste["reflexión"]
+
+    # que la auditoria interna no sustituye a la externa
+    limites = [
+        "la audita quien la construye: hay conflicto de interés estructural",
+        "no da cuenta pública: los resultados pueden quedarse dentro",
+        "no tiene poder de veto si la dirección decide lanzar igualmente",
+        "cubre lo que la organización decide mirar",
+    ]
+
+    return _contract(
+        "auditoria_interna", seed,
+        {
+            "etapas_del_marco": etapas,
+            "hallazgos_tipicos": hallazgos,
+            "coste_si_se_audita_de_forma_continua": coste_continua,
+            "coste_si_se_audita_solo_antes_de_lanzar": coste_al_final,
+            "razon": _round(coste_al_final / max(coste_continua, 1), 1),
+            "lo_que_la_auditoria_interna_no_hace": limites,
+        },
+        [
+            f"El marco tiene cinco etapas y cada una produce un artefacto concreto: desde la "
+            f"declaración del caso de uso hasta el plan de mitigación. No es una revisión al final: es "
+            "una traza que se construye mientras se construye el sistema.",
+            f"Y el momento importa. Los mismos cinco hallazgos cuestan {coste_continua} si aparecen "
+            f"cuando corresponde y {coste_al_final} si aparecen todos en la revisión final: "
+            f"{_round(coste_al_final / max(coste_continua, 1), 1)}× más. «Faltan las etiquetas de "
+            "subgrupo» es barato al recoger los datos e imposible después.",
+            "Por eso el marco **exige artefactos** —hojas de datos, tarjetas de modelo, resultados "
+            "desagregados— y no opiniones. Un auditor sin artefactos solo puede preguntar; con ellos, "
+            "puede comprobar.",
+            f"Y el artículo es explícito sobre lo que NO hace: {limites[0]}. La auditoría interna "
+            "prepara el terreno para la externa y la regulación; no las sustituye.",
+        ],
+        [
+            "Los costes relativos por etapa son ilustrativos, no medidos. Lo que el artículo sostiene "
+            "cualitativamente es que corregir tarde es caro, no una escala concreta.",
+            "El marco se propone y se ilustra con casos, pero no hay evaluación de su efecto: no se "
+            "mide si las organizaciones que lo aplican tienen menos incidentes.",
+            "Depende de que la organización quiera auditarse. Sin incentivo externo —regulación, "
+            "responsabilidad legal, presión pública— el marco no se adopta solo.",
+        ],
+    )
+
+
 # --------------------------------------------------------------------------- #
 # registro
 # --------------------------------------------------------------------------- #
@@ -8866,6 +11626,37 @@ PAPER_RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "hojas_de_datos": _hojas_de_datos,
     "gestion_de_prompts": _gestion_de_prompts,
     "agentops": _agentops,
+    "bpe": _bpe,
+    "wavenet": _wavenet,
+    "gcn": _gcn,
+    "mobilenets": _mobilenets,
+    "tacotron": _tacotron,
+    "sentencepiece": _sentencepiece,
+    "gat": _gat,
+    "layoutlm": _layoutlm,
+    "donut": _donut,
+    "jukebox": _jukebox,
+    "nerf": _nerf,
+    "musiclm": _musiclm,
+    "vall_e": _vall_e,
+    "marcas_de_agua": _marcas_de_agua,
+    "gaussian_splatting": _gaussian_splatting,
+    "colapso_de_modelo": _colapso_de_modelo,
+    "minimo_privilegio": _minimo_privilegio,
+    "pizarra": _pizarra,
+    "red_de_contratos": _red_de_contratos,
+    "metarrazonamiento": _metarrazonamiento,
+    "kqml": _kqml,
+    "niveles_de_automatizacion": _niveles_de_automatizacion,
+    "mapreduce": _mapreduce,
+    "dos_sigma": _dos_sigma,
+    "olvido_catastrofico": _olvido_catastrofico,
+    "privacidad_diferencial": _privacidad_diferencial,
+    "ml_en_seguridad": _ml_en_seguridad,
+    "ewc": _ewc,
+    "federado": _federado,
+    "world_models": _world_models,
+    "auditoria_interna": _auditoria_interna,
 }
 
 

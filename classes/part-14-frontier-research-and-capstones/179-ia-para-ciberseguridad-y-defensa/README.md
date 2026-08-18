@@ -229,6 +229,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - NIST Cybersecurity Framework 2.0 (2024). [nist.gov/cyberframework](https://www.nist.gov/cyberframework)
 - Apruzzese, G. et al. (2023). *The Role of Machine Learning in Cybersecurity*. ACM Digital Threats 4(1). [DOI 10.1145/3545574](https://doi.org/10.1145/3545574)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P144 · Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones](../../../papers/foundational/P144_ml_en_seguridad/README.md) | 2010 | Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo. | [notebook](../../../notebooks/papers/P144_ml_en_seguridad.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -240,6 +240,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic Engineering — "Building effective agents" (guardrails y autonomía acotada)](https://www.anthropic.com/engineering/building-effective-agents)
 - [Model Context Protocol — especificación (consentimiento y control de acceso a tools y resources)](https://modelcontextprotocol.io/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P134 · La protección de la información en los sistemas informáticos](../../../papers/foundational/P134_minimo_privilegio/README.md) | 1975 | Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después. | [notebook](../../../notebooks/papers/P134_minimo_privilegio.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

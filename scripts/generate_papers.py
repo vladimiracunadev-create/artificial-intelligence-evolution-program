@@ -5944,6 +5944,1132 @@ SPECS.update({
     ),
 })
 
+SPECS.update({
+    "P118_bpe": _auto(
+        "bpe",
+        "Si la unidad de vocabulario es la palabra, siempre llegará una que no estaba. Si es más "
+        "pequeña que la palabra, el peor caso es deletrear — y deletrear siempre se puede.",
+        "```text\nBPE: empezar por caracteres y repetir k veces:\n"
+        "     fusionar el par de símbolos MÁS FRECUENTE del corpus\n\n"
+        "vocabulario = alfabeto ∪ {símbolos producidos por las k fusiones}\n"
+        "     → cobertura total, porque el alfabeto está dentro\n```",
+        "1. ¿Qué porcentaje de palabras nuevas será desconocido con vocabulario de palabras?\n"
+        "2. ¿Cuántos trozos quedarán fuera de vocabulario con BPE?\n"
+        "3. ¿Qué se paga a cambio?",
+        "Con vocabulario de palabras, **17 de 120** palabras de prueba son desconocidas (14,2 %) aunque "
+        "sus raíces y sufijos sí se vieron. Con 60 fusiones, el vocabulario BPE tiene **87 unidades** "
+        "—menos que las 100 palabras— y los trozos fuera de vocabulario son **0**. Se paga en longitud: "
+        "**2,02 piezas** por palabra en vez de 1.",
+        "Mira las primeras fusiones: son parejas de letras frecuentes, no morfemas. Las últimas ya son "
+        "sufijos completos. Nadie programó qué es un sufijo — la frecuencia lo descubre, y por eso el "
+        "método funciona igual en idiomas cuya morfología el ingeniero no conoce.",
+        "Anti-patrón: agrandar el vocabulario de palabras hasta que «ya casi no haya desconocidas».",
+        "print('Duplicar el vocabulario de palabras reduce las desconocidas, nunca las elimina.')\n"
+        "print('Y cada palabra nueva del vocabulario es una fila mas en la matriz de embeddings.')\n"
+        "print('BPE resuelve el problema en vez de posponerlo.')",
+        "La perilla real es el número de fusiones:",
+        "r = run_paper_lab('bpe', seed=3)['result']\n"
+        "print('vocabulario de palabras:', r['vocabulario_de_palabras'])\n"
+        "print('vocabulario BPE:', r['vocabulario_bpe'])\n"
+        "print('fuera de vocabulario:', r['trozos_fuera_de_vocabulario'])\n"
+        "print('piezas por palabra:', r['piezas_por_palabra'])",
+        "Explica el compromiso entre tamaño de vocabulario y longitud de secuencia, y por qué el coste "
+        "de atención lo vuelve una decisión de arquitectura y no de preprocesado.",
+        "Tokeniza un corpus tuyo con dos tamaños de vocabulario y mide piezas por palabra en cada uno. "
+        "Comprueba qué le pasa a los términos técnicos de tu dominio.",
+        "Guarda las dos mediciones y el tamaño de vocabulario que elegirías, con el motivo.",
+        "Abre la ruta de percepción: cómo entra el mundo en el modelo cuando no llega como texto limpio.",
+    ),
+    "P119_wavenet": _auto(
+        "wavenet",
+        "Para modelar un segundo de audio hay que ver 16 000 muestras. Con convoluciones normales harían "
+        "falta 16 000 capas. Dilatando —saltando huecos que se duplican por capa— bastan 14.",
+        "```text\nCampo receptivo con núcleo 2:\n"
+        "  sin dilatar   : 1 + Σ 1        → crece LINEAL con la profundidad\n"
+        "  dilatado 2^i  : 1 + Σ 2^i      → crece EXPONENCIAL\n\n"
+        "Causal: la salida en t solo depende de entradas ≤ t\n```",
+        "1. ¿Cuántas capas dilatadas hacen falta para un segundo a 16 kHz?\n"
+        "2. ¿Y sin dilatar?\n"
+        "3. ¿Puede el modelo mirar el futuro?",
+        "**14 capas** dilatadas frente a **15 999** sin dilatar: un factor de **1 143×**. Y la "
+        "convolución es causal — un impulso en la muestra 12 solo afecta a las muestras **12–19**, "
+        "ninguna anterior. Sin esa restricción el modelo se entrenaría mirando el futuro y no serviría "
+        "para generar.",
+        "La segunda idea es la cuantización μ-law: el 10 % central de la amplitud —donde vive la voz— se "
+        "lleva **109** de los 256 códigos con μ-law y solo **26** con la lineal. Gastar resolución donde "
+        "hay señal es lo que permite que 8 bits basten, y es una decisión de ingeniería de audio, no de "
+        "aprendizaje automático.",
+        "Anti-patrón: creer que campo receptivo grande equivale a contexto usado.",
+        "print('El campo receptivo dice que PUEDE ver el modelo, no que usa.')\n"
+        "print('Que alcance un segundo no significa que el segundo entero influya.')\n"
+        "print('Medir la influencia real exige ablaciones, no aritmetica de capas.')",
+        "La geometría de las dilataciones:",
+        "r = run_paper_lab('wavenet', seed=3)['result']\n"
+        "for fila in r['crecimiento_del_campo_receptivo']:\n"
+        "    print(fila)\n"
+        "print('para un segundo:', r['capas_para_cubrir_un_segundo'])\n"
+        "print('cuantizacion:', r['cuantizacion'])",
+        "Explica por qué la causalidad es obligatoria en un modelo generativo autorregresivo y qué se "
+        "rompe exactamente si se entrena con una convolución no causal.",
+        "Calcula el campo receptivo de una red convolucional que uses y compáralo con la longitud real "
+        "de tus entradas. Decide si sobra o falta profundidad.",
+        "Guarda el cálculo y la conclusión sobre tu red.",
+        "El audio en crudo es viable; lo que falta es guiarlo con texto, que es la clase siguiente.",
+    ),
+    "P120_gcn": _auto(
+        "gcn",
+        "Con seis nodos etiquetados de ciento veinte, los rasgos no bastan. Pero cada nodo tiene "
+        "vecinos, y promediar con ellos convierte seis etiquetas en información sobre todo el grafo.",
+        "```text\nUna capa de GCN ≈ promediar con los vecinos, normalizado por el grado:\n\n"
+        "    H' = σ( D^(-1/2) · Â · D^(-1/2) · H · W )      con Â = A + I\n\n"
+        "Apilar k capas = mirar a k saltos de distancia\n```",
+        "1. ¿Cuánto acierta usando solo los rasgos?\n"
+        "2. ¿Cuántas capas de propagación son las mejores?\n"
+        "3. ¿Qué pasa con veinte?",
+        "Sin mirar el grafo se acierta **0,447**. Con **3 capas** de propagación, **1,0**. Con **20**, "
+        "cae a **0,377** — peor que no propagar y cerca del azar (0,333). La distancia entre los centros "
+        "de las comunidades se hunde de **0,75** a **0,005**: un colapso de **150×**.",
+        "Ese colapso es el sobre-suavizado, y solo hace daño porque hay un **suelo de precisión**: el "
+        "motor añade ±0,02 de ruido de medida, como tendría cualquier sistema real. Sin ese suelo, un "
+        "clasificador ideal resolvería diferencias arbitrariamente pequeñas y el sobre-suavizado no se "
+        "vería. Con él, apilar capas borra justamente lo que se quiere medir.",
+        "Anti-patrón: apilar capas de grafo como se apilan capas de una red convolucional.",
+        "print('En vision, mas profundidad suele ayudar.')\n"
+        "print('En grafos, cada capa mezcla vecindarios mas amplios hasta igualarlo todo.')\n"
+        "print('Por eso las GCN que funcionan son de dos o tres capas.')",
+        "El barrido completo, con la separación entre comunidades:",
+        "r = run_paper_lab('gcn', seed=3)['result']\n"
+        "for fila in r['exactitud_por_numero_de_capas']:\n"
+        "    print(fila)\n"
+        "print('separacion entre comunidades:')\n"
+        "for fila in r['sobre_suavizado']:\n"
+        "    print('  ', fila)",
+        "Explica qué supuesto sobre el grafo hace que propagar ayude, y qué ocurriría en un grafo donde "
+        "los vecinos tienden a ser de clase distinta.",
+        "Busca un grafo de tu trabajo —dependencias, coautoría, red interna— y mide qué fracción de las "
+        "aristas une nodos de la misma clase. Decide si propagar tiene sentido ahí.",
+        "Guarda la fracción medida y tu decisión.",
+        "Propagar por igual funciona si todos los vecinos son informativos. Cuando no lo son, hace falta "
+        "pesarlos — es P124.",
+    ),
+    "P121_mobilenets": _auto(
+        "mobilenets",
+        "Una convolución hace dos cosas a la vez: filtrar el espacio y mezclar canales. Separarlas en "
+        "dos pasos cuesta casi nueve veces menos y produce casi lo mismo.",
+        "```text\nEstándar   : k² · M · N · S²\n"
+        "Separable  : k² · M · S²  +  M · N · S²\n\n"
+        "    razón = 1/N + 1/k²      ← con k=3, el techo es 9×\n```",
+        "1. ¿Cuánto ahorra la convolución separable en la red completa?\n"
+        "2. ¿Coincide con la fórmula?\n"
+        "3. ¿Cómo escala el multiplicador de anchura?",
+        "**935,7 millones** de multiplicaciones con convolución estándar frente a **111,1** con "
+        "separable: **8,42×**. La fórmula 1/N + 1/k² predice **0,1131** para 512 canales y la capa "
+        "medida da **0,1131**. Con α = 0,5 el coste baja a **0,265** del total; con α = 0,25, a "
+        "**0,075** — aproximadamente el cuadrado de α.",
+        "Fíjate en que el término dominante es 1/k², no 1/N. El ahorro se satura cerca de 9× por mucho "
+        "que crezcan los canales, así que la separación resuelve un factor constante, no un orden de "
+        "magnitud creciente. Quien necesita más recorta con las otras dos perillas: anchura y "
+        "resolución.",
+        "Anti-patrón: dar por hecho que menos operaciones significa menos tiempo.",
+        "print('Se cuentan multiplicaciones, no milisegundos.')\n"
+        "print('La convolucion en profundidad aprovecha mucho peor la memoria que la estandar.')\n"
+        "print('Un modelo con 9x menos operaciones puede ir solo 3x mas rapido en hardware real.')",
+        "Las dos perillas, por separado:",
+        "r = run_paper_lab('mobilenets', seed=3)['result']\n"
+        "print('razon global:', r['razon_global'])\n"
+        "for fila in r['por_capa']:\n"
+        "    print('  ', fila)\n"
+        "print('multiplicador de anchura:')\n"
+        "for fila in r['multiplicador_de_anchura']:\n"
+        "    print('  ', fila)",
+        "Explica por qué el ahorro tiene un techo y qué habría que cambiar para superarlo.",
+        "Toma un modelo que despliegues y calcula sus multiplicaciones-acumulaciones. Estima qué "
+        "ahorrarías separando sus convoluciones, y contrástalo con una medición de tiempo real.",
+        "Guarda el cálculo y la diferencia entre el ahorro teórico y el medido.",
+        "El cómputo cabe en el dispositivo. Falta que el modelo entienda documentos, donde la posición "
+        "es parte del significado.",
+    ),
+    "P122_tacotron": _auto(
+        "tacotron",
+        "Nadie predice 66 150 muestras de audio una a una desde el texto. Pero 258 marcos de "
+        "espectrograma sí — y de ahí a la forma de onda ya hay un modelo que sabe hacerlo.",
+        "```text\ntexto ──[atención]──▶ espectrograma mel ──[vocoder]──▶ forma de onda\n"
+        "         etapa 1                  interfaz              etapa 2\n\n"
+        "3 s a 22 050 Hz = 66 150 muestras  →  258 marcos     (256× menos PASOS)\n```",
+        "1. ¿Cuánto comprime el espectrograma en número de valores?\n"
+        "2. ¿Y en número de pasos?\n"
+        "3. ¿Qué pasa si la atención se atasca?",
+        "En valores, solo **3,2×**. En pasos, **256×**: de 66 150 a **258**. Esa es la compresión que "
+        "importa, porque el modelo es autorregresivo. Y si la atención se atasca en un carácter, la "
+        "salida dice «hola que » en vez de «hola que tal»: se pierden **3 caracteres** del final.",
+        "El mel no ahorra memoria — ahorra **longitud de secuencia**, que es lo que hace tratable la "
+        "atención. Y el modo de fallo que ves es el característico de la síntesis con atención: repetir "
+        "o saltarse trozos. Por eso los sistemas posteriores fuerzan la monotonía en la arquitectura en "
+        "vez de esperar que se aprenda.",
+        "Anti-patrón: evaluar un sintetizador por la pérdida de entrenamiento.",
+        "print('La perdida sobre el espectrograma no correlaciona bien con lo que se oye.')\n"
+        "print('Un modelo con perdida baja puede saltarse una palabra entera.')\n"
+        "print('La metrica del articulo es la opinion media de oyentes humanos.')",
+        "La aritmética de las dos etapas y el fallo de alineación:",
+        "r = run_paper_lab('tacotron', seed=3)['result']\n"
+        "print('audio:', r['audio'])\n"
+        "print('espectrograma:', r['espectrograma'])\n"
+        "print('compresion en pasos:', r['compresion_en_pasos_de_tiempo'])\n"
+        "print('alineacion correcta:', r['alineacion_monotona'])\n"
+        "print('alineacion atascada:', r['alineacion_atascada'])",
+        "Explica por qué una interfaz explícita entre etapas permite sustituir el vocoder sin reentrenar "
+        "la primera etapa, y qué se pierde a cambio frente a un modelo de extremo a extremo.",
+        "Escucha dos sintetizadores con el mismo texto largo y busca repeticiones u omisiones. Anota en "
+        "qué construcciones aparecen.",
+        "Guarda los casos que encontraste y tu hipótesis sobre por qué fallan ahí.",
+        "La voz sintética ya es indistinguible de una grabación. Eso abre el problema de los derechos "
+        "sobre una identidad vocal, que es la ruta de medios.",
+    ),
+    "P123_sentencepiece": _auto(
+        "sentencepiece",
+        "BPE suponía que el texto ya venía partido por espacios. El japonés no los usa, y un texto con "
+        "espacio doble ya no se puede reconstruir. La solución es no suponer nada: tratar la entrada "
+        "como un flujo de caracteres.",
+        "```text\nPor espacios : \"el  gato\" → [\"el\", \"gato\"] → \"el gato\"   ✗ irreversible\n"
+        "Flujo crudo  : \"el  gato\" → [e,l,▁,▁,g,a,t,o]      ✓ exacto\n\n"
+        "Modelo unigrama: la segmentación es INFERENCIA, no una regla\n```",
+        "1. ¿Cuántos de los tres textos reconstruye cada método?\n"
+        "2. ¿Qué pasa con el japonés al partir por espacios?\n"
+        "3. ¿Cuántas segmentaciones admite una palabra?",
+        "Partir por espacios reconstruye **2 de 3**; el flujo crudo, **3 de 3**. En japonés, partir por "
+        "espacios da **1 pieza** para la frase entera —inútil— y el flujo crudo da **6**, sin necesitar "
+        "saber en qué idioma está. Y «internacional» admite **5 segmentaciones** distintas, de "
+        "log-probabilidad −2,4 la mejor a −18,9 la peor.",
+        "Que haya varias segmentaciones válidas no es un defecto: muestrear entre ellas durante el "
+        "entrenamiento es **regularización de subpalabra**, y mejora la robustez ante erratas y "
+        "variantes. Es la diferencia entre un tokenizador determinista y uno probabilístico.",
+        "Anti-patrón: tratar el tokenizador como preprocesado que no hay que versionar.",
+        "print('El tokenizador es parte del modelo: cambiarlo invalida los pesos.')\n"
+        "print('Y si no es reversible, no se puede auditar que entro exactamente al modelo.')\n"
+        "print('Versionalo con el checkpoint, no con el codigo de datos.')",
+        "Reversibilidad y ambigüedad, medidas:",
+        "r = run_paper_lab('sentencepiece', seed=3)['result']\n"
+        "for fila in r['comparacion']:\n"
+        "    print(fila)\n"
+        "print('segmentaciones posibles:', r['segmentaciones_posibles'])\n"
+        "for s in r['mejores_segmentaciones']:\n"
+        "    print('  ', s)",
+        "Explica por qué la reversibilidad exacta importa para auditar un sistema en producción, y qué "
+        "coste tiene en longitud de secuencia.",
+        "Tokeniza el mismo texto en español, en un idioma sin espacios y con emojis. Compara piezas por "
+        "carácter en los tres casos.",
+        "Guarda la comparación y qué idioma sale peor parado con tu tokenizador.",
+        "Con el texto ya resuelto, quedan los grafos y los documentos: dos formas de entrada donde la "
+        "estructura es tan informativa como el contenido.",
+    ),
+    "P124_gat": _auto(
+        "gat",
+        "La convolución de grafo promedia a todos los vecinos por igual. Si la mitad son ruido, el "
+        "promedio también lo es. La atención decide cuánto pesa cada vecino, por pareja.",
+        "```text\nGCN : h'ᵢ = σ( Σⱼ  (1/√(dᵢdⱼ)) · W·hⱼ )        peso FIJO por grado\n"
+        "GAT : h'ᵢ = σ( Σⱼ  αᵢⱼ · W·hⱼ )                 peso APRENDIDO por pareja\n\n"
+        "     αᵢⱼ = softmax_j( LeakyReLU(aᵀ[W·hᵢ ‖ W·hⱼ]) )\n```",
+        "1. ¿Gana la atención con un grafo limpio?\n"
+        "2. ¿Y con seis vecinos ruidosos por cada tres útiles?\n"
+        "3. ¿Cuánto peso le da al vecino más discrepante?",
+        "Con el grafo limpio, la media uniforme es **ligeramente mejor** (1,0 frente a 0,963): ponderar "
+        "solo puede desequilibrar un promedio que ya era correcto. Con **6 vecinos ruidosos**, la media "
+        "cae a **0,744** y la atención se sostiene en **0,869**. Al vecino más discrepante le da "
+        "**0,003** donde el peso uniforme sería 0,167.",
+        "Ese primer resultado es el más instructivo: **atender tiene un coste cuando no hay nada que "
+        "filtrar**. La atención no es gratis ni universalmente mejor; gana exactamente donde el grafo es "
+        "sucio, que es el caso real. Y como los pesos se calculan por pareja y no dependen de la "
+        "estructura global, el modelo se aplica a nodos que no se vieron al entrenar.",
+        "Anti-patrón: interpretar los pesos de atención como una explicación de la decisión.",
+        "print('Un peso alto dice que ese vecino influyo, no por que.')\n"
+        "print('Hay trabajos que muestran que las atenciones aprendidas acaban casi uniformes.')\n"
+        "print('Usalos como diagnostico, no como justificacion ante nadie.')",
+        "El barrido de ruido y los pesos de un caso:",
+        "r = run_paper_lab('gat', seed=3)['result']\n"
+        "for fila in r['por_nivel_de_ruido']:\n"
+        "    print(fila)\n"
+        "print('ejemplo:', r['ejemplo'])",
+        "Explica en qué condiciones la atención NO aporta nada sobre el promedio uniforme, y cómo lo "
+        "comprobarías antes de complicar un modelo.",
+        "Toma un grafo tuyo, mide la fracción de aristas que unen clases distintas y decide si la "
+        "atención te compensaría. Justifícalo con el barrido del motor.",
+        "Guarda la fracción medida y tu decisión razonada.",
+        "Grafos resueltos. Queda el documento: texto donde la posición en la página es parte del "
+        "significado.",
+    ),
+    "P125_layoutlm": _auto(
+        "layoutlm",
+        "El OCR entrega una factura de dos columnas como una sola cadena leída por filas. El texto está "
+        "perfectamente reconocido y aun así «Factura n.º» acaba emparejado con «Fecha».",
+        "```text\nSecuencia plana : token → embedding(texto) + embedding(posición en la SECUENCIA)\n"
+        "LayoutLM        : token → embedding(texto) + embedding(x, y en la PÁGINA)\n\n"
+        "     la caja delimitadora del OCR deja de tirarse a la basura\n```",
+        "1. ¿Qué cadena produce el OCR de un documento de dos columnas?\n"
+        "2. ¿Cuántos campos empareja bien la regla «el siguiente token»?\n"
+        "3. ¿Y usando la posición?",
+        "La regla textual «el siguiente token» acierta **2 de 4** claves. Usando la posición —misma "
+        "banda vertical, el valor más cercano a la derecha— acierta **4 de 4**. Los fallos no eran de "
+        "lectura: el texto estaba bien reconocido y aun así el emparejado era incorrecto.",
+        "La información que faltaba eran **las coordenadas**, no más texto ni un modelo mayor. Esa es la "
+        "tesis: la caja delimitadora que el OCR ya calcula y que las tuberías tiraban a la basura es la "
+        "señal que resuelve el problema.",
+        "Anti-patrón: creer que el problema de la extracción de campos es de calidad de OCR.",
+        "print('Con OCR perfecto, el emparejado por orden de lectura sigue fallando.')\n"
+        "print('El problema no es leer: es saber que va con que.')\n"
+        "print('Mejorar el OCR no mueve esa cifra.')",
+        "Los dos criterios de emparejado, campo a campo:",
+        "r = run_paper_lab('layoutlm', seed=3)['result']\n"
+        "print('orden del OCR:', r['orden_de_lectura_del_ocr'])\n"
+        "print('solo texto:', r['aciertos_solo_texto'])\n"
+        "for fila in r['emparejado_solo_con_texto']:\n"
+        "    print('  ', fila)\n"
+        "print('con posicion:', r['aciertos_con_posicion'])",
+        "Explica por qué la regla de posición del motor está escrita a mano y qué cambia cuando en su "
+        "lugar se preentrena sobre millones de documentos.",
+        "Pasa un formulario real por un OCR que devuelva cajas. Comprueba cuántos pares clave-valor "
+        "resuelve el orden de lectura y cuántos la posición.",
+        "Guarda las dos cifras y los casos donde ninguna de las dos reglas funciona.",
+        "Si la posición basta, ¿hace falta el OCR? Esa pregunta es P126.",
+    ),
+    "P126_donut": _auto(
+        "donut",
+        "Un OCR con 1 % de error por carácter suena excelente. Sobre documentos de 54 caracteres, deja "
+        "solo la mitad de documentos sin un solo error — y el analizador que viene detrás no puede "
+        "arreglar ninguno.",
+        "```text\nCascada:  imagen ──[OCR]──▶ texto ──[analizador]──▶ estructura\n\n"
+        "P(documento correcto) = (1 − p)^(caracteres)      ← se COMPONE, no se suma\n\n"
+        "Sin OCR:  imagen ──────────[modelo]──────────▶ estructura\n```",
+        "1. ¿Qué fracción de documentos sobrevive a un OCR con 1 % de error?\n"
+        "2. ¿Y con 5 %?\n"
+        "3. ¿Sigue la medición a la fórmula?",
+        "Con **1 %** por carácter: **0,905** de campos correctos pero solo **0,55** de documentos "
+        "enteros. Con **5 %**: **0,053** de documentos. Y la medición sigue a la predicción — para 1 % "
+        "la fórmula da **0,581** y se mide **0,55**. No es mala suerte: es la aritmética de encadenar "
+        "etapas.",
+        "El argumento de prescindir del OCR no es que el modelo de extremo a extremo lea mejor: es que "
+        "**no hereda errores de una etapa que no puede corregir**, porque esa etapa no existe. A cambio "
+        "introduce los suyos, que sí son entrenables. Es una decisión sobre dónde quieres que viva el "
+        "error, no sobre quién lee mejor.",
+        "Anti-patrón: fijar el objetivo de calidad del OCR en la tasa por carácter.",
+        "print('Un 99 % por caracter suena a objetivo cumplido.')\n"
+        "print('Sobre documentos de 54 caracteres son 55 % de documentos correctos.')\n"
+        "print('El objetivo tiene que fijarse en la unidad que le importa al negocio: el documento.')",
+        "La cascada completa, con la predicción al lado:",
+        "r = run_paper_lab('donut', seed=3)['result']\n"
+        "for fila in r['cascada_ocr_mas_analizador']:\n"
+        "    print(fila)\n"
+        "print('prediccion frente a medicion:')\n"
+        "for fila in r['prediccion_frente_a_medicion']:\n"
+        "    print('  ', fila)",
+        "Explica por qué medir en campos y medir en documentos dan conclusiones opuestas sobre el mismo "
+        "sistema, y cuál corresponde declarar en un contrato de servicio.",
+        "Estima la tasa de error por carácter de tu OCR y calcula qué fracción de tus documentos sale "
+        "sin un solo fallo. Compárala con la que asume tu proceso.",
+        "Guarda las dos cifras y la diferencia entre lo que asumías y lo que sale.",
+        "Cierra la ruta de percepción. Lo siguiente es generar medios, donde el problema deja de ser "
+        "entender y pasa a ser de quién es lo generado.",
+    ),
+})
+
+
+SPECS.update({
+    "P127_jukebox": _auto(
+        "jukebox",
+        "Cuatro minutos de canción son diez millones y medio de muestras. Antes de modelar hay que "
+        "comprimir — y a cuánto se comprime decide qué se puede aprender.",
+        "```text\nJerarquía de códigos:\n"
+        "  128×  →  82 687 códigos   estructura, letra, forma\n"
+        "   32×  → 330 750 códigos   armonía, textura\n"
+        "    8×  → 1 323 000 códigos timbre, detalle\n\n"
+        "ventana fija → cuanto más fino el nivel, MENOS tiempo abarca\n```",
+        "1. ¿Cuántas muestras son cuatro minutos a 44,1 kHz?\n"
+        "2. ¿Cuánto tiempo abarca cada nivel con la misma ventana?\n"
+        "3. ¿Cubre alguno la canción entera?",
+        "**10 584 000** muestras. Con una ventana de 8 192 códigos, el nivel grueso abarca **23,8 s** y "
+        "el fino **1,5 s**: 16× de diferencia. Y **ninguno cubre la canción** — 23,8 s de 240. "
+        "Comprimir 128× cuesta fidelidad: el error de reconstrucción es **3,9×** peor que a 8×.",
+        "Ese «ninguno cubre la canción» es el límite real de Jukebox. Hay que generar por ventanas "
+        "solapadas, y por eso el resultado suena a fragmentos bien hechos que no llegan a formar una "
+        "pieza. La jerarquía compra tres horizontes, no un horizonte infinito.",
+        "Anti-patrón: elegir la compresión pensando solo en la fidelidad.",
+        "print('Comprimir poco conserva el timbre y deja la ventana viendo dos segundos.')\n"
+        "print('Comprimir mucho abarca la forma y borra el detalle que hace que suene a musica.')\n"
+        "print('Por eso son tres niveles condicionados, no una eleccion.')",
+        "La jerarquía y lo que cuesta:",
+        "r = run_paper_lab('jukebox', seed=3)['result']\n"
+        "for n in r['jerarquia']:\n"
+        "    print(n)\n"
+        "print('fidelidad:', r['fidelidad_por_compresion'])\n"
+        "print('cobertura:', r['cobertura_temporal_por_nivel'])",
+        "Explica por qué una sola escala de compresión no puede servir para estructura y timbre a la "
+        "vez, y qué habría que cambiar para que una sola bastara.",
+        "Toma una pieza que conozcas y anota a qué escala temporal ocurre cada cosa que la hace "
+        "reconocible: el timbre, el ritmo, la armonía, la forma. Compáralo con los tres niveles.",
+        "Guarda tu tabla de escalas temporales y a qué nivel correspondería cada una.",
+        "Abre la ruta de medios: generar deja de ser entender y pasa a plantear de quién es lo generado.",
+    ),
+    "P128_nerf": _auto(
+        "nerf",
+        "Guardar una escena como rejilla cuesta al cubo de la resolución. Guardarla como una **función** "
+        "cuesta lo que ocupe el perceptrón — y no depende de la resolución en absoluto.",
+        "```text\nRejilla explícita : O(n³)      lado 1024 → 17 180 MB\n"
+        "Función continua : |θ|        477 188 parámetros → 1,91 MB\n\n"
+        "Renderizar = integrar a lo largo del rayo:\n"
+        "    C = Σ T_i · (1 − e^(−σ_i·δ)) · c_i        con T_i = Π (1 − α_j)\n```",
+        "1. ¿Cuánto ocupa una rejilla de lado 1024?\n"
+        "2. ¿Y el perceptrón equivalente?\n"
+        "3. ¿Quién decide que lo de delante tapa lo de atrás?",
+        "**17 180 MB** frente a **1,91 MB**, y el perceptrón no crece con la resolución. La oclusión "
+        "sale sola de la integral: la superficie a t=3 aporta **0,918** al color y lo que hay justo "
+        "detrás, **0,075** — **12×** menos. Nadie programó esa regla.",
+        "La tercera cifra es la que se suele pasar por alto: la **codificación posicional**. Dos puntos "
+        "a 0,005 de distancia están a 0,005 sin codificar y a **3,124** codificados, 625× más "
+        "separados. Sin ella un perceptrón solo representa variaciones suaves, y una escena tiene "
+        "bordes. NeRF sin codificación posicional produce una mancha borrosa.",
+        "Anti-patrón: leer «cabe en 2 MB» como «es barato».",
+        "print('La memoria es minima. El coste esta en RENDERIZAR.')\n"
+        "print('Cada pixel exige decenas de consultas al perceptron a lo largo de su rayo.')\n"
+        "print('Por eso NeRF tardaba segundos por fotograma, y de ahi sale P132.')",
+        "Los tres resultados, medidos:",
+        "r = run_paper_lab('nerf', seed=3)['result']\n"
+        "for f in r['rejilla_explicita']:\n"
+        "    print(f)\n"
+        "print('mlp:', r['mlp'])\n"
+        "print('rayo:', r['composicion_del_rayo'])\n"
+        "print('codificacion:', r['codificacion_posicional'])",
+        "Explica por qué la composición por transmitancia hace innecesario decidir explícitamente qué "
+        "superficie es visible, y qué ventaja da eso con humo o vidrio.",
+        "Calcula cuánta memoria necesitaría una rejilla que resolviera detalles de 1 mm en una "
+        "habitación de 5 m. Compáralo con el perceptrón.",
+        "Guarda el cálculo y la conclusión sobre cuál de las dos representaciones es viable.",
+        "La representación implícita gana en memoria y pierde en velocidad. Esa deuda se paga en P132.",
+    ),
+    "P129_musiclm": _auto(
+        "musiclm",
+        "Una pieza vuelve a su motivo inicial en el compás 64. Con tokens acústicos, la ventana del "
+        "modelo llega a 20 compases: cuando toca reexponer, no queda ni rastro de qué había que "
+        "reexponer.",
+        "```text\nacústico  : 50 tokens/compás  → ventana 1024 abarca  20,5 compases\n"
+        "semántico :  2 tokens/compás  → ventana 1024 abarca 512   compases\n\n"
+        "No son dos calidades. Son dos HORIZONTES.\n```",
+        "1. ¿Cuántos compases abarca cada escala?\n"
+        "2. ¿Ve el modelo acústico la exposición original al reexponer?\n"
+        "3. ¿Cuántos pares texto-música hay para entrenar?",
+        "Acústico: **20,5** compases. Semántico: **512**. Durante la reexposición, la escala acústica "
+        "alcanza la exposición original en **0 de 32** compases y la semántica en **32 de 32**. Y los "
+        "datos: incluso con 4 descripciones por clip, el conjunto anotado son **22 000** pares.",
+        "Esa escasez es la mitad del problema y casi nunca se menciona. Frente a los miles de millones "
+        "de pares texto-imagen que hay en la web, describir música con palabras es un recurso raro — "
+        "porque casi nadie escribe al lado de una canción qué instrumentos suenan y en qué tempo. De "
+        "ahí que el artículo publique MusicCaps además del modelo.",
+        "Anti-patrón: creer que basta con una ventana de contexto mayor.",
+        "print('Doblar la ventana acustica pasa de 20 a 41 compases: sigue sin llegar a 64.')\n"
+        "print('La escala semantica llega con la MISMA ventana, porque gasta 25 veces menos tokens.')\n"
+        "print('Es un problema de representacion, no de tamano.')",
+        "Los dos horizontes, medidos:",
+        "r = run_paper_lab('musiclm', seed=3)['result']\n"
+        "print('forma:', r['pieza'])\n"
+        "print('alcance acustico:', r['alcance_acustico_en_compases'])\n"
+        "print('alcance semantico:', r['alcance_semantico_en_compases'])\n"
+        "print('solo acustico:', r['coherencia_solo_acustico'])\n"
+        "print('con semantico:', r['coherencia_con_semantico'])",
+        "Explica por qué una jerarquía de dos escalas resuelve el problema mejor que agrandar la "
+        "ventana, y qué coste tiene.",
+        "Elige una pieza con forma clara —ABA, rondó, tema y variaciones— y mide en segundos la "
+        "distancia entre la exposición y la reexposición. Compárala con la ventana de un modelo que "
+        "uses.",
+        "Guarda la medición y si la ventana llegaría o no.",
+        "La música ya se genera. Lo siguiente es la voz, donde copiar a alguien deja de ser un problema "
+        "técnico y pasa a ser uno de identidad.",
+    ),
+    "P130_vall_e": _auto(
+        "vall_e",
+        "El enfoque anterior necesitaba media hora de grabaciones y un entrenamiento para imitar una "
+        "voz. Aquí bastan **tres segundos** y ningún entrenamiento. El resultado técnico y el problema "
+        "ético son el mismo hecho.",
+        "```text\nAntes  : 30 min de audio + ajuste fino del modelo\n"
+        "Ahora  :  3 s de audio como AVISO EN CONTEXTO, sin entrenar\n\n"
+        "TTS deja de ser síntesis y pasa a ser predicción del siguiente token\n```",
+        "1. ¿Cuánta identidad hay en medio segundo de voz?\n"
+        "2. ¿Y en tres?\n"
+        "3. ¿Cuánto se gana pasando de tres a treinta?",
+        "Con **0,5 s**, la identidad del hablante se recupera el **35,4 %** de las veces. Con **3 s**, "
+        "el **92,1 %**. Con **30 s**, el **100 %** — apenas **7,9 puntos** más. La información de "
+        "identidad se satura muy pronto.",
+        "Esa saturación es exactamente lo que hace el problema irreversible. Tres segundos de la voz de "
+        "cualquiera están en cualquier vídeo público, en un mensaje de voz, en una llamada. No hay "
+        "consentimiento que se haya pedido ni forma de retirarlo. La contramedida —detectar voz "
+        "sintética— envejece con cada generación de sintetizadores.",
+        "Anti-patrón: tratar la clonación de voz como un problema de calidad de audio.",
+        "print('Un clon imperfecto ya sirve para un fraude telefonico.')\n"
+        "print('El umbral que importa no es \"indistinguible\", es \"suficiente para enganar 20 segundos\".')\n"
+        "print('Ese umbral se cruzo antes que el de calidad.')",
+        "Cuánta identidad cabe en cada duración:",
+        "r = run_paper_lab('vall_e', seed=3)['result']\n"
+        "for f in r['identificacion_por_duracion']:\n"
+        "    print(f)\n"
+        "print('enfoques:', r['comparacion_de_enfoques'])",
+        "Explica por qué la saturación de la curva es lo que convierte esto en un problema de política "
+        "y no solo de ingeniería.",
+        "Revisa qué política de consentimiento aplicarías si tuvieras que desplegar clonación de voz: "
+        "qué prueba de autorización pedirías y cómo la verificarías.",
+        "Guarda tu política, con el mecanismo concreto de verificación.",
+        "Si cualquier voz se puede copiar, hace falta saber qué se generó. Esa es P131.",
+    ),
+    "P131_marcas_de_agua": _auto(
+        "marcas_de_agua",
+        "En vez de intentar reconocer texto generado a posteriori —que falla—, dejar la marca **al "
+        "generar**: sesgar qué tokens se eligen deja una firma que una prueba estadística encuentra.",
+        "```text\nEn cada paso: hash(token anterior) → lista VERDE (γ del vocabulario)\n"
+        "              sesgar la elección hacia la verde con δ\n\n"
+        "Detección:  z = (verdes − γn) / √(n·γ(1−γ))       sin acceso al modelo\n```",
+        "1. ¿Qué puntuación z da un texto marcado y uno humano?\n"
+        "2. ¿Cuánto texto hace falta?\n"
+        "3. ¿Qué pasa si se reescribe parte?",
+        "Marcado: **z = 4,83**. Humano: **z = −0,13**. Con umbral 4,0 se detectan **25 de 30** y hay "
+        "**0 falsos positivos**. Pero con **25 tokens** solo se detecta **1 de 30**, y reescribiendo el "
+        "**30 %** de los tokens la detección cae a **2 de 30**.",
+        "Las dos últimas cifras son el límite práctico. **Un tuit no se puede marcar** —no hay "
+        "suficiente texto para que la estadística diga nada— y **parafrasear es un ataque barato**. La "
+        "marca de agua sirve para texto largo sin editar, que es un caso de uso real pero mucho más "
+        "estrecho de lo que sugiere el titular.",
+        "Anti-patrón: presentar la marca de agua como solución a la desinformación.",
+        "print('La marca identifica al GENERADOR, no al autor ni la intencion.')\n"
+        "print('No dice si el texto es cierto, ni si quien lo publico sabia que era generado.')\n"
+        "print('Y solo funciona si el generador coopera: un modelo abierto no la lleva.')",
+        "Los tres regímenes: detección, longitud y robustez.",
+        "r = run_paper_lab('marcas_de_agua', seed=3)['result']\n"
+        "print('z marcado:', r['z_media_texto_marcado'], '| z humano:', r['z_media_texto_no_marcado'])\n"
+        "print('longitud:')\n"
+        "for f in r['efecto_de_la_longitud']:\n"
+        "    print('  ', f)\n"
+        "print('robustez:')\n"
+        "for f in r['robustez_a_la_reescritura']:\n"
+        "    print('  ', f)",
+        "Explica qué garantiza exactamente una marca de agua detectada y qué NO garantiza, y por qué "
+        "esa distinción importa en un procedimiento disciplinario.",
+        "Define para un caso tuyo el umbral de detección que usarías y calcula qué tasa de falsos "
+        "positivos aceptas. Razona qué le pasa a una persona acusada por un falso positivo.",
+        "Guarda el umbral, la tasa de falsos positivos y tu justificación.",
+        "Saber qué se generó importa por una razón concreta que cierra la ruta: lo generado vuelve al "
+        "corpus.",
+    ),
+    "P132_gaussian_splatting": _auto(
+        "gaussian_splatting",
+        "NeRF gasta la mayor parte de su cómputo **muestreando el vacío**: con una escena ocupada al "
+        "1 %, 190 de las 192 muestras de cada rayo caen donde no hay nada.",
+        "```text\nNeRF      : por píxel, N muestras × una pasada del perceptrón por muestra\n"
+        "Splatting : proyectar las gaussianas y mezclar solo las que caen en el píxel\n\n"
+        "Se cambia CÓMPUTO por MEMORIA\n```",
+        "1. ¿Cuántas muestras por rayo se desperdician?\n"
+        "2. ¿Cuánto cuesta cada método por fotograma?\n"
+        "3. ¿Qué se paga a cambio?",
+        "Con la escena ocupada al 1 %, **190,1 de 192** muestras por rayo caen en el vacío. El conteo "
+        "bruto da 2,09e+14 operaciones frente a 1,2e+09 — una razón enorme que **no** es la aceleración "
+        "real: el artículo mide del orden de **mil veces**. Y el precio es memoria: **2,1 MB** el "
+        "perceptrón contra **236 MB** el millón de gaussianas.",
+        "Fíjate en la honestidad de esa comparación: el conteo de operaciones exagera cinco órdenes de "
+        "magnitud porque ignora el muestreo jerárquico de NeRF y cómo aprovecha cada método la GPU. Un "
+        "número calculado no sustituye a uno medido, y esta es exactamente la clase de cifra que se "
+        "cita mal.",
+        "Anti-patrón: comparar arquitecturas contando operaciones.",
+        "print('El conteo bruto da 175 000x. La medicion del articulo da ~1000x.')\n"
+        "print('La diferencia es toda de ingenieria: ocupacion de la GPU, jerarquia, memoria.')\n"
+        "print('Si tu comparacion no esta medida, no es una comparacion.')",
+        "Dónde se va el cómputo y dónde la memoria:",
+        "r = run_paper_lab('gaussian_splatting', seed=3)['result']\n"
+        "print('nerf:', r['nerf'])\n"
+        "print('splatting:', r['splatting'])\n"
+        "print('memoria:', r['memoria'])\n"
+        "print('muestreo del vacio:')\n"
+        "for f in r['muestreo_del_vacio']:\n"
+        "    print('  ', f)",
+        "Explica qué gana una representación explícita más allá de la velocidad, y por qué eso importa "
+        "para un flujo de trabajo de producción.",
+        "Estima cuánta memoria ocuparía una escena tuya como gaussianas y decide si cabe en el "
+        "dispositivo donde tendría que renderizarse.",
+        "Guarda la estimación y la conclusión.",
+        "Queda la consecuencia que ninguna de estas técnicas evita: lo generado acaba en el corpus del "
+        "modelo siguiente.",
+    ),
+    "P133_colapso_de_modelo": _auto(
+        "colapso_de_modelo",
+        "Treinta generaciones entrenando cada una con lo que generó la anterior. Ningún modelo comete "
+        "un error: todos ajustan bien los datos que reciben. Y aun así la distribución se estrecha "
+        "hasta perder dos tercios de su variedad.",
+        "```text\ngen 0 : datos reales           σ = 0,793\n"
+        "gen 30: solo generado          σ = 0,252      ← 31,8 % de la variedad\n\n"
+        "El mecanismo es SOLO el error de muestreo, acumulado\n```",
+        "1. ¿Cuánta variedad queda tras 30 generaciones?\n"
+        "2. ¿Qué le pasa al rango de los datos?\n"
+        "3. ¿Ayuda conservar datos reales?",
+        "Queda el **31,8 %** de la desviación original. El rango se estrecha **3,2×**. Y hay un segundo "
+        "efecto: la distribución también **deriva** — la media pasa de −0,087 a −1,447. Conservar un "
+        "**25 %** de datos reales por generación lo frena por completo: σ final **0,806** frente a "
+        "**0,252**.",
+        "Esa deriva es lo que hace el fenómeno indetectable desde dentro. Cada generación ajusta "
+        "perfectamente los datos que recibe y no tiene con qué comparar. Solo mirando la distribución "
+        "original —que ya nadie tiene— se vería el desplazamiento. Por eso los corpus anteriores a la "
+        "IA generativa se han vuelto un recurso con valor.",
+        "Anti-patrón: usar datos sintéticos sin registrar su procedencia.",
+        "print('El problema no es entrenar con datos sinteticos: es no SABER que lo estas haciendo.')\n"
+        "print('Sin procedencia no puedes medir tu proporcion ni conservar datos reales a proposito.')\n"
+        "print('De ahi que P131 y P133 sean el mismo problema visto desde los dos lados.')",
+        "El colapso, generación a generación:",
+        "r = run_paper_lab('colapso_de_modelo', seed=3)['result']\n"
+        "for g in r['historia'][::5]:\n"
+        "    print(g)\n"
+        "print('conservado:', r['fraccion_conservada'])\n"
+        "print('con datos reales:', r['efecto_de_conservar_datos_reales'])",
+        "Explica por qué el colapso no exige ningún fallo del modelo, y qué lo distingue de un "
+        "sobreajuste.",
+        "Estima qué fracción de tus datos de entrenamiento podría ser generada. Si no puedes "
+        "estimarla, eso ya es el hallazgo: escribe qué registro te haría falta.",
+        "Guarda la estimación —o la constatación de que no puedes hacerla— y el registro que "
+        "necesitarías.",
+        "Cierra la ruta de medios. Lo siguiente son los agentes en operación: permisos, presupuestos y "
+        "coordinación.",
+    ),
+})
+
+
+SPECS.update({
+    "P134_minimo_privilegio": _auto(
+        "minimo_privilegio",
+        "La misma política escrita, dos valores por defecto distintos: 11 recursos accesibles o 35. Lo "
+        "que cambia no es lo que alguien listó — es qué pasa con lo que nadie listó.",
+        "```text\nDenegar por defecto : accesible ⟺ hay un permiso explícito\n"
+        "Permitir por defecto: accesible ⟺ NO hay una denegación explícita\n\n"
+        "El error de omisión abre en un caso y cierra en el otro\n```",
+        "1. ¿Cuántos recursos necesita la tarea?\n"
+        "2. ¿Cuántos quedan accesibles con cada valor por defecto?\n"
+        "3. ¿Qué expone un token de sesión frente a uno por tarea?",
+        "La tarea necesita **6 de 40**. Con denegar por defecto quedan accesibles **11**; con permitir "
+        "por defecto, **35**. El exceso sobre lo necesario pasa de 5 a 29 recursos: **5,8× más "
+        "superficie** por una sola decisión de diseño. Y un token de sesión expone **23** recursos "
+        "frente a **3,0** de media con uno por tarea.",
+        "Fíjate en el cuarto principio que el motor exhibe: **mediación completa**. Si el permiso se "
+        "revoca en el paso 4, comprobar solo al principio sirve 10 accesos y comprobar cada uno sirve "
+        "4. Una autorización caduca no protege de nada si nadie la vuelve a mirar — y eso es "
+        "exactamente lo que hace un agente que valida su token una vez y opera media hora.",
+        "Anti-patrón: dar al agente el permiso que necesitará «en algún momento».",
+        "print('Un token que cubre las 12 tareas expone 23 recursos todo el rato.')\n"
+        "print('Uno por tarea expone 3 de media, y solo mientras dura la tarea.')\n"
+        "print('El numero que hay que mirar no es cuantos permisos tiene: es el radio de dano.')",
+        "Las tres decisiones, medidas:",
+        "r = run_paper_lab('minimo_privilegio', seed=3)['result']\n"
+        "print('necesita:', r['recursos_que_la_tarea_necesita'], 'de', r['recursos_totales'])\n"
+        "print('denegar por defecto:', r['alcance_denegar_por_defecto'])\n"
+        "print('permitir por defecto:', r['alcance_permitir_por_defecto'])\n"
+        "print('token de sesion:', r['token_de_sesion'])\n"
+        "print('token por tarea:', r['token_por_tarea'])\n"
+        "print('mediacion:', r['mediacion'])",
+        "Explica por qué el octavo principio —aceptabilidad psicológica— puede hundir un diseño que "
+        "cumple los otros siete.",
+        "Enumera los permisos que tiene un agente tuyo y los que usa de verdad en una jornada. La "
+        "diferencia es su radio de daño evitable.",
+        "Guarda las dos listas y la diferencia.",
+        "Abre la ruta de agentes operativos: lo que hace falta para operar un agente se resolvió "
+        "décadas antes de que hubiera agentes.",
+    ),
+    "P135_pizarra": _auto(
+        "pizarra",
+        "Cuatro fuentes de conocimiento y ninguna resuelve la frase sola. Publicando todas sus "
+        "hipótesis donde las demás leen, la respuesta aparece — y no está en ninguna de ellas.",
+        "```text\nTubería : fuente A decide → fuente B decide → ...   (compromiso temprano)\n"
+        "Pizarra : todas escriben hipótesis → nada se decide hasta el final\n\n"
+        "control OPORTUNISTA: a quién invocar depende de lo que ya hay escrito\n```",
+        "1. ¿Cuántas posiciones resuelve la mejor fuente sola?\n"
+        "2. ¿Y todas juntas sobre la pizarra?\n"
+        "3. ¿Qué reconstruye una tubería de orden fijo?",
+        "La mejor fuente sola resuelve **1 de 4** posiciones. Sobre la pizarra se resuelven **4 de 4** y "
+        "la frase es «el gato come pescado», correcta. Una tubería donde cada etapa se compromete "
+        "reconstruye «el gato come **pesado**» — 3 de 4.",
+        "Ese error es el punto entero. La etapa acústica no puede distinguir «pesado» de «pescado», así "
+        "que decide mal; y aunque la etapa semántica sabría corregirlo, ya no puede. En la pizarra "
+        "nadie decide hasta que todas han escrito, y por eso la evidencia débil de cuatro fuentes vale "
+        "más que la decisión firme de una.",
+        "Anti-patrón: encadenar agentes especializados en una tubería fija.",
+        "print('Cada eslabon se compromete con su mejor respuesta y el siguiente la hereda.')\n"
+        "print('Un error temprano llega intacto al final aunque alguien despues supiera corregirlo.')\n"
+        "print('Con memoria compartida, la decision se pospone hasta que hay evidencia.')",
+        "Las dos arquitecturas, con el mismo conocimiento:",
+        "r = run_paper_lab('pizarra', seed=3)['result']\n"
+        "for f in r['cada_fuente_por_separado']:\n"
+        "    print(f['fuente'], '->', f['posiciones_resueltas'], 'de', f['de'])\n"
+        "print('pizarra:', r['pizarra_compartida']['reconstruye'])\n"
+        "print('tuberia:', r['tuberia_de_orden_fijo']['reconstruye'])",
+        "Explica qué gana un sistema de pizarra al añadir una fuente nueva, comparado con lo que "
+        "costaría añadirla a una tubería.",
+        "Dibuja el flujo de un sistema multiagente tuyo. Marca dónde cada agente se compromete con una "
+        "respuesta que otro podría corregir después y no puede.",
+        "Guarda el diagrama y los puntos de compromiso temprano que encontraste.",
+        "Si nadie manda, hay que repartir el trabajo de otra forma. Eso es P136.",
+    ),
+    "P136_red_de_contratos": _auto(
+        "red_de_contratos",
+        "El coordinador no sabe quién es bueno en qué. En vez de mantener un registro que se "
+        "desactualiza, anuncia la tarea y deja que cada nodo declare su coste — porque cada nodo sí lo "
+        "sabe.",
+        "```text\n1. ANUNCIO     coordinador → todos:  «hay esta tarea»\n"
+        "2. OFERTAS     cada nodo → coordinador: «me cuesta X»\n"
+        "3. ADJUDICA    coordinador → ganador:   «es tuya»\n\n"
+        "nadie mantiene una lista de capacidades\n```",
+        "1. ¿Cuánto tarda un reparto por turno riguroso?\n"
+        "2. ¿Y con anuncio, ofertas y adjudicación?\n"
+        "3. ¿Qué cuesta eso en mensajes?",
+        "Reparto ciego: la última tarea termina en **8,23**. Red de contratos: **5,05**, un "
+        "**1,63×** mejor, y el desequilibrio de carga baja de 5,57 a 3,15. El precio son **234 "
+        "mensajes** frente a 18 — **13× más** comunicación.",
+        "Esa razón de 13× es la que decide si el protocolo compensa. Si los nodos son homogéneos y sus "
+        "capacidades conocidas, un planificador central lo hace mejor y más barato. La red de contratos "
+        "gana exactamente cuando **nadie tiene el registro**, que es el caso de un sistema abierto donde "
+        "los nodos entran y salen.",
+        "Anti-patrón: montar negociación entre agentes que hacen todos lo mismo.",
+        "print('Si los nodos son intercambiables, ofertar es teatro: la mejor oferta es cualquiera.')\n"
+        "print('El protocolo cuesta 13x mas mensajes y no compra nada.')\n"
+        "print('Negociar tiene sentido cuando las capacidades DIFIEREN y nadie las conoce.')",
+        "Los dos repartos, con su coste:",
+        "r = run_paper_lab('red_de_contratos', seed=3)['result']\n"
+        "print('ciego:', r['asignacion_ciega'])\n"
+        "print('contratos:', r['red_de_contratos'])\n"
+        "print('mejora de tiempo:', r['mejora_de_tiempo'], '| coste en mensajes:', r['coste_en_mensajes'])",
+        "Explica qué pasa si un nodo miente en su oferta para ganar contratos, y qué mecanismo lo "
+        "corregiría.",
+        "Identifica un reparto de trabajo en un sistema tuyo. Decide si las capacidades difieren lo "
+        "bastante para que negociar compense los mensajes extra.",
+        "Guarda tu decisión con el cálculo del coste en mensajes.",
+        "Repartido el trabajo, queda cuánto dejar que cada uno piense antes de responder.",
+    ),
+    "P137_metarrazonamiento": _auto(
+        "metarrazonamiento",
+        "Pensar mejora la respuesta con rendimientos decrecientes y cuesta dinero por paso. En algún "
+        "momento el siguiente paso cuesta más de lo que aporta — y ese momento se puede calcular.",
+        "```text\nSeguir deliberando  ⟺  ganancia esperada del paso siguiente  >  coste del paso\n\n"
+        "No se elige un presupuesto: se deduce de la curva\n```",
+        "1. ¿Cuál es el mejor presupuesto fijo?\n"
+        "2. ¿Dónde para la regla de valor de la computación?\n"
+        "3. ¿Cuántas veces se equivoca un presupuesto fijo?",
+        "El mejor presupuesto fijo es **10 pasos** con utilidad neta **14,87**; con 20, la utilidad cae "
+        "a **7,82** — pensar de más es una forma de equivocarse. La regla para en el paso **8** con "
+        "utilidad **15,28**. Y sobre 300 instancias de dificultad variable, el fijo piensa de más en "
+        "**177** casos y de menos en **1**.",
+        "Que se equivoque en las dos direcciones es lo que ningún número fijo puede evitar. Un "
+        "presupuesto de tokens o de pasos es un compromiso entre instancias que no se parecen, y el "
+        "coste de ese compromiso se paga en las dos puntas: dinero tirado en lo fácil y respuestas "
+        "malas en lo difícil.",
+        "Anti-patrón: fijar el límite de pasos de un agente por lo que tardó la última demo.",
+        "print('Un limite fijo esta calibrado para la instancia con la que se calibro.')\n"
+        "print('En las faciles gasta de mas; en las dificiles corta antes de tiempo.')\n"
+        "print('Lo que hay que fijar es el CRITERIO de parada, no el numero.')",
+        "El presupuesto fijo frente a la regla:",
+        "r = run_paper_lab('metarrazonamiento', seed=3)['result']\n"
+        "for f in r['presupuestos_fijos']:\n"
+        "    print(f)\n"
+        "print('la regla para en:', r['pasos_elegidos_por_la_regla'],\n"
+        "      '| utilidad:', r['utilidad_neta_de_la_regla'])\n"
+        "print('sobre instancias variables:', r['sobre_instancias_de_dificultad_variable'])",
+        "Explica por qué estimar el valor de la computación es un problema en sí mismo, y qué riesgo de "
+        "regresión infinita plantea.",
+        "Define para un agente tuyo un criterio de parada que dependa del progreso observado en vez de "
+        "un número de pasos. Mide qué habría pasado en veinte ejecuciones pasadas.",
+        "Guarda el criterio y la comparación con tu límite actual.",
+        "Si los agentes negocian y deliberan, tienen que entenderse. Falta el idioma.",
+    ),
+    "P138_kqml": _auto(
+        "kqml",
+        "«puerta(abierta)» puede ser una afirmación, una pregunta, una orden, una negación o una "
+        "suscripción. El contenido no basta: hay que declarar qué se pretende al decirlo.",
+        "```text\nMensaje en tres capas:\n"
+        "  comunicación : de quién a quién, con qué identificador\n"
+        "  mensaje      : PERFORMATIVA (tell, ask-if, achieve...) + lenguaje del contenido\n"
+        "  contenido    : lo que se dice, en el lenguaje que sea\n```",
+        "1. ¿Cuántas lecturas admite el mismo contenido?\n"
+        "2. ¿Cuántos adaptadores hacen falta sin capa común?\n"
+        "3. ¿Y con ella?",
+        "**5 lecturas incompatibles** para la misma cadena. Con 30 agentes y 10 lenguajes de contenido, "
+        "**8 700** adaptadores punto a punto frente a **40** con capa común: **217,5× menos**. La "
+        "performativa es una etiqueta prestada de la filosofía del lenguaje.",
+        "Las tres capas son la parte que envejece bien. Permiten cambiar el lenguaje del contenido sin "
+        "tocar el transporte, y el transporte sin tocar la semántica. Treinta años después, el Model "
+        "Context Protocol resuelve el mismo problema con la misma forma — y con la misma dificultad "
+        "pendiente: KQML nunca fijó una semántica formal de sus performativas, y dos implementaciones "
+        "podían entender «tell» de forma distinta.",
+        "Anti-patrón: integrar agentes pasándose JSON sin declarar la intención.",
+        "print('Un JSON con {puerta: abierta} no dice si informa, pregunta u ordena.')\n"
+        "print('El receptor lo infiere del endpoint, y esa inferencia es la deuda.')\n"
+        "print('Declararlo cuesta un campo y ahorra una clase entera de errores.')",
+        "La ambigüedad y el coste de integración:",
+        "r = run_paper_lab('kqml', seed=3)['result']\n"
+        "for i in r['interpretaciones_posibles']:\n"
+        "    print(i['performativa'], '->', i['significado'])\n"
+        "for f in r['coste_de_integracion']:\n"
+        "    print(f)",
+        "Explica por qué la falta de una semántica formal de las performativas fue la crítica más "
+        "citada a KQML, y qué consecuencia práctica tiene.",
+        "Revisa el protocolo con el que se comunican dos componentes tuyos. Comprueba si la intención "
+        "de cada mensaje está declarada o se infiere del contexto.",
+        "Guarda los mensajes cuya intención no está declarada.",
+        "Con los agentes entendiéndose, queda decidir cuánto los dejamos decidir.",
+    ),
+    "P139_niveles_de_automatizacion": _auto(
+        "niveles_de_automatizacion",
+        "Automatizar la aprobación no elimina los errores del sistema: elimina a quien los veía. Y quien "
+        "revisa menos, además revisa **peor** — sin práctica no hay criterio.",
+        "```text\nCuatro etapas, cada una con su nivel:\n"
+        "  adquirir información · analizarla · decidir la acción · ejecutarla\n\n"
+        "nivel 1  : el humano decide todo\n"
+        "nivel 10 : el sistema actúa e ignora al humano\n```",
+        "1. ¿Cuántos errores detecta el nivel más bajo? ¿Y el más alto?\n"
+        "2. ¿Cae la detección en proporción a la revisión?\n"
+        "3. ¿Qué sí cae limpiamente?",
+        "Con la **misma** tanda de 150 errores para todos los niveles: el nivel 1 detecta **141** y el "
+        "nivel 10, **0**. Y la caída es superlineal — del nivel 5 al 7 se revisa 2,75× menos y se "
+        "detecta **3,4× menos** (62 → 18). Lo que sí cae limpiamente es la carga: de 2 000 revisiones a "
+        "0.",
+        "Esa superlinealidad es la «ironía de la automatización» de Bainbridge: al operador se le deja "
+        "la tarea de vigilar justo aquello para lo que la automatización le ha quitado la práctica. Y "
+        "por eso el artículo insiste en elegir el nivel **por etapa**: automatizar la adquisición de "
+        "información casi nunca tiene coste, y automatizar la decisión casi siempre.",
+        "Anti-patrón: medir el éxito de un despliegue por cuántas aprobaciones humanas se eliminaron.",
+        "print('Eliminar aprobaciones baja la carga, que es real y se puede medir.')\n"
+        "print('Y sube los errores que pasan, que tambien es real y casi nunca se mide.')\n"
+        "print('Un despliegue que solo reporta la primera mitad no esta reportando.')",
+        "Los seis niveles, con la misma tanda de errores:",
+        "r = run_paper_lab('niveles_de_automatizacion', seed=3)['result']\n"
+        "for f in r['por_nivel']:\n"
+        "    print(f\"nivel {f['nivel']:>2} | revisa {f['fraccion_revisada_por_el_humano']:.2f}\"\n"
+        "          f\" | detecta {f['errores_detectados']:>3} | pasan {f['errores_que_pasan']:>3}\"\n"
+        "          f\" | carga {f['carga_de_revision']}\")",
+        "Explica por qué el nivel adecuado depende del coste de un error que pasa, y no solo de la "
+        "carga que se ahorra.",
+        "Elige una decisión que tu sistema automatice. Sitúala en los diez niveles y estima qué "
+        "fracción de errores detectaría un humano en el nivel actual.",
+        "Guarda el nivel, la estimación y el coste de un error no detectado.",
+        "Falta el último ingrediente operativo: repartir trabajo pesado entre muchas máquinas.",
+    ),
+    "P140_mapreduce": _auto(
+        "mapreduce",
+        "Dos funciones puras —map y reduce— y el sistema se encarga del reparto, del movimiento de "
+        "datos y de reejecutar lo que falle. El modelo es simple; el sesgo de los datos, no.",
+        "```text\nmap    : registro → (clave, valor)\n"
+        "reduce : (clave, [valores]) → resultado\n\n"
+        "El trabajo termina cuando termina el ÚLTIMO reductor\n```",
+        "1. ¿Qué carga recibe el reductor más ocupado con claves uniformes?\n"
+        "2. ¿Y si una clave se lleva el 40 %?\n"
+        "3. ¿Ayuda añadir reductores?",
+        "Con claves uniformes, el más cargado recibe **685** frente a un ideal de 625: solo **1,1×**. "
+        "Con una clave caliente, recibe **2 367** frente a 357 el menos cargado — **3,79×** el ideal. Y "
+        "como el trabajo termina con el último, ese reductor **es** el tiempo total.",
+        "Añadir reductores **no arregla nada**: la clave caliente sigue cayendo en uno solo. El sesgo "
+        "no es un problema de escala sino de partición, y por eso los sistemas reales acaban con "
+        "particionadores a medida. Lo que sí ayuda, en otra dimensión, es el combinador: agregar en el "
+        "mapeador antes de mover datos baja el tráfico 2,56×.",
+        "Anti-patrón: diagnosticar un trabajo lento añadiendo máquinas.",
+        "print('Si una clave se lleva el 40 % del trafico, duplicar reductores no la parte.')\n"
+        "print('El reductor caliente tarda lo mismo y sigue siendo el tiempo total.')\n"
+        "print('Antes de escalar, mira la distribucion de tus claves.')",
+        "Los dos repartos y el efecto del combinador:",
+        "r = run_paper_lab('mapreduce', seed=3)['result']\n"
+        "print('uniforme:', r['caso_uniforme'])\n"
+        "print('sesgado:', r['caso_sesgado'])\n"
+        "print('combinador:', r['efecto_del_combinador'])",
+        "Explica por qué el combinador solo aplica si la operación de reducción es asociativa y "
+        "conmutativa, con un ejemplo de operación que no lo cumple.",
+        "Mira la distribución de una clave de particionado real de tu sistema. Calcula qué fracción del "
+        "tráfico se lleva la clave más frecuente.",
+        "Guarda la fracción y si tu partición actual la tolera.",
+        "Cierra la ruta operativa. Lo siguiente es lo que hay que poder responder cuando alguien "
+        "pregunta por qué el sistema hizo lo que hizo.",
+    ),
+})
+
+
+SPECS.update({
+    "P141_dos_sigma": _auto(
+        "dos_sigma",
+        "La tutoría uno a uno mueve al alumno medio **dos desviaciones típicas**. Y exige un docente "
+        "por alumno, así que el hallazgo no es la tutoría: es el problema que plantea.",
+        "```text\nclase convencional          σ + 0   → 52 % supera al alumno medio\n"
+        "aprendizaje para el dominio σ + 1   → 85 %\n"
+        "tutoría uno a uno           σ + 2   → 97,5 %\n\n"
+        "el efecto se mide en DESVIACIONES, para poder comparar entre asignaturas\n```",
+        "1. ¿Qué fracción de los tutorizados supera al alumno medio convencional?\n"
+        "2. ¿Y con aprendizaje para el dominio?\n"
+        "3. ¿Cuántos docentes exige cada opción?",
+        "Tutoría: el **97,5 %** supera al alumno medio convencional, frente al **52,2 %** esperable por "
+        "azar. Aprendizaje para el dominio: **85,0 %** — la mitad del efecto. Y el coste: **400** "
+        "docentes para 400 alumnos frente a **14**.",
+        "Ese contraste de coste es el artículo entero. Bloom no está demostrando que la tutoría "
+        "funcione —eso ya se sabía—: está formulando el problema de encontrar cómo conseguir su efecto "
+        "**en grupo**. Cuarenta años después, esa formulación es exactamente la promesa que se le hace "
+        "a la IA educativa, y conviene recordar que el propio Bloom advertía que sus estudios eran "
+        "cortos y en asignaturas concretas.",
+        "Anti-patrón: citar «2 sigma» como si fuera una constante de la naturaleza.",
+        "print('Las replicas posteriores encuentran efectos menores que 2 sigma.')\n"
+        "print('VanLehn (2011) mide los tutores inteligentes cerca de 0,76 sigma.')\n"
+        "print('La cifra se cita con mas confianza de la que el propio articulo pide.')",
+        "El efecto y su coste, lado a lado:",
+        "r = run_paper_lab('dos_sigma', seed=3)['result']\n"
+        "for c in r['condiciones']:\n"
+        "    print(c)\n"
+        "for c in r['coste_de_cada_condicion']:\n"
+        "    print(c)",
+        "Explica por qué medir en desviaciones típicas permite comparar entre asignaturas y exámenes "
+        "distintos, y qué se pierde al hacerlo.",
+        "Busca el tamaño del efecto reportado por una herramienta educativa que conozcas. Comprueba si "
+        "lo declara y contra qué línea base.",
+        "Guarda la cifra —o la constatación de que no la declara—.",
+        "Abre la ruta de gobernanza: qué se puede prometer, qué se puede medir y quién responde.",
+    ),
+    "P142_olvido_catastrofico": _auto(
+        "olvido_catastrofico",
+        "Una red aprende la tarea A con 0,975 de exactitud. Se le enseña la tarea B. La exactitud en A "
+        "cae a **0,47** — el azar. Nadie tocó A ni sus datos.",
+        "```text\nentrenar en A     → exactitud en A = 0,975\n"
+        "entrenar en B     → exactitud en A = 0,470   ← y B = 0,955\n\n"
+        "no es degradación gradual: con UNA época de B ya está en 0,605\n```",
+        "1. ¿Cuánto cae la exactitud en A?\n"
+        "2. ¿Cuánto tarda en caer?\n"
+        "3. ¿Ayuda mezclar las dos tareas?",
+        "Cae **0,505 puntos**, de 0,975 a 0,47, mientras B llega a 0,955. Y cae rápido: con **una sola "
+        "época** de B ya está en 0,605. Mezclando A y B desde el principio, A se queda en **0,75**: "
+        "mucho mejor que el 0,47 secuencial.",
+        "Cuidado con ese 0,75: tampoco es 0,975. Un clasificador lineal **no tiene capacidad** para dos "
+        "reglas distintas, así que mezclar solo reparte el error. En una red con capacidad de sobra, "
+        "mezclar recupera las dos por completo y la secuencia sigue olvidando. La maqueta muestra el "
+        "mecanismo y se queda corta para separar capacidad de orden — y lo dice.",
+        "Anti-patrón: ajustar un modelo con datos nuevos y no reevaluar lo anterior.",
+        "print('El ajuste fino con datos nuevos es aprendizaje secuencial.')\n"
+        "print('Si no reevaluas las tareas anteriores, el olvido no se ve: se sufre.')\n"
+        "print('Una evaluacion que solo mide lo ultimo que enseñaste no mide nada.')",
+        "La curva de olvido, época a época:",
+        "r = run_paper_lab('olvido_catastrofico', seed=3)['result']\n"
+        "for c in r['curva_de_olvido']:\n"
+        "    print(c)\n"
+        "print('B tras B:', r['exactitud_en_B_tras_aprender_B'])\n"
+        "print('mezcladas:', r['exactitud_en_A_entrenando_A_y_B_MEZCLADAS'])",
+        "Explica por qué el aprendizaje por gradiente supone que las muestras están mezcladas, y qué "
+        "supuesto rompe un flujo de tareas.",
+        "Si ajustas modelos con datos nuevos, evalúa el modelo actual sobre una tarea que aprendiera "
+        "hace tres versiones. Compara con lo que daba entonces.",
+        "Guarda las dos cifras.",
+        "El problema estuvo treinta años sin remedio práctico. El remedio es P145.",
+    ),
+    "P143_privacidad_diferencial": _auto(
+        "privacidad_diferencial",
+        "Dos consultas que solo difieren en una persona. La resta revela su dato con certeza. Publicar "
+        "agregados exactos no protege a nadie — y ninguna anonimización arregla eso.",
+        "```text\nM es ε-diferencialmente privado ⟺ para todo par de bases D, D' que difieren\n"
+        "en UNA persona, y todo resultado S:\n\n"
+        "    P[M(D) ∈ S]  ≤  e^ε · P[M(D') ∈ S]\n\n"
+        "Mecanismo: sumar ruido de Laplace de escala (sensibilidad / ε)\n```",
+        "1. ¿Cuánto acierta el ataque sin ruido?\n"
+        "2. ¿Y con ε pequeño?\n"
+        "3. ¿Qué se paga?",
+        "Sin ruido, el ataque de diferenciación acierta el **100 %**. Con ε = 0,1 cae al **48,2 %** — "
+        "indistinguible de adivinar. Con ε = 10 sigue acertando el **99,3 %**. Y el precio: el error "
+        "medio de la consulta pasa de 0,1 a 9,95 sobre un conteo de 249.",
+        "Ese ε = 10 es la trampa que hay que ver: **cumple la definición formal y no protege nada**. "
+        "«Usamos privacidad diferencial» no es una afirmación verificable si no viene con el valor de "
+        "ε, y elegirlo es una decisión de política, no técnica. Varios despliegues conocidos usan "
+        "valores que buena parte de la comunidad considera demasiado laxos.",
+        "Anti-patrón: anunciar privacidad diferencial sin publicar ε.",
+        "print('Con epsilon = 10 el ataque acierta el 99,3 % y la definicion se cumple igual.')\n"
+        "print('El parametro ES la garantia. Sin el, la afirmacion no dice nada.')\n"
+        "print('Y hay que declarar tambien cuantas consultas: el presupuesto se compone.')",
+        "El compromiso completo:",
+        "r = run_paper_lab('privacidad_diferencial', seed=3)['result']\n"
+        "print('sin privacidad:', r['sin_privacidad'])\n"
+        "for f in r['por_epsilon']:\n"
+        "    print(f)",
+        "Explica por qué la garantía no depende de qué sepa el atacante, y en qué se diferencia eso de "
+        "la anonimización.",
+        "Busca un producto que anuncie privacidad diferencial y comprueba si publica su ε y su "
+        "presupuesto de consultas.",
+        "Guarda el valor —o la ausencia— y qué te dice.",
+        "Proteger los datos publicados es una mitad. La otra es no tener que recogerlos: eso es P146.",
+    ),
+    "P144_ml_en_seguridad": _auto(
+        "ml_en_seguridad",
+        "Un detector con 99 % de sensibilidad y 99 % de especificidad. En un flujo donde uno de cada "
+        "10 000 eventos es un ataque, produce **102 alertas por cada ataque real**.",
+        "```text\nprecisión = VP / (VP + FP)\n\n"
+        "Con clase base p muy pequeña, FP ≈ N·(1−especificidad) DOMINA a VP ≈ N·p·sensibilidad\n"
+        "        → la precisión colapsa aunque el modelo sea excelente\n```",
+        "1. ¿Qué precisión da con clases equilibradas?\n"
+        "2. ¿Y con la proporción real de ataques?\n"
+        "3. ¿Qué especificidad haría falta?",
+        "Con clases equilibradas, precisión **0,99**. Con un ataque por cada 10 000 eventos y la misma "
+        "especificidad, **10 098** alertas de las que **99** son reales: precisión **0,0098**, es decir "
+        "**102 alertas por cada ataque**. Para ser operable hace falta especificidad **0,9999** — y aun "
+        "así son 189 alertas diarias.",
+        "Esa exigencia no se formula como «un modelo mejor» sino como «una tasa de falsos positivos "
+        "absurdamente baja», y esa reformulación es lo útil del artículo. Las otras cuatro razones "
+        "—coste asimétrico, ausencia de datos de ataques nuevos, adversario que se adapta, y necesidad "
+        "de explicar la alerta— no se arreglan con más datos ni con más parámetros.",
+        "Anti-patrón: reportar exactitud o AUC en un problema con clase base minúscula.",
+        "print('Un detector que diga siempre \"benigno\" acierta el 99,99 % de las veces.')\n"
+        "print('La exactitud no distingue ese detector de uno util.')\n"
+        "print('En clase base pequeña, lo que hay que reportar es precision y alertas por hallazgo.')",
+        "La aritmética de la clase base:",
+        "r = run_paper_lab('ml_en_seguridad', seed=3)['result']\n"
+        "for f in r['escenarios']:\n"
+        "    print(f)\n"
+        "for d in r['por_que_la_seguridad_es_distinta']:\n"
+        "    print('-', d)",
+        "Explica por qué un adversario que se adapta rompe el supuesto básico del aprendizaje "
+        "automático, y qué consecuencia tiene para la validación.",
+        "Toma un detector de tu trabajo, estima su clase base real y calcula cuántas alertas produce "
+        "por cada hallazgo verdadero.",
+        "Guarda la cifra y si tu equipo puede con ese volumen.",
+        "Detectar es difícil. Aprender sin olvidar, también: el remedio al olvido es P145.",
+    ),
+    "P145_ewc": _auto(
+        "ewc",
+        "Si el problema es que aprender lo nuevo mueve los pesos que sostenían lo viejo, la solución es "
+        "**frenar solo esos** y dejar los demás libres.",
+        "```text\nL(θ) = L_B(θ)  +  (λ/2) · Σᵢ Fᵢ · (θᵢ − θ*A,ᵢ)²\n"
+        "                            ↑ importancia del peso i para la tarea A\n\n"
+        "F ≈ información de Fisher, aproximada por el gradiente al cuadrado\n```",
+        "1. ¿Cuánto cae A sin protección?\n"
+        "2. ¿Cuánto recupera con la penalización?\n"
+        "3. ¿Qué pasa si λ es muy grande?",
+        "Sin protección, A cae de 0,975 a **0,655** mientras B llega a 0,975. Con λ = 10, A se recupera "
+        "a **0,97** y B se queda en **0,725**: la media sube de 0,815 a **0,847**. Con λ = 60, ambas "
+        "colapsan al azar (**0,545** y **0,535**).",
+        "Fíjate en que **B paga 0,25 puntos** por lo que A recupera. No es una solución sin coste: es "
+        "un intercambio explícito entre estabilidad y plasticidad, con λ como perilla. Y en esta "
+        "maqueta el intercambio es duro porque un clasificador lineal tiene un único hiperplano y casi "
+        "todos sus pesos importan; en una red profunda hay muchísimo más margen libre y ahí es donde el "
+        "método luce.",
+        "Anti-patrón: subir λ hasta que la tarea antigua deje de degradarse.",
+        "print('Con lambda = 60 la tarea antigua deja de degradarse... y queda en 0,545.')\n"
+        "print('La penalizacion domina al gradiente y no se aprende nada, ni lo viejo ni lo nuevo.')\n"
+        "print('Lambda es un compromiso, no un dial de seguridad.')",
+        "El barrido de λ, con las dos tareas:",
+        "r = run_paper_lab('ewc', seed=3)['result']\n"
+        "print('A antes de B:', r['exactitud_en_A_antes_de_aprender_B'])\n"
+        "for f in r['por_lambda']:\n"
+        "    print(f)\n"
+        "print('pesos por encima de 0,5 de importancia:', r['pesos_muy_importantes'])",
+        "Explica por qué la penalización tiene que ser proporcional a la importancia de cada peso y no "
+        "uniforme, y qué pasaría si lo fuera.",
+        "Si mantienes un modelo que se reentrena periódicamente, mide su rendimiento en una tarea "
+        "antigua antes y después del último ajuste.",
+        "Guarda las dos cifras y si el intercambio te compensa.",
+        "Aprender sin olvidar y aprender sin centralizar son dos restricciones distintas. La segunda es "
+        "P146.",
+    ),
+    "P146_federado": _auto(
+        "federado",
+        "Los datos más útiles para entrenar son los más sensibles y viven en millones de dispositivos. "
+        "Promediar **modelos** en vez de recoger **registros** cambia por completo la superficie del "
+        "problema.",
+        "```text\nRonda t:\n"
+        "  1. el servidor manda el modelo actual a los clientes\n"
+        "  2. cada cliente entrena E épocas en LOCAL sobre sus datos\n"
+        "  3. cada cliente devuelve solo los PESOS\n"
+        "  4. el servidor promedia\n```",
+        "1. ¿A cuánto llega la exactitud sin que salga ningún dato?\n"
+        "2. ¿Qué aporta más cómputo local?\n"
+        "3. ¿Rompe la heterogeneidad el promediado?",
+        "**0,993** en 12 rondas con 5 épocas locales, sin transmitir un solo registro. Más cómputo "
+        "local acelera: en la ronda 1 se va de 0,975 con una época a 0,985 con cinco. Y con cada "
+        "cliente viendo **una sola clase**, la exactitud final es 0,988 frente a 0,993 — apenas 0,005.",
+        "Ese último resultado hay que leerlo con cuidado y el motor lo dice: **esta maqueta NO "
+        "reproduce el fallo por heterogeneidad** que documenta la literatura. Con 20 clientes "
+        "repartidos simétricamente y un modelo lineal, promediar cancela los sesgos locales. El fallo "
+        "real aparece con redes profundas, participación desigual y clientes que no se compensan.",
+        "Anti-patrón: presentar el aprendizaje federado como privacidad.",
+        "print('Que los datos no salgan no significa que no se filtren.')\n"
+        "print('De los gradientes se pueden reconstruir ejemplos de entrenamiento.')\n"
+        "print('Federado + privacidad diferencial + agregacion segura: las tres, no una.')",
+        "Las cuatro configuraciones:",
+        "r = run_paper_lab('federado', seed=3)['result']\n"
+        "for f in r['resultados']:\n"
+        "    print(f\"{f['distribucion']:>22} | {f['epocas_locales']} epocas -> {f['exactitud_final']}\")\n"
+        "for c in r['coste_de_comunicacion']:\n"
+        "    print(c)",
+        "Explica por qué la comunicación es el recurso caro en este escenario y el cómputo no, y qué "
+        "consecuencia tiene eso en el diseño del algoritmo.",
+        "Identifica datos de tu organización que no se pueden centralizar por normativa. Estima si el "
+        "promediado federado sería viable con su volumen y su conectividad.",
+        "Guarda la estimación y el obstáculo principal.",
+        "Queda la frontera: modelos que no solo aprenden del mundo sino que lo imaginan.",
+    ),
+    "P147_world_models": _auto(
+        "world_models",
+        "Si el agente aprende un modelo del entorno, puede entrenar su política **dentro** de él. El "
+        "problema es que la política encuentra las grietas del modelo si la dejas buscar bastante.",
+        "```text\nVAE: observación → vector comprimido\n"
+        "RNN: predice el siguiente vector comprimido\n"
+        "Política: entrenada DENTRO del modelo, sin tocar el entorno\n```",
+        "1. ¿Cuánto cuesta buscar la política en el mundo real?\n"
+        "2. ¿Y dentro del modelo?\n"
+        "3. ¿Qué pasa si el modelo está sesgado?",
+        "En el mundo real, **9 600** interacciones; dentro del modelo, **0**. Con un modelo exacto, la "
+        "brecha entre lo prometido y lo entregado es **0,0**. Con un modelo sesgado en 0,3, el modelo "
+        "promete −0,026 y el mundo entrega −0,063: una brecha de **0,037**.",
+        "Esa brecha es el compromiso central de aprender con modelo: **el modelo es más barato que el "
+        "mundo y también menos fiel**, y la optimización explota esa infidelidad sistemáticamente. Por "
+        "eso el artículo añade incertidumbre al modelo — no para predecir mejor, sino para que la "
+        "política no pueda aprovechar sus grietas.",
+        "Anti-patrón: medir la política por lo que promete el simulador.",
+        "print('La politica se optimizo CONTRA el modelo, incluidas sus grietas.')\n"
+        "print('Cuanto mejor sea la busqueda, mas explota los errores del modelo.')\n"
+        "print('La unica cifra que cuenta es la del entorno real.')",
+        "La brecha según lo fiel que sea el modelo:",
+        "r = run_paper_lab('world_models', seed=3)['result']\n"
+        "for f in r['busqueda_dentro_del_modelo']:\n"
+        "    print(f)\n"
+        "print('coste:', r['coste_de_la_busqueda'])",
+        "Explica por qué una búsqueda más potente dentro de un modelo imperfecto puede dar una política "
+        "PEOR en el mundo real.",
+        "Si usas un simulador, mide la diferencia entre el rendimiento simulado y el real de una "
+        "política tuya. Esa diferencia es tu brecha.",
+        "Guarda la brecha medida.",
+        "Cierra la ruta técnica. Falta la pregunta que ninguna de estas técnicas responde: quién "
+        "responde cuando falla.",
+    ),
+    "P148_auditoria_interna": _auto(
+        "auditoria_interna",
+        "«Faltan las etiquetas de subgrupo» es barato al recoger los datos e **imposible** cuando el "
+        "sistema ya está construido. Auditar al final es auditar cuando ya no se puede corregir.",
+        "```text\nalcance → correspondencia → recogida de artefactos → pruebas → reflexión\n\n"
+        "cada etapa produce un ARTEFACTO, no una opinión\n```",
+        "1. ¿Cuáles son las cinco etapas?\n"
+        "2. ¿Cuánto cuesta corregir según cuándo aparece el hallazgo?\n"
+        "3. ¿Qué NO hace la auditoría interna?",
+        "Cinco etapas, cada una con su entregable. Los mismos cinco hallazgos cuestan **55** si aparecen "
+        "cuando corresponde y **170** si aparecen todos en la revisión final: **3,1× más**. Y lo que no "
+        "hace: la audita quien la construye, así que hay conflicto de interés estructural.",
+        "Ese reconocimiento explícito es lo que hace serio al artículo. La auditoría interna **no "
+        "sustituye** a la externa ni a la regulación: no da cuenta pública, no tiene poder de veto y "
+        "cubre lo que la organización decide mirar. Lo que sí hace es dejar los artefactos —hojas de "
+        "datos, tarjetas de modelo, resultados desagregados— sin los cuales un auditor externo solo "
+        "puede preguntar.",
+        "Anti-patrón: programar la revisión ética para antes del lanzamiento.",
+        "print('En ese punto los hallazgos importantes ya no se pueden corregir.')\n"
+        "print('Si faltan las etiquetas de subgrupo, rehacer el conjunto no es una opcion.')\n"
+        "print('La auditoria produce una traza mientras se construye, no un veredicto al final.')",
+        "El marco y el coste de llegar tarde:",
+        "r = run_paper_lab('auditoria_interna', seed=3)['result']\n"
+        "for e in r['etapas_del_marco']:\n"
+        "    print(e)\n"
+        "print('continua:', r['coste_si_se_audita_de_forma_continua'],\n"
+        "      '| solo al final:', r['coste_si_se_audita_solo_antes_de_lanzar'])\n"
+        "for l in r['lo_que_la_auditoria_interna_no_hace']:\n"
+        "    print('-', l)",
+        "Explica por qué un marco que exige artefactos es más auditable que uno que exige opiniones.",
+        "Elige un sistema tuyo y comprueba cuáles de los cinco artefactos existen. Los que falten son tu "
+        "deuda de auditoría.",
+        "Guarda la lista de artefactos que faltan.",
+        "Aquí se cierra el eje de papers: de Pearson en 1901 a la pregunta de quién responde cuando un "
+        "sistema decide.",
+    ),
+})
+
 
 TRANSFORMER_SPECS: list[dict[str, Any]] = [
     {

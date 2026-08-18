@@ -228,6 +228,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): conversaciones multiagente con traspaso de turno programable.
 - Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009, caps. de comunicación y cooperación: actos de habla y protocolos de interacción.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P136 · El protocolo de red de contratos: comunicación y control en un resolutor distribuido](../../../papers/foundational/P136_red_de_contratos/README.md) | 1980 | Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué. | [notebook](../../../notebooks/papers/P136_red_de_contratos.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

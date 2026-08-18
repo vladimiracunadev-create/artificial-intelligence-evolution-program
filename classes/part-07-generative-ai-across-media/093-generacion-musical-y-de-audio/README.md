@@ -240,6 +240,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Borsos, Z. et al. (2022). *AudioLM: a Language Modeling Approach to Audio Generation*. [arXiv:2209.03143](https://arxiv.org/abs/2209.03143)
 - van den Oord, A. et al. (2016). *WaveNet: A Generative Model for Raw Audio*. [arXiv:1609.03499](https://arxiv.org/abs/1609.03499)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P127 · Jukebox: un modelo generativo de música](../../../papers/foundational/P127_jukebox/README.md) | 2020 | Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente. | [notebook](../../../notebooks/papers/P127_jukebox.ipynb) |
+| [P129 · MusicLM: generar música a partir de texto](../../../papers/foundational/P129_musiclm/README.md) | 2023 | Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar. | [notebook](../../../notebooks/papers/P129_musiclm.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

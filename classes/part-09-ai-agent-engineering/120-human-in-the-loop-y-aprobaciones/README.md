@@ -259,6 +259,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Amershi et al. (2014), "Power to the People: The Role of Humans in Interactive Machine Learning", DOI:10.1609/aimag.v35i4.2513](https://doi.org/10.1609/aimag.v35i4.2513)
 - [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: la aprobación como mitigación)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P139 · Un modelo de tipos y niveles de interacción humana con la automatización](../../../papers/foundational/P139_niveles_de_automatizacion/README.md) | 2000 | Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace. | [notebook](../../../notebooks/papers/P139_niveles_de_automatizacion.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

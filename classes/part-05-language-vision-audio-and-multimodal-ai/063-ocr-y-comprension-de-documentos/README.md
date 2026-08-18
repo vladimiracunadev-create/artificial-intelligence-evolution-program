@@ -234,6 +234,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/)
 - Hugging Face Tasks: Document Question Answering — [huggingface.co/tasks/document-question-answering](https://huggingface.co/tasks/document-question-answering)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P125 · LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos](../../../papers/foundational/P125_layoutlm/README.md) | 2020 | Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas. | [notebook](../../../notebooks/papers/P125_layoutlm.ipynb) |
+| [P126 · Transformer de comprensión de documentos sin OCR](../../../papers/foundational/P126_donut/README.md) | 2022 | Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir. | [notebook](../../../notebooks/papers/P126_donut.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

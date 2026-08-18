@@ -240,6 +240,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Dathathri, S. et al. (2024). *Scalable watermarking for identifying large language model outputs* (SynthID-Text). Nature, 634. [doi:10.1038/s41586-024-08025-4](https://doi.org/10.1038/s41586-024-08025-4)
 - Content Credentials (implementación de C2PA para usuarios finales): [contentcredentials.org](https://contentcredentials.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P131 · Una marca de agua para modelos de lenguaje grandes](../../../papers/foundational/P131_marcas_de_agua/README.md) | 2023 | Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla. | [notebook](../../../notebooks/papers/P131_marcas_de_agua.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

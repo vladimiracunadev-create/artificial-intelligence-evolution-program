@@ -244,4 +244,4 @@ ai-evolution paper-lab P117 --seed 7
 [📇 Índice](../../catalog/PAPERS_INDEX.md) ·
 [📝 Evaluación](../../../assessments/papers/P117_agentops.md) ·
 [🏫 Clase 156 · AgentOps y análisis de trayectorias](../../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias/README.md) ·
-[➡️ Índice de papers](../../catalog/PAPERS_INDEX.md)
+[➡️ Siguiente: P118 Unidades de subpalabra](../P118_bpe/README.md)

@@ -239,6 +239,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Goodfellow, I. et al. (2014). *Generative Adversarial Networks*. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
 - C2PA (procedencia como mitigación de contaminación, ver clase 098): [especificación 2.2](https://c2pa.org/specifications/specifications/2.2/index.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P133 · Los modelos de IA colapsan al entrenarse con datos generados recursivamente](../../../papers/foundational/P133_colapso_de_modelo/README.md) | 2024 | Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno. | [notebook](../../../notebooks/papers/P133_colapso_de_modelo.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

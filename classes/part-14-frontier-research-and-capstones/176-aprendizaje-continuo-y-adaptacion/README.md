@@ -238,6 +238,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Lopez-Paz, D. y Ranzato, M. (2017). *Gradient Episodic Memory for Continual Learning*. NeurIPS 2017. [arXiv:1706.08840](https://arxiv.org/abs/1706.08840)
 - Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (optimización). [deeplearningbook.org](https://www.deeplearningbook.org/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P142 · Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial](../../../papers/foundational/P142_olvido_catastrofico/README.md) | 1989 | Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso. | [notebook](../../../notebooks/papers/P142_olvido_catastrofico.ipynb) |
+| [P145 · Superar el olvido catastrófico en redes neuronales](../../../papers/foundational/P145_ewc/README.md) | 2017 | Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher. | [notebook](../../../notebooks/papers/P145_ewc.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -235,6 +235,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - W3C. *Speech Synthesis Markup Language (SSML) 1.1* — [w3.org/TR/speech-synthesis11](https://www.w3.org/TR/speech-synthesis11/)
 - Mozilla Common Voice (corpus abierto de voz con licencia y consentimiento explícitos) — [commonvoice.mozilla.org](https://commonvoice.mozilla.org/en/datasets)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P119 · WaveNet: un modelo generativo de audio en crudo](../../../papers/foundational/P119_wavenet/README.md) | 2016 | Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz. | [notebook](../../../notebooks/papers/P119_wavenet.ipynb) |
+| [P122 · Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos](../../../papers/foundational/P122_tacotron/README.md) | 2018 | Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media. | [notebook](../../../notebooks/papers/P122_tacotron.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

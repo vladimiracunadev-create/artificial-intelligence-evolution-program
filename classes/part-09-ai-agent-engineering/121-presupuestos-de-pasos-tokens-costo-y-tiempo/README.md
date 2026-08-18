@@ -235,6 +235,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle cuyo costo se presupuesta)](https://arxiv.org/abs/2210.03629)
 - [Kaplan et al. (2020), "Scaling Laws for Neural Language Models", arXiv:2001.08361 (relación cómputo-costo en LLMs)](https://arxiv.org/abs/2001.08361)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P137 · Principios del metarrazonamiento](../../../papers/foundational/P137_metarrazonamiento/README.md) | 1991 | Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta. | [notebook](../../../notebooks/papers/P137_metarrazonamiento.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

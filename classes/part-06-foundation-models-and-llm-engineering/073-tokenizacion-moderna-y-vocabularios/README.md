@@ -229,6 +229,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Jurafsky y Martin, *Speech and Language Processing* (3.ª ed., borrador), cap. 2: <https://web.stanford.edu/~jurafsky/slp3/>
 - Documentación oficial de Hugging Face Tokenizers: <https://huggingface.co/docs/tokenizers>
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P118 · Traducción automática neuronal de palabras raras con unidades de subpalabra](../../../papers/foundational/P118_bpe/README.md) | 2016 | Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola. | [notebook](../../../notebooks/papers/P118_bpe.ipynb) |
+| [P123 · SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma](../../../papers/foundational/P123_sentencepiece/README.md) | 2018 | Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma. | [notebook](../../../notebooks/papers/P123_sentencepiece.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

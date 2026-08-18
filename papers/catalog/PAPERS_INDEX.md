@@ -2,7 +2,7 @@
 
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 
-**Papers:** 117 · **Actualizado:** 2026-08-17 · **Cobertura:** 1763–2025
+**Papers:** 148 · **Actualizado:** 2026-08-18 · **Cobertura:** 1763–2025
 
 > [!NOTE]
 > Los identificadores `PXX` son **estables**: se asignan al incorporar cada paper y no
@@ -30,15 +30,22 @@
 | **1968** | P67 | Una base formal para la determinación heurística de caminos de coste mínimo | ♟️ simbólica | L3 | `a_estrella` | [ficha](../foundational/P67_a_estrella/README.md) | [nb](../../notebooks/papers/P67_a_estrella.ipynb) |
 | **1971** | P68 | STRIPS: un nuevo enfoque para aplicar la demostración de teoremas a la resolución de problemas | ♟️ simbólica | L2 | `strips` | [ficha](../foundational/P68_strips/README.md) | [nb](../../notebooks/papers/P68_strips.ipynb) |
 | **1973** | P90 | Algoritmos genéticos y la asignación óptima de ensayos | ruta_probabilistica | L2 | `algoritmos_geneticos` | [ficha](../foundational/P90_algoritmos_geneticos/README.md) | [nb](../../notebooks/papers/P90_algoritmos_geneticos.ipynb) |
+| **1975** | P134 | La protección de la información en los sistemas informáticos | ruta_agentes_operativos | L1 | `minimo_privilegio` | [ficha](../foundational/P134_minimo_privilegio/README.md) | [nb](../../notebooks/papers/P134_minimo_privilegio.ipynb) |
 | **1975** | P69 | Un modelo de razonamiento inexacto en medicina | ♟️ simbólica | L2 | `mycin` | [ficha](../foundational/P69_mycin/README.md) | [nb](../../notebooks/papers/P69_mycin.ipynb) |
 | **1976** | P58 | La informática como indagación empírica: símbolos y búsqueda | 🧭 fundamentos | L2 | `simbolos_y_busqueda` | [ficha](../foundational/P58_simbolos_y_busqueda/README.md) | [nb](../../notebooks/papers/P58_simbolos_y_busqueda.ipynb) |
 | **1977** | P70 | Consistencia en redes de relaciones | ♟️ simbólica | L3 | `arco_consistencia` | [ficha](../foundational/P70_arco_consistencia/README.md) | [nb](../../notebooks/papers/P70_arco_consistencia.ipynb) |
+| **1980** | P135 | El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre | ruta_agentes_operativos | L2 | `pizarra` | [ficha](../foundational/P135_pizarra/README.md) | [nb](../../notebooks/papers/P135_pizarra.ipynb) |
+| **1980** | P136 | El protocolo de red de contratos: comunicación y control en un resolutor distribuido | ruta_agentes_operativos | L2 | `red_de_contratos` | [ficha](../foundational/P136_red_de_contratos/README.md) | [nb](../../notebooks/papers/P136_red_de_contratos.ipynb) |
 | **1982** | P73 | Cuantización por mínimos cuadrados en PCM | 📈 clásica | L2 | `kmeans` | [ficha](../foundational/P73_kmeans/README.md) | [nb](../../notebooks/papers/P73_kmeans.ipynb) |
+| **1984** | P141 | El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual | ruta_gobernanza | L1 | `dos_sigma` | [ficha](../foundational/P141_dos_sigma/README.md) | [nb](../../notebooks/papers/P141_dos_sigma.ipynb) |
 | **1986** | P02 | Aprender representaciones retropropagando errores | 🔗 cadena | L2 | `backprop` | [ficha](../foundational/P02_backpropagation/README.md) | [nb](../../notebooks/papers/P02_backpropagation.ipynb) |
 | **1986** | P74 | Inducción de árboles de decisión | 📈 clásica | L2 | `id3` | [ficha](../foundational/P74_id3/README.md) | [nb](../../notebooks/papers/P74_id3.ipynb) |
 | **1986** | P91 | Fusión, propagación y estructuración en redes de creencia | ruta_probabilistica | L3 | `redes_bayesianas` | [ficha](../foundational/P91_redes_bayesianas/README.md) | [nb](../../notebooks/papers/P91_redes_bayesianas.ipynb) |
 | **1986** | P97 | Un sistema de control por capas robusto para un robot móvil | ruta_encarnada | L2 | `subsuncion` | [ficha](../foundational/P97_subsuncion/README.md) | [nb](../../notebooks/papers/P97_subsuncion.ipynb) |
+| **1989** | P142 | Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial | ruta_gobernanza | L2 | `olvido_catastrofico` | [ficha](../foundational/P142_olvido_catastrofico/README.md) | [nb](../../notebooks/papers/P142_olvido_catastrofico.ipynb) |
+| **1991** | P137 | Principios del metarrazonamiento | ruta_agentes_operativos | L3 | `metarrazonamiento` | [ficha](../foundational/P137_metarrazonamiento/README.md) | [nb](../../notebooks/papers/P137_metarrazonamiento.ipynb) |
 | **1993** | P71 | Un enfoque de traducción para especificaciones de ontologías portables | ♟️ simbólica | L1 | `ontologia` | [ficha](../foundational/P71_ontologia/README.md) | [nb](../../notebooks/papers/P71_ontologia.ipynb) |
+| **1994** | P138 | KQML como lenguaje de comunicación entre agentes | ruta_agentes_operativos | L2 | `kqml` | [ficha](../foundational/P138_kqml/README.md) | [nb](../../notebooks/papers/P138_kqml.ipynb) |
 | **1995** | P59 | Agentes inteligentes: teoría y práctica | 🧭 fundamentos | L2 | `agente_racional` | [ficha](../foundational/P59_agente_racional/README.md) | [nb](../../notebooks/papers/P59_agente_racional.ipynb) |
 | **1995** | P75 | Redes de vectores soporte | 📈 clásica | L3 | `svm` | [ficha](../foundational/P75_svm/README.md) | [nb](../../notebooks/papers/P75_svm.ipynb) |
 | **1995** | P76 | Un estudio de la validación cruzada y el bootstrap para estimar exactitud y seleccionar modelos | 📈 clásica | L3 | `validacion_cruzada` | [ficha](../foundational/P76_validacion_cruzada/README.md) | [nb](../../notebooks/papers/P76_validacion_cruzada.ipynb) |
@@ -47,18 +54,22 @@
 | **1996** | P93 | Sistema de hormigas: optimización mediante una colonia de agentes cooperantes | ruta_probabilistica | L2 | `aco` | [ficha](../foundational/P93_aco/README.md) | [nb](../../notebooks/papers/P93_aco.ipynb) |
 | **1997** | P03 | Memoria larga de corto plazo | 🔗 cadena | L2 | `lstm` | [ficha](../foundational/P03_lstm/README.md) | [nb](../../notebooks/papers/P03_lstm.ipynb) |
 | **1997** | P78 | Una generalización decisional del aprendizaje en línea y su aplicación al boosting | 📈 clásica | L3 | `adaboost` | [ficha](../foundational/P78_adaboost/README.md) | [nb](../../notebooks/papers/P78_adaboost.ipynb) |
+| **2000** | P139 | Un modelo de tipos y niveles de interacción humana con la automatización | ruta_agentes_operativos | L2 | `niveles_de_automatizacion` | [ficha](../foundational/P139_niveles_de_automatizacion/README.md) | [nb](../../notebooks/papers/P139_niveles_de_automatizacion.ipynb) |
 | **2000** | P98 | RRT-Connect: un enfoque eficiente para planificación de caminos de consulta única | ruta_encarnada | L3 | `rrt` | [ficha](../foundational/P98_rrt/README.md) | [nb](../../notebooks/papers/P98_rrt.ipynb) |
 | **2001** | P79 | Bosques aleatorios | 📈 clásica | L3 | `random_forest` | [ficha](../foundational/P79_random_forest/README.md) | [nb](../../notebooks/papers/P79_random_forest.ipynb) |
 | **2001** | P80 | Modelización estadística: las dos culturas | 📈 clásica | L1 | `dos_culturas` | [ficha](../foundational/P80_dos_culturas/README.md) | [nb](../../notebooks/papers/P80_dos_culturas.ipynb) |
 | **2003** | P81 | Introducción a la selección de variables y características | 📈 clásica | L3 | `seleccion_de_caracteristicas` | [ficha](../foundational/P81_seleccion_de_caracteristicas/README.md) | [nb](../../notebooks/papers/P81_seleccion_de_caracteristicas.ipynb) |
+| **2004** | P140 | MapReduce: procesamiento simplificado de datos en clústeres grandes | ruta_agentes_operativos | L1 | `mapreduce` | [ficha](../foundational/P140_mapreduce/README.md) | [nb](../../notebooks/papers/P140_mapreduce.ipynb) |
 | **2005** | P60 | Por qué la mayoría de los hallazgos publicados son falsos | 🧭 fundamentos | L3 | `valor_predictivo` | [ficha](../foundational/P60_valor_predictivo/README.md) | [nb](../../notebooks/papers/P60_valor_predictivo.ipynb) |
 | **2005** | P82 | Predecir buenas probabilidades con aprendizaje supervisado | 📈 clásica | L3 | `calibracion` | [ficha](../foundational/P82_calibracion/README.md) | [nb](../../notebooks/papers/P82_calibracion.ipynb) |
+| **2006** | P143 | Calibrar el ruido a la sensibilidad en el análisis privado de datos | ruta_gobernanza | L3 | `privacidad_diferencial` | [ficha](../foundational/P143_privacidad_diferencial/README.md) | [nb](../../notebooks/papers/P143_privacidad_diferencial.ipynb) |
 | **2006** | P99 | Localización y mapeo simultáneos: parte I | ruta_encarnada | L3 | `slam` | [ficha](../foundational/P99_slam/README.md) | [nb](../../notebooks/papers/P99_slam.ipynb) |
 | **2008** | P83 | Visualizar datos con t-SNE | 📈 clásica | L3 | `tsne` | [ficha](../foundational/P83_tsne/README.md) | [nb](../../notebooks/papers/P83_tsne.ipynb) |
 | **2008** | P84 | Bosque de aislamiento | 📈 clásica | L2 | `isolation_forest` | [ficha](../foundational/P84_isolation_forest/README.md) | [nb](../../notebooks/papers/P84_isolation_forest.ipynb) |
 | **2009** | P100 | Requisitos para robots seguros: mediciones, análisis y nuevas conclusiones | ruta_encarnada | L2 | `seguridad_fisica` | [ficha](../foundational/P100_seguridad_fisica/README.md) | [nb](../../notebooks/papers/P100_seguridad_fisica.ipynb) |
 | **2009** | P85 | Técnicas de factorización matricial para sistemas de recomendación | 📈 clásica | L3 | `factorizacion_matricial` | [ficha](../foundational/P85_factorizacion_matricial/README.md) | [nb](../../notebooks/papers/P85_factorizacion_matricial.ipynb) |
 | **2010** | P107 | Dapper, una infraestructura de trazado de sistemas distribuidos a gran escala | ruta_operacion | L2 | `trazas_distribuidas` | [ficha](../foundational/P107_dapper/README.md) | [nb](../../notebooks/papers/P107_dapper.ipynb) |
+| **2010** | P144 | Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones | ruta_gobernanza | L2 | `ml_en_seguridad` | [ficha](../foundational/P144_ml_en_seguridad/README.md) | [nb](../../notebooks/papers/P144_ml_en_seguridad.ipynb) |
 | **2011** | P101 | Una reducción del aprendizaje por imitación al aprendizaje en línea sin arrepentimiento | ruta_encarnada | L3 | `dagger` | [ficha](../foundational/P101_dagger/README.md) | [nb](../../notebooks/papers/P101_dagger.ipynb) |
 | **2012** | P04 | Clasificación de ImageNet con redes neuronales convolucionales profundas | 🔗 cadena | L3 | `convnet` | [ficha](../foundational/P04_alexnet/README.md) | [nb](../../notebooks/papers/P04_alexnet.ipynb) |
 | **2012** | P108 | CAP doce años después: cómo han cambiado las «reglas» | ruta_operacion | L2 | `resiliencia` | [ficha](../foundational/P108_cap/README.md) | [nb](../../notebooks/papers/P108_cap.ipynb) |
@@ -78,14 +89,24 @@
 | **2015** | P43 | Normalización por lotes: acelerar el entrenamiento profundo | 🏗️ arquitectura | L2 | `batchnorm` | [ficha](../foundational/P43_batchnorm/README.md) | [nb](../../notebooks/papers/P43_batchnorm.ipynb) |
 | **2015** | P44 | Aprendizaje residual profundo para reconocimiento de imágenes | 🏗️ arquitectura | L3 | `resnet` | [ficha](../foundational/P44_resnet/README.md) | [nb](../../notebooks/papers/P44_resnet.ipynb) |
 | **2015** | P45 | Destilar el conocimiento de una red neuronal | 🏗️ arquitectura | L2 | `distillation` | [ficha](../foundational/P45_distillation/README.md) | [nb](../../notebooks/papers/P45_distillation.ipynb) |
+| **2016** | P118 | Traducción automática neuronal de palabras raras con unidades de subpalabra | ruta_percepcion | L2 | `bpe` | [ficha](../foundational/P118_bpe/README.md) | [nb](../../notebooks/papers/P118_bpe.ipynb) |
+| **2016** | P119 | WaveNet: un modelo generativo de audio en crudo | ruta_percepcion | L3 | `wavenet` | [ficha](../foundational/P119_wavenet/README.md) | [nb](../../notebooks/papers/P119_wavenet.ipynb) |
 | **2016** | P27 | Dominar el go con redes neuronales profundas y búsqueda en árbol | 🤖 agentes | L4 | `alphago` | [ficha](../foundational/P27_alphago/README.md) | [nb](../../notebooks/papers/P27_alphago.ipynb) |
 | **2017** | P08 | La atención es todo lo que necesitas | 🔗 cadena | L4 | `transformer` | [ficha](../foundational/P08_transformer/README.md) | [nb](../../notebooks/papers/P08_transformer.ipynb) |
 | **2017** | P102 | Algoritmos de optimización proximal de políticas | ruta_encarnada | L3 | `ppo` | [ficha](../foundational/P102_ppo/README.md) | [nb](../../notebooks/papers/P102_ppo.ipynb) |
 | **2017** | P103 | Aleatorización de dominio para transferir redes profundas de la simulación al mundo real | ruta_encarnada | L2 | `domain_randomization` | [ficha](../foundational/P103_domain_randomization/README.md) | [nb](../../notebooks/papers/P103_domain_randomization.ipynb) |
 | **2017** | P112 | La puntuación de pruebas de ML: una rúbrica de preparación para producción | ruta_operacion | L2 | `ml_test_score` | [ficha](../foundational/P112_ml_test_score/README.md) | [nb](../../notebooks/papers/P112_ml_test_score.ipynb) |
+| **2017** | P120 | Clasificación semisupervisada con redes convolucionales de grafo | ruta_percepcion | L2 | `gcn` | [ficha](../foundational/P120_gcn/README.md) | [nb](../../notebooks/papers/P120_gcn.ipynb) |
+| **2017** | P121 | MobileNets: redes convolucionales eficientes para visión en dispositivos móviles | ruta_percepcion | L2 | `mobilenets` | [ficha](../foundational/P121_mobilenets/README.md) | [nb](../../notebooks/papers/P121_mobilenets.ipynb) |
+| **2017** | P145 | Superar el olvido catastrófico en redes neuronales | ruta_gobernanza | L3 | `ewc` | [ficha](../foundational/P145_ewc/README.md) | [nb](../../notebooks/papers/P145_ewc.ipynb) |
+| **2017** | P146 | Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados | ruta_gobernanza | L2 | `federado` | [ficha](../foundational/P146_federado/README.md) | [nb](../../notebooks/papers/P146_federado.ipynb) |
 | **2017** | P94 | Stan: un lenguaje de programación probabilística | ruta_probabilistica | L3 | `programacion_probabilistica` | [ficha](../foundational/P94_programacion_probabilistica/README.md) | [nb](../../notebooks/papers/P94_programacion_probabilistica.ipynb) |
 | **2018** | P09 | BERT: preentrenamiento de Transformers bidireccionales profundos para comprensión del lenguaje | 🔗 cadena | L3 | `bert_mlm` | [ficha](../foundational/P09_bert/README.md) | [nb](../../notebooks/papers/P09_bert.ipynb) |
 | **2018** | P113 | Aprendizaje por refuerzo profundo que importa | ruta_operacion | L3 | `trazabilidad` | [ficha](../foundational/P113_trazabilidad/README.md) | [nb](../../notebooks/papers/P113_trazabilidad.ipynb) |
+| **2018** | P122 | Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos | ruta_percepcion | L2 | `tacotron` | [ficha](../foundational/P122_tacotron/README.md) | [nb](../../notebooks/papers/P122_tacotron.ipynb) |
+| **2018** | P123 | SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma | ruta_percepcion | L2 | `sentencepiece` | [ficha](../foundational/P123_sentencepiece/README.md) | [nb](../../notebooks/papers/P123_sentencepiece.ipynb) |
+| **2018** | P124 | Redes de atención sobre grafos | ruta_percepcion | L3 | `gat` | [ficha](../foundational/P124_gat/README.md) | [nb](../../notebooks/papers/P124_gat.ipynb) |
+| **2018** | P147 | Los modelos recurrentes del mundo facilitan la evolución de políticas | ruta_gobernanza | L3 | `world_models` | [ficha](../foundational/P147_world_models/README.md) | [nb](../../notebooks/papers/P147_world_models.ipynb) |
 | **2018** | P24 | Representaciones profundas de palabras dependientes del contexto | 🔤 representación | L3 | `elmo` | [ficha](../foundational/P24_elmo/README.md) | [nb](../../notebooks/papers/P24_elmo.ipynb) |
 | **2018** | P86 | La competición M4: resultados, hallazgos, conclusiones y camino a seguir | 📈 clásica | L3 | `m4` | [ficha](../foundational/P86_m4/README.md) | [nb](../../notebooks/papers/P86_m4.ipynb) |
 | **2019** | P114 | Tarjetas de modelo para el reporte de modelos | ruta_operacion | L1 | `tarjetas_de_modelo` | [ficha](../foundational/P114_tarjetas_de_modelo/README.md) | [nb](../../notebooks/papers/P114_tarjetas_de_modelo.ipynb) |
@@ -93,6 +114,10 @@
 | **2019** | P95 | Las siete herramientas de la inferencia causal, con reflexiones sobre aprendizaje automático | ruta_probabilistica | L3 | `causalidad` | [ficha](../foundational/P95_causalidad/README.md) | [nb](../../notebooks/papers/P95_causalidad.ipynb) |
 | **2020** | P10 | Los modelos de lenguaje son aprendices con pocos ejemplos | 🔗 cadena | L3 | `gpt3_icl` | [ficha](../foundational/P10_gpt3/README.md) | [nb](../../notebooks/papers/P10_gpt3.ipynb) |
 | **2020** | P11 | Generación aumentada por recuperación para tareas de PLN intensivas en conocimiento | 🔗 cadena | L3 | `rag` | [ficha](../foundational/P11_rag/README.md) | [nb](../../notebooks/papers/P11_rag.ipynb) |
+| **2020** | P125 | LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos | ruta_percepcion | L2 | `layoutlm` | [ficha](../foundational/P125_layoutlm/README.md) | [nb](../../notebooks/papers/P125_layoutlm.ipynb) |
+| **2020** | P127 | Jukebox: un modelo generativo de música | ruta_medios | L3 | `jukebox` | [ficha](../foundational/P127_jukebox/README.md) | [nb](../../notebooks/papers/P127_jukebox.ipynb) |
+| **2020** | P128 | NeRF: representar escenas como campos de radiancia neuronal | ruta_medios | L3 | `nerf` | [ficha](../foundational/P128_nerf/README.md) | [nb](../../notebooks/papers/P128_nerf.ipynb) |
+| **2020** | P148 | Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna | ruta_gobernanza | L1 | `auditoria_interna` | [ficha](../foundational/P148_auditoria_interna/README.md) | [nb](../../notebooks/papers/P148_auditoria_interna.ipynb) |
 | **2020** | P17 | Modelos probabilísticos de difusión con eliminación de ruido | 📚 ampliada | L3 | `diffusion` | [ficha](../foundational/P17_diffusion/README.md) | [nb](../../notebooks/papers/P17_diffusion.ipynb) |
 | **2020** | P46 | Una imagen vale 16x16 palabras: Transformers para reconocimiento de imágenes a escala | 🏗️ arquitectura | L3 | `vit` | [ficha](../foundational/P46_vit/README.md) | [nb](../../notebooks/papers/P46_vit.ipynb) |
 | **2020** | P72 | IA neuro-simbólica: la tercera ola | ♟️ simbólica | L5 | `neurosimbolico` | [ficha](../foundational/P72_neurosimbolico/README.md) | [nb](../../notebooks/papers/P72_neurosimbolico.ipynb) |
@@ -105,6 +130,7 @@
 | **2021** | P62 | La IA y el benchmark del todo en el mundo entero | 🧭 fundamentos | L3 | `benchmark_validez` | [ficha](../foundational/P62_benchmark_validez/README.md) | [nb](../../notebooks/papers/P62_benchmark_validez.ipynb) |
 | **2021** | P63 | Mejorar la reproducibilidad en la investigación en aprendizaje automático | 🧭 fundamentos | L3 | `reproducibilidad` | [ficha](../foundational/P63_reproducibilidad/README.md) | [nb](../../notebooks/papers/P63_reproducibilidad.ipynb) |
 | **2022** | P12 | Entrenar modelos de lenguaje para seguir instrucciones con retroalimentación humana | 🔗 cadena | L3 | `rlhf` | [ficha](../foundational/P12_instructgpt_rlhf/README.md) | [nb](../../notebooks/papers/P12_instructgpt_rlhf.ipynb) |
+| **2022** | P126 | Transformer de comprensión de documentos sin OCR | ruta_percepcion | L3 | `donut` | [ficha](../foundational/P126_donut/README.md) | [nb](../../notebooks/papers/P126_donut.ipynb) |
 | **2022** | P13 | ReAct: sinergia entre razonar y actuar en modelos de lenguaje | 🔗 cadena | L2 | `react` | [ficha](../foundational/P13_react/README.md) | [nb](../../notebooks/papers/P13_react.ipynb) |
 | **2022** | P19 | Entrenar modelos de lenguaje grandes con cómputo óptimo | 📚 ampliada | L4 | `scaling_laws` | [ficha](../foundational/P19_scaling_laws/README.md) | [nb](../../notebooks/papers/P19_scaling_laws.ipynb) |
 | **2022** | P28 | El prompting de cadena de pensamiento provoca razonamiento en modelos de lenguaje grandes | 🤖 agentes | L2 | `cot` | [ficha](../foundational/P28_chain_of_thought/README.md) | [nb](../../notebooks/papers/P28_chain_of_thought.ipynb) |
@@ -113,6 +139,10 @@
 | **2023** | P104 | WebArena: un entorno web realista para construir agentes autónomos | ruta_encarnada | L3 | `webarena` | [ficha](../foundational/P104_webarena/README.md) | [nb](../../notebooks/papers/P104_webarena.ipynb) |
 | **2023** | P116 | Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts | ruta_operacion | L2 | `gestion_de_prompts` | [ficha](../foundational/P116_gestion_de_prompts/README.md) | [nb](../../notebooks/papers/P116_gestion_de_prompts.ipynb) |
 | **2023** | P117 | AgentBench: evaluar modelos de lenguaje como agentes | ruta_operacion | L3 | `agentops` | [ficha](../foundational/P117_agentops/README.md) | [nb](../../notebooks/papers/P117_agentops.ipynb) |
+| **2023** | P129 | MusicLM: generar música a partir de texto | ruta_medios | L3 | `musiclm` | [ficha](../foundational/P129_musiclm/README.md) | [nb](../../notebooks/papers/P129_musiclm.ipynb) |
+| **2023** | P130 | Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos | ruta_medios | L3 | `vall_e` | [ficha](../foundational/P130_vall_e/README.md) | [nb](../../notebooks/papers/P130_vall_e.ipynb) |
+| **2023** | P131 | Una marca de agua para modelos de lenguaje grandes | ruta_medios | L2 | `marcas_de_agua` | [ficha](../foundational/P131_marcas_de_agua/README.md) | [nb](../../notebooks/papers/P131_marcas_de_agua.ipynb) |
+| **2023** | P132 | Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real | ruta_medios | L3 | `gaussian_splatting` | [ficha](../foundational/P132_gaussian_splatting/README.md) | [nb](../../notebooks/papers/P132_gaussian_splatting.ipynb) |
 | **2023** | P14 | Toolformer: los modelos de lenguaje pueden enseñarse a sí mismos a usar herramientas | 🔗 cadena | L3 | `toolformer` | [ficha](../foundational/P14_toolformer/README.md) | [nb](../../notebooks/papers/P14_toolformer.ipynb) |
 | **2023** | P15 | Optimización directa de preferencias: tu modelo de lenguaje ya es un modelo de recompensa | 🔗 cadena | L4 | `dpo` | [ficha](../foundational/P15_dpo/README.md) | [nb](../../notebooks/papers/P15_dpo.ipynb) |
 | **2023** | P16 | Sistemas agentic contemporáneos: memoria, reflexión, multiagente e interoperabilidad | 🔗 cadena | L5 | `agentic` | [ficha](../foundational/P16_agentic_systems/README.md) | [nb](../../notebooks/papers/P16_agentic_systems.ipynb) |
@@ -129,6 +159,7 @@
 | **2023** | P52 | Hacia la monosemanticidad: descomponer modelos de lenguaje con aprendizaje de diccionario | 🛡️ evaluación | L5 | `superposition` | [ficha](../foundational/P52_superposition/README.md) | [nb](../../notebooks/papers/P52_superposition.ipynb) |
 | **2024** | P105 | SeeClick: aprovechar el anclaje visual para agentes avanzados de interfaz gráfica | ruta_encarnada | L2 | `seeclick` | [ficha](../foundational/P105_seeclick/README.md) | [nb](../../notebooks/papers/P105_seeclick.ipynb) |
 | **2024** | P106 | OSWorld: evaluación de agentes multimodales en tareas abiertas sobre entornos informáticos reales | ruta_encarnada | L3 | `osworld` | [ficha](../foundational/P106_osworld/README.md) | [nb](../../notebooks/papers/P106_osworld.ipynb) |
+| **2024** | P133 | Los modelos de IA colapsan al entrenarse con datos generados recursivamente | ruta_medios | L2 | `colapso_de_modelo` | [ficha](../foundational/P133_colapso_de_modelo/README.md) | [nb](../../notebooks/papers/P133_colapso_de_modelo.ipynb) |
 | **2024** | P21 | Mixtral: mezcla dispersa de expertos | 📚 ampliada | L3 | `moe` | [ficha](../foundational/P21_moe/README.md) | [nb](../../notebooks/papers/P21_moe.ipynb) |
 | **2025** | P22 | DeepSeek-R1: incentivar la capacidad de razonamiento mediante aprendizaje por refuerzo | 📚 ampliada | L5 | `rl_reasoning` | [ficha](../foundational/P22_deepseek_r1/README.md) | [nb](../../notebooks/papers/P22_deepseek_r1.ipynb) |
 
@@ -318,6 +349,57 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **2023** · [P116 · Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts](../foundational/P116_gestion_de_prompts/README.md) — Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente.
 - **2023** · [P117 · AgentBench: evaluar modelos de lenguaje como agentes](../foundational/P117_agentops/README.md) — Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan.
 
+### ruta_percepcion
+
+P118–P126: cómo entra el mundo en el modelo cuando no es texto limpio. Partir la palabra en unidades que siempre existen, modelar la forma de onda, aprender sobre grafos, caber en un dispositivo pequeño y leer un documento donde la posición es parte del significado. Ordenada por año.
+
+- **2016** · [P118 · Traducción automática neuronal de palabras raras con unidades de subpalabra](../foundational/P118_bpe/README.md) — Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola.
+- **2016** · [P119 · WaveNet: un modelo generativo de audio en crudo](../foundational/P119_wavenet/README.md) — Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz.
+- **2017** · [P120 · Clasificación semisupervisada con redes convolucionales de grafo](../foundational/P120_gcn/README.md) — Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados.
+- **2017** · [P121 · MobileNets: redes convolucionales eficientes para visión en dispositivos móviles](../foundational/P121_mobilenets/README.md) — Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige.
+- **2018** · [P122 · Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos](../foundational/P122_tacotron/README.md) — Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media.
+- **2018** · [P123 · SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma](../foundational/P123_sentencepiece/README.md) — Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma.
+- **2018** · [P124 · Redes de atención sobre grafos](../foundational/P124_gat/README.md) — Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo.
+- **2020** · [P125 · LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos](../foundational/P125_layoutlm/README.md) — Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas.
+- **2022** · [P126 · Transformer de comprensión de documentos sin OCR](../foundational/P126_donut/README.md) — Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir.
+
+### ruta_medios
+
+P127–P133: generar medios y el problema que eso crea. Música con estructura, escenas 3D que no se modelan a mano, voces que se copian con tres segundos. Cierra con las dos consecuencias inevitables: cómo saber qué se generó y qué le pasa a un corpus que se alimenta de sí mismo. Ordenada por año.
+
+- **2020** · [P127 · Jukebox: un modelo generativo de música](../foundational/P127_jukebox/README.md) — Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente.
+- **2020** · [P128 · NeRF: representar escenas como campos de radiancia neuronal](../foundational/P128_nerf/README.md) — Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto.
+- **2023** · [P129 · MusicLM: generar música a partir de texto](../foundational/P129_musiclm/README.md) — Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar.
+- **2023** · [P130 · Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos](../foundational/P130_vall_e/README.md) — Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada.
+- **2023** · [P131 · Una marca de agua para modelos de lenguaje grandes](../foundational/P131_marcas_de_agua/README.md) — Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla.
+- **2023** · [P132 · Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real](../foundational/P132_gaussian_splatting/README.md) — Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan.
+- **2024** · [P133 · Los modelos de IA colapsan al entrenarse con datos generados recursivamente](../foundational/P133_colapso_de_modelo/README.md) — Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno.
+
+### ruta_agentes_operativos
+
+P134–P140: lo que hace falta para que un agente opere de verdad, y que se resolvió décadas antes de que hubiera agentes. Qué permisos darle, cómo coordinar varios sin un jefe que lo sepa todo, cuánto dejarle pensar, en qué idioma hablan entre ellos, cuánto dejar decidir a la máquina y cómo repartir el trabajo. Ordenada por año.
+
+- **1975** · [P134 · La protección de la información en los sistemas informáticos](../foundational/P134_minimo_privilegio/README.md) — Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después.
+- **1980** · [P135 · El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre](../foundational/P135_pizarra/README.md) — Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí.
+- **1980** · [P136 · El protocolo de red de contratos: comunicación y control en un resolutor distribuido](../foundational/P136_red_de_contratos/README.md) — Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué.
+- **1991** · [P137 · Principios del metarrazonamiento](../foundational/P137_metarrazonamiento/README.md) — Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta.
+- **1994** · [P138 · KQML como lenguaje de comunicación entre agentes](../foundational/P138_kqml/README.md) — Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M.
+- **2000** · [P139 · Un modelo de tipos y niveles de interacción humana con la automatización](../foundational/P139_niveles_de_automatizacion/README.md) — Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace.
+- **2004** · [P140 · MapReduce: procesamiento simplificado de datos en clústeres grandes](../foundational/P140_mapreduce/README.md) — Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas.
+
+### ruta_gobernanza
+
+P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el sistema hizo lo que hizo, y qué límites tiene aprender de datos que son de personas. Enseñar, olvidar y recordar, proteger, defender, aprender sin centralizar, imaginar el mundo y rendir cuentas. Cierra el eje con la pregunta de quién responde. Ordenada por año.
+
+- **1984** · [P141 · El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual](../foundational/P141_dos_sigma/README.md) — Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa.
+- **1989** · [P142 · Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial](../foundational/P142_olvido_catastrofico/README.md) — Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso.
+- **2006** · [P143 · Calibrar el ruido a la sensibilidad en el análisis privado de datos](../foundational/P143_privacidad_diferencial/README.md) — Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla.
+- **2010** · [P144 · Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones](../foundational/P144_ml_en_seguridad/README.md) — Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo.
+- **2017** · [P145 · Superar el olvido catastrófico en redes neuronales](../foundational/P145_ewc/README.md) — Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher.
+- **2017** · [P146 · Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados](../foundational/P146_federado/README.md) — Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros.
+- **2018** · [P147 · Los modelos recurrentes del mundo facilitan la evolución de políticas](../foundational/P147_world_models/README.md) — Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real.
+- **2020** · [P148 · Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna](../foundational/P148_auditoria_interna/README.md) — Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye.
+
 ## 📖 Qué resolvió cada uno
 
 ### P87 · An Essay towards solving a Problem in the Doctrine of Chances (1763)
@@ -480,6 +562,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [033](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/033-algoritmos-geneticos/README.md)
 - **Fuentes primarias:** [doi:10.1137/0202009](https://doi.org/10.1137/0202009)
 
+### P134 · The Protection of Information in Computer Systems (1975)
+
+- **Autoría:** Jerome H. Saltzer, Michael D. Schroeder
+- **Problema anterior:** Los sistemas compartidos daban acceso amplio por comodidad, y cada mecanismo de protección se diseñaba ad hoc. No había criterios explícitos para decidir qué permisos conceder ni para juzgar si un diseño era defendible.
+- **Propuesta:** Ocho principios, de los cuales dos gobiernan el resto: valores por defecto a prueba de fallos —denegar salvo permiso explícito— y mínimo privilegio —lo justo para la tarea—. Más mediación completa: comprobar cada acceso, no solo el primero.
+- **Hito:** Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después.
+- **Conceptos:** mínimo privilegio, valores por defecto, mediación completa, permisos, radio de daño
+- **Clases del programa:** [119](../../classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio/README.md)
+- **Fuentes primarias:** [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109/PROC.1975.9939)
+
 ### P69 · A Model of Inexact Reasoning in Medicine (1975)
 
 - **Autoría:** Edward H. Shortliffe, Bruce G. Buchanan
@@ -510,6 +602,26 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [018](../../classes/part-01-symbolic-ai-search-logic-and-planning/018-problemas-de-satisfaccion-de-restricciones/README.md)
 - **Fuentes primarias:** [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8)
 
+### P135 · The Hearsay-II Speech-Understanding System: Integrating Knowledge to Resolve Uncertainty (1980)
+
+- **Autoría:** Lee D. Erman, Frederick Hayes-Roth, Victor R. Lesser, D. Raj Reddy
+- **Problema anterior:** Entender habla exige combinar conocimiento acústico, léxico, sintáctico y semántico. Ninguna fuente decide sola, y encadenarlas en una tubería fija obliga a comprometerse pronto: un error temprano llega intacto al final.
+- **Propuesta:** Una estructura compartida —la pizarra— donde cada fuente escribe hipótesis parciales con su credibilidad, y un control oportunista que decide a quién invocar según lo que ya hay escrito. Nadie se compromete hasta que hay evidencia.
+- **Hito:** Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí.
+- **Conceptos:** pizarra, memoria compartida, control oportunista, hipótesis parciales, arquitectura multiagente
+- **Clases del programa:** [130](../../classes/part-10-multi-agent-systems-and-interoperability/130-blackboard-y-memoria-compartida/README.md)
+- **Fuentes primarias:** [doi:10.1145/356810.356816](https://doi.org/10.1145/356810.356816)
+
+### P136 · The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver (1980)
+
+- **Autoría:** Reid G. Smith
+- **Problema anterior:** Asignar tareas a nodos exige saber qué puede hacer cada uno y cuánto tiene encima. Mantener ese registro centralizado se desactualiza, no escala y falla justo cuando los nodos aparecen y desaparecen.
+- **Propuesta:** Invertir el flujo: el coordinador **anuncia** la tarea, los nodos capaces **ofertan** con su coste estimado, y el coordinador **adjudica** a la mejor oferta. Quien conoce su capacidad es quien la declara, en el momento de usarla.
+- **Hito:** Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué.
+- **Conceptos:** asignación de tareas, negociación, delegación, coordinación distribuida, handoff
+- **Clases del programa:** [126](../../classes/part-10-multi-agent-systems-and-interoperability/126-handoffs-y-transferencia-de-contexto/README.md)
+- **Fuentes primarias:** [doi:10.1109/TC.1980.1675516](https://doi.org/10.1109/TC.1980.1675516)
+
 ### P73 · Least Squares Quantization in PCM (1982)
 
 - **Autoría:** Stuart P. Lloyd
@@ -519,6 +631,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** k-medias, cuantización, inercia, óptimo local, agrupamiento
 - **Clases del programa:** [043](../../classes/part-03-classical-machine-learning/043-clustering-y-reduccion-de-dimensionalidad/README.md)
 - **Fuentes primarias:** [doi:10.1109/TIT.1982.1056489](https://doi.org/10.1109/TIT.1982.1056489)
+
+### P141 · The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring (1984)
+
+- **Autoría:** Benjamin S. Bloom
+- **Problema anterior:** La tutoría uno a uno funciona muchísimo mejor que la clase convencional, y es imposible de desplegar: exige un docente por alumno. Sin una medida comparable entre asignaturas y exámenes, no se podía ni discutir cuánto se pierde por no poder pagarla.
+- **Propuesta:** Medir el efecto en desviaciones típicas —el tamaño del efecto— y plantear explícitamente el problema: encontrar métodos de instrucción **grupal** que consigan el efecto de la tutoría. El aprendizaje para el dominio consigue la mitad con coste de clase convencional.
+- **Hito:** Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa.
+- **Conceptos:** tamaño del efecto, tutoría, aprendizaje para el dominio, educación, instrucción adaptativa
+- **Clases del programa:** [180](../../classes/part-14-frontier-research-and-capstones/180-ia-para-educacion-y-aprendizaje-adaptativo/README.md)
+- **Fuentes primarias:** [doi:10.2307/1175554](https://doi.org/10.2307/1175554)
 
 ### P02 · Learning representations by back-propagating errors (1986)
 
@@ -560,6 +682,26 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [136](../../classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion/README.md)
 - **Fuentes primarias:** [doi:10.1109/JRA.1986.1087032](https://doi.org/10.1109/JRA.1986.1087032)
 
+### P142 · Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem (1989)
+
+- **Autoría:** Michael McCloskey, Neal J. Cohen
+- **Problema anterior:** Las redes conexionistas se presentaban como modelos de la memoria humana. Nadie había comprobado qué ocurre cuando se les enseña algo nuevo después de haber aprendido algo: se suponía interferencia gradual, como en las personas.
+- **Propuesta:** Medirlo. Entrenar una red en una tarea, entrenarla después en otra y volver a evaluar la primera. El resultado es un colapso casi inmediato, y eso pone en cuestión el modelo como teoría de la memoria y como sistema práctico.
+- **Hito:** Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso.
+- **Conceptos:** olvido catastrófico, aprendizaje secuencial, interferencia, memoria, aprendizaje continuo
+- **Clases del programa:** [176](../../classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion/README.md)
+- **Fuentes primarias:** [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421(08)60536-8)
+
+### P137 · Principles of Metareasoning (1991)
+
+- **Autoría:** Stuart Russell, Eric Wefald
+- **Problema anterior:** Un agente con recursos limitados no puede deliberar indefinidamente, y los sistemas fijaban el presupuesto de cómputo a mano. Un número fijo piensa de más en las instancias fáciles y de menos en las difíciles, y siempre en la proporción equivocada.
+- **Propuesta:** Tratar cada paso de deliberación como una acción con coste y con beneficio esperado —el **valor de la computación**— y seguir deliberando solo mientras la mejora esperada supere el coste. La parada se deduce, no se elige.
+- **Hito:** Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta.
+- **Conceptos:** racionalidad acotada, valor de la computación, presupuesto, anytime, metanivel
+- **Clases del programa:** [121](../../classes/part-09-ai-agent-engineering/121-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C)
+
 ### P71 · A Translation Approach to Portable Ontology Specifications (1993)
 
 - **Autoría:** Thomas R. Gruber
@@ -569,6 +711,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** ontología, conceptualización, compromiso ontológico, subsunción, interoperabilidad
 - **Clases del programa:** [021](../../classes/part-01-symbolic-ai-search-logic-and-planning/021-representacion-del-conocimiento-y-ontologias/README.md)
 - **Fuentes primarias:** [doi:10.1006/knac.1993.1008](https://doi.org/10.1006/knac.1993.1008)
+
+### P138 · KQML as an agent communication language (1994)
+
+- **Autoría:** Tim Finin, Richard Fritzson, Don McKay, Robin McEntire
+- **Problema anterior:** Dos agentes que intercambian «puerta(abierta)» no pueden saber si eso es una afirmación, una pregunta, una orden o una negación. Y sin una capa común, conectar N agentes con M lenguajes de contenido exige un adaptador por pareja.
+- **Propuesta:** Un lenguaje de mensajes en tres capas —contenido, mensaje y comunicación— donde una **performativa** declara el acto de habla: tell, ask-if, achieve, subscribe. El contenido va dentro y puede estar en cualquier lenguaje.
+- **Hito:** Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M.
+- **Conceptos:** interoperabilidad, performativa, acto de habla, protocolo de agentes, descubrimiento
+- **Clases del programa:** [134](../../classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad/README.md)
+- **Fuentes primarias:** [doi:10.1145/191246.191322](https://doi.org/10.1145/191246.191322)
 
 ### P59 · Intelligent Agents: Theory and Practice (1995)
 
@@ -650,6 +802,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [041](../../classes/part-03-classical-machine-learning/041-random-forest-boosting-y-ensembles/README.md)
 - **Fuentes primarias:** [doi:10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504)
 
+### P139 · A model for types and levels of human interaction with automation (2000)
+
+- **Autoría:** Raja Parasuraman, Thomas B. Sheridan, Christopher D. Wickens
+- **Problema anterior:** «Automatizar» se trataba como una decisión de todo o nada sobre un sistema entero. Y subir el nivel tiene un coste que nadie contabilizaba: quien deja de revisar pierde la práctica que le permitía detectar el fallo cuando ocurre.
+- **Propuesta:** Separar cuatro etapas —adquirir información, analizarla, decidir la acción y ejecutarla— y elegir el nivel de automatización de cada una por separado, evaluando el efecto sobre la carga mental, la conciencia de la situación y la confianza del operador.
+- **Hito:** Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace.
+- **Conceptos:** human-in-the-loop, niveles de automatización, fuera del bucle, aprobación, factores humanos
+- **Clases del programa:** [120](../../classes/part-09-ai-agent-engineering/120-human-in-the-loop-y-aprobaciones/README.md)
+- **Fuentes primarias:** [doi:10.1109/3468.844354](https://doi.org/10.1109/3468.844354)
+
 ### P98 · RRT-Connect: An Efficient Approach to Single-Query Path Planning (2000)
 
 - **Autoría:** James J. Kuffner, Steven M. LaValle
@@ -690,6 +852,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [042](../../classes/part-03-classical-machine-learning/042-ingenieria-y-seleccion-de-caracteristicas/README.md)
 - **Fuentes primarias:** [JMLR 3:1157–1182](https://www.jmlr.org/papers/v3/guyon03a.html)
 
+### P140 · MapReduce: simplified data processing on large clusters (2004)
+
+- **Autoría:** Jeffrey Dean, Sanjay Ghemawat
+- **Problema anterior:** Procesar terabytes en miles de máquinas exigía escribir a mano el particionado, la comunicación, la recuperación de fallos y la agregación. Cada trabajo reimplementaba lo mismo, y la lógica del problema quedaba enterrada bajo la fontanería.
+- **Propuesta:** Dos funciones: **map**, que transforma cada registro en parejas clave-valor, y **reduce**, que agrega todos los valores de una clave. El sistema se encarga del reparto, del movimiento de datos y de reejecutar lo que falle.
+- **Hito:** Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas.
+- **Conceptos:** fan-out, particionado, sesgo de datos, combinador, procesamiento por lotes
+- **Clases del programa:** [128](../../classes/part-10-multi-agent-systems-and-interoperability/128-paralelismo-fan-out-y-map-reduce/README.md)
+- **Fuentes primarias:** [doi:10.1145/1327452.1327492](https://doi.org/10.1145/1327452.1327492)
+
 ### P60 · Why Most Published Research Findings Are False (2005)
 
 - **Autoría:** John P. A. Ioannidis
@@ -709,6 +881,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** calibración, diagrama de fiabilidad, Brier, escalado de Platt, regresión isotónica
 - **Clases del programa:** [047](../../classes/part-03-classical-machine-learning/047-metricas-calibracion-sesgo-y-costo-de-error/README.md)
 - **Fuentes primarias:** [doi:10.1145/1102351.1102430](https://doi.org/10.1145/1102351.1102430)
+
+### P143 · Calibrating Noise to Sensitivity in Private Data Analysis (2006)
+
+- **Autoría:** Cynthia Dwork, Frank McSherry, Kobbi Nissim, Adam Smith
+- **Problema anterior:** La anonimización fallaba una y otra vez: cruzando datos supuestamente anónimos con otras fuentes se reidentificaba a personas. El problema de fondo es que cualquier definición basada en «quitar los identificadores» depende de qué más sepa quien ataca, y eso no se puede acotar.
+- **Propuesta:** Definir la privacidad como una propiedad del **mecanismo**: que la salida cambie poco —acotado por ε— cuando se añade o quita una persona. Y dar un mecanismo que la cumple: añadir ruido de Laplace calibrado a la sensibilidad de la consulta.
+- **Hito:** Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla.
+- **Conceptos:** privacidad diferencial, sensibilidad, ruido de Laplace, epsilon, reidentificación
+- **Clases del programa:** [165](../../classes/part-13-evaluation-safety-security-and-governance/165-privacidad-secretos-y-minimizacion-de-datos/README.md), [177](../../classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado/README.md)
+- **Fuentes primarias:** [doi:10.1007/11681878_14](https://doi.org/10.1007/11681878_14)
 
 ### P99 · Simultaneous Localization and Mapping: Part I (2006)
 
@@ -769,6 +951,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** trazado distribuido, span, observabilidad, muestreo, latencia
 - **Clases del programa:** [153](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/153-observabilidad-logs-metricas-y-trazas/README.md)
 - **Fuentes primarias:** [Informe técnico de Google](https://research.google/pubs/pub36356/)
+
+### P144 · Outside the Closed World: On Using Machine Learning for Network Intrusion Detection (2010)
+
+- **Autoría:** Robin Sommer, Vern Paxson
+- **Problema anterior:** Cientos de artículos aplicaban aprendizaje automático a la detección de intrusiones con métricas excelentes, y casi ninguno de esos sistemas llegaba a producción. La brecha entre el resultado publicado y el sistema operable no se estaba explicando.
+- **Propuesta:** Cinco razones estructurales: la clase base extremadamente desequilibrada hace que una precisión excelente produzca miles de falsas alarmas; el coste de los errores es asimétrico; no hay datos representativos de ataques nuevos; el adversario se adapta al detector; y la alerta hay que poder explicársela a quien actúa.
+- **Hito:** Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo.
+- **Conceptos:** detección de intrusiones, clase base, falsos positivos, adversario, evaluación
+- **Clases del programa:** [179](../../classes/part-14-frontier-research-and-capstones/179-ia-para-ciberseguridad-y-defensa/README.md)
+- **Fuentes primarias:** [doi:10.1109/SP.2010.25](https://doi.org/10.1109/SP.2010.25)
 
 ### P101 · A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (2011)
 
@@ -960,6 +1152,26 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [059](../../classes/part-04-neural-networks-and-deep-learning/059-transferencia-fine-tuning-y-destilacion/README.md), [086](../../classes/part-06-foundation-models-and-llm-engineering/086-seleccion-de-modelo-costo-latencia-y-privacidad/README.md), [157](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/157-costo-latencia-caching-y-capacidad/README.md)
 - **Fuentes primarias:** [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
 
+### P118 · Neural Machine Translation of Rare Words with Subword Units (2016)
+
+- **Autoría:** Rico Sennrich, Barry Haddow, Alexandra Birch
+- **Problema anterior:** Un vocabulario de palabras completas siempre se queda corto: llega una palabra que no estaba y el modelo solo puede emitir un símbolo de desconocido, aunque sus raíces y sufijos sí estuvieran en el entrenamiento.
+- **Propuesta:** Adaptar la compresión por pares de bytes: partir de caracteres y fusionar repetidamente el par de símbolos más frecuente, un número fijo de veces. El vocabulario resultante cubre cualquier cadena porque el peor caso es deletrear.
+- **Hito:** Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola.
+- **Conceptos:** tokenización, subpalabras, BPE, vocabulario abierto, traducción
+- **Clases del programa:** [073](../../classes/part-06-foundation-models-and-llm-engineering/073-tokenizacion-moderna-y-vocabularios/README.md)
+- **Fuentes primarias:** [doi:10.18653/v1/P16-1162](https://doi.org/10.18653/v1/P16-1162)
+
+### P119 · WaveNet: A Generative Model for Raw Audio (2016)
+
+- **Autoría:** Aäron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu
+- **Problema anterior:** Modelar audio directamente exige un contexto de miles de muestras: a 16 kHz, un segundo son 16 000 valores. Una convolución normal necesitaría miles de capas para verlo, y una recurrente no puede entrenarse en paralelo sobre esa longitud.
+- **Propuesta:** Convoluciones causales con dilatación que se duplica por capa: el campo receptivo crece de forma exponencial con la profundidad. Más cuantización μ-law para que 256 niveles basten sin que la voz suene rota.
+- **Hito:** Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz.
+- **Conceptos:** audio, convolución dilatada, causalidad, μ-law, síntesis de voz
+- **Clases del programa:** [068](../../classes/part-05-language-vision-audio-and-multimodal-ai/068-sintesis-de-voz-y-clonacion-responsable/README.md)
+- **Fuentes primarias:** [arXiv:1609.03499](https://arxiv.org/abs/1609.03499)
+
 ### P27 · Mastering the game of Go with deep neural networks and tree search (2016)
 
 - **Autoría:** David Silver, Aja Huang, Chris J. Maddison, y otros (DeepMind)
@@ -1010,6 +1222,46 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [151](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/151-ci-cd-y-pruebas-para-sistemas-de-ia/README.md)
 - **Fuentes primarias:** [doi:10.1109/BigData.2017.8258038](https://doi.org/10.1109/BigData.2017.8258038)
 
+### P120 · Semi-Supervised Classification with Graph Convolutional Networks (2017)
+
+- **Autoría:** Thomas N. Kipf, Max Welling
+- **Problema anterior:** Muchos datos son grafos —citas, redes sociales, moléculas— donde etiquetar es caro y solo se tiene una fracción diminuta. Los métodos previos o eran costosos en el dominio espectral, o ignoraban la estructura y solo usaban los rasgos.
+- **Propuesta:** Una aproximación de primer orden de la convolución espectral que se reduce a promediar los rasgos de cada nodo con los de sus vecinos, normalizado por el grado, y apilar dos o tres de esas capas. Nada más.
+- **Hito:** Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados.
+- **Conceptos:** grafos, semisupervisado, propagación, sobre-suavizado, homofilia
+- **Clases del programa:** [056](../../classes/part-04-neural-networks-and-deep-learning/056-graph-neural-networks/README.md)
+- **Fuentes primarias:** [arXiv:1609.02907](https://arxiv.org/abs/1609.02907)
+
+### P121 · MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications (2017)
+
+- **Autoría:** Andrew G. Howard, Menglong Zhu, Bo Chen, Dmitry Kalenichenko, Weijun Wang, Tobias Weyand, Marco Andreetto, Hartwig Adam
+- **Problema anterior:** Las redes de visión que funcionaban exigían un centro de datos. En un teléfono, un sensor o un vehículo, el presupuesto es de milivatios y milisegundos, y no había forma sistemática de elegir dónde recortar.
+- **Propuesta:** Convolución separable en profundidad —filtrar cada canal por separado y luego combinarlos con núcleos de 1×1—, más un multiplicador de anchura y otro de resolución que parametrizan la familia entera.
+- **Hito:** Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige.
+- **Conceptos:** eficiencia, convolución separable, borde, presupuesto de cómputo, cuantización
+- **Clases del programa:** [071](../../classes/part-05-language-vision-audio-and-multimodal-ai/071-sensores-series-y-percepcion-en-el-borde/README.md)
+- **Fuentes primarias:** [arXiv:1704.04861](https://arxiv.org/abs/1704.04861)
+
+### P145 · Overcoming catastrophic forgetting in neural networks (2017)
+
+- **Autoría:** James Kirkpatrick, Razvan Pascanu, Neil Rabinowitz, Joel Veness, Guillaume Desjardins, Andrei A. Rusu, y otros
+- **Problema anterior:** El olvido catastrófico llevaba treinta años documentado y sin remedio práctico. Reentrenar con todos los datos anteriores resuelve el problema y exige conservarlos, que es justo lo que no siempre se puede.
+- **Propuesta:** Estimar cuánto importa cada peso para lo ya aprendido —aproximando la información de Fisher— y añadir a la pérdida una penalización elástica que tira de esos pesos hacia su valor anterior, con fuerza proporcional a su importancia.
+- **Hito:** Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher.
+- **Conceptos:** aprendizaje continuo, información de Fisher, penalización elástica, plasticidad, olvido
+- **Clases del programa:** [176](../../classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion/README.md)
+- **Fuentes primarias:** [doi:10.1073/pnas.1611835114](https://doi.org/10.1073/pnas.1611835114)
+
+### P146 · Communication-Efficient Learning of Deep Networks from Decentralized Data (2017)
+
+- **Autoría:** H. Brendan McMahan, Eider Moore, Daniel Ramage, Seth Hampson, Blaise Agüera y Arcas
+- **Problema anterior:** Los datos más útiles para entrenar —lo que se escribe en el teclado, lo que se fotografía— son los más sensibles y viven en millones de dispositivos con conexión lenta e intermitente. Centralizarlos es caro en comunicación y problemático en privacidad.
+- **Propuesta:** Promediado federado: cada cliente entrena varias épocas en local sobre sus propios datos y envía solo los pesos resultantes; el servidor los promedia y devuelve el modelo. Más cómputo local a cambio de menos rondas de comunicación.
+- **Hito:** Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros.
+- **Conceptos:** aprendizaje federado, promediado, comunicación, datos descentralizados, heterogeneidad
+- **Clases del programa:** [177](../../classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado/README.md)
+- **Fuentes primarias:** [arXiv:1602.05629](https://arxiv.org/abs/1602.05629)
+
 ### P94 · Stan: A Probabilistic Programming Language (2017)
 
 - **Autoría:** Bob Carpenter, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus Brubaker, Jiqiang Guo, Peter Li, Allen Riddell
@@ -1039,6 +1291,46 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** reproducibilidad, semillas, varianza, trazabilidad, aprendizaje por refuerzo
 - **Clases del programa:** [149](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-experimentos-semillas-y-trazabilidad/README.md)
 - **Fuentes primarias:** [doi:10.1609/aaai.v32i1.11694](https://doi.org/10.1609/aaai.v32i1.11694)
+
+### P122 · Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions (2018)
+
+- **Autoría:** Jonathan Shen, Ruoming Pang, Ron J. Weiss, Mike Schuster, Navdeep Jaitly, Zongheng Yang, Zhifeng Chen, Yu Zhang, Yuxuan Wang, RJ Skerry-Ryan, Rif A. Saurous, Yannis Agiomyrgiannakis, Yonghui Wu
+- **Problema anterior:** Predecir la forma de onda directamente desde el texto es intratable: tres segundos de audio son decenas de miles de pasos autorregresivos, y ningún modelo con atención puede alinear texto contra una secuencia de esa longitud.
+- **Propuesta:** Dos modelos con una interfaz explícita: uno predice el espectrograma mel desde el texto con atención, y un vocoder neuronal convierte ese espectrograma en forma de onda. Cada etapa se entrena y se sustituye por separado.
+- **Hito:** Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media.
+- **Conceptos:** síntesis de voz, espectrograma mel, atención monótona, vocoder, arquitectura en dos etapas
+- **Clases del programa:** [068](../../classes/part-05-language-vision-audio-and-multimodal-ai/068-sintesis-de-voz-y-clonacion-responsable/README.md)
+- **Fuentes primarias:** [doi:10.1109/ICASSP.2018.8461368](https://doi.org/10.1109/ICASSP.2018.8461368)
+
+### P123 · SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing (2018)
+
+- **Autoría:** Taku Kudo, John Richardson
+- **Problema anterior:** BPE suponía texto ya partido por espacios, y eso no es universal: el japonés y el chino no los usan. Además cada implementación normalizaba a su manera, así que reconstruir el texto original era imposible y los resultados no eran comparables.
+- **Propuesta:** Tratar la entrada como un flujo de caracteres crudo, codificar el espacio como un símbolo más del vocabulario, y ofrecer también un modelo unigrama donde la segmentación es inferencia probabilística y se puede muestrear para regularizar.
+- **Hito:** Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma.
+- **Conceptos:** tokenización, reversibilidad, modelo unigrama, multilingüe, regularización de subpalabra
+- **Clases del programa:** [073](../../classes/part-06-foundation-models-and-llm-engineering/073-tokenizacion-moderna-y-vocabularios/README.md)
+- **Fuentes primarias:** [doi:10.18653/v1/D18-2012](https://doi.org/10.18653/v1/D18-2012)
+
+### P124 · Graph Attention Networks (2018)
+
+- **Autoría:** Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, Yoshua Bengio
+- **Problema anterior:** La convolución de grafo promedia a todos los vecinos por igual y normaliza por el grado. Eso supone que todos los vecinos importan lo mismo y exige conocer el grafo completo, lo que impide aplicar el modelo a nodos que no se vieron al entrenar.
+- **Propuesta:** Calcular un coeficiente de atención para cada pareja de nodos vecinos, normalizarlo con softmax sobre el vecindario y agregar con esos pesos. Varias cabezas en paralelo, como en el Transformer.
+- **Hito:** Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo.
+- **Conceptos:** grafos, atención, agregación ponderada, inductivo, vecindario
+- **Clases del programa:** [056](../../classes/part-04-neural-networks-and-deep-learning/056-graph-neural-networks/README.md)
+- **Fuentes primarias:** [arXiv:1710.10903](https://arxiv.org/abs/1710.10903)
+
+### P147 · Recurrent World Models Facilitate Policy Evolution (2018)
+
+- **Autoría:** David Ha, Jürgen Schmidhuber
+- **Problema anterior:** Aprender por refuerzo exige millones de interacciones con el entorno. En simulación es caro; en un robot, inviable. Y el agente pasa la mayor parte de esas interacciones reaprendiendo cómo funciona el mundo, no cómo actuar en él.
+- **Propuesta:** Separar el problema en tres piezas: un codificador que comprime la observación, un modelo recurrente que predice el futuro en ese espacio comprimido, y una política diminuta entrenada **dentro** del modelo, sin tocar el entorno.
+- **Hito:** Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real.
+- **Conceptos:** modelo del mundo, aprendizaje con modelo, sueño, eficiencia de muestras, explotación del modelo
+- **Clases del programa:** [174](../../classes/part-14-frontier-research-and-capstones/174-world-models-y-simulacion-interna/README.md)
+- **Fuentes primarias:** [arXiv:1803.10122](https://arxiv.org/abs/1803.10122)
 
 ### P24 · Deep Contextualized Word Representations (2018)
 
@@ -1109,6 +1401,46 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** RAG, recuperación densa, memoria no paramétrica, citas, atribución, conocimiento actualizable
 - **Clases del programa:** [102](../../classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md), [103](../../classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md), [104](../../classes/part-08-retrieval-context-memory-and-knowledge/104-re-ranking-y-filtros-de-evidencia/README.md), [105](../../classes/part-08-retrieval-context-memory-and-knowledge/105-rag-basico-con-citas/README.md), [106](../../classes/part-08-retrieval-context-memory-and-knowledge/106-transformacion-y-descomposicion-de-consultas/README.md), [110](../../classes/part-08-retrieval-context-memory-and-knowledge/110-evaluacion-de-fidelidad-cobertura-y-atribucion/README.md), [111](../../classes/part-08-retrieval-context-memory-and-knowledge/111-proyecto-rag-productivo-y-auditable/README.md), [168](../../classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md)
 - **Fuentes primarias:** [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
+
+### P125 · LayoutLM: Pre-training of Text and Layout for Document Image Understanding (2020)
+
+- **Autoría:** Yiheng Xu, Minghao Li, Lei Cui, Shaohan Huang, Furu Wei, Ming Zhou
+- **Problema anterior:** Un documento no es una secuencia de texto: es texto colocado. Al linealizar una factura de dos columnas, el OCR intercala campos que no se relacionan, y un modelo que solo ve la cadena no puede emparejar cada etiqueta con su valor.
+- **Propuesta:** Preentrenar sobre millones de documentos escaneados un modelo que recibe, para cada token, su texto y las coordenadas de su caja delimitadora, con objetivos de enmascarado que obligan a usar las dos señales.
+- **Hito:** Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas.
+- **Conceptos:** documentos, disposición, OCR, extracción de campos, multimodal
+- **Clases del programa:** [063](../../classes/part-05-language-vision-audio-and-multimodal-ai/063-ocr-y-comprension-de-documentos/README.md)
+- **Fuentes primarias:** [doi:10.1145/3394486.3403172](https://doi.org/10.1145/3394486.3403172)
+
+### P127 · Jukebox: A Generative Model for Music (2020)
+
+- **Autoría:** Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, Ilya Sutskever
+- **Problema anterior:** Cuatro minutos de audio a 44,1 kHz son más de diez millones de muestras. Ningún modelo autorregresivo opera sobre esa longitud, y comprimir a una sola escala obliga a elegir entre estructura larga y detalle tímbrico.
+- **Propuesta:** Un cuantizador vectorial jerárquico que codifica el audio en tres niveles de compresión distintos, y un modelo autorregresivo por nivel: el grueso decide la estructura y los finos reconstruyen el timbre condicionados por él.
+- **Hito:** Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente.
+- **Conceptos:** música, cuantización vectorial, jerarquía temporal, audio generativo, estructura larga
+- **Clases del programa:** [093](../../classes/part-07-generative-ai-across-media/093-generacion-musical-y-de-audio/README.md)
+- **Fuentes primarias:** [arXiv:2005.00341](https://arxiv.org/abs/2005.00341)
+
+### P128 · NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (2020)
+
+- **Autoría:** Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, Ren Ng
+- **Problema anterior:** Representar una escena 3D como rejilla de vóxeles cuesta O(n³) en memoria: la resolución se paga al cubo y las rejillas finas no caben. Y las mallas exigen reconstruir geometría explícita, que falla con pelo, humo o vidrio.
+- **Propuesta:** Codificar la escena como una función continua que va de posición y dirección de vista a color y densidad, representada por un perceptrón multicapa, y renderizar integrando esa función a lo largo de cada rayo con la ecuación de volumen.
+- **Hito:** Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto.
+- **Conceptos:** síntesis de vistas, representación implícita, renderizado volumétrico, codificación posicional, 3D
+- **Clases del programa:** [096](../../classes/part-07-generative-ai-across-media/096-generacion-3d-y-mundos-sinteticos/README.md)
+- **Fuentes primarias:** [doi:10.1007/978-3-030-58452-8_24](https://doi.org/10.1007/978-3-030-58452-8_24)
+
+### P148 · Closing the AI Accountability Gap: Defining an End-to-End Framework for Internal Algorithmic Auditing (2020)
+
+- **Autoría:** Inioluwa Deborah Raji, Andrew Smart, Rebecca N. White, Margaret Mitchell, Timnit Gebru, Ben Hutchinson, Jamila Smith-Loud, Daniel Theron, Parker Barnes
+- **Problema anterior:** La auditoría algorítmica se hacía —cuando se hacía— al final, sobre un sistema ya construido. En ese punto los hallazgos importantes son incorregibles: si faltan las etiquetas de subgrupo, no se puede desagregar la evaluación, y recogerlas exigiría rehacer el conjunto de datos.
+- **Propuesta:** Cinco etapas —alcance, correspondencia, recogida de artefactos, pruebas y reflexión— cada una con entregables concretos: declaración de caso de uso, mapa de interesados, hojas de datos, tarjetas de modelo, resultados desagregados y plan de mitigación. La auditoría produce una traza, no un veredicto.
+- **Hito:** Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye.
+- **Conceptos:** auditoría interna, responsabilidad, artefactos, gobernanza, gestión de riesgo
+- **Clases del programa:** [169](../../classes/part-13-evaluation-safety-security-and-governance/169-gobernanza-roles-y-gestion-de-riesgo/README.md), [170](../../classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia/README.md)
+- **Fuentes primarias:** [doi:10.1145/3351095.3372873](https://doi.org/10.1145/3351095.3372873)
 
 ### P17 · Denoising Diffusion Probabilistic Models (2020)
 
@@ -1230,6 +1562,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Clases del programa:** [076](../../classes/part-06-foundation-models-and-llm-engineering/076-instruction-tuning-y-datos-de-instrucciones/README.md), [078](../../classes/part-06-foundation-models-and-llm-engineering/078-rlhf-rlaif-y-dpo/README.md)
 - **Fuentes primarias:** [arXiv:2203.02155](https://arxiv.org/abs/2203.02155)
 
+### P126 · OCR-free Document Understanding Transformer (2022)
+
+- **Autoría:** Geewook Kim, Teakgyu Hong, Moonbin Yim, JeongYeon Nam, Jinyoung Park, Jinyeong Yim, Wonseok Hwang, Sangdoo Yun, Dongyoon Han, Seunghyun Park
+- **Problema anterior:** La tubería OCR más analizador arrastra dos costes: los errores del OCR llegan intactos al final y se componen carácter a carácter, y el OCR hay que licenciarlo y mantenerlo por idioma.
+- **Propuesta:** Un codificador de imagen y un decodificador que emite directamente la estructura —JSON, pares clave-valor—, preentrenado con la tarea de leer el documento completo. Sin etapa intermedia, no hay error que heredar.
+- **Hito:** Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir.
+- **Conceptos:** sin OCR, extremo a extremo, propagación de errores, documentos, salida estructurada
+- **Clases del programa:** [063](../../classes/part-05-language-vision-audio-and-multimodal-ai/063-ocr-y-comprension-de-documentos/README.md)
+- **Fuentes primarias:** [doi:10.1007/978-3-031-19815-1_29](https://doi.org/10.1007/978-3-031-19815-1_29)
+
 ### P13 · ReAct: Synergizing Reasoning and Acting in Language Models (2022)
 
 - **Autoría:** Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao
@@ -1309,6 +1651,46 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** AgentOps, trayectorias, modos de fallo, evaluación multi-entorno, agentes
 - **Clases del programa:** [156](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias/README.md), [159](../../classes/part-12-ai-engineering-mlops-llmops-and-agentops/159-proyecto-plataforma-de-ia-observable/README.md)
 - **Fuentes primarias:** [arXiv:2308.03688](https://arxiv.org/abs/2308.03688)
+
+### P129 · MusicLM: Generating Music From Text (2023)
+
+- **Autoría:** Andrea Agostinelli, Timo I. Denk, Zalán Borsos, Jesse Engel, Mauro Verzetti, Antoine Caillon, y otros
+- **Problema anterior:** Los pares texto-música son escasísimos comparados con los pares texto-imagen, y la música tiene estructura a escalas que no caben en una sola ventana de contexto: el timbre se juega en milisegundos y la forma, en minutos.
+- **Propuesta:** Una jerarquía de dos tipos de token —semánticos, a baja frecuencia, que llevan la estructura, y acústicos, a alta frecuencia, que llevan el detalle— y un entrenamiento que aprovecha audio sin etiquetar mediante una representación conjunta de texto y música.
+- **Hito:** Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar.
+- **Conceptos:** texto a música, tokens semánticos, jerarquía, MusicCaps, evaluación
+- **Clases del programa:** [093](../../classes/part-07-generative-ai-across-media/093-generacion-musical-y-de-audio/README.md)
+- **Fuentes primarias:** [arXiv:2301.11325](https://arxiv.org/abs/2301.11325)
+
+### P130 · Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers (2023)
+
+- **Autoría:** Chengyi Wang, Sanyuan Chen, Yu Wu, Ziqiang Zhang, Long Zhou, Shujie Liu, y otros
+- **Problema anterior:** Adaptar un sintetizador a una voz nueva exigía media hora o más de grabaciones y un ajuste fino del modelo. Eso limitaba la personalización a quien tuviera estudio, y de paso actuaba como barrera práctica frente al uso indebido.
+- **Propuesta:** Tratar los códigos de un códec neuronal como un vocabulario y la síntesis como predicción del siguiente token, con la voz objetivo entrada como aviso en contexto. Sin entrenamiento por hablante: tres segundos bastan.
+- **Hito:** Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada.
+- **Conceptos:** síntesis de voz, clonación, códec neuronal, aviso en contexto, identidad vocal
+- **Clases del programa:** [094](../../classes/part-07-generative-ai-across-media/094-sintesis-de-voz-y-derechos-de-identidad/README.md)
+- **Fuentes primarias:** [arXiv:2301.02111](https://arxiv.org/abs/2301.02111)
+
+### P131 · A Watermark for Large Language Models (2023)
+
+- **Autoría:** John Kirchenbauer, Jonas Geiping, Yuxin Wen, Jonathan Katz, Ian Miers, Tom Goldstein
+- **Problema anterior:** Distinguir texto generado de texto humano se intentaba con clasificadores entrenados a posteriori, que fallan, envejecen con cada modelo nuevo y producen falsos positivos con consecuencias reales sobre personas.
+- **Propuesta:** Partir el vocabulario en cada paso en una lista «verde» y otra «roja», determinadas por un hash del token anterior, y sesgar la generación hacia la verde. Un texto marcado tiene una proporción de verdes anómala, y una prueba estadística la detecta sin acceso al modelo.
+- **Hito:** Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla.
+- **Conceptos:** marca de agua, procedencia, detección, prueba estadística, autenticidad
+- **Clases del programa:** [098](../../classes/part-07-generative-ai-across-media/098-procedencia-marcas-y-autenticidad/README.md)
+- **Fuentes primarias:** [arXiv:2301.10226](https://arxiv.org/abs/2301.10226)
+
+### P132 · 3D Gaussian Splatting for Real-Time Radiance Field Rendering (2023)
+
+- **Autoría:** Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler, George Drettakis
+- **Problema anterior:** NeRF produce vistas excelentes y renderiza lentísimo: cada píxel exige decenas de consultas a un perceptrón a lo largo de su rayo, y la mayoría caen en el vacío. Eso lo deja fuera de cualquier aplicación interactiva.
+- **Propuesta:** Representar la escena como un conjunto de gaussianas 3D anisótropas con color y opacidad, optimizadas desde las vistas de entrada, y renderizarlas proyectándolas y mezclándolas por orden de profundidad con un rasterizador diseñado a medida.
+- **Hito:** Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan.
+- **Conceptos:** renderizado en tiempo real, primitivas explícitas, rasterización, campos de radiancia, compromiso memoria-cómputo
+- **Clases del programa:** [096](../../classes/part-07-generative-ai-across-media/096-generacion-3d-y-mundos-sinteticos/README.md)
+- **Fuentes primarias:** [doi:10.1145/3592433](https://doi.org/10.1145/3592433)
 
 ### P14 · Toolformer: Language Models Can Teach Themselves to Use Tools (2023)
 
@@ -1469,6 +1851,16 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 - **Conceptos:** agentes de escritorio, RPA agéntica, verificación por ejecución, multiaplicación, evaluación
 - **Clases del programa:** [146](../../classes/part-11-embodied-ai-robotics-and-computer-use/146-automatizacion-de-escritorio-y-rpa-agentica/README.md)
 - **Fuentes primarias:** [arXiv:2404.07972](https://arxiv.org/abs/2404.07972)
+
+### P133 · AI models collapse when trained on recursively generated data (2024)
+
+- **Autoría:** Ilia Shumailov, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson, Yarin Gal
+- **Problema anterior:** La web se está llenando de texto e imágenes generadas. Los corpus futuros se recogerán de ahí, y nadie sabía qué le ocurre a un modelo entrenado sobre lo que generó la generación anterior.
+- **Propuesta:** Formalizar y medir el fenómeno en modelos de lenguaje, autocodificadores variacionales y mezclas de gaussianas: el error de muestreo acumulado basta para que las colas desaparezcan primero y la distribución converja a algo degenerado.
+- **Hito:** Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno.
+- **Conceptos:** datos sintéticos, colapso, contaminación de corpus, error de muestreo, procedencia
+- **Clases del programa:** [097](../../classes/part-07-generative-ai-across-media/097-datos-sinteticos-utilidad-y-contaminacion/README.md)
+- **Fuentes primarias:** [doi:10.1038/s41586-024-07566-y](https://doi.org/10.1038/s41586-024-07566-y)
 
 ### P21 · Mixtral of Experts (2024)
 

@@ -254,6 +254,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Müller, T. et al. (2022). *Instant Neural Graphics Primitives with a Multiresolution Hash Encoding* (Instant-NGP). [arXiv:2201.05989](https://arxiv.org/abs/2201.05989)
 - Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P128 · NeRF: representar escenas como campos de radiancia neuronal](../../../papers/foundational/P128_nerf/README.md) | 2020 | Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto. | [notebook](../../../notebooks/papers/P128_nerf.ipynb) |
+| [P132 · Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real](../../../papers/foundational/P132_gaussian_splatting/README.md) | 2023 | Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan. | [notebook](../../../notebooks/papers/P132_gaussian_splatting.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

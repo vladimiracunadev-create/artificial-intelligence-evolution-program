@@ -245,6 +245,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Model Context Protocol](https://modelcontextprotocol.io/): el eje complementario agente↔herramientas.
 - [JSON-RPC 2.0](https://www.jsonrpc.org/specification): la capa de mensajes común a ambos protocolos.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P138 · KQML como lenguaje de comunicación entre agentes](../../../papers/foundational/P138_kqml/README.md) | 1994 | Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M. | [notebook](../../../notebooks/papers/P138_kqml.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

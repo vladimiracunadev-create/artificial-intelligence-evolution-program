@@ -224,6 +224,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Sánchez-Lengeling, B. et al. (2021). *A Gentle Introduction to Graph Neural Networks*. Distill. [distill.pub/2021/gnn-intro](https://distill.pub/2021/gnn-intro/)
 - Documentación de PyTorch Geometric. [pytorch-geometric.readthedocs.io](https://pytorch-geometric.readthedocs.io/)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P120 · Clasificación semisupervisada con redes convolucionales de grafo](../../../papers/foundational/P120_gcn/README.md) | 2017 | Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados. | [notebook](../../../notebooks/papers/P120_gcn.ipynb) |
+| [P124 · Redes de atención sobre grafos](../../../papers/foundational/P124_gat/README.md) | 2018 | Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo. | [notebook](../../../notebooks/papers/P124_gat.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

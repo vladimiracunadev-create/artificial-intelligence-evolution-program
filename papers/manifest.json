@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/generate_papers.py",
-  "catalog_updated": "2026-08-17",
-  "papers": 117,
-  "notebooks": 125,
+  "catalog_updated": "2026-08-18",
+  "papers": 148,
+  "notebooks": 156,
   "hash": "sha256_lf = SHA-256 del contenido con los saltos de línea normalizados a LF. No coincide con `sha256sum` si el fichero está en CRLF: se normaliza a propósito para que el manifiesto sea el mismo en Windows, Linux y macOS.",
   "contrato_ficha": [
     "1. Identificación",
@@ -157,16 +157,140 @@
       "sha256_lf": "0a15e8dd28f35b4886bb332eeae9de2e0f0209cc188fce7987050fdfe8dd7043"
     },
     {
+      "path": "assessments/papers/P118_bpe.md",
+      "sha256_lf": "6d96548725ed1f7fcfbbf9183811472d6e40818f4a79fdfeb608ebd49fc1edc7"
+    },
+    {
+      "path": "assessments/papers/P119_wavenet.md",
+      "sha256_lf": "a0158fdfad2c330b05f1966fb8f539f06d7eb143010f38258f537f84c997e631"
+    },
+    {
       "path": "assessments/papers/P11_rag.md",
       "sha256_lf": "02e3ab0ed0feb7d289aa161e30d8a5c2a24dc707b2c50a95ae931f10800ffcb2"
+    },
+    {
+      "path": "assessments/papers/P120_gcn.md",
+      "sha256_lf": "998653e17d73386cdd2c92853f999f02a23058d6fd1395f5e75e7c537b9beab4"
+    },
+    {
+      "path": "assessments/papers/P121_mobilenets.md",
+      "sha256_lf": "d862798b58eaec6d85651a7e83c776b7380aaafd7ee9208b27803cb5619c04df"
+    },
+    {
+      "path": "assessments/papers/P122_tacotron.md",
+      "sha256_lf": "845dbf8aaa035f35b45869f4ec17837e1412a466e3be87929bb815353eeeb9fd"
+    },
+    {
+      "path": "assessments/papers/P123_sentencepiece.md",
+      "sha256_lf": "27290daf09ed2c157cc0b1b1019413e51f5bb7f317b266953eabc98f7a353ed5"
+    },
+    {
+      "path": "assessments/papers/P124_gat.md",
+      "sha256_lf": "7fddb544283087d3e199c604ad18e22d6d4becb140f09d1a2239830537f8d2f2"
+    },
+    {
+      "path": "assessments/papers/P125_layoutlm.md",
+      "sha256_lf": "19c1adc20dd074b6ebdd2bb377e77c439d21c0cd2c96f56e734cfef374594a23"
+    },
+    {
+      "path": "assessments/papers/P126_donut.md",
+      "sha256_lf": "fe763e30d4780aa5b2e2c4dc86cd5cbe2f579dfbaa0af1ac6f06be5d44b285d0"
+    },
+    {
+      "path": "assessments/papers/P127_jukebox.md",
+      "sha256_lf": "dfa276bd6543a038435078c43bd0840cca8be599407555634f3c447e5e6e7567"
+    },
+    {
+      "path": "assessments/papers/P128_nerf.md",
+      "sha256_lf": "b57ad06aefa7174d9d1cb0bd8c886699f5c3c35a58b060fa08c0ff99427c6d6d"
+    },
+    {
+      "path": "assessments/papers/P129_musiclm.md",
+      "sha256_lf": "cc0235343a6604c153e6881f5f9dd462b12e33d3c8fc6a629970d9a19f81f69d"
     },
     {
       "path": "assessments/papers/P12_instructgpt_rlhf.md",
       "sha256_lf": "2dd0c2e88f8296949d219ac490fc25bfb8374ecbf4e0c42026b51a83ee7aa097"
     },
     {
+      "path": "assessments/papers/P130_vall_e.md",
+      "sha256_lf": "1b90d837ed20cc2ec16c5f1fe8e247870842dff14bfaf2cc35a51171c2fb7a42"
+    },
+    {
+      "path": "assessments/papers/P131_marcas_de_agua.md",
+      "sha256_lf": "d26e9c05c89b97c35f7f0eda1c5519363e1c76fd84b09be9af5b1587d7afc4e2"
+    },
+    {
+      "path": "assessments/papers/P132_gaussian_splatting.md",
+      "sha256_lf": "f829fe982ad5dc2464b06b5a08b802377603fd6b3ac26bb46d11c48f053ac0a8"
+    },
+    {
+      "path": "assessments/papers/P133_colapso_de_modelo.md",
+      "sha256_lf": "a86f0aa948bfba95e525f6ebaf7d2da2df8e75378019cfa77c43f9c57785de9b"
+    },
+    {
+      "path": "assessments/papers/P134_minimo_privilegio.md",
+      "sha256_lf": "53496b6c9ddd0bcb7f164824b9c4d92199c8b39e5619b1ff76aec116de7a8380"
+    },
+    {
+      "path": "assessments/papers/P135_pizarra.md",
+      "sha256_lf": "0fabf853b1a52e63a49bbeeef4e9a0b097118172a24cc233a530d68ad9f22b34"
+    },
+    {
+      "path": "assessments/papers/P136_red_de_contratos.md",
+      "sha256_lf": "99cec8c7b4319dcb1ffa86404889428ad822fd72e424bef53e7faa0242c9f445"
+    },
+    {
+      "path": "assessments/papers/P137_metarrazonamiento.md",
+      "sha256_lf": "733f7e8fbca4ff27beb6ea59cf46ad8e0a91892fe25cdc2624da12328c7a1245"
+    },
+    {
+      "path": "assessments/papers/P138_kqml.md",
+      "sha256_lf": "b74829c6c0ef91fca63c380c248327fdb8a0c119d684c54433bc922068a93805"
+    },
+    {
+      "path": "assessments/papers/P139_niveles_de_automatizacion.md",
+      "sha256_lf": "dac2efbd17e78c22fdcacfaea2182b1a3b250a4e6f355b99266d7c3829f57074"
+    },
+    {
       "path": "assessments/papers/P13_react.md",
       "sha256_lf": "20fa36fa1e17560f308f9cca48327f6605b75055c8f62ab5cd8ddddc3293b7c2"
+    },
+    {
+      "path": "assessments/papers/P140_mapreduce.md",
+      "sha256_lf": "a0f3c173c8a4ece4f21a4980d8e825996c8a089a6c6db2b3c956087ea8e6fb2b"
+    },
+    {
+      "path": "assessments/papers/P141_dos_sigma.md",
+      "sha256_lf": "82eae94dc6e83de9cf2ed02af3da8b3b6ce211192b163a2ceee95e3ab390090d"
+    },
+    {
+      "path": "assessments/papers/P142_olvido_catastrofico.md",
+      "sha256_lf": "69f7613267b60ad427c4dfdf319498631db04e04e4c534be596c8126a44978ae"
+    },
+    {
+      "path": "assessments/papers/P143_privacidad_diferencial.md",
+      "sha256_lf": "20b63fcfd880e9c4f84567e63d64695cd24b0808eab756090abc29de10c94a56"
+    },
+    {
+      "path": "assessments/papers/P144_ml_en_seguridad.md",
+      "sha256_lf": "f1744e365c3f4fa711748210933628ae6fa3075c47a0d59067ce275e26762f7c"
+    },
+    {
+      "path": "assessments/papers/P145_ewc.md",
+      "sha256_lf": "ed503ddaed8c94bbb6cf87c891f3f166c70f037066d3f3f8224c5ab7c016c4ca"
+    },
+    {
+      "path": "assessments/papers/P146_federado.md",
+      "sha256_lf": "34090f43860f009863d45bac3b4a8e18b3f4b200a94f89bbf5938fbf2cdb8e66"
+    },
+    {
+      "path": "assessments/papers/P147_world_models.md",
+      "sha256_lf": "c1eaf4e02f3cee432dba80dd02cb5e852802dc1045916b976f9fbcecf0f9129a"
+    },
+    {
+      "path": "assessments/papers/P148_auditoria_interna.md",
+      "sha256_lf": "62ee9feaa7d84b5aeb2143ec9d53cb332244c95c94e3f2b75d589faa22bd6ce5"
     },
     {
       "path": "assessments/papers/P14_toolformer.md",
@@ -514,7 +638,7 @@
     },
     {
       "path": "assessments/papers/README.md",
-      "sha256_lf": "a21a0d2c624f90ba19f3bfbdccc118662e1ac4600e8f030ac9c3c253cb240de9"
+      "sha256_lf": "5c4776e6c29d0e96e6feeebef2ae13690c3265e57f7c8afc60715e242e46272b"
     },
     {
       "path": "instructor/papers/P01_perceptron.md",
@@ -629,16 +753,140 @@
       "sha256_lf": "3208e7cba84ad15fd21bee62c72ce27cd08e12aea63e620ec8c0588764917ef2"
     },
     {
+      "path": "instructor/papers/P118_bpe.md",
+      "sha256_lf": "7989bc61f5a1ba32830edf2f931054c5b0699c6c29c4fe08039a3b77adbb9b2f"
+    },
+    {
+      "path": "instructor/papers/P119_wavenet.md",
+      "sha256_lf": "89f9a870b196f58f7be3521a0726e72d51213773b11e8c925bf44c34932e6371"
+    },
+    {
       "path": "instructor/papers/P11_rag.md",
       "sha256_lf": "9045662db01e9c963e693d5148b693cb60a4ed070772b0a1fce800d15bf32057"
+    },
+    {
+      "path": "instructor/papers/P120_gcn.md",
+      "sha256_lf": "956b6660a8a239dde239ee1a13e6052f5e7515dcf7bc86e469f0f05d043ddc78"
+    },
+    {
+      "path": "instructor/papers/P121_mobilenets.md",
+      "sha256_lf": "2377733979440f4b7089ca392c0f030bc23819f2a2b24a8006a16bddd05e0590"
+    },
+    {
+      "path": "instructor/papers/P122_tacotron.md",
+      "sha256_lf": "cbac67c50586fe806ff829d1477690ba1e9fb06fd923451295ad24648ec44a1c"
+    },
+    {
+      "path": "instructor/papers/P123_sentencepiece.md",
+      "sha256_lf": "611d58e9457e3572e5543a66617a68ed89772a64aab4ff1ba63ef86777574947"
+    },
+    {
+      "path": "instructor/papers/P124_gat.md",
+      "sha256_lf": "6f5aad3620736ee17d2cfd846c3aead8b429f572c7db4accdef9d2b66747f8f9"
+    },
+    {
+      "path": "instructor/papers/P125_layoutlm.md",
+      "sha256_lf": "53febec03cdbfefd528c0095ba075f11c9f3ab91cd21a44f1a9baca0a21aa0ab"
+    },
+    {
+      "path": "instructor/papers/P126_donut.md",
+      "sha256_lf": "f9c27119d5f2c39aebfbe6c409f18bada73ea9cfde0c8e17ebabd178af69f8ab"
+    },
+    {
+      "path": "instructor/papers/P127_jukebox.md",
+      "sha256_lf": "c696cd6635e738931796ef3a3405c228fa80fc6e1c28bf24ce3664a863dbaa05"
+    },
+    {
+      "path": "instructor/papers/P128_nerf.md",
+      "sha256_lf": "847dacf77b1317b2e81372f272870aa0c594d7acfdf770ea446643b5d8d00c86"
+    },
+    {
+      "path": "instructor/papers/P129_musiclm.md",
+      "sha256_lf": "ac967aa0978c4ecf98b7a9d3ac335392defdb704dc87ec683afb4919c4ed703f"
     },
     {
       "path": "instructor/papers/P12_instructgpt_rlhf.md",
       "sha256_lf": "72eefa026420b895b8c57b83c3f7a3113ee157cffd81fc5448cb0d60b8f8e43e"
     },
     {
+      "path": "instructor/papers/P130_vall_e.md",
+      "sha256_lf": "7da23dee5c04bba2d57c9764c266bac9b72e5d15444a54b38e502738584470fb"
+    },
+    {
+      "path": "instructor/papers/P131_marcas_de_agua.md",
+      "sha256_lf": "3b273e0db5df8643025c602f586c1c84c9bed588b6fceeadc83674fbc6246805"
+    },
+    {
+      "path": "instructor/papers/P132_gaussian_splatting.md",
+      "sha256_lf": "b0aed5fe91122ef108447dc532359d2ef6f905a928016e1e1a9a4744f28f4c8b"
+    },
+    {
+      "path": "instructor/papers/P133_colapso_de_modelo.md",
+      "sha256_lf": "7f512e736ec8cef4d87b186e69d16d730332e8a7bb2c9543392cc87734213674"
+    },
+    {
+      "path": "instructor/papers/P134_minimo_privilegio.md",
+      "sha256_lf": "f3933d5c31b3e166f74c4dc1e53a7e9642ef77c36e84cfe14c4e3c60d79d22d8"
+    },
+    {
+      "path": "instructor/papers/P135_pizarra.md",
+      "sha256_lf": "10dedd2201c8b5f1b2728edcc678ba3b0efa5669ad00e3e9047b3cc28200eb0a"
+    },
+    {
+      "path": "instructor/papers/P136_red_de_contratos.md",
+      "sha256_lf": "de654b79600c04b4cbd4581a9aa775e4855b6306004f964660bb41330d0bb6a7"
+    },
+    {
+      "path": "instructor/papers/P137_metarrazonamiento.md",
+      "sha256_lf": "7dcf39eded8dd40ec241ec9c7997173caf6507d0ec21c76744bfe308d990885b"
+    },
+    {
+      "path": "instructor/papers/P138_kqml.md",
+      "sha256_lf": "6628d4fedd9b37533e9fd469e71f5232135374f8999fe81a72df33e43d942585"
+    },
+    {
+      "path": "instructor/papers/P139_niveles_de_automatizacion.md",
+      "sha256_lf": "fdedd7e4ae84a42578f678bcef51f0cd25ff6356ebd453dbc80fdf48ff65a0ce"
+    },
+    {
       "path": "instructor/papers/P13_react.md",
       "sha256_lf": "b6bdb7f5f438d1076602a160a133dcdadddd55704859b5f395be13b86dfe7f40"
+    },
+    {
+      "path": "instructor/papers/P140_mapreduce.md",
+      "sha256_lf": "931cc912e24b4a2bced11800ae68188e0e2959a03d735ddc7fc20237c33e492c"
+    },
+    {
+      "path": "instructor/papers/P141_dos_sigma.md",
+      "sha256_lf": "015ec5e0b5097d5dd624acd8b1e42fc1d9c064006b64f50b916b613dc0051901"
+    },
+    {
+      "path": "instructor/papers/P142_olvido_catastrofico.md",
+      "sha256_lf": "e645510f239c0dd1290c0142a3ac64d803f966d4ce6544eec8faf7c2696024a9"
+    },
+    {
+      "path": "instructor/papers/P143_privacidad_diferencial.md",
+      "sha256_lf": "3a706a7efc98a893d64ded450cb440830a3c0eec3c59593872db844cf9f06b84"
+    },
+    {
+      "path": "instructor/papers/P144_ml_en_seguridad.md",
+      "sha256_lf": "fad240f226a524d52e28b5b3619b0dc29ed4dabe7411516378fcaeffd122d7b0"
+    },
+    {
+      "path": "instructor/papers/P145_ewc.md",
+      "sha256_lf": "1f7260c06a0f6624edf1e90ac7e556dc7fe594ea2f3effe83e1e0def9505cbef"
+    },
+    {
+      "path": "instructor/papers/P146_federado.md",
+      "sha256_lf": "e586d26b22f31a87d2deab3406f882a2fa741fcb798b6d68d07fdb708a843c52"
+    },
+    {
+      "path": "instructor/papers/P147_world_models.md",
+      "sha256_lf": "515620d6fcbaee710fc156d58168d204f68800a2551e7ac18e3c561af9d66b57"
+    },
+    {
+      "path": "instructor/papers/P148_auditoria_interna.md",
+      "sha256_lf": "ab5b95c41197692fe49d79689f7ab9f28592fb894899dfba03f7f73ba9b0e4fc"
     },
     {
       "path": "instructor/papers/P14_toolformer.md",
@@ -986,7 +1234,7 @@
     },
     {
       "path": "instructor/papers/README.md",
-      "sha256_lf": "7ad6c252d430b5cdbf914e1526b93cbdddb899d8fbe6fe0c879d19f57ab2a50f"
+      "sha256_lf": "1436207e93e47c367886d34eca544b0ab6421055057d09da5f4d30849b21c4ea"
     },
     {
       "path": "notebooks/papers/P01_perceptron.ipynb",
@@ -1101,16 +1349,140 @@
       "sha256_lf": "273dbe349a08572839e060ee2caec6c7b4c6475b93cdbcbd46547672c2ac369c"
     },
     {
+      "path": "notebooks/papers/P118_bpe.ipynb",
+      "sha256_lf": "7b5ea6e249f07655e6f229370ac489ffbcf03191134ce2369900d684661273a0"
+    },
+    {
+      "path": "notebooks/papers/P119_wavenet.ipynb",
+      "sha256_lf": "87126801c538de4d29fa5595b8c322d199652f05daf6d4591acf04ca1f46b58d"
+    },
+    {
       "path": "notebooks/papers/P11_rag.ipynb",
       "sha256_lf": "3a37e80fae8914b01208ec3e9a6e356699851346207ec7ed318c30ced16cf353"
+    },
+    {
+      "path": "notebooks/papers/P120_gcn.ipynb",
+      "sha256_lf": "ca2a5561a1c0eacfe5a2034c1cac590eec35234099b14af80b468b574de30339"
+    },
+    {
+      "path": "notebooks/papers/P121_mobilenets.ipynb",
+      "sha256_lf": "284fbb536ff91aaeb21213118dc4cc64b4235f8416e15026855bd96391718097"
+    },
+    {
+      "path": "notebooks/papers/P122_tacotron.ipynb",
+      "sha256_lf": "7addd332da5938fed975aa6511154bb982963082d21a7d39da2a242d336b8b93"
+    },
+    {
+      "path": "notebooks/papers/P123_sentencepiece.ipynb",
+      "sha256_lf": "1d12244294300bfd207226ed57675e44779beced18bb2471a549e2bb40c2e69c"
+    },
+    {
+      "path": "notebooks/papers/P124_gat.ipynb",
+      "sha256_lf": "1d5772379fa02ac5b3838537145a71d6431eb5511f38c3f6e4b3aa6477404d02"
+    },
+    {
+      "path": "notebooks/papers/P125_layoutlm.ipynb",
+      "sha256_lf": "23a5446498d82d382c3d854721b08881b3ca779f6fe22e3fd2248f40734532ac"
+    },
+    {
+      "path": "notebooks/papers/P126_donut.ipynb",
+      "sha256_lf": "5b8964404e949ca461dd8a43e75859d59edf621d5f768b3c0bb8845d41d6daae"
+    },
+    {
+      "path": "notebooks/papers/P127_jukebox.ipynb",
+      "sha256_lf": "9b3958469a16114a13376ca414c82cae15c4cb4921cc96afd75a33b25a338b58"
+    },
+    {
+      "path": "notebooks/papers/P128_nerf.ipynb",
+      "sha256_lf": "65c964b497422ccf788e3f22697bdc8b645523871ca855994439e9939316e919"
+    },
+    {
+      "path": "notebooks/papers/P129_musiclm.ipynb",
+      "sha256_lf": "ae739bc04f602cb8da3cbfc4f592a94bac782e89bd1375f473357770cd628bfd"
     },
     {
       "path": "notebooks/papers/P12_instructgpt_rlhf.ipynb",
       "sha256_lf": "b6b92274d81bc40d60d6571d570eb28ea1ea39cf0415d1fb80d54d7511109f56"
     },
     {
+      "path": "notebooks/papers/P130_vall_e.ipynb",
+      "sha256_lf": "580e14de56bd6b9cee10243b172c054bde11f4c9cbdc4dec1fb4f1821153d179"
+    },
+    {
+      "path": "notebooks/papers/P131_marcas_de_agua.ipynb",
+      "sha256_lf": "e1c4b7aac4dafb736a81e90aed1f506e544ee1b161a32f3a2ff50276fdf4b3ee"
+    },
+    {
+      "path": "notebooks/papers/P132_gaussian_splatting.ipynb",
+      "sha256_lf": "f250cae1082c9b273196f300c146a92efa9d50ed37c6045f59379b682bd582da"
+    },
+    {
+      "path": "notebooks/papers/P133_colapso_de_modelo.ipynb",
+      "sha256_lf": "d3c7288563391a4fa018667b2a136ffbb6ff9347c2e5f53f445ac7f86978fbe7"
+    },
+    {
+      "path": "notebooks/papers/P134_minimo_privilegio.ipynb",
+      "sha256_lf": "668d0698014aa5db117c53683602437f3928f61f733b2fcb76582dd2658dc33d"
+    },
+    {
+      "path": "notebooks/papers/P135_pizarra.ipynb",
+      "sha256_lf": "55966bd51bbb3e215ba1fe1b79084bad5b4e9ada765ac69ac698f42f3ff01eea"
+    },
+    {
+      "path": "notebooks/papers/P136_red_de_contratos.ipynb",
+      "sha256_lf": "d2742da6382ee8ef20012cf99ec82f2ec1e902b8b128d0ed26d6f6717fc37a82"
+    },
+    {
+      "path": "notebooks/papers/P137_metarrazonamiento.ipynb",
+      "sha256_lf": "9a11fe5890ada4e2f80f1bbf49ebb0eb48dbabcbf7b88425b13aa6754b135ed8"
+    },
+    {
+      "path": "notebooks/papers/P138_kqml.ipynb",
+      "sha256_lf": "7e4ab13f78fec0d7912956cd4094e29d141c8fdf4a938456aec39c2bf948d696"
+    },
+    {
+      "path": "notebooks/papers/P139_niveles_de_automatizacion.ipynb",
+      "sha256_lf": "538f0c891d81feb5216b48ae1f793430bf99d6622629700ee5edb2a9114348c2"
+    },
+    {
       "path": "notebooks/papers/P13_react.ipynb",
       "sha256_lf": "f58d4951214dd590f5ec2fc88a1eaf8f208d24d7466ba29ad4eeea52bd3036c0"
+    },
+    {
+      "path": "notebooks/papers/P140_mapreduce.ipynb",
+      "sha256_lf": "16a04aa5138e1b03d4d248a8793235eadd70e3b166c2652055a82a1b4ae570d6"
+    },
+    {
+      "path": "notebooks/papers/P141_dos_sigma.ipynb",
+      "sha256_lf": "09eeb4c1b70a43ff26a48d027b614f7966d592523b5cc1f84785e4cb48547df4"
+    },
+    {
+      "path": "notebooks/papers/P142_olvido_catastrofico.ipynb",
+      "sha256_lf": "dc91753b746d0b6f5f6e93c0b23a54d9a62fba4e1b2c0092e58b6964fc5cd997"
+    },
+    {
+      "path": "notebooks/papers/P143_privacidad_diferencial.ipynb",
+      "sha256_lf": "98e86875d4f5f132c72780374482bbbcb79e8b45147b3ed994a21711e5e61f2b"
+    },
+    {
+      "path": "notebooks/papers/P144_ml_en_seguridad.ipynb",
+      "sha256_lf": "a8138fec8af613dffad8f42aba077cc6aa7fb9551436a273e2ecadf1211e8566"
+    },
+    {
+      "path": "notebooks/papers/P145_ewc.ipynb",
+      "sha256_lf": "a4439b3559ea759b8cd585d9795fa90fb8ebfc55241e092fd3e142af5ebd0f82"
+    },
+    {
+      "path": "notebooks/papers/P146_federado.ipynb",
+      "sha256_lf": "3bb1ad5cb6dc4fbd10bb9ae97b6a7d7bc46d966603c37a7544a511b169e2b0b3"
+    },
+    {
+      "path": "notebooks/papers/P147_world_models.ipynb",
+      "sha256_lf": "9b95f66f591707e68718bc5b5641b290aee283743fec01e489b29df1e27a9f95"
+    },
+    {
+      "path": "notebooks/papers/P148_auditoria_interna.ipynb",
+      "sha256_lf": "57d26c4f8ea7ddd7a44893ad4b281adc8a56d58324d4b88e3432f7fcce91e274"
     },
     {
       "path": "notebooks/papers/P14_toolformer.ipynb",
@@ -1490,11 +1862,11 @@
     },
     {
       "path": "papers/README.md",
-      "sha256_lf": "d98061b26e6faf1ac66778dc182da53c7664526a2fab9e14e68dd882f25fe484"
+      "sha256_lf": "3729a629687884c601f5a059e280b2d469d05b4298c111a06f362318db778df3"
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "596d612ee2ea8bb611525e2e400d15744d5bd39cdb7337e1471207da8062bb16"
+      "sha256_lf": "6e9cb585b1133c075105cd2bf24d19e572a2c85b346823f6e623dc3dd648e0ca"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -1518,19 +1890,19 @@
     },
     {
       "path": "papers/annexes/README.md",
-      "sha256_lf": "a9749600d87e9c56bf53622a877b2f52cad35179eac3d8eab3fee489dc721034"
+      "sha256_lf": "0541a8dcf90a41f3814e78bc058461845455b09446133d5552ddf68fabf599c7"
     },
     {
       "path": "papers/catalog/MATRIZ_CLASES_PAPERS.md",
-      "sha256_lf": "1d749d0517c299a004789d2149c7612a6d227a3c0100c2f156084e1c4ef9d9fb"
+      "sha256_lf": "f9b7c3fa701e4147e3de95cbfc03e2415a9f6bffe6b9de5e6344510461a83eaf"
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "a6b4389db3f89bfa2137d5fd820fec376cb7b090ebd9844856e5447dbb0f75e4"
+      "sha256_lf": "3c8581ca70844d2c52ee6440e0369f2b44fa4f6d30220b84504fd779b45750bc"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "7d4bb35f9d4fb8e9e5b25874700ada9193361cba596bba784eaef227451e2755"
+      "sha256_lf": "581b3ec94a83c1e9aee272f26ee96d20d0ec6f3f7acd9c8e7134ef7a4df5bd66"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -1646,19 +2018,143 @@
     },
     {
       "path": "papers/foundational/P117_agentops/README.md",
-      "sha256_lf": "552b5c6b2c63cd802cee90d4d53dc6906d4b214e9b11c3bcc44d96473d3177b7"
+      "sha256_lf": "2f494b95166d2bbe915c23fb494d5f73e87d126f03d1a70d697f68f32d541104"
+    },
+    {
+      "path": "papers/foundational/P118_bpe/README.md",
+      "sha256_lf": "966e3cc4428bd566da1a5e05d59ba9f01bc6068fd3ca460a9bd2ab60b76b7c48"
+    },
+    {
+      "path": "papers/foundational/P119_wavenet/README.md",
+      "sha256_lf": "8f81827292b25f7b4a40239fd09b9c1895198ec45cbc12c50b0818fe9676c37b"
     },
     {
       "path": "papers/foundational/P11_rag/README.md",
       "sha256_lf": "b98471563a48737d010bbaddd8077ed7e66ca5ed0e5333f7a3f659e4ad05c1ad"
     },
     {
+      "path": "papers/foundational/P120_gcn/README.md",
+      "sha256_lf": "82765f14c37bdd80ef9814eeb5835582ef8ba932426b0eb94165813aa2a4a83f"
+    },
+    {
+      "path": "papers/foundational/P121_mobilenets/README.md",
+      "sha256_lf": "37ba934b0de3d43a734c2ce4daf464b23b37736700dbda6fcf2ab49fd4f9e32c"
+    },
+    {
+      "path": "papers/foundational/P122_tacotron/README.md",
+      "sha256_lf": "04bb78f2f4ae4b79beb8c4038a576b0b7bb4e28ad6443188e6915c46327ae223"
+    },
+    {
+      "path": "papers/foundational/P123_sentencepiece/README.md",
+      "sha256_lf": "61788d4b980cc55e540acd20c7f2640f1b7d7e8947c4010e649fa5848c915c8d"
+    },
+    {
+      "path": "papers/foundational/P124_gat/README.md",
+      "sha256_lf": "388bcfd069d1918743be124ed82b0486fe8a00a6adf9bb645c59bf59a16302fd"
+    },
+    {
+      "path": "papers/foundational/P125_layoutlm/README.md",
+      "sha256_lf": "8f7ff271fbfe98204cc7feb32b09f7aea2b2ccb5dfc116d60e73a6a6dca33df6"
+    },
+    {
+      "path": "papers/foundational/P126_donut/README.md",
+      "sha256_lf": "1ea57f56868b23e4191d9af5192a64e1dec471c8f887e166e122f1ba2da68868"
+    },
+    {
+      "path": "papers/foundational/P127_jukebox/README.md",
+      "sha256_lf": "3a32e2085e7d6a00d47cd28ba096ea08feaf542e49816f2408d5a25ce4f61b88"
+    },
+    {
+      "path": "papers/foundational/P128_nerf/README.md",
+      "sha256_lf": "e7d136adfc9a00c10b32691ef2d6a358ffda9e5525b1a9a1f2ecceae98e69f95"
+    },
+    {
+      "path": "papers/foundational/P129_musiclm/README.md",
+      "sha256_lf": "bcf9516e512a9cb92a3b5277343c2f8ad62d3866d7a5e4e282c0fb4870fae9d1"
+    },
+    {
       "path": "papers/foundational/P12_instructgpt_rlhf/README.md",
       "sha256_lf": "83081a44e808c8ea5ee07de43b4c54fec0eacd4d79986913bb3570a6aed4dc57"
     },
     {
+      "path": "papers/foundational/P130_vall_e/README.md",
+      "sha256_lf": "e0d995932d10245904c9784c92950c22b986e00385a01caf6675e42a975968ad"
+    },
+    {
+      "path": "papers/foundational/P131_marcas_de_agua/README.md",
+      "sha256_lf": "efd15461f663254bfa1095236faffcd550048d72527f66a8bba297a849f7a97f"
+    },
+    {
+      "path": "papers/foundational/P132_gaussian_splatting/README.md",
+      "sha256_lf": "39f8ca52e1e343aadb71440eeb7ab975d91b22122811feb8f938b698fd5c1385"
+    },
+    {
+      "path": "papers/foundational/P133_colapso_de_modelo/README.md",
+      "sha256_lf": "8e78e9291ae2d8b4d16626d914abdaac5b5b77d17c736e4a64f1075a26f11e03"
+    },
+    {
+      "path": "papers/foundational/P134_minimo_privilegio/README.md",
+      "sha256_lf": "8dc68ab163a55e0b04643644f4fb40e39b533595ead3307028f05672946f395b"
+    },
+    {
+      "path": "papers/foundational/P135_pizarra/README.md",
+      "sha256_lf": "6ad098dc7aaa45ebbedccfd22ef215ff259d1e1e4c21836df52c847f31c8418d"
+    },
+    {
+      "path": "papers/foundational/P136_red_de_contratos/README.md",
+      "sha256_lf": "62be65056f25544fe2a1bb368e619a01c0583e6b6f6cfd1475b9dd3f1e62803a"
+    },
+    {
+      "path": "papers/foundational/P137_metarrazonamiento/README.md",
+      "sha256_lf": "01ebabb2498c390c7c0e55e31518455209c77cb51ed9e984a066cebabc4c4c3a"
+    },
+    {
+      "path": "papers/foundational/P138_kqml/README.md",
+      "sha256_lf": "333ac81830fa81b36741a19c2b1fea5db41061ba2015eab63cdb38329f74b851"
+    },
+    {
+      "path": "papers/foundational/P139_niveles_de_automatizacion/README.md",
+      "sha256_lf": "56e997e806e17809da6ab01e55540280580bc826b619bdbf96f69546b5c6249f"
+    },
+    {
       "path": "papers/foundational/P13_react/README.md",
       "sha256_lf": "4a1e7eb35bdb4cea0d74ba511d147286979c57ecea361e521f218ae7bdaad43f"
+    },
+    {
+      "path": "papers/foundational/P140_mapreduce/README.md",
+      "sha256_lf": "fd3820833612c92d1d6ff15cf75733d821dadfcc6ed0c84c647147ea065b99fd"
+    },
+    {
+      "path": "papers/foundational/P141_dos_sigma/README.md",
+      "sha256_lf": "cc4f8a6b26a0bde6de2bf2f8471cad524d2cad6bc833533bb21db79c8a3af5a6"
+    },
+    {
+      "path": "papers/foundational/P142_olvido_catastrofico/README.md",
+      "sha256_lf": "6191877f17980f743fdd2e7e0bceaa02df384dc5656ec42082cd43b25b4fd8a7"
+    },
+    {
+      "path": "papers/foundational/P143_privacidad_diferencial/README.md",
+      "sha256_lf": "8140e75b7ca0e822a44c922e224816c1a69780eebd1409a00159db4572962fdb"
+    },
+    {
+      "path": "papers/foundational/P144_ml_en_seguridad/README.md",
+      "sha256_lf": "49cdbe116f5e63b791904067169c9000b7b4d5782d789eab0e39b628ac0ed52f"
+    },
+    {
+      "path": "papers/foundational/P145_ewc/README.md",
+      "sha256_lf": "2de45b6f4d86b2bbc1df69ff1f4c76e07defc4f313c2a2e0a131cf2ddb703351"
+    },
+    {
+      "path": "papers/foundational/P146_federado/README.md",
+      "sha256_lf": "1804e58f37f815d3bc34d9a54e604cd917c85f2705dc74615436733d74389303"
+    },
+    {
+      "path": "papers/foundational/P147_world_models/README.md",
+      "sha256_lf": "d65e56224ee99d5d797b7c63a54eb462faf020d585289eb36cd5af8e7f506a7b"
+    },
+    {
+      "path": "papers/foundational/P148_auditoria_interna/README.md",
+      "sha256_lf": "2e964532f8c483469be3f9a1a7a89166c3a67c9818f1b8f3357e7cd586a728fc"
     },
     {
       "path": "papers/foundational/P14_toolformer/README.md",
@@ -2026,7 +2522,7 @@
     },
     {
       "path": "student/papers/BITACORA.md",
-      "sha256_lf": "1f1d6480c8e7d7702ad8e8abd7a5d3fa0d0de571431057f90f722517a460d83b"
+      "sha256_lf": "7c5e310e17747ada481894d364e84804fdd295a44dff058e895c93711e0777b6"
     },
     {
       "path": "student/papers/P01_perceptron.md",
@@ -2141,16 +2637,140 @@
       "sha256_lf": "ef2361d0965e37c58417d01150ac24e6b2efb04e141790d7b1a75b6adb48392b"
     },
     {
+      "path": "student/papers/P118_bpe.md",
+      "sha256_lf": "9a26c7cffae23a73186d53f6d57029a039645b612919ea10c8373ef4b18691cd"
+    },
+    {
+      "path": "student/papers/P119_wavenet.md",
+      "sha256_lf": "e31c976a99c2426493357f2d71d6af05c2410dbac9537de667131dc92a796214"
+    },
+    {
       "path": "student/papers/P11_rag.md",
       "sha256_lf": "8ede8cf184651d06e553ce91ea5c4292733b63562e64bb5c3b347ac22361d247"
+    },
+    {
+      "path": "student/papers/P120_gcn.md",
+      "sha256_lf": "ba336ecc09faa0ab2c92b1b30ca3194e9866fc80d324a77cb46af2c81ff3af11"
+    },
+    {
+      "path": "student/papers/P121_mobilenets.md",
+      "sha256_lf": "a9ae876c7506f3e5418133152d18adf063e41ad0e5342e34a303c2c4062d8e84"
+    },
+    {
+      "path": "student/papers/P122_tacotron.md",
+      "sha256_lf": "0ab7945ad44940332360591d9c404ad7d094e554a2a27a37d80bf13cda66442f"
+    },
+    {
+      "path": "student/papers/P123_sentencepiece.md",
+      "sha256_lf": "d4bcc5a1226a27a314343a03d8b616aaffb0eaa8baa736c83d2fe73668fe6b2e"
+    },
+    {
+      "path": "student/papers/P124_gat.md",
+      "sha256_lf": "5fc47bffaa6e77a2b7c4fbd57813fffcd56d8e11ae35733a4978d5a8ea858e24"
+    },
+    {
+      "path": "student/papers/P125_layoutlm.md",
+      "sha256_lf": "28eb7e5584edd6d00890e07fd4e8b5a5bf1599d049c9eb79582c0b5431070eb5"
+    },
+    {
+      "path": "student/papers/P126_donut.md",
+      "sha256_lf": "38f3ce3b752e01fe7a8efc617e2ea2d43fd5e3f92a35ed24308dbe5b7a81e6a7"
+    },
+    {
+      "path": "student/papers/P127_jukebox.md",
+      "sha256_lf": "c2b89611eddc6f2fc13820a60f48dbd8898849166a72ebf909065b76117c926a"
+    },
+    {
+      "path": "student/papers/P128_nerf.md",
+      "sha256_lf": "5630e1feaa59ae33f791667c1923b3fe764f74eb9ac8e1bd289a653c0b3f892d"
+    },
+    {
+      "path": "student/papers/P129_musiclm.md",
+      "sha256_lf": "16764d07128899e54febdc3c82b417507fbc5de4372a908aeeea10fea8ac417f"
     },
     {
       "path": "student/papers/P12_instructgpt_rlhf.md",
       "sha256_lf": "a52457915736d9728ba955545c03fdda46081a78dc720da9347ea911c802465c"
     },
     {
+      "path": "student/papers/P130_vall_e.md",
+      "sha256_lf": "ccf4183c0e56fc9b38b99bb40d4e39b2ad005637940343dd16162004b9de50a3"
+    },
+    {
+      "path": "student/papers/P131_marcas_de_agua.md",
+      "sha256_lf": "d64f2b47fedf2d80c3dfd0c2e023913b8d74169f809e38c839474e79aa1f85c5"
+    },
+    {
+      "path": "student/papers/P132_gaussian_splatting.md",
+      "sha256_lf": "8f3285c41577ad4ee71b9917f342bb3433af9ae7ba6f1114bf82e7e77e40bcc0"
+    },
+    {
+      "path": "student/papers/P133_colapso_de_modelo.md",
+      "sha256_lf": "72c59929345bc2e50fa347a48c439844718642c8ebd3fd4b7134b87ad57f88b3"
+    },
+    {
+      "path": "student/papers/P134_minimo_privilegio.md",
+      "sha256_lf": "1ccae10a0dc7e3e15be226b0665fe28642aa0b07de8a850cba2ee5e1aaa61ff5"
+    },
+    {
+      "path": "student/papers/P135_pizarra.md",
+      "sha256_lf": "242744d2088f66b308806916ee0504f6e467fbda265c18009a9bdea1d5450dfb"
+    },
+    {
+      "path": "student/papers/P136_red_de_contratos.md",
+      "sha256_lf": "c848aa959a3e3feda80bdaa01a177f8c9ebe98738ce73d594cafa8ebad7f9d76"
+    },
+    {
+      "path": "student/papers/P137_metarrazonamiento.md",
+      "sha256_lf": "c5e4f1c07e86c3fc255d8f2e5c51fc2fd08dff46e4e2819fde8f1c99fc1f1983"
+    },
+    {
+      "path": "student/papers/P138_kqml.md",
+      "sha256_lf": "0954b0730257c3ce48f524330bc69bf7340243f12129c616c9fbb7bb02cec720"
+    },
+    {
+      "path": "student/papers/P139_niveles_de_automatizacion.md",
+      "sha256_lf": "0af318a78aaccd3ad55a0182bfc0a7d0ad7e86d7d2de644e9624d912e1bdc94b"
+    },
+    {
       "path": "student/papers/P13_react.md",
       "sha256_lf": "223871a51e2ea8de7bfd5238808ffd819e15bdd23ec2cb2a4e01d5e3fc2f4c54"
+    },
+    {
+      "path": "student/papers/P140_mapreduce.md",
+      "sha256_lf": "b3553ba8e1e67c6339ca456b8aa78961ccde18c43fd96222e9430d4321f38760"
+    },
+    {
+      "path": "student/papers/P141_dos_sigma.md",
+      "sha256_lf": "90938d37fe32d2a3d7258b7ba6b3beabefd05c9658ca3cb4f2aee1b8f75046b1"
+    },
+    {
+      "path": "student/papers/P142_olvido_catastrofico.md",
+      "sha256_lf": "fb9dfc1e12c552a601208a02d1d7c59430a92fc815559d1800092de7588147a5"
+    },
+    {
+      "path": "student/papers/P143_privacidad_diferencial.md",
+      "sha256_lf": "5dc02b934a1cbda52976e0b424ba7415987f868ad6ae3703e0f4b09e2e95becf"
+    },
+    {
+      "path": "student/papers/P144_ml_en_seguridad.md",
+      "sha256_lf": "3682e1ed943924f4e4b162a582c465da8b2ded3705958b24edf81d6110a4b7de"
+    },
+    {
+      "path": "student/papers/P145_ewc.md",
+      "sha256_lf": "e92dc9667304a135d6b7e64cc2e92d468281de11f528d79548d1e35e07e26a0a"
+    },
+    {
+      "path": "student/papers/P146_federado.md",
+      "sha256_lf": "c3f1409042c1590cebf834b0b9a52d9ef371f4664c08d6e3aff4acb523eebbf9"
+    },
+    {
+      "path": "student/papers/P147_world_models.md",
+      "sha256_lf": "556d637bf4f99b41c016c091b76cc29b50caddf158aa9d88fb932d154e29e66d"
+    },
+    {
+      "path": "student/papers/P148_auditoria_interna.md",
+      "sha256_lf": "00a7dd5a13f627c400ef7a9cac0dd0689fabad9982d18acce78fb6381e9bb734"
     },
     {
       "path": "student/papers/P14_toolformer.md",
@@ -2498,7 +3118,7 @@
     },
     {
       "path": "student/papers/README.md",
-      "sha256_lf": "e507354e70dcb848c7f0b4f21e1e3d0816639fd5deb1441bafad2a3b2a5d3ce3"
+      "sha256_lf": "5f1bc27df5df935175a36271fd43f3dd72dc7dc2f045e9414ee417f280b5b3c8"
     }
   ]
 }

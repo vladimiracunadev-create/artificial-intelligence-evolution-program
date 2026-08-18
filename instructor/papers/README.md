@@ -121,6 +121,37 @@ Una guía por paper con plan de sesión de 90 minutos, errores esperables en el 
 | P115 · Hojas de datos para conjuntos de datos | [P115_hojas_de_datos.md](P115_hojas_de_datos.md) |
 | P116 · Por qué Johnny no sabe hacer prompts: cómo los no expertos intentan (y fallan) diseñar prompts | [P116_gestion_de_prompts.md](P116_gestion_de_prompts.md) |
 | P117 · AgentBench: evaluar modelos de lenguaje como agentes | [P117_agentops.md](P117_agentops.md) |
+| P118 · Traducción automática neuronal de palabras raras con unidades de subpalabra | [P118_bpe.md](P118_bpe.md) |
+| P119 · WaveNet: un modelo generativo de audio en crudo | [P119_wavenet.md](P119_wavenet.md) |
+| P120 · Clasificación semisupervisada con redes convolucionales de grafo | [P120_gcn.md](P120_gcn.md) |
+| P121 · MobileNets: redes convolucionales eficientes para visión en dispositivos móviles | [P121_mobilenets.md](P121_mobilenets.md) |
+| P122 · Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos | [P122_tacotron.md](P122_tacotron.md) |
+| P123 · SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma | [P123_sentencepiece.md](P123_sentencepiece.md) |
+| P124 · Redes de atención sobre grafos | [P124_gat.md](P124_gat.md) |
+| P125 · LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos | [P125_layoutlm.md](P125_layoutlm.md) |
+| P126 · Transformer de comprensión de documentos sin OCR | [P126_donut.md](P126_donut.md) |
+| P127 · Jukebox: un modelo generativo de música | [P127_jukebox.md](P127_jukebox.md) |
+| P128 · NeRF: representar escenas como campos de radiancia neuronal | [P128_nerf.md](P128_nerf.md) |
+| P129 · MusicLM: generar música a partir de texto | [P129_musiclm.md](P129_musiclm.md) |
+| P130 · Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos | [P130_vall_e.md](P130_vall_e.md) |
+| P131 · Una marca de agua para modelos de lenguaje grandes | [P131_marcas_de_agua.md](P131_marcas_de_agua.md) |
+| P132 · Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real | [P132_gaussian_splatting.md](P132_gaussian_splatting.md) |
+| P133 · Los modelos de IA colapsan al entrenarse con datos generados recursivamente | [P133_colapso_de_modelo.md](P133_colapso_de_modelo.md) |
+| P134 · La protección de la información en los sistemas informáticos | [P134_minimo_privilegio.md](P134_minimo_privilegio.md) |
+| P135 · El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre | [P135_pizarra.md](P135_pizarra.md) |
+| P136 · El protocolo de red de contratos: comunicación y control en un resolutor distribuido | [P136_red_de_contratos.md](P136_red_de_contratos.md) |
+| P137 · Principios del metarrazonamiento | [P137_metarrazonamiento.md](P137_metarrazonamiento.md) |
+| P138 · KQML como lenguaje de comunicación entre agentes | [P138_kqml.md](P138_kqml.md) |
+| P139 · Un modelo de tipos y niveles de interacción humana con la automatización | [P139_niveles_de_automatizacion.md](P139_niveles_de_automatizacion.md) |
+| P140 · MapReduce: procesamiento simplificado de datos en clústeres grandes | [P140_mapreduce.md](P140_mapreduce.md) |
+| P141 · El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual | [P141_dos_sigma.md](P141_dos_sigma.md) |
+| P142 · Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial | [P142_olvido_catastrofico.md](P142_olvido_catastrofico.md) |
+| P143 · Calibrar el ruido a la sensibilidad en el análisis privado de datos | [P143_privacidad_diferencial.md](P143_privacidad_diferencial.md) |
+| P144 · Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones | [P144_ml_en_seguridad.md](P144_ml_en_seguridad.md) |
+| P145 · Superar el olvido catastrófico en redes neuronales | [P145_ewc.md](P145_ewc.md) |
+| P146 · Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados | [P146_federado.md](P146_federado.md) |
+| P147 · Los modelos recurrentes del mundo facilitan la evolución de políticas | [P147_world_models.md](P147_world_models.md) |
+| P148 · Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna | [P148_auditoria_interna.md](P148_auditoria_interna.md) |
 
 ---
 

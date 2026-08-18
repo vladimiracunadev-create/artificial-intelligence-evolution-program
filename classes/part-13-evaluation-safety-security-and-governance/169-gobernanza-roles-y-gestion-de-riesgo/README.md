@@ -231,6 +231,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [ISO/IEC 23894:2023 — Gestión del riesgo de la IA](https://www.iso.org/standard/77304.html)
 - [ISO 31000:2018 — Gestión del riesgo (principios y directrices)](https://www.iso.org/standard/65694.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P148 · Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna](../../../papers/foundational/P148_auditoria_interna/README.md) | 2020 | Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye. | [notebook](../../../notebooks/papers/P148_auditoria_interna.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

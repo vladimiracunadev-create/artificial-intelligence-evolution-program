@@ -2,7 +2,7 @@
 
 # 📜 Eje de papers fundacionales
 
-## **117 hitos · 125 notebooks ejecutables · 5 anexos matemáticos · de Pearson (1901) a 2025**
+## **148 hitos · 156 notebooks ejecutables · 5 anexos matemáticos · de Pearson (1901) a 2025**
 
 **La historia de la IA contada por los papers que la movieron —
 no como una colección de PDFs, sino como una cadena de problemas resueltos
@@ -20,7 +20,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 <!-- stats:inicio -->
 | 📄 Papers | 📓 Notebooks | 🧪 Motores | 🧮 Anexos | 🎓 Niveles | 🔗 Clases enlazadas |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **117** | **125** | **117** | **5** | **L0–L5** | **146** |
+| **148** | **156** | **148** | **5** | **L0–L5** | **171** |
 <!-- stats:fin -->
 
 </div>
@@ -50,9 +50,9 @@ largas → la atención lo elimina → si la atención basta, sobra la recurrenc
 > en Python estándar: no reproducen los experimentos originales y lo declaran en cada salida.
 
 <!-- rutas:inicio -->
-## 🧭 13 rutas · 117 papers
+## 🧭 17 rutas · 148 papers
 
-El eje tiene 13 bloques con propósitos distintos. **No se estudian igual.**
+El eje tiene 17 bloques con propósitos distintos. **No se estudian igual.**
 Dentro de cada uno, los papers van **en orden cronológico**; entre bloques no hay orden,
 porque responden a preguntas diferentes.
 
@@ -71,6 +71,10 @@ flowchart TD
     R11["ruta_probabilistica<br/>P87–P95 · 9 papers<br/>1763–2019"]
     R12["ruta_encarnada<br/>P96–P106 · 11 papers<br/>1960–2024"]
     R13["ruta_operacion<br/>P107–P117 · 11 papers<br/>2010–2023"]
+    R14["ruta_percepcion<br/>P118–P126 · 9 papers<br/>2016–2022"]
+    R15["ruta_medios<br/>P127–P133 · 7 papers<br/>2020–2024"]
+    R16["ruta_agentes_operativos<br/>P134–P140 · 7 papers<br/>1975–2004"]
+    R17["ruta_gobernanza<br/>P141–P148 · 8 papers<br/>1984–2020"]
     R1 -.->|"se estudia primero,<br/>en orden"| R2
 ```
 
@@ -281,6 +285,65 @@ P107–P117: lo que sostiene un sistema en producción y no aparece en ningún a
 | [P115](foundational/P115_hojas_de_datos/README.md) | Hojas de datos | 2021 | L1 | Traslada a los conjuntos de datos la hoja de características que acompaña a cualquier componente electrónico: qué es, cómo se hizo y para qué no sirve. |
 | [P116](foundational/P116_gestion_de_prompts/README.md) | Por qué Johnny no sabe hacer prompts | 2023 | L2 | Documenta con usuarios reales que iterar prompts sin conjunto de evaluación produce mejoras imaginarias, y por qué la intuición falla sistemáticamente. |
 | [P117](foundational/P117_agentops/README.md) | AgentBench | 2023 | L3 | Evalúa agentes en ocho entornos distintos y hace visible que la tasa agregada esconde dónde y cómo fallan. |
+
+### ruta_percepcion
+
+P118–P126: cómo entra el mundo en el modelo cuando no es texto limpio. Partir la palabra en unidades que siempre existen, modelar la forma de onda, aprender sobre grafos, caber en un dispositivo pequeño y leer un documento donde la posición es parte del significado. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P118](foundational/P118_bpe/README.md) | Unidades de subpalabra | 2016 | L2 | Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola. |
+| [P119](foundational/P119_wavenet/README.md) | WaveNet | 2016 | L3 | Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz. |
+| [P120](foundational/P120_gcn/README.md) | Redes convolucionales de grafo | 2017 | L2 | Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados. |
+| [P121](foundational/P121_mobilenets/README.md) | MobileNets | 2017 | L2 | Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige. |
+| [P122](foundational/P122_tacotron/README.md) | Tacotron 2 | 2018 | L2 | Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media. |
+| [P123](foundational/P123_sentencepiece/README.md) | SentencePiece | 2018 | L2 | Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma. |
+| [P124](foundational/P124_gat/README.md) | Redes de atención sobre grafos | 2018 | L3 | Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo. |
+| [P125](foundational/P125_layoutlm/README.md) | LayoutLM | 2020 | L2 | Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas. |
+| [P126](foundational/P126_donut/README.md) | Donut | 2022 | L3 | Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir. |
+
+### ruta_medios
+
+P127–P133: generar medios y el problema que eso crea. Música con estructura, escenas 3D que no se modelan a mano, voces que se copian con tres segundos. Cierra con las dos consecuencias inevitables: cómo saber qué se generó y qué le pasa a un corpus que se alimenta de sí mismo. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P127](foundational/P127_jukebox/README.md) | Jukebox | 2020 | L3 | Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente. |
+| [P128](foundational/P128_nerf/README.md) | NeRF | 2020 | L3 | Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto. |
+| [P129](foundational/P129_musiclm/README.md) | MusicLM | 2023 | L3 | Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar. |
+| [P130](foundational/P130_vall_e/README.md) | VALL-E | 2023 | L3 | Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada. |
+| [P131](foundational/P131_marcas_de_agua/README.md) | Una marca de agua | 2023 | L2 | Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla. |
+| [P132](foundational/P132_gaussian_splatting/README.md) | Splatting de gaussianas | 2023 | L3 | Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan. |
+| [P133](foundational/P133_colapso_de_modelo/README.md) | Colapso de modelo | 2024 | L2 | Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno. |
+
+### ruta_agentes_operativos
+
+P134–P140: lo que hace falta para que un agente opere de verdad, y que se resolvió décadas antes de que hubiera agentes. Qué permisos darle, cómo coordinar varios sin un jefe que lo sepa todo, cuánto dejarle pensar, en qué idioma hablan entre ellos, cuánto dejar decidir a la máquina y cómo repartir el trabajo. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P134](foundational/P134_minimo_privilegio/README.md) | La protección de la información | 1975 | L1 | Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después. |
+| [P135](foundational/P135_pizarra/README.md) | Hearsay-II | 1980 | L2 | Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí. |
+| [P136](foundational/P136_red_de_contratos/README.md) | El protocolo de red de contratos | 1980 | L2 | Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué. |
+| [P137](foundational/P137_metarrazonamiento/README.md) | Principios del metarrazonamiento | 1991 | L3 | Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta. |
+| [P138](foundational/P138_kqml/README.md) | KQML | 1994 | L2 | Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M. |
+| [P139](foundational/P139_niveles_de_automatizacion/README.md) | Niveles de automatización | 2000 | L2 | Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace. |
+| [P140](foundational/P140_mapreduce/README.md) | MapReduce | 2004 | L1 | Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas. |
+
+### ruta_gobernanza
+
+P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el sistema hizo lo que hizo, y qué límites tiene aprender de datos que son de personas. Enseñar, olvidar y recordar, proteger, defender, aprender sin centralizar, imaginar el mundo y rendir cuentas. Cierra el eje con la pregunta de quién responde. Ordenada por año.
+
+| # | Paper | Año | Nivel | Lo que aportó |
+|---|---|---:|:---:|---|
+| [P141](foundational/P141_dos_sigma/README.md) | El problema de las dos sigmas | 1984 | L1 | Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa. |
+| [P142](foundational/P142_olvido_catastrofico/README.md) | Interferencia catastrófica | 1989 | L2 | Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso. |
+| [P143](foundational/P143_privacidad_diferencial/README.md) | Calibrar el ruido a la sensibilidad | 2006 | L3 | Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla. |
+| [P144](foundational/P144_ml_en_seguridad/README.md) | Fuera del mundo cerrado | 2010 | L2 | Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo. |
+| [P145](foundational/P145_ewc/README.md) | Superar el olvido catastrófico | 2017 | L3 | Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher. |
+| [P146](foundational/P146_federado/README.md) | Aprendizaje federado | 2017 | L2 | Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros. |
+| [P147](foundational/P147_world_models/README.md) | Modelos del mundo | 2018 | L3 | Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real. |
+| [P148](foundational/P148_auditoria_interna/README.md) | Cerrar la brecha de responsabilidad | 2020 | L1 | Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye. |
 <!-- rutas:fin -->
 
 ## ⏳ ¿Por qué el eje no llega a 2026?
@@ -341,7 +404,7 @@ flowchart LR
     C --> L["🧪 laboratorio de la clase"]
 ```
 
-Las **146 clases** enlazadas llevan un bloque generado por
+Las **171 clases** enlazadas llevan un bloque generado por
 [`scripts/link_papers_to_classes.py`](../scripts/link_papers_to_classes.py) que lista sus
 papers, el año, qué desbloqueó cada uno y su notebook. Se regenera desde `papers.json`, así que
 no puede desincronizarse: `--check` lo verifica en CI.

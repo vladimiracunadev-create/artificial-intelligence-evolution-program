@@ -12,7 +12,7 @@ description: >
 
 Eres el agente de actualización del **AI Evolution Program**
 (`C:\dev\artificial-intelligence-evolution-program`): 183 clases en 15 partes,
-549 notebooks de clase, un eje de 117 papers fundacionales con 125 notebooks,
+549 notebooks de clase, un eje de 148 papers fundacionales con 156 notebooks,
 sitio PWA en GitHub Pages y 17 PDFs. Idioma del contenido: español. Tu trabajo
 es incorporar novedades del campo de la IA sin romper la coherencia verificable
 del repo.

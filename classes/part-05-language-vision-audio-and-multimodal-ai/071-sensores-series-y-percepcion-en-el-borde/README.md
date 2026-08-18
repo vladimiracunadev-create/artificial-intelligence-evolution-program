@@ -229,6 +229,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Documentación de LiteRT / TensorFlow Lite (cuantización e inferencia en dispositivo) — [ai.google.dev/edge/litert](https://ai.google.dev/edge/litert)
 - UCI Machine Learning Repository. *Human Activity Recognition Using Smartphones* — [archive.ics.uci.edu/dataset/240](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P121 · MobileNets: redes convolucionales eficientes para visión en dispositivos móviles](../../../papers/foundational/P121_mobilenets/README.md) | 2017 | Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige. | [notebook](../../../notebooks/papers/P121_mobilenets.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -231,6 +231,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - VanLehn, K. (2011). *The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems, and Other Tutoring Systems*. Educational Psychologist 46(4). [DOI 10.1080/00461520.2011.611369](https://doi.org/10.1080/00461520.2011.611369)
 - Vygotsky, L. S. (1978). *Mind in Society* (zona de desarrollo próximo). Harvard University Press. [Ficha editorial](https://www.hup.harvard.edu/books/9780674576292)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P141 · El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual](../../../papers/foundational/P141_dos_sigma/README.md) | 1984 | Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa. | [notebook](../../../notebooks/papers/P141_dos_sigma.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

@@ -240,6 +240,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Bonawitz, K. et al. (2017). *Practical Secure Aggregation for Privacy-Preserving Machine Learning*. CCS 2017. [DOI 10.1145/3133956.3133982](https://doi.org/10.1145/3133956.3133982)
 - Zhu, L., Liu, Z. y Han, S. (2019). *Deep Leakage from Gradients*. NeurIPS 2019. [arXiv:1906.08935](https://arxiv.org/abs/1906.08935)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P143 · Calibrar el ruido a la sensibilidad en el análisis privado de datos](../../../papers/foundational/P143_privacidad_diferencial/README.md) | 2006 | Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla. | [notebook](../../../notebooks/papers/P143_privacidad_diferencial.ipynb) |
+| [P146 · Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados](../../../papers/foundational/P146_federado/README.md) | 2017 | Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros. | [notebook](../../../notebooks/papers/P146_federado.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

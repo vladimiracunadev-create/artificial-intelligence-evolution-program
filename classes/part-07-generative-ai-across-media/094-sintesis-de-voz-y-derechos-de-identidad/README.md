@@ -262,6 +262,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Jia, Y. et al. (2018). *Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis* (SV2TTS). [arXiv:1806.04558](https://arxiv.org/abs/1806.04558)
 - C2PA. *Content Credentials: C2PA Technical Specification*. [c2pa.org/specifications](https://c2pa.org/specifications/specifications/2.2/index.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P130 · Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos](../../../papers/foundational/P130_vall_e/README.md) | 2023 | Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada. | [notebook](../../../notebooks/papers/P130_vall_e.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

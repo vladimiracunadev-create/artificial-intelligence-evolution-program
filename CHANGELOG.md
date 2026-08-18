@@ -19,6 +19,85 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.14.0 — 2026-08-18
+
+### El eje de papers pasa de 117 a 148: percepción, medios, agentes operativos y gobernanza
+
+Las dos tandas anteriores cerraron el pasado del campo y su operación. Quedaban **37 clases sin un
+solo paper**, y la lectura cómoda —«son todas de proyecto»— era falsa: solo 11 lo eran. Las otras 26
+tenían fuente primaria evidente y nadie la había escrito.
+
+Esta versión añade **31 papers (P118–P148)** en cuatro rutas nuevas. Cobertura: de **146 a 171
+clases** enlazadas de 183, y de 218 a **251 enlaces**.
+
+| Ruta nueva | Papers | Recorre | Clases que cierra |
+|---|---:|---|---|
+| `ruta_percepcion` | P118–P126 (9) | BPE 2016 · WaveNet 2016 · GCN 2017 · MobileNets 2017 · Tacotron 2 2018 · SentencePiece 2018 · GAT 2018 · LayoutLM 2020 · Donut 2022 | 056, 063, 068, 071, 073 |
+| `ruta_medios` | P127–P133 (7) | Jukebox 2020 · NeRF 2020 · MusicLM 2023 · VALL-E 2023 · marcas de agua 2023 · Gaussian Splatting 2023 · colapso de modelo 2024 | 093, 094, 096, 097, 098 |
+| `ruta_agentes_operativos` | P134–P140 (7) | Saltzer-Schroeder 1975 · Hearsay-II 1980 · red de contratos 1980 · metarrazonamiento 1991 · KQML 1994 · niveles de automatización 2000 · MapReduce 2004 | 119–121, 126, 128, 130, 134 |
+| `ruta_gobernanza` | P141–P148 (8) | Bloom 1984 · olvido catastrófico 1989 · privacidad diferencial 2006 · Sommer-Paxson 2010 · EWC 2017 · federado 2017 · world models 2018 · auditoría interna 2020 | 165, 169, 170, 174, 176, 177, 179, 180 |
+
+Cada paper trae el contrato completo del eje: entrada en el catálogo con fuente primaria verificada,
+**ficha de 18 secciones** escrita a mano, **motor determinista** propio y los derivados generados.
+Son **31 motores nuevos** (148 en total) y **31 notebooks nuevos** (156 en total).
+
+Las 31 fuentes se verificaron antes de escribir: 21 contra Crossref por DOI y 10 contra la API de
+arXiv. Un candidato cambió por esa verificación —el DOI de AI Magazine de Zilberstein no resuelve,
+así que la clase 121 se ancla en Russell y Wefald (1991)—.
+
+### Veintiuna correcciones: que el número sostenga la frase
+
+La disciplina de las dos tandas anteriores se mantiene. Veintiún motores se reescribieron porque su
+evidencia afirmaba algo que su propia salida desmentía. Cinco eran **defectos de programación**, no
+de redacción:
+
+| Motor | El defecto |
+|---|---|
+| `olvido_catastrofico` | `[random.Random(s).gauss(0,1) for _ in range(D)]` crea un generador **nuevo por elemento**: las dos «reglas» eran vectores constantes y por tanto **la misma tarea** (coseno 1,000). Además el conjunto de prueba tenía otra regla que el de entrenamiento |
+| `mapreduce` | usaba `hash()` de Python, **aleatorizado por proceso**: el motor no habría sido determinista entre ejecuciones |
+| `world_models` | argumento por defecto mal enlazado: `TypeError` al ejecutar |
+| `bpe` | el vocabulario se construía de las segmentaciones y no de la tabla de fusiones, que es lo que en BPE garantiza cobertura total |
+| `niveles_de_automatizacion` | cada nivel sorteaba **su propio** conjunto de errores, así que las detecciones no eran comparables entre niveles |
+
+Y dieciséis afirmaciones que los números no sostenían:
+
+| Motor | Decía | Medía |
+|---|---|---|
+| `jukebox` | 23,8 s son «la canción entera» | la canción dura **240 s** |
+| `musiclm` | la ventana acústica no ve el motivo | **sí lo veía**; y el «motivo visible» era la propia reexposición |
+| `marcas_de_agua` | «un tuit no se puede marcar» | 25 tokens → **30/30** detectados |
+| `colapso_de_modelo` | las colas desaparecen | **crecían** |
+| `gaussian_splatting` | 174 626× más rápido | conteo bruto irreal frente al ~1000× medido |
+| `gcn` | con 20 capas la exactitud cae | seguía en **1,0** |
+| `tacotron` | la compresión del mel lo hace tratable | solo **3,2×** |
+| `gat` | limpio, atención y media «casi lo mismo» | la media era **mejor** |
+| `wavenet` | μ-law da más resolución en amplitudes bajas | **empate** (7 y 7) |
+| `pizarra` | la pizarra reconstruye la frase | resolvía **2 de 4**; y la «tubería» era idéntica a la pizarra |
+| `ewc` | «B no se resiente» y «con λ=60 A se conserva» | B caía 0,975→0,725 y con λ=60 **ambas** al azar |
+| `federado` | la heterogeneidad degrada el resultado | **0,993 frente a 0,993** |
+
+En cuatro casos el hallazgo honesto resultó más interesante que la afirmación original y se dejó
+como está:
+
+- **`colapso_de_modelo`** tiene **dos** componentes, no uno: la distribución se estrecha (rango 3,2×
+  menor) **y deriva** (media −0,087 → −1,447). Ese segundo efecto es el que hace el fenómeno
+  indetectable desde dentro, porque cada generación ajusta bien los datos que recibe.
+- **`gat`**: con el grafo limpio, promediar uniformemente es **mejor** que atender. Atender cuesta
+  algo cuando no hay ruido que filtrar.
+- **`ewc`** no conserva las dos tareas gratis: A se recupera de 0,655 a 0,97 y **B paga 0,25
+  puntos**. Es un intercambio explícito, que es justamente la aportación del método.
+- **`federado`** resistió todos los intentos de romperlo: incluso con cada cliente viendo **una sola
+  clase** llega a 0,988, porque veinte clientes simétricos y un modelo lineal promedian limpiamente.
+  El motor **declara en su propia evidencia** que no reproduce el fallo por heterogeneidad, y por
+  qué.
+
+### Nota sobre alcance
+
+Los 148 papers cubren 171 de las 183 clases. De las 12 restantes, 10 son de proyecto y una es el
+capstone: su fuente es el material propio del programa. Las otras —panorama del ecosistema de
+cómputo y vigilancia de la frontera— se dejan fuera a propósito: anclarlas en un artículo
+fundacional sería forzado, y se declara en vez de fingir cobertura.
+
 ## 0.13.0 — 2026-08-17
 
 ### El eje de papers pasa de 86 a 117: probabilidad, IA encarnada y operación

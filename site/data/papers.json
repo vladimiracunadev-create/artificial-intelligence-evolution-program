@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-17",
-  "paper_count": 117,
+  "updated": "2026-08-18",
+  "paper_count": 148,
   "niveles": {
     "L0": "Orientación: qué es un paper, cómo se publica, cómo se cita.",
     "L1": "Fundamentos: leer la idea y el contexto histórico sin ejecutar nada.",
@@ -2918,6 +2918,808 @@
         "agentes"
       ],
       "notebook": "notebooks/papers/P117_agentops.ipynb"
+    },
+    {
+      "id": "P118",
+      "page": "P118_bpe.html",
+      "titulo": "Traducción automática neuronal de palabras raras con unidades de subpalabra",
+      "original": "Neural Machine Translation of Rare Words with Subword Units",
+      "autoria": [
+        "Rico Sennrich",
+        "Barry Haddow",
+        "Alexandra Birch"
+      ],
+      "anio": 2016,
+      "venue": "ACL 2016, 1715–1725",
+      "nivel": "L2",
+      "motor": "bpe",
+      "hito": "Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola.",
+      "keywords": [
+        "tokenización",
+        "subpalabras",
+        "BPE",
+        "vocabulario abierto",
+        "traducción"
+      ],
+      "notebook": "notebooks/papers/P118_bpe.ipynb"
+    },
+    {
+      "id": "P119",
+      "page": "P119_wavenet.html",
+      "titulo": "WaveNet: un modelo generativo de audio en crudo",
+      "original": "WaveNet: A Generative Model for Raw Audio",
+      "autoria": [
+        "Aäron van den Oord",
+        "Sander Dieleman",
+        "Heiga Zen",
+        "Karen Simonyan",
+        "Oriol Vinyals",
+        "Alex Graves",
+        "Nal Kalchbrenner",
+        "Andrew Senior",
+        "Koray Kavukcuoglu"
+      ],
+      "anio": 2016,
+      "venue": "arXiv:1609.03499",
+      "nivel": "L3",
+      "motor": "wavenet",
+      "hito": "Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz.",
+      "keywords": [
+        "audio",
+        "convolución dilatada",
+        "causalidad",
+        "μ-law",
+        "síntesis de voz"
+      ],
+      "notebook": "notebooks/papers/P119_wavenet.ipynb"
+    },
+    {
+      "id": "P120",
+      "page": "P120_gcn.html",
+      "titulo": "Clasificación semisupervisada con redes convolucionales de grafo",
+      "original": "Semi-Supervised Classification with Graph Convolutional Networks",
+      "autoria": [
+        "Thomas N. Kipf",
+        "Max Welling"
+      ],
+      "anio": 2017,
+      "venue": "ICLR 2017 · arXiv:1609.02907",
+      "nivel": "L2",
+      "motor": "gcn",
+      "hito": "Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados.",
+      "keywords": [
+        "grafos",
+        "semisupervisado",
+        "propagación",
+        "sobre-suavizado",
+        "homofilia"
+      ],
+      "notebook": "notebooks/papers/P120_gcn.ipynb"
+    },
+    {
+      "id": "P121",
+      "page": "P121_mobilenets.html",
+      "titulo": "MobileNets: redes convolucionales eficientes para visión en dispositivos móviles",
+      "original": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications",
+      "autoria": [
+        "Andrew G. Howard",
+        "Menglong Zhu",
+        "Bo Chen",
+        "Dmitry Kalenichenko",
+        "Weijun Wang",
+        "Tobias Weyand",
+        "Marco Andreetto",
+        "Hartwig Adam"
+      ],
+      "anio": 2017,
+      "venue": "arXiv:1704.04861",
+      "nivel": "L2",
+      "motor": "mobilenets",
+      "hito": "Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige.",
+      "keywords": [
+        "eficiencia",
+        "convolución separable",
+        "borde",
+        "presupuesto de cómputo",
+        "cuantización"
+      ],
+      "notebook": "notebooks/papers/P121_mobilenets.ipynb"
+    },
+    {
+      "id": "P122",
+      "page": "P122_tacotron.html",
+      "titulo": "Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos",
+      "original": "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions",
+      "autoria": [
+        "Jonathan Shen",
+        "Ruoming Pang",
+        "Ron J. Weiss",
+        "Mike Schuster",
+        "Navdeep Jaitly",
+        "Zongheng Yang",
+        "Zhifeng Chen",
+        "Yu Zhang",
+        "Yuxuan Wang",
+        "RJ Skerry-Ryan",
+        "Rif A. Saurous",
+        "Yannis Agiomyrgiannakis",
+        "Yonghui Wu"
+      ],
+      "anio": 2018,
+      "venue": "ICASSP 2018, 4779–4783",
+      "nivel": "L2",
+      "motor": "tacotron",
+      "hito": "Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media.",
+      "keywords": [
+        "síntesis de voz",
+        "espectrograma mel",
+        "atención monótona",
+        "vocoder",
+        "arquitectura en dos etapas"
+      ],
+      "notebook": "notebooks/papers/P122_tacotron.ipynb"
+    },
+    {
+      "id": "P123",
+      "page": "P123_sentencepiece.html",
+      "titulo": "SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma",
+      "original": "SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing",
+      "autoria": [
+        "Taku Kudo",
+        "John Richardson"
+      ],
+      "anio": 2018,
+      "venue": "EMNLP 2018 (demos), 66–71",
+      "nivel": "L2",
+      "motor": "sentencepiece",
+      "hito": "Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma.",
+      "keywords": [
+        "tokenización",
+        "reversibilidad",
+        "modelo unigrama",
+        "multilingüe",
+        "regularización de subpalabra"
+      ],
+      "notebook": "notebooks/papers/P123_sentencepiece.ipynb"
+    },
+    {
+      "id": "P124",
+      "page": "P124_gat.html",
+      "titulo": "Redes de atención sobre grafos",
+      "original": "Graph Attention Networks",
+      "autoria": [
+        "Petar Veličković",
+        "Guillem Cucurull",
+        "Arantxa Casanova",
+        "Adriana Romero",
+        "Pietro Liò",
+        "Yoshua Bengio"
+      ],
+      "anio": 2018,
+      "venue": "ICLR 2018 · arXiv:1710.10903",
+      "nivel": "L3",
+      "motor": "gat",
+      "hito": "Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo.",
+      "keywords": [
+        "grafos",
+        "atención",
+        "agregación ponderada",
+        "inductivo",
+        "vecindario"
+      ],
+      "notebook": "notebooks/papers/P124_gat.ipynb"
+    },
+    {
+      "id": "P125",
+      "page": "P125_layoutlm.html",
+      "titulo": "LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos",
+      "original": "LayoutLM: Pre-training of Text and Layout for Document Image Understanding",
+      "autoria": [
+        "Yiheng Xu",
+        "Minghao Li",
+        "Lei Cui",
+        "Shaohan Huang",
+        "Furu Wei",
+        "Ming Zhou"
+      ],
+      "anio": 2020,
+      "venue": "KDD 2020, 1192–1200",
+      "nivel": "L2",
+      "motor": "layoutlm",
+      "hito": "Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas.",
+      "keywords": [
+        "documentos",
+        "disposición",
+        "OCR",
+        "extracción de campos",
+        "multimodal"
+      ],
+      "notebook": "notebooks/papers/P125_layoutlm.ipynb"
+    },
+    {
+      "id": "P126",
+      "page": "P126_donut.html",
+      "titulo": "Transformer de comprensión de documentos sin OCR",
+      "original": "OCR-free Document Understanding Transformer",
+      "autoria": [
+        "Geewook Kim",
+        "Teakgyu Hong",
+        "Moonbin Yim",
+        "JeongYeon Nam",
+        "Jinyoung Park",
+        "Jinyeong Yim",
+        "Wonseok Hwang",
+        "Sangdoo Yun",
+        "Dongyoon Han",
+        "Seunghyun Park"
+      ],
+      "anio": 2022,
+      "venue": "ECCV 2022, 498–517",
+      "nivel": "L3",
+      "motor": "donut",
+      "hito": "Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir.",
+      "keywords": [
+        "sin OCR",
+        "extremo a extremo",
+        "propagación de errores",
+        "documentos",
+        "salida estructurada"
+      ],
+      "notebook": "notebooks/papers/P126_donut.ipynb"
+    },
+    {
+      "id": "P127",
+      "page": "P127_jukebox.html",
+      "titulo": "Jukebox: un modelo generativo de música",
+      "original": "Jukebox: A Generative Model for Music",
+      "autoria": [
+        "Prafulla Dhariwal",
+        "Heewoo Jun",
+        "Christine Payne",
+        "Jong Wook Kim",
+        "Alec Radford",
+        "Ilya Sutskever"
+      ],
+      "anio": 2020,
+      "venue": "arXiv:2005.00341",
+      "nivel": "L3",
+      "motor": "jukebox",
+      "hito": "Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente.",
+      "keywords": [
+        "música",
+        "cuantización vectorial",
+        "jerarquía temporal",
+        "audio generativo",
+        "estructura larga"
+      ],
+      "notebook": "notebooks/papers/P127_jukebox.ipynb"
+    },
+    {
+      "id": "P128",
+      "page": "P128_nerf.html",
+      "titulo": "NeRF: representar escenas como campos de radiancia neuronal",
+      "original": "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis",
+      "autoria": [
+        "Ben Mildenhall",
+        "Pratul P. Srinivasan",
+        "Matthew Tancik",
+        "Jonathan T. Barron",
+        "Ravi Ramamoorthi",
+        "Ren Ng"
+      ],
+      "anio": 2020,
+      "venue": "ECCV 2020, 405–421",
+      "nivel": "L3",
+      "motor": "nerf",
+      "hito": "Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto.",
+      "keywords": [
+        "síntesis de vistas",
+        "representación implícita",
+        "renderizado volumétrico",
+        "codificación posicional",
+        "3D"
+      ],
+      "notebook": "notebooks/papers/P128_nerf.ipynb"
+    },
+    {
+      "id": "P129",
+      "page": "P129_musiclm.html",
+      "titulo": "MusicLM: generar música a partir de texto",
+      "original": "MusicLM: Generating Music From Text",
+      "autoria": [
+        "Andrea Agostinelli",
+        "Timo I. Denk",
+        "Zalán Borsos",
+        "Jesse Engel",
+        "Mauro Verzetti",
+        "Antoine Caillon",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2301.11325",
+      "nivel": "L3",
+      "motor": "musiclm",
+      "hito": "Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar.",
+      "keywords": [
+        "texto a música",
+        "tokens semánticos",
+        "jerarquía",
+        "MusicCaps",
+        "evaluación"
+      ],
+      "notebook": "notebooks/papers/P129_musiclm.ipynb"
+    },
+    {
+      "id": "P130",
+      "page": "P130_vall_e.html",
+      "titulo": "Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos",
+      "original": "Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers",
+      "autoria": [
+        "Chengyi Wang",
+        "Sanyuan Chen",
+        "Yu Wu",
+        "Ziqiang Zhang",
+        "Long Zhou",
+        "Shujie Liu",
+        "y otros"
+      ],
+      "anio": 2023,
+      "venue": "arXiv:2301.02111",
+      "nivel": "L3",
+      "motor": "vall_e",
+      "hito": "Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada.",
+      "keywords": [
+        "síntesis de voz",
+        "clonación",
+        "códec neuronal",
+        "aviso en contexto",
+        "identidad vocal"
+      ],
+      "notebook": "notebooks/papers/P130_vall_e.ipynb"
+    },
+    {
+      "id": "P131",
+      "page": "P131_marcas_de_agua.html",
+      "titulo": "Una marca de agua para modelos de lenguaje grandes",
+      "original": "A Watermark for Large Language Models",
+      "autoria": [
+        "John Kirchenbauer",
+        "Jonas Geiping",
+        "Yuxin Wen",
+        "Jonathan Katz",
+        "Ian Miers",
+        "Tom Goldstein"
+      ],
+      "anio": 2023,
+      "venue": "ICML 2023 · arXiv:2301.10226",
+      "nivel": "L2",
+      "motor": "marcas_de_agua",
+      "hito": "Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla.",
+      "keywords": [
+        "marca de agua",
+        "procedencia",
+        "detección",
+        "prueba estadística",
+        "autenticidad"
+      ],
+      "notebook": "notebooks/papers/P131_marcas_de_agua.ipynb"
+    },
+    {
+      "id": "P132",
+      "page": "P132_gaussian_splatting.html",
+      "titulo": "Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real",
+      "original": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+      "autoria": [
+        "Bernhard Kerbl",
+        "Georgios Kopanas",
+        "Thomas Leimkühler",
+        "George Drettakis"
+      ],
+      "anio": 2023,
+      "venue": "ACM Transactions on Graphics, 42(4)",
+      "nivel": "L3",
+      "motor": "gaussian_splatting",
+      "hito": "Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan.",
+      "keywords": [
+        "renderizado en tiempo real",
+        "primitivas explícitas",
+        "rasterización",
+        "campos de radiancia",
+        "compromiso memoria-cómputo"
+      ],
+      "notebook": "notebooks/papers/P132_gaussian_splatting.ipynb"
+    },
+    {
+      "id": "P133",
+      "page": "P133_colapso_de_modelo.html",
+      "titulo": "Los modelos de IA colapsan al entrenarse con datos generados recursivamente",
+      "original": "AI models collapse when trained on recursively generated data",
+      "autoria": [
+        "Ilia Shumailov",
+        "Zakhar Shumaylov",
+        "Yiren Zhao",
+        "Nicolas Papernot",
+        "Ross Anderson",
+        "Yarin Gal"
+      ],
+      "anio": 2024,
+      "venue": "Nature, 631, 755–759",
+      "nivel": "L2",
+      "motor": "colapso_de_modelo",
+      "hito": "Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno.",
+      "keywords": [
+        "datos sintéticos",
+        "colapso",
+        "contaminación de corpus",
+        "error de muestreo",
+        "procedencia"
+      ],
+      "notebook": "notebooks/papers/P133_colapso_de_modelo.ipynb"
+    },
+    {
+      "id": "P134",
+      "page": "P134_minimo_privilegio.html",
+      "titulo": "La protección de la información en los sistemas informáticos",
+      "original": "The Protection of Information in Computer Systems",
+      "autoria": [
+        "Jerome H. Saltzer",
+        "Michael D. Schroeder"
+      ],
+      "anio": 1975,
+      "venue": "Proceedings of the IEEE, 63(9), 1278–1308",
+      "nivel": "L1",
+      "motor": "minimo_privilegio",
+      "hito": "Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después.",
+      "keywords": [
+        "mínimo privilegio",
+        "valores por defecto",
+        "mediación completa",
+        "permisos",
+        "radio de daño"
+      ],
+      "notebook": "notebooks/papers/P134_minimo_privilegio.ipynb"
+    },
+    {
+      "id": "P135",
+      "page": "P135_pizarra.html",
+      "titulo": "El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre",
+      "original": "The Hearsay-II Speech-Understanding System: Integrating Knowledge to Resolve Uncertainty",
+      "autoria": [
+        "Lee D. Erman",
+        "Frederick Hayes-Roth",
+        "Victor R. Lesser",
+        "D. Raj Reddy"
+      ],
+      "anio": 1980,
+      "venue": "ACM Computing Surveys, 12(2), 213–253",
+      "nivel": "L2",
+      "motor": "pizarra",
+      "hito": "Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí.",
+      "keywords": [
+        "pizarra",
+        "memoria compartida",
+        "control oportunista",
+        "hipótesis parciales",
+        "arquitectura multiagente"
+      ],
+      "notebook": "notebooks/papers/P135_pizarra.ipynb"
+    },
+    {
+      "id": "P136",
+      "page": "P136_red_de_contratos.html",
+      "titulo": "El protocolo de red de contratos: comunicación y control en un resolutor distribuido",
+      "original": "The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver",
+      "autoria": [
+        "Reid G. Smith"
+      ],
+      "anio": 1980,
+      "venue": "IEEE Transactions on Computers, C-29(12), 1104–1113",
+      "nivel": "L2",
+      "motor": "red_de_contratos",
+      "hito": "Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué.",
+      "keywords": [
+        "asignación de tareas",
+        "negociación",
+        "delegación",
+        "coordinación distribuida",
+        "handoff"
+      ],
+      "notebook": "notebooks/papers/P136_red_de_contratos.ipynb"
+    },
+    {
+      "id": "P137",
+      "page": "P137_metarrazonamiento.html",
+      "titulo": "Principios del metarrazonamiento",
+      "original": "Principles of Metareasoning",
+      "autoria": [
+        "Stuart Russell",
+        "Eric Wefald"
+      ],
+      "anio": 1991,
+      "venue": "Artificial Intelligence, 49(1–3), 361–395",
+      "nivel": "L3",
+      "motor": "metarrazonamiento",
+      "hito": "Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta.",
+      "keywords": [
+        "racionalidad acotada",
+        "valor de la computación",
+        "presupuesto",
+        "anytime",
+        "metanivel"
+      ],
+      "notebook": "notebooks/papers/P137_metarrazonamiento.ipynb"
+    },
+    {
+      "id": "P138",
+      "page": "P138_kqml.html",
+      "titulo": "KQML como lenguaje de comunicación entre agentes",
+      "original": "KQML as an agent communication language",
+      "autoria": [
+        "Tim Finin",
+        "Richard Fritzson",
+        "Don McKay",
+        "Robin McEntire"
+      ],
+      "anio": 1994,
+      "venue": "CIKM '94, 456–463",
+      "nivel": "L2",
+      "motor": "kqml",
+      "hito": "Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M.",
+      "keywords": [
+        "interoperabilidad",
+        "performativa",
+        "acto de habla",
+        "protocolo de agentes",
+        "descubrimiento"
+      ],
+      "notebook": "notebooks/papers/P138_kqml.ipynb"
+    },
+    {
+      "id": "P139",
+      "page": "P139_niveles_de_automatizacion.html",
+      "titulo": "Un modelo de tipos y niveles de interacción humana con la automatización",
+      "original": "A model for types and levels of human interaction with automation",
+      "autoria": [
+        "Raja Parasuraman",
+        "Thomas B. Sheridan",
+        "Christopher D. Wickens"
+      ],
+      "anio": 2000,
+      "venue": "IEEE Transactions on Systems, Man, and Cybernetics, 30(3), 286–297",
+      "nivel": "L2",
+      "motor": "niveles_de_automatizacion",
+      "hito": "Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace.",
+      "keywords": [
+        "human-in-the-loop",
+        "niveles de automatización",
+        "fuera del bucle",
+        "aprobación",
+        "factores humanos"
+      ],
+      "notebook": "notebooks/papers/P139_niveles_de_automatizacion.ipynb"
+    },
+    {
+      "id": "P140",
+      "page": "P140_mapreduce.html",
+      "titulo": "MapReduce: procesamiento simplificado de datos en clústeres grandes",
+      "original": "MapReduce: simplified data processing on large clusters",
+      "autoria": [
+        "Jeffrey Dean",
+        "Sanjay Ghemawat"
+      ],
+      "anio": 2004,
+      "venue": "OSDI 2004 · Communications of the ACM, 51(1), 107–113",
+      "nivel": "L1",
+      "motor": "mapreduce",
+      "hito": "Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas.",
+      "keywords": [
+        "fan-out",
+        "particionado",
+        "sesgo de datos",
+        "combinador",
+        "procesamiento por lotes"
+      ],
+      "notebook": "notebooks/papers/P140_mapreduce.ipynb"
+    },
+    {
+      "id": "P141",
+      "page": "P141_dos_sigma.html",
+      "titulo": "El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual",
+      "original": "The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring",
+      "autoria": [
+        "Benjamin S. Bloom"
+      ],
+      "anio": 1984,
+      "venue": "Educational Researcher, 13(6), 4–16",
+      "nivel": "L1",
+      "motor": "dos_sigma",
+      "hito": "Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa.",
+      "keywords": [
+        "tamaño del efecto",
+        "tutoría",
+        "aprendizaje para el dominio",
+        "educación",
+        "instrucción adaptativa"
+      ],
+      "notebook": "notebooks/papers/P141_dos_sigma.ipynb"
+    },
+    {
+      "id": "P142",
+      "page": "P142_olvido_catastrofico.html",
+      "titulo": "Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial",
+      "original": "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem",
+      "autoria": [
+        "Michael McCloskey",
+        "Neal J. Cohen"
+      ],
+      "anio": 1989,
+      "venue": "Psychology of Learning and Motivation, 24, 109–165",
+      "nivel": "L2",
+      "motor": "olvido_catastrofico",
+      "hito": "Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso.",
+      "keywords": [
+        "olvido catastrófico",
+        "aprendizaje secuencial",
+        "interferencia",
+        "memoria",
+        "aprendizaje continuo"
+      ],
+      "notebook": "notebooks/papers/P142_olvido_catastrofico.ipynb"
+    },
+    {
+      "id": "P143",
+      "page": "P143_privacidad_diferencial.html",
+      "titulo": "Calibrar el ruido a la sensibilidad en el análisis privado de datos",
+      "original": "Calibrating Noise to Sensitivity in Private Data Analysis",
+      "autoria": [
+        "Cynthia Dwork",
+        "Frank McSherry",
+        "Kobbi Nissim",
+        "Adam Smith"
+      ],
+      "anio": 2006,
+      "venue": "TCC 2006, 265–284",
+      "nivel": "L3",
+      "motor": "privacidad_diferencial",
+      "hito": "Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla.",
+      "keywords": [
+        "privacidad diferencial",
+        "sensibilidad",
+        "ruido de Laplace",
+        "epsilon",
+        "reidentificación"
+      ],
+      "notebook": "notebooks/papers/P143_privacidad_diferencial.ipynb"
+    },
+    {
+      "id": "P144",
+      "page": "P144_ml_en_seguridad.html",
+      "titulo": "Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones",
+      "original": "Outside the Closed World: On Using Machine Learning for Network Intrusion Detection",
+      "autoria": [
+        "Robin Sommer",
+        "Vern Paxson"
+      ],
+      "anio": 2010,
+      "venue": "IEEE Symposium on Security and Privacy 2010, 305–316",
+      "nivel": "L2",
+      "motor": "ml_en_seguridad",
+      "hito": "Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo.",
+      "keywords": [
+        "detección de intrusiones",
+        "clase base",
+        "falsos positivos",
+        "adversario",
+        "evaluación"
+      ],
+      "notebook": "notebooks/papers/P144_ml_en_seguridad.ipynb"
+    },
+    {
+      "id": "P145",
+      "page": "P145_ewc.html",
+      "titulo": "Superar el olvido catastrófico en redes neuronales",
+      "original": "Overcoming catastrophic forgetting in neural networks",
+      "autoria": [
+        "James Kirkpatrick",
+        "Razvan Pascanu",
+        "Neil Rabinowitz",
+        "Joel Veness",
+        "Guillaume Desjardins",
+        "Andrei A. Rusu",
+        "y otros"
+      ],
+      "anio": 2017,
+      "venue": "PNAS, 114(13), 3521–3526",
+      "nivel": "L3",
+      "motor": "ewc",
+      "hito": "Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher.",
+      "keywords": [
+        "aprendizaje continuo",
+        "información de Fisher",
+        "penalización elástica",
+        "plasticidad",
+        "olvido"
+      ],
+      "notebook": "notebooks/papers/P145_ewc.ipynb"
+    },
+    {
+      "id": "P146",
+      "page": "P146_federado.html",
+      "titulo": "Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados",
+      "original": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+      "autoria": [
+        "H. Brendan McMahan",
+        "Eider Moore",
+        "Daniel Ramage",
+        "Seth Hampson",
+        "Blaise Agüera y Arcas"
+      ],
+      "anio": 2017,
+      "venue": "AISTATS 2017, PMLR 54, 1273–1282",
+      "nivel": "L2",
+      "motor": "federado",
+      "hito": "Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros.",
+      "keywords": [
+        "aprendizaje federado",
+        "promediado",
+        "comunicación",
+        "datos descentralizados",
+        "heterogeneidad"
+      ],
+      "notebook": "notebooks/papers/P146_federado.ipynb"
+    },
+    {
+      "id": "P147",
+      "page": "P147_world_models.html",
+      "titulo": "Los modelos recurrentes del mundo facilitan la evolución de políticas",
+      "original": "Recurrent World Models Facilitate Policy Evolution",
+      "autoria": [
+        "David Ha",
+        "Jürgen Schmidhuber"
+      ],
+      "anio": 2018,
+      "venue": "NeurIPS 2018 · arXiv:1803.10122",
+      "nivel": "L3",
+      "motor": "world_models",
+      "hito": "Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real.",
+      "keywords": [
+        "modelo del mundo",
+        "aprendizaje con modelo",
+        "sueño",
+        "eficiencia de muestras",
+        "explotación del modelo"
+      ],
+      "notebook": "notebooks/papers/P147_world_models.ipynb"
+    },
+    {
+      "id": "P148",
+      "page": "P148_auditoria_interna.html",
+      "titulo": "Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna",
+      "original": "Closing the AI Accountability Gap: Defining an End-to-End Framework for Internal Algorithmic Auditing",
+      "autoria": [
+        "Inioluwa Deborah Raji",
+        "Andrew Smart",
+        "Rebecca N. White",
+        "Margaret Mitchell",
+        "Timnit Gebru",
+        "Ben Hutchinson",
+        "Jamila Smith-Loud",
+        "Daniel Theron",
+        "Parker Barnes"
+      ],
+      "anio": 2020,
+      "venue": "FAT* '20, 33–44",
+      "nivel": "L1",
+      "motor": "auditoria_interna",
+      "hito": "Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye.",
+      "keywords": [
+        "auditoría interna",
+        "responsabilidad",
+        "artefactos",
+        "gobernanza",
+        "gestión de riesgo"
+      ],
+      "notebook": "notebooks/papers/P148_auditoria_interna.ipynb"
     }
   ]
 }

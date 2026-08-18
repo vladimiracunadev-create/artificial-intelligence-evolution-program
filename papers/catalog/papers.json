@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "eje": "papers",
   "programa": "Artificial Intelligence Evolution Program",
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "idioma": "es",
   "politica_de_copyright": "Este catálogo enlaza a las fuentes primarias. No redistribuye PDFs con restricciones de licencia.",
   "niveles": {
@@ -6593,6 +6593,1721 @@
         }
       ],
       "consultado": "2026-08-17"
+    },
+    {
+      "id": "P118",
+      "dir": "P118_bpe",
+      "slug": "subword-units-sennrich-2016",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "title_es": "Traducción automática neuronal de palabras raras con unidades de subpalabra",
+      "authors": [
+        "Rico Sennrich",
+        "Barry Haddow",
+        "Alexandra Birch"
+      ],
+      "year": 2016,
+      "venue": "ACL 2016, 1715–1725",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "bpe",
+      "hito": "Elimina el problema de la palabra desconocida haciendo que la unidad de vocabulario sea más pequeña que la palabra, con un algoritmo que la frecuencia decide sola.",
+      "problema": "Un vocabulario de palabras completas siempre se queda corto: llega una palabra que no estaba y el modelo solo puede emitir un símbolo de desconocido, aunque sus raíces y sufijos sí estuvieran en el entrenamiento.",
+      "propuesta": "Adaptar la compresión por pares de bytes: partir de caracteres y fusionar repetidamente el par de símbolos más frecuente, un número fijo de veces. El vocabulario resultante cubre cualquier cadena porque el peor caso es deletrear.",
+      "keywords": [
+        "tokenización",
+        "subpalabras",
+        "BPE",
+        "vocabulario abierto",
+        "traducción"
+      ],
+      "anteriores": [
+        "P05",
+        "P06"
+      ],
+      "posteriores": [
+        "P123"
+      ],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/073-tokenizacion-moderna-y-vocabularios"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.18653/v1/P16-1162",
+          "url": "https://doi.org/10.18653/v1/P16-1162"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Gage (1994), el algoritmo de compresión original",
+          "url": "https://dl.acm.org/doi/10.5555/177910.177914"
+        },
+        {
+          "label": "Kudo y Richardson (2018), SentencePiece",
+          "url": "https://doi.org/10.18653/v1/D18-2012"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P119",
+      "dir": "P119_wavenet",
+      "slug": "wavenet-van-den-oord-2016",
+      "title": "WaveNet: A Generative Model for Raw Audio",
+      "title_es": "WaveNet: un modelo generativo de audio en crudo",
+      "authors": [
+        "Aäron van den Oord",
+        "Sander Dieleman",
+        "Heiga Zen",
+        "Karen Simonyan",
+        "Oriol Vinyals",
+        "Alex Graves",
+        "Nal Kalchbrenner",
+        "Andrew Senior",
+        "Koray Kavukcuoglu"
+      ],
+      "year": 2016,
+      "venue": "arXiv:1609.03499",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "wavenet",
+      "hito": "Genera la forma de onda muestra a muestra con convoluciones causales dilatadas, y cierra la brecha de naturalidad que arrastraba la síntesis de voz.",
+      "problema": "Modelar audio directamente exige un contexto de miles de muestras: a 16 kHz, un segundo son 16 000 valores. Una convolución normal necesitaría miles de capas para verlo, y una recurrente no puede entrenarse en paralelo sobre esa longitud.",
+      "propuesta": "Convoluciones causales con dilatación que se duplica por capa: el campo receptivo crece de forma exponencial con la profundidad. Más cuantización μ-law para que 256 niveles basten sin que la voz suene rota.",
+      "keywords": [
+        "audio",
+        "convolución dilatada",
+        "causalidad",
+        "μ-law",
+        "síntesis de voz"
+      ],
+      "anteriores": [
+        "P04"
+      ],
+      "posteriores": [
+        "P122"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/068-sintesis-de-voz-y-clonacion-responsable"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1609.03499",
+          "url": "https://arxiv.org/abs/1609.03499"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Yu y Koltun (2016), convoluciones dilatadas para contexto multiescala",
+          "url": "https://arxiv.org/abs/1511.07122"
+        },
+        {
+          "label": "Shen et al. (2018), Tacotron 2: WaveNet como vocoder",
+          "url": "https://doi.org/10.1109/ICASSP.2018.8461368"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P120",
+      "dir": "P120_gcn",
+      "slug": "gcn-kipf-welling-2017",
+      "title": "Semi-Supervised Classification with Graph Convolutional Networks",
+      "title_es": "Clasificación semisupervisada con redes convolucionales de grafo",
+      "authors": [
+        "Thomas N. Kipf",
+        "Max Welling"
+      ],
+      "year": 2017,
+      "venue": "ICLR 2017 · arXiv:1609.02907",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "gcn",
+      "hito": "Reduce la convolución sobre grafos a una regla de propagación de una línea, y con ella clasifica con una fracción mínima de nodos etiquetados.",
+      "problema": "Muchos datos son grafos —citas, redes sociales, moléculas— donde etiquetar es caro y solo se tiene una fracción diminuta. Los métodos previos o eran costosos en el dominio espectral, o ignoraban la estructura y solo usaban los rasgos.",
+      "propuesta": "Una aproximación de primer orden de la convolución espectral que se reduce a promediar los rasgos de cada nodo con los de sus vecinos, normalizado por el grado, y apilar dos o tres de esas capas. Nada más.",
+      "keywords": [
+        "grafos",
+        "semisupervisado",
+        "propagación",
+        "sobre-suavizado",
+        "homofilia"
+      ],
+      "anteriores": [
+        "P02",
+        "P04"
+      ],
+      "posteriores": [
+        "P124"
+      ],
+      "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/056-graph-neural-networks"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1609.02907",
+          "url": "https://arxiv.org/abs/1609.02907"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Gilmer et al. (2017), paso de mensajes como marco unificador",
+          "url": "https://arxiv.org/abs/1704.01212"
+        },
+        {
+          "label": "Li et al. (2018), por qué apilar capas de GCN destruye la señal",
+          "url": "https://arxiv.org/abs/1801.07606"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P121",
+      "dir": "P121_mobilenets",
+      "slug": "mobilenets-howard-2017",
+      "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications",
+      "title_es": "MobileNets: redes convolucionales eficientes para visión en dispositivos móviles",
+      "authors": [
+        "Andrew G. Howard",
+        "Menglong Zhu",
+        "Bo Chen",
+        "Dmitry Kalenichenko",
+        "Weijun Wang",
+        "Tobias Weyand",
+        "Marco Andreetto",
+        "Hartwig Adam"
+      ],
+      "year": 2017,
+      "venue": "arXiv:1704.04861",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "mobilenets",
+      "hito": "Descompone la convolución en dos pasos y convierte el compromiso entre precisión y coste en dos perillas explícitas que el ingeniero elige.",
+      "problema": "Las redes de visión que funcionaban exigían un centro de datos. En un teléfono, un sensor o un vehículo, el presupuesto es de milivatios y milisegundos, y no había forma sistemática de elegir dónde recortar.",
+      "propuesta": "Convolución separable en profundidad —filtrar cada canal por separado y luego combinarlos con núcleos de 1×1—, más un multiplicador de anchura y otro de resolución que parametrizan la familia entera.",
+      "keywords": [
+        "eficiencia",
+        "convolución separable",
+        "borde",
+        "presupuesto de cómputo",
+        "cuantización"
+      ],
+      "anteriores": [
+        "P04",
+        "P45"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/071-sensores-series-y-percepcion-en-el-borde"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1704.04861",
+          "url": "https://arxiv.org/abs/1704.04861"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sandler et al. (2018), MobileNetV2 y los bloques invertidos",
+          "url": "https://arxiv.org/abs/1801.04381"
+        },
+        {
+          "label": "Jacob et al. (2018), cuantización entera para inferencia",
+          "url": "https://arxiv.org/abs/1712.05877"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P122",
+      "dir": "P122_tacotron",
+      "slug": "tacotron2-shen-2018",
+      "title": "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions",
+      "title_es": "Síntesis de voz natural condicionando WaveNet con espectrogramas mel predichos",
+      "authors": [
+        "Jonathan Shen",
+        "Ruoming Pang",
+        "Ron J. Weiss",
+        "Mike Schuster",
+        "Navdeep Jaitly",
+        "Zongheng Yang",
+        "Zhifeng Chen",
+        "Yu Zhang",
+        "Yuxuan Wang",
+        "RJ Skerry-Ryan",
+        "Rif A. Saurous",
+        "Yannis Agiomyrgiannakis",
+        "Yonghui Wu"
+      ],
+      "year": 2018,
+      "venue": "ICASSP 2018, 4779–4783",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "tacotron",
+      "hito": "Parte la síntesis en dos etapas con el espectrograma mel como interfaz, y alcanza naturalidad indistinguible de una grabación en la escala de opinión media.",
+      "problema": "Predecir la forma de onda directamente desde el texto es intratable: tres segundos de audio son decenas de miles de pasos autorregresivos, y ningún modelo con atención puede alinear texto contra una secuencia de esa longitud.",
+      "propuesta": "Dos modelos con una interfaz explícita: uno predice el espectrograma mel desde el texto con atención, y un vocoder neuronal convierte ese espectrograma en forma de onda. Cada etapa se entrena y se sustituye por separado.",
+      "keywords": [
+        "síntesis de voz",
+        "espectrograma mel",
+        "atención monótona",
+        "vocoder",
+        "arquitectura en dos etapas"
+      ],
+      "anteriores": [
+        "P07",
+        "P119"
+      ],
+      "posteriores": [
+        "P130"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/068-sintesis-de-voz-y-clonacion-responsable"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/ICASSP.2018.8461368",
+          "url": "https://doi.org/10.1109/ICASSP.2018.8461368"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Wang et al. (2017), Tacotron original",
+          "url": "https://arxiv.org/abs/1703.10135"
+        },
+        {
+          "label": "Ren et al. (2021), FastSpeech 2: alineación explícita en vez de atención",
+          "url": "https://arxiv.org/abs/2006.04558"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P123",
+      "dir": "P123_sentencepiece",
+      "slug": "sentencepiece-kudo-2018",
+      "title": "SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing",
+      "title_es": "SentencePiece: un tokenizador y detokenizador de subpalabras simple e independiente del idioma",
+      "authors": [
+        "Taku Kudo",
+        "John Richardson"
+      ],
+      "year": 2018,
+      "venue": "EMNLP 2018 (demos), 66–71",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "sentencepiece",
+      "hito": "Elimina la pretokenización por espacios y hace la detokenización exacta, lo que convierte al tokenizador en una pieza reproducible e independiente del idioma.",
+      "problema": "BPE suponía texto ya partido por espacios, y eso no es universal: el japonés y el chino no los usan. Además cada implementación normalizaba a su manera, así que reconstruir el texto original era imposible y los resultados no eran comparables.",
+      "propuesta": "Tratar la entrada como un flujo de caracteres crudo, codificar el espacio como un símbolo más del vocabulario, y ofrecer también un modelo unigrama donde la segmentación es inferencia probabilística y se puede muestrear para regularizar.",
+      "keywords": [
+        "tokenización",
+        "reversibilidad",
+        "modelo unigrama",
+        "multilingüe",
+        "regularización de subpalabra"
+      ],
+      "anteriores": [
+        "P118"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-06-foundation-models-and-llm-engineering/073-tokenizacion-moderna-y-vocabularios"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.18653/v1/D18-2012",
+          "url": "https://doi.org/10.18653/v1/D18-2012"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kudo (2018), regularización de subpalabra con el modelo unigrama",
+          "url": "https://doi.org/10.18653/v1/P18-1007"
+        },
+        {
+          "label": "Rust et al. (2021), cuánto penaliza un tokenizador mal ajustado a un idioma",
+          "url": "https://doi.org/10.18653/v1/2021.acl-long.243"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P124",
+      "dir": "P124_gat",
+      "slug": "gat-velickovic-2018",
+      "title": "Graph Attention Networks",
+      "title_es": "Redes de atención sobre grafos",
+      "authors": [
+        "Petar Veličković",
+        "Guillem Cucurull",
+        "Arantxa Casanova",
+        "Adriana Romero",
+        "Pietro Liò",
+        "Yoshua Bengio"
+      ],
+      "year": 2018,
+      "venue": "ICLR 2018 · arXiv:1710.10903",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "gat",
+      "hito": "Sustituye el promedio uniforme sobre los vecinos por pesos aprendidos por pareja, sin necesitar conocer la estructura global del grafo.",
+      "problema": "La convolución de grafo promedia a todos los vecinos por igual y normaliza por el grado. Eso supone que todos los vecinos importan lo mismo y exige conocer el grafo completo, lo que impide aplicar el modelo a nodos que no se vieron al entrenar.",
+      "propuesta": "Calcular un coeficiente de atención para cada pareja de nodos vecinos, normalizarlo con softmax sobre el vecindario y agregar con esos pesos. Varias cabezas en paralelo, como en el Transformer.",
+      "keywords": [
+        "grafos",
+        "atención",
+        "agregación ponderada",
+        "inductivo",
+        "vecindario"
+      ],
+      "anteriores": [
+        "P08",
+        "P120"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-04-neural-networks-and-deep-learning/056-graph-neural-networks"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1710.10903",
+          "url": "https://arxiv.org/abs/1710.10903"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Hamilton et al. (2017), GraphSAGE y el aprendizaje inductivo en grafos",
+          "url": "https://arxiv.org/abs/1706.02216"
+        },
+        {
+          "label": "Brody et al. (2022), por qué la atención de GAT es más limitada de lo que parece",
+          "url": "https://arxiv.org/abs/2105.14491"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P125",
+      "dir": "P125_layoutlm",
+      "slug": "layoutlm-xu-2020",
+      "title": "LayoutLM: Pre-training of Text and Layout for Document Image Understanding",
+      "title_es": "LayoutLM: preentrenamiento de texto y disposición para comprensión de documentos",
+      "authors": [
+        "Yiheng Xu",
+        "Minghao Li",
+        "Lei Cui",
+        "Shaohan Huang",
+        "Furu Wei",
+        "Ming Zhou"
+      ],
+      "year": 2020,
+      "venue": "KDD 2020, 1192–1200",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "layoutlm",
+      "hito": "Añade la posición en la página como una incrustación más, y con eso convierte un modelo de lenguaje en un lector de formularios y facturas.",
+      "problema": "Un documento no es una secuencia de texto: es texto colocado. Al linealizar una factura de dos columnas, el OCR intercala campos que no se relacionan, y un modelo que solo ve la cadena no puede emparejar cada etiqueta con su valor.",
+      "propuesta": "Preentrenar sobre millones de documentos escaneados un modelo que recibe, para cada token, su texto y las coordenadas de su caja delimitadora, con objetivos de enmascarado que obligan a usar las dos señales.",
+      "keywords": [
+        "documentos",
+        "disposición",
+        "OCR",
+        "extracción de campos",
+        "multimodal"
+      ],
+      "anteriores": [
+        "P09"
+      ],
+      "posteriores": [
+        "P126"
+      ],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/063-ocr-y-comprension-de-documentos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3394486.3403172",
+          "url": "https://doi.org/10.1145/3394486.3403172"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Xu et al. (2022), LayoutLMv3 con parches de imagen",
+          "url": "https://doi.org/10.1145/3503161.3548112"
+        },
+        {
+          "label": "Jaume et al. (2019), FUNSD: el banco de formularios escaneados",
+          "url": "https://arxiv.org/abs/1905.13538"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P126",
+      "dir": "P126_donut",
+      "slug": "donut-kim-2022",
+      "title": "OCR-free Document Understanding Transformer",
+      "title_es": "Transformer de comprensión de documentos sin OCR",
+      "authors": [
+        "Geewook Kim",
+        "Teakgyu Hong",
+        "Moonbin Yim",
+        "JeongYeon Nam",
+        "Jinyoung Park",
+        "Jinyeong Yim",
+        "Wonseok Hwang",
+        "Sangdoo Yun",
+        "Dongyoon Han",
+        "Seunghyun Park"
+      ],
+      "year": 2022,
+      "venue": "ECCV 2022, 498–517",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "donut",
+      "hito": "Va de la imagen del documento a la salida estructurada sin pasar por OCR, y con ello elimina una fuente de error que la etapa siguiente no podía corregir.",
+      "problema": "La tubería OCR más analizador arrastra dos costes: los errores del OCR llegan intactos al final y se componen carácter a carácter, y el OCR hay que licenciarlo y mantenerlo por idioma.",
+      "propuesta": "Un codificador de imagen y un decodificador que emite directamente la estructura —JSON, pares clave-valor—, preentrenado con la tarea de leer el documento completo. Sin etapa intermedia, no hay error que heredar.",
+      "keywords": [
+        "sin OCR",
+        "extremo a extremo",
+        "propagación de errores",
+        "documentos",
+        "salida estructurada"
+      ],
+      "anteriores": [
+        "P125",
+        "P46"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/063-ocr-y-comprension-de-documentos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1007/978-3-031-19815-1_29",
+          "url": "https://doi.org/10.1007/978-3-031-19815-1_29"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Blecher et al. (2023), Nougat: la misma idea sobre artículos científicos",
+          "url": "https://arxiv.org/abs/2308.13418"
+        },
+        {
+          "label": "Xu et al. (2020), LayoutLM: la alternativa que sí usa OCR",
+          "url": "https://doi.org/10.1145/3394486.3403172"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P127",
+      "dir": "P127_jukebox",
+      "slug": "jukebox-dhariwal-2020",
+      "title": "Jukebox: A Generative Model for Music",
+      "title_es": "Jukebox: un modelo generativo de música",
+      "authors": [
+        "Prafulla Dhariwal",
+        "Heewoo Jun",
+        "Christine Payne",
+        "Jong Wook Kim",
+        "Alec Radford",
+        "Ilya Sutskever"
+      ],
+      "year": 2020,
+      "venue": "arXiv:2005.00341",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "jukebox",
+      "hito": "Genera canciones con voz cantada reconocible modelando códigos discretos en tres escalas temporales, en vez de la forma de onda directamente.",
+      "problema": "Cuatro minutos de audio a 44,1 kHz son más de diez millones de muestras. Ningún modelo autorregresivo opera sobre esa longitud, y comprimir a una sola escala obliga a elegir entre estructura larga y detalle tímbrico.",
+      "propuesta": "Un cuantizador vectorial jerárquico que codifica el audio en tres niveles de compresión distintos, y un modelo autorregresivo por nivel: el grueso decide la estructura y los finos reconstruyen el timbre condicionados por él.",
+      "keywords": [
+        "música",
+        "cuantización vectorial",
+        "jerarquía temporal",
+        "audio generativo",
+        "estructura larga"
+      ],
+      "anteriores": [
+        "P119",
+        "P38"
+      ],
+      "posteriores": [
+        "P129"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/093-generacion-musical-y-de-audio"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2005.00341",
+          "url": "https://arxiv.org/abs/2005.00341"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "van den Oord et al. (2017), VQ-VAE: la cuantización vectorial que usa",
+          "url": "https://arxiv.org/abs/1711.00937"
+        },
+        {
+          "label": "Défossez et al. (2022), EnCodec: el códec neuronal que lo sustituyó",
+          "url": "https://arxiv.org/abs/2210.13438"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P128",
+      "dir": "P128_nerf",
+      "slug": "nerf-mildenhall-2020",
+      "title": "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis",
+      "title_es": "NeRF: representar escenas como campos de radiancia neuronal",
+      "authors": [
+        "Ben Mildenhall",
+        "Pratul P. Srinivasan",
+        "Matthew Tancik",
+        "Jonathan T. Barron",
+        "Ravi Ramamoorthi",
+        "Ren Ng"
+      ],
+      "year": 2020,
+      "venue": "ECCV 2020, 405–421",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "nerf",
+      "hito": "Sustituye la escena explícita por una función continua que un perceptrón representa, y sintetiza vistas nuevas con una fidelidad que no se había visto.",
+      "problema": "Representar una escena 3D como rejilla de vóxeles cuesta O(n³) en memoria: la resolución se paga al cubo y las rejillas finas no caben. Y las mallas exigen reconstruir geometría explícita, que falla con pelo, humo o vidrio.",
+      "propuesta": "Codificar la escena como una función continua que va de posición y dirección de vista a color y densidad, representada por un perceptrón multicapa, y renderizar integrando esa función a lo largo de cada rayo con la ecuación de volumen.",
+      "keywords": [
+        "síntesis de vistas",
+        "representación implícita",
+        "renderizado volumétrico",
+        "codificación posicional",
+        "3D"
+      ],
+      "anteriores": [
+        "P02"
+      ],
+      "posteriores": [
+        "P132"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/096-generacion-3d-y-mundos-sinteticos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1007/978-3-030-58452-8_24",
+          "url": "https://doi.org/10.1007/978-3-030-58452-8_24"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Müller et al. (2022), Instant-NGP: NeRF en segundos con tablas hash",
+          "url": "https://doi.org/10.1145/3528223.3530127"
+        },
+        {
+          "label": "Tancik et al. (2020), por qué hace falta la codificación posicional",
+          "url": "https://arxiv.org/abs/2006.10739"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P129",
+      "dir": "P129_musiclm",
+      "slug": "musiclm-agostinelli-2023",
+      "title": "MusicLM: Generating Music From Text",
+      "title_es": "MusicLM: generar música a partir de texto",
+      "authors": [
+        "Andrea Agostinelli",
+        "Timo I. Denk",
+        "Zalán Borsos",
+        "Jesse Engel",
+        "Mauro Verzetti",
+        "Antoine Caillon",
+        "y otros"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2301.11325",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "musiclm",
+      "hito": "Genera música coherente de varios minutos desde una descripción en lenguaje natural, y publica MusicCaps para que la tarea se pueda evaluar.",
+      "problema": "Los pares texto-música son escasísimos comparados con los pares texto-imagen, y la música tiene estructura a escalas que no caben en una sola ventana de contexto: el timbre se juega en milisegundos y la forma, en minutos.",
+      "propuesta": "Una jerarquía de dos tipos de token —semánticos, a baja frecuencia, que llevan la estructura, y acústicos, a alta frecuencia, que llevan el detalle— y un entrenamiento que aprovecha audio sin etiquetar mediante una representación conjunta de texto y música.",
+      "keywords": [
+        "texto a música",
+        "tokens semánticos",
+        "jerarquía",
+        "MusicCaps",
+        "evaluación"
+      ],
+      "anteriores": [
+        "P127",
+        "P18"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/093-generacion-musical-y-de-audio"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2301.11325",
+          "url": "https://arxiv.org/abs/2301.11325"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Borsos et al. (2023), AudioLM: la jerarquía semántico-acústica de la que parte",
+          "url": "https://arxiv.org/abs/2209.03143"
+        },
+        {
+          "label": "Copet et al. (2023), MusicGen: la alternativa de un solo modelo",
+          "url": "https://arxiv.org/abs/2306.05284"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P130",
+      "dir": "P130_vall_e",
+      "slug": "vall-e-wang-2023",
+      "title": "Neural Codec Language Models are Zero-Shot Text to Speech Synthesizers",
+      "title_es": "Los modelos de lenguaje sobre códecs neuronales sintetizan voz sin ejemplos previos",
+      "authors": [
+        "Chengyi Wang",
+        "Sanyuan Chen",
+        "Yu Wu",
+        "Ziqiang Zhang",
+        "Long Zhou",
+        "Shujie Liu",
+        "y otros"
+      ],
+      "year": 2023,
+      "venue": "arXiv:2301.02111",
+      "venue_type": "preprint",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "vall_e",
+      "hito": "Convierte la síntesis de voz en modelado de lenguaje sobre códigos de audio, y clona una voz con tres segundos de muestra sin entrenar nada.",
+      "problema": "Adaptar un sintetizador a una voz nueva exigía media hora o más de grabaciones y un ajuste fino del modelo. Eso limitaba la personalización a quien tuviera estudio, y de paso actuaba como barrera práctica frente al uso indebido.",
+      "propuesta": "Tratar los códigos de un códec neuronal como un vocabulario y la síntesis como predicción del siguiente token, con la voz objetivo entrada como aviso en contexto. Sin entrenamiento por hablante: tres segundos bastan.",
+      "keywords": [
+        "síntesis de voz",
+        "clonación",
+        "códec neuronal",
+        "aviso en contexto",
+        "identidad vocal"
+      ],
+      "anteriores": [
+        "P122",
+        "P10"
+      ],
+      "posteriores": [
+        "P131"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/094-sintesis-de-voz-y-derechos-de-identidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2301.02111",
+          "url": "https://arxiv.org/abs/2301.02111"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Défossez et al. (2022), EnCodec: el códec cuyos tokens modela",
+          "url": "https://arxiv.org/abs/2210.13438"
+        },
+        {
+          "label": "Yamagishi et al., ASVspoof: la línea de trabajo en detección de voz sintética",
+          "url": "https://www.asvspoof.org/"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P131",
+      "dir": "P131_marcas_de_agua",
+      "slug": "marca-de-agua-kirchenbauer-2023",
+      "title": "A Watermark for Large Language Models",
+      "title_es": "Una marca de agua para modelos de lenguaje grandes",
+      "authors": [
+        "John Kirchenbauer",
+        "Jonas Geiping",
+        "Yuxin Wen",
+        "Jonathan Katz",
+        "Ian Miers",
+        "Tom Goldstein"
+      ],
+      "year": 2023,
+      "venue": "ICML 2023 · arXiv:2301.10226",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "marcas_de_agua",
+      "hito": "Deja una firma estadística verificable en el texto generado sesgando qué tokens se eligen, sin degradar apreciablemente la calidad ni necesitar el modelo para detectarla.",
+      "problema": "Distinguir texto generado de texto humano se intentaba con clasificadores entrenados a posteriori, que fallan, envejecen con cada modelo nuevo y producen falsos positivos con consecuencias reales sobre personas.",
+      "propuesta": "Partir el vocabulario en cada paso en una lista «verde» y otra «roja», determinadas por un hash del token anterior, y sesgar la generación hacia la verde. Un texto marcado tiene una proporción de verdes anómala, y una prueba estadística la detecta sin acceso al modelo.",
+      "keywords": [
+        "marca de agua",
+        "procedencia",
+        "detección",
+        "prueba estadística",
+        "autenticidad"
+      ],
+      "anteriores": [
+        "P10",
+        "P130"
+      ],
+      "posteriores": [
+        "P133"
+      ],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/098-procedencia-marcas-y-autenticidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:2301.10226",
+          "url": "https://arxiv.org/abs/2301.10226"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Dathathri et al. (2024), SynthID-Text desplegado en producción",
+          "url": "https://doi.org/10.1038/s41586-024-08025-4"
+        },
+        {
+          "label": "C2PA, el estándar de procedencia por metadatos firmados",
+          "url": "https://c2pa.org/specifications/specifications/1.3/index.html"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P132",
+      "dir": "P132_gaussian_splatting",
+      "slug": "gaussian-splatting-kerbl-2023",
+      "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+      "title_es": "Splatting de gaussianas 3D para renderizado de campos de radiancia en tiempo real",
+      "authors": [
+        "Bernhard Kerbl",
+        "Georgios Kopanas",
+        "Thomas Leimkühler",
+        "George Drettakis"
+      ],
+      "year": 2023,
+      "venue": "ACM Transactions on Graphics, 42(4)",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "gaussian_splatting",
+      "hito": "Alcanza calidad de campo de radiancia a velocidad de tiempo real cambiando la función continua por millones de primitivas explícitas que se rasterizan.",
+      "problema": "NeRF produce vistas excelentes y renderiza lentísimo: cada píxel exige decenas de consultas a un perceptrón a lo largo de su rayo, y la mayoría caen en el vacío. Eso lo deja fuera de cualquier aplicación interactiva.",
+      "propuesta": "Representar la escena como un conjunto de gaussianas 3D anisótropas con color y opacidad, optimizadas desde las vistas de entrada, y renderizarlas proyectándolas y mezclándolas por orden de profundidad con un rasterizador diseñado a medida.",
+      "keywords": [
+        "renderizado en tiempo real",
+        "primitivas explícitas",
+        "rasterización",
+        "campos de radiancia",
+        "compromiso memoria-cómputo"
+      ],
+      "anteriores": [
+        "P128"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/096-generacion-3d-y-mundos-sinteticos"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3592433",
+          "url": "https://doi.org/10.1145/3592433"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Zwicker et al. (2001), el splatting de superficies del que hereda la idea",
+          "url": "https://doi.org/10.1145/383259.383300"
+        },
+        {
+          "label": "Müller et al. (2022), Instant-NGP: la otra vía para acelerar NeRF",
+          "url": "https://doi.org/10.1145/3528223.3530127"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P133",
+      "dir": "P133_colapso_de_modelo",
+      "slug": "colapso-de-modelo-shumailov-2024",
+      "title": "AI models collapse when trained on recursively generated data",
+      "title_es": "Los modelos de IA colapsan al entrenarse con datos generados recursivamente",
+      "authors": [
+        "Ilia Shumailov",
+        "Zakhar Shumaylov",
+        "Yiren Zhao",
+        "Nicolas Papernot",
+        "Ross Anderson",
+        "Yarin Gal"
+      ],
+      "year": 2024,
+      "venue": "Nature, 631, 755–759",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "colapso_de_modelo",
+      "hito": "Demuestra que entrenar generación tras generación con datos sintéticos estrecha la distribución de forma irreversible, sin que ningún modelo cometa error alguno.",
+      "problema": "La web se está llenando de texto e imágenes generadas. Los corpus futuros se recogerán de ahí, y nadie sabía qué le ocurre a un modelo entrenado sobre lo que generó la generación anterior.",
+      "propuesta": "Formalizar y medir el fenómeno en modelos de lenguaje, autocodificadores variacionales y mezclas de gaussianas: el error de muestreo acumulado basta para que las colas desaparezcan primero y la distribución converja a algo degenerado.",
+      "keywords": [
+        "datos sintéticos",
+        "colapso",
+        "contaminación de corpus",
+        "error de muestreo",
+        "procedencia"
+      ],
+      "anteriores": [
+        "P131",
+        "P61"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-07-generative-ai-across-media/097-datos-sinteticos-utilidad-y-contaminacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1038/s41586-024-07566-y",
+          "url": "https://doi.org/10.1038/s41586-024-07566-y"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Alemohammad et al. (2023), el mismo fenómeno en modelos de imagen",
+          "url": "https://arxiv.org/abs/2307.01850"
+        },
+        {
+          "label": "Gerstgrasser et al. (2024), qué cambia si los datos se acumulan en vez de reemplazarse",
+          "url": "https://arxiv.org/abs/2404.01413"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P134",
+      "dir": "P134_minimo_privilegio",
+      "slug": "minimo-privilegio-saltzer-1975",
+      "title": "The Protection of Information in Computer Systems",
+      "title_es": "La protección de la información en los sistemas informáticos",
+      "authors": [
+        "Jerome H. Saltzer",
+        "Michael D. Schroeder"
+      ],
+      "year": 1975,
+      "venue": "Proceedings of the IEEE, 63(9), 1278–1308",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L1",
+      "lab": "minimo_privilegio",
+      "hito": "Enuncia los ocho principios de diseño de protección que siguen siendo la base de cualquier discusión sobre permisos, cincuenta años después.",
+      "problema": "Los sistemas compartidos daban acceso amplio por comodidad, y cada mecanismo de protección se diseñaba ad hoc. No había criterios explícitos para decidir qué permisos conceder ni para juzgar si un diseño era defendible.",
+      "propuesta": "Ocho principios, de los cuales dos gobiernan el resto: valores por defecto a prueba de fallos —denegar salvo permiso explícito— y mínimo privilegio —lo justo para la tarea—. Más mediación completa: comprobar cada acceso, no solo el primero.",
+      "keywords": [
+        "mínimo privilegio",
+        "valores por defecto",
+        "mediación completa",
+        "permisos",
+        "radio de daño"
+      ],
+      "anteriores": [],
+      "posteriores": [
+        "P139"
+      ],
+      "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/PROC.1975.9939",
+          "url": "https://doi.org/10.1109/PROC.1975.9939"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Lampson (1974), matrices de control de acceso",
+          "url": "https://doi.org/10.1145/775265.775268"
+        },
+        {
+          "label": "NIST SP 800-207, arquitectura de confianza cero",
+          "url": "https://doi.org/10.6028/NIST.SP.800-207"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P135",
+      "dir": "P135_pizarra",
+      "slug": "hearsay-ii-erman-1980",
+      "title": "The Hearsay-II Speech-Understanding System: Integrating Knowledge to Resolve Uncertainty",
+      "title_es": "El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre",
+      "authors": [
+        "Lee D. Erman",
+        "Frederick Hayes-Roth",
+        "Victor R. Lesser",
+        "D. Raj Reddy"
+      ],
+      "year": 1980,
+      "venue": "ACM Computing Surveys, 12(2), 213–253",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "pizarra",
+      "hito": "Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí.",
+      "problema": "Entender habla exige combinar conocimiento acústico, léxico, sintáctico y semántico. Ninguna fuente decide sola, y encadenarlas en una tubería fija obliga a comprometerse pronto: un error temprano llega intacto al final.",
+      "propuesta": "Una estructura compartida —la pizarra— donde cada fuente escribe hipótesis parciales con su credibilidad, y un control oportunista que decide a quién invocar según lo que ya hay escrito. Nadie se compromete hasta que hay evidencia.",
+      "keywords": [
+        "pizarra",
+        "memoria compartida",
+        "control oportunista",
+        "hipótesis parciales",
+        "arquitectura multiagente"
+      ],
+      "anteriores": [
+        "P58"
+      ],
+      "posteriores": [
+        "P138"
+      ],
+      "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/130-blackboard-y-memoria-compartida"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/356810.356816",
+          "url": "https://doi.org/10.1145/356810.356816"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Nii (1986), la historia y anatomía de los sistemas de pizarra",
+          "url": "https://doi.org/10.1609/aimag.v7i2.537"
+        },
+        {
+          "label": "Corkill (1991), sistemas de pizarra en la práctica",
+          "url": "https://www.sciencedirect.com/science/article/pii/S0004370201001085"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P136",
+      "dir": "P136_red_de_contratos",
+      "slug": "red-de-contratos-smith-1980",
+      "title": "The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver",
+      "title_es": "El protocolo de red de contratos: comunicación y control en un resolutor distribuido",
+      "authors": [
+        "Reid G. Smith"
+      ],
+      "year": 1980,
+      "venue": "IEEE Transactions on Computers, C-29(12), 1104–1113",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "red_de_contratos",
+      "hito": "Reparte tareas por anuncio, oferta y adjudicación, sin que nadie mantenga una lista de quién sabe hacer qué.",
+      "problema": "Asignar tareas a nodos exige saber qué puede hacer cada uno y cuánto tiene encima. Mantener ese registro centralizado se desactualiza, no escala y falla justo cuando los nodos aparecen y desaparecen.",
+      "propuesta": "Invertir el flujo: el coordinador **anuncia** la tarea, los nodos capaces **ofertan** con su coste estimado, y el coordinador **adjudica** a la mejor oferta. Quien conoce su capacidad es quien la declara, en el momento de usarla.",
+      "keywords": [
+        "asignación de tareas",
+        "negociación",
+        "delegación",
+        "coordinación distribuida",
+        "handoff"
+      ],
+      "anteriores": [
+        "P59"
+      ],
+      "posteriores": [
+        "P138"
+      ],
+      "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/126-handoffs-y-transferencia-de-contexto"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/TC.1980.1675516",
+          "url": "https://doi.org/10.1109/TC.1980.1675516"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Sandholm (1993), la red de contratos con compromisos rompibles",
+          "url": "https://cdn.aaai.org/AAAI/1993/AAAI93-038.pdf"
+        },
+        {
+          "label": "FIPA, la especificación estándar del protocolo",
+          "url": "http://www.fipa.org/specs/fipa00029/SC00029H.html"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P137",
+      "dir": "P137_metarrazonamiento",
+      "slug": "metarrazonamiento-russell-1991",
+      "title": "Principles of Metareasoning",
+      "title_es": "Principios del metarrazonamiento",
+      "authors": [
+        "Stuart Russell",
+        "Eric Wefald"
+      ],
+      "year": 1991,
+      "venue": "Artificial Intelligence, 49(1–3), 361–395",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "metarrazonamiento",
+      "hito": "Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta.",
+      "problema": "Un agente con recursos limitados no puede deliberar indefinidamente, y los sistemas fijaban el presupuesto de cómputo a mano. Un número fijo piensa de más en las instancias fáciles y de menos en las difíciles, y siempre en la proporción equivocada.",
+      "propuesta": "Tratar cada paso de deliberación como una acción con coste y con beneficio esperado —el **valor de la computación**— y seguir deliberando solo mientras la mejora esperada supere el coste. La parada se deduce, no se elige.",
+      "keywords": [
+        "racionalidad acotada",
+        "valor de la computación",
+        "presupuesto",
+        "anytime",
+        "metanivel"
+      ],
+      "anteriores": [
+        "P58",
+        "P59"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/121-presupuestos-de-pasos-tokens-costo-y-tiempo"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/0004-3702(91)90015-C",
+          "url": "https://doi.org/10.1016/0004-3702(91)90015-C"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Zilberstein (1996), algoritmos anytime en sistemas inteligentes",
+          "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/1232"
+        },
+        {
+          "label": "Simon (1955), el modelo de comportamiento racional acotado",
+          "url": "https://doi.org/10.2307/1884852"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P138",
+      "dir": "P138_kqml",
+      "slug": "kqml-finin-1994",
+      "title": "KQML as an agent communication language",
+      "title_es": "KQML como lenguaje de comunicación entre agentes",
+      "authors": [
+        "Tim Finin",
+        "Richard Fritzson",
+        "Don McKay",
+        "Robin McEntire"
+      ],
+      "year": 1994,
+      "venue": "CIKM '94, 456–463",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "kqml",
+      "hito": "Separa qué se dice de qué se pretende al decirlo, y con esa capa común convierte N×M integraciones punto a punto en N+M.",
+      "problema": "Dos agentes que intercambian «puerta(abierta)» no pueden saber si eso es una afirmación, una pregunta, una orden o una negación. Y sin una capa común, conectar N agentes con M lenguajes de contenido exige un adaptador por pareja.",
+      "propuesta": "Un lenguaje de mensajes en tres capas —contenido, mensaje y comunicación— donde una **performativa** declara el acto de habla: tell, ask-if, achieve, subscribe. El contenido va dentro y puede estar en cualquier lenguaje.",
+      "keywords": [
+        "interoperabilidad",
+        "performativa",
+        "acto de habla",
+        "protocolo de agentes",
+        "descubrimiento"
+      ],
+      "anteriores": [
+        "P135",
+        "P136",
+        "P59"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/191246.191322",
+          "url": "https://doi.org/10.1145/191246.191322"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "FIPA ACL, el estándar que sucedió a KQML",
+          "url": "http://www.fipa.org/specs/fipa00061/SC00061G.html"
+        },
+        {
+          "label": "Model Context Protocol, el mismo problema en 2024",
+          "url": "https://modelcontextprotocol.io/docs/concepts/architecture"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P139",
+      "dir": "P139_niveles_de_automatizacion",
+      "slug": "niveles-de-automatizacion-parasuraman-2000",
+      "title": "A model for types and levels of human interaction with automation",
+      "title_es": "Un modelo de tipos y niveles de interacción humana con la automatización",
+      "authors": [
+        "Raja Parasuraman",
+        "Thomas B. Sheridan",
+        "Christopher D. Wickens"
+      ],
+      "year": 2000,
+      "venue": "IEEE Transactions on Systems, Man, and Cybernetics, 30(3), 286–297",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "niveles_de_automatizacion",
+      "hito": "Descompone la automatización en cuatro etapas con diez niveles cada una, y documenta que subir de nivel deja al humano fuera del bucle justo cuando más falta hace.",
+      "problema": "«Automatizar» se trataba como una decisión de todo o nada sobre un sistema entero. Y subir el nivel tiene un coste que nadie contabilizaba: quien deja de revisar pierde la práctica que le permitía detectar el fallo cuando ocurre.",
+      "propuesta": "Separar cuatro etapas —adquirir información, analizarla, decidir la acción y ejecutarla— y elegir el nivel de automatización de cada una por separado, evaluando el efecto sobre la carga mental, la conciencia de la situación y la confianza del operador.",
+      "keywords": [
+        "human-in-the-loop",
+        "niveles de automatización",
+        "fuera del bucle",
+        "aprobación",
+        "factores humanos"
+      ],
+      "anteriores": [
+        "P134"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-09-ai-agent-engineering/120-human-in-the-loop-y-aprobaciones"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/3468.844354",
+          "url": "https://doi.org/10.1109/3468.844354"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Bainbridge (1983), las ironías de la automatización",
+          "url": "https://doi.org/10.1016/0005-1098(83)90046-8"
+        },
+        {
+          "label": "Parasuraman y Riley (1997), uso, mal uso y abuso de la automatización",
+          "url": "https://doi.org/10.1518/001872097778543886"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P140",
+      "dir": "P140_mapreduce",
+      "slug": "mapreduce-dean-2004",
+      "title": "MapReduce: simplified data processing on large clusters",
+      "title_es": "MapReduce: procesamiento simplificado de datos en clústeres grandes",
+      "authors": [
+        "Jeffrey Dean",
+        "Sanjay Ghemawat"
+      ],
+      "year": 2004,
+      "venue": "OSDI 2004 · Communications of the ACM, 51(1), 107–113",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "mapreduce",
+      "hito": "Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas.",
+      "problema": "Procesar terabytes en miles de máquinas exigía escribir a mano el particionado, la comunicación, la recuperación de fallos y la agregación. Cada trabajo reimplementaba lo mismo, y la lógica del problema quedaba enterrada bajo la fontanería.",
+      "propuesta": "Dos funciones: **map**, que transforma cada registro en parejas clave-valor, y **reduce**, que agrega todos los valores de una clave. El sistema se encarga del reparto, del movimiento de datos y de reejecutar lo que falle.",
+      "keywords": [
+        "fan-out",
+        "particionado",
+        "sesgo de datos",
+        "combinador",
+        "procesamiento por lotes"
+      ],
+      "anteriores": [
+        "P109"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-10-multi-agent-systems-and-interoperability/128-paralelismo-fan-out-y-map-reduce"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/1327452.1327492",
+          "url": "https://doi.org/10.1145/1327452.1327492"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Zaharia et al. (2012), Spark y los conjuntos distribuidos resilientes",
+          "url": "https://dl.acm.org/doi/10.5555/2228298.2228301"
+        },
+        {
+          "label": "Kwon et al. (2012), mitigación del sesgo en MapReduce",
+          "url": "https://doi.org/10.1145/2213836.2213840"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P141",
+      "dir": "P141_dos_sigma",
+      "slug": "dos-sigma-bloom-1984",
+      "title": "The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring",
+      "title_es": "El problema de las dos sigmas: buscar instrucción grupal tan eficaz como la tutoría individual",
+      "authors": [
+        "Benjamin S. Bloom"
+      ],
+      "year": 1984,
+      "venue": "Educational Researcher, 13(6), 4–16",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L1",
+      "lab": "dos_sigma",
+      "hito": "Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa.",
+      "problema": "La tutoría uno a uno funciona muchísimo mejor que la clase convencional, y es imposible de desplegar: exige un docente por alumno. Sin una medida comparable entre asignaturas y exámenes, no se podía ni discutir cuánto se pierde por no poder pagarla.",
+      "propuesta": "Medir el efecto en desviaciones típicas —el tamaño del efecto— y plantear explícitamente el problema: encontrar métodos de instrucción **grupal** que consigan el efecto de la tutoría. El aprendizaje para el dominio consigue la mitad con coste de clase convencional.",
+      "keywords": [
+        "tamaño del efecto",
+        "tutoría",
+        "aprendizaje para el dominio",
+        "educación",
+        "instrucción adaptativa"
+      ],
+      "anteriores": [],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/180-ia-para-educacion-y-aprendizaje-adaptativo"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.2307/1175554",
+          "url": "https://doi.org/10.2307/1175554"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "VanLehn (2011), cuánto consiguen realmente los tutores inteligentes",
+          "url": "https://doi.org/10.1080/00461520.2011.611369"
+        },
+        {
+          "label": "Hattie (2008), síntesis de tamaños de efecto en educación",
+          "url": "https://doi.org/10.4324/9780203887332"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P142",
+      "dir": "P142_olvido_catastrofico",
+      "slug": "olvido-catastrofico-mccloskey-1989",
+      "title": "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem",
+      "title_es": "Interferencia catastrófica en redes conexionistas: el problema del aprendizaje secuencial",
+      "authors": [
+        "Michael McCloskey",
+        "Neal J. Cohen"
+      ],
+      "year": 1989,
+      "venue": "Psychology of Learning and Motivation, 24, 109–165",
+      "venue_type": "revista",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "olvido_catastrofico",
+      "hito": "Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso.",
+      "problema": "Las redes conexionistas se presentaban como modelos de la memoria humana. Nadie había comprobado qué ocurre cuando se les enseña algo nuevo después de haber aprendido algo: se suponía interferencia gradual, como en las personas.",
+      "propuesta": "Medirlo. Entrenar una red en una tarea, entrenarla después en otra y volver a evaluar la primera. El resultado es un colapso casi inmediato, y eso pone en cuestión el modelo como teoría de la memoria y como sistema práctico.",
+      "keywords": [
+        "olvido catastrófico",
+        "aprendizaje secuencial",
+        "interferencia",
+        "memoria",
+        "aprendizaje continuo"
+      ],
+      "anteriores": [
+        "P02"
+      ],
+      "posteriores": [
+        "P145"
+      ],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1016/S0079-7421(08)60536-8",
+          "url": "https://doi.org/10.1016/S0079-7421(08)60536-8"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "French (1999), revisión del olvido catastrófico diez años después",
+          "url": "https://doi.org/10.1016/S1364-6613(99)01294-2"
+        },
+        {
+          "label": "Parisi et al. (2019), revisión moderna del aprendizaje continuo",
+          "url": "https://doi.org/10.1016/j.neunet.2019.01.012"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P143",
+      "dir": "P143_privacidad_diferencial",
+      "slug": "privacidad-diferencial-dwork-2006",
+      "title": "Calibrating Noise to Sensitivity in Private Data Analysis",
+      "title_es": "Calibrar el ruido a la sensibilidad en el análisis privado de datos",
+      "authors": [
+        "Cynthia Dwork",
+        "Frank McSherry",
+        "Kobbi Nissim",
+        "Adam Smith"
+      ],
+      "year": 2006,
+      "venue": "TCC 2006, 265–284",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L3",
+      "lab": "privacidad_diferencial",
+      "hito": "Da una definición formal de privacidad que no depende de qué sepa el atacante, y un mecanismo concreto para cumplirla.",
+      "problema": "La anonimización fallaba una y otra vez: cruzando datos supuestamente anónimos con otras fuentes se reidentificaba a personas. El problema de fondo es que cualquier definición basada en «quitar los identificadores» depende de qué más sepa quien ataca, y eso no se puede acotar.",
+      "propuesta": "Definir la privacidad como una propiedad del **mecanismo**: que la salida cambie poco —acotado por ε— cuando se añade o quita una persona. Y dar un mecanismo que la cumple: añadir ruido de Laplace calibrado a la sensibilidad de la consulta.",
+      "keywords": [
+        "privacidad diferencial",
+        "sensibilidad",
+        "ruido de Laplace",
+        "epsilon",
+        "reidentificación"
+      ],
+      "anteriores": [
+        "P134"
+      ],
+      "posteriores": [
+        "P146"
+      ],
+      "clases_del_programa": [
+        "classes/part-13-evaluation-safety-security-and-governance/165-privacidad-secretos-y-minimizacion-de-datos",
+        "classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1007/11681878_14",
+          "url": "https://doi.org/10.1007/11681878_14"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Dwork y Roth (2014), los fundamentos algorítmicos, en libro",
+          "url": "https://doi.org/10.1561/0400000042"
+        },
+        {
+          "label": "Abadi et al. (2016), descenso de gradiente con privacidad diferencial",
+          "url": "https://doi.org/10.1145/2976749.2978318"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P144",
+      "dir": "P144_ml_en_seguridad",
+      "slug": "fuera-del-mundo-cerrado-sommer-2010",
+      "title": "Outside the Closed World: On Using Machine Learning for Network Intrusion Detection",
+      "title_es": "Fuera del mundo cerrado: sobre el uso de aprendizaje automático para detectar intrusiones",
+      "authors": [
+        "Robin Sommer",
+        "Vern Paxson"
+      ],
+      "year": 2010,
+      "venue": "IEEE Symposium on Security and Privacy 2010, 305–316",
+      "venue_type": "congreso",
+      "acceso": "restringido",
+      "level": "L2",
+      "lab": "ml_en_seguridad",
+      "hito": "Explica por qué el aprendizaje automático funciona peor en seguridad que en cualquier otro dominio, y por qué la culpa no es del modelo.",
+      "problema": "Cientos de artículos aplicaban aprendizaje automático a la detección de intrusiones con métricas excelentes, y casi ninguno de esos sistemas llegaba a producción. La brecha entre el resultado publicado y el sistema operable no se estaba explicando.",
+      "propuesta": "Cinco razones estructurales: la clase base extremadamente desequilibrada hace que una precisión excelente produzca miles de falsas alarmas; el coste de los errores es asimétrico; no hay datos representativos de ataques nuevos; el adversario se adapta al detector; y la alerta hay que poder explicársela a quien actúa.",
+      "keywords": [
+        "detección de intrusiones",
+        "clase base",
+        "falsos positivos",
+        "adversario",
+        "evaluación"
+      ],
+      "anteriores": [
+        "P60",
+        "P42"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/179-ia-para-ciberseguridad-y-defensa"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1109/SP.2010.25",
+          "url": "https://doi.org/10.1109/SP.2010.25"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Axelsson (2000), la falacia de la clase base en detección de intrusiones",
+          "url": "https://doi.org/10.1145/357830.357849"
+        },
+        {
+          "label": "Arp et al. (2022), errores metodológicos en aprendizaje automático aplicado a seguridad",
+          "url": "https://www.usenix.org/conference/usenixsecurity22/presentation/arp"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P145",
+      "dir": "P145_ewc",
+      "slug": "ewc-kirkpatrick-2017",
+      "title": "Overcoming catastrophic forgetting in neural networks",
+      "title_es": "Superar el olvido catastrófico en redes neuronales",
+      "authors": [
+        "James Kirkpatrick",
+        "Razvan Pascanu",
+        "Neil Rabinowitz",
+        "Joel Veness",
+        "Guillaume Desjardins",
+        "Andrei A. Rusu",
+        "y otros"
+      ],
+      "year": 2017,
+      "venue": "PNAS, 114(13), 3521–3526",
+      "venue_type": "revista",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "ewc",
+      "hito": "Frena selectivamente los pesos que importaban para las tareas anteriores y deja libres los demás, con una penalización derivada de la información de Fisher.",
+      "problema": "El olvido catastrófico llevaba treinta años documentado y sin remedio práctico. Reentrenar con todos los datos anteriores resuelve el problema y exige conservarlos, que es justo lo que no siempre se puede.",
+      "propuesta": "Estimar cuánto importa cada peso para lo ya aprendido —aproximando la información de Fisher— y añadir a la pérdida una penalización elástica que tira de esos pesos hacia su valor anterior, con fuerza proporcional a su importancia.",
+      "keywords": [
+        "aprendizaje continuo",
+        "información de Fisher",
+        "penalización elástica",
+        "plasticidad",
+        "olvido"
+      ],
+      "anteriores": [
+        "P142",
+        "P02"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1073/pnas.1611835114",
+          "url": "https://doi.org/10.1073/pnas.1611835114"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Zenke et al. (2017), inteligencia sináptica: la misma idea calculada en línea",
+          "url": "https://proceedings.mlr.press/v70/zenke17a.html"
+        },
+        {
+          "label": "Kemker et al. (2018), qué miden realmente los métodos de aprendizaje continuo",
+          "url": "https://doi.org/10.1609/aaai.v32i1.11651"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P146",
+      "dir": "P146_federado",
+      "slug": "aprendizaje-federado-mcmahan-2017",
+      "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+      "title_es": "Aprendizaje eficiente en comunicación de redes profundas con datos descentralizados",
+      "authors": [
+        "H. Brendan McMahan",
+        "Eider Moore",
+        "Daniel Ramage",
+        "Seth Hampson",
+        "Blaise Agüera y Arcas"
+      ],
+      "year": 2017,
+      "venue": "AISTATS 2017, PMLR 54, 1273–1282",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L2",
+      "lab": "federado",
+      "hito": "Entrena un modelo compartido sin que los datos salgan del dispositivo, promediando modelos en vez de recoger registros.",
+      "problema": "Los datos más útiles para entrenar —lo que se escribe en el teclado, lo que se fotografía— son los más sensibles y viven en millones de dispositivos con conexión lenta e intermitente. Centralizarlos es caro en comunicación y problemático en privacidad.",
+      "propuesta": "Promediado federado: cada cliente entrena varias épocas en local sobre sus propios datos y envía solo los pesos resultantes; el servidor los promedia y devuelve el modelo. Más cómputo local a cambio de menos rondas de comunicación.",
+      "keywords": [
+        "aprendizaje federado",
+        "promediado",
+        "comunicación",
+        "datos descentralizados",
+        "heterogeneidad"
+      ],
+      "anteriores": [
+        "P143"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/177-privacidad-diferencial-y-aprendizaje-federado"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1602.05629",
+          "url": "https://arxiv.org/abs/1602.05629"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Kairouz et al. (2021), avances y problemas abiertos del aprendizaje federado",
+          "url": "https://doi.org/10.1561/2200000083"
+        },
+        {
+          "label": "Zhu et al. (2019), reconstruir datos a partir de los gradientes",
+          "url": "https://arxiv.org/abs/1906.08935"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P147",
+      "dir": "P147_world_models",
+      "slug": "world-models-ha-2018",
+      "title": "Recurrent World Models Facilitate Policy Evolution",
+      "title_es": "Los modelos recurrentes del mundo facilitan la evolución de políticas",
+      "authors": [
+        "David Ha",
+        "Jürgen Schmidhuber"
+      ],
+      "year": 2018,
+      "venue": "NeurIPS 2018 · arXiv:1803.10122",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L3",
+      "lab": "world_models",
+      "hito": "Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real.",
+      "problema": "Aprender por refuerzo exige millones de interacciones con el entorno. En simulación es caro; en un robot, inviable. Y el agente pasa la mayor parte de esas interacciones reaprendiendo cómo funciona el mundo, no cómo actuar en él.",
+      "propuesta": "Separar el problema en tres piezas: un codificador que comprime la observación, un modelo recurrente que predice el futuro en ese espacio comprimido, y una política diminuta entrenada **dentro** del modelo, sin tocar el entorno.",
+      "keywords": [
+        "modelo del mundo",
+        "aprendizaje con modelo",
+        "sueño",
+        "eficiencia de muestras",
+        "explotación del modelo"
+      ],
+      "anteriores": [
+        "P38",
+        "P03"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-14-frontier-research-and-capstones/174-world-models-y-simulacion-interna"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "arXiv:1803.10122",
+          "url": "https://arxiv.org/abs/1803.10122"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "Hafner et al. (2020), Dreamer: aprender comportamientos imaginando",
+          "url": "https://arxiv.org/abs/1912.01603"
+        },
+        {
+          "label": "Sutton (1991), Dyna: la idea original de planificar con un modelo aprendido",
+          "url": "https://doi.org/10.1145/122344.122377"
+        }
+      ],
+      "consultado": "2026-08-18"
+    },
+    {
+      "id": "P148",
+      "dir": "P148_auditoria_interna",
+      "slug": "auditoria-interna-raji-2020",
+      "title": "Closing the AI Accountability Gap: Defining an End-to-End Framework for Internal Algorithmic Auditing",
+      "title_es": "Cerrar la brecha de responsabilidad: un marco de auditoría algorítmica interna",
+      "authors": [
+        "Inioluwa Deborah Raji",
+        "Andrew Smart",
+        "Rebecca N. White",
+        "Margaret Mitchell",
+        "Timnit Gebru",
+        "Ben Hutchinson",
+        "Jamila Smith-Loud",
+        "Daniel Theron",
+        "Parker Barnes"
+      ],
+      "year": 2020,
+      "venue": "FAT* '20, 33–44",
+      "venue_type": "congreso",
+      "acceso": "abierto",
+      "level": "L1",
+      "lab": "auditoria_interna",
+      "hito": "Convierte la auditoría de un examen final en un proceso con cinco etapas y artefactos obligatorios que se producen mientras el sistema se construye.",
+      "problema": "La auditoría algorítmica se hacía —cuando se hacía— al final, sobre un sistema ya construido. En ese punto los hallazgos importantes son incorregibles: si faltan las etiquetas de subgrupo, no se puede desagregar la evaluación, y recogerlas exigiría rehacer el conjunto de datos.",
+      "propuesta": "Cinco etapas —alcance, correspondencia, recogida de artefactos, pruebas y reflexión— cada una con entregables concretos: declaración de caso de uso, mapa de interesados, hojas de datos, tarjetas de modelo, resultados desagregados y plan de mitigación. La auditoría produce una traza, no un veredicto.",
+      "keywords": [
+        "auditoría interna",
+        "responsabilidad",
+        "artefactos",
+        "gobernanza",
+        "gestión de riesgo"
+      ],
+      "anteriores": [
+        "P114",
+        "P115",
+        "P112"
+      ],
+      "posteriores": [],
+      "clases_del_programa": [
+        "classes/part-13-evaluation-safety-security-and-governance/169-gobernanza-roles-y-gestion-de-riesgo",
+        "classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia"
+      ],
+      "fuentes_primarias": [
+        {
+          "label": "doi:10.1145/3351095.3372873",
+          "url": "https://doi.org/10.1145/3351095.3372873"
+        }
+      ],
+      "lecturas_de_contexto": [
+        {
+          "label": "NIST AI Risk Management Framework (2023)",
+          "url": "https://doi.org/10.6028/NIST.AI.100-1"
+        },
+        {
+          "label": "Costanza-Chock et al. (2022), el ecosistema real de auditoría de IA",
+          "url": "https://doi.org/10.1145/3531146.3533213"
+        }
+      ],
+      "consultado": "2026-08-18"
     }
   ],
   "ruta_ampliada": [
@@ -6617,7 +8332,11 @@
     "ruta_clasica": "P73–P86: aprender la regla de los datos en vez de escribirla. Agrupar, dividir, separar con margen, regularizar, combinar modelos débiles y —tan importante como todo lo anterior— medir bien: estimadores, calibración, selección de variables y evaluación fuera de muestra. Ordenada por año.",
     "ruta_probabilistica": "P87–P95: decidir sin certeza. Por qué la probabilidad es la única extensión coherente de la lógica, cómo se actualiza una creencia, qué hace tratable la conjunta, y las dos familias que buscan sin gradiente. Cierra con la distinción que el aprendizaje automático no resuelve: asociar no es intervenir. Ordenada por año.",
     "ruta_encarnada": "P96–P106: cuando el sistema sale de la pantalla y equivocarse tiene consecuencias que no se deshacen. Estimar dónde se está, moverse sin chocar, aprender a controlar, cruzar el hueco entre simulación y realidad, y no hacer daño. Cierra con la vuelta a la pantalla ajena: agentes que operan navegadores y escritorios. Ordenada por año.",
-    "ruta_operacion": "P107–P117: lo que sostiene un sistema en producción y no aparece en ningún artículo de modelos. Ver qué pasa dentro, decidir qué se sacrifica cuando la red se parte, sobrevivir a la cola de latencia, detectar que el mundo cambió, y documentar datos y modelos para que alguien más pueda auditarlos. Cierra con la evaluación de agentes por trayectoria. Ordenada por año."
+    "ruta_operacion": "P107–P117: lo que sostiene un sistema en producción y no aparece en ningún artículo de modelos. Ver qué pasa dentro, decidir qué se sacrifica cuando la red se parte, sobrevivir a la cola de latencia, detectar que el mundo cambió, y documentar datos y modelos para que alguien más pueda auditarlos. Cierra con la evaluación de agentes por trayectoria. Ordenada por año.",
+    "ruta_percepcion": "P118–P126: cómo entra el mundo en el modelo cuando no es texto limpio. Partir la palabra en unidades que siempre existen, modelar la forma de onda, aprender sobre grafos, caber en un dispositivo pequeño y leer un documento donde la posición es parte del significado. Ordenada por año.",
+    "ruta_medios": "P127–P133: generar medios y el problema que eso crea. Música con estructura, escenas 3D que no se modelan a mano, voces que se copian con tres segundos. Cierra con las dos consecuencias inevitables: cómo saber qué se generó y qué le pasa a un corpus que se alimenta de sí mismo. Ordenada por año.",
+    "ruta_agentes_operativos": "P134–P140: lo que hace falta para que un agente opere de verdad, y que se resolvió décadas antes de que hubiera agentes. Qué permisos darle, cómo coordinar varios sin un jefe que lo sepa todo, cuánto dejarle pensar, en qué idioma hablan entre ellos, cuánto dejar decidir a la máquina y cómo repartir el trabajo. Ordenada por año.",
+    "ruta_gobernanza": "P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el sistema hizo lo que hizo, y qué límites tiene aprender de datos que son de personas. Enseñar, olvidar y recordar, proteger, defender, aprender sin centralizar, imaginar el mundo y rendir cuentas. Cierra el eje con la pregunta de quién responde. Ordenada por año."
   },
   "ruta_representacion": [
     "P23",
@@ -6647,7 +8366,11 @@
     "ruta_clasica",
     "ruta_probabilistica",
     "ruta_encarnada",
-    "ruta_operacion"
+    "ruta_operacion",
+    "ruta_percepcion",
+    "ruta_medios",
+    "ruta_agentes_operativos",
+    "ruta_gobernanza"
   ],
   "ruta_memoria": [
     "P34",
@@ -6751,5 +8474,44 @@
     "P115",
     "P116",
     "P117"
+  ],
+  "ruta_percepcion": [
+    "P118",
+    "P119",
+    "P120",
+    "P121",
+    "P122",
+    "P123",
+    "P124",
+    "P125",
+    "P126"
+  ],
+  "ruta_medios": [
+    "P127",
+    "P128",
+    "P129",
+    "P130",
+    "P131",
+    "P132",
+    "P133"
+  ],
+  "ruta_agentes_operativos": [
+    "P134",
+    "P135",
+    "P136",
+    "P137",
+    "P138",
+    "P139",
+    "P140"
+  ],
+  "ruta_gobernanza": [
+    "P141",
+    "P142",
+    "P143",
+    "P144",
+    "P145",
+    "P146",
+    "P147",
+    "P148"
   ]
 }

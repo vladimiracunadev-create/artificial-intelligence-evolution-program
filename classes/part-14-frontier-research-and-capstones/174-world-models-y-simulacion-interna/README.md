@@ -240,6 +240,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Assran, M. et al. (2023). *Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture* (I-JEPA). CVPR 2023. [arXiv:2301.08243](https://arxiv.org/abs/2301.08243)
 - Sutton, R. & Barto, A. (2018). *Reinforcement Learning: An Introduction* (2.ª ed.), cap. 8 (Dyna, planning and learning). [PDF oficial](http://incompleteideas.net/book/the-book-2nd.html)
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P147 · Los modelos recurrentes del mundo facilitan la evolución de políticas](../../../papers/foundational/P147_world_models/README.md) | 2018 | Entrena la política **dentro** de un modelo del entorno aprendido, y demuestra que la política resultante funciona en el entorno real. | [notebook](../../../notebooks/papers/P147_world_models.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

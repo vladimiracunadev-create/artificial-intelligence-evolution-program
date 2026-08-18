@@ -224,6 +224,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): ejecución concurrente de agentes conversables.
 - [Anthropic — Pricing de la API](https://claude.com/pricing#api): precios por MTok para reproducir los cálculos de coste.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P140 · MapReduce: procesamiento simplificado de datos en clústeres grandes](../../../papers/foundational/P140_mapreduce/README.md) | 2004 | Reduce el procesamiento distribuido a dos funciones puras y esconde el reparto, la tolerancia a fallos y la recogida de resultados detrás de ellas. | [notebook](../../../notebooks/papers/P140_mapreduce.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior

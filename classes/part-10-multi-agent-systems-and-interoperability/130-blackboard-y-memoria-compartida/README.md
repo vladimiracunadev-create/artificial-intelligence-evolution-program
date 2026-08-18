@@ -222,6 +222,20 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [LangGraph — Graph API (estado compartido)](https://docs.langchain.com/oss/python/langgraph/graph-api): el *state* tipado como blackboard moderno entre nodos.
 - [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): memoria y artefactos compartidos entre lead y subagentes.
 
+<!-- papers:inicio -->
+
+---
+
+## 📜 Papers que fundamentan esta clase
+
+> Bloque generado por `python scripts/link_papers_to_classes.py`. La fuente es [`papers/catalog/papers.json`](../../../papers/catalog/papers.json).
+
+| Paper | Año | Qué desbloqueó | Miniatura |
+|---|---:|---|---|
+| [P135 · El sistema Hearsay-II: integrar conocimiento para resolver incertidumbre](../../../papers/foundational/P135_pizarra/README.md) | 1980 | Introduce la arquitectura de pizarra: fuentes de conocimiento independientes que publican hipótesis en una estructura compartida, sin llamarse entre sí. | [notebook](../../../notebooks/papers/P135_pizarra.ipynb) |
+
+Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
+<!-- papers:fin -->
 ---
 
 ## ⬅️ Clase anterior
