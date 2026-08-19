@@ -19,6 +19,56 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.14.1 — 2026-08-19
+
+### Revisión integral: lo que la documentación afirmaba y lo que el repositorio hacía
+
+Versión correctiva. No añade contenido: reconcilia lo que el repositorio **dice** con lo que
+**es**, y arregla dos defectos de generador que llevaban tiempo produciendo enlaces rotos sin que
+nada los detectara.
+
+**Coherencia de conteos.** Once ficheros afirmaban cifras de eras anteriores. El README arrastraba
+varias de la época de 52 papers —«60 notebooks», «52 motores», «451 páginas»— y una de cuando el
+sitio tenía 67 páginas del eje. También RECRUITER, INSTALL, `docs/ARCHITECTURE.md`,
+`papers/ROADMAP.md` y el agente actualizador. Las cifras que aparecen bajo los encabezados
+`✅ 0.8.0 / 0.9.0 / 0.10.0 (entregado)` del roadmap narran lo que ocurrió entonces y **se
+conservan intactas**.
+
+**Enlaces.** 9 783 internos del repositorio y 6 825 del sitio, todos verificados. Cuatro clases de
+defecto:
+
+| Defecto | Alcance |
+|---|---|
+| Anclas a secciones de anexo **que no existen** —inventadas al escribir el puente matemático— | 14, cuatro de ellas de la tanda 2 |
+| DOI con paréntesis **sin escapar en el destino** del enlace: un parser estricto corta la URL en el primer `)` | 20 |
+| DOI **incorrectos**, verificados contra Crossref | 2 |
+| DOI registrado pero que el editor **no resuelve** (Bloom 1984 en JSTOR) | 1 |
+
+Las anclas inventadas se remapearon a secciones reales y se reescribió el texto del puente para que
+declare lo que la sección realmente cubre. Los dos DOI incorrectos eran Piccinini (2004) y
+Heckerman y Shortliffe (1992).
+
+**Dos defectos de generador**, que son la causa de que lo anterior pasara desapercibido:
+
+- `scripts/generate_site.py` declaraba en su propio docstring que calcula el ancla «al estilo de
+  GitHub» y colapsaba `\s+` a un solo guion, cuando GitHub sustituye **cada** espacio. Un
+  encabezado con raya —«Paso 3 — Normalizar»— quedaba con un guion en el sitio y dos en GitHub, y
+  el enlace caía al principio de la página en vez de a su sección. Además tenía el número de papers
+  **codificado a 52**; ahora se lee del catálogo.
+- `site/index.html` es un fichero escrito a mano que el generador nunca reescribe. Llevaba desde la
+  0.11.0 anunciando 52 papers y 609 notebooks, y así estaba publicado.
+
+**About de GitHub.** Estaba corrupto además de desactualizado: `ðŸ§ `, `matemÃ¡ticos`, `espaÃ±ol`.
+Se corrigió construyendo el JSON en Python y aplicándolo con `gh api --input`, sin pasar el texto
+por el shell —que es exactamente como se corrompió— y verificando los bytes releídos de la API. Los
+topics incorporan los temas de la tanda 3; como GitHub limita a 20, se retiran cinco redundantes
+(`notebooks`, `education`, `learning-path`, `python` y `ai-agents`).
+
+**PDFs.** Regenerados los 148 individuales y el del eje, que tiene **1 230 páginas** — la cifra que
+ahora declara `papers/ROADMAP.md`.
+
+Sin mojibake en el repositorio: 1 799 ficheros escaneados, 0 afectados.
+
 ## 0.14.0 — 2026-08-18
 
 ### El eje de papers pasa de 117 a 148: percepción, medios, agentes operativos y gobernanza
