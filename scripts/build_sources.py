@@ -132,6 +132,16 @@ SITE_WORKS: dict[str, dict] = {
         "authority": "MIT Press",
         "homepage": "https://probml.github.io/pml-book/",
     },
+    "nlp.stanford.edu/ir-book": {
+        "id": "manning-raghavan-schutze-information-retrieval",
+        "type": "book",
+        "authors": ["Manning, Christopher D.", "Raghavan, Prabhakar", "Schütze, Hinrich"],
+        "title": "Introduction to Information Retrieval",
+        "published": "2008",
+        "isbn13": "9780521865715",
+        "authority": "Cambridge University Press",
+        "homepage": "https://nlp.stanford.edu/IR-book/",
+    },
     "d2l.ai": {
         "id": "zhang-lipton-li-smola-dive-into-deep-learning",
         "type": "book",
@@ -142,6 +152,41 @@ SITE_WORKS: dict[str, dict] = {
         "homepage": "https://d2l.ai/",
     },
 }
+
+#: Autoría de libros cuyo ISBN sale de la URL del editor y cuya ficha de Open
+#: Library no la trae. El ISBN y el título los verifica el catálogo; esto solo
+#: completa la autoría, que es dato de portada y no un localizador.
+BOOK_AUTHORS: dict[str, dict] = {
+    "9780262013192": {
+        "authors": ["Koller, Daphne", "Friedman, Nir"],
+        "authority": "MIT Press",
+    },
+    "9780262037310": {
+        "authors": ["Peters, Jonas", "Janzing, Dominik", "Schölkopf, Bernhard"],
+        "authority": "MIT Press",
+    },
+    "9780262042192": {
+        "authors": ["Dorigo, Marco", "Stützle, Thomas"],
+        "authority": "MIT Press",
+    },
+    "9780262201629": {
+        "authors": ["Thrun, Sebastian", "Burgard, Wolfram", "Fox, Dieter"],
+        "authority": "MIT Press",
+    },
+    "9780674576292": {
+        "authors": ["Vygotsky, Lev S."],
+        "authority": "Harvard University Press",
+    },
+    "9781098107956": {
+        "authors": ["Huyen, Chip"],
+        "authority": "O'Reilly Media",
+    },
+    "9780136291558": {
+        "authors": ["Meyer, Bertrand"],
+        "authority": "Prentice Hall",
+    },
+}
+
 
 #: Dominios cuya publicación es normativa o especificación técnica.
 STANDARD_DOMAINS = {
@@ -256,6 +301,15 @@ VOLATILE_DOMAINS = {
     "x.ai",
     "deepseek.com",
     "qwen.ai",
+}
+
+#: La misma obra citada con dos títulos distintos es una sola fuente.
+#: La clave de la izquierda se reescribe a la de la derecha antes de agrupar.
+MERGE_WORKS = {
+    "the book of why: the new science of cause and effect": "the book of why",
+    "probabilistic reasoning in intelligent systems: networks of plausible inference": (
+        "probabilistic reasoning in intelligent systems"
+    ),
 }
 
 ARXIV_RE = re.compile(r"^arxiv\.org/(?:abs|pdf)/(.+?)(?:v\d+)?(?:\.pdf)?$")
@@ -406,17 +460,18 @@ def build(root: Path = ROOT) -> dict:
 
     for item in items:
         url_keys = item.url_keys
-        if not url_keys and not item.work_keys:
+        # la misma obra citada con dos títulos es una sola fuente, pero las dos
+        # claves siguen siendo claves usadas: el grupo se queda con ambas
+        work_keys = item.work_keys
+        canon_keys = [MERGE_WORKS.get(key, key) for key in work_keys]
+        if not url_keys and not work_keys:
             # remisión interna del repositorio, no una fuente externa
             continue
         if url_keys:
             gid, gtype = group_of(url_keys[0])
-        elif item.work_keys:
-            gid = f"obra:{item.work_keys[0]}"
-            gtype = "paper" if re.search(r"[\"“][^\"”]{5,}[\"”]", item.text) else "book"
         else:
-            gid = f"obra:{normalize_work_key(item.text)}"
-            gtype = "book"
+            gid = f"obra:{canon_keys[0]}"
+            gtype = "paper" if re.search(r"[\"“][^\"”]{5,}[\"”]", item.text) else "book"
 
         entry = groups.get(gid)
         if entry is None:
@@ -433,7 +488,7 @@ def build(root: Path = ROOT) -> dict:
         for key in url_keys:
             if key not in entry["url_keys"]:
                 entry["url_keys"].append(key)
-        for key in item.work_keys:
+        for key in dict.fromkeys(work_keys + canon_keys):
             if key not in entry["aliases"]:
                 entry["aliases"].append(key)
             work_owner.setdefault(key, set()).add(gid)
@@ -544,6 +599,14 @@ def build(root: Path = ROOT) -> dict:
         prior = previous.get(entry_id)
         if prior:
             _carry_over(entry, prior)
+
+        declarada = BOOK_AUTHORS.get(entry.get("isbn13", ""))
+        if declarada:
+            if not entry.get("authors"):
+                entry["authors"] = declarada["authors"]
+            autoridad = entry.get("authority") or ""
+            if not autoridad or re.match(r"^[\w.-]+\.[a-z]{2,}$", autoridad):
+                entry["authority"] = declarada["authority"]
         entries.append(entry)
 
     entries.sort(key=lambda e: (e["type"], e["id"]))

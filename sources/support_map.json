@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "policy": "Manual de referencia por parte del programa. Cada clase muestra, además de sus papers, la obra que desarrolla su contenido con más espacio del que cabe en una clase. Los identificadores apuntan a entradas de bibliography.json: aquí no se escriben ISBN ni títulos, se referencian.",
+  "criterio": "Se mapea el manual que las propias clases de esa parte ya citan. Cuando una parte no cita ninguno, se mapea el texto de referencia del área, y la nota dice qué cubre. Ninguna obra entra al mapa sin ISBN-13 con dígito de control válido.",
+  "parts": {
+    "00": [
+      {
+        "id": "russell-norvig-aima",
+        "scope": "capítulos de introducción y de agentes racionales",
+        "why": "fija el objeto de estudio y el marco de agente, entorno y medida de desempeño con el que se lee todo el resto del programa"
+      }
+    ],
+    "01": [
+      {
+        "id": "russell-norvig-aima",
+        "scope": "bloque de búsqueda, lógica y planificación",
+        "why": "desarrolla con demostraciones y ejercicios lo que aquí se implementa: espacios de estados, heurísticas admisibles, A*, CSP, lógica proposicional y de primer orden y planificación"
+      },
+      {
+        "id": "principles-of-artificial-intelligence",
+        "scope": "representación por espacios de estados",
+        "why": "el tratamiento clásico del que sale la formulación de problemas que usa la parte"
+      }
+    ],
+    "02": [
+      {
+        "id": "russell-norvig-aima",
+        "scope": "bloque de incertidumbre y decisión",
+        "why": "probabilidad, redes bayesianas, razonamiento temporal y teoría de la decisión con el nivel de detalle que la clase resume"
+      },
+      {
+        "id": "isbn-9780262013192",
+        "scope": "modelos gráficos probabilísticos",
+        "why": "el tratado de referencia de representación, inferencia y aprendizaje en modelos gráficos"
+      },
+      {
+        "id": "probabilistic-reasoning-in-intelligent-systems",
+        "scope": "redes de creencia",
+        "why": "la obra que introdujo las redes bayesianas y su propagación de evidencia"
+      }
+    ],
+    "03": [
+      {
+        "id": "hastie-tibshirani-friedman-elements-statistical-learning",
+        "scope": "toda la parte",
+        "why": "el texto estándar de aprendizaje estadístico: sesgo-varianza, regularización, árboles, ensambles y validación"
+      },
+      {
+        "id": "james-witten-hastie-tibshirani-introduction-statistical-learning",
+        "scope": "toda la parte, nivel introductorio",
+        "why": "la versión accesible del anterior, con ejercicios resueltos; sirve de entrada cuando la matemática de ESL pesa demasiado"
+      },
+      {
+        "id": "murphy-probabilistic-machine-learning",
+        "scope": "fundamentos probabilísticos del aprendizaje",
+        "why": "unifica el ML clásico y el moderno bajo una misma notación probabilística"
+      }
+    ],
+    "04": [
+      {
+        "id": "goodfellow-bengio-courville-deep-learning",
+        "scope": "toda la parte",
+        "why": "el texto de referencia de redes neuronales: optimización, regularización, convolucionales, recurrentes y autoencoders"
+      },
+      {
+        "id": "murphy-probabilistic-machine-learning",
+        "scope": "modelos profundos desde la probabilidad",
+        "why": "da el marco probabilístico de lo que el libro anterior presenta desde la optimización"
+      }
+    ],
+    "05": [
+      {
+        "id": "jurafsky-martin-speech-and-language-processing",
+        "scope": "lenguaje y habla",
+        "why": "el texto de referencia de procesamiento de lenguaje natural y voz, del n-grama al transformador"
+      }
+    ],
+    "06": [
+      {
+        "id": "jurafsky-martin-speech-and-language-processing",
+        "scope": "capítulos de modelos de lenguaje y transformadores",
+        "why": "desarrolla la mecánica de los modelos que esta parte pone a trabajar: tokenización, atención, preentrenamiento y ajuste"
+      },
+      {
+        "id": "goodfellow-bengio-courville-deep-learning",
+        "scope": "optimización y entrenamiento a escala",
+        "why": "explica por qué el entrenamiento funciona —o no— cuando el modelo y los datos crecen"
+      }
+    ],
+    "07": [
+      {
+        "id": "goodfellow-bengio-courville-deep-learning",
+        "scope": "capítulos de modelos generativos",
+        "why": "modelos generativos profundos, muestreo y evaluación de lo generado"
+      }
+    ],
+    "08": [
+      {
+        "id": "manning-raghavan-schutze-information-retrieval",
+        "scope": "toda la parte",
+        "why": "el texto de referencia de recuperación de información: índices, ponderación, evaluación y ranking, que es lo que hay debajo de cualquier RAG"
+      },
+      {
+        "id": "jurafsky-martin-speech-and-language-processing",
+        "scope": "representaciones vectoriales de significado",
+        "why": "de dónde salen los embeddings con los que se recupera"
+      }
+    ],
+    "09": [
+      {
+        "id": "russell-norvig-aima",
+        "scope": "capítulo de agentes racionales",
+        "why": "la definición de agente, entorno, sensores y actuadores que esta parte lleva a herramientas y bucles de ejecución"
+      },
+      {
+        "id": "an-introduction-to-multiagent-systems",
+        "scope": "arquitecturas de agente",
+        "why": "arquitecturas deliberativas y reactivas, y qué compromete cada una"
+      }
+    ],
+    "10": [
+      {
+        "id": "an-introduction-to-multiagent-systems",
+        "scope": "toda la parte",
+        "why": "el texto de referencia de sistemas multiagente: coordinación, negociación, protocolos y mecanismos"
+      },
+      {
+        "id": "russell-norvig-aima",
+        "scope": "decisión multiagente y teoría de juegos",
+        "why": "el marco formal de la interacción entre agentes con intereses propios"
+      }
+    ],
+    "11": [
+      {
+        "id": "isbn-9780262201629",
+        "scope": "toda la parte",
+        "why": "el texto de referencia de robótica probabilística: localización, mapeo y control bajo incertidumbre de sensores"
+      }
+    ],
+    "12": [
+      {
+        "id": "isbn-9781098107956",
+        "scope": "toda la parte",
+        "why": "el texto de referencia de sistemas de ML en producción: datos, despliegue, monitorización y deuda técnica"
+      }
+    ],
+    "13": [
+      {
+        "id": "isbn-9781098107956",
+        "scope": "capítulos de evaluación y monitorización",
+        "why": "cómo se mide un sistema en producción y qué se vigila cuando la distribución cambia"
+      },
+      {
+        "id": "russell-norvig-aima",
+        "scope": "capítulo de filosofía, ética y seguridad de la IA",
+        "why": "el tratamiento académico de los riesgos y límites que esta parte convierte en controles"
+      }
+    ],
+    "14": [
+      {
+        "id": "russell-norvig-aima",
+        "scope": "capítulo sobre el futuro de la IA",
+        "why": "el marco con el que leer la frontera sin confundir promesa con resultado"
+      },
+      {
+        "id": "goodfellow-bengio-courville-deep-learning",
+        "scope": "límites de los métodos actuales",
+        "why": "qué está resuelto y qué sigue abierto en el aprendizaje profundo"
+      }
+    ]
+  }
+}

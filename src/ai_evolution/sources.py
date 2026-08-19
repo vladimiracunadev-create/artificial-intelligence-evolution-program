@@ -433,39 +433,321 @@ def _check_class_blocks(items: list[RefItem], root: Path, problems: list[str]) -
             )
 
 
-def readme_block(stats: dict) -> str:
-    """Bloque de cifras del README. Lo produce el verificador, no la mano."""
-    by_type = stats["by_type"]
-    lines = [
-        README_BEGIN,
-        "",
-        "| Registro de fuentes | Valor |",
-        "|---|---:|",
-        f"| Entradas | **{stats['entries']}** |",
-        f"| Verificadas | **{stats['verified']}** |",
-        f"| Pendientes | **{stats['pending']}** |",
-        f"| Libros · artículos · normas · documentación · datos | "
-        f"**{by_type.get('book', 0)} · {by_type.get('paper', 0)} · {by_type.get('standard', 0)} · "
-        f"{by_type.get('reference', 0)} · {by_type.get('dataset', 0)}** |",
-        f"| Citas en clases | **{stats['citations']}** en {stats['classes']} clases |",
-        f"| Fuentes usadas (enlaces + obras) | **{stats['used_sources']}** "
-        f"({stats['used_links']} + {stats['used_works']}) |",
-        f"| Cobertura del registro | **{stats['coverage_pct']} %** |",
-        f"| ISBN-13 · DOI | **{stats['with_isbn']} · {stats['with_doi']}** |",
-        f"| Última resolución en red | **{stats['verified_on']}** |",
-        "",
-        README_END,
-    ]
-    return "\n".join(lines)
+#: Ruta del mapa de manuales por parte y de la bibliografía legible.
+SUPPORT_MAP_PATH = ROOT / "sources" / "support_map.json"
+BIBLIOGRAPHY_MD = ROOT / "sources" / "BIBLIOGRAFIA.md"
+
+#: Marcadores del bloque de bibliografía de apoyo dentro de cada clase.
+CLASS_BEGIN = "<!-- bibliografia:inicio -->"
+CLASS_END = "<!-- bibliografia:fin -->"
+
+CHAPTER_RE = re.compile(
+    r"\b(caps?\.\s*[0-9IVXivx]+(?:\s*[-–ay]+\s*[0-9IVXivx]+)*"
+    r"|capítulos?\s*[0-9IVXivx]+(?:\s*[-–ay]+\s*[0-9IVXivx]+)*)",
+    re.I,
+)
+
+
+def load_support_map(root: Path = ROOT) -> dict:
+    return json.loads((root / "sources" / "support_map.json").read_text(encoding="utf-8"))
+
+
+def part_of(class_path: str) -> str:
+    match = re.search(r"classes/part-(\d\d)", class_path)
+    return match.group(1) if match else ""
+
+
+def entries_by_id(registry: dict) -> dict[str, dict]:
+    return {entry["id"]: entry for entry in registry.get("entries", [])}
+
+
+def lookup_index(registry: dict) -> tuple[dict[str, dict], dict[str, dict]]:
+    """Índices clave→entrada para casar una cita con su entrada del registro."""
+    by_url: dict[str, dict] = {}
+    by_work: dict[str, dict] = {}
+    for entry in registry.get("entries", []):
+        for key in entry.get("url_keys", []):
+            by_url.setdefault(normalize_url_key(key), entry)
+        for key in entry.get("aliases", []):
+            by_work.setdefault(normalize_work_key(key), entry)
+    return by_url, by_work
+
+
+def entry_for_item(item: RefItem, by_url: dict, by_work: dict) -> dict | None:
+    for key in item.url_keys:
+        if key in by_url:
+            return by_url[key]
+    for key in item.work_keys:
+        if key in by_work:
+            return by_work[key]
+    return None
+
+
+def format_authors(entry: dict) -> str:
+    authors = entry.get("authors") or []
+    if not authors:
+        # sin autoría resuelta se cita la editorial, nunca el dominio de la web
+        authority = entry.get("authority") or ""
+        return "" if re.match(r"^[\w.-]+\.[a-z]{2,}$", authority) else authority
+    if len(authors) > 3:
+        return f"{authors[0]} et al."
+    if len(authors) == 1:
+        return authors[0]
+    return f"{', '.join(authors[:-1])} y {authors[-1]}"
+
+
+def format_work(entry: dict) -> str:
+    """«Autores — *Título*», que es como se cita una obra, no un identificador."""
+    authors = format_authors(entry)
+    title = entry.get("title") or entry["id"]
+    return f"{authors} — *{title}*" if authors else f"*{title}*"
+
+
+def format_edition(entry: dict) -> str:
+    bits = [entry.get("edition"), entry.get("published")]
+    return " · ".join(str(bit) for bit in bits if bit) or "—"
+
+
+def format_locator(entry: dict) -> str:
+    """Localizador legible: ISBN o DOI enlazado, más la web de la obra si la hay."""
+    parts = []
+    if entry.get("isbn13"):
+        parts.append(f"[ISBN {entry['isbn13']}](https://openlibrary.org/isbn/{entry['isbn13']})")
+    elif entry.get("doi"):
+        parts.append(f"[DOI {entry['doi']}](https://doi.org/{entry['doi']})")
+    elif entry.get("locator"):
+        parts.append(f"[fuente primaria]({entry['locator']})")
+    if entry.get("homepage"):
+        parts.append(f"[web de la obra]({entry['homepage']})")
+    if entry.get("status") == "pendiente":
+        # el dígito de control se comprueba sin red; lo que falta es la ficha
+        parts.append(
+            "_pendiente de confirmar en su catálogo_" if parts else "_sin localizador verificado_"
+        )
+    return " · ".join(parts) or "—"
+
+
+def chapter_note(text: str) -> str:
+    match = CHAPTER_RE.search(text)
+    return match.group(1).strip() if match else ""
+
+
+def class_bibliography(registry: dict, support: dict, items: list[RefItem]) -> dict[str, dict]:
+    """Para cada clase: los libros que cita y el manual de referencia de su parte.
+
+    Los papers dicen de dónde salió el mecanismo; esto dice con qué obra se
+    estudia. Nada se escribe a mano: sale del registro y del mapa de apoyo.
+    """
+    by_url, by_work = lookup_index(registry)
+    by_id = entries_by_id(registry)
+    citado: dict[str, dict[str, str]] = {}
+    normas: dict[str, list[dict]] = {}
+    for item in items:
+        entry = entry_for_item(item, by_url, by_work)
+        if entry is None:
+            continue
+        if entry["type"] == "book":
+            note = chapter_note(item.text)
+            previo = citado.setdefault(item.class_path, {})
+            if entry["id"] not in previo or (note and not previo[entry["id"]]):
+                previo[entry["id"]] = note
+        elif entry["type"] == "standard":
+            lista = normas.setdefault(item.class_path, [])
+            if entry not in lista:
+                lista.append(entry)
+
+    resultado: dict[str, dict] = {}
+    for path in sorted({item.class_path for item in items}):
+        filas: list[dict] = []
+        vistos: set[str] = set()
+        parte = part_of(path)
+        manuales = {m["id"]: m for m in support.get("parts", {}).get(parte, [])}
+        for entry_id, note in sorted(citado.get(path, {}).items()):
+            entry = by_id.get(entry_id)
+            if entry is None:
+                continue
+            papel = "citada en las referencias de esta clase"
+            if note:
+                papel += f" · {note}"
+            if entry_id in manuales:
+                papel += f" · obra de referencia de la parte {parte}"
+            filas.append({"entry": entry, "papel": papel})
+            vistos.add(entry_id)
+        for manual in manuales.values():
+            if manual["id"] in vistos:
+                continue
+            entry = by_id.get(manual["id"])
+            if entry is None:
+                continue
+            filas.append(
+                {
+                    "entry": entry,
+                    "papel": f"obra de referencia de la parte {parte} · {manual['scope']}",
+                }
+            )
+            vistos.add(manual["id"])
+        resultado[path] = {"obras": filas, "normas": normas.get(path, [])}
+    return resultado
+
+
+def class_block(datos: dict) -> str:
+    """Bloque de bibliografía de apoyo que se inserta en el README de una clase."""
+    filas = "\n".join(
+        f"| {format_work(fila['entry'])} | {format_edition(fila['entry'])} "
+        f"| {format_locator(fila['entry'])} | {fila['papel']} |"
+        for fila in datos["obras"]
+    )
+    normas = ""
+    if datos["normas"]:
+        enlaces = " · ".join(
+            f"[{norma.get('title') or norma['id']}]({norma.get('locator')})"
+            for norma in datos["normas"][:5]
+        )
+        normas = f"\n**Normas y documentación oficial que aplica esta clase:** {enlaces}\n"
+    return (
+        f"{CLASS_BEGIN}\n"
+        "\n---\n\n"
+        "## 📚 Bibliografía de apoyo\n\n"
+        "> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su "
+        "localizador verificado en "
+        "[`sources/bibliography.json`](../../../sources/bibliography.json).\n\n"
+        "Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el "
+        "espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.\n\n"
+        "| Obra | Edición | Localizador | Papel en esta clase |\n"
+        "|---|---|---|---|\n"
+        f"{filas}\n"
+        f"{normas}"
+        f"{CLASS_END}"
+    )
+
+
+def part_titles(root: Path = ROOT) -> dict[str, str]:
+    """Títulos de las 15 partes, leídos de `curriculum.yaml` sin dependencias."""
+    texto = (root / "curriculum.yaml").read_text(encoding="utf-8")
+    titulos: dict[str, str] = {}
+    actual = None
+    for linea in texto.splitlines():
+        marca = re.match(r"\s*-?\s*id:\s*['\"]?(\d\d)['\"]?\s*$", linea)
+        if marca:
+            actual = marca.group(1)
+            continue
+        titulo = re.match(r"\s*title:\s*(.+?)\s*$", linea)
+        if titulo and actual and actual not in titulos:
+            titulos[actual] = titulo.group(1).strip("'\"")
+    return titulos
+
+
+def readme_block(registry: dict, support: dict, root: Path = ROOT) -> str:
+    """Bloque del README: qué obra sostiene cada parte. Sin contadores."""
+    by_id = entries_by_id(registry)
+    titulos = part_titles(root)
+    filas = []
+    for parte, manuales in sorted(support.get("parts", {}).items()):
+        obras = []
+        for manual in manuales:
+            entry = by_id.get(manual["id"])
+            if entry:
+                obras.append(f"{format_work(entry)} — {format_locator(entry)}")
+        filas.append(f"| **{parte}** · {titulos.get(parte, '')} | " + "<br>".join(obras) + " |")
+    return "\n".join(
+        [README_BEGIN, "", "| Parte | Obra que la sostiene |", "|---|---|", *filas, "", README_END]
+    )
 
 
 def badge_block(stats: dict) -> str:
-    total = stats["entries"]
     return (
         f"{BADGE_BEGIN}\n"
-        f"[![Fuentes](https://img.shields.io/badge/fuentes-{total}%20registradas-0b7285?style=for-the-badge)](sources/bibliography.json)\n"
+        "[![Bibliografía](https://img.shields.io/badge/bibliograf%C3%ADa-"
+        "libros%20%C2%B7%20normas%20%C2%B7%20documentaci%C3%B3n-0b7285?style=for-the-badge)]"
+        "(sources/BIBLIOGRAFIA.md)\n"
         f"{BADGE_END}"
     )
+
+
+def bibliography_md(registry: dict, support: dict, items: list[RefItem], stats: dict) -> str:
+    """`sources/BIBLIOGRAFIA.md`: la bibliografía legible, generada del registro."""
+    by_id = entries_by_id(registry)
+    titulos = part_titles()
+    por_clase = class_bibliography(registry, support, items)
+    lineas = [
+        "# 📚 Bibliografía de apoyo del programa",
+        "",
+        "> Fichero generado por `python scripts/verify-sources --write` desde",
+        "> [`bibliography.json`](bibliography.json) y [`support_map.json`](support_map.json).",
+        "> No se edita a mano.",
+        "",
+        "Los [papers fundacionales](../papers/README.md) dicen **de dónde salió** cada idea.",
+        "Esta bibliografía dice **con qué se estudia**: la obra que desarrolla el contenido de",
+        "cada parte con el espacio que una clase no tiene.",
+        "",
+        "## Obra de referencia por parte",
+        "",
+    ]
+    for parte, manuales in sorted(support.get("parts", {}).items()):
+        lineas.append(f"### Parte {parte} — {titulos.get(parte, '')}")
+        lineas.append("")
+        for manual in manuales:
+            entry = by_id.get(manual["id"])
+            if entry is None:
+                continue
+            lineas.append(f"- {format_work(entry)} · {format_edition(entry)} — {format_locator(entry)}")
+            lineas.append(f"  - **{manual['scope']}**: {manual['why']}")
+        lineas.append("")
+
+    libros = sorted(
+        (e for e in registry["entries"] if e["type"] == "book"),
+        key=lambda e: normalize_title(e.get("title", "")),
+    )
+    lineas += [
+        "## Todas las obras que citan las clases",
+        "",
+        "| Obra | Edición | Localizador | Clases |",
+        "|---|---|---|---:|",
+    ]
+    for entry in libros:
+        lineas.append(
+            f"| {format_work(entry)} | {format_edition(entry)} | {format_locator(entry)} "
+            f"| {len(entry.get('used_in', []))} |"
+        )
+
+    normas = sorted(
+        (e for e in registry["entries"] if e["type"] == "standard"),
+        key=lambda e: normalize_title(e.get("title", "")),
+    )
+    lineas += [
+        "",
+        "## Normas y especificaciones",
+        "",
+        "| Norma | Versión | Fuente | Clases |",
+        "|---|---|---|---:|",
+    ]
+    for entry in normas:
+        lineas.append(
+            f"| {entry.get('title') or entry['id']} | {entry.get('version') or '—'} "
+            f"| [{entry.get('authority') or 'fuente'}]({entry.get('locator')}) "
+            f"| {len(entry.get('used_in', []))} |"
+        )
+
+    sin_obra = [path for path, datos in por_clase.items() if not datos["obras"]]
+    lineas += [
+        "",
+        "## Estado del registro",
+        "",
+        f"- Obras registradas: **{stats['entries']}** "
+        f"({stats['by_type'].get('book', 0)} libros, {stats['by_type'].get('paper', 0)} artículos, "
+        f"{stats['by_type'].get('standard', 0)} normas, "
+        f"{stats['by_type'].get('reference', 0)} documentos de referencia).",
+        f"- Con localizador resuelto contra su autoridad: **{stats['verified']}**; "
+        f"pendientes con motivo declarado: **{stats['pending']}**.",
+        f"- Clases sin bibliografía de apoyo: **{len(sin_obra)}**.",
+        f"- Última resolución en red: **{stats['verified_on']}** "
+        "(`python scripts/refresh-sources`).",
+        "",
+        "El detalle por entrada, con el motivo de cada pendiente, está en",
+        "[`bibliography.json`](bibliography.json); el método, en [`README.md`](README.md).",
+        "",
+    ]
+    return "\n".join(lineas)
 
 
 def _replace_block(text: str, begin: str, end: str, replacement: str) -> tuple[str, bool]:
@@ -475,14 +757,82 @@ def _replace_block(text: str, begin: str, end: str, replacement: str) -> tuple[s
     return pattern.sub(lambda _: replacement, text, count=1), True
 
 
-def sync_readme(stats: dict, root: Path = ROOT, write: bool = False) -> list[str]:
-    """Compara (o escribe) las cifras del README contra el registro."""
+def _check_support_map(registry: dict, support: dict, problems: list[str]) -> None:
+    """El mapa de apoyo solo referencia obras del registro con ISBN-13 válido."""
+    by_id = entries_by_id(registry)
+    partes = {part_of(p.as_posix()) for p in class_files()}
+    partes.discard("")
+    faltan = sorted(partes - set(support.get("parts", {})))
+    for parte in faltan:
+        problems.append(f"support_map.json: la parte {parte} no declara obra de referencia")
+    for parte, manuales in support.get("parts", {}).items():
+        if not manuales:
+            problems.append(f"support_map.json: la parte {parte} no declara obra de referencia")
+        for manual in manuales:
+            entry = by_id.get(manual.get("id", ""))
+            if entry is None:
+                problems.append(
+                    f"support_map.json: la parte {parte} apunta a {manual.get('id')!r}, "
+                    "que no existe en el registro"
+                )
+                continue
+            if entry["type"] != "book":
+                problems.append(
+                    f"support_map.json: {entry['id']} no es un libro, es {entry['type']}"
+                )
+            if not isbn13_is_valid(entry.get("isbn13", "")):
+                problems.append(
+                    f"support_map.json: {entry['id']} entra como obra de referencia sin "
+                    "ISBN-13 con dígito de control válido"
+                )
+            for campo in ("scope", "why"):
+                if not manual.get(campo):
+                    problems.append(
+                        f"support_map.json: {entry['id']} en la parte {parte} no declara {campo}"
+                    )
+
+
+def _check_class_bibliography(
+    registry: dict, support: dict, items: list[RefItem], root: Path, problems: list[str]
+) -> None:
+    """Cada clase muestra su bibliografía de apoyo, y coincide con el registro."""
+    esperado = class_bibliography(registry, support, items)
+    for path in class_files(root):
+        rel = path.relative_to(root).as_posix()
+        datos = esperado.get(rel)
+        if not datos or not datos["obras"]:
+            problems.append(f"{rel}: sin bibliografía de apoyo")
+            continue
+        texto = path.read_text(encoding="utf-8")
+        if CLASS_BEGIN not in texto or CLASS_END not in texto:
+            problems.append(
+                f"{rel}: falta el bloque de bibliografía de apoyo "
+                "(`python scripts/link_sources_to_classes.py`)"
+            )
+            continue
+        actual = texto[texto.index(CLASS_BEGIN) : texto.index(CLASS_END) + len(CLASS_END)]
+        if actual.replace("\r\n", "\n") != class_block(datos):
+            problems.append(
+                f"{rel}: la bibliografía de apoyo no coincide con el registro "
+                "(`python scripts/link_sources_to_classes.py`)"
+            )
+
+
+def sync_outputs(
+    registry: dict,
+    support: dict,
+    items: list[RefItem],
+    stats: dict,
+    root: Path = ROOT,
+    write: bool = False,
+) -> list[str]:
+    """Escribe (o compara) lo que se deriva del registro: README y bibliografía."""
     problems: list[str] = []
-    path = root / "README.md"
-    text = path.read_text(encoding="utf-8")
+    readme = root / "README.md"
+    text = readme.read_text(encoding="utf-8")
     updated = text
     for begin, end, block in (
-        (README_BEGIN, README_END, readme_block(stats)),
+        (README_BEGIN, README_END, readme_block(registry, support, root)),
         (BADGE_BEGIN, BADGE_END, badge_block(stats)),
     ):
         updated, found = _replace_block(updated, begin, end, block)
@@ -490,11 +840,23 @@ def sync_readme(stats: dict, root: Path = ROOT, write: bool = False) -> list[str
             problems.append(f"README.md: falta el bloque {begin} … {end}")
     if updated != text:
         if write:
-            path.write_text(updated, encoding="utf-8")
+            readme.write_text(updated, encoding="utf-8")
         else:
             problems.append(
-                "README.md: las cifras del registro no coinciden "
-                "(`python scripts/verify-sources --write` las regenera)"
+                "README.md: la bibliografía de apoyo no coincide con el registro "
+                "(`python scripts/verify-sources --write` la regenera)"
+            )
+
+    destino = root / "sources" / "BIBLIOGRAFIA.md"
+    contenido = bibliography_md(registry, support, items, stats)
+    actual = destino.read_text(encoding="utf-8") if destino.exists() else ""
+    if actual.replace("\r\n", "\n") != contenido:
+        if write:
+            destino.write_text(contenido, encoding="utf-8")
+        else:
+            problems.append(
+                "sources/BIBLIOGRAFIA.md: desfasada respecto del registro "
+                "(`python scripts/verify-sources --write` la regenera)"
             )
     return problems
 
@@ -509,6 +871,7 @@ def verify(root: Path = ROOT, write_readme: bool = False) -> dict:
         registry = load_registry(registry_path)
     except json.JSONDecodeError as exc:  # pragma: no cover - error de formato
         return {"ok": False, "problems": [f"el registro no parsea: {exc}"], "stats": {}}
+    support = load_support_map(root)
 
     items = extract_items(root)
     class_paths = {p.relative_to(root).as_posix() for p in class_files(root)}
@@ -517,8 +880,10 @@ def verify(root: Path = ROOT, write_readme: bool = False) -> dict:
     _check_entries(registry, class_paths, problems)
     _check_coverage(registry, items, problems)
     _check_class_blocks(items, root, problems)
+    _check_support_map(registry, support, problems)
+    _check_class_bibliography(registry, support, items, root, problems)
 
     stats = registry_stats(registry, items)
-    problems.extend(sync_readme(stats, root, write=write_readme))
+    problems.extend(sync_outputs(registry, support, items, stats, root, write=write_readme))
 
     return {"ok": not problems, "problems": problems, "stats": stats}

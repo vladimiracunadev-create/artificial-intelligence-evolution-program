@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -8,9 +9,16 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from ai_evolution.sources import (
+    CLASS_BEGIN,
+    CLASS_END,
     STATUSES,
     TYPES,
     USE_ROLES,
+    class_bibliography,
+    class_block,
+    class_files,
+    load_support_map,
+    part_of,
     book_locator,
     doi_is_wellformed,
     extract_items,
@@ -128,6 +136,57 @@ class RegistryTests(unittest.TestCase):
         for entry in self.registry["entries"]:
             if entry["status"] == "verificada":
                 self.assertTrue(entry.get("locator"), entry["id"])
+
+
+class SupportBibliographyTests(unittest.TestCase):
+    """Además del paper, el libro: cada clase declara con qué se estudia."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.registry = load_registry()
+        cls.support = load_support_map(ROOT)
+        cls.items = extract_items(ROOT)
+        cls.biblio = class_bibliography(cls.registry, cls.support, cls.items)
+
+    def test_every_part_declares_a_reference_work(self):
+        partes = {part_of(p.relative_to(ROOT).as_posix()) for p in class_files(ROOT)}
+        self.assertEqual(partes - set(self.support["parts"]), set())
+
+    def test_reference_works_exist_and_carry_a_valid_isbn(self):
+        por_id = {e["id"]: e for e in self.registry["entries"]}
+        for parte, manuales in self.support["parts"].items():
+            for manual in manuales:
+                with self.subTest(parte=parte, obra=manual["id"]):
+                    entry = por_id.get(manual["id"])
+                    self.assertIsNotNone(entry)
+                    self.assertEqual(entry["type"], "book")
+                    self.assertTrue(isbn13_is_valid(entry.get("isbn13", "")))
+                    self.assertTrue(manual.get("scope"))
+                    self.assertTrue(manual.get("why"))
+
+    def test_every_class_has_at_least_one_supporting_work(self):
+        sin_obra = [path for path, datos in self.biblio.items() if not datos["obras"]]
+        self.assertEqual(sin_obra, [])
+
+    def test_the_block_in_each_class_matches_the_registry(self):
+        for path in class_files(ROOT):
+            rel = path.relative_to(ROOT).as_posix()
+            with self.subTest(clase=rel):
+                texto = path.read_text(encoding='utf-8')
+                self.assertIn(CLASS_BEGIN, texto)
+                corte = texto.index(CLASS_END) + len(CLASS_END)
+                bloque = texto[texto.index(CLASS_BEGIN):corte]
+                esperado = class_block(self.biblio[rel])
+                self.assertEqual(bloque.splitlines(), esperado.splitlines())
+
+    def test_the_block_never_writes_an_isbn_by_hand(self):
+        """El ISBN que se muestra sale del registro, no del texto de la clase."""
+        por_id = {e["id"]: e for e in self.registry["entries"]}
+        isbns = {e["isbn13"] for e in por_id.values() if e.get("isbn13")}
+        for datos in self.biblio.values():
+            bloque = class_block(datos)
+            for token in re.findall(r"97[89]\d{10}", bloque):
+                self.assertIn(token, isbns)
 
 
 class VerifierTests(unittest.TestCase):

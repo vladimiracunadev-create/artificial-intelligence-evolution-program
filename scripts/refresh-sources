@@ -137,13 +137,29 @@ def resolve_isbn(entry: dict) -> dict:
         return {"method": "openlibrary", "ok": False, "http_status": status, "detail": "no resuelve"}
     found = data.get("title", "")
     ok = titles_match(entry.get("title", ""), found)
-    return {
+    resultado = {
         "method": "openlibrary",
         "ok": ok,
         "http_status": status,
         "resolved_title": found,
         "detail": "" if ok else f"el título no coincide con «{found}»",
     }
+    # los autores y la editorial los pone el catálogo, no la memoria de nadie
+    nombres = []
+    for autor in data.get("authors", [])[:6]:
+        clave = autor.get("key", "")
+        if not clave:
+            continue
+        estado, ficha = fetch_json(f"https://openlibrary.org{clave}.json")
+        if estado == 200 and ficha and ficha.get("name"):
+            nombres.append(ficha["name"])
+    if nombres:
+        resultado["resolved_authors"] = nombres
+    if data.get("publishers"):
+        resultado["publisher"] = data["publishers"][0]
+    if data.get("publish_date"):
+        resultado["publish_date"] = str(data["publish_date"])
+    return resultado
 
 
 def search_isbn(entry: dict) -> dict:
@@ -348,6 +364,14 @@ def refresh_entry(entry: dict, today: str) -> None:
             entry["locator"] = book_locator(entry["isbn13"])
             entry["status"] = "verificada"
             entry.pop("pending_reason", None)
+            if check.get("resolved_authors") and not entry.get("authors"):
+                entry["authors"] = check["resolved_authors"]
+            if check.get("publisher") and (
+                not entry.get("authority") or "." in (entry.get("authority") or "")
+            ):
+                entry["authority"] = check["publisher"]
+            if check.get("publish_date") and not entry.get("published"):
+                entry["published"] = check["publish_date"]
             if not entry.get("authority"):
                 entry["authority"] = "Open Library"
         else:
