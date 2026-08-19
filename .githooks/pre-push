@@ -14,6 +14,9 @@ python -m unittest discover -s tests
 python scripts/validate_repository.py --strict >/dev/null
 python scripts/generate_papers.py --check
 python scripts/link_papers_to_classes.py --check
+python scripts/build_sources.py --check
+python scripts/annotate_class_sources.py --check
+python scripts/verify-sources >/dev/null
 python -m compileall -q src scripts classes apps
 
 echo "pre-push: todo en verde, empujando."
