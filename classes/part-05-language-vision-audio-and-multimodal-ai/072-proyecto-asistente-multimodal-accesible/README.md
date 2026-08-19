@@ -234,6 +234,23 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020) — uso: fuente primaria del mecanismo estudiado
 - Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
 
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Jurafsky, Daniel y Martin, James H. — *Speech and Language Processing* | 2.ª (la 3.ª circula como borrador abierto sin ISBN) · 2009 | [ISBN 9780131873216](https://openlibrary.org/isbn/9780131873216) · [web de la obra](https://web.stanford.edu/~jurafsky/slp3/) | citada en las referencias de esta clase · obra de referencia de la parte 05 |
+
+**Normas y documentación oficial que aplica esta clase:** [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/) · [w3.org/WAI/fundamentals/accessibility-intro](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

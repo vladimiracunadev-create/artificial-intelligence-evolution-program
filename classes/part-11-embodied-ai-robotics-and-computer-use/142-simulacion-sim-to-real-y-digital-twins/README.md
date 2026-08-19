@@ -249,6 +249,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Sebastian Thrun — *Probabilistic Robotics* | 2005 | [ISBN 9780262201629](https://openlibrary.org/isbn/9780262201629) · [web de la obra](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/) | obra de referencia de la parte 11 · toda la parte |
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

@@ -234,6 +234,21 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., §1.1 (historia, para contraste secundario)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 - [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial gratuito)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf) — uso: referencia consultada en su fuente original
 
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | citada en las referencias de esta clase · obra de referencia de la parte 00 |
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

@@ -231,6 +231,24 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Reglamento (UE) 2024/1689 — EU AI Act (obligaciones de reporte de incidentes graves)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — uso: marco normativo de referencia
 - [AI Incident Database — repositorio público de incidentes de IA](https://incidentdatabase.ai/) — uso: referencia consultada en su fuente original
 
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Huyen, Chip — *Designing Machine Learning Systems* | 2022 | [ISBN 9781098107956](https://openlibrary.org/isbn/9781098107956) · [web de la obra](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) · _pendiente de confirmar en su catálogo_ | obra de referencia de la parte 13 · capítulos de evaluación y monitorización |
+| Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 13 · capítulo de filosofía, ética y seguridad de la IA |
+
+**Normas y documentación oficial que aplica esta clase:** [Computer Security Incident Handling Guide](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final) · [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [Reglamento (UE) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

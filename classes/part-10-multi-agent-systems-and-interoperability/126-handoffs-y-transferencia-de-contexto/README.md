@@ -242,6 +242,24 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Michael J. Wooldridge — *An Introduction to MultiAgent Systems* | 2009 | [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) | citada en las referencias de esta clase · obra de referencia de la parte 10 |
+| Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 10 · decisión multiagente y teoría de juegos |
+
+**Normas y documentación oficial que aplica esta clase:** [A2A Protocol](https://a2a-protocol.org/latest/)
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

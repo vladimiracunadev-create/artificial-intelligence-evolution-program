@@ -226,6 +226,23 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [scikit-learn — Common pitfalls and recommended practices](https://scikit-learn.org/stable/common_pitfalls.html) — uso: referencia consultada en su fuente original
 - [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 (protocolo de evaluación), PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
 
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Hastie, Trevor, Tibshirani, Robert y Friedman, Jerome — *The Elements of Statistical Learning* | 2.ª · 2009 | [ISBN 9780387848570](https://openlibrary.org/isbn/9780387848570) · [web de la obra](https://hastie.su.domains/ElemStatLearn/) | citada en las referencias de esta clase · cap. 7 · obra de referencia de la parte 03 |
+| James, Gareth et al. — *An Introduction to Statistical Learning* | 2021 | [ISBN 9783031387470](https://openlibrary.org/isbn/9783031387470) · [web de la obra](https://www.statlearning.com/) | obra de referencia de la parte 03 · toda la parte, nivel introductorio |
+| Murphy, Kevin P. — *Probabilistic Machine Learning* | 2022 | [ISBN 9780262046824](https://openlibrary.org/isbn/9780262046824) · [web de la obra](https://probml.github.io/pml-book/) | obra de referencia de la parte 03 · fundamentos probabilísticos del aprendizaje |
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

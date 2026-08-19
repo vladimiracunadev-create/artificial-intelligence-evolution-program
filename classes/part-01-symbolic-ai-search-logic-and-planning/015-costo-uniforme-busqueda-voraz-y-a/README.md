@@ -220,6 +220,23 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 Cada ficha explica el problema anterior, la matemática mínima, los límites y los errores de atribución más frecuentes. Para leerlas con método: [cómo leer un paper de IA](../../../papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [anexos matemáticos](../../../papers/annexes/README.md).
 <!-- papers:fin -->
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Pearl, J. — *Heuristics: Intelligent Search Strategies for Computer Problem Solving* | 1984 | _sin localizador verificado_ | citada en las referencias de esta clase |
+| Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | citada en las referencias de esta clase · obra de referencia de la parte 01 |
+| Nilsson, N. J. — *Principles of Artificial Intelligence* | 1980 | [ISBN 9780387113401](https://openlibrary.org/isbn/9780387113401) | obra de referencia de la parte 01 · representación por espacios de estados |
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior

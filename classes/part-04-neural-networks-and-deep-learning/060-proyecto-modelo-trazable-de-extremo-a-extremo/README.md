@@ -218,6 +218,22 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Notas oficiales de PyTorch sobre reproducibilidad y determinismo. [pytorch.org/docs/stable/notes/randomness.html](https://pytorch.org/docs/stable/notes/randomness.html) — uso: referencia consultada en su fuente original
 - Documentación de MLflow (registro de experimentos y modelos). [mlflow.org/docs/latest](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
 
+<!-- bibliografia:inicio -->
+
+---
+
+## 📚 Bibliografía de apoyo
+
+> Bloque generado por `python scripts/link_sources_to_classes.py`. Cada obra lleva su localizador verificado en [`sources/bibliography.json`](../../../sources/bibliography.json).
+
+Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan** con el espacio que una clase no tiene: teoría completa, demostraciones y ejercicios.
+
+| Obra | Edición | Localizador | Papel en esta clase |
+|---|---|---|---|
+| Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* | 2016 | [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/) | obra de referencia de la parte 04 · toda la parte |
+| Murphy, Kevin P. — *Probabilistic Machine Learning* | 2022 | [ISBN 9780262046824](https://openlibrary.org/isbn/9780262046824) · [web de la obra](https://probml.github.io/pml-book/) | obra de referencia de la parte 04 · modelos profundos desde la probabilidad |
+<!-- bibliografia:fin -->
+
 ---
 
 ## ⬅️ Clase anterior
