@@ -19,6 +19,76 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.15.0 — 2026-08-19
+
+### El registro general de fuentes: de qué idea viene cada clase, a qué fuente sostiene cada afirmación
+
+El [eje de papers](papers/README.md) cubría el canon histórico —148 fichas— y sigue intacto: este
+cambio **no toca** `papers/catalog/papers.json`. Lo que faltaba era el resto del aparato: las
+clases usaban 973 fuentes distintas (608 enlaces + 365 obras en cursiva) y solo el
+**15,3 %** estaba declarado en algún registro. La práctica —Anthropic *Building effective agents*,
+la documentación de scikit-learn, NIST AI RMF, OWASP LLM Top 10, AIMA, Jurafsky y Martin— se citaba
+sin registrar.
+
+**El registro.** [`sources/bibliography.json`](sources/bibliography.json): 617 entradas
+(35 libros, 344 artículos, 34 normas, 204 documentación) que **incluyen
+por referencia** el catálogo de papers sin modificarlo. Cobertura de lo que las clases usan de
+hecho: **15,3 % → 100 %**. Cada entrada exige un localizador resoluble —ISBN-13 con dígito de
+control válido, DOI, o URL https de la fuente primaria con fecha de consulta— y lo que no resuelve
+queda `pendiente` **con su motivo**, nunca borrado ni completado a ojo.
+
+**Resolución en red, contra las autoridades.** 584 entradas verificadas: DOI contra
+`api.crossref.org` y contra el sistema de handles de `doi.org` (los DOI de arXiv son de DataCite y
+Crossref no los conoce), ISBN contra `openlibrary.org` comparando título y autor, y un GET a cada
+URL de norma y documentación. Cuando Crossref devuelve metadatos, **sustituyen** a los que se habían
+derivado del texto de la cita: título, autores, año y revista salen del editor, no de una lectura
+del markdown.
+
+**Dos capas separadas a propósito:**
+
+| Herramienta | Qué comprueba | Dónde corre |
+|---|---|---|
+| `scripts/verify-sources` | esquema, dígito de control, forma canónica del localizador, cobertura, entradas huérfanas, bloques de fuentes repetidos y las cifras del README | **CI, y bloquea**; sin red |
+| `scripts/refresh-sources` | resuelve ISBN, DOI y URL contra sus autoridades y actualiza `verified_on` y `accessed` | manual; **nunca en CI** |
+
+Si la red entrara en CI, el CI se volvería inestable y se acabaría ignorando. Por eso `verify-sources`
+es offline y determinista, y `refresh-sources` reporta lo que dejó de resolver **sin borrarlo**.
+
+**Las cifras del README las escribe el verificador.** `python scripts/verify-sources --write`
+rellena el bloque entre `<!-- sources:inicio -->` y `<!-- sources:fin -->` y la insignia del
+registro, que convive con la de 148 papers: son dos cifras distintas y ambas ciertas. Si alguien
+las edita a mano, CI falla.
+
+**Cada clase declara el uso de cada fuente.** 896 citas de 172 clases pasan a decir
+para qué sirve la fuente ahí, con un vocabulario controlado y derivado del tipo de entrada
+(`fuente primaria del mecanismo estudiado`, `marco normativo de referencia`, …). Las 103 citas
+que ya traían su propia explicación se dejan **intactas**. El vocabulario es mecánico a propósito:
+redactar un motivo distinto para cada par (clase, fuente) exigiría inventarlo.
+
+**Dos defectos de extracción que el registro dejó a la vista:**
+
+- Los DOI antiguos de Elsevier llevan paréntesis —`10.1016/0004-3702(75)90019-3`— y cualquier
+  extractor que corte la URL en el primer `)` produce un localizador roto. La extracción ahora
+  equilibra paréntesis y deshace los escapes `%NN`, así que `…3702%2875%29…` y `…3702(75)…` son la
+  misma fuente.
+- Normalizar la URL a minúsculas para comparar está bien; **guardar** el localizador en minúsculas
+  no: `torch.nn.Conv2d`, `ElemStatLearn` y `QAI/qai.pdf` viven en servidores sensibles a
+  mayúsculas. La clave se compara en minúsculas; el localizador conserva la URL de la cita.
+
+**Lo que queda pendiente y por qué:** 33 entradas de 617 (5,3 %), cada una con su motivo:
+
+| Pendientes | Motivo |
+|---:|---|
+| 13 | artículo publicado en actas o revista **sin DOI** (JMLR, NeurIPS Proceedings): el localizador existe, pero no en la forma canónica que el registro exige |
+| 7 | libro sin edición en Open Library que coincida **en título y autor**: se prefiere el hueco declarado a un ISBN de otra edición |
+| 7 | el servidor **rechaza clientes automatizados** (HTTP 403: ISO, MIT Press, O'Reilly, CISA, ACM). Un 403 de un filtro antibot no es prueba de que la fuente no exista, y tampoco es prueba de que exista |
+| 3 | la fuente primaria **solo responde sin TLS** (http): `jmc.stanford.edu` y `amd.com` |
+| 2 | Open Library no respondió en ninguna de las tandas |
+| 1 | HTTP 405 en `dspace.mit.edu` |
+
+Se reintentan con `make sources-refresh`, que **nunca borra**: lo que dejó de resolver se
+reporta y se queda.
+
 ## 0.14.1 — 2026-08-19
 
 ### Revisión integral: lo que la documentación afirmaba y lo que el repositorio hacía
