@@ -78,6 +78,13 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 9. Los hashes del manifiesto se calculan sobre el contenido con saltos de línea
    normalizados a LF (`sha256_lf`), para que el contrato no dependa del sistema
    operativo donde se generó.
+10. **La red no entra en CI.** El registro de fuentes tiene dos capas: la
+    comprobación offline y determinista (`verify-sources`, que bloquea) y la
+    resolución en red (`refresh-sources`, manual). Si la red entrara en CI, el CI
+    se volvería inestable y se acabaría ignorando.
+11. **Lo que no resuelve se marca, no se borra.** Una fuente sin localizador
+    verificable queda `pendiente` con su motivo en
+    [`sources/bibliography.json`](../sources/bibliography.json).
 
 ## 🔁 Generadores
 
@@ -88,6 +95,10 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 | `scripts/generate_pdfs.py` | 165 PDFs: 17 del programa + 148 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
 | `scripts/generate_assets.py` | recursos derivados | — |
 | `scripts/validate_repository.py` | contrato completo de ambos ejes | `--strict` en CI |
+| `scripts/build_sources.py` | registro general de fuentes desde lo que citan las clases | `--check` en CI |
+| `scripts/annotate_class_sources.py` | uso declarado de cada fuente en su clase | `--check` en CI |
+| `scripts/verify-sources` | esquema, localizadores, cobertura y cifras del README del registro | offline, **bloquea CI** |
+| `scripts/refresh-sources` | resolución en red del registro (ISBN, DOI, URL) | manual, **nunca en CI** |
 
 ## 🗺️ Frontera entre repositorios
 

@@ -13,6 +13,7 @@ que cada estudiante puede ejecutar, romper e interpretar.**
 [🗺️ Ruta y niveles](ROADMAP.md) ·
 [🧮 Anexos matemáticos](annexes/README.md) ·
 [🌐 Fuentes y venues](guides/FUENTES_Y_VENUES.md) ·
+[🧾 Registro general de fuentes](../sources/README.md) ·
 [📖 Cómo leer un paper](guides/COMO_LEER_UN_PAPER_DE_IA.md) ·
 [🔁 5 pasadas](guides/METODO_DE_LECTURA_EN_5_PASADAS.md) ·
 [📚 Glosario](guides/GLOSARIO_PAPERS_IA.md)

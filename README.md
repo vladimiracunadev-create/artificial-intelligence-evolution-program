@@ -14,9 +14,12 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.14.1-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.15.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-148%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
+<!-- sources-badge:inicio -->
+[![Fuentes](https://img.shields.io/badge/fuentes-617%20registradas-0b7285?style=for-the-badge)](sources/bibliography.json)
+<!-- sources-badge:fin -->
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
@@ -64,6 +67,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
+| Fuentes | ✅ registro general en [`sources/bibliography.json`](sources/bibliography.json): libros, artículos, normas y documentación, con localizador resoluble o motivo declarado |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
 | Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 163 páginas del eje de papers |
 | Escritorio | ✅ visor Tkinter; se publica en 4 formatos (instalador, MSI, portable, exe único) |
@@ -216,6 +220,57 @@ de consulta, y no redistribuir material con copyright — solo enlazar.
 > diferencia entre **dónde se publica** (arXiv, NeurIPS, ICML, ICLR, ACL Anthology) y **dónde
 > se busca** (Google Scholar, Semantic Scholar), y por qué OpenReview es el sitio más
 > infravalorado para aprender a leer con criterio.
+
+## 🧾 Registro de fuentes
+
+El [eje de papers](papers/README.md) responde **de dónde viene cada idea**. El registro de
+fuentes responde algo distinto: **de dónde viene cada afirmación**. Son dos cifras y ambas
+son ciertas — los papers fundacionales son el canon histórico; el registro recoge además los
+libros de texto, las normas, la documentación oficial y los conjuntos de datos que las clases
+citan de hecho.
+
+- Fuente única: [`sources/bibliography.json`](sources/bibliography.json), que **incluye por
+  referencia** el catálogo [`papers/catalog/papers.json`](papers/catalog/papers.json) sin
+  modificarlo.
+- Cada entrada necesita un **localizador resoluble**: ISBN-13 (libro), DOI (artículo) o URL
+  https de la fuente primaria con fecha de consulta (norma y documentación).
+- Lo que no resuelve se marca **`pendiente` con motivo**. No se borra ni se completa por
+  intuición: un hueco declarado es información; un hueco rellenado a ojo es una invención con
+  formato de bibliografía.
+- Cada cita de cada clase declara **el uso que esa clase hace de la fuente**, no solo la obra.
+
+<!-- sources:inicio -->
+
+| Registro de fuentes | Valor |
+|---|---:|
+| Entradas | **617** |
+| Verificadas | **584** |
+| Pendientes | **33** |
+| Libros · artículos · normas · documentación · datos | **35 · 344 · 34 · 204 · 0** |
+| Citas en clases | **999** en 183 clases |
+| Fuentes usadas (enlaces + obras) | **973** (608 + 365) |
+| Cobertura del registro | **100.0 %** |
+| ISBN-13 · DOI | **28 · 331** |
+| Última resolución en red | **2026-08-19** |
+
+<!-- sources:fin -->
+
+> Las cifras de esta tabla las escribe `python scripts/verify-sources --write`. No se editan a
+> mano: si alguien las toca, el verificador falla.
+
+| Herramienta | Qué hace | Dónde corre |
+|---|---|---|
+| `python scripts/verify-sources` | Esquema, dígito de control del ISBN-13, forma canónica del localizador, cobertura de lo que las clases usan, entradas huérfanas, bloques de fuentes repetidos y cifras del README | **CI, y bloquea** — sin red, determinista |
+| `python scripts/refresh-sources` | Resuelve ISBN contra Open Library y DOI contra Crossref y el sistema de handles, comprueba cada URL y actualiza `verified_on` y `accessed` | Manual o programado — **nunca en CI**: la red en CI vuelve el CI inestable y acaba ignorándose |
+| `python scripts/build_sources.py` | Reconstruye el registro desde lo que las clases citan, conservando lo ya verificado | Local y CI (`--check`) |
+| `python scripts/annotate_class_sources.py` | Declara en cada clase el uso de cada fuente | Local y CI (`--check`) |
+
+Los tres libros de texto rectores del programa —AIMA, *Deep Learning* y *Speech and Language
+Processing*— van con ISBN-13 y URL del autor. NIST AI RMF va como norma con su versión (**1.0**)
+y fecha de consulta; OWASP Top 10 for LLM Applications va como norma con fecha de consulta, y
+**sin número de versión**: la portada del proyecto no lo declara y no se le inventa uno. La
+documentación de proveedores de modelos va como referencia volátil, con `accessed` obligatorio.
+El detalle está en [`sources/README.md`](sources/README.md).
 
 ## 🚀 Inicio rápido
 
