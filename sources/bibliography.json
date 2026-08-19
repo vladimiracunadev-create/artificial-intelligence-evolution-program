@@ -37,13 +37,20 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Adaptation in natural and artificial systems",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Holland, John H."
+        ],
+        "publisher": "MIT Press",
+        "publish_date": "1992"
       }
     },
     {
       "id": "an-introduction-to-multiagent-systems",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Michael J. Wooldridge"
+      ],
       "title": "An Introduction to MultiAgent Systems",
       "published": "2009",
       "authority": "Open Library",
@@ -69,7 +76,12 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "An introduction to multiagent systems",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Michael J. Wooldridge"
+        ],
+        "publisher": "J. Wiley",
+        "publish_date": "2002"
       }
     },
     {
@@ -102,7 +114,14 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Causation, Prediction, and Search",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Peter Spirtes",
+          "Clark Glymour",
+          "Richard Scheines"
+        ],
+        "publisher": "Springer London, Limited",
+        "publish_date": "2012"
       }
     },
     {
@@ -129,11 +148,16 @@
       "locator": "https://openlibrary.org/isbn/9780691079516",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780691079516",
-        "resolved_title": "Dynamic programming"
+        "resolved_title": "Dynamic programming.",
+        "detail": "",
+        "resolved_authors": [
+          "Richard Ernest Bellman"
+        ],
+        "publisher": "Princeton University Press",
+        "publish_date": "1957"
       }
     },
     {
@@ -160,11 +184,16 @@
       "locator": "https://openlibrary.org/isbn/9780071136372",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780071136372",
-        "resolved_title": "Fuzzy logic with engineering applications"
+        "resolved_title": "Fuzzy Logic with Engineering Applications",
+        "detail": "",
+        "resolved_authors": [
+          "Timothy J. Ross"
+        ],
+        "publisher": "McGraw-Hill Education (ISE Editions)",
+        "publish_date": "1994"
       }
     },
     {
@@ -191,11 +220,13 @@
       "locator": "https://openlibrary.org/isbn/9780201157673",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780201157673",
-        "resolved_title": "Genetic algorithms in search, optimization, and machine learning"
+        "resolved_title": "Genetic algorithms in search, optimization, and machine learning",
+        "detail": "",
+        "publisher": "Addison-Wesley Pub. Co.",
+        "publish_date": "1989"
       }
     },
     {
@@ -252,7 +283,9 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Deep Learning",
-        "detail": ""
+        "detail": "",
+        "publisher": "MIT Press",
+        "publish_date": "3 January 2017"
       }
     },
     {
@@ -281,11 +314,13 @@
       "locator": "https://openlibrary.org/isbn/9780444527264",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780444527264",
-        "resolved_title": "Handbook of constraint programming"
+        "resolved_title": "Handbook of constraint programming",
+        "detail": "",
+        "publisher": "Elsevier",
+        "publish_date": "2007"
       }
     },
     {
@@ -315,11 +350,18 @@
       "locator": "https://openlibrary.org/isbn/9781643681603",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9781643681603",
-        "resolved_title": "Handbook of Satisfiability"
+        "resolved_title": "Handbook of Satisfiability",
+        "detail": "",
+        "resolved_authors": [
+          "A. Biere",
+          "M. Heule",
+          "H. van Maaren"
+        ],
+        "publisher": "IOS Press, Incorporated",
+        "publish_date": "2021"
       }
     },
     {
@@ -366,7 +408,12 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "The Elements of Statistical Learning",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Jerome Friedman"
+        ],
+        "publisher": "Springer-Verlag New York",
+        "publish_date": "2009"
       }
     },
     {
@@ -402,10 +449,13 @@
     {
       "id": "isbn-9780262013192",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Koller, Daphne",
+        "Friedman, Nir"
+      ],
       "title": "Probabilistic Graphical Models: Principles and Techniques",
-      "published": null,
-      "authority": "mitpress.mit.edu",
+      "published": "2010",
+      "authority": "MIT Press",
       "isbn13": "9780262013192",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9780262013192",
@@ -433,16 +483,25 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Probabilistic graphical models",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Daphne Koller"
+        ],
+        "publisher": "MIT Press",
+        "publish_date": "2010"
       }
     },
     {
       "id": "isbn-9780262037310",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Peters, Jonas",
+        "Janzing, Dominik",
+        "Schölkopf, Bernhard"
+      ],
       "title": "Elements of Causal Inference",
       "published": "2017",
-      "authority": "mitpress.mit.edu",
+      "authority": "The MIT Press",
       "isbn13": "9780262037310",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9780262037310",
@@ -466,17 +525,21 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Elements of Causal Inference",
-        "detail": "título tomado de la ficha de Open Library",
-        "title_replaced": true
+        "detail": "",
+        "publisher": "The MIT Press",
+        "publish_date": "2017"
       }
     },
     {
       "id": "isbn-9780262042192",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Dorigo, Marco",
+        "Stützle, Thomas"
+      ],
       "title": "Ant Colony Optimization (Bradford Books)",
       "published": "2004",
-      "authority": "mitpress.mit.edu",
+      "authority": "The MIT Press",
       "isbn13": "9780262042192",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9780262042192",
@@ -500,23 +563,28 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Ant Colony Optimization (Bradford Books)",
-        "detail": "título tomado de la ficha de Open Library",
-        "title_replaced": true
+        "detail": "",
+        "resolved_authors": [
+          "Thomas Stützle"
+        ],
+        "publisher": "The MIT Press",
+        "publish_date": "July 1, 2004"
       }
     },
     {
       "id": "isbn-9780262201629",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Sebastian Thrun"
+      ],
       "title": "Probabilistic Robotics",
       "published": "2005",
-      "authority": "mitpress.mit.edu",
+      "authority": "MIT Press",
       "isbn13": "9780262201629",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9780262201629",
       "homepage": "https://mitpress.mit.edu/9780262201629/probabilistic-robotics/",
-      "status": "pendiente",
-      "pending_reason": "sin ISBN-13 verificado en Open Library: no resuelve",
+      "status": "verificada",
       "container": null,
       "url_keys": [
         "mitpress.mit.edu/9780262201629/probabilistic-robotics"
@@ -535,18 +603,26 @@
       "checked": {
         "last_check": "2026-08-19",
         "method": "openlibrary",
-        "ok": false,
-        "http_status": 0,
-        "detail": "no resuelve"
+        "ok": true,
+        "http_status": 200,
+        "resolved_title": "Probabilistic robotics",
+        "detail": "",
+        "resolved_authors": [
+          "Sebastian Thrun"
+        ],
+        "publisher": "MIT Press",
+        "publish_date": "2005"
       }
     },
     {
       "id": "isbn-9780674576292",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Vygotsky, Lev S."
+      ],
       "title": "Mind in society",
       "published": "1978",
-      "authority": "hup.harvard.edu",
+      "authority": "Harvard University Press",
       "isbn13": "9780674576292",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9780674576292",
@@ -570,17 +646,20 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Mind in society",
-        "detail": "título tomado de la ficha de Open Library",
-        "title_replaced": true
+        "detail": "",
+        "publisher": "Harvard University Press",
+        "publish_date": "1978"
       }
     },
     {
       "id": "isbn-9781098107956",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Huyen, Chip"
+      ],
       "title": "Designing Machine Learning Systems",
       "published": "2022",
-      "authority": "oreilly.com",
+      "authority": "O'Reilly Media",
       "isbn13": "9781098107956",
       "isbn_source": "url-del-editor",
       "locator": "https://openlibrary.org/isbn/9781098107956",
@@ -646,11 +725,17 @@
       "locator": "https://openlibrary.org/isbn/9783031387470",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9783031387470",
-        "resolved_title": "An Introduction to Statistical Learning"
+        "resolved_title": "An Introduction to Statistical Learning",
+        "detail": "",
+        "resolved_authors": [
+          "Gareth James",
+          "Daniela Witten",
+          "Robert Tibshirani"
+        ],
+        "publish_date": "2023"
       }
     },
     {
@@ -700,7 +785,53 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Speech and Language Processing (2nd Edition)",
-        "detail": ""
+        "detail": "",
+        "publisher": "Prentice Hall",
+        "publish_date": "December 1, 2006"
+      }
+    },
+    {
+      "id": "manning-raghavan-schutze-information-retrieval",
+      "type": "book",
+      "authors": [
+        "Manning, Christopher D.",
+        "Raghavan, Prabhakar",
+        "Schütze, Hinrich"
+      ],
+      "title": "Introduction to Information Retrieval",
+      "published": "2008",
+      "authority": "Cambridge University Press",
+      "isbn13": "9780521865715",
+      "isbn_source": "edicion-declarada",
+      "locator": "https://openlibrary.org/isbn/9780521865715",
+      "homepage": "https://nlp.stanford.edu/IR-book/",
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "nlp.stanford.edu/ir-book"
+      ],
+      "aliases": [
+        "introduction to information retrieval"
+      ],
+      "used_in": [
+        "classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md",
+        "classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md",
+        "classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md"
+      ],
+      "uses": 3,
+      "citation": "Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval*: [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/)",
+      "checked": {
+        "last_check": "2026-08-19",
+        "method": "openlibrary",
+        "ok": true,
+        "http_status": 200,
+        "resolved_title": "Introduction to information retrieval",
+        "detail": "",
+        "resolved_authors": [
+          "Christopher D. Manning"
+        ],
+        "publisher": "Cambridge University Press",
+        "publish_date": "2008"
       }
     },
     {
@@ -731,17 +862,21 @@
       "locator": "https://openlibrary.org/isbn/9780262046824",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780262046824",
-        "resolved_title": "Probabilistic Machine Learning"
+        "resolved_title": "Probabilistic Machine Learning",
+        "detail": "",
+        "publisher": "MIT Press",
+        "publish_date": "2022"
       }
     },
     {
       "id": "object-oriented-software-construction",
       "type": "book",
-      "authors": [],
+      "authors": [
+        "Meyer, Bertrand"
+      ],
       "title": "Object-Oriented Software Construction",
       "published": "1997",
       "authority": "Open Library",
@@ -761,11 +896,16 @@
       "locator": "https://openlibrary.org/isbn/9780136291558",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780136291558",
-        "resolved_title": "Object-oriented software construction"
+        "resolved_title": "Object-Oriented Software Construction (Book/CD-ROM) (2nd Edition) (Prentice-Hall International Series in Computer Science)",
+        "detail": "",
+        "resolved_authors": [
+          "Bertrand Meyer"
+        ],
+        "publisher": "Prentice Hall PTR",
+        "publish_date": "March 21, 2000"
       }
     },
     {
@@ -792,11 +932,16 @@
       "locator": "https://openlibrary.org/isbn/9780387113401",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780387113401",
-        "resolved_title": "Principles of artificial intelligence"
+        "resolved_title": "Principles of artificial intelligence.",
+        "detail": "",
+        "resolved_authors": [
+          "Nilsson, Nils J."
+        ],
+        "publisher": "Springer-Verlag",
+        "publish_date": "1982"
       }
     },
     {
@@ -812,51 +957,29 @@
       "container": null,
       "url_keys": [],
       "aliases": [
-        "probabilistic reasoning in intelligent systems"
+        "probabilistic reasoning in intelligent systems",
+        "probabilistic reasoning in intelligent systems: networks of plausible inference"
       ],
       "used_in": [
-        "classes/part-02-probabilistic-evolutionary-and-decision-ai/025-razonamiento-con-incertidumbre/README.md"
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/025-razonamiento-con-incertidumbre/README.md",
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional/README.md"
       ],
-      "uses": 1,
+      "uses": 2,
       "citation": "Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann.",
       "isbn13": "9780080514895",
       "locator": "https://openlibrary.org/isbn/9780080514895",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780080514895",
-        "resolved_title": "Probabilistic reasoning in intelligent systems"
-      }
-    },
-    {
-      "id": "probabilistic-reasoning-in-intelligent-systems-networks-of-plausible-i",
-      "type": "book",
-      "authors": [
-        "Pearl, J."
-      ],
-      "title": "Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference",
-      "published": "1988",
-      "authority": null,
-      "status": "pendiente",
-      "pending_reason": "sin ISBN-13 verificado en Open Library: ninguna edición con ISBN-13 coincide en título y autor",
-      "container": null,
-      "url_keys": [],
-      "aliases": [
-        "probabilistic reasoning in intelligent systems: networks of plausible inference"
-      ],
-      "used_in": [
-        "classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional/README.md"
-      ],
-      "uses": 1,
-      "citation": "Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference*. Morgan Kaufmann.",
-      "checked": {
-        "last_check": "2026-08-19",
-        "method": "openlibrary-search",
-        "ok": false,
-        "http_status": 200,
-        "detail": "ninguna edición con ISBN-13 coincide en título y autor"
+        "resolved_title": "Probabilistic Reasoning in Intelligent Systems",
+        "detail": "",
+        "resolved_authors": [
+          "Judea Pearl"
+        ],
+        "publisher": "Elsevier Science & Technology Books",
+        "publish_date": "2014"
       }
     },
     {
@@ -961,7 +1084,13 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Artificial Intelligence",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Stuart J. Russell",
+          "Peter Norvig"
+        ],
+        "publisher": "Pearson",
+        "publish_date": "May 08, 2020"
       }
     },
     {
@@ -1007,7 +1136,13 @@
         "ok": true,
         "http_status": 200,
         "resolved_title": "Reinforcement Learning",
-        "detail": ""
+        "detail": "",
+        "resolved_authors": [
+          "Richard S. Sutton",
+          "Andrew G. Barto"
+        ],
+        "publisher": "A Bradford Book",
+        "publish_date": "Nov 13, 2018"
       }
     },
     {
@@ -1091,52 +1226,26 @@
       "container": null,
       "url_keys": [],
       "aliases": [
-        "the book of why"
+        "the book of why",
+        "the book of why: the new science of cause and effect"
       ],
       "used_in": [
-        "classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad/README.md"
+        "classes/part-02-probabilistic-evolutionary-and-decision-ai/035-programacion-probabilistica-y-causalidad/README.md",
+        "classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico/README.md"
       ],
-      "uses": 1,
+      "uses": 2,
       "citation": "Pearl, J. & Mackenzie, D. (2018). *The Book of Why*. Basic Books.",
       "isbn13": "9780465097609",
       "locator": "https://openlibrary.org/isbn/9780465097609",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780465097609",
-        "resolved_title": "The Book of Why"
-      }
-    },
-    {
-      "id": "the-book-of-why-the-new-science-of-cause-and-effect",
-      "type": "book",
-      "authors": [
-        "Pearl, J.",
-        "Mackenzie, D."
-      ],
-      "title": "The Book of Why: The New Science of Cause and Effect",
-      "published": "2018",
-      "authority": null,
-      "status": "pendiente",
-      "pending_reason": "sin ISBN-13 verificado en Open Library: ninguna edición con ISBN-13 coincide en título y autor",
-      "container": null,
-      "url_keys": [],
-      "aliases": [
-        "the book of why: the new science of cause and effect"
-      ],
-      "used_in": [
-        "classes/part-14-frontier-research-and-capstones/173-causal-ai-y-descubrimiento-cientifico/README.md"
-      ],
-      "uses": 1,
-      "citation": "Pearl, J. & Mackenzie, D. (2018). *The Book of Why: The New Science of Cause and Effect*. Basic Books.",
-      "checked": {
-        "last_check": "2026-08-19",
-        "method": "openlibrary-search",
-        "ok": false,
-        "http_status": 200,
-        "detail": "ninguna edición con ISBN-13 coincide en título y autor"
+        "resolved_title": "The Book of Why",
+        "detail": "",
+        "publisher": "Basic Books",
+        "publish_date": "2018"
       }
     },
     {
@@ -1164,11 +1273,20 @@
       "locator": "https://openlibrary.org/isbn/9781280417993",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9781280417993",
-        "resolved_title": "The description logic handbook"
+        "resolved_title": "Description Logic Handbook",
+        "detail": "",
+        "resolved_authors": [
+          "Franz Baader",
+          "Diego Calvanese",
+          "Deborah McGuinness",
+          "Daniele Nardi",
+          "Peter Patel-Schneider"
+        ],
+        "publisher": "Cambridge University Press",
+        "publish_date": "2003"
       }
     },
     {
@@ -1195,11 +1313,16 @@
       "locator": "https://openlibrary.org/isbn/9780486623498",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9780486623498",
-        "resolved_title": "The foundations of statistics"
+        "resolved_title": "The foundations of statistics",
+        "detail": "",
+        "resolved_authors": [
+          "Leonard J. Savage"
+        ],
+        "publisher": "Dover Publications",
+        "publish_date": "1972"
       }
     },
     {
@@ -1227,11 +1350,16 @@
       "locator": "https://openlibrary.org/isbn/9781777257316",
       "checked": {
         "last_check": "2026-08-19",
-        "method": "openlibrary-search",
+        "method": "openlibrary",
         "ok": true,
         "http_status": 200,
-        "isbn13": "9781777257316",
-        "resolved_title": "Theory of Games and Economic Behavior"
+        "resolved_title": "Theory of Games and Economic Behavior",
+        "detail": "",
+        "resolved_authors": [
+          "John von Neumann"
+        ],
+        "publisher": "Princeton University Press",
+        "publish_date": "1953"
       }
     },
     {
@@ -18651,40 +18779,6 @@
         "ok": true,
         "http_status": 200,
         "page_title": "The Annotated Transformer",
-        "detail": ""
-      },
-      "accessed": "2026-08-19"
-    },
-    {
-      "id": "nlp-stanford-edu-ir-book",
-      "type": "reference",
-      "authors": [],
-      "title": "https://nlp.stanford.edu/IR-book/",
-      "published": null,
-      "authority": "nlp.stanford.edu",
-      "locator": "https://nlp.stanford.edu/IR-book/",
-      "volatile": false,
-      "status": "verificada",
-      "container": null,
-      "url_keys": [
-        "nlp.stanford.edu/ir-book"
-      ],
-      "aliases": [
-        "introduction to information retrieval"
-      ],
-      "used_in": [
-        "classes/part-05-language-vision-audio-and-multimodal-ai/065-clasificacion-extraccion-y-generacion-de-texto/README.md",
-        "classes/part-08-retrieval-context-memory-and-knowledge/102-busqueda-lexica-y-bm25/README.md",
-        "classes/part-08-retrieval-context-memory-and-knowledge/103-busqueda-hibrida-y-fusion-de-rankings/README.md"
-      ],
-      "uses": 3,
-      "citation": "Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval*: [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/)",
-      "checked": {
-        "last_check": "2026-08-19",
-        "method": "http",
-        "ok": true,
-        "http_status": 200,
-        "page_title": "Introduction to Information Retrieval",
         "detail": ""
       },
       "accessed": "2026-08-19"

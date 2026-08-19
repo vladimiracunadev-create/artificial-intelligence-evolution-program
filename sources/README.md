@@ -4,10 +4,28 @@
 > Cifras al día: las escribe `python scripts/verify-sources --write` en el
 > [README raíz](../README.md#-registro-de-fuentes). Aquí no se copian a mano.
 
-El eje de papers responde **de dónde viene cada idea**. Este registro responde
-**de dónde viene cada afirmación**: además de los artículos fundacionales incluye los
-libros de texto, las normas, la documentación oficial y los conjuntos de datos que
-las 183 clases citan de hecho.
+El eje de papers responde **de dónde salió cada idea**. Este registro responde
+**con qué se estudia**: además de los artículos fundacionales incluye los libros de
+texto, las normas, la documentación oficial y los conjuntos de datos que las 183
+clases citan de hecho.
+
+De aquí salen tres cosas que nadie escribe a mano:
+
+| Sale de aquí | Qué es | Quién lo escribe |
+|---|---|---|
+| El bloque **📚 Bibliografía de apoyo** de cada clase | la obra que desarrolla el contenido de esa clase, con edición, localizador y el capítulo cuando la cita lo indica | `scripts/link_sources_to_classes.py` |
+| [`BIBLIOGRAFIA.md`](BIBLIOGRAFIA.md) | la bibliografía completa del programa, por parte y por obra | `scripts/verify-sources --write` |
+| La tabla parte → obra del [README raíz](../README.md#-bibliografía-de-apoyo) | qué obra sostiene cada una de las 15 partes | `scripts/verify-sources --write` |
+
+## El mapa de apoyo
+
+[`support_map.json`](support_map.json) dice qué obra de referencia sostiene cada parte del
+programa, con qué alcance y por qué. Es el único fichero **curado a mano** de este directorio, y
+aun así no contiene ni un ISBN ni un título: solo identificadores de entradas de
+[`bibliography.json`](bibliography.json). El criterio es mapear el manual que las propias clases
+de esa parte ya citan; cuando una parte no cita ninguno, se mapea el texto de referencia del área
+y la nota dice qué cubre. El verificador rechaza cualquier obra del mapa que no tenga ISBN-13 con
+dígito de control válido.
 
 ## Qué NO cambia
 
@@ -96,6 +114,11 @@ python scripts/refresh-sources         # en red, manual, NO bloquea
 red entra en el CI, el CI se vuelve inestable y se acaba ignorando. `refresh-sources`
 reporta lo que dejó de resolver, sin borrarlo.
 
+Open Library responde de forma **intermitente**: alterna respuestas correctas con
+caídas de minutos. Cuando eso pasa, los libros afectados quedan `pendiente` con ese
+motivo exacto —no con uno inventado— y se recuperan reintentando. El dígito de control
+del ISBN-13 sí se comprueba sin red, así que un ISBN mal copiado se detecta igual.
+
 Para reintentar solo lo pendiente después de una caída de red:
 
 ```bash
@@ -107,8 +130,11 @@ python scripts/refresh-sources --only pending --sleep 0.6
 ```bash
 python scripts/build_sources.py             # registro desde lo que las clases citan
 python scripts/annotate_class_sources.py    # declara el uso de cada fuente en su clase
-python scripts/verify-sources --write       # cifras del README
+python scripts/link_sources_to_classes.py   # bibliografía de apoyo en cada clase
+python scripts/verify-sources --write       # README y BIBLIOGRAFIA.md
 ```
+
+O de una vez: `make sources`. Para comprobar sin escribir: `make sources-check`.
 
 `build_sources.py` es determinista y offline, y **conserva** todo lo que
 `refresh-sources` resolvió: nunca degrada una entrada verificada.
