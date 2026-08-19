@@ -1,0 +1,524 @@
+"""Registro general de fuentes del programa.
+
+Este módulo contiene la lógica compartida por `scripts/verify-sources`
+(offline, determinista, bloquea CI) y `scripts/refresh-sources`
+(en red, manual, no bloquea).
+
+Reglas del registro (`sources/bibliography.json`):
+
+* toda afirmación del programa se apoya en una entrada del registro;
+* ninguna entrada se acepta sin localizador verificable;
+* lo que no resuelve se marca `pendiente`, nunca se borra ni se inventa.
+
+La extracción de fuentes usadas es determinista: se lee el bloque
+`## 🔗 Referencias` de cada clase y de cada ítem se derivan dos facetas,
+que son las mismas dos que produce la medición de línea base:
+
+* `url`  — cada enlace http(s) del ítem, normalizado;
+* `obra` — cada título en cursiva del ítem, normalizado.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import unicodedata
+import urllib.parse
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Iterable
+
+ROOT = Path(__file__).resolve().parents[2]
+REGISTRY_PATH = ROOT / "sources" / "bibliography.json"
+CLASSES_GLOB = "classes/*/*/README.md"
+REF_HEADING = "## 🔗 Referencias"
+
+SCHEMA_VERSION = 1
+
+#: Tipos admitidos en el registro.
+TYPES = ("book", "paper", "standard", "reference", "dataset")
+
+#: Estados admitidos.
+STATUSES = ("verificada", "pendiente")
+
+#: Vocabulario controlado con el que cada clase declara el uso de una fuente.
+#: Es mecánico a propósito: describe la función de la fuente en la clase.
+#: Un motivo redactado por fuente y clase habría que inventarlo, y este
+#: repositorio no inventa aparato crítico.
+USE_ROLES = {
+    "paper": "fuente primaria del mecanismo estudiado",
+    "book": "desarrollo extendido del tema",
+    "standard": "marco normativo de referencia",
+    "reference": "referencia consultada en su fuente original",
+    "dataset": "datos de referencia",
+}
+
+USE_MARK = "uso:"
+
+#: Marcadores del bloque de cifras del README, que escribe el verificador.
+README_BEGIN = "<!-- sources:inicio -->"
+README_END = "<!-- sources:fin -->"
+
+#: Insignia del registro (la del eje de papers vive aparte y no se toca).
+BADGE_BEGIN = "<!-- sources-badge:inicio -->"
+BADGE_END = "<!-- sources-badge:fin -->"
+
+
+# --------------------------------------------------------------------------
+# normalización
+# --------------------------------------------------------------------------
+def normalize_url_key(url: str) -> str:
+    """Clave canónica de un enlace: sin esquema, sin `www.`, sin query.
+
+    Se decodifican los escapes `%NN` para que `10.1016/0004-3702%2890%29…` y
+    `10.1016/0004-3702(90)…` sean la misma fuente, y se compara en minúsculas.
+    La clave sirve para casar citas; el localizador conserva la URL original.
+    """
+    key = url.strip().strip("<>").rstrip(".,;")
+    key = re.sub(r"^https?://", "", key)
+    key = re.sub(r"^www\.", "", key)
+    key = key.split("#")[0].split("?")[0]
+    return urllib.parse.unquote(key).rstrip("/").lower()
+
+
+def normalize_work_key(work: str) -> str:
+    """Clave canónica de una obra citada en cursiva."""
+    key = re.sub(r"\s+", " ", work).strip()
+    key = key.strip(" .,:;·—-")
+    return key.lower()
+
+
+def strip_accents(text: str) -> str:
+    return "".join(
+        ch for ch in unicodedata.normalize("NFD", text) if unicodedata.category(ch) != "Mn"
+    )
+
+
+def normalize_title(title: str) -> str:
+    """Título comparable: sin acentos, sin puntuación, en minúsculas."""
+    plain = strip_accents(title).lower()
+    plain = re.sub(r"[^a-z0-9]+", " ", plain)
+    return " ".join(plain.split())
+
+
+def slugify(text: str, limit: int = 60) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", strip_accents(text).lower()).strip("-")
+    if len(slug) > limit:
+        slug = slug[:limit].rstrip("-")
+    return slug or "sin-titulo"
+
+
+# --------------------------------------------------------------------------
+# localizadores
+# --------------------------------------------------------------------------
+def isbn13_is_valid(isbn: str) -> bool:
+    """Dígito de control ISBN-13 (norma ISO 2108)."""
+    digits = re.sub(r"[^0-9]", "", isbn or "")
+    if len(digits) != 13 or not digits.startswith(("978", "979")):
+        return False
+    total = sum(int(d) * (1 if i % 2 == 0 else 3) for i, d in enumerate(digits[:12]))
+    return (10 - total % 10) % 10 == int(digits[12])
+
+
+DOI_RE = re.compile(r"^10\.\d{4,9}/\S+$")
+
+
+def doi_is_wellformed(doi: str) -> bool:
+    return bool(doi and DOI_RE.match(doi.strip()))
+
+
+def book_locator(isbn13: str) -> str:
+    return f"https://openlibrary.org/isbn/{isbn13}"
+
+
+def paper_locator(doi: str) -> str:
+    return f"https://doi.org/{doi}"
+
+
+def arxiv_doi(arxiv_id: str) -> str | None:
+    """DOI que arXiv registra para cada artículo (`10.48550/arXiv.<id>`).
+
+    Solo se aplica al identificador moderno `AAMM.NNNNN`; los identificadores
+    antiguos (`cs/0301001`) quedan sin DOI derivado y la entrada nace pendiente.
+    """
+    if re.match(r"^\d{4}\.\d{4,5}$", arxiv_id):
+        return f"10.48550/arXiv.{arxiv_id}"
+    return None
+
+
+# --------------------------------------------------------------------------
+# extracción de fuentes usadas en las clases
+# --------------------------------------------------------------------------
+#: Enlace de markdown, tolerando paréntesis equilibrados dentro de la URL:
+#: los DOI antiguos de Elsevier los llevan (`10.1016/0004-3702(75)90019-3`).
+MD_URL_RE = re.compile(r"\[[^\]]*\]\((https?://(?:[^\s()]|\([^\s()]*\))*)\)")
+ANGLE_URL_RE = re.compile(r"<(https?://[^>\s]+)>")
+BARE_URL_RE = re.compile(r"https?://[^\s)>\]]+")
+URL_RE = BARE_URL_RE  # compatibilidad con los usos sueltos
+WORK_RE = re.compile(r"\*([^*]{4,}?)\*")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)]*(?:\([^)]*\)[^)]*)*)\)")
+
+
+def extract_urls(text: str) -> list[str]:
+    """Todas las URL de una cita, sin trocear las que llevan paréntesis."""
+    urls = [match.group(1) for match in MD_URL_RE.finditer(text)]
+    rest = MD_URL_RE.sub("[·](·)", text)
+    urls.extend(match.group(1) for match in ANGLE_URL_RE.finditer(rest))
+    rest = ANGLE_URL_RE.sub("<·>", rest)
+    urls.extend(BARE_URL_RE.findall(rest))
+    return urls
+
+
+@dataclass
+class RefItem:
+    """Un ítem del bloque de referencias de una clase."""
+
+    class_path: str
+    line_no: int
+    text: str
+    urls: list[str] = field(default_factory=list)
+    works: list[str] = field(default_factory=list)
+
+    @property
+    def url_keys(self) -> list[str]:
+        return [normalize_url_key(u) for u in self.urls]
+
+    @property
+    def work_keys(self) -> list[str]:
+        return [normalize_work_key(w) for w in self.works]
+
+    @property
+    def declares_use(self) -> bool:
+        """¿El ítem declara para qué usa la clase esa fuente?"""
+        if USE_MARK in self.text:
+            return True
+        tail = ""
+        match = list(MD_LINK_RE.finditer(self.text))
+        if match:
+            tail = self.text[match[-1].end() :]
+        elif "—" in self.text:
+            tail = self.text.rsplit("—", 1)[1]
+        return len(tail.strip(" .·—-*_")) > 8
+
+
+def class_files(root: Path = ROOT) -> list[Path]:
+    return sorted(root.glob(CLASSES_GLOB))
+
+
+def reference_block(text: str) -> str | None:
+    match = re.search(
+        rf"^{re.escape(REF_HEADING)}\s*$(.*?)(?=^## |^<!-- papers:inicio -->|\Z)",
+        text,
+        re.S | re.M,
+    )
+    return match.group(1) if match else None
+
+
+def extract_items(root: Path = ROOT) -> list[RefItem]:
+    """Todos los ítems de referencias de todas las clases, en orden estable."""
+    items: list[RefItem] = []
+    for path in class_files(root):
+        rel = path.relative_to(root).as_posix()
+        text = path.read_text(encoding="utf-8")
+        block = reference_block(text)
+        if block is None:
+            continue
+        offset = text[: text.index(REF_HEADING)].count("\n") + 1
+        for number, raw in enumerate(block.splitlines(), start=1):
+            line = raw.strip()
+            if not line.startswith("- "):
+                continue
+            body = line[2:].strip()
+            items.append(
+                RefItem(
+                    class_path=rel,
+                    line_no=offset + number,
+                    text=body,
+                    urls=extract_urls(body),
+                    works=WORK_RE.findall(body),
+                )
+            )
+    return items
+
+
+def used_keys(items: Iterable[RefItem]) -> tuple[dict[str, int], dict[str, int]]:
+    """Devuelve (usos por clave de enlace, usos por clave de obra)."""
+    urls: dict[str, int] = {}
+    works: dict[str, int] = {}
+    for item in items:
+        for key in item.url_keys:
+            urls[key] = urls.get(key, 0) + 1
+        for key in item.work_keys:
+            works[key] = works.get(key, 0) + 1
+    return urls, works
+
+
+# --------------------------------------------------------------------------
+# registro
+# --------------------------------------------------------------------------
+def load_registry(path: Path = REGISTRY_PATH) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def dump_registry(registry: dict, path: Path = REGISTRY_PATH) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(registry, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
+
+def registry_keys(registry: dict) -> tuple[set[str], set[str]]:
+    """Claves de enlace y de obra que cubre el registro."""
+    urls: set[str] = set()
+    works: set[str] = set()
+    for entry in registry.get("entries", []):
+        urls.update(normalize_url_key(u) for u in entry.get("url_keys", []))
+        works.update(normalize_work_key(w) for w in entry.get("aliases", []))
+        container = entry.get("container")
+        if container:
+            works.add(normalize_work_key(container))
+    return urls, works
+
+
+def registry_stats(registry: dict, items: list[RefItem] | None = None) -> dict:
+    """Cifras del registro. Son las únicas que puede mostrar el README."""
+    entries = registry.get("entries", [])
+    by_type: dict[str, int] = {}
+    for entry in entries:
+        by_type[entry["type"]] = by_type.get(entry["type"], 0) + 1
+    verified = sum(1 for e in entries if e.get("status") == "verificada")
+    pending = sum(1 for e in entries if e.get("status") == "pendiente")
+    items = items if items is not None else extract_items()
+    url_uses, work_uses = used_keys(items)
+    covered_urls, covered_works = registry_keys(registry)
+    used_total = len(url_uses) + len(work_uses)
+    covered_total = sum(1 for k in url_uses if k in covered_urls) + sum(
+        1 for k in work_uses if k in covered_works
+    )
+    return {
+        "entries": len(entries),
+        "by_type": dict(sorted(by_type.items())),
+        "verified": verified,
+        "pending": pending,
+        "classes": len({i.class_path for i in items}),
+        "citations": len(items),
+        "used_sources": used_total,
+        "used_links": len(url_uses),
+        "used_works": len(work_uses),
+        "covered_sources": covered_total,
+        "coverage_pct": round(100.0 * covered_total / used_total, 1) if used_total else 0.0,
+        "with_isbn": sum(1 for e in entries if e.get("isbn13")),
+        "with_doi": sum(1 for e in entries if e.get("doi")),
+        "verified_on": registry.get("verified_on"),
+    }
+
+
+# --------------------------------------------------------------------------
+# verificación offline
+# --------------------------------------------------------------------------
+REQUIRED_FIELDS = ("id", "type", "title", "status", "used_in")
+
+
+def _check_schema(registry: dict, problems: list[str]) -> None:
+    if registry.get("schema_version") != SCHEMA_VERSION:
+        problems.append(
+            f"schema_version debe ser {SCHEMA_VERSION}, es {registry.get('schema_version')!r}"
+        )
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(registry.get("verified_on", ""))):
+        problems.append("verified_on ausente o sin formato AAAA-MM-DD")
+    if not registry.get("policy"):
+        problems.append("falta la política del registro")
+    if not isinstance(registry.get("entries"), list):
+        problems.append("entries debe ser una lista")
+
+
+def _check_entries(registry: dict, class_paths: set[str], problems: list[str]) -> None:
+    seen_ids: set[str] = set()
+    for entry in registry.get("entries", []):
+        eid = entry.get("id", "<sin id>")
+        for field_name in REQUIRED_FIELDS:
+            if not entry.get(field_name):
+                problems.append(f"{eid}: falta el campo obligatorio {field_name}")
+        if eid in seen_ids:
+            problems.append(f"{eid}: id duplicado")
+        seen_ids.add(eid)
+        if not re.match(r"^[a-z0-9][a-z0-9-]*$", str(eid)):
+            problems.append(f"{eid}: el id no es kebab-case estable")
+        if entry.get("type") not in TYPES:
+            problems.append(f"{eid}: tipo {entry.get('type')!r} fuera de {TYPES}")
+        if entry.get("status") not in STATUSES:
+            problems.append(f"{eid}: estado {entry.get('status')!r} fuera de {STATUSES}")
+        for path in entry.get("used_in", []):
+            if path not in class_paths:
+                problems.append(f"{eid}: used_in apunta a una clase inexistente ({path})")
+        if not entry.get("used_in"):
+            problems.append(f"{eid}: entrada sin uso en ninguna clase")
+        if entry.get("status") == "pendiente":
+            if not entry.get("pending_reason"):
+                problems.append(f"{eid}: pendiente sin motivo declarado")
+            continue
+        _check_locator(entry, problems)
+
+
+def _check_locator(entry: dict, problems: list[str]) -> None:
+    """Reglas de localizador para entradas verificadas."""
+    eid = entry["id"]
+    etype = entry.get("type")
+    locator = entry.get("locator", "")
+    if etype == "book":
+        isbn = entry.get("isbn13", "")
+        if not isbn13_is_valid(isbn):
+            problems.append(f"{eid}: ISBN-13 inválido o ausente ({isbn!r})")
+        elif locator != book_locator(isbn):
+            problems.append(f"{eid}: el locator de un libro debe ser {book_locator(isbn)}")
+    elif etype == "paper":
+        doi = entry.get("doi", "")
+        if not doi_is_wellformed(doi):
+            problems.append(f"{eid}: DOI ausente o mal formado ({doi!r})")
+        elif locator != paper_locator(doi):
+            problems.append(f"{eid}: el locator de un artículo debe ser {paper_locator(doi)}")
+    else:
+        if not locator.startswith("https://"):
+            problems.append(f"{eid}: {etype} verificada necesita URL https de la fuente primaria")
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(entry.get("accessed", ""))):
+            problems.append(f"{eid}: {etype} verificada necesita fecha de consulta (accessed)")
+        if not entry.get("authority"):
+            problems.append(f"{eid}: {etype} verificada necesita organismo responsable")
+
+
+def _check_coverage(registry: dict, items: list[RefItem], problems: list[str]) -> None:
+    url_uses, work_uses = used_keys(items)
+    covered_urls, covered_works = registry_keys(registry)
+    missing_urls = sorted(k for k in url_uses if k not in covered_urls)
+    missing_works = sorted(k for k in work_uses if k not in covered_works)
+    for key in missing_urls[:20]:
+        problems.append(f"enlace usado y no registrado: {key}")
+    if len(missing_urls) > 20:
+        problems.append(f"... y {len(missing_urls) - 20} enlaces usados más sin registrar")
+    for key in missing_works[:20]:
+        problems.append(f"obra usada y no registrada: {key}")
+    if len(missing_works) > 20:
+        problems.append(f"... y {len(missing_works) - 20} obras usadas más sin registrar")
+
+    used_urls_all, used_works_all = set(url_uses), set(work_uses)
+    for entry in registry.get("entries", []):
+        keys = {normalize_url_key(u) for u in entry.get("url_keys", [])}
+        aliases = {normalize_work_key(w) for w in entry.get("aliases", [])}
+        container = entry.get("container")
+        if container:
+            aliases.add(normalize_work_key(container))
+        if not (keys & used_urls_all) and not (aliases & used_works_all):
+            problems.append(f"{entry.get('id')}: entrada del registro que ninguna clase usa")
+
+
+def _check_class_blocks(items: list[RefItem], root: Path, problems: list[str]) -> None:
+    blocks: dict[str, str] = {}
+    for path in class_files(root):
+        rel = path.relative_to(root).as_posix()
+        block = reference_block(path.read_text(encoding="utf-8"))
+        if block is None:
+            problems.append(f"{rel}: sin bloque «{REF_HEADING}»")
+            continue
+        signature = "\n".join(
+            sorted(l.strip() for l in block.splitlines() if l.strip().startswith("- "))
+        )
+        if signature in blocks:
+            problems.append(f"{rel}: bloque de fuentes idéntico al de {blocks[signature]}")
+        else:
+            blocks[signature] = rel
+    for item in items:
+        if not item.declares_use:
+            problems.append(
+                f"{item.class_path}:{item.line_no}: la fuente no declara el uso que la clase hace de ella"
+            )
+
+
+def readme_block(stats: dict) -> str:
+    """Bloque de cifras del README. Lo produce el verificador, no la mano."""
+    by_type = stats["by_type"]
+    lines = [
+        README_BEGIN,
+        "",
+        "| Registro de fuentes | Valor |",
+        "|---|---:|",
+        f"| Entradas | **{stats['entries']}** |",
+        f"| Verificadas | **{stats['verified']}** |",
+        f"| Pendientes | **{stats['pending']}** |",
+        f"| Libros · artículos · normas · documentación · datos | "
+        f"**{by_type.get('book', 0)} · {by_type.get('paper', 0)} · {by_type.get('standard', 0)} · "
+        f"{by_type.get('reference', 0)} · {by_type.get('dataset', 0)}** |",
+        f"| Citas en clases | **{stats['citations']}** en {stats['classes']} clases |",
+        f"| Fuentes usadas (enlaces + obras) | **{stats['used_sources']}** "
+        f"({stats['used_links']} + {stats['used_works']}) |",
+        f"| Cobertura del registro | **{stats['coverage_pct']} %** |",
+        f"| ISBN-13 · DOI | **{stats['with_isbn']} · {stats['with_doi']}** |",
+        f"| Última resolución en red | **{stats['verified_on']}** |",
+        "",
+        README_END,
+    ]
+    return "\n".join(lines)
+
+
+def badge_block(stats: dict) -> str:
+    total = stats["entries"]
+    return (
+        f"{BADGE_BEGIN}\n"
+        f"[![Fuentes](https://img.shields.io/badge/fuentes-{total}%20registradas-0b7285?style=for-the-badge)](sources/bibliography.json)\n"
+        f"{BADGE_END}"
+    )
+
+
+def _replace_block(text: str, begin: str, end: str, replacement: str) -> tuple[str, bool]:
+    pattern = re.compile(re.escape(begin) + r".*?" + re.escape(end), re.S)
+    if not pattern.search(text):
+        return text, False
+    return pattern.sub(lambda _: replacement, text, count=1), True
+
+
+def sync_readme(stats: dict, root: Path = ROOT, write: bool = False) -> list[str]:
+    """Compara (o escribe) las cifras del README contra el registro."""
+    problems: list[str] = []
+    path = root / "README.md"
+    text = path.read_text(encoding="utf-8")
+    updated = text
+    for begin, end, block in (
+        (README_BEGIN, README_END, readme_block(stats)),
+        (BADGE_BEGIN, BADGE_END, badge_block(stats)),
+    ):
+        updated, found = _replace_block(updated, begin, end, block)
+        if not found:
+            problems.append(f"README.md: falta el bloque {begin} … {end}")
+    if updated != text:
+        if write:
+            path.write_text(updated, encoding="utf-8")
+        else:
+            problems.append(
+                "README.md: las cifras del registro no coinciden "
+                "(`python scripts/verify-sources --write` las regenera)"
+            )
+    return problems
+
+
+def verify(root: Path = ROOT, write_readme: bool = False) -> dict:
+    """Comprobación offline y determinista. Es la que bloquea CI."""
+    problems: list[str] = []
+    registry_path = root / "sources" / "bibliography.json"
+    if not registry_path.exists():
+        return {"ok": False, "problems": [f"no existe {registry_path}"], "stats": {}}
+    try:
+        registry = load_registry(registry_path)
+    except json.JSONDecodeError as exc:  # pragma: no cover - error de formato
+        return {"ok": False, "problems": [f"el registro no parsea: {exc}"], "stats": {}}
+
+    items = extract_items(root)
+    class_paths = {p.relative_to(root).as_posix() for p in class_files(root)}
+
+    _check_schema(registry, problems)
+    _check_entries(registry, class_paths, problems)
+    _check_coverage(registry, items, problems)
+    _check_class_blocks(items, root, problems)
+
+    stats = registry_stats(registry, items)
+    problems.extend(sync_readme(stats, root, write=write_readme))
+
+    return {"ok": not problems, "problems": problems, "stats": stats}

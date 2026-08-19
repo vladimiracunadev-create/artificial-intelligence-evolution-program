@@ -1,0 +1,475 @@
+#!/usr/bin/env python
+"""Resuelve el registro de fuentes contra la red. Manual o programado, NUNCA en CI.
+
+    python scripts/refresh-sources                 # resuelve todo el registro
+    python scripts/refresh-sources --only pending  # solo lo que sigue pendiente
+    python scripts/refresh-sources --limit 50      # tanda corta
+
+Qué hace:
+
+* ISBN-13 contra `openlibrary.org`, comparando título y autores;
+* libros sin ISBN: búsqueda por título y autor en Open Library, y solo se acepta
+  cuando título y apellido coinciden;
+* DOI contra `api.crossref.org` y, si el DOI no es de Crossref (arXiv usa
+  DataCite), contra el sistema de handles de `doi.org`;
+* GET a cada URL de norma y documentación, registrando el estado HTTP;
+* actualiza `verified_on` y `accessed`.
+
+Qué NO hace: borrar. Lo que deja de resolver se marca `pendiente` con motivo y
+se queda en el registro. La red no entra en CI: si entrara, el CI se volvería
+inestable y se acabaría ignorando.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from ai_evolution.sources import (  # noqa: E402
+    REGISTRY_PATH,
+    book_locator,
+    dump_registry,
+    isbn13_is_valid,
+    load_registry,
+    normalize_title,
+    paper_locator,
+    strip_accents,
+)
+
+USER_AGENT = (
+    "ai-evolution-program/sources-refresh "
+    "(+https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program)"
+)
+TIMEOUT = 12
+
+
+RETRIES = 2
+
+
+def fetch(
+    url: str, accept: str | None = None, method: str = "GET", agent: str = USER_AGENT
+) -> tuple[int, bytes]:
+    """GET con reintentos. Un fallo de red no es una fuente rota: se reintenta."""
+    status, body = 0, b""
+    for attempt in range(RETRIES):
+        request = urllib.request.Request(url, method=method)
+        request.add_header("User-Agent", agent)
+        if accept:
+            request.add_header("Accept", accept)
+        try:
+            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
+                return response.status, response.read()
+        except urllib.error.HTTPError as exc:
+            status, body = exc.code, b""
+            if exc.code not in (429, 500, 502, 503, 504):
+                return status, body
+        except Exception as exc:  # red caída, DNS, TLS, timeout
+            status, body = 0, str(exc).encode("utf-8", "replace")
+        if attempt < RETRIES - 1:
+            time.sleep(1.5 * (attempt + 1))
+    return status, body
+
+
+#: Open Library es la autoridad de los ISBN, pero se cae o bloquea con
+#: frecuencia. Se prueba una vez: si no responde, los libros quedan pendientes
+#: diciendo exactamente eso, en vez de gastar minutos por entrada.
+_OPENLIBRARY: dict[str, bool] = {}
+
+
+def openlibrary_is_up() -> bool:
+    if "up" not in _OPENLIBRARY:
+        status, _ = fetch("https://openlibrary.org/isbn/9780262035613.json", accept="application/json")
+        _OPENLIBRARY["up"] = status == 200
+        if not _OPENLIBRARY["up"]:
+            print(
+                f"Open Library no responde (estado {status}): los libros que dependen de "
+                "ella quedan pendientes con ese motivo.",
+                flush=True,
+            )
+    return _OPENLIBRARY["up"]
+
+
+def fetch_json(url: str) -> tuple[int, dict | None]:
+    status, body = fetch(url, accept="application/json")
+    if status != 200 or not body:
+        return status, None
+    try:
+        return status, json.loads(body.decode("utf-8", "replace"))
+    except json.JSONDecodeError:
+        return status, None
+
+
+def titles_match(expected: str, found: str) -> bool:
+    a, b = normalize_title(expected), normalize_title(found)
+    if not a or not b:
+        return False
+    return a == b or a.startswith(b) or b.startswith(a) or a in b or b in a
+
+
+def surnames(authors: list[str]) -> set[str]:
+    out = set()
+    for author in authors:
+        token = strip_accents(author).split(",")[0].strip().split()[-1:] or [""]
+        if len(token[0]) > 2:
+            out.add(token[0].lower())
+    return out
+
+
+# --------------------------------------------------------------------------
+# resolutores
+# --------------------------------------------------------------------------
+def resolve_isbn(entry: dict) -> dict:
+    isbn = entry.get("isbn13", "")
+    if not isbn13_is_valid(isbn):
+        return {"method": "openlibrary", "ok": False, "detail": "ISBN-13 con dígito de control inválido"}
+    status, data = fetch_json(f"https://openlibrary.org/isbn/{isbn}.json")
+    if status != 200 or not data:
+        return {"method": "openlibrary", "ok": False, "http_status": status, "detail": "no resuelve"}
+    found = data.get("title", "")
+    ok = titles_match(entry.get("title", ""), found)
+    return {
+        "method": "openlibrary",
+        "ok": ok,
+        "http_status": status,
+        "resolved_title": found,
+        "detail": "" if ok else f"el título no coincide con «{found}»",
+    }
+
+
+def search_isbn(entry: dict) -> dict:
+    """Busca ISBN-13 por título y autor. Solo acepta coincidencia fuerte."""
+    title = entry.get("title", "")
+    if not title:
+        return {"method": "openlibrary-search", "ok": False, "detail": "sin título"}
+    params = {"title": title, "limit": "5", "fields": "title,author_name,isbn,first_publish_year"}
+    if entry.get("authors"):
+        params["author"] = entry["authors"][0].split(",")[0]
+    url = "https://openlibrary.org/search.json?" + urllib.parse.urlencode(params)
+    status, data = fetch_json(url)
+    if status != 200 or not data:
+        return {"method": "openlibrary-search", "ok": False, "http_status": status, "detail": "sin respuesta"}
+    wanted = surnames(entry.get("authors", []))
+    for doc in data.get("docs", []):
+        if not titles_match(title, doc.get("title", "")):
+            continue
+        if wanted and not (wanted & surnames(doc.get("author_name", []))):
+            continue
+        for raw in doc.get("isbn", []):
+            candidate = raw.replace("-", "")
+            if isbn13_is_valid(candidate):
+                return {
+                    "method": "openlibrary-search",
+                    "ok": True,
+                    "http_status": status,
+                    "isbn13": candidate,
+                    "resolved_title": doc.get("title", ""),
+                }
+    return {
+        "method": "openlibrary-search",
+        "ok": False,
+        "http_status": status,
+        "detail": "ninguna edición con ISBN-13 coincide en título y autor",
+    }
+
+
+def resolve_doi(entry: dict) -> dict:
+    doi = entry.get("doi", "")
+    if not doi:
+        return {"method": "crossref", "ok": False, "detail": "sin DOI"}
+    quoted = urllib.parse.quote(doi, safe="/")
+    status, data = fetch_json(f"https://api.crossref.org/works/{quoted}")
+    if status == 200 and data:
+        message = data.get("message", {})
+        found = (message.get("title") or [""])[0]
+        ok = titles_match(entry.get("title", ""), found) if found else False
+        authors = [
+            f"{a.get('family', '')}, {a.get('given', '')}".strip(", ")
+            for a in message.get("author", [])
+            if a.get("family")
+        ]
+        return {
+            "method": "crossref",
+            "ok": True,
+            "http_status": status,
+            "resolved_title": found,
+            "resolved_authors": authors[:8],
+            "resolved_year": str(
+                (message.get("issued", {}).get("date-parts") or [[None]])[0][0] or ""
+            ),
+            "container": (message.get("container-title") or [""])[0],
+            "title_matches": ok,
+        }
+    # arXiv y otros DOI de DataCite no están en Crossref: se resuelve el handle
+    status2, data2 = fetch_json(f"https://doi.org/api/handles/{quoted}")
+    if status2 == 200 and data2 and data2.get("responseCode") == 1:
+        target = ""
+        for value in data2.get("values", []):
+            if value.get("type") == "URL":
+                target = value.get("data", {}).get("value", "")
+        return {
+            "method": "doi-handle",
+            "ok": True,
+            "http_status": status2,
+            "resolves_to": target,
+        }
+    return {
+        "method": "crossref",
+        "ok": False,
+        "http_status": status,
+        "detail": f"el DOI no resuelve (crossref {status}, handle {status2})",
+    }
+
+
+def resolve_arxiv(entry: dict) -> dict:
+    arxiv_id = entry.get("arxiv_id")
+    if not arxiv_id:
+        return {}
+    url = f"http://export.arxiv.org/api/query?id_list={urllib.parse.quote(arxiv_id)}"
+    status, body = fetch(url)
+    if status != 200 or not body:
+        return {"arxiv_http_status": status}
+    text = body.decode("utf-8", "replace")
+    start = text.find("<entry>")
+    if start == -1:
+        return {"arxiv_http_status": status, "arxiv_found": False}
+    chunk = text[start:]
+    title = ""
+    if "<title>" in chunk:
+        title = chunk.split("<title>", 1)[1].split("</title>", 1)[0]
+        title = " ".join(title.split())
+    authors = []
+    part = chunk
+    while "<name>" in part:
+        name, part = part.split("<name>", 1)[1].split("</name>", 1)
+        authors.append(name.strip())
+    return {
+        "arxiv_http_status": status,
+        "arxiv_title": title,
+        "arxiv_authors": authors[:8],
+        "arxiv_matches": titles_match(entry.get("title", ""), title) if title else False,
+    }
+
+
+BROWSER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+)
+
+
+def resolve_url(entry: dict) -> dict:
+    url = entry.get("locator", "")
+    if not url.startswith("http"):
+        return {"method": "http", "ok": False, "detail": "sin URL"}
+    status, body = fetch(url, accept="text/html,application/pdf,*/*")
+    if status in (403, 406, 429):
+        # varios editores rechazan agentes no navegador; el recurso sí existe
+        status, body = fetch(url, accept="text/html,*/*", agent=BROWSER_AGENT)
+    if status in (405, 0):
+        status, body = fetch(url, accept="*/*")
+    if not (200 <= status < 400) and url.startswith("https://"):
+        plain = "http://" + url[len("https://") :]
+        plain_status, _ = fetch(plain, accept="text/html,*/*", agent=BROWSER_AGENT)
+        if 200 <= plain_status < 400:
+            return {
+                "method": "http",
+                "ok": False,
+                "http_status": status,
+                "http_status_sin_tls": plain_status,
+                "detail": "la fuente primaria solo responde sin TLS (http)",
+            }
+    title = ""
+    if body[:2048].lower().find(b"<title") != -1:
+        raw = body.decode("utf-8", "replace")
+        start = raw.lower().find("<title")
+        end = raw.find("</title>", start)
+        if start != -1 and end != -1:
+            title = " ".join(raw[raw.find(">", start) + 1 : end].split())[:200]
+    return {
+        "method": "http",
+        "ok": 200 <= status < 400,
+        "http_status": status,
+        "page_title": title,
+        "detail": "" if 200 <= status < 400 else f"HTTP {status}",
+    }
+
+
+# --------------------------------------------------------------------------
+# ciclo principal
+# --------------------------------------------------------------------------
+def refresh_entry(entry: dict, today: str) -> None:
+    etype = entry["type"]
+    check: dict = {"last_check": today}
+
+    if etype == "book":
+        if not openlibrary_is_up():
+            entry["status"] = "pendiente"
+            entry["pending_reason"] = (
+                "Open Library no responde desde este entorno: el ISBN-13 "
+                + ("declarado está sin resolver" if entry.get("isbn13") else "sigue sin localizar")
+            )
+            entry["checked"] = {
+                "last_check": today,
+                "method": "openlibrary",
+                "ok": False,
+                "detail": "el servicio no respondió",
+            }
+            return
+        if not entry.get("isbn13"):
+            found = search_isbn(entry)
+            check.update(found)
+            if found.get("ok") and found.get("isbn13"):
+                entry["isbn13"] = found["isbn13"]
+                entry["locator"] = book_locator(found["isbn13"])
+        else:
+            check.update(resolve_isbn(entry))
+            # el ISBN venía de la URL del propio editor: si Open Library
+            # devuelve otro título, el flojo era el título que se dedujo del
+            # texto de la cita, no el ISBN. Manda la ficha del catálogo.
+            if (
+                not check.get("ok")
+                and check.get("resolved_title")
+                and entry.get("isbn_source") == "url-del-editor"
+            ):
+                entry["title"] = check["resolved_title"]
+                check["ok"] = True
+                check["title_replaced"] = True
+                check["detail"] = "título tomado de la ficha de Open Library"
+        if entry.get("isbn13") and check.get("ok"):
+            entry["locator"] = book_locator(entry["isbn13"])
+            entry["status"] = "verificada"
+            entry.pop("pending_reason", None)
+            if not entry.get("authority"):
+                entry["authority"] = "Open Library"
+        else:
+            entry["status"] = "pendiente"
+            entry["pending_reason"] = (
+                "sin ISBN-13 verificado en Open Library: " + (check.get("detail") or "no resuelve")
+            )
+    elif etype == "paper":
+        if entry.get("doi"):
+            result = resolve_doi(entry)
+            check.update(result)
+            if entry.get("arxiv_id"):
+                check.update(resolve_arxiv(entry))
+            if result.get("ok"):
+                entry["locator"] = paper_locator(entry["doi"])
+                entry["status"] = "verificada"
+                entry.pop("pending_reason", None)
+                if result.get("resolved_authors"):
+                    entry["authors"] = result["resolved_authors"]
+                if result.get("resolved_title") and result.get("title_matches"):
+                    entry["title"] = result["resolved_title"]
+                if result.get("resolved_year"):
+                    entry["published"] = result["resolved_year"] or entry.get("published")
+                if result.get("container") and not entry.get("container"):
+                    entry["container"] = result["container"]
+                if check.get("arxiv_title") and not check.get("arxiv_matches"):
+                    entry["title"] = check["arxiv_title"]
+                    if check.get("arxiv_authors"):
+                        entry["authors"] = check["arxiv_authors"]
+                entry["authority"] = entry.get("authority") or (
+                    "arXiv (Cornell University)" if entry.get("arxiv_id") else "Crossref"
+                )
+            else:
+                entry["status"] = "pendiente"
+                entry["pending_reason"] = "el DOI no resuelve: " + (result.get("detail") or "")
+        else:
+            check.update({"method": "ninguno", "ok": False, "detail": "artículo sin DOI localizado"})
+            entry["status"] = "pendiente"
+            entry["pending_reason"] = "artículo sin DOI localizado en la fuente primaria"
+    else:
+        result = resolve_url(entry)
+        check.update(result)
+        if result.get("ok"):
+            entry["accessed"] = today
+            entry["status"] = "verificada"
+            entry.pop("pending_reason", None)
+            if not entry.get("authority"):
+                entry["authority"] = entry["locator"].split("/")[2]
+        else:
+            entry["status"] = "pendiente"
+            status_code = result.get("http_status")
+            if status_code == 403:
+                reason = (
+                    "el servidor rechaza clientes automatizados (HTTP 403): el recurso "
+                    "no se puede comprobar desde aquí"
+                )
+            elif result.get("http_status_sin_tls"):
+                reason = "la fuente primaria solo responde sin TLS (http)"
+            else:
+                reason = "la URL de la fuente primaria no responde: " + (
+                    result.get("detail") or ""
+                )
+            entry["pending_reason"] = reason
+    entry["checked"] = check
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--only", choices=["all", "pending", "unchecked"], default="all")
+    parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--sleep", type=float, default=0.2)
+    parser.add_argument("--type", choices=["book", "paper", "standard", "reference", "dataset"])
+    args = parser.parse_args()
+
+    registry = load_registry(REGISTRY_PATH)
+    today = dt.date.today().isoformat()
+    entries = registry["entries"]
+
+    todo = []
+    for entry in entries:
+        if args.type and entry["type"] != args.type:
+            continue
+        if args.only == "pending" and entry.get("status") != "pendiente":
+            continue
+        if args.only == "unchecked" and entry.get("checked"):
+            continue
+        todo.append(entry)
+    if args.limit:
+        todo = todo[: args.limit]
+
+    print(f"Resolviendo {len(todo)} de {len(entries)} entradas del registro…", flush=True)
+    resolved = 0
+    for number, entry in enumerate(todo, start=1):
+        before = entry.get("status")
+        refresh_entry(entry, today)
+        if entry["status"] == "verificada":
+            resolved += 1
+        mark = "ok " if entry["status"] == "verificada" else "PEND"
+        print(
+            f"[{number:4d}/{len(todo)}] {mark} {entry['type']:9s} {entry['id'][:64]}"
+            + ("" if before == entry["status"] else f"  ({before} → {entry['status']})"),
+            flush=True,
+        )
+        time.sleep(args.sleep)
+
+    registry["verified_on"] = today
+    dump_registry(registry, REGISTRY_PATH)
+
+    pending = [e for e in entries if e.get("status") == "pendiente"]
+    print("")
+    print(f"Verificadas en esta tanda: {resolved}/{len(todo)}")
+    print(f"Registro: {len(entries) - len(pending)} verificadas, {len(pending)} pendientes")
+    if pending:
+        print("Pendientes por motivo:")
+        motives: dict[str, int] = {}
+        for entry in pending:
+            key = (entry.get("pending_reason") or "sin motivo")[:70]
+            motives[key] = motives.get(key, 0) + 1
+        for motive, count in sorted(motives.items(), key=lambda kv: -kv[1]):
+            print(f"  {count:4d}  {motive}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

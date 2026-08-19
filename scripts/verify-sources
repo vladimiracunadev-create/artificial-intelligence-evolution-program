@@ -1,0 +1,77 @@
+#!/usr/bin/env python
+"""Verificador offline del registro de fuentes. Es el que bloquea CI.
+
+    python scripts/verify-sources           # comprueba
+    python scripts/verify-sources --write   # además regenera las cifras del README
+    python scripts/verify-sources --json    # salida legible por máquina
+
+Comprueba, sin tocar la red:
+
+* el registro parsea y cumple el esquema;
+* todo `book` verificado lleva ISBN-13 con dígito de control válido y todo
+  `paper` verificado lleva DOI;
+* el `locator` coincide con la forma canónica de su tipo;
+* toda obra o enlace que una clase usa existe en el registro;
+* ninguna entrada del registro queda sin usar;
+* ningún bloque de fuentes se repite entre clases;
+* cada fuente citada declara el uso que la clase hace de ella;
+* las cifras que muestra el README coinciden con el recuento del registro.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from ai_evolution.sources import verify  # noqa: E402
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--write", action="store_true", help="regenera las cifras del README")
+    parser.add_argument("--json", action="store_true", help="salida JSON")
+    parser.add_argument("--max-problems", type=int, default=40)
+    args = parser.parse_args()
+
+    result = verify(ROOT, write_readme=args.write)
+    if args.json:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 0 if result["ok"] else 1
+
+    stats = result["stats"]
+    print("Registro de fuentes — sources/bibliography.json")
+    print(f"  entradas ............. {stats.get('entries', 0)}")
+    print(f"  verificadas .......... {stats.get('verified', 0)}")
+    print(f"  pendientes ........... {stats.get('pending', 0)}")
+    print(f"  por tipo ............. {stats.get('by_type', {})}")
+    print(f"  con ISBN-13 / DOI .... {stats.get('with_isbn', 0)} / {stats.get('with_doi', 0)}")
+    print(f"  clases ............... {stats.get('classes', 0)}")
+    print(f"  citas en clases ...... {stats.get('citations', 0)}")
+    print(
+        "  fuentes usadas ....... "
+        f"{stats.get('used_sources', 0)} "
+        f"({stats.get('used_links', 0)} enlaces + {stats.get('used_works', 0)} obras)"
+    )
+    print(f"  cobertura ............ {stats.get('coverage_pct', 0)} %")
+    print(f"  última red ........... {stats.get('verified_on')}")
+    print("")
+
+    problems = result["problems"]
+    if not problems:
+        print("OK: registro coherente, cobertura completa y README al día.")
+        return 0
+    print(f"FALLA: {len(problems)} problemas")
+    for problem in problems[: args.max_problems]:
+        print(f"  - {problem}")
+    if len(problems) > args.max_problems:
+        print(f"  … y {len(problems) - args.max_problems} más")
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
