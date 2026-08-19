@@ -82,7 +82,7 @@ diferencia real entre versiones (0,08). El instrumento no tiene resolución para
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | cuántos ejemplos hacen falta para distinguir dos proporciones que difieren en 0,08 |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | de dónde sale la desviación de una medida y por qué encoge con la raíz del número de ejemplos |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

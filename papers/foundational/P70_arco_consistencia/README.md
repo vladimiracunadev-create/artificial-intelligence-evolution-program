@@ -14,7 +14,7 @@
 | **Autoría** | Alan K. Mackworth |
 | **Año** | 1977 |
 | **Venue** | Artificial Intelligence, 8(1), 99–118 |
-| **Fuente primaria** | [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8) |
+| **Fuente primaria** | [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702%2877%2990007-8) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-17 |
 
@@ -164,7 +164,7 @@ comprobable: 226 retrocesos frente a 0 no es una diferencia de matiz.
   la propiedad que exhibe la miniatura.
   [doi:10.1145/322290.322292](https://doi.org/10.1145/322290.322292)
 - **Bessière y Régin (2001)** — AC-2001 y el coste óptimo de la consistencia de arco.
-  [doi:10.1016/S0004-3702(01)00074-5](https://doi.org/10.1016/S0004-3702(01)00074-5)
+  [doi:10.1016/S0004-3702(01)00074-5](https://doi.org/10.1016/S0004-3702%2801%2900074-5)
 - **Sabin y Freuder (1994)** — MAC: mantener la consistencia durante la búsqueda, no solo antes.
 - **[P68 STRIPS](../P68_strips/README.md) (1971)** — la planificación como problema de
   restricciones es una de las líneas que se abren desde aquí.
@@ -215,12 +215,12 @@ ai-evolution paper-lab P70 --seed 7
 ## 18. Fuentes primarias
 
 - Mackworth, A. K. (1977). *Consistency in Networks of Relations*. **Artificial Intelligence**,
-  8(1), 99–118. [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8) ·
+  8(1), 99–118. [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702%2877%2990007-8) ·
   consultado 2026-08-17.
 - Freuder, E. (1982). *A Sufficient Condition for Backtrack-Free Search*.
   [doi:10.1145/322290.322292](https://doi.org/10.1145/322290.322292) · consultado 2026-08-17.
 - Bessière, C. y Régin, J.-C. (2001). *Refining the basic constraint propagation algorithm*.
-  [doi:10.1016/S0004-3702(01)00074-5](https://doi.org/10.1016/S0004-3702(01)00074-5) ·
+  [doi:10.1016/S0004-3702(01)00074-5](https://doi.org/10.1016/S0004-3702%2801%2900074-5) ·
   consultado 2026-08-17.
 
 ---

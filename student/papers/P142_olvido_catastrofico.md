@@ -37,7 +37,7 @@ Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es u
 
 ## Fuentes primarias
 
-- [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421(08)60536-8)
+- [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421%2808%2960536-8)
 
 ---
 

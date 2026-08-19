@@ -90,7 +90,7 @@ elimina, lo atenúa 56 veces.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A04 §2** · Softmax: de puntuaciones a pesos](../../annexes/A04_ATENCION_PASO_A_PASO.md#2-softmax-de-puntuaciones-a-pesos) | el mismo softmax del Transformer, aquí tomado sobre el vecindario en vez de sobre la secuencia |
+| [**A04** · Paso 3 — Normalizar: `softmax`](../../annexes/A04_ATENCION_PASO_A_PASO.md#paso-3--normalizar-softmax) | el mismo softmax del Transformer, aquí tomado sobre el vecindario en vez de sobre la secuencia |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

@@ -37,7 +37,7 @@ El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión po
 
 ## Fuentes primarias
 
-- [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564(75)90047-4)
+- [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564%2875%2990047-4)
 
 ---
 

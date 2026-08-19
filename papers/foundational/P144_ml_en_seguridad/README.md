@@ -93,7 +93,7 @@ falsos positivos absurdamente baja»**.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §2** · Bayes: actualizar una creencia](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-bayes-actualizar-una-creencia) | la falacia de la clase base en su forma canónica: por qué la probabilidad a priori domina el resultado |
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | la verosimilitud es solo una mitad de Bayes; la otra es la probabilidad a priori, y con clase base minúscula esa mitad domina el resultado |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

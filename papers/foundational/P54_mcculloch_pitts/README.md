@@ -219,7 +219,7 @@ ai-evolution paper-lab P54 --seed 7
   [doi:10.1515/9781400882618-002](https://doi.org/10.1515/9781400882618-002) · consultado 2026-08-17.
 - Piccinini, G. (2004). *The First Computational Theory of Mind and Brain: A Close Look at
   McCulloch and Pitts's Logical Calculus*.
-  [doi:10.1023/B:SYNT.0000029946.34028.f4](https://doi.org/10.1023/B:SYNT.0000029946.34028.f4) ·
+  [doi:10.1023/B:SYNT.0000043018.52445.3e](https://doi.org/10.1023/B:SYNT.0000043018.52445.3e) ·
   consultado 2026-08-17.
 
 ---

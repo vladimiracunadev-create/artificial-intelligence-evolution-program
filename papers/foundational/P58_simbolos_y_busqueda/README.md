@@ -175,7 +175,7 @@ entre buscar con y sin información sobre el problema.
 ## 13. Relación con trabajos posteriores
 
 - **Brooks (1990)** — *Elephants Don't Play Chess*: la refutación situada de la parte
-  «necesarios». [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890(05)80025-9)
+  «necesarios». [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890%2805%2980025-9)
 - **[P27 AlphaGo](../P27_alphago/README.md) (2016)** — búsqueda en árbol con la heurística
   aprendida en vez de escrita. Es la hipótesis de la búsqueda, cuarenta años después.
 - **[P13 ReAct](../P13_react/README.md) (2022)** — el mismo bucle de generar y probar, con un
@@ -232,7 +232,7 @@ ai-evolution paper-lab P58 --seed 7
   **Communications of the ACM**, 19(3), 113–126.
   [doi:10.1145/360018.360022](https://doi.org/10.1145/360018.360022) · consultado 2026-08-17.
 - Brooks, R. (1990). *Elephants Don't Play Chess*.
-  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890(05)80025-9) ·
+  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890%2805%2980025-9) ·
   consultado 2026-08-17.
 - Nilsson, N. (2007). *The Physical Symbol System Hypothesis: Status and Prospects*.
   [doi:10.1609/aimag.v28i4.2077](https://doi.org/10.1609/aimag.v28i4.2077) · consultado 2026-08-17.

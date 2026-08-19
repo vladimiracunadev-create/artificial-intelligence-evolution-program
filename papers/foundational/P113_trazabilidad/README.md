@@ -87,7 +87,7 @@ amplio margen» —el mejor de A contra el peor de B— o «326,9 (249–411) fr
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | por qué el error de una media cae con √k y qué significa eso para k = 3 |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | qué son la media y la desviación de una distribución, que es exactamente lo que se está estimando con k corridas |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

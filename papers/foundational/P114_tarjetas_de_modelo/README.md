@@ -83,7 +83,7 @@ poco más que una moneda.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | por qué una media ponderada puede ser alta con un componente pésimo, y cuánta incertidumbre tiene un subgrupo de 180 casos |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | por qué una sola media y una sola desviación no describen a una población que en realidad es una mezcla de subgrupos |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

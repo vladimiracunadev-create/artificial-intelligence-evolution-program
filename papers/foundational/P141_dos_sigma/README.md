@@ -14,7 +14,7 @@
 | **Autoría** | Benjamin S. Bloom |
 | **Año** | 1984 |
 | **Venue** | Educational Researcher, 13(6), 4–16 |
-| **Fuente primaria** | [doi:10.2307/1175554](https://doi.org/10.2307/1175554) |
+| **Fuente primaria** | [JSTOR 1175554](https://www.jstor.org/stable/1175554) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-18 |
 
@@ -86,7 +86,7 @@ convencional**. Esa es la parte aplicable, y la que Bloom recomienda.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | por qué normalizar por la desviación permite comparar estudios que miden cosas distintas |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | qué significa medir un efecto en desviaciones típicas, y por qué eso permite comparar estudios que miden cosas distintas |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
@@ -217,7 +217,7 @@ ai-evolution paper-lab P141 --seed 7
 ## 18. Fuentes primarias
 
 - Bloom, B. S. (1984). *The 2 Sigma Problem*. **Educational Researcher**, 13(6), 4–16.
-  [doi:10.2307/1175554](https://doi.org/10.2307/1175554) · consultado 2026-08-18.
+  [JSTOR 1175554](https://www.jstor.org/stable/1175554) · consultado 2026-08-18.
 - VanLehn, K. (2011). *The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems,
   and Other Tutoring Systems*.
   [doi:10.1080/00461520.2011.611369](https://doi.org/10.1080/00461520.2011.611369) ·

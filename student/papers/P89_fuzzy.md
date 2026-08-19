@@ -37,7 +37,7 @@ Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da trat
 
 ## Fuentes primarias
 
-- [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958(65)90241-X)
+- [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X)
 
 ---
 

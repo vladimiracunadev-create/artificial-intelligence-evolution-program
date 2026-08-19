@@ -14,7 +14,7 @@
 | **Autoría** | Edward H. Shortliffe, Bruce G. Buchanan |
 | **Año** | 1975 |
 | **Venue** | Mathematical Biosciences, 23(3–4), 351–379 |
-| **Fuente primaria** | [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564(75)90047-4) |
+| **Fuente primaria** | [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564%2875%2990047-4) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-17 |
 
@@ -170,7 +170,7 @@ ser equivalente.
 ## 13. Relación con trabajos posteriores
 
 - **Heckerman y Shortliffe (1992)** — la revisión crítica de los factores de certeza por uno de
-  sus autores. [doi:10.1016/0933-3657(92)90020-Q](https://doi.org/10.1016/0933-3657(92)90020-Q)
+  sus autores. [doi:10.1016/0933-3657(92)90036-O](https://doi.org/10.1016/0933-3657%2892%2990036-O)
 - **Pearl (1988)** — las redes bayesianas: la alternativa probabilística que acabó imponiéndose
   porque hizo tratables las distribuciones conjuntas.
 - **[P72 Neuro-simbólico](../P72_neurosimbolico/README.md) (2020)** — el retorno de la
@@ -225,10 +225,10 @@ ai-evolution paper-lab P69 --seed 7
 
 - Shortliffe, E. H. y Buchanan, B. G. (1975). *A Model of Inexact Reasoning in Medicine*.
   **Mathematical Biosciences**, 23(3–4), 351–379.
-  [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564(75)90047-4) ·
+  [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564%2875%2990047-4) ·
   consultado 2026-08-17.
 - Heckerman, D. y Shortliffe, E. (1992). *From certainty factors to belief networks*.
-  [doi:10.1016/0933-3657(92)90020-Q](https://doi.org/10.1016/0933-3657(92)90020-Q) ·
+  [doi:10.1016/0933-3657(92)90036-O](https://doi.org/10.1016/0933-3657%2892%2990036-O) ·
   consultado 2026-08-17.
 - Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*.
   [doi:10.1016/C2009-0-27609-4](https://doi.org/10.1016/C2009-0-27609-4) · consultado 2026-08-17.

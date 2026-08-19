@@ -226,7 +226,7 @@ ai-evolution paper-lab P82 --seed 7
 - Guo, C. et al. (2017). *On Calibration of Modern Neural Networks*.
   [arXiv:1706.04599](https://arxiv.org/abs/1706.04599) · consultado 2026-08-17.
 - Brier, G. (1950). *Verification of forecasts expressed in terms of probability*.
-  [doi:10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2](https://doi.org/10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2)
+  [doi:10.1175/1520-0493(1950)078<0001:VOFEIT>2.0.CO;2](https://doi.org/10.1175/1520-0493%281950%29078<0001:VOFEIT>2.0.CO;2)
   · consultado 2026-08-17.
 
 ---

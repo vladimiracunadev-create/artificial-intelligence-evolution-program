@@ -37,7 +37,7 @@ Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que a
 
 ## Fuentes primarias
 
-- [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702(86)90072-X)
+- [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702%2886%2990072-X)
 
 ---
 

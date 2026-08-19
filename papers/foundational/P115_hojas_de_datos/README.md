@@ -88,7 +88,7 @@ La primera consecuencia es exactamente lo que impide rellenar la sección clave 
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §1** · De la frecuencia a la probabilidad](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-de-la-frecuencia-a-la-probabilidad) | por qué la pregunta «¿de qué población es muestra esto?» es previa a cualquier cosa que se calcule con los datos |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | por qué toda estadística presupone una población, y por qué «¿de qué población es muestra esto?» es la pregunta previa a cualquier cálculo |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

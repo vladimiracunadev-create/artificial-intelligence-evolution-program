@@ -14,7 +14,7 @@
 | **Autoría** | Lotfi A. Zadeh |
 | **Año** | 1965 |
 | **Venue** | Information and Control, 8(3), 338–353 |
-| **Fuente primaria** | [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958(65)90241-X) |
+| **Fuente primaria** | [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X) |
 | **Acceso** | Abierto |
 | **Fecha de consulta** | 2026-08-17 |
 
@@ -160,7 +160,7 @@ difuso es idempotente— y hacerlas comprobables.
 ## 13. Relación con trabajos posteriores
 
 - **Mamdani y Assilian (1975)** — el primer controlador difuso de un proceso real.
-  [doi:10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373(75)80002-2)
+  [doi:10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373%2875%2980002-2)
 - **Elkan (1993)** — *The Paradoxical Success of Fuzzy Logic*: la crítica más citada.
   [doi:10.1109/64.336150](https://doi.org/10.1109/64.336150)
 - **[P69 Factores de certeza](../P69_mycin/README.md) (1975)** — la otra respuesta de la época al
@@ -212,10 +212,10 @@ ai-evolution paper-lab P89 --seed 7
 ## 18. Fuentes primarias
 
 - Zadeh, L. A. (1965). *Fuzzy Sets*. **Information and Control**, 8(3), 338–353.
-  [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958(65)90241-X) ·
+  [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X) ·
   consultado 2026-08-17.
 - Mamdani, E. y Assilian, S. (1975). *An experiment in linguistic synthesis with a fuzzy logic
-  controller*. [doi:10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373(75)80002-2) ·
+  controller*. [doi:10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373%2875%2980002-2) ·
   consultado 2026-08-17.
 - Elkan, C. (1993). *The Paradoxical Success of Fuzzy Logic*.
   [doi:10.1109/64.336150](https://doi.org/10.1109/64.336150) · consultado 2026-08-17.

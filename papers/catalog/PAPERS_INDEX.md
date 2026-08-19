@@ -530,7 +530,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Permite que un elemento pertenezca parcialmente a un conjunto, y con eso da tratamiento formal a la vaguedad de los predicados del lenguaje.
 - **Conceptos:** conjunto difuso, función de pertenencia, vaguedad, control difuso, t-normas
 - **Clases del programa:** [032](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/032-logica-difusa-y-control-aproximado/README.md)
-- **Fuentes primarias:** [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958(65)90241-X)
+- **Fuentes primarias:** [doi:10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X)
 
 ### P67 · A Formal Basis for the Heuristic Determination of Minimum Cost Paths (1968)
 
@@ -550,7 +550,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Da a la planificación su representación duradera —precondición, añadir, borrar— y con ella una respuesta práctica al problema del marco.
 - **Conceptos:** planificación, problema del marco, operadores, mundo de bloques, anomalía de Sussman
 - **Clases del programa:** [023](../../classes/part-01-symbolic-ai-search-logic-and-planning/023-planificacion-clasica-con-strips-y-pddl/README.md)
-- **Fuentes primarias:** [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702%2871%2990010-5)
 
 ### P90 · Genetic Algorithms and the Optimal Allocation of Trials (1973)
 
@@ -580,7 +580,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** El motor de MYCIN: razonar con grados de creencia y explicar cada conclusión por las reglas que la sostienen.
 - **Conceptos:** sistemas expertos, factores de certeza, encadenamiento, explicabilidad, motor de reglas
 - **Clases del programa:** [022](../../classes/part-01-symbolic-ai-search-logic-and-planning/022-sistemas-expertos-y-motores-de-reglas/README.md)
-- **Fuentes primarias:** [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564(75)90047-4)
+- **Fuentes primarias:** [doi:10.1016/0025-5564(75)90047-4](https://doi.org/10.1016/0025-5564%2875%2990047-4)
 
 ### P58 · Computer Science as Empirical Inquiry: Symbols and Search (1976)
 
@@ -600,7 +600,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Convierte la propagación de restricciones en un preproceso con nombre y algoritmo: podar dominios antes de buscar, no mientras se busca.
 - **Conceptos:** CSP, consistencia de arco, AC-3, propagación, retroceso
 - **Clases del programa:** [018](../../classes/part-01-symbolic-ai-search-logic-and-planning/018-problemas-de-satisfaccion-de-restricciones/README.md)
-- **Fuentes primarias:** [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702%2877%2990007-8)
 
 ### P135 · The Hearsay-II Speech-Understanding System: Integrating Knowledge to Resolve Uncertainty (1980)
 
@@ -640,7 +640,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre la clase convencional, y convierte esa cifra en un problema de ingeniería educativa.
 - **Conceptos:** tamaño del efecto, tutoría, aprendizaje para el dominio, educación, instrucción adaptativa
 - **Clases del programa:** [180](../../classes/part-14-frontier-research-and-capstones/180-ia-para-educacion-y-aprendizaje-adaptativo/README.md)
-- **Fuentes primarias:** [doi:10.2307/1175554](https://doi.org/10.2307/1175554)
+- **Fuentes primarias:** [JSTOR 1175554 · doi:10.2307/1175554](https://www.jstor.org/stable/1175554)
 
 ### P02 · Learning representations by back-propagating errors (1986)
 
@@ -670,7 +670,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Hace tratable la probabilidad en IA: la estructura del grafo dice qué hay que almacenar y qué se puede propagar localmente.
 - **Conceptos:** red bayesiana, independencia condicional, propagación de creencias, explicar y descartar, grafo dirigido acíclico
 - **Clases del programa:** [027](../../classes/part-02-probabilistic-evolutionary-and-decision-ai/027-redes-bayesianas-e-independencia-condicional/README.md)
-- **Fuentes primarias:** [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702(86)90072-X)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702%2886%2990072-X)
 
 ### P97 · A Robust Layered Control System for a Mobile Robot (1986)
 
@@ -690,7 +690,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Documenta que aprender una tarea nueva borra la anterior de golpe, y que no es una degradación gradual sino un colapso.
 - **Conceptos:** olvido catastrófico, aprendizaje secuencial, interferencia, memoria, aprendizaje continuo
 - **Clases del programa:** [176](../../classes/part-14-frontier-research-and-capstones/176-aprendizaje-continuo-y-adaptacion/README.md)
-- **Fuentes primarias:** [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421(08)60536-8)
+- **Fuentes primarias:** [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421%2808%2960536-8)
 
 ### P137 · Principles of Metareasoning (1991)
 
@@ -700,7 +700,7 @@ P141–P148: lo que hay que poder responder cuando alguien pregunta por qué el 
 - **Hito:** Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio que cualquier otra: comparando el valor esperado de deliberar con lo que deliberar cuesta.
 - **Conceptos:** racionalidad acotada, valor de la computación, presupuesto, anytime, metanivel
 - **Clases del programa:** [121](../../classes/part-09-ai-agent-engineering/121-presupuestos-de-pasos-tokens-costo-y-tiempo/README.md)
-- **Fuentes primarias:** [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C)
+- **Fuentes primarias:** [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702%2891%2990015-C)
 
 ### P71 · A Translation Approach to Portable Ontology Specifications (1993)
 

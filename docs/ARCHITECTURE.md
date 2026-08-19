@@ -15,7 +15,7 @@ flowchart TD
     CLASSES -->|"lab.py llama a"| LABS
 
     PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>148 fichas de 18 secciones"]
-    PAP -.->|"generate_papers.py"| NB["📓 notebooks/papers/<br/>60 notebooks"]
+    PAP -.->|"generate_papers.py"| NB["📓 notebooks/papers/<br/>156 notebooks"]
     PAP -.->|"generate_papers.py"| AULA["👩‍🏫 instructor · 🎒 student · 📝 assessments"]
     PAP -.->|"generate_papers.py"| MAN[("🔐 papers/manifest.json<br/>hash por artefacto")]
     PAP --> SITE
@@ -50,7 +50,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
       │
       ├── papers/foundational/     148 fichas escritas a mano (18 secciones)
       ├── papers/guides/           5 guías de lectura crítica
-      ├── notebooks/papers/        60 notebooks    ← generados
+      ├── notebooks/papers/        156 notebooks   ← generados
       ├── instructor/papers/       plan de sesión  ← generados
       ├── student/papers/          ficha de estudio ← generados
       ├── assessments/papers/      evaluaciones    ← generados
@@ -62,7 +62,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 1. `curriculum.yaml` es la fuente única de conteos y rutas del eje de clases;
    `papers/catalog/papers.json` lo es del eje de papers.
 2. Cada clase es autocontenida, pero no duplica algoritmos centrales.
-3. Los 20 motores de clases viven en `src/ai_evolution/labs.py` y los 52 motores
+3. Los 20 motores de clases viven en `src/ai_evolution/labs.py` y los 148 motores
    de papers en `src/ai_evolution/papers_lab.py`. Ambos son deterministas, de
    Python estándar y devuelven el mismo contrato: `result`, `evidence` y
    `limitations`.
@@ -83,7 +83,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 
 | Script | Qué produce | Verificación |
 |---|---|---|
-| `scripts/generate_papers.py` | índice, 60 notebooks, aula y manifiesto del eje | `--check` en CI |
+| `scripts/generate_papers.py` | índice, 156 notebooks, aula y manifiesto del eje | `--check` en CI |
 | `scripts/generate_site.py` | PWA: 198 páginas de clase + 66 de papers + los dos JSON | `pages.yml` |
 | `scripts/generate_pdfs.py` | 165 PDFs: 17 del programa + 148 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
 | `scripts/generate_assets.py` | recursos derivados | — |

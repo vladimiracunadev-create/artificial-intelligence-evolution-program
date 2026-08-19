@@ -83,7 +83,7 @@ final en **0,806** frente a 0,252 sin ninguno.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | por qué el estimador de la varianza con n muestras encoge, y qué pasa al aplicarlo treinta veces seguidas |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | qué estima la desviación de una muestra finita, y qué le pasa al aplicar esa estimación treinta veces seguidas |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

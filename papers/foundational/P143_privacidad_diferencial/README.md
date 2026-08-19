@@ -92,7 +92,7 @@ Y lo que se paga es exactitud: un error medio de 9,95 sobre un conteo de 249 es 
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §1** · De la frecuencia a la probabilidad](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-de-la-frecuencia-a-la-probabilidad) | qué significa acotar la razón entre dos distribuciones de probabilidad, que es la forma de la definición |
+| [**A02 §4** · Divergencia KL](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#4-divergencia-kl) | cómo se mide la diferencia entre dos distribuciones: la definición acota exactamente esa razón para las bases con y sin una persona |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

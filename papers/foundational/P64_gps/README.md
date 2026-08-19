@@ -229,7 +229,7 @@ ai-evolution paper-lab P64 --seed 7
 - Newell, A. y Simon, H. A. (1976). *Computer Science as Empirical Inquiry*.
   [doi:10.1145/360018.360022](https://doi.org/10.1145/360018.360022) · consultado 2026-08-17.
 - Fikes, R. y Nilsson, N. (1971). *STRIPS*.
-  [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5) ·
+  [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702%2871%2990010-5) ·
   consultado 2026-08-17.
 
 ---

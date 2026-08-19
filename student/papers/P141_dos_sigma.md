@@ -37,7 +37,7 @@ Cuantifica en desviaciones típicas cuánto mejora la tutoría individual sobre 
 
 ## Fuentes primarias
 
-- [doi:10.2307/1175554](https://doi.org/10.2307/1175554)
+- [JSTOR 1175554 · doi:10.2307/1175554](https://www.jstor.org/stable/1175554)
 
 ---
 

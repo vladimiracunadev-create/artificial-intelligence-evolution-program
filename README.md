@@ -65,7 +65,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
-| Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 67 páginas del eje de papers |
+| Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 163 páginas del eje de papers |
 | Escritorio | ✅ visor Tkinter; se publica en 4 formatos (instalador, MSI, portable, exe único) |
 | Android | ✅ APK con el sitio embebido, funciona sin conexión |
 | CI | ✅ estructura, notebooks, tests, compilación y seguridad básica |
@@ -199,8 +199,8 @@ flowchart LR
 | Qué incluye | Detalle |
 |---|---|
 | 📄 **148 fichas** | 18 secciones obligatorias cada una: problema anterior, matemática mínima, qué observar en el paper original, límites, errores comunes, actividades Bloom y fuentes primarias con fecha de consulta |
-| 📓 **60 notebooks** | 52 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
-| 🧪 **52 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
+| 📓 **156 notebooks** | 148 miniaturas + 8 que desmontan *Attention Is All You Need* pieza por pieza (Q/K/V, √d_k, máscara causal, multi-head, positional encoding, residual + layer norm, encoder–decoder) |
+| 🧪 **148 motores** | Implementaciones deterministas en Python estándar: sin GPU, sin dependencias, sin APIs pagadas |
 | 🧮 **5 anexos** | Toda la matemática del eje explicada una vez, con ejemplo resuelto a mano y su error común |
 | 🔁 **Ida y vuelta** | Las 171 clases enlazadas llevan un bloque generado con sus papers: el circuito se cierra en ambos sentidos |
 | 📚 **5 guías** | [Cómo leer un paper](papers/guides/COMO_LEER_UN_PAPER_DE_IA.md) · [método en 5 pasadas](papers/guides/METODO_DE_LECTURA_EN_5_PASADAS.md) · [dónde vive la investigación](papers/guides/FUENTES_Y_VENUES.md) · [plantilla de ficha](papers/guides/PLANTILLA_FICHA_PAPER.md) · [glosario](papers/guides/GLOSARIO_PAPERS_IA.md) |
@@ -307,9 +307,9 @@ Las capturas se regeneran con `python scripts/generate_screenshots.py --escritor
 El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
-- [📕 Programa completo (1 159 páginas)](docs/pdf/programa-completo.pdf)
-- [📜 Papers fundacionales (451 páginas)](docs/pdf/papers-fundacionales.pdf) — las 52 fichas,
-  las 5 guías, los 5 anexos matemáticos, la matriz clase ↔ paper y las 52 evaluaciones del eje
+- [📕 Programa completo (1 178 páginas)](docs/pdf/programa-completo.pdf)
+- [📜 Papers fundacionales (1 230 páginas)](docs/pdf/papers-fundacionales.pdf) — las 148 fichas,
+  las 5 guías, los 5 anexos matemáticos, la matriz clase ↔ paper y las 148 evaluaciones del eje
   (`python scripts/generate_pdfs.py --papers`)
 - Por parte: [00](docs/pdf/parte-00.pdf) · [01](docs/pdf/parte-01.pdf) ·
   [02](docs/pdf/parte-02.pdf) · [03](docs/pdf/parte-03.pdf) ·

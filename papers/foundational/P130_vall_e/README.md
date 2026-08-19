@@ -84,7 +84,7 @@ que no tiene arreglo técnico.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | por qué el error de una estimación cae con la raíz del tamaño de muestra, y qué significa que una curva se sature |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | por qué el error de una estimación encoge con la raíz del tamaño de muestra, que es lo que hace que la curva se sature |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

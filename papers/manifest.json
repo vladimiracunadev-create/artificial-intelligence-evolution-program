@@ -1434,7 +1434,7 @@
     },
     {
       "path": "notebooks/papers/P137_metarrazonamiento.ipynb",
-      "sha256_lf": "9a11fe5890ada4e2f80f1bbf49ebb0eb48dbabcbf7b88425b13aa6754b135ed8"
+      "sha256_lf": "71b44a5c5b6db9f62c1805deeeacf7f839a18b36ab72d99aa9d6d64c90eeb1ea"
     },
     {
       "path": "notebooks/papers/P138_kqml.ipynb",
@@ -1454,11 +1454,11 @@
     },
     {
       "path": "notebooks/papers/P141_dos_sigma.ipynb",
-      "sha256_lf": "09eeb4c1b70a43ff26a48d027b614f7966d592523b5cc1f84785e4cb48547df4"
+      "sha256_lf": "aecb1df6e24c0e21eb2f199e26fd3745dd4238fee475d57d88e370d986a311a2"
     },
     {
       "path": "notebooks/papers/P142_olvido_catastrofico.ipynb",
-      "sha256_lf": "dc91753b746d0b6f5f6e93c0b23a54d9a62fba4e1b2c0092e58b6964fc5cd997"
+      "sha256_lf": "6fcac2b94a71c820ef4f0c7f4409351e5c9f6e5db091a8a2c8c9b0536fa39c8e"
     },
     {
       "path": "notebooks/papers/P143_privacidad_diferencial.ipynb",
@@ -1702,15 +1702,15 @@
     },
     {
       "path": "notebooks/papers/P68_strips.ipynb",
-      "sha256_lf": "eab21d24ca623391340f736927956eafe736c2ccdf9748626751b99d1d1c1d07"
+      "sha256_lf": "5e8c9bc7767b5ffb3cf5d6b35f069cf58e85294e035fa8dc39784171c40a9476"
     },
     {
       "path": "notebooks/papers/P69_mycin.ipynb",
-      "sha256_lf": "2b9880e1c7aa8245fe949197598fd131dd4583b83e65c744fdd599db7612759c"
+      "sha256_lf": "eeca78a529afb223fdd616b658b56231b2fb1dd27d90117e85802f75079383a5"
     },
     {
       "path": "notebooks/papers/P70_arco_consistencia.ipynb",
-      "sha256_lf": "d5b5163e2df22628671e746213ff1ef6a811bc650ace8e875c8ab9776c44d2f7"
+      "sha256_lf": "09903a9d000c032a96837e073385e57c3c7c1d0e32e139042e5d1d4a51874f9d"
     },
     {
       "path": "notebooks/papers/P71_ontologia.ipynb",
@@ -1786,7 +1786,7 @@
     },
     {
       "path": "notebooks/papers/P89_fuzzy.ipynb",
-      "sha256_lf": "e13cc0e618dd86f943222ddc19e7b8c2e8c82622b86941d29006a339915434bf"
+      "sha256_lf": "a0a37826b5b2a99d30e7aa17bf0ceadaca9ca26178db0671a6dd4f84eb37c5b7"
     },
     {
       "path": "notebooks/papers/P90_algoritmos_geneticos.ipynb",
@@ -1794,7 +1794,7 @@
     },
     {
       "path": "notebooks/papers/P91_redes_bayesianas.ipynb",
-      "sha256_lf": "b8691fb72fa32ebcbe9ea8f394eb2c18c129b9780d523e0cc96a15ccb9d109a7"
+      "sha256_lf": "0b1b79dbe7fb9c8e6e00e2fb19b978b84f84f482987d203083e9e6d48410ca2b"
     },
     {
       "path": "notebooks/papers/P92_pso.ipynb",
@@ -1866,7 +1866,7 @@
     },
     {
       "path": "papers/ROADMAP.md",
-      "sha256_lf": "6e9cb585b1133c075105cd2bf24d19e572a2c85b346823f6e623dc3dd648e0ca"
+      "sha256_lf": "4029ea6730b6c8ddc847c084fe01cad7b8249f07a25c3ba3214287a238c431ef"
     },
     {
       "path": "papers/annexes/A01_ALGEBRA_Y_GEOMETRIA.md",
@@ -1898,11 +1898,11 @@
     },
     {
       "path": "papers/catalog/PAPERS_INDEX.md",
-      "sha256_lf": "3c8581ca70844d2c52ee6440e0369f2b44fa4f6d30220b84504fd779b45750bc"
+      "sha256_lf": "373bc5d498e1871632d982d37f5540af3142f1e03af6cbc28128bd3d7a8436d7"
     },
     {
       "path": "papers/catalog/papers.json",
-      "sha256_lf": "581b3ec94a83c1e9aee272f26ee96d20d0ec6f3f7acd9c8e7134ef7a4df5bd66"
+      "sha256_lf": "be6897f108737414b790361686db0defc798fce5debca8e544dca90626f3c5f5"
     },
     {
       "path": "papers/catalog/sources.yaml",
@@ -2002,19 +2002,19 @@
     },
     {
       "path": "papers/foundational/P113_trazabilidad/README.md",
-      "sha256_lf": "4bf8fb0b14ddb0fb31a03519f3ecaf8b73551ffdaef6d5055ae1d9fc24922d3b"
+      "sha256_lf": "736497cc9580a93a3decd6a3c30dd681167147a80536d1b8bdc3e6f23ee70865"
     },
     {
       "path": "papers/foundational/P114_tarjetas_de_modelo/README.md",
-      "sha256_lf": "afcaea6fa7d912a1d50b9b74340410abe38d499283d1dc1bbb051d58acbadd31"
+      "sha256_lf": "75cab90d87e24b1fdc1a74f778159a0b3d1bec795651e5d894b2c961820a2413"
     },
     {
       "path": "papers/foundational/P115_hojas_de_datos/README.md",
-      "sha256_lf": "cb2a4b548f4e08bd1d558b2d31857bdf08d87a482b9d4169d9eef2028b5414ec"
+      "sha256_lf": "1764c7f51f98a874991a24f87334db92e08112361dd03d7fd4c6f423484374f9"
     },
     {
       "path": "papers/foundational/P116_gestion_de_prompts/README.md",
-      "sha256_lf": "71d1dc51b3eee5745bcaef8b159817e17c2a8f3c303fdb141d889b261a5cb7e5"
+      "sha256_lf": "d30a1f4422167cc5b3f9f969433ceb4415c8a7bc7a520f53533d38e0e0141d92"
     },
     {
       "path": "papers/foundational/P117_agentops/README.md",
@@ -2050,7 +2050,7 @@
     },
     {
       "path": "papers/foundational/P124_gat/README.md",
-      "sha256_lf": "388bcfd069d1918743be124ed82b0486fe8a00a6adf9bb645c59bf59a16302fd"
+      "sha256_lf": "608b5a3155f4ec779e2e85bfe59b71e83e5a764a4d131ccf6054f39bbc3dd42f"
     },
     {
       "path": "papers/foundational/P125_layoutlm/README.md",
@@ -2078,11 +2078,11 @@
     },
     {
       "path": "papers/foundational/P130_vall_e/README.md",
-      "sha256_lf": "e0d995932d10245904c9784c92950c22b986e00385a01caf6675e42a975968ad"
+      "sha256_lf": "9db73f71eb649fadaf70fcc6ec9956fa9a156b6180a9bb8181ce5fb18e8847d7"
     },
     {
       "path": "papers/foundational/P131_marcas_de_agua/README.md",
-      "sha256_lf": "efd15461f663254bfa1095236faffcd550048d72527f66a8bba297a849f7a97f"
+      "sha256_lf": "ee412fed67c53cdedf506d78b00d98bb60fa9c6625a782075eadca3bbeb4aa2b"
     },
     {
       "path": "papers/foundational/P132_gaussian_splatting/README.md",
@@ -2090,7 +2090,7 @@
     },
     {
       "path": "papers/foundational/P133_colapso_de_modelo/README.md",
-      "sha256_lf": "8e78e9291ae2d8b4d16626d914abdaac5b5b77d17c736e4a64f1075a26f11e03"
+      "sha256_lf": "811675f7815e68351c5aea789109e41c1ce999fca4e1b6bf76784e9e8ce66d14"
     },
     {
       "path": "papers/foundational/P134_minimo_privilegio/README.md",
@@ -2098,7 +2098,7 @@
     },
     {
       "path": "papers/foundational/P135_pizarra/README.md",
-      "sha256_lf": "6ad098dc7aaa45ebbedccfd22ef215ff259d1e1e4c21836df52c847f31c8418d"
+      "sha256_lf": "dce8644b3829b2c8c028f8582fa15de020f788abea1aea8a023728e2f8c78032"
     },
     {
       "path": "papers/foundational/P136_red_de_contratos/README.md",
@@ -2106,7 +2106,7 @@
     },
     {
       "path": "papers/foundational/P137_metarrazonamiento/README.md",
-      "sha256_lf": "01ebabb2498c390c7c0e55e31518455209c77cb51ed9e984a066cebabc4c4c3a"
+      "sha256_lf": "aadec44a59987fccb44cb2c942d7bc09c7982d567f89bd2c8c6fc49bfe891eed"
     },
     {
       "path": "papers/foundational/P138_kqml/README.md",
@@ -2114,7 +2114,7 @@
     },
     {
       "path": "papers/foundational/P139_niveles_de_automatizacion/README.md",
-      "sha256_lf": "56e997e806e17809da6ab01e55540280580bc826b619bdbf96f69546b5c6249f"
+      "sha256_lf": "a94baca4f538c6f34c4c7ddb8bab1c1047987bf57c91c0efe7ba5ade55266d25"
     },
     {
       "path": "papers/foundational/P13_react/README.md",
@@ -2126,19 +2126,19 @@
     },
     {
       "path": "papers/foundational/P141_dos_sigma/README.md",
-      "sha256_lf": "cc4f8a6b26a0bde6de2bf2f8471cad524d2cad6bc833533bb21db79c8a3af5a6"
+      "sha256_lf": "bb3a926586ef6c2073387b5c69881bbdbe2f4e3ca469d2f5a2122ddc10acb0ea"
     },
     {
       "path": "papers/foundational/P142_olvido_catastrofico/README.md",
-      "sha256_lf": "6191877f17980f743fdd2e7e0bceaa02df384dc5656ec42082cd43b25b4fd8a7"
+      "sha256_lf": "af5ef092bf012c5239b55a04077f20d7494fb3d046c312d55187b17980c4dff9"
     },
     {
       "path": "papers/foundational/P143_privacidad_diferencial/README.md",
-      "sha256_lf": "8140e75b7ca0e822a44c922e224816c1a69780eebd1409a00159db4572962fdb"
+      "sha256_lf": "cad96c0c897d974c516601b5cbc7f130755f0307135d256c1df6a8503c518f7c"
     },
     {
       "path": "papers/foundational/P144_ml_en_seguridad/README.md",
-      "sha256_lf": "49cdbe116f5e63b791904067169c9000b7b4d5782d789eab0e39b628ac0ed52f"
+      "sha256_lf": "9de5195aa7b4d205abcd10958dd688703a5004354bca635507c76c5266de69ee"
     },
     {
       "path": "papers/foundational/P145_ewc/README.md",
@@ -2318,7 +2318,7 @@
     },
     {
       "path": "papers/foundational/P54_mcculloch_pitts/README.md",
-      "sha256_lf": "c52b2f2d0deff4ccbca7b5c95b3bc6b402d2a125eb90843b0c3798e64639a4cf"
+      "sha256_lf": "55a3756e14223f05ffe2126f2242e2b4c3bfc7a9003d117c13ff641ab0b04570"
     },
     {
       "path": "papers/foundational/P55_shannon/README.md",
@@ -2334,7 +2334,7 @@
     },
     {
       "path": "papers/foundational/P58_simbolos_y_busqueda/README.md",
-      "sha256_lf": "c381dd64e6212568b3c248c2b6ca4c59ca7080d2716269e1a44cc179dcbbcb9d"
+      "sha256_lf": "470aaeacf61e08a4a601a0148c88aaac86191a7b56f6ad878c7e1d71cd4d9339"
     },
     {
       "path": "papers/foundational/P59_agente_racional/README.md",
@@ -2358,7 +2358,7 @@
     },
     {
       "path": "papers/foundational/P64_gps/README.md",
-      "sha256_lf": "da2767764e0a9e9086065e3762531b1e7f7430a18d3aeecd5ee79d7fa03f0be7"
+      "sha256_lf": "0f9864a811d5901e58f548c9d2f5e00b312f35ab103ed277fa8fa6a6f921ca63"
     },
     {
       "path": "papers/foundational/P65_dpll/README.md",
@@ -2370,19 +2370,19 @@
     },
     {
       "path": "papers/foundational/P67_a_estrella/README.md",
-      "sha256_lf": "c42f80d35fef5b2dc7906dd842bc5fc52a56ba3f9cbf2f8cb688cbfed31a5456"
+      "sha256_lf": "b06da1b75447ef36989f9e62b6308432dfb9c134e655b1285113a2a6a0ed6959"
     },
     {
       "path": "papers/foundational/P68_strips/README.md",
-      "sha256_lf": "746a3de127e0c1e9f2f9cda684f3786c79a60680adf6c6d13fab375d71309e78"
+      "sha256_lf": "d7522685aef72581c786da1713a7144fc1469fd2720e44bcad5d866ad3a98bd8"
     },
     {
       "path": "papers/foundational/P69_mycin/README.md",
-      "sha256_lf": "58c24f1d8e5f4383bd0090f2dbeaf0274527dba2528ded827c3d35e464d4e3ef"
+      "sha256_lf": "5ef015d40ba397c540c33034dbae353ac716b3905ae60c8df69d7885d8b82a6c"
     },
     {
       "path": "papers/foundational/P70_arco_consistencia/README.md",
-      "sha256_lf": "c30aeb5b41943c25f54739a189cfb013b474aa2f743208ac08c326db481ebdb0"
+      "sha256_lf": "cad11231a61dc30ae5a953cfbd200aebc0e913001ad6d164555dd688545ff74d"
     },
     {
       "path": "papers/foundational/P71_ontologia/README.md",
@@ -2426,11 +2426,11 @@
     },
     {
       "path": "papers/foundational/P81_seleccion_de_caracteristicas/README.md",
-      "sha256_lf": "d557b414677606db18ef907a723306231eaa66dd543501e1a5efc80e4dc4cc3e"
+      "sha256_lf": "e0f6616ef89024935adee42fae966993c9afda1b0320159f58b4467b78aa5855"
     },
     {
       "path": "papers/foundational/P82_calibracion/README.md",
-      "sha256_lf": "cb6f432e5b396eff52e5cde2ed26d750c990d6e230ce2b7014202cb355c757d8"
+      "sha256_lf": "03e6c0116d90525bbbd01be71ad0b1fbf2c9181f90acf432ebe8048f6da40700"
     },
     {
       "path": "papers/foundational/P83_tsne/README.md",
@@ -2458,7 +2458,7 @@
     },
     {
       "path": "papers/foundational/P89_fuzzy/README.md",
-      "sha256_lf": "0a074f447c615d66e052cd711a092cab2d38a96a56e7e8dc3813f497c4606ff5"
+      "sha256_lf": "f1fa7880c2c093f672364c2b852dd3c21862213e308bc472bda783432cbaf60d"
     },
     {
       "path": "papers/foundational/P90_algoritmos_geneticos/README.md",
@@ -2466,7 +2466,7 @@
     },
     {
       "path": "papers/foundational/P91_redes_bayesianas/README.md",
-      "sha256_lf": "3325e79ce43617f7024b3a6ff172e75b622f0be4c3023f2cb3e9b2d1aa25fe8d"
+      "sha256_lf": "ade7e5edda57c53149f69cdb308fe16f5dce9ae9f5f56aa2a5d9c0f6892c0bd9"
     },
     {
       "path": "papers/foundational/P92_pso/README.md",
@@ -2490,7 +2490,7 @@
     },
     {
       "path": "papers/foundational/P97_subsuncion/README.md",
-      "sha256_lf": "b33cc6aa3a7e2518095f41fff658880469e65f1913e06ca58e786e2b7eeee753"
+      "sha256_lf": "29bfc984723e2b86632dc72510c46a74ee9a89f8bf5763c60ee6040b9b8ed8bf"
     },
     {
       "path": "papers/foundational/P98_rrt/README.md",
@@ -2722,7 +2722,7 @@
     },
     {
       "path": "student/papers/P137_metarrazonamiento.md",
-      "sha256_lf": "c5e4f1c07e86c3fc255d8f2e5c51fc2fd08dff46e4e2819fde8f1c99fc1f1983"
+      "sha256_lf": "90494ee90d885ff11065d5170d1eaf6aa07f7a9d5715370026ee76cedb6dd962"
     },
     {
       "path": "student/papers/P138_kqml.md",
@@ -2742,11 +2742,11 @@
     },
     {
       "path": "student/papers/P141_dos_sigma.md",
-      "sha256_lf": "90938d37fe32d2a3d7258b7ba6b3beabefd05c9658ca3cb4f2aee1b8f75046b1"
+      "sha256_lf": "d0dc2ce31ab65e1af774b5618888948a83b5b2062f677b3d40dfe4771355c610"
     },
     {
       "path": "student/papers/P142_olvido_catastrofico.md",
-      "sha256_lf": "fb9dfc1e12c552a601208a02d1d7c59430a92fc815559d1800092de7588147a5"
+      "sha256_lf": "f25ca064aa1744e33d2b3f05eeaeb418627e73efb4d11c8278531650d2a1f36c"
     },
     {
       "path": "student/papers/P143_privacidad_diferencial.md",
@@ -2990,15 +2990,15 @@
     },
     {
       "path": "student/papers/P68_strips.md",
-      "sha256_lf": "35b2f6f93e293a08fccf2e23c0dfcbaaf9ce69a76b5d5d7f288d955f728a9c6b"
+      "sha256_lf": "2148e6d2c5a5980d46fb055d3e8b004f3f6336166b1021c506fc1f1ab5b885be"
     },
     {
       "path": "student/papers/P69_mycin.md",
-      "sha256_lf": "2c09b15de9dfcdfdb20bca7fdbbd5589f87e365b4fa3644f899fa691e009893b"
+      "sha256_lf": "68cc129fbabe94ec96db96aa02088e65e9a62a716c7c2cf35956c51dbbe5b65c"
     },
     {
       "path": "student/papers/P70_arco_consistencia.md",
-      "sha256_lf": "9a107aa5eacb748f5bf655a14b71d6ff19198dfab75ebaaaf1a52bc360ae18cf"
+      "sha256_lf": "949a3eecd72b464cdf619ef63b0db6cc9252c9ec568e9bc09120fc1bf541a33e"
     },
     {
       "path": "student/papers/P71_ontologia.md",
@@ -3074,7 +3074,7 @@
     },
     {
       "path": "student/papers/P89_fuzzy.md",
-      "sha256_lf": "c403a46da9745f8f85850d0a003e5d2ed482ba91a9639ed8c93f507d84a6b7a7"
+      "sha256_lf": "6ecc2632c049d4371dc722f922d0836ecfc9de684e82d2f1ae8468385a478f0f"
     },
     {
       "path": "student/papers/P90_algoritmos_geneticos.md",
@@ -3082,7 +3082,7 @@
     },
     {
       "path": "student/papers/P91_redes_bayesianas.md",
-      "sha256_lf": "609d77662398419aa3cd22efb04de03a2ceecf24873168d3004a844524a85a0b"
+      "sha256_lf": "973debd18393aa26661135946d8b9d1279494bb7e34ad29a7f296bc4df85af13"
     },
     {
       "path": "student/papers/P92_pso.md",

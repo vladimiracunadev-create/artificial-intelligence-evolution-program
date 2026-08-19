@@ -14,7 +14,7 @@
 | **Autoría** | Stuart Russell, Eric Wefald |
 | **Año** | 1991 |
 | **Venue** | Artificial Intelligence, 49(1–3), 361–395 |
-| **Fuente primaria** | [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C) |
+| **Fuente primaria** | [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702%2891%2990015-C) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-18 |
 
@@ -95,7 +95,7 @@ instancias que no se parecen.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | qué significa el valor **esperado** de un paso de cómputo y por qué hay que estimarlo antes de darlo |
+| [**A02 §2** · Entropía](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#2-entropía) | la esperanza como promedio ponderado por probabilidad, que es la forma que tiene el valor de una computación |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
@@ -231,7 +231,7 @@ ai-evolution paper-lab P137 --seed 7
 
 - Russell, S. y Wefald, E. (1991). *Principles of Metareasoning*. **Artificial Intelligence**,
   49(1–3), 361–395.
-  [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C) ·
+  [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702%2891%2990015-C) ·
   consultado 2026-08-18.
 - Simon, H. A. (1955). *A Behavioral Model of Rational Choice*.
   [doi:10.2307/1884852](https://doi.org/10.2307/1884852) · consultado 2026-08-18.

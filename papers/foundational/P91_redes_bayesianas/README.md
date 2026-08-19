@@ -14,7 +14,7 @@
 | **Autoría** | Judea Pearl |
 | **Año** | 1986 |
 | **Venue** | Artificial Intelligence, 29(3), 241–288 |
-| **Fuente primaria** | [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702(86)90072-X) |
+| **Fuente primaria** | [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702%2886%2990072-X) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-17 |
 
@@ -226,7 +226,7 @@ ai-evolution paper-lab P91 --seed 7
 
 - Pearl, J. (1986). *Fusion, Propagation, and Structuring in Belief Networks*. **Artificial
   Intelligence**, 29(3), 241–288.
-  [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702(86)90072-X) ·
+  [doi:10.1016/0004-3702(86)90072-X](https://doi.org/10.1016/0004-3702%2886%2990072-X) ·
   consultado 2026-08-17.
 - Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*.
   [doi:10.1016/C2009-0-27609-4](https://doi.org/10.1016/C2009-0-27609-4) · consultado 2026-08-17.

@@ -37,7 +37,7 @@ Convierte la propagación de restricciones en un preproceso con nombre y algorit
 
 ## Fuentes primarias
 
-- [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702(77)90007-8)
+- [doi:10.1016/0004-3702(77)90007-8](https://doi.org/10.1016/0004-3702%2877%2990007-8)
 
 ---
 

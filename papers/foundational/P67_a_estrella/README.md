@@ -178,7 +178,7 @@ admisible nunca sobrestima, y exhibe qué ocurre cuando una sola entrada de la t
 - **Hart, Nilsson y Raphael (1972)** — la corrección sobre la condición de consistencia.
   [doi:10.1145/1056777.1056779](https://doi.org/10.1145/1056777.1056779)
 - **Korf (1985)** — IDA*: la misma garantía con memoria lineal.
-  [doi:10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702(85)90084-0)
+  [doi:10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702%2885%2990084-0)
 - **[P27 AlphaGo](../P27_alphago/README.md) (2016)** — búsqueda guiada con la estimación aprendida
   por una red en lugar de escrita a mano.
 - **[P68 STRIPS](../P68_strips/README.md) (1971)** — la representación sobre la que esta búsqueda
@@ -236,7 +236,7 @@ ai-evolution paper-lab P67 --seed 7
 - Hart, P. E., Nilsson, N. J. y Raphael, B. (1972). *Correction to «A Formal Basis…»*.
   [doi:10.1145/1056777.1056779](https://doi.org/10.1145/1056777.1056779) · consultado 2026-08-17.
 - Korf, R. (1985). *Depth-first Iterative-Deepening: An Optimal Admissible Tree Search*.
-  [doi:10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702(85)90084-0) ·
+  [doi:10.1016/0004-3702(85)90084-0](https://doi.org/10.1016/0004-3702%2885%2990084-0) ·
   consultado 2026-08-17.
 
 ---

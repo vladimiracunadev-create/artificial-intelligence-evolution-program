@@ -23,7 +23,7 @@ Este repositorio demuestra:
 5. `docs/AGENTIC_SYSTEMS_TRACK.md`
 6. `src/ai_evolution/labs.py`
 7. `tests/test_papers.py` — incluye un smoke test que ejecuta las celdas de los
-   60 notebooks del eje
+   156 notebooks del eje
 8. `site/index.html`
 
 El repositorio no afirma que los ejemplos educativos sean despliegues

@@ -153,7 +153,7 @@ un número.
 
 - **[P77 Lasso](../P77_lasso/README.md) (1996)** — el ejemplo canónico de método embebido.
 - **Kohavi y John (1997)** — las envolturas para selección de subconjuntos.
-  [doi:10.1016/S0004-3702(97)00043-X](https://doi.org/10.1016/S0004-3702(97)00043-X)
+  [doi:10.1016/S0004-3702(97)00043-X](https://doi.org/10.1016/S0004-3702%2897%2900043-X)
 - **[P76 Validación cruzada](../P76_validacion_cruzada/README.md) (1995)** — el estimador que hay
   que usar bien para no contaminar la selección.
 
@@ -215,7 +215,7 @@ ai-evolution paper-lab P81 --seed 7
   **JMLR**, 3, 1157–1182. [JMLR](https://www.jmlr.org/papers/v3/guyon03a.html) ·
   consultado 2026-08-17.
 - Kohavi, R. y John, G. (1997). *Wrappers for feature subset selection*.
-  [doi:10.1016/S0004-3702(97)00043-X](https://doi.org/10.1016/S0004-3702(97)00043-X) ·
+  [doi:10.1016/S0004-3702(97)00043-X](https://doi.org/10.1016/S0004-3702%2897%2900043-X) ·
   consultado 2026-08-17.
 - Lundberg, S. y Lee, S.-I. (2017). *A Unified Approach to Interpreting Model Predictions*.
   [arXiv:1705.07874](https://arxiv.org/abs/1705.07874) · consultado 2026-08-17.

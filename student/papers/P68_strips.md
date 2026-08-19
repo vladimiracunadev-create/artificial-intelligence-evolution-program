@@ -37,7 +37,7 @@ Da a la planificación su representación duradera —precondición, añadir, bo
 
 ## Fuentes primarias
 
-- [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5)
+- [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702%2871%2990010-5)
 
 ---
 

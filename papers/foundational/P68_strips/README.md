@@ -14,7 +14,7 @@
 | **Autoría** | Richard E. Fikes, Nils J. Nilsson |
 | **Año** | 1971 |
 | **Venue** | Artificial Intelligence, 2(3–4), 189–208 |
-| **Fuente primaria** | [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5) |
+| **Fuente primaria** | [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702%2871%2990010-5) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-17 |
 
@@ -161,7 +161,7 @@ la persistencia de lo no mencionado y el fallo de la planificación lineal.
 ## 13. Relación con trabajos posteriores
 
 - **Sacerdoti (1975)** — planificación no lineal y orden parcial: la respuesta directa a la
-  anomalía. [doi:10.1016/0004-3702(75)90005-4](https://doi.org/10.1016/0004-3702(75)90005-4)
+  anomalía. [doi:10.1016/0004-3702(75)90005-4](https://doi.org/10.1016/0004-3702%2875%2990005-4)
 - **McDermott et al. (1998)** — PDDL, el lenguaje que estandariza esta representación.
   [PDDL 1.2](https://www.cs.cmu.edu/~mmv/planning/readings/98aips-PDDL.pdf)
 - **[P32 Voyager](../P32_voyager/README.md) (2023)** — biblioteca de habilidades reutilizables: la
@@ -216,10 +216,10 @@ ai-evolution paper-lab P68 --seed 7
 
 - Fikes, R. E. y Nilsson, N. J. (1971). *STRIPS: A New Approach to the Application of Theorem
   Proving to Problem Solving*. **Artificial Intelligence**, 2(3–4), 189–208.
-  [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702(71)90010-5) ·
+  [doi:10.1016/0004-3702(71)90010-5](https://doi.org/10.1016/0004-3702%2871%2990010-5) ·
   consultado 2026-08-17.
 - Sacerdoti, E. (1975). *The Nonlinear Nature of Plans*.
-  [doi:10.1016/0004-3702(75)90005-4](https://doi.org/10.1016/0004-3702(75)90005-4) ·
+  [doi:10.1016/0004-3702(75)90005-4](https://doi.org/10.1016/0004-3702%2875%2990005-4) ·
   consultado 2026-08-17.
 - McDermott, D. et al. (1998). *PDDL — The Planning Domain Definition Language*.
   [PDDL 1.2](https://www.cs.cmu.edu/~mmv/planning/readings/98aips-PDDL.pdf) · consultado 2026-08-17.

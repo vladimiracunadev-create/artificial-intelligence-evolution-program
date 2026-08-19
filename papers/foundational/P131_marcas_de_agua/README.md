@@ -90,7 +90,7 @@ marcar: no hay suficiente texto para que la estadística diga nada.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §5** · Estimadores, sesgo y varianza](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#5-estimadores-sesgo-y-varianza) | de dónde sale la puntuación z y por qué necesita n grande para separar dos hipótesis |
+| [**A02 §6** · Gaussianas y el proceso de difusión](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#6-gaussianas-y-el-proceso-de-difusión) | la campana de la que sale la puntuación z, y por qué necesita n grande para separar dos hipótesis |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

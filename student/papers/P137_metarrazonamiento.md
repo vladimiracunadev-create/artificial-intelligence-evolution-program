@@ -37,7 +37,7 @@ Convierte «cuánto pensar» en una decisión que se toma con el mismo criterio 
 
 ## Fuentes primarias
 
-- [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702(91)90015-C)
+- [doi:10.1016/0004-3702(91)90015-C](https://doi.org/10.1016/0004-3702%2891%2990015-C)
 
 ---
 

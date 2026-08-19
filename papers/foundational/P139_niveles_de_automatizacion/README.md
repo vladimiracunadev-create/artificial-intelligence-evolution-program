@@ -93,7 +93,7 @@ coste, no en su lugar.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §1** · De la frecuencia a la probabilidad](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-de-la-frecuencia-a-la-probabilidad) | cómo se combinan la probabilidad de revisar y la de detectar dado que se revisa, y por qué su producto cae más deprisa que cualquiera de las dos |
+| [**A02 §3** · Verosimilitud y entropía cruzada](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#3-verosimilitud-y-entropía-cruzada) | cómo se compone la probabilidad de dos sucesos encadenados —revisar y, dado que se revisa, detectar— y por qué su producto cae más deprisa que cualquiera de los dos |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo
@@ -170,7 +170,7 @@ documenta cualitativamente a partir de estudios de factores humanos, no con esta
 - **[P134 La protección de la información](../P134_minimo_privilegio/README.md) (1975)** — qué puede
   hacer el sistema; aquí, cuánto le dejamos decidir.
 - **Bainbridge (1983)** — las ironías de la automatización, el antecedente directo.
-  [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098(83)90046-8)
+  [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098%2883%2990046-8)
 - **Parasuraman y Riley (1997)** — uso, mal uso y abuso de la automatización.
   [doi:10.1518/001872097778543886](https://doi.org/10.1518/001872097778543886)
 
@@ -232,7 +232,7 @@ ai-evolution paper-lab P139 --seed 7
   interaction with automation*. **IEEE Transactions on Systems, Man, and Cybernetics**, 30(3),
   286–297. [doi:10.1109/3468.844354](https://doi.org/10.1109/3468.844354) · consultado 2026-08-18.
 - Bainbridge, L. (1983). *Ironies of Automation*.
-  [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098(83)90046-8) ·
+  [doi:10.1016/0005-1098(83)90046-8](https://doi.org/10.1016/0005-1098%2883%2990046-8) ·
   consultado 2026-08-18.
 - Parasuraman, R. y Riley, V. (1997). *Humans and Automation: Use, Misuse, Disuse, Abuse*.
   [doi:10.1518/001872097778543886](https://doi.org/10.1518/001872097778543886) ·

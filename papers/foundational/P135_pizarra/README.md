@@ -84,7 +84,7 @@ más que la decisión firme de una.
 
 | Dónde | Qué necesitas de ahí |
 |---|---|
-| [**A02 §1** · De la frecuencia a la probabilidad](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-de-la-frecuencia-a-la-probabilidad) | por qué mantener varias hipótesis con su credibilidad es distinto —y mejor— que elegir la más probable en cada paso |
+| [**A02 §1** · Softmax](../../annexes/A02_PROBABILIDAD_Y_VEROSIMILITUD.md#1-softmax) | cómo un conjunto de puntuaciones se convierte en una distribución de credibilidad en vez de en una única respuesta |
 <!-- puente:fin -->
 
 ## 6. Arquitectura o flujo

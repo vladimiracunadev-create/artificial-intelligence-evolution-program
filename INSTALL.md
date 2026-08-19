@@ -18,7 +18,7 @@ las 183 clases y los 148 papers se ejecutan con la biblioteca estándar.
 ai-evolution papers                 # los 148 hitos del eje
 ai-evolution paper P08              # ficha de Attention Is All You Need
 ai-evolution paper-lab P08 --seed 7 # ejecuta su miniatura
-jupyter lab notebooks/papers/       # los 60 notebooks
+jupyter lab notebooks/papers/       # los 156 notebooks
 ```
 
 ## 🛠️ Desarrollo

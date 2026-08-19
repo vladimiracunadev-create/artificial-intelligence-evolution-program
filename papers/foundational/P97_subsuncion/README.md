@@ -164,9 +164,9 @@ porque el planificador ejecuta a ciegas. Un sistema real replanifica al detectar
 ## 13. Relación con trabajos posteriores
 
 - **Brooks (1990)** — *Elephants Don't Play Chess*.
-  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890(05)80025-9)
+  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890%2805%2980025-9)
 - **Brooks (1991)** — *Intelligence Without Representation*: la formulación más provocadora.
-  [doi:10.1016/0004-3702(91)90053-M](https://doi.org/10.1016/0004-3702(91)90053-M)
+  [doi:10.1016/0004-3702(91)90053-M](https://doi.org/10.1016/0004-3702%2891%2990053-M)
 - **[P102 PPO](../P102_ppo/README.md) (2017)** — el control aprendido, que es la tercera vía: ni
   cablear reflejos ni planificar sobre un modelo.
 - **[P106 OSWorld](../P106_osworld/README.md) (2024)** — agentes que actúan sobre un entorno que
@@ -221,10 +221,10 @@ ai-evolution paper-lab P97 --seed 7
   Robotics and Automation**, 2(1), 14–23.
   [doi:10.1109/JRA.1986.1087032](https://doi.org/10.1109/JRA.1986.1087032) · consultado 2026-08-17.
 - Brooks, R. A. (1990). *Elephants Don't Play Chess*.
-  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890(05)80025-9) ·
+  [doi:10.1016/S0921-8890(05)80025-9](https://doi.org/10.1016/S0921-8890%2805%2980025-9) ·
   consultado 2026-08-17.
 - Brooks, R. A. (1991). *Intelligence Without Representation*.
-  [doi:10.1016/0004-3702(91)90053-M](https://doi.org/10.1016/0004-3702(91)90053-M) ·
+  [doi:10.1016/0004-3702(91)90053-M](https://doi.org/10.1016/0004-3702%2891%2990053-M) ·
   consultado 2026-08-17.
 
 ---

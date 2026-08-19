@@ -69,7 +69,10 @@ def slug(texto: str) -> str:
     limpio = re.sub(r"<[^>]+>", "", texto).strip().lower()
     limpio = "".join(c for c in limpio
                      if c.isalnum() or c in " -_" or unicodedata.category(c).startswith("L"))
-    return re.sub(r"\s+", "-", limpio.strip())
+    # GitHub sustituye CADA espacio por un guion, no colapsa los seguidos: un
+    # encabezado con raya («Paso 3 — Normalizar») deja dos guiones, y colapsarlos
+    # rompia el enlace que si funciona en GitHub.
+    return re.sub(r"\s", "-", limpio.strip())
 
 
 def render(md_text: str) -> str:
@@ -287,15 +290,17 @@ def build_paper_pages(out_dir: Path) -> int:
     hub = '<a href="index.html">📜 Papers</a>'
     pages = 0
 
+    total = len(catalog["papers"])          # del catalogo, para que no se desincronice
     paper_page("papers/README.md", out_dir / "index.html",
                "Eje de papers fundacionales", "📜 Papers",
-               "52 papers fundacionales de la IA, con fichas verificables y miniaturas ejecutables.")
+               f"{total} papers fundacionales de la IA, con fichas verificables y "
+               "miniaturas ejecutables.")
     paper_page("papers/ROADMAP.md", out_dir / "roadmap.html",
                "Ruta del eje de papers", f"{hub} · Ruta",
                "Niveles L0–L5, cuatro fases y definición de terminado del eje de papers.")
     paper_page("papers/catalog/PAPERS_INDEX.md", out_dir / "catalogo.html",
                "Índice de papers", f"{hub} · Índice",
-               "Tabla maestra de los 52 papers fundacionales del programa.")
+               f"Tabla maestra de los {total} papers fundacionales del programa.")
 
     paper_page("papers/catalog/MATRIZ_CLASES_PAPERS.md", out_dir / "matriz.html",
                "Matriz clase ↔ paper", f"{hub} · Matriz",

@@ -62,7 +62,7 @@ revisión web amplia de lo ocurrido desde la última actualización (fecha del
    resueltos, y las páginas clave de Pages en vivo respondiendo 200
    (`https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/`).
 8. **Coherencia.** Ejecuta el skill `repo-coherence-audit`: versiones uniformes,
-   conteos reales (183 clases/549 notebooks de clase/15 partes/52 papers/60 notebooks de papers/72 motores/17 PDFs), sin mojibake, y el About de
+   conteos reales (183 clases/549 notebooks de clase/15 partes/148 papers/156 notebooks de papers/168 motores/165 PDFs), sin mojibake, y el About de
    GitHub sincronizado (se actualiza vía `gh api --method PATCH --input
    payload.json` construido en Python — jamás pasar emoji por el shell).
 9. **Publicar.** Guards `pre-commit-guard` y `pre-push-guard` en verde, commit

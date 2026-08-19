@@ -14,7 +14,7 @@
 | **Autoría** | Michael McCloskey, Neal J. Cohen |
 | **Año** | 1989 |
 | **Venue** | Psychology of Learning and Motivation, 24, 109–165 |
-| **Fuente primaria** | [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421(08)60536-8) |
+| **Fuente primaria** | [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421%2808%2960536-8) |
 | **Acceso** | Restringido |
 | **Fecha de consulta** | 2026-08-18 |
 
@@ -177,7 +177,7 @@ mezclado se queda corto por falta de capacidad.
 - **[P145 EWC](../P145_ewc/README.md) (2017)** — el remedio: frenar selectivamente los pesos que
   importaban.
 - **French (1999)** — la revisión del problema diez años después.
-  [doi:10.1016/S1364-6613(99)01294-2](https://doi.org/10.1016/S1364-6613(99)01294-2)
+  [doi:10.1016/S1364-6613(99)01294-2](https://doi.org/10.1016/S1364-6613%2899%2901294-2)
 - **Parisi et al. (2019)** — revisión moderna del aprendizaje continuo.
   [doi:10.1016/j.neunet.2019.01.012](https://doi.org/10.1016/j.neunet.2019.01.012)
 
@@ -228,10 +228,10 @@ ai-evolution paper-lab P142 --seed 7
 
 - McCloskey, M. y Cohen, N. J. (1989). *Catastrophic Interference in Connectionist Networks*.
   **Psychology of Learning and Motivation**, 24, 109–165.
-  [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421(08)60536-8) ·
+  [doi:10.1016/S0079-7421(08)60536-8](https://doi.org/10.1016/S0079-7421%2808%2960536-8) ·
   consultado 2026-08-18.
 - French, R. M. (1999). *Catastrophic forgetting in connectionist networks*.
-  [doi:10.1016/S1364-6613(99)01294-2](https://doi.org/10.1016/S1364-6613(99)01294-2) ·
+  [doi:10.1016/S1364-6613(99)01294-2](https://doi.org/10.1016/S1364-6613%2899%2901294-2) ·
   consultado 2026-08-18.
 - Parisi, G. I. et al. (2019). *Continual lifelong learning with neural networks: A review*.
   [doi:10.1016/j.neunet.2019.01.012](https://doi.org/10.1016/j.neunet.2019.01.012) ·
