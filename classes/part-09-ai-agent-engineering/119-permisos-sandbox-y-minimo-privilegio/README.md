@@ -233,12 +233,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Saltzer y Schroeder (1975), "The Protection of Information in Computer Systems", DOI:10.1109/PROC.1975.9939 (formulación original de least privilege)](https://doi.org/10.1109/PROC.1975.9939)
-- [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection, LLM06 Excessive Agency)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [NIST AI Risk Management Framework (AI RMF 1.0) (gobernanza y contención de sistemas de IA)](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Greshake et al. (2023), "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection", arXiv:2302.12173](https://arxiv.org/abs/2302.12173)
-- [Anthropic Engineering — "Building effective agents" (guardrails y autonomía acotada)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Model Context Protocol — especificación (consentimiento y control de acceso a tools y resources)](https://modelcontextprotocol.io/)
+- [Saltzer y Schroeder (1975), "The Protection of Information in Computer Systems", DOI:10.1109/PROC.1975.9939 (formulación original de least privilege)](https://doi.org/10.1109/PROC.1975.9939) — uso: fuente primaria del mecanismo estudiado
+- [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection, LLM06 Excessive Agency)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [NIST AI Risk Management Framework (AI RMF 1.0) (gobernanza y contención de sistemas de IA)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Greshake et al. (2023), "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection", arXiv:2302.12173](https://arxiv.org/abs/2302.12173) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic Engineering — "Building effective agents" (guardrails y autonomía acotada)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Model Context Protocol — especificación (consentimiento y control de acceso a tools y resources)](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

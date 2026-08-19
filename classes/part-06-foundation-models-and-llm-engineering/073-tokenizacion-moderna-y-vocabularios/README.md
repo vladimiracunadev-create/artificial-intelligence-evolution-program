@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Sennrich, Haddow y Birch (2016), *Neural Machine Translation of Rare Words with Subword Units* (BPE): <https://arxiv.org/abs/1508.07909>
-- Kudo (2018), *Subword Regularization* (modelo unigram): <https://arxiv.org/abs/1804.10959>
-- Kudo y Richardson (2018), *SentencePiece*: <https://arxiv.org/abs/1808.06226>
-- Jurafsky y Martin, *Speech and Language Processing* (3.ª ed., borrador), cap. 2: <https://web.stanford.edu/~jurafsky/slp3/>
-- Documentación oficial de Hugging Face Tokenizers: <https://huggingface.co/docs/tokenizers>
+- Sennrich, Haddow y Birch (2016), *Neural Machine Translation of Rare Words with Subword Units* (BPE): <https://arxiv.org/abs/1508.07909> — uso: fuente primaria del mecanismo estudiado
+- Kudo (2018), *Subword Regularization* (modelo unigram): <https://arxiv.org/abs/1804.10959> — uso: fuente primaria del mecanismo estudiado
+- Kudo y Richardson (2018), *SentencePiece*: <https://arxiv.org/abs/1808.06226> — uso: fuente primaria del mecanismo estudiado
+- Jurafsky y Martin, *Speech and Language Processing* (3.ª ed., borrador), cap. 2: <https://web.stanford.edu/~jurafsky/slp3/> — uso: desarrollo extendido del tema
+- Documentación oficial de Hugging Face Tokenizers: <https://huggingface.co/docs/tokenizers> — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

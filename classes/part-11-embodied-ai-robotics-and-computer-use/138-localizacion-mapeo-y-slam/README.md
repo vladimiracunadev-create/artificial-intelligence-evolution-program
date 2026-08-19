@@ -233,12 +233,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — caps. 7-10 (localización y SLAM)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/)
-- [Durrant-Whyte, H. & Bailey, T. (2006). Simultaneous Localization and Mapping: Part I. IEEE Robotics & Automation Magazine. DOI 10.1109/MRA.2006.1638022](https://doi.org/10.1109/MRA.2006.1638022)
-- [Cadena, C. et al. (2016). Past, Present, and Future of SLAM. IEEE Trans. on Robotics. arXiv:1606.05830](https://arxiv.org/abs/1606.05830)
-- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — cap. de SLAM](https://link.springer.com/book/10.1007/978-3-319-32552-1)
-- [Nav2 — documentación de localización y mapas](https://docs.nav2.org/)
-- [Cartographer (Google) — documentación oficial](https://google-cartographer.readthedocs.io/en/latest/)
+- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — caps. 7-10 (localización y SLAM)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/) — uso: referencia consultada en su fuente original
+- [Durrant-Whyte, H. & Bailey, T. (2006). Simultaneous Localization and Mapping: Part I. IEEE Robotics & Automation Magazine. DOI 10.1109/MRA.2006.1638022](https://doi.org/10.1109/MRA.2006.1638022) — uso: fuente primaria del mecanismo estudiado
+- [Cadena, C. et al. (2016). Past, Present, and Future of SLAM. IEEE Trans. on Robotics. arXiv:1606.05830](https://arxiv.org/abs/1606.05830) — uso: fuente primaria del mecanismo estudiado
+- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — cap. de SLAM](https://link.springer.com/book/10.1007/978-3-319-32552-1) — uso: referencia consultada en su fuente original
+- [Nav2 — documentación de localización y mapas](https://docs.nav2.org/) — uso: referencia consultada en su fuente original
+- [Cartographer (Google) — documentación oficial](https://google-cartographer.readthedocs.io/en/latest/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

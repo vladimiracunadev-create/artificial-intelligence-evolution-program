@@ -188,11 +188,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Holland, J. H. (1975). *Adaptation in Natural and Artificial Systems*. University of Michigan Press (reed. MIT Press, 1992).
-- Goldberg, D. E. (1989). *Genetic Algorithms in Search, Optimization, and Machine Learning*. Addison-Wesley.
-- Wolpert, D. H. & Macready, W. G. (1997). "No Free Lunch Theorems for Optimization". *IEEE Trans. Evolutionary Computation*, 1(1), 67-82. [https://doi.org/10.1109/4235.585893](https://doi.org/10.1109/4235.585893)
-- Eiben, A. E. & Smith, J. E. (2015). *Introduction to Evolutionary Computing*, 2.ª ed. Springer. [https://doi.org/10.1007/978-3-662-44874-8](https://doi.org/10.1007/978-3-662-44874-8)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 4.1 (búsqueda local y evolutiva). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- Holland, J. H. (1975). *Adaptation in Natural and Artificial Systems*. University of Michigan Press (reed. MIT Press, 1992). — uso: desarrollo extendido del tema
+- Goldberg, D. E. (1989). *Genetic Algorithms in Search, Optimization, and Machine Learning*. Addison-Wesley. — uso: desarrollo extendido del tema
+- Wolpert, D. H. & Macready, W. G. (1997). "No Free Lunch Theorems for Optimization". *IEEE Trans. Evolutionary Computation*, 1(1), 67-82. [https://doi.org/10.1109/4235.585893](https://doi.org/10.1109/4235.585893) — uso: fuente primaria del mecanismo estudiado
+- Eiben, A. E. & Smith, J. E. (2015). *Introduction to Evolutionary Computing*, 2.ª ed. Springer. [https://doi.org/10.1007/978-3-662-44874-8](https://doi.org/10.1007/978-3-662-44874-8) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 4.1 (búsqueda local y evolutiva). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

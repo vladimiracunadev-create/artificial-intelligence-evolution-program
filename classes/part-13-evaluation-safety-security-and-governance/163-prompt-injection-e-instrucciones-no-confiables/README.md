@@ -224,11 +224,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Greshake et al. (2023), *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*, arXiv:2302.12173](https://arxiv.org/abs/2302.12173)
-- [OWASP Top 10 for LLM Applications — LLM01: Prompt Injection](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Willison, S. (2023), *Prompt injection: what's the worst that can happen?*](https://simonwillison.net/2023/Apr/14/worst-that-can-happen/)
-- [Wallace et al. (2024), *The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions*, arXiv:2404.13208](https://arxiv.org/abs/2404.13208)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [Greshake et al. (2023), *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*, arXiv:2302.12173](https://arxiv.org/abs/2302.12173) — uso: fuente primaria del mecanismo estudiado
+- [OWASP Top 10 for LLM Applications — LLM01: Prompt Injection](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [Willison, S. (2023), *Prompt injection: what's the worst that can happen?*](https://simonwillison.net/2023/Apr/14/worst-that-can-happen/) — uso: referencia consultada en su fuente original
+- [Wallace et al. (2024), *The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions*, arXiv:2404.13208](https://arxiv.org/abs/2404.13208) — uso: fuente primaria del mecanismo estudiado
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

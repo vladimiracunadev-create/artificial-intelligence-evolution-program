@@ -212,11 +212,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Cormack, G., Clarke, C. & Büttcher, S. (2009). *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods*. SIGIR 2009. [DOI 10.1145/1571941.1572114](https://doi.org/10.1145/1571941.1572114)
-- Robertson, S. & Zaragoza, H. (2009). *The Probabilistic Relevance Framework: BM25 and Beyond*. [DOI 10.1561/1500000019](https://doi.org/10.1561/1500000019)
-- Karpukhin, V. et al. (2020). *Dense Passage Retrieval for Open-Domain Question Answering*. [arXiv:2004.04906](https://arxiv.org/abs/2004.04906)
-- Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval*: [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/)
-- Documentación oficial de Qdrant — búsqueda híbrida: [https://qdrant.tech/documentation/concepts/hybrid-queries/](https://qdrant.tech/documentation/concepts/hybrid-queries/)
+- Cormack, G., Clarke, C. & Büttcher, S. (2009). *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods*. SIGIR 2009. [DOI 10.1145/1571941.1572114](https://doi.org/10.1145/1571941.1572114) — uso: fuente primaria del mecanismo estudiado
+- Robertson, S. & Zaragoza, H. (2009). *The Probabilistic Relevance Framework: BM25 and Beyond*. [DOI 10.1561/1500000019](https://doi.org/10.1561/1500000019) — uso: fuente primaria del mecanismo estudiado
+- Karpukhin, V. et al. (2020). *Dense Passage Retrieval for Open-Domain Question Answering*. [arXiv:2004.04906](https://arxiv.org/abs/2004.04906) — uso: fuente primaria del mecanismo estudiado
+- Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval*: [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/) — uso: referencia consultada en su fuente original
+- Documentación oficial de Qdrant — búsqueda híbrida: [https://qdrant.tech/documentation/concepts/hybrid-queries/](https://qdrant.tech/documentation/concepts/hybrid-queries/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

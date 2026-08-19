@@ -203,11 +203,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 10 "Knowledge Representation". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Gruber, T. R. (1993). "A translation approach to portable ontology specifications". *Knowledge Acquisition*, 5(2). [https://doi.org/10.1006/knac.1993.1008](https://doi.org/10.1006/knac.1993.1008)
-- Baader, F. et al. (eds.) (2007). *The Description Logic Handbook* (2.ª ed.). Cambridge University Press.
-- W3C (2012). *OWL 2 Web Ontology Language — Overview* (2.ª ed.): [https://www.w3.org/TR/owl2-overview/](https://www.w3.org/TR/owl2-overview/)
-- Minsky, M. (1974). "A Framework for Representing Knowledge". MIT AI Memo 306. [https://dspace.mit.edu/handle/1721.1/6089](https://dspace.mit.edu/handle/1721.1/6089)
+- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 10 "Knowledge Representation". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Gruber, T. R. (1993). "A translation approach to portable ontology specifications". *Knowledge Acquisition*, 5(2). [https://doi.org/10.1006/knac.1993.1008](https://doi.org/10.1006/knac.1993.1008) — uso: fuente primaria del mecanismo estudiado
+- Baader, F. et al. (eds.) (2007). *The Description Logic Handbook* (2.ª ed.). Cambridge University Press. — uso: desarrollo extendido del tema
+- W3C (2012). *OWL 2 Web Ontology Language — Overview* (2.ª ed.): [https://www.w3.org/TR/owl2-overview/](https://www.w3.org/TR/owl2-overview/) — uso: marco normativo de referencia
+- Minsky, M. (1974). "A Framework for Representing Knowledge". MIT AI Memo 306. [https://dspace.mit.edu/handle/1721.1/6089](https://dspace.mit.edu/handle/1721.1/6089) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

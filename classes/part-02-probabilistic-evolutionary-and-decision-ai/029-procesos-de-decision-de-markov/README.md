@@ -193,11 +193,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Bellman, R. (1957). *Dynamic Programming*. Princeton University Press.
-- Sutton, R. S. & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*, 2.ª ed., caps. 3-4. [http://incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html)
-- Puterman, M. L. (1994). *Markov Decision Processes: Discrete Stochastic Dynamic Programming*. Wiley. [https://doi.org/10.1002/9780470316887](https://doi.org/10.1002/9780470316887)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 17 "Making Complex Decisions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Kaelbling, L. P., Littman, M. L. & Cassandra, A. R. (1998). "Planning and acting in partially observable stochastic domains". *Artificial Intelligence*, 101(1-2), 99-134. [https://doi.org/10.1016/S0004-3702(98)00023-X](https://doi.org/10.1016/S0004-3702%2898%2900023-X)
+- Bellman, R. (1957). *Dynamic Programming*. Princeton University Press. — uso: desarrollo extendido del tema
+- Sutton, R. S. & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*, 2.ª ed., caps. 3-4. [http://incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
+- Puterman, M. L. (1994). *Markov Decision Processes: Discrete Stochastic Dynamic Programming*. Wiley. [https://doi.org/10.1002/9780470316887](https://doi.org/10.1002/9780470316887) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 17 "Making Complex Decisions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Kaelbling, L. P., Littman, M. L. & Cassandra, A. R. (1998). "Planning and acting in partially observable stochastic domains". *Artificial Intelligence*, 101(1-2), 99-134. [https://doi.org/10.1016/S0004-3702(98)00023-X](https://doi.org/10.1016/S0004-3702%2898%2900023-X) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

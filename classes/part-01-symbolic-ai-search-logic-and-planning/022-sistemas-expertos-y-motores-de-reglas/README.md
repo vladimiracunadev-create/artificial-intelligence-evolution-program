@@ -207,11 +207,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — cap. 9 (inferencia con reglas, forward/backward chaining)](https://aima.cs.berkeley.edu/)
-- [Forgy, C. (1982). "Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem". *Artificial Intelligence* 19(1)](https://doi.org/10.1016/0004-3702%2882%2990020-0)
-- [Buchanan & Shortliffe (1984). *Rule-Based Expert Systems: The MYCIN Experiments* — libro completo gratuito](https://www.shortliffe.net/Buchanan-Shortliffe-1984/MYCIN%20Book.htm)
-- [CLIPS — motor de reglas de dominio público (documentación oficial)](https://www.clipsrules.net/)
-- [Drools — documentación oficial del motor de reglas (Rete/PHREAK)](https://www.drools.org/)
+- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — cap. 9 (inferencia con reglas, forward/backward chaining)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Forgy, C. (1982). "Rete: A Fast Algorithm for the Many Pattern/Many Object Pattern Match Problem". *Artificial Intelligence* 19(1)](https://doi.org/10.1016/0004-3702%2882%2990020-0) — uso: fuente primaria del mecanismo estudiado
+- [Buchanan & Shortliffe (1984). *Rule-Based Expert Systems: The MYCIN Experiments* — libro completo gratuito](https://www.shortliffe.net/Buchanan-Shortliffe-1984/MYCIN%20Book.htm) — uso: referencia consultada en su fuente original
+- [CLIPS — motor de reglas de dominio público (documentación oficial)](https://www.clipsrules.net/) — uso: referencia consultada en su fuente original
+- [Drools — documentación oficial del motor de reglas (Rete/PHREAK)](https://www.drools.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

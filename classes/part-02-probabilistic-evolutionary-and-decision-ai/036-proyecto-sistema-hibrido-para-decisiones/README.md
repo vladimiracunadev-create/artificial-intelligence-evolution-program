@@ -196,12 +196,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell & Norvig — *Artificial Intelligence: A Modern Approach*, 4e (caps. 13, 16 y 17: incertidumbre, decisiones simples y decisiones secuenciales)](https://aima.cs.berkeley.edu/)
-- [Koller & Friedman — *Probabilistic Graphical Models: Principles and Techniques* (MIT Press)](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)
-- [Sutton & Barto — *Reinforcement Learning: An Introduction*, 2e (cap. 3-4: MDP y programación dinámica; PDF oficial gratuito)](http://incompleteideas.net/book/the-book-2nd.html)
-- [Howard, R. A. (1966) — "Information Value Theory", *IEEE Transactions on Systems Science and Cybernetics* (análisis de decisiones y valor de la información)](https://doi.org/10.1109/TSSC.1966.300074)
-- [Bellman, R. (1957) — "A Markovian Decision Process", *Journal of Mathematics and Mechanics*](https://www.jstor.org/stable/24900506)
-- [Kochenderfer, Wheeler & Wray — *Algorithms for Decision Making* (MIT Press, PDF oficial gratuito)](https://algorithmsbook.com/)
+- [Russell & Norvig — *Artificial Intelligence: A Modern Approach*, 4e (caps. 13, 16 y 17: incertidumbre, decisiones simples y decisiones secuenciales)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Koller & Friedman — *Probabilistic Graphical Models: Principles and Techniques* (MIT Press)](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/) — uso: referencia consultada en su fuente original
+- [Sutton & Barto — *Reinforcement Learning: An Introduction*, 2e (cap. 3-4: MDP y programación dinámica; PDF oficial gratuito)](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
+- [Howard, R. A. (1966) — "Information Value Theory", *IEEE Transactions on Systems Science and Cybernetics* (análisis de decisiones y valor de la información)](https://doi.org/10.1109/TSSC.1966.300074) — uso: fuente primaria del mecanismo estudiado
+- [Bellman, R. (1957) — "A Markovian Decision Process", *Journal of Mathematics and Mechanics*](https://www.jstor.org/stable/24900506) — uso: referencia consultada en su fuente original
+- [Kochenderfer, Wheeler & Wray — *Algorithms for Decision Making* (MIT Press, PDF oficial gratuito)](https://algorithmsbook.com/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -218,12 +218,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Breck et al. (2017), "The ML Test Score: A Rubric for ML Production Readiness", IEEE Big Data](https://research.google/pubs/pub46555/)
-- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-- [Ribeiro et al. (2020), "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList", ACL (arXiv:2005.04118)](https://arxiv.org/abs/2005.04118)
-- [CML — Continuous Machine Learning (iterative.ai)](https://cml.dev/)
-- [Great Expectations Documentation — validación de datos](https://docs.greatexpectations.io/)
-- [Fowler, "Continuous Integration"](https://martinfowler.com/articles/continuousIntegration.html)
+- [Breck et al. (2017), "The ML Test Score: A Rubric for ML Production Readiness", IEEE Big Data](https://research.google/pubs/pub46555/) — uso: referencia consultada en su fuente original
+- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — uso: referencia consultada en su fuente original
+- [Ribeiro et al. (2020), "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList", ACL (arXiv:2005.04118)](https://arxiv.org/abs/2005.04118) — uso: fuente primaria del mecanismo estudiado
+- [CML — Continuous Machine Learning (iterative.ai)](https://cml.dev/) — uso: referencia consultada en su fuente original
+- [Great Expectations Documentation — validación de datos](https://docs.greatexpectations.io/) — uso: referencia consultada en su fuente original
+- [Fowler, "Continuous Integration"](https://martinfowler.com/articles/continuousIntegration.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

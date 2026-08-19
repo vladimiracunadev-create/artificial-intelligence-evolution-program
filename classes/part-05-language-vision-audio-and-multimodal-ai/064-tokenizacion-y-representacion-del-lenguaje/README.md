@@ -232,11 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. 2 (texto, tokenización y BPE) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
-- Sennrich, R., Haddow, B. y Birch, A. (2015). "Neural Machine Translation of Rare Words with Subword Units" (BPE) — [arXiv:1508.07909](https://arxiv.org/abs/1508.07909)
-- Wu, Y. et al. (2016). "Google's Neural Machine Translation System" (WordPiece en producción) — [arXiv:1609.08144](https://arxiv.org/abs/1609.08144)
-- Kudo, T. y Richardson, J. (2018). "SentencePiece: A simple and language independent subword tokenizer" — [arXiv:1808.06226](https://arxiv.org/abs/1808.06226)
-- Documentación oficial de Hugging Face Tokenizers — [huggingface.co/docs/tokenizers](https://huggingface.co/docs/tokenizers)
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. 2 (texto, tokenización y BPE) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Sennrich, R., Haddow, B. y Birch, A. (2015). "Neural Machine Translation of Rare Words with Subword Units" (BPE) — [arXiv:1508.07909](https://arxiv.org/abs/1508.07909) — uso: fuente primaria del mecanismo estudiado
+- Wu, Y. et al. (2016). "Google's Neural Machine Translation System" (WordPiece en producción) — [arXiv:1609.08144](https://arxiv.org/abs/1609.08144) — uso: fuente primaria del mecanismo estudiado
+- Kudo, T. y Richardson, J. (2018). "SentencePiece: A simple and language independent subword tokenizer" — [arXiv:1808.06226](https://arxiv.org/abs/1808.06226) — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Hugging Face Tokenizers — [huggingface.co/docs/tokenizers](https://huggingface.co/docs/tokenizers) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

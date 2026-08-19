@@ -240,11 +240,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Koren, Bell & Volinsky (2009), "Matrix Factorization Techniques for Recommender Systems", IEEE Computer. DOI 10.1109/MC.2009.263](https://doi.org/10.1109/MC.2009.263)
-- [Sarwar, Karypis, Konstan & Riedl (2001), "Item-Based Collaborative Filtering Recommendation Algorithms", WWW '01. DOI 10.1145/371920.372071](https://doi.org/10.1145/371920.372071)
-- [Hu, Koren & Volinsky (2008), "Collaborative Filtering for Implicit Feedback Datasets", IEEE ICDM. DOI 10.1109/ICDM.2008.22](https://doi.org/10.1109/ICDM.2008.22)
-- [Ricci, Rokach & Shapira (eds.) — *Recommender Systems Handbook* (3e, 2022). DOI 10.1007/978-1-0716-2197-4](https://doi.org/10.1007/978-1-0716-2197-4)
-- [scikit-learn User Guide — Nearest Neighbors (base de la vecindad y similitud)](https://scikit-learn.org/stable/modules/neighbors.html)
+- [Koren, Bell & Volinsky (2009), "Matrix Factorization Techniques for Recommender Systems", IEEE Computer. DOI 10.1109/MC.2009.263](https://doi.org/10.1109/MC.2009.263) — uso: fuente primaria del mecanismo estudiado
+- [Sarwar, Karypis, Konstan & Riedl (2001), "Item-Based Collaborative Filtering Recommendation Algorithms", WWW '01. DOI 10.1145/371920.372071](https://doi.org/10.1145/371920.372071) — uso: fuente primaria del mecanismo estudiado
+- [Hu, Koren & Volinsky (2008), "Collaborative Filtering for Implicit Feedback Datasets", IEEE ICDM. DOI 10.1109/ICDM.2008.22](https://doi.org/10.1109/ICDM.2008.22) — uso: fuente primaria del mecanismo estudiado
+- [Ricci, Rokach & Shapira (eds.) — *Recommender Systems Handbook* (3e, 2022). DOI 10.1007/978-1-0716-2197-4](https://doi.org/10.1007/978-1-0716-2197-4) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn User Guide — Nearest Neighbors (base de la vecindad y similitud)](https://scikit-learn.org/stable/modules/neighbors.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

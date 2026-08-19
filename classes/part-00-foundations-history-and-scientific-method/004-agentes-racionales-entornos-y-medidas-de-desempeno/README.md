@@ -243,10 +243,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2](https://aima.cs.berkeley.edu/)
-- [Turing, A. M. (1950). Computing Machinery and Intelligence (criterio conductual precursor)](https://doi.org/10.1093/mind/LIX.236.433)
-- [Sutton, R. & Barto, A. *Reinforcement Learning: An Introduction*, 2.ª ed., cap. 1 (agente-entorno-recompensa)](http://incompleteideas.net/book/the-book-2nd.html)
-- [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
+- [Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Turing, A. M. (1950). Computing Machinery and Intelligence (criterio conductual precursor)](https://doi.org/10.1093/mind/LIX.236.433) — uso: fuente primaria del mecanismo estudiado
+- [Sutton, R. & Barto, A. *Reinforcement Learning: An Introduction*, 2.ª ed., cap. 1 (agente-entorno-recompensa)](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
+- [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

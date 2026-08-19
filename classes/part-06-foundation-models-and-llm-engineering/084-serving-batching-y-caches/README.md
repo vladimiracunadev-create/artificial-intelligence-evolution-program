@@ -227,11 +227,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kwon et al. (2023), *Efficient Memory Management for Large Language Model Serving with PagedAttention* (vLLM): <https://arxiv.org/abs/2309.06180>
-- Documentación oficial de vLLM: <https://docs.vllm.ai>
-- Vaswani et al. (2017), *Attention Is All You Need*: <https://arxiv.org/abs/1706.03762>
-- Ainslie et al. (2023), *GQA: Training Generalized Multi-Query Transformer Models*: <https://arxiv.org/abs/2305.13245>
-- Leviathan et al. (2022), *Fast Inference from Transformers via Speculative Decoding*: <https://arxiv.org/abs/2211.17192>
+- Kwon et al. (2023), *Efficient Memory Management for Large Language Model Serving with PagedAttention* (vLLM): <https://arxiv.org/abs/2309.06180> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de vLLM: <https://docs.vllm.ai> — uso: referencia consultada en su fuente original
+- Vaswani et al. (2017), *Attention Is All You Need*: <https://arxiv.org/abs/1706.03762> — uso: fuente primaria del mecanismo estudiado
+- Ainslie et al. (2023), *GQA: Training Generalized Multi-Query Transformer Models*: <https://arxiv.org/abs/2305.13245> — uso: fuente primaria del mecanismo estudiado
+- Leviathan et al. (2022), *Fast Inference from Transformers via Speculative Decoding*: <https://arxiv.org/abs/2211.17192> — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

@@ -243,11 +243,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e): caps. de n-gramas, clasificación con Naive Bayes/regresión logística y etiquetado de secuencias — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
-- Manning, C., Raghavan, P. y Schütze, H. *Introduction to Information Retrieval*, cap. 6 (TF-IDF y modelo vectorial) — [nlp.stanford.edu/IR-book](https://nlp.stanford.edu/IR-book/)
-- Devlin, J. et al. (2018). "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" — [arXiv:1810.04805](https://arxiv.org/abs/1810.04805)
-- Documentación de scikit-learn: Working with text data — [scikit-learn.org](https://scikit-learn.org/stable/modules/feature_extraction.html)
-- Documentación de spaCy: Linguistic features (NER) — [spacy.io/usage/linguistic-features](https://spacy.io/usage/linguistic-features)
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e): caps. de n-gramas, clasificación con Naive Bayes/regresión logística y etiquetado de secuencias — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Manning, C., Raghavan, P. y Schütze, H. *Introduction to Information Retrieval*, cap. 6 (TF-IDF y modelo vectorial) — [nlp.stanford.edu/IR-book](https://nlp.stanford.edu/IR-book/) — uso: referencia consultada en su fuente original
+- Devlin, J. et al. (2018). "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" — [arXiv:1810.04805](https://arxiv.org/abs/1810.04805) — uso: fuente primaria del mecanismo estudiado
+- Documentación de scikit-learn: Working with text data — [scikit-learn.org](https://scikit-learn.org/stable/modules/feature_extraction.html) — uso: referencia consultada en su fuente original
+- Documentación de spaCy: Linguistic features (NER) — [spacy.io/usage/linguistic-features](https://spacy.io/usage/linguistic-features) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

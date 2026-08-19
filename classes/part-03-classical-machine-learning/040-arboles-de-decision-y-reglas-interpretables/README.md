@@ -227,11 +227,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Breiman, Friedman, Olshen, Stone — *Classification and Regression Trees* (1984), el libro de CART. DOI 10.1201/9781315139470](https://doi.org/10.1201/9781315139470)
-- [Quinlan (1986), "Induction of Decision Trees", *Machine Learning* 1. DOI 10.1007/BF00116251](https://doi.org/10.1007/BF00116251)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §9.2 "Tree-Based Methods", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 8 "Tree-Based Methods", PDF oficial](https://www.statlearning.com/)
-- [scikit-learn User Guide — Decision Trees (incluye poda por costo-complejidad)](https://scikit-learn.org/stable/modules/tree.html)
+- [Breiman, Friedman, Olshen, Stone — *Classification and Regression Trees* (1984), el libro de CART. DOI 10.1201/9781315139470](https://doi.org/10.1201/9781315139470) — uso: fuente primaria del mecanismo estudiado
+- [Quinlan (1986), "Induction of Decision Trees", *Machine Learning* 1. DOI 10.1007/BF00116251](https://doi.org/10.1007/BF00116251) — uso: fuente primaria del mecanismo estudiado
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §9.2 "Tree-Based Methods", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 8 "Tree-Based Methods", PDF oficial](https://www.statlearning.com/) — uso: desarrollo extendido del tema
+- [scikit-learn User Guide — Decision Trees (incluye poda por costo-complejidad)](https://scikit-learn.org/stable/modules/tree.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

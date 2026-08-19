@@ -254,13 +254,13 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Chen, M. et al. (2021). *Evaluating Large Language Models Trained on Code* (Codex, HumanEval, pass@k). [arXiv:2107.03374](https://arxiv.org/abs/2107.03374)
-- Jimenez, C. E. et al. (2024). *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. [arXiv:2310.06770](https://arxiv.org/abs/2310.06770) · [swebench.com](https://www.swebench.com/)
-- Li, Y. et al. (2022). *Competition-level code generation with AlphaCode*. Science 378(6624). [DOI 10.1126/science.abq1158](https://doi.org/10.1126/science.abq1158)
-- Feathers, M. (2004). *Working Effectively with Legacy Code*. Prentice Hall. [Ficha editorial](https://www.oreilly.com/library/view/working-effectively-with/0131177052/)
-- Austin, J. et al. (2021). *Program Synthesis with Large Language Models* (MBPP). [arXiv:2108.07732](https://arxiv.org/abs/2108.07732)
-- OpenAI (2026). *Harness engineering: leveraging Codex in an agent-first world*. [openai.com/index/harness-engineering](https://openai.com/index/harness-engineering/)
-- GitHub — *Spec Kit* (toolkit de spec-driven development para agentes de código). [github.com/github/spec-kit](https://github.com/github/spec-kit)
+- Chen, M. et al. (2021). *Evaluating Large Language Models Trained on Code* (Codex, HumanEval, pass@k). [arXiv:2107.03374](https://arxiv.org/abs/2107.03374) — uso: fuente primaria del mecanismo estudiado
+- Jimenez, C. E. et al. (2024). *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. [arXiv:2310.06770](https://arxiv.org/abs/2310.06770) · [swebench.com](https://www.swebench.com/) — uso: fuente primaria del mecanismo estudiado
+- Li, Y. et al. (2022). *Competition-level code generation with AlphaCode*. Science 378(6624). [DOI 10.1126/science.abq1158](https://doi.org/10.1126/science.abq1158) — uso: fuente primaria del mecanismo estudiado
+- Feathers, M. (2004). *Working Effectively with Legacy Code*. Prentice Hall. [Ficha editorial](https://www.oreilly.com/library/view/working-effectively-with/0131177052/) — uso: referencia consultada en su fuente original
+- Austin, J. et al. (2021). *Program Synthesis with Large Language Models* (MBPP). [arXiv:2108.07732](https://arxiv.org/abs/2108.07732) — uso: fuente primaria del mecanismo estudiado
+- OpenAI (2026). *Harness engineering: leveraging Codex in an agent-first world*. [openai.com/index/harness-engineering](https://openai.com/index/harness-engineering/) — uso: referencia consultada en su fuente original
+- GitHub — *Spec Kit* (toolkit de spec-driven development para agentes de código). [github.com/github/spec-kit](https://github.com/github/spec-kit) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

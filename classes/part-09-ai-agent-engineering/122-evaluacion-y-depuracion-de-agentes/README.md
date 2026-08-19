@@ -244,12 +244,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Liu et al. (2023), "AgentBench: Evaluating LLMs as Agents", arXiv:2308.03688 (benchmark multi-entorno de agentes)](https://arxiv.org/abs/2308.03688)
-- [Jimenez et al. (2023), "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?", arXiv:2310.06770 (eval de resultado con tests como predicado)](https://arxiv.org/abs/2310.06770)
-- [Zheng et al. (2023), "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", arXiv:2306.05685 (sesgos y calibración del juez LLM)](https://arxiv.org/abs/2306.05685)
-- [Anthropic Engineering — "Building effective agents" (medir y simplificar antes de complejizar)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (análisis de errores por tipo sobre trayectorias)](https://arxiv.org/abs/2210.03629)
-- [OpenTelemetry — documentación oficial (las trazas que hacen posible el análisis de trayectorias)](https://opentelemetry.io/docs/)
+- [Liu et al. (2023), "AgentBench: Evaluating LLMs as Agents", arXiv:2308.03688 (benchmark multi-entorno de agentes)](https://arxiv.org/abs/2308.03688) — uso: fuente primaria del mecanismo estudiado
+- [Jimenez et al. (2023), "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?", arXiv:2310.06770 (eval de resultado con tests como predicado)](https://arxiv.org/abs/2310.06770) — uso: fuente primaria del mecanismo estudiado
+- [Zheng et al. (2023), "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena", arXiv:2306.05685 (sesgos y calibración del juez LLM)](https://arxiv.org/abs/2306.05685) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic Engineering — "Building effective agents" (medir y simplificar antes de complejizar)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (análisis de errores por tipo sobre trayectorias)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [OpenTelemetry — documentación oficial (las trazas que hacen posible el análisis de trayectorias)](https://opentelemetry.io/docs/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

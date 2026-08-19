@@ -251,12 +251,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Goodfellow, I. et al. (2014). *Generative Adversarial Networks*. Paper seminal. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
-- Arjovsky, M., Chintala, S. y Bottou, L. (2017). *Wasserstein GAN*. [arXiv:1701.07875](https://arxiv.org/abs/1701.07875)
-- Radford, A., Metz, L. y Chintala, S. (2015). *Unsupervised Representation Learning with Deep Convolutional GANs* (DCGAN). [arXiv:1511.06434](https://arxiv.org/abs/1511.06434)
-- Goodfellow, I. (2016). *NIPS 2016 Tutorial: Generative Adversarial Networks*. [arXiv:1701.00160](https://arxiv.org/abs/1701.00160)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html)
-- Documentación de PyTorch: [tutorial oficial DCGAN](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html)
+- Goodfellow, I. et al. (2014). *Generative Adversarial Networks*. Paper seminal. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661) — uso: fuente primaria del mecanismo estudiado
+- Arjovsky, M., Chintala, S. y Bottou, L. (2017). *Wasserstein GAN*. [arXiv:1701.07875](https://arxiv.org/abs/1701.07875) — uso: fuente primaria del mecanismo estudiado
+- Radford, A., Metz, L. y Chintala, S. (2015). *Unsupervised Representation Learning with Deep Convolutional GANs* (DCGAN). [arXiv:1511.06434](https://arxiv.org/abs/1511.06434) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I. (2016). *NIPS 2016 Tutorial: Generative Adversarial Networks*. [arXiv:1701.00160](https://arxiv.org/abs/1701.00160) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [tutorial oficial DCGAN](https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

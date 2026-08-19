@@ -223,12 +223,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Ouyang et al. (2022), *Training language models to follow instructions with human feedback* (InstructGPT/RLHF): <https://arxiv.org/abs/2203.02155>
-- Rafailov et al. (2023), *Direct Preference Optimization: Your Language Model is Secretly a Reward Model*: <https://arxiv.org/abs/2305.18290>
-- Christiano et al. (2017), *Deep Reinforcement Learning from Human Preferences*: <https://arxiv.org/abs/1706.03741>
-- Bai et al. (2022), *Constitutional AI: Harmlessness from AI Feedback* (RLAIF): <https://arxiv.org/abs/2212.08073>
-- Schulman et al. (2017), *Proximal Policy Optimization Algorithms* (PPO): <https://arxiv.org/abs/1707.06347>
-- Sutton y Barto, *Reinforcement Learning: An Introduction* (2.ª ed.): <http://incompleteideas.net/book/the-book-2nd.html>
+- Ouyang et al. (2022), *Training language models to follow instructions with human feedback* (InstructGPT/RLHF): <https://arxiv.org/abs/2203.02155> — uso: fuente primaria del mecanismo estudiado
+- Rafailov et al. (2023), *Direct Preference Optimization: Your Language Model is Secretly a Reward Model*: <https://arxiv.org/abs/2305.18290> — uso: fuente primaria del mecanismo estudiado
+- Christiano et al. (2017), *Deep Reinforcement Learning from Human Preferences*: <https://arxiv.org/abs/1706.03741> — uso: fuente primaria del mecanismo estudiado
+- Bai et al. (2022), *Constitutional AI: Harmlessness from AI Feedback* (RLAIF): <https://arxiv.org/abs/2212.08073> — uso: fuente primaria del mecanismo estudiado
+- Schulman et al. (2017), *Proximal Policy Optimization Algorithms* (PPO): <https://arxiv.org/abs/1707.06347> — uso: fuente primaria del mecanismo estudiado
+- Sutton y Barto, *Reinforcement Learning: An Introduction* (2.ª ed.): <http://incompleteideas.net/book/the-book-2nd.html> — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

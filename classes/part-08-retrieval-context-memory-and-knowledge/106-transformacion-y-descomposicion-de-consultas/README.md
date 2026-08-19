@@ -229,12 +229,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Gao, L. et al. (2022). *Precise Zero-Shot Dense Retrieval without Relevance Labels* (HyDE). [arXiv:2212.10496](https://arxiv.org/abs/2212.10496)
-- Ma, X. et al. (2023). *Query Rewriting for Retrieval-Augmented Large Language Models*. [arXiv:2305.14283](https://arxiv.org/abs/2305.14283)
-- Zheng, H. et al. (2023). *Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models*. [arXiv:2310.06117](https://arxiv.org/abs/2310.06117)
-- Zhou, D. et al. (2022). *Least-to-Most Prompting Enables Complex Reasoning in Large Language Models*. [arXiv:2205.10625](https://arxiv.org/abs/2205.10625)
-- Cormack, G., Clarke, C. & Buettcher, S. (2009). *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods*. SIGIR '09. [DOI 10.1145/1571941.1572114](https://doi.org/10.1145/1571941.1572114)
-- Documentación de LangChain, *MultiQueryRetriever*: [https://python.langchain.com/docs/how_to/MultiQueryRetriever/](https://python.langchain.com/docs/how_to/MultiQueryRetriever/)
+- Gao, L. et al. (2022). *Precise Zero-Shot Dense Retrieval without Relevance Labels* (HyDE). [arXiv:2212.10496](https://arxiv.org/abs/2212.10496) — uso: fuente primaria del mecanismo estudiado
+- Ma, X. et al. (2023). *Query Rewriting for Retrieval-Augmented Large Language Models*. [arXiv:2305.14283](https://arxiv.org/abs/2305.14283) — uso: fuente primaria del mecanismo estudiado
+- Zheng, H. et al. (2023). *Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models*. [arXiv:2310.06117](https://arxiv.org/abs/2310.06117) — uso: fuente primaria del mecanismo estudiado
+- Zhou, D. et al. (2022). *Least-to-Most Prompting Enables Complex Reasoning in Large Language Models*. [arXiv:2205.10625](https://arxiv.org/abs/2205.10625) — uso: fuente primaria del mecanismo estudiado
+- Cormack, G., Clarke, C. & Buettcher, S. (2009). *Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods*. SIGIR '09. [DOI 10.1145/1571941.1572114](https://doi.org/10.1145/1571941.1572114) — uso: fuente primaria del mecanismo estudiado
+- Documentación de LangChain, *MultiQueryRetriever*: [https://python.langchain.com/docs/how_to/MultiQueryRetriever/](https://python.langchain.com/docs/how_to/MultiQueryRetriever/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

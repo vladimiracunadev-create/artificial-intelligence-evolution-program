@@ -259,14 +259,14 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell y Norvig — *Artificial Intelligence: A Modern Approach* (4e), cap. 2 "Intelligent Agents" (agente, entorno, medida de desempeño, racionalidad)](https://aima.cs.berkeley.edu/)
-- [Anthropic Engineering — "Building effective agents" (workflows vs agents, cuándo usar cada uno)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
-- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761](https://arxiv.org/abs/2302.04761)
-- [Anthropic — documentación oficial de agentes y herramientas](https://docs.claude.com)
-- [LangGraph — Overview (grafos de control para workflows y agentes)](https://docs.langchain.com/oss/python/langgraph/overview)
-- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/)
-- [Anthropic Engineering — "Effective context engineering for AI agents"](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- [Russell y Norvig — *Artificial Intelligence: A Modern Approach* (4e), cap. 2 "Intelligent Agents" (agente, entorno, medida de desempeño, racionalidad)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Anthropic Engineering — "Building effective agents" (workflows vs agents, cuándo usar cada uno)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761](https://arxiv.org/abs/2302.04761) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic — documentación oficial de agentes y herramientas](https://docs.claude.com) — uso: referencia consultada en su fuente original
+- [LangGraph — Overview (grafos de control para workflows y agentes)](https://docs.langchain.com/oss/python/langgraph/overview) — uso: referencia consultada en su fuente original
+- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/) — uso: referencia consultada en su fuente original
+- [Anthropic Engineering — "Effective context engineering for AI agents"](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

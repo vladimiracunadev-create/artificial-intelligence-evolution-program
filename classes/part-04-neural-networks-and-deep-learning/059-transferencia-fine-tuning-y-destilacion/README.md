@@ -213,12 +213,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Hinton, G., Vinyals, O. y Dean, J. (2015). *Distilling the Knowledge in a Neural Network*. [arXiv:1503.02531](https://arxiv.org/abs/1503.02531)
-- Yosinski, J. et al. (2014). *How transferable are features in deep neural networks?* [arXiv:1411.1792](https://arxiv.org/abs/1411.1792)
-- Hu, E. et al. (2021). *LoRA: Low-Rank Adaptation of Large Language Models*. [arXiv:2106.09685](https://arxiv.org/abs/2106.09685)
-- Howard, J. y Ruder, S. (2018). *Universal Language Model Fine-tuning for Text Classification* (ULMFiT). [arXiv:1801.06146](https://arxiv.org/abs/1801.06146)
-- Tutorial oficial de PyTorch: [Transfer Learning for Computer Vision](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)
-- Documentación de Hugging Face PEFT. [huggingface.co/docs/peft](https://huggingface.co/docs/peft)
+- Hinton, G., Vinyals, O. y Dean, J. (2015). *Distilling the Knowledge in a Neural Network*. [arXiv:1503.02531](https://arxiv.org/abs/1503.02531) — uso: fuente primaria del mecanismo estudiado
+- Yosinski, J. et al. (2014). *How transferable are features in deep neural networks?* [arXiv:1411.1792](https://arxiv.org/abs/1411.1792) — uso: fuente primaria del mecanismo estudiado
+- Hu, E. et al. (2021). *LoRA: Low-Rank Adaptation of Large Language Models*. [arXiv:2106.09685](https://arxiv.org/abs/2106.09685) — uso: fuente primaria del mecanismo estudiado
+- Howard, J. y Ruder, S. (2018). *Universal Language Model Fine-tuning for Text Classification* (ULMFiT). [arXiv:1801.06146](https://arxiv.org/abs/1801.06146) — uso: fuente primaria del mecanismo estudiado
+- Tutorial oficial de PyTorch: [Transfer Learning for Computer Vision](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) — uso: referencia consultada en su fuente original
+- Documentación de Hugging Face PEFT. [huggingface.co/docs/peft](https://huggingface.co/docs/peft) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

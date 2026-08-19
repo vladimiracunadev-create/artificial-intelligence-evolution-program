@@ -225,11 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Corbett, A. T. y Anderson, J. R. (1995). *Knowledge tracing: Modeling the acquisition of procedural knowledge*. UMUAI 4. [DOI 10.1007/BF01099821](https://doi.org/10.1007/BF01099821)
-- Bloom, B. S. (1984). *The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring*. Educational Researcher 13(6). [DOI 10.3102/0013189X013006004](https://doi.org/10.3102/0013189X013006004)
-- Piech, C. et al. (2015). *Deep Knowledge Tracing*. NeurIPS 2015. [arXiv:1506.05908](https://arxiv.org/abs/1506.05908)
-- VanLehn, K. (2011). *The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems, and Other Tutoring Systems*. Educational Psychologist 46(4). [DOI 10.1080/00461520.2011.611369](https://doi.org/10.1080/00461520.2011.611369)
-- Vygotsky, L. S. (1978). *Mind in Society* (zona de desarrollo próximo). Harvard University Press. [Ficha editorial](https://www.hup.harvard.edu/books/9780674576292)
+- Corbett, A. T. y Anderson, J. R. (1995). *Knowledge tracing: Modeling the acquisition of procedural knowledge*. UMUAI 4. [DOI 10.1007/BF01099821](https://doi.org/10.1007/BF01099821) — uso: fuente primaria del mecanismo estudiado
+- Bloom, B. S. (1984). *The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring*. Educational Researcher 13(6). [DOI 10.3102/0013189X013006004](https://doi.org/10.3102/0013189X013006004) — uso: fuente primaria del mecanismo estudiado
+- Piech, C. et al. (2015). *Deep Knowledge Tracing*. NeurIPS 2015. [arXiv:1506.05908](https://arxiv.org/abs/1506.05908) — uso: fuente primaria del mecanismo estudiado
+- VanLehn, K. (2011). *The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems, and Other Tutoring Systems*. Educational Psychologist 46(4). [DOI 10.1080/00461520.2011.611369](https://doi.org/10.1080/00461520.2011.611369) — uso: fuente primaria del mecanismo estudiado
+- Vygotsky, L. S. (1978). *Mind in Society* (zona de desarrollo próximo). Harvard University Press. [Ficha editorial](https://www.hup.harvard.edu/books/9780674576292) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

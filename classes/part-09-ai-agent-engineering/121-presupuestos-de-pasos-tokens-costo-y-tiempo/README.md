@@ -229,11 +229,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [OpenTelemetry — documentación oficial (trazas, spans y atributos: el estándar de la fase "medir")](https://opentelemetry.io/docs/)
-- [Anthropic Engineering — "Effective context engineering for AI agents" (el contexto que se re-paga y su compactación)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-- [Anthropic Engineering — "Building effective agents" (costo y latencia como trade-off explícito de los agentes)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle cuyo costo se presupuesta)](https://arxiv.org/abs/2210.03629)
-- [Kaplan et al. (2020), "Scaling Laws for Neural Language Models", arXiv:2001.08361 (relación cómputo-costo en LLMs)](https://arxiv.org/abs/2001.08361)
+- [OpenTelemetry — documentación oficial (trazas, spans y atributos: el estándar de la fase "medir")](https://opentelemetry.io/docs/) — uso: marco normativo de referencia
+- [Anthropic Engineering — "Effective context engineering for AI agents" (el contexto que se re-paga y su compactación)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — uso: referencia consultada en su fuente original
+- [Anthropic Engineering — "Building effective agents" (costo y latencia como trade-off explícito de los agentes)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle cuyo costo se presupuesta)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Kaplan et al. (2020), "Scaling Laws for Neural Language Models", arXiv:2001.08361 (relación cómputo-costo en LLMs)](https://arxiv.org/abs/2001.08361) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

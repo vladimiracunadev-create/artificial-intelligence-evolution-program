@@ -233,11 +233,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic, "Building Effective Agents"](https://www.anthropic.com/research/building-effective-agents)
-- [Anthropic — Documentación: agentes y uso de herramientas](https://docs.anthropic.com/)
-- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
-- [Yao et al. (2023), "ReAct: Synergizing Reasoning and Acting in Language Models" (arXiv:2210.03629)](https://arxiv.org/abs/2210.03629)
-- [Model Context Protocol — especificación](https://modelcontextprotocol.io/)
+- [Anthropic, "Building Effective Agents"](https://www.anthropic.com/research/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Anthropic — Documentación: agentes y uso de herramientas](https://docs.anthropic.com/) — uso: referencia consultada en su fuente original
+- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — uso: marco normativo de referencia
+- [Yao et al. (2023), "ReAct: Synergizing Reasoning and Acting in Language Models" (arXiv:2210.03629)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Model Context Protocol — especificación](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

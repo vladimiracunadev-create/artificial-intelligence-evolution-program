@@ -234,11 +234,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Es, S. et al. (2023). *RAGAS: Automated Evaluation of Retrieval Augmented Generation*. [arXiv:2309.15217](https://arxiv.org/abs/2309.15217)
-- Rashkin, H. et al. (2021). *Measuring Attribution in Natural Language Generation Models* (AIS). [arXiv:2112.12870](https://arxiv.org/abs/2112.12870)
-- Gao, T. et al. (2023). *Enabling Large Language Models to Generate Text with Citations* (ALCE). [arXiv:2305.14627](https://arxiv.org/abs/2305.14627)
-- Zheng, L. et al. (2023). *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. [arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
-- Documentación oficial de RAGAS: [https://docs.ragas.io/](https://docs.ragas.io/)
+- Es, S. et al. (2023). *RAGAS: Automated Evaluation of Retrieval Augmented Generation*. [arXiv:2309.15217](https://arxiv.org/abs/2309.15217) — uso: fuente primaria del mecanismo estudiado
+- Rashkin, H. et al. (2021). *Measuring Attribution in Natural Language Generation Models* (AIS). [arXiv:2112.12870](https://arxiv.org/abs/2112.12870) — uso: fuente primaria del mecanismo estudiado
+- Gao, T. et al. (2023). *Enabling Large Language Models to Generate Text with Citations* (ALCE). [arXiv:2305.14627](https://arxiv.org/abs/2305.14627) — uso: fuente primaria del mecanismo estudiado
+- Zheng, L. et al. (2023). *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. [arXiv:2306.05685](https://arxiv.org/abs/2306.05685) — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de RAGAS: [https://docs.ragas.io/](https://docs.ragas.io/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

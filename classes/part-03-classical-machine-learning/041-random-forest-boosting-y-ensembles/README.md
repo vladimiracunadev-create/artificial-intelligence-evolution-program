@@ -234,12 +234,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Breiman (2001), "Random Forests", *Machine Learning* 45. DOI 10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324)
-- [Breiman (1996), "Bagging Predictors", *Machine Learning* 24. DOI 10.1007/BF00058655](https://doi.org/10.1007/BF00058655)
-- [Freund & Schapire (1997), "A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting", JCSS. DOI 10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504)
-- [Friedman (2001), "Greedy Function Approximation: A Gradient Boosting Machine", *Annals of Statistics* 29(5). DOI 10.1214/aos/1013203451](https://doi.org/10.1214/aos/1013203451)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 10 (boosting) y 15 (random forests), PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [scikit-learn User Guide — Ensembles: bagging, forests, AdaBoost, gradient boosting](https://scikit-learn.org/stable/modules/ensemble.html)
+- [Breiman (2001), "Random Forests", *Machine Learning* 45. DOI 10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324) — uso: fuente primaria del mecanismo estudiado
+- [Breiman (1996), "Bagging Predictors", *Machine Learning* 24. DOI 10.1007/BF00058655](https://doi.org/10.1007/BF00058655) — uso: fuente primaria del mecanismo estudiado
+- [Freund & Schapire (1997), "A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting", JCSS. DOI 10.1006/jcss.1997.1504](https://doi.org/10.1006/jcss.1997.1504) — uso: fuente primaria del mecanismo estudiado
+- [Friedman (2001), "Greedy Function Approximation: A Gradient Boosting Machine", *Annals of Statistics* 29(5). DOI 10.1214/aos/1013203451](https://doi.org/10.1214/aos/1013203451) — uso: fuente primaria del mecanismo estudiado
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 10 (boosting) y 15 (random forests), PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [scikit-learn User Guide — Ensembles: bagging, forests, AdaBoost, gradient boosting](https://scikit-learn.org/stable/modules/ensemble.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -244,13 +244,13 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic Engineering — "Effective context engineering for AI agents" (compactación, notas estructuradas, presupuesto de contexto)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-- [Liu et al. (2023), "Lost in the Middle: How Language Models Use Long Contexts", arXiv:2307.03172 (degradación de atención en contextos largos)](https://arxiv.org/abs/2307.03172)
-- [Packer et al. (2023), "MemGPT: Towards LLMs as Operating Systems", arXiv:2310.08560 (jerarquía de memoria y paginación de contexto)](https://arxiv.org/abs/2310.08560)
-- [Lewis et al. (2020), "Retrieval-Augmented Generation", arXiv:2005.11401 (recuperación selectiva hacia el contexto)](https://arxiv.org/abs/2005.11401)
-- [LangGraph — Persistence (checkpoints y reanudación de grafos con estado)](https://docs.langchain.com/oss/python/langgraph/persistence)
-- [OWASP Top 10 for LLM Applications (envenenamiento de memoria como riesgo persistente)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- ["LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth", arXiv:2602.07962 (medición del context rot)](https://arxiv.org/abs/2602.07962)
+- [Anthropic Engineering — "Effective context engineering for AI agents" (compactación, notas estructuradas, presupuesto de contexto)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — uso: referencia consultada en su fuente original
+- [Liu et al. (2023), "Lost in the Middle: How Language Models Use Long Contexts", arXiv:2307.03172 (degradación de atención en contextos largos)](https://arxiv.org/abs/2307.03172) — uso: fuente primaria del mecanismo estudiado
+- [Packer et al. (2023), "MemGPT: Towards LLMs as Operating Systems", arXiv:2310.08560 (jerarquía de memoria y paginación de contexto)](https://arxiv.org/abs/2310.08560) — uso: fuente primaria del mecanismo estudiado
+- [Lewis et al. (2020), "Retrieval-Augmented Generation", arXiv:2005.11401 (recuperación selectiva hacia el contexto)](https://arxiv.org/abs/2005.11401) — uso: fuente primaria del mecanismo estudiado
+- [LangGraph — Persistence (checkpoints y reanudación de grafos con estado)](https://docs.langchain.com/oss/python/langgraph/persistence) — uso: referencia consultada en su fuente original
+- [OWASP Top 10 for LLM Applications (envenenamiento de memoria como riesgo persistente)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- ["LOCA-bench: Benchmarking Language Agents Under Controllable and Extreme Context Growth", arXiv:2602.07962 (medición del context rot)](https://arxiv.org/abs/2602.07962) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

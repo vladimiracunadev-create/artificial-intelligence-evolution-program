@@ -234,11 +234,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Ha, D. & Schmidhuber, J. (2018). *World Models*. [arXiv:1803.10122](https://arxiv.org/abs/1803.10122)
-- Hafner, D. et al. (2023). *Mastering Diverse Domains through World Models* (DreamerV3). [arXiv:2301.04104](https://arxiv.org/abs/2301.04104)
-- LeCun, Y. (2022). *A Path Towards Autonomous Machine Intelligence*. [OpenReview](https://openreview.net/forum?id=BZ5a1r-kVsf)
-- Assran, M. et al. (2023). *Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture* (I-JEPA). CVPR 2023. [arXiv:2301.08243](https://arxiv.org/abs/2301.08243)
-- Sutton, R. & Barto, A. (2018). *Reinforcement Learning: An Introduction* (2.ª ed.), cap. 8 (Dyna, planning and learning). [PDF oficial](http://incompleteideas.net/book/the-book-2nd.html)
+- Ha, D. & Schmidhuber, J. (2018). *World Models*. [arXiv:1803.10122](https://arxiv.org/abs/1803.10122) — uso: fuente primaria del mecanismo estudiado
+- Hafner, D. et al. (2023). *Mastering Diverse Domains through World Models* (DreamerV3). [arXiv:2301.04104](https://arxiv.org/abs/2301.04104) — uso: fuente primaria del mecanismo estudiado
+- LeCun, Y. (2022). *A Path Towards Autonomous Machine Intelligence*. [OpenReview](https://openreview.net/forum?id=BZ5a1r-kVsf) — uso: referencia consultada en su fuente original
+- Assran, M. et al. (2023). *Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture* (I-JEPA). CVPR 2023. [arXiv:2301.08243](https://arxiv.org/abs/2301.08243) — uso: fuente primaria del mecanismo estudiado
+- Sutton, R. & Barto, A. (2018). *Reinforcement Learning: An Introduction* (2.ª ed.), cap. 8 (Dyna, planning and learning). [PDF oficial](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

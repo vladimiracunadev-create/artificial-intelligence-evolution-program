@@ -233,10 +233,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - Documentación oficial de Claude — tool use: <https://docs.claude.com>
-- Especificación del Model Context Protocol (MCP): <https://modelcontextprotocol.io>
-- Yao et al. (2022), *ReAct: Synergizing Reasoning and Acting in Language Models*: <https://arxiv.org/abs/2210.03629>
-- Schick et al. (2023), *Toolformer: Language Models Can Teach Themselves to Use Tools*: <https://arxiv.org/abs/2302.04761>
-- Especificación JSON Schema (validación de argumentos): <https://json-schema.org>
+- Especificación del Model Context Protocol (MCP): <https://modelcontextprotocol.io> — uso: marco normativo de referencia
+- Yao et al. (2022), *ReAct: Synergizing Reasoning and Acting in Language Models*: <https://arxiv.org/abs/2210.03629> — uso: fuente primaria del mecanismo estudiado
+- Schick et al. (2023), *Toolformer: Language Models Can Teach Themselves to Use Tools*: <https://arxiv.org/abs/2302.04761> — uso: fuente primaria del mecanismo estudiado
+- Especificación JSON Schema (validación de argumentos): <https://json-schema.org> — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

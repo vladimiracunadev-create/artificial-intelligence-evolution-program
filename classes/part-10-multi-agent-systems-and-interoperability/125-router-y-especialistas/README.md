@@ -211,7 +211,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): delegación a especialistas con instrucciones explícitas.
 - [Jacobs et al., *Adaptive Mixtures of Local Experts*, Neural Computation, 1991](https://doi.org/10.1162/neco.1991.3.1.79): el antecedente clásico — gating network + expertos.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): conversaciones dirigidas entre agentes especializados.
-- Russell, S. y Norvig, P., *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2 (agentes y entornos): base conceptual de especialización por tarea.
+- Russell, S. y Norvig, P., *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2 (agentes y entornos): base conceptual de especialización por tarea. — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -205,12 +205,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — cap. 11 (Automated Planning)](https://aima.cs.berkeley.edu/)
-- [Fikes & Nilsson (1971). "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving". *Artificial Intelligence* 2(3-4)](https://doi.org/10.1016/0004-3702%2871%2990010-5)
-- [Blum & Furst (1997). "Fast Planning Through Planning Graph Analysis". *Artificial Intelligence* 90(1-2)](https://doi.org/10.1016/S0004-3702%2896%2900047-1)
-- [planning.wiki — referencia comunitaria de PDDL y planificadores](https://planning.wiki/)
-- [Referencia de sintaxis PDDL](https://planning.wiki/ref/pddl)
-- [Fast Downward — planificador de referencia (documentación oficial)](https://www.fast-downward.org/)
+- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — cap. 11 (Automated Planning)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Fikes & Nilsson (1971). "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving". *Artificial Intelligence* 2(3-4)](https://doi.org/10.1016/0004-3702%2871%2990010-5) — uso: fuente primaria del mecanismo estudiado
+- [Blum & Furst (1997). "Fast Planning Through Planning Graph Analysis". *Artificial Intelligence* 90(1-2)](https://doi.org/10.1016/S0004-3702%2896%2900047-1) — uso: fuente primaria del mecanismo estudiado
+- [planning.wiki — referencia comunitaria de PDDL y planificadores](https://planning.wiki/) — uso: referencia consultada en su fuente original
+- [Referencia de sintaxis PDDL](https://planning.wiki/ref/pddl) — uso: referencia consultada en su fuente original
+- [Fast Downward — planificador de referencia (documentación oficial)](https://www.fast-downward.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

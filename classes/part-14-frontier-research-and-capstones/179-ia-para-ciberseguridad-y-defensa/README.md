@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Axelsson, S. (2000). *The base-rate fallacy and the difficulty of intrusion detection*. ACM TISSEC 3(3). [DOI 10.1145/357830.357849](https://doi.org/10.1145/357830.357849)
-- Sommer, R. y Paxson, V. (2010). *Outside the Closed World: On Using Machine Learning for Network Intrusion Detection*. IEEE S&P 2010. [DOI 10.1109/SP.2010.25](https://doi.org/10.1109/SP.2010.25)
-- MITRE ATT&CK — base de conocimiento de tácticas y técnicas adversarias. [attack.mitre.org](https://attack.mitre.org/)
-- NIST Cybersecurity Framework 2.0 (2024). [nist.gov/cyberframework](https://www.nist.gov/cyberframework)
-- Apruzzese, G. et al. (2023). *The Role of Machine Learning in Cybersecurity*. ACM Digital Threats 4(1). [DOI 10.1145/3545574](https://doi.org/10.1145/3545574)
+- Axelsson, S. (2000). *The base-rate fallacy and the difficulty of intrusion detection*. ACM TISSEC 3(3). [DOI 10.1145/357830.357849](https://doi.org/10.1145/357830.357849) — uso: fuente primaria del mecanismo estudiado
+- Sommer, R. y Paxson, V. (2010). *Outside the Closed World: On Using Machine Learning for Network Intrusion Detection*. IEEE S&P 2010. [DOI 10.1109/SP.2010.25](https://doi.org/10.1109/SP.2010.25) — uso: fuente primaria del mecanismo estudiado
+- MITRE ATT&CK — base de conocimiento de tácticas y técnicas adversarias. [attack.mitre.org](https://attack.mitre.org/) — uso: referencia consultada en su fuente original
+- NIST Cybersecurity Framework 2.0 (2024). [nist.gov/cyberframework](https://www.nist.gov/cyberframework) — uso: marco normativo de referencia
+- Apruzzese, G. et al. (2023). *The Role of Machine Learning in Cybersecurity*. ACM Digital Threats 4(1). [DOI 10.1145/3545574](https://doi.org/10.1145/3545574) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

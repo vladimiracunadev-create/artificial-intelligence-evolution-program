@@ -246,11 +246,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Reglamento (UE) 2024/1689 — EU AI Act (texto oficial)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
-- [Mitchell et al. (2019), *Model Cards for Model Reporting*, arXiv:1810.03993](https://arxiv.org/abs/1810.03993)
-- [Gebru et al. (2021), *Datasheets for Datasets*, arXiv:1803.09010](https://arxiv.org/abs/1803.09010)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Comisión Europea — AI Act: información oficial y calendario de aplicación](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+- [Reglamento (UE) 2024/1689 — EU AI Act (texto oficial)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — uso: marco normativo de referencia
+- [Mitchell et al. (2019), *Model Cards for Model Reporting*, arXiv:1810.03993](https://arxiv.org/abs/1810.03993) — uso: fuente primaria del mecanismo estudiado
+- [Gebru et al. (2021), *Datasheets for Datasets*, arXiv:1803.09010](https://arxiv.org/abs/1803.09010) — uso: fuente primaria del mecanismo estudiado
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Comisión Europea — AI Act: información oficial y calendario de aplicación](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

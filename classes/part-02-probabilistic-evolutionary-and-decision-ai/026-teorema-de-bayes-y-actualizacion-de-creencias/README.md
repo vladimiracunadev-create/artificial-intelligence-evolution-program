@@ -197,11 +197,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Bayes, T. & Price, R. (1763). "An Essay towards solving a Problem in the Doctrine of Chances". *Phil. Trans. Royal Society*, 53, 370-418. [https://doi.org/10.1098/rstl.1763.0053](https://doi.org/10.1098/rstl.1763.0053)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 12.5-12.6. [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Murphy, K. (2022). *Probabilistic Machine Learning: An Introduction*, cap. 4 (estadística bayesiana). [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html)
-- Gelman, A. et al. (2013). *Bayesian Data Analysis*, 3.ª ed. [http://www.stat.columbia.edu/~gelman/book/](http://www.stat.columbia.edu/~gelman/book/)
-- Jurafsky, D. & Martin, J. H. *Speech and Language Processing*, 3.ª ed. (draft), cap. de naive Bayes. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
+- Bayes, T. & Price, R. (1763). "An Essay towards solving a Problem in the Doctrine of Chances". *Phil. Trans. Royal Society*, 53, 370-418. [https://doi.org/10.1098/rstl.1763.0053](https://doi.org/10.1098/rstl.1763.0053) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 12.5-12.6. [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Murphy, K. (2022). *Probabilistic Machine Learning: An Introduction*, cap. 4 (estadística bayesiana). [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html) — uso: desarrollo extendido del tema
+- Gelman, A. et al. (2013). *Bayesian Data Analysis*, 3.ª ed. [http://www.stat.columbia.edu/~gelman/book/](http://www.stat.columbia.edu/~gelman/book/) — uso: referencia consultada en su fuente original
+- Jurafsky, D. & Martin, J. H. *Speech and Language Processing*, 3.ª ed. (draft), cap. de naive Bayes. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

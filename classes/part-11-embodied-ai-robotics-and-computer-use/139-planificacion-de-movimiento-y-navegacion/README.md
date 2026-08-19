@@ -240,12 +240,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [LaValle, S. M. Planning Algorithms (Cambridge UP, 2006) — libro completo gratuito](http://lavalle.pl/planning/)
-- [Hart, P., Nilsson, N. & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. DOI 10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136)
-- [LaValle, S. M. (1998). Rapidly-Exploring Random Trees: A New Tool for Path Planning (informe técnico, Iowa State)](http://lavalle.pl/papers/Lav98c.pdf)
-- [Fox, D., Burgard, W. & Thrun, S. (1997). The Dynamic Window Approach to Collision Avoidance. IEEE RAM. DOI 10.1109/100.580977](https://doi.org/10.1109/100.580977)
-- [Russell, S. & Norvig, P. AIMA 4e — cap. 3 (búsqueda) y cap. 26 (robótica)](https://aima.cs.berkeley.edu/)
-- [Nav2 — Navigation Concepts (planificador global y local)](https://docs.nav2.org/concepts/index.html)
+- [LaValle, S. M. Planning Algorithms (Cambridge UP, 2006) — libro completo gratuito](http://lavalle.pl/planning/) — uso: referencia consultada en su fuente original
+- [Hart, P., Nilsson, N. & Raphael, B. (1968). A Formal Basis for the Heuristic Determination of Minimum Cost Paths. DOI 10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136) — uso: fuente primaria del mecanismo estudiado
+- [LaValle, S. M. (1998). Rapidly-Exploring Random Trees: A New Tool for Path Planning (informe técnico, Iowa State)](http://lavalle.pl/papers/Lav98c.pdf) — uso: referencia consultada en su fuente original
+- [Fox, D., Burgard, W. & Thrun, S. (1997). The Dynamic Window Approach to Collision Avoidance. IEEE RAM. DOI 10.1109/100.580977](https://doi.org/10.1109/100.580977) — uso: fuente primaria del mecanismo estudiado
+- [Russell, S. & Norvig, P. AIMA 4e — cap. 3 (búsqueda) y cap. 26 (robótica)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Nav2 — Navigation Concepts (planificador global y local)](https://docs.nav2.org/concepts/index.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

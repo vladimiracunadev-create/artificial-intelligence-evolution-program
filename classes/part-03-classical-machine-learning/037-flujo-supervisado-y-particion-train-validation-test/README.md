@@ -232,11 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [James, Witten, Hastie, Tibshirani — *An Introduction to Statistical Learning* (2e), cap. 2 y 5 (bias-variance y cross-validation), PDF oficial gratuito](https://www.statlearning.com/)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 "Model Assessment and Selection", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [scikit-learn User Guide — Cross-validation: evaluating estimator performance](https://scikit-learn.org/stable/modules/cross_validation.html)
-- [scikit-learn — Common pitfalls: data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)
-- [Kaufman et al. (2012), "Leakage in Data Mining: Formulation, Detection, and Avoidance", ACM TKDD. DOI 10.1145/2382577.2382579](https://doi.org/10.1145/2382577.2382579)
+- [James, Witten, Hastie, Tibshirani — *An Introduction to Statistical Learning* (2e), cap. 2 y 5 (bias-variance y cross-validation), PDF oficial gratuito](https://www.statlearning.com/) — uso: desarrollo extendido del tema
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 "Model Assessment and Selection", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [scikit-learn User Guide — Cross-validation: evaluating estimator performance](https://scikit-learn.org/stable/modules/cross_validation.html) — uso: referencia consultada en su fuente original
+- [scikit-learn — Common pitfalls: data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage) — uso: referencia consultada en su fuente original
+- [Kaufman et al. (2012), "Leakage in Data Mining: Formulation, Detection, and Avoidance", ACM TKDD. DOI 10.1145/2382577.2382579](https://doi.org/10.1145/2382577.2382579) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

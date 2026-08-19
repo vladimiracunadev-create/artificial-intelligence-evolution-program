@@ -227,12 +227,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- W3C. *Web Content Accessibility Guidelines (WCAG) 2.2* — [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/)
-- W3C WAI. *Introduction to Web Accessibility* — [w3.org/WAI/fundamentals/accessibility-intro](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
-- WebAIM. *Contrast Checker* (cálculo de luminancia y ratio WCAG) — [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/)
-- Radford, A. et al. (2022). "Robust Speech Recognition via Large-Scale Weak Supervision" (Whisper) — [arXiv:2212.04356](https://arxiv.org/abs/2212.04356)
-- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
+- W3C. *Web Content Accessibility Guidelines (WCAG) 2.2* — [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/) — uso: marco normativo de referencia
+- W3C WAI. *Introduction to Web Accessibility* — [w3.org/WAI/fundamentals/accessibility-intro](https://www.w3.org/WAI/fundamentals/accessibility-intro/) — uso: marco normativo de referencia
+- WebAIM. *Contrast Checker* (cálculo de luminancia y ratio WCAG) — [webaim.org/resources/contrastchecker](https://webaim.org/resources/contrastchecker/) — uso: referencia consultada en su fuente original
+- Radford, A. et al. (2022). "Robust Speech Recognition via Large-Scale Weak Supervision" (Whisper) — [arXiv:2212.04356](https://arxiv.org/abs/2212.04356) — uso: fuente primaria del mecanismo estudiado
+- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020) — uso: fuente primaria del mecanismo estudiado
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
 
 ---
 

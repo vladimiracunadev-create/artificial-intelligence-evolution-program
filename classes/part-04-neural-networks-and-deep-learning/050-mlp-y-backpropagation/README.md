@@ -222,10 +222,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Rumelhart, D., Hinton, G. y Williams, R. (1986). *Learning representations by back-propagating errors*. Nature, 323. [doi:10.1038/323533a0](https://doi.org/10.1038/323533a0)
-- Cybenko, G. (1989). *Approximation by superpositions of a sigmoidal function*. [doi:10.1007/BF02551274](https://doi.org/10.1007/BF02551274)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 6 (Deep Feedforward Networks). [deeplearningbook.org/contents/mlp.html](https://www.deeplearningbook.org/contents/mlp.html)
-- Documentación de PyTorch: [mecánica de autograd](https://pytorch.org/docs/stable/notes/autograd.html)
+- Rumelhart, D., Hinton, G. y Williams, R. (1986). *Learning representations by back-propagating errors*. Nature, 323. [doi:10.1038/323533a0](https://doi.org/10.1038/323533a0) — uso: fuente primaria del mecanismo estudiado
+- Cybenko, G. (1989). *Approximation by superpositions of a sigmoidal function*. [doi:10.1007/BF02551274](https://doi.org/10.1007/BF02551274) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 6 (Deep Feedforward Networks). [deeplearningbook.org/contents/mlp.html](https://www.deeplearningbook.org/contents/mlp.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [mecánica de autograd](https://pytorch.org/docs/stable/notes/autograd.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

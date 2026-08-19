@@ -224,11 +224,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kingma, D. y Ba, J. (2014). *Adam: A Method for Stochastic Optimization*. [arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
-- Loshchilov, I. y Hutter, F. (2017). *Decoupled Weight Decay Regularization* (AdamW). [arXiv:1711.05101](https://arxiv.org/abs/1711.05101)
-- Srivastava, N. et al. (2014). *Dropout: A Simple Way to Prevent Neural Networks from Overfitting*. JMLR 15. [jmlr.org/papers/v15/srivastava14a.html](https://jmlr.org/papers/v15/srivastava14a.html)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (Optimization). [deeplearningbook.org/contents/optimization.html](https://www.deeplearningbook.org/contents/optimization.html)
-- Documentación de PyTorch: [`torch.optim`](https://pytorch.org/docs/stable/optim.html)
+- Kingma, D. y Ba, J. (2014). *Adam: A Method for Stochastic Optimization*. [arXiv:1412.6980](https://arxiv.org/abs/1412.6980) — uso: fuente primaria del mecanismo estudiado
+- Loshchilov, I. y Hutter, F. (2017). *Decoupled Weight Decay Regularization* (AdamW). [arXiv:1711.05101](https://arxiv.org/abs/1711.05101) — uso: fuente primaria del mecanismo estudiado
+- Srivastava, N. et al. (2014). *Dropout: A Simple Way to Prevent Neural Networks from Overfitting*. JMLR 15. [jmlr.org/papers/v15/srivastava14a.html](https://jmlr.org/papers/v15/srivastava14a.html) — uso: referencia consultada en su fuente original
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (Optimization). [deeplearningbook.org/contents/optimization.html](https://www.deeplearningbook.org/contents/optimization.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [`torch.optim`](https://pytorch.org/docs/stable/optim.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

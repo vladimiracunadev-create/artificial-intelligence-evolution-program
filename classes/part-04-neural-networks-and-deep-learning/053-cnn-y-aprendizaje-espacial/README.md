@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- LeCun, Y., Bottou, L., Bengio, Y. y Haffner, P. (1998). *Gradient-based learning applied to document recognition*. Proc. IEEE. [doi:10.1109/5.726791](https://doi.org/10.1109/5.726791)
-- Krizhevsky, A., Sutskever, I. y Hinton, G. (2017). *ImageNet classification with deep convolutional neural networks*. Comm. ACM. [doi:10.1145/3065386](https://doi.org/10.1145/3065386)
-- He, K., Zhang, X., Ren, S. y Sun, J. (2015). *Deep Residual Learning for Image Recognition*. [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 9 (Convolutional Networks). [deeplearningbook.org/contents/convnets.html](https://www.deeplearningbook.org/contents/convnets.html)
-- Documentación de PyTorch: [`torch.nn.Conv2d`](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html)
+- LeCun, Y., Bottou, L., Bengio, Y. y Haffner, P. (1998). *Gradient-based learning applied to document recognition*. Proc. IEEE. [doi:10.1109/5.726791](https://doi.org/10.1109/5.726791) — uso: fuente primaria del mecanismo estudiado
+- Krizhevsky, A., Sutskever, I. y Hinton, G. (2017). *ImageNet classification with deep convolutional neural networks*. Comm. ACM. [doi:10.1145/3065386](https://doi.org/10.1145/3065386) — uso: fuente primaria del mecanismo estudiado
+- He, K., Zhang, X., Ren, S. y Sun, J. (2015). *Deep Residual Learning for Image Recognition*. [arXiv:1512.03385](https://arxiv.org/abs/1512.03385) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 9 (Convolutional Networks). [deeplearningbook.org/contents/convnets.html](https://www.deeplearningbook.org/contents/convnets.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [`torch.nn.Conv2d`](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

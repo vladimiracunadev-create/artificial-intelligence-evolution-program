@@ -237,11 +237,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic — Computer use tool (documentación oficial)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool)
-- [Anthropic — Developing a computer use model (2024)](https://www.anthropic.com/news/developing-computer-use)
-- [Xie, T. et al. (2024). OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments. arXiv:2404.07972](https://arxiv.org/abs/2404.07972)
-- [Cheng, K. et al. (2024). SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents. arXiv:2401.10935](https://arxiv.org/abs/2401.10935)
-- [OWASP — LLM01: Prompt Injection (riesgo aplicable a agentes que leen pantallas)](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
+- [Anthropic — Computer use tool (documentación oficial)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool) — uso: referencia consultada en su fuente original
+- [Anthropic — Developing a computer use model (2024)](https://www.anthropic.com/news/developing-computer-use) — uso: referencia consultada en su fuente original
+- [Xie, T. et al. (2024). OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments. arXiv:2404.07972](https://arxiv.org/abs/2404.07972) — uso: fuente primaria del mecanismo estudiado
+- [Cheng, K. et al. (2024). SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents. arXiv:2401.10935](https://arxiv.org/abs/2401.10935) — uso: fuente primaria del mecanismo estudiado
+- [OWASP — LLM01: Prompt Injection (riesgo aplicable a agentes que leen pantallas)](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

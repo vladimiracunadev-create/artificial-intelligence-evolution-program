@@ -248,11 +248,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — caps. 2-3 (filtros bayesianos y de Kalman)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/)
-- [Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction Problems. J. Basic Engineering. DOI 10.1115/1.3662552](https://doi.org/10.1115/1.3662552)
-- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — parte C, Sensing and Perception](https://link.springer.com/book/10.1007/978-3-319-32552-1)
-- [KalmanFilter.NET — tutorial ilustrado del filtro de Kalman (Alex Becker)](https://www.kalmanfilter.net/default.aspx)
-- [ROS 2 — robot_localization (fusión EKF/UKF en producción)](https://docs.ros.org/en/rolling/p/robot_localization/)
+- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — caps. 2-3 (filtros bayesianos y de Kalman)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/) — uso: referencia consultada en su fuente original
+- [Kalman, R. E. (1960). A New Approach to Linear Filtering and Prediction Problems. J. Basic Engineering. DOI 10.1115/1.3662552](https://doi.org/10.1115/1.3662552) — uso: fuente primaria del mecanismo estudiado
+- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — parte C, Sensing and Perception](https://link.springer.com/book/10.1007/978-3-319-32552-1) — uso: referencia consultada en su fuente original
+- [KalmanFilter.NET — tutorial ilustrado del filtro de Kalman (Alex Becker)](https://www.kalmanfilter.net/default.aspx) — uso: referencia consultada en su fuente original
+- [ROS 2 — robot_localization (fusión EKF/UKF en producción)](https://docs.ros.org/en/rolling/p/robot_localization/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

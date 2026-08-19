@@ -219,11 +219,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Dean & Barroso (2013), "The Tail at Scale", CACM](https://research.google/pubs/pub40801/)
-- [Huyen, *Designing Machine Learning Systems* — cap. de serving y feature stores](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
-- [Kleppmann, *Designing Data-Intensive Applications* — batch y stream processing](https://dataintensive.net/)
-- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-- [Apache Kafka Documentation](https://kafka.apache.org/documentation/)
+- [Dean & Barroso (2013), "The Tail at Scale", CACM](https://research.google/pubs/pub40801/) — uso: referencia consultada en su fuente original
+- [Huyen, *Designing Machine Learning Systems* — cap. de serving y feature stores](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) — uso: referencia consultada en su fuente original
+- [Kleppmann, *Designing Data-Intensive Applications* — batch y stream processing](https://dataintensive.net/) — uso: referencia consultada en su fuente original
+- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — uso: referencia consultada en su fuente original
+- [Apache Kafka Documentation](https://kafka.apache.org/documentation/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

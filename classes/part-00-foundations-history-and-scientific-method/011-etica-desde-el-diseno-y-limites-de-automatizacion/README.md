@@ -229,12 +229,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Mitchell et al. (2019). Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993)
-- [Gebru et al. (2021). Datasheets for Datasets](https://arxiv.org/abs/1803.09010)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Reglamento (UE) 2024/1689 — AI Act (texto oficial)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
-- [Kleinberg, Mullainathan & Raghavan (2016). Inherent Trade-Offs in the Fair Determination of Risk Scores](https://arxiv.org/abs/1609.05807)
-- [ACM Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics)
+- [Mitchell et al. (2019). Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993) — uso: fuente primaria del mecanismo estudiado
+- [Gebru et al. (2021). Datasheets for Datasets](https://arxiv.org/abs/1803.09010) — uso: fuente primaria del mecanismo estudiado
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Reglamento (UE) 2024/1689 — AI Act (texto oficial)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — uso: marco normativo de referencia
+- [Kleinberg, Mullainathan & Raghavan (2016). Inherent Trade-Offs in the Fair Determination of Risk Scores](https://arxiv.org/abs/1609.05807) — uso: fuente primaria del mecanismo estudiado
+- [ACM Code of Ethics and Professional Conduct](https://www.acm.org/code-of-ethics) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

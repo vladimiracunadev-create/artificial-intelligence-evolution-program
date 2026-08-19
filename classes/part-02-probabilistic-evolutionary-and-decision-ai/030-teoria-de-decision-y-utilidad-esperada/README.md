@@ -200,11 +200,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- von Neumann, J. & Morgenstern, O. (1944). *Theory of Games and Economic Behavior*. Princeton University Press.
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 16 "Making Simple Decisions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Kahneman, D. & Tversky, A. (1979). "Prospect Theory: An Analysis of Decision under Risk". *Econometrica*, 47(2), 263-291. [https://doi.org/10.2307/1914185](https://doi.org/10.2307/1914185)
-- Howard, R. A. (1966). "Information Value Theory". *IEEE Trans. Systems Science and Cybernetics*, 2(1), 22-26. [https://doi.org/10.1109/TSSC.1966.300074](https://doi.org/10.1109/TSSC.1966.300074)
-- Savage, L. J. (1954). *The Foundations of Statistics*. Wiley.
+- von Neumann, J. & Morgenstern, O. (1944). *Theory of Games and Economic Behavior*. Princeton University Press. — uso: desarrollo extendido del tema
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 16 "Making Simple Decisions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Kahneman, D. & Tversky, A. (1979). "Prospect Theory: An Analysis of Decision under Risk". *Econometrica*, 47(2), 263-291. [https://doi.org/10.2307/1914185](https://doi.org/10.2307/1914185) — uso: fuente primaria del mecanismo estudiado
+- Howard, R. A. (1966). "Information Value Theory". *IEEE Trans. Systems Science and Cybernetics*, 2(1), 22-26. [https://doi.org/10.1109/TSSC.1966.300074](https://doi.org/10.1109/TSSC.1966.300074) — uso: fuente primaria del mecanismo estudiado
+- Savage, L. J. (1954). *The Foundations of Statistics*. Wiley. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

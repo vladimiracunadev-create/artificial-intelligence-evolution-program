@@ -220,11 +220,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
-- [Cohen (1960), *A Coefficient of Agreement for Nominal Scales*, Educational and Psychological Measurement — DOI:10.1177/001316446002000104](https://doi.org/10.1177/001316446002000104)
-- [Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM), arXiv:2211.09110](https://arxiv.org/abs/2211.09110)
-- [OpenAI Evals (framework de evaluación, código abierto)](https://github.com/openai/evals)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, arXiv:2306.05685](https://arxiv.org/abs/2306.05685) — uso: fuente primaria del mecanismo estudiado
+- [Cohen (1960), *A Coefficient of Agreement for Nominal Scales*, Educational and Psychological Measurement — DOI:10.1177/001316446002000104](https://doi.org/10.1177/001316446002000104) — uso: fuente primaria del mecanismo estudiado
+- [Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM), arXiv:2211.09110](https://arxiv.org/abs/2211.09110) — uso: fuente primaria del mecanismo estudiado
+- [OpenAI Evals (framework de evaluación, código abierto)](https://github.com/openai/evals) — uso: referencia consultada en su fuente original
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

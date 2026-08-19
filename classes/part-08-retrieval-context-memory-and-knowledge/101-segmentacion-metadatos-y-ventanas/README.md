@@ -210,11 +210,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Lewis, P. et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks* (los documentos se indexan como pasajes de ~100 palabras). [arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
-- Karpukhin, V. et al. (2020). *Dense Passage Retrieval for Open-Domain Question Answering*. [arXiv:2004.04906](https://arxiv.org/abs/2004.04906)
-- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. sobre recuperación y RAG. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
-- Documentación oficial de Qdrant — payloads y filtrado: [https://qdrant.tech/documentation/concepts/payload/](https://qdrant.tech/documentation/concepts/payload/)
-- Documentación oficial de LangChain — text splitters: [https://python.langchain.com/docs/concepts/text_splitters/](https://python.langchain.com/docs/concepts/text_splitters/)
+- Lewis, P. et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks* (los documentos se indexan como pasajes de ~100 palabras). [arXiv:2005.11401](https://arxiv.org/abs/2005.11401) — uso: fuente primaria del mecanismo estudiado
+- Karpukhin, V. et al. (2020). *Dense Passage Retrieval for Open-Domain Question Answering*. [arXiv:2004.04906](https://arxiv.org/abs/2004.04906) — uso: fuente primaria del mecanismo estudiado
+- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. sobre recuperación y RAG. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Documentación oficial de Qdrant — payloads y filtrado: [https://qdrant.tech/documentation/concepts/payload/](https://qdrant.tech/documentation/concepts/payload/) — uso: referencia consultada en su fuente original
+- Documentación oficial de LangChain — text splitters: [https://python.langchain.com/docs/concepts/text_splitters/](https://python.langchain.com/docs/concepts/text_splitters/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -227,11 +227,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic — Documentación: prompt engineering y evaluaciones](https://docs.anthropic.com/)
-- [Zheng et al. (2023), "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (arXiv:2306.05685)](https://arxiv.org/abs/2306.05685)
-- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
-- [MLflow Documentation — tracking y evaluación de LLMs](https://mlflow.org/docs/latest/)
-- [Ribeiro et al. (2020), "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList" (arXiv:2005.04118)](https://arxiv.org/abs/2005.04118)
+- [Anthropic — Documentación: prompt engineering y evaluaciones](https://docs.anthropic.com/) — uso: referencia consultada en su fuente original
+- [Zheng et al. (2023), "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena" (arXiv:2306.05685)](https://arxiv.org/abs/2306.05685) — uso: fuente primaria del mecanismo estudiado
+- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — uso: marco normativo de referencia
+- [MLflow Documentation — tracking y evaluación de LLMs](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
+- [Ribeiro et al. (2020), "Beyond Accuracy: Behavioral Testing of NLP Models with CheckList" (arXiv:2005.04118)](https://arxiv.org/abs/2005.04118) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

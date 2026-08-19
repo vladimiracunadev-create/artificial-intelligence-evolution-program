@@ -248,11 +248,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Mildenhall, B. et al. (2020). *NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis*. [arXiv:2003.08934](https://arxiv.org/abs/2003.08934)
-- Kerbl, B., Kopanas, G., Leimkühler, T. y Drettakis, G. (2023). *3D Gaussian Splatting for Real-Time Radiance Field Rendering*. [arXiv:2308.04079](https://arxiv.org/abs/2308.04079)
-- Poole, B., Jain, A., Barron, J. T. y Mildenhall, B. (2022). *DreamFusion: Text-to-3D using 2D Diffusion*. [arXiv:2209.14988](https://arxiv.org/abs/2209.14988)
-- Müller, T. et al. (2022). *Instant Neural Graphics Primitives with a Multiresolution Hash Encoding* (Instant-NGP). [arXiv:2201.05989](https://arxiv.org/abs/2201.05989)
-- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
+- Mildenhall, B. et al. (2020). *NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis*. [arXiv:2003.08934](https://arxiv.org/abs/2003.08934) — uso: fuente primaria del mecanismo estudiado
+- Kerbl, B., Kopanas, G., Leimkühler, T. y Drettakis, G. (2023). *3D Gaussian Splatting for Real-Time Radiance Field Rendering*. [arXiv:2308.04079](https://arxiv.org/abs/2308.04079) — uso: fuente primaria del mecanismo estudiado
+- Poole, B., Jain, A., Barron, J. T. y Mildenhall, B. (2022). *DreamFusion: Text-to-3D using 2D Diffusion*. [arXiv:2209.14988](https://arxiv.org/abs/2209.14988) — uso: fuente primaria del mecanismo estudiado
+- Müller, T. et al. (2022). *Instant Neural Graphics Primitives with a Multiresolution Hash Encoding* (Instant-NGP). [arXiv:2201.05989](https://arxiv.org/abs/2201.05989) — uso: fuente primaria del mecanismo estudiado
+- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

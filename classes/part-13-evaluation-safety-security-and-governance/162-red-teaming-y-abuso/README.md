@@ -224,11 +224,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Ganguli et al. (2022), *Red Teaming Language Models to Reduce Harms*, arXiv:2209.07858](https://arxiv.org/abs/2209.07858)
-- [Perez et al. (2022), *Red Teaming Language Models with Language Models*, arXiv:2202.03286](https://arxiv.org/abs/2202.03286)
-- [MITRE ATLAS — Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/)
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
+- [Ganguli et al. (2022), *Red Teaming Language Models to Reduce Harms*, arXiv:2209.07858](https://arxiv.org/abs/2209.07858) — uso: fuente primaria del mecanismo estudiado
+- [Perez et al. (2022), *Red Teaming Language Models with Language Models*, arXiv:2202.03286](https://arxiv.org/abs/2202.03286) — uso: fuente primaria del mecanismo estudiado
+- [MITRE ATLAS — Adversarial Threat Landscape for AI Systems](https://atlas.mitre.org/) — uso: referencia consultada en su fuente original
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

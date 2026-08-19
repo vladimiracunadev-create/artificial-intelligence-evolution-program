@@ -225,12 +225,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e), cap. de reconocimiento y detección — [szeliski.org/Book](http://szeliski.org/Book/)
-- Girshick, R. et al. (2013). "Rich feature hierarchies for accurate object detection" (R-CNN) — [arXiv:1311.2524](https://arxiv.org/abs/1311.2524)
-- Ren, S. et al. (2015). "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks" — [arXiv:1506.01497](https://arxiv.org/abs/1506.01497)
-- Redmon, J. et al. (2015). "You Only Look Once: Unified, Real-Time Object Detection" — [arXiv:1506.02640](https://arxiv.org/abs/1506.02640)
-- He, K. et al. (2017). "Mask R-CNN" — [arXiv:1703.06870](https://arxiv.org/abs/1703.06870)
-- Dataset y protocolo de evaluación COCO — [cocodataset.org](https://cocodataset.org/)
+- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e), cap. de reconocimiento y detección — [szeliski.org/Book](http://szeliski.org/Book/) — uso: desarrollo extendido del tema
+- Girshick, R. et al. (2013). "Rich feature hierarchies for accurate object detection" (R-CNN) — [arXiv:1311.2524](https://arxiv.org/abs/1311.2524) — uso: fuente primaria del mecanismo estudiado
+- Ren, S. et al. (2015). "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks" — [arXiv:1506.01497](https://arxiv.org/abs/1506.01497) — uso: fuente primaria del mecanismo estudiado
+- Redmon, J. et al. (2015). "You Only Look Once: Unified, Real-Time Object Detection" — [arXiv:1506.02640](https://arxiv.org/abs/1506.02640) — uso: fuente primaria del mecanismo estudiado
+- He, K. et al. (2017). "Mask R-CNN" — [arXiv:1703.06870](https://arxiv.org/abs/1703.06870) — uso: fuente primaria del mecanismo estudiado
+- Dataset y protocolo de evaluación COCO — [cocodataset.org](https://cocodataset.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -197,11 +197,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference*. Morgan Kaufmann.
-- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models: Principles and Techniques*, caps. 3-9. [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 13 "Probabilistic Reasoning". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Cooper, G. F. (1990). "The computational complexity of probabilistic inference using Bayesian belief networks". *Artificial Intelligence*, 42(2-3), 393-405. [https://doi.org/10.1016/0004-3702(90)90060-D](https://doi.org/10.1016/0004-3702%2890%2990060-D)
-- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2.ª ed., cap. 1. [https://bayes.cs.ucla.edu/BOOK-2K/](https://bayes.cs.ucla.edu/BOOK-2K/)
+- Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference*. Morgan Kaufmann. — uso: desarrollo extendido del tema
+- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models: Principles and Techniques*, caps. 3-9. [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/) — uso: referencia consultada en su fuente original
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 13 "Probabilistic Reasoning". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Cooper, G. F. (1990). "The computational complexity of probabilistic inference using Bayesian belief networks". *Artificial Intelligence*, 42(2-3), 393-405. [https://doi.org/10.1016/0004-3702(90)90060-D](https://doi.org/10.1016/0004-3702%2890%2990060-D) — uso: fuente primaria del mecanismo estudiado
+- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2.ª ed., cap. 1. [https://bayes.cs.ucla.edu/BOOK-2K/](https://bayes.cs.ucla.edu/BOOK-2K/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

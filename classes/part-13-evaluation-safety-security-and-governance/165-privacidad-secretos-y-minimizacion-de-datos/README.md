@@ -231,11 +231,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Carlini et al. (2021), *Extracting Training Data from Large Language Models*, arXiv:2012.07805](https://arxiv.org/abs/2012.07805)
-- [Carlini et al. (2022), *Quantifying Memorization Across Neural Language Models*, arXiv:2202.07646](https://arxiv.org/abs/2202.07646)
-- [Dwork & Roth (2014), *The Algorithmic Foundations of Differential Privacy* — DOI:10.1561/0400000042](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf)
-- [Reglamento (UE) 2016/679 (GDPR) — art. 5: minimización de datos](https://eur-lex.europa.eu/eli/reg/2016/679/oj)
-- [OWASP Top 10 for LLM Applications — LLM06: Sensitive Information Disclosure](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Carlini et al. (2021), *Extracting Training Data from Large Language Models*, arXiv:2012.07805](https://arxiv.org/abs/2012.07805) — uso: fuente primaria del mecanismo estudiado
+- [Carlini et al. (2022), *Quantifying Memorization Across Neural Language Models*, arXiv:2202.07646](https://arxiv.org/abs/2202.07646) — uso: fuente primaria del mecanismo estudiado
+- [Dwork & Roth (2014), *The Algorithmic Foundations of Differential Privacy* — DOI:10.1561/0400000042](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf) — uso: referencia consultada en su fuente original
+- [Reglamento (UE) 2016/679 (GDPR) — art. 5: minimización de datos](https://eur-lex.europa.eu/eli/reg/2016/679/oj) — uso: marco normativo de referencia
+- [OWASP Top 10 for LLM Applications — LLM06: Sensitive Information Disclosure](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

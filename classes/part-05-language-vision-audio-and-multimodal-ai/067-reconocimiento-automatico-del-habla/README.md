@@ -223,12 +223,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. de Automatic Speech Recognition — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
-- Graves, A. et al. (2006). "Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks" (ICML 2006) — [cs.toronto.edu/~graves/icml_2006.pdf](https://www.cs.toronto.edu/~graves/icml_2006.pdf)
-- Radford, A. et al. (2022). "Robust Speech Recognition via Large-Scale Weak Supervision" (Whisper) — [arXiv:2212.04356](https://arxiv.org/abs/2212.04356)
-- Repositorio oficial de Whisper (OpenAI) — [github.com/openai/whisper](https://github.com/openai/whisper)
-- Documentación de librosa (análisis de audio: espectrogramas, MFCC) — [librosa.org/doc](https://librosa.org/doc/)
-- Mozilla Common Voice (corpus abierto multilingüe de voz) — [commonvoice.mozilla.org](https://commonvoice.mozilla.org/en/datasets)
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. de Automatic Speech Recognition — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Graves, A. et al. (2006). "Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks" (ICML 2006) — [cs.toronto.edu/~graves/icml_2006.pdf](https://www.cs.toronto.edu/~graves/icml_2006.pdf) — uso: referencia consultada en su fuente original
+- Radford, A. et al. (2022). "Robust Speech Recognition via Large-Scale Weak Supervision" (Whisper) — [arXiv:2212.04356](https://arxiv.org/abs/2212.04356) — uso: fuente primaria del mecanismo estudiado
+- Repositorio oficial de Whisper (OpenAI) — [github.com/openai/whisper](https://github.com/openai/whisper) — uso: referencia consultada en su fuente original
+- Documentación de librosa (análisis de audio: espectrogramas, MFCC) — [librosa.org/doc](https://librosa.org/doc/) — uso: referencia consultada en su fuente original
+- Mozilla Common Voice (corpus abierto multilingüe de voz) — [commonvoice.mozilla.org](https://commonvoice.mozilla.org/en/datasets) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

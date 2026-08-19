@@ -206,10 +206,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Kautz, H. (2022). "The third AI summer: AAAI Robert S. Engelmore Memorial Lecture". *AI Magazine* 43(1) — la taxonomía de sistemas neuro-simbólicos](https://doi.org/10.1002/aaai.12036)
-- [Garcez & Lamb (2020). "Neurosymbolic AI: The 3rd Wave" (arXiv:2012.05876)](https://arxiv.org/abs/2012.05876)
-- [Marcus, G. (2020). "The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence" (arXiv:2002.06177)](https://arxiv.org/abs/2002.06177)
-- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — caps. 7-11 (los componentes simbólicos integrados aquí)](https://aima.cs.berkeley.edu/)
+- [Kautz, H. (2022). "The third AI summer: AAAI Robert S. Engelmore Memorial Lecture". *AI Magazine* 43(1) — la taxonomía de sistemas neuro-simbólicos](https://doi.org/10.1002/aaai.12036) — uso: fuente primaria del mecanismo estudiado
+- [Garcez & Lamb (2020). "Neurosymbolic AI: The 3rd Wave" (arXiv:2012.05876)](https://arxiv.org/abs/2012.05876) — uso: fuente primaria del mecanismo estudiado
+- [Marcus, G. (2020). "The Next Decade in AI: Four Steps Towards Robust Artificial Intelligence" (arXiv:2002.06177)](https://arxiv.org/abs/2002.06177) — uso: fuente primaria del mecanismo estudiado
+- [Russell & Norvig, *Artificial Intelligence: A Modern Approach* 4e — caps. 7-11 (los componentes simbólicos integrados aquí)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 - [Silver et al. (2016). "Mastering the game of Go with deep neural networks and tree search". *Nature* 529 — ejemplo canónico Symbolic[Neuro]](https://doi.org/10.1038/nature16961)
 
 <!-- papers:inicio -->

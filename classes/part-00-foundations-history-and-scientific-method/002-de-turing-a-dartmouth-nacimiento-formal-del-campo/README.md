@@ -216,12 +216,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Turing, A. M. (1950). Computing Machinery and Intelligence. *Mind*, LIX(236), 433-460](https://doi.org/10.1093/mind/LIX.236.433)
-- [Turing, A. M. (1936). On Computable Numbers, with an Application to the Entscheidungsproblem](https://doi.org/10.1112/plms/s2-42.1.230)
-- [McCarthy, Minsky, Rochester & Shannon (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf)
-- [McCulloch, W. & Pitts, W. (1943). A Logical Calculus of the Ideas Immanent in Nervous Activity](https://doi.org/10.1007/BF02478259)
-- [Samuel, A. (1959). Some Studies in Machine Learning Using the Game of Checkers. *IBM Journal*](https://doi.org/10.1147/rd.33.0210)
-- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., cap. 1 (historia del campo)](https://aima.cs.berkeley.edu/)
+- [Turing, A. M. (1950). Computing Machinery and Intelligence. *Mind*, LIX(236), 433-460](https://doi.org/10.1093/mind/LIX.236.433) — uso: fuente primaria del mecanismo estudiado
+- [Turing, A. M. (1936). On Computable Numbers, with an Application to the Entscheidungsproblem](https://doi.org/10.1112/plms/s2-42.1.230) — uso: fuente primaria del mecanismo estudiado
+- [McCarthy, Minsky, Rochester & Shannon (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf) — uso: referencia consultada en su fuente original
+- [McCulloch, W. & Pitts, W. (1943). A Logical Calculus of the Ideas Immanent in Nervous Activity](https://doi.org/10.1007/BF02478259) — uso: fuente primaria del mecanismo estudiado
+- [Samuel, A. (1959). Some Studies in Machine Learning Using the Game of Checkers. *IBM Journal*](https://doi.org/10.1147/rd.33.0210) — uso: fuente primaria del mecanismo estudiado
+- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., cap. 1 (historia del campo)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

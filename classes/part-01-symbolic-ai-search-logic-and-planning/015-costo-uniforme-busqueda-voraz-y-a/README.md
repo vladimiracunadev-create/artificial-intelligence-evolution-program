@@ -201,9 +201,9 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Hart, P. E., Nilsson, N. J. y Raphael, B. (1968). "A Formal Basis for the Heuristic Determination of Minimum Cost Paths". *IEEE Trans. on Systems Science and Cybernetics*, 4(2). [https://doi.org/10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136)
-- Dijkstra, E. W. (1959). "A note on two problems in connexion with graphs". *Numerische Mathematik*, 1. [https://doi.org/10.1007/BF01386390](https://doi.org/10.1007/BF01386390)
-- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.5 "Informed (Heuristic) Search Strategies". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- Hart, P. E., Nilsson, N. J. y Raphael, B. (1968). "A Formal Basis for the Heuristic Determination of Minimum Cost Paths". *IEEE Trans. on Systems Science and Cybernetics*, 4(2). [https://doi.org/10.1109/TSSC.1968.300136](https://doi.org/10.1109/TSSC.1968.300136) — uso: fuente primaria del mecanismo estudiado
+- Dijkstra, E. W. (1959). "A note on two problems in connexion with graphs". *Numerische Mathematik*, 1. [https://doi.org/10.1007/BF01386390](https://doi.org/10.1007/BF01386390) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.5 "Informed (Heuristic) Search Strategies". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 - Pearl, J. (1984). *Heuristics: Intelligent Search Strategies for Computer Problem Solving*. Addison-Wesley — análisis formal de A* y sus variantes.
 
 <!-- papers:inicio -->

@@ -212,11 +212,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Mitchell, M. et al. (2019). *Model Cards for Model Reporting*. [arXiv:1810.03993](https://arxiv.org/abs/1810.03993)
-- Gebru, T. et al. (2018). *Datasheets for Datasets*. [arXiv:1803.09010](https://arxiv.org/abs/1803.09010)
-- Pineau, J. et al. (2020). *Improving Reproducibility in Machine Learning Research*. [arXiv:2003.12206](https://arxiv.org/abs/2003.12206)
-- Notas oficiales de PyTorch sobre reproducibilidad y determinismo. [pytorch.org/docs/stable/notes/randomness.html](https://pytorch.org/docs/stable/notes/randomness.html)
-- Documentación de MLflow (registro de experimentos y modelos). [mlflow.org/docs/latest](https://mlflow.org/docs/latest/)
+- Mitchell, M. et al. (2019). *Model Cards for Model Reporting*. [arXiv:1810.03993](https://arxiv.org/abs/1810.03993) — uso: fuente primaria del mecanismo estudiado
+- Gebru, T. et al. (2018). *Datasheets for Datasets*. [arXiv:1803.09010](https://arxiv.org/abs/1803.09010) — uso: fuente primaria del mecanismo estudiado
+- Pineau, J. et al. (2020). *Improving Reproducibility in Machine Learning Research*. [arXiv:2003.12206](https://arxiv.org/abs/2003.12206) — uso: fuente primaria del mecanismo estudiado
+- Notas oficiales de PyTorch sobre reproducibilidad y determinismo. [pytorch.org/docs/stable/notes/randomness.html](https://pytorch.org/docs/stable/notes/randomness.html) — uso: referencia consultada en su fuente original
+- Documentación de MLflow (registro de experimentos y modelos). [mlflow.org/docs/latest](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
 
 ---
 

@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Model Context Protocol — Especificación oficial](https://modelcontextprotocol.io/specification)
-- [Hardt (2012), *The OAuth 2.0 Authorization Framework*, RFC 6749 (delegación de autoridad y confused deputy)](https://www.rfc-editor.org/rfc/rfc6749)
-- [CISA & NCSC (2023), *Guidelines for Secure AI System Development*](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development)
-- [NIST SP 800-218 / SBOM (formatos SPDX y CycloneDX)](https://www.cisa.gov/sbom)
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [Model Context Protocol — Especificación oficial](https://modelcontextprotocol.io/specification) — uso: marco normativo de referencia
+- [Hardt (2012), *The OAuth 2.0 Authorization Framework*, RFC 6749 (delegación de autoridad y confused deputy)](https://www.rfc-editor.org/rfc/rfc6749) — uso: marco normativo de referencia
+- [CISA & NCSC (2023), *Guidelines for Secure AI System Development*](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development) — uso: marco normativo de referencia
+- [NIST SP 800-218 / SBOM (formatos SPDX y CycloneDX)](https://www.cisa.gov/sbom) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

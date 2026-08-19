@@ -230,12 +230,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Åström, K. J. & Murray, R. M. Feedback Systems: An Introduction for Scientists and Engineers — PDF oficial gratuito (Caltech)](https://fbswiki.org/wiki/index.php/Feedback_Systems:_An_Introduction_for_Scientists_and_Engineers)
-- [Gymnasium — entornos de control clásico (CartPole, Pendulum) para practicar control aprendido](https://gymnasium.farama.org/environments/classic_control/)
-- [Sutton, R. & Barto, A. Reinforcement Learning: An Introduction, 2e — caps. 13 y 16 (políticas y aplicaciones de control)](http://incompleteideas.net/book/the-book-2nd.html)
-- [Hwangbo, J. et al. (2019). Learning agile and dynamic motor skills for legged robots. Science Robotics. arXiv:1901.08652](https://arxiv.org/abs/1901.08652)
-- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — parte B, Design y Control](https://link.springer.com/book/10.1007/978-3-319-32552-1)
-- [ros2_control — documentación oficial](https://control.ros.org/rolling/index.html)
+- [Åström, K. J. & Murray, R. M. Feedback Systems: An Introduction for Scientists and Engineers — PDF oficial gratuito (Caltech)](https://fbswiki.org/wiki/index.php/Feedback_Systems:_An_Introduction_for_Scientists_and_Engineers) — uso: referencia consultada en su fuente original
+- [Gymnasium — entornos de control clásico (CartPole, Pendulum) para practicar control aprendido](https://gymnasium.farama.org/environments/classic_control/) — uso: referencia consultada en su fuente original
+- [Sutton, R. & Barto, A. Reinforcement Learning: An Introduction, 2e — caps. 13 y 16 (políticas y aplicaciones de control)](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
+- [Hwangbo, J. et al. (2019). Learning agile and dynamic motor skills for legged robots. Science Robotics. arXiv:1901.08652](https://arxiv.org/abs/1901.08652) — uso: fuente primaria del mecanismo estudiado
+- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — parte B, Design y Control](https://link.springer.com/book/10.1007/978-3-319-32552-1) — uso: referencia consultada en su fuente original
+- [ros2_control — documentación oficial](https://control.ros.org/rolling/index.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

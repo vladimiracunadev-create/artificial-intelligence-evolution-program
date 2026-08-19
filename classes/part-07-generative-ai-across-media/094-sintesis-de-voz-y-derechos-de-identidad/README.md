@@ -255,12 +255,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Shen, J. et al. (2018). *Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions* (Tacotron 2). [arXiv:1712.05884](https://arxiv.org/abs/1712.05884)
-- Ren, Y. et al. (2020). *FastSpeech 2: Fast and High-Quality End-to-End Text to Speech*. [arXiv:2006.04558](https://arxiv.org/abs/2006.04558)
-- Kong, J., Kim, J. y Bae, J. (2020). *HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis*. [arXiv:2010.05646](https://arxiv.org/abs/2010.05646)
-- van den Oord, A. et al. (2016). *WaveNet: A Generative Model for Raw Audio*. [arXiv:1609.03499](https://arxiv.org/abs/1609.03499)
-- Jia, Y. et al. (2018). *Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis* (SV2TTS). [arXiv:1806.04558](https://arxiv.org/abs/1806.04558)
-- C2PA. *Content Credentials: C2PA Technical Specification*. [c2pa.org/specifications](https://c2pa.org/specifications/specifications/2.2/index.html)
+- Shen, J. et al. (2018). *Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions* (Tacotron 2). [arXiv:1712.05884](https://arxiv.org/abs/1712.05884) — uso: fuente primaria del mecanismo estudiado
+- Ren, Y. et al. (2020). *FastSpeech 2: Fast and High-Quality End-to-End Text to Speech*. [arXiv:2006.04558](https://arxiv.org/abs/2006.04558) — uso: fuente primaria del mecanismo estudiado
+- Kong, J., Kim, J. y Bae, J. (2020). *HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis*. [arXiv:2010.05646](https://arxiv.org/abs/2010.05646) — uso: fuente primaria del mecanismo estudiado
+- van den Oord, A. et al. (2016). *WaveNet: A Generative Model for Raw Audio*. [arXiv:1609.03499](https://arxiv.org/abs/1609.03499) — uso: fuente primaria del mecanismo estudiado
+- Jia, Y. et al. (2018). *Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis* (SV2TTS). [arXiv:1806.04558](https://arxiv.org/abs/1806.04558) — uso: fuente primaria del mecanismo estudiado
+- C2PA. *Content Credentials: C2PA Technical Specification*. [c2pa.org/specifications](https://c2pa.org/specifications/specifications/2.2/index.html) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

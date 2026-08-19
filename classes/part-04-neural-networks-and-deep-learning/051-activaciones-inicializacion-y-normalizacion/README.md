@@ -218,12 +218,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Glorot, X. y Bengio, Y. (2010). *Understanding the difficulty of training deep feedforward neural networks*. AISTATS. [proceedings.mlr.press/v9/glorot10a.html](https://proceedings.mlr.press/v9/glorot10a.html)
-- He, K. et al. (2015). *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification*. [arXiv:1502.01852](https://arxiv.org/abs/1502.01852)
-- Ioffe, S. y Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. [arXiv:1502.03167](https://arxiv.org/abs/1502.03167)
-- Ba, J., Kiros, J. y Hinton, G. (2016). *Layer Normalization*. [arXiv:1607.06450](https://arxiv.org/abs/1607.06450)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8. [deeplearningbook.org/contents/optimization.html](https://www.deeplearningbook.org/contents/optimization.html)
-- Documentación de PyTorch: [`torch.nn.init`](https://pytorch.org/docs/stable/nn.init.html)
+- Glorot, X. y Bengio, Y. (2010). *Understanding the difficulty of training deep feedforward neural networks*. AISTATS. [proceedings.mlr.press/v9/glorot10a.html](https://proceedings.mlr.press/v9/glorot10a.html) — uso: referencia consultada en su fuente original
+- He, K. et al. (2015). *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification*. [arXiv:1502.01852](https://arxiv.org/abs/1502.01852) — uso: fuente primaria del mecanismo estudiado
+- Ioffe, S. y Szegedy, C. (2015). *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. [arXiv:1502.03167](https://arxiv.org/abs/1502.03167) — uso: fuente primaria del mecanismo estudiado
+- Ba, J., Kiros, J. y Hinton, G. (2016). *Layer Normalization*. [arXiv:1607.06450](https://arxiv.org/abs/1607.06450) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8. [deeplearningbook.org/contents/optimization.html](https://www.deeplearningbook.org/contents/optimization.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [`torch.nn.init`](https://pytorch.org/docs/stable/nn.init.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

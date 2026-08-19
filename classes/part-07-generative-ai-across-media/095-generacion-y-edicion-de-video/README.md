@@ -242,11 +242,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Ho, J. et al. (2022). *Video Diffusion Models*. [arXiv:2204.03458](https://arxiv.org/abs/2204.03458)
-- Singer, U. et al. (2022). *Make-A-Video: Text-to-Video Generation without Text-Video Data*. [arXiv:2209.14792](https://arxiv.org/abs/2209.14792)
-- Blattmann, A. et al. (2023). *Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets*. [arXiv:2311.15127](https://arxiv.org/abs/2311.15127)
-- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
-- Ho, J., Jain, A. y Abbeel, P. (2020). *Denoising Diffusion Probabilistic Models*. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
+- Ho, J. et al. (2022). *Video Diffusion Models*. [arXiv:2204.03458](https://arxiv.org/abs/2204.03458) — uso: fuente primaria del mecanismo estudiado
+- Singer, U. et al. (2022). *Make-A-Video: Text-to-Video Generation without Text-Video Data*. [arXiv:2209.14792](https://arxiv.org/abs/2209.14792) — uso: fuente primaria del mecanismo estudiado
+- Blattmann, A. et al. (2023). *Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets*. [arXiv:2311.15127](https://arxiv.org/abs/2311.15127) — uso: fuente primaria del mecanismo estudiado
+- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) — uso: fuente primaria del mecanismo estudiado
+- Ho, J., Jain, A. y Abbeel, P. (2020). *Denoising Diffusion Probabilistic Models*. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

@@ -215,10 +215,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Rosenblatt, F. (1958). *The perceptron: a probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6). [doi:10.1037/h0042519](https://doi.org/10.1037/h0042519)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 6 (Deep Feedforward Networks). [deeplearningbook.org/contents/mlp.html](https://www.deeplearningbook.org/contents/mlp.html)
-- Bishop, C. (2006). *Pattern Recognition and Machine Learning*, cap. 4 (Linear Models for Classification). [PDF oficial gratuito](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/)
-- Documentación de PyTorch: [`torch.nn.Linear`](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html)
+- Rosenblatt, F. (1958). *The perceptron: a probabilistic model for information storage and organization in the brain*. Psychological Review, 65(6). [doi:10.1037/h0042519](https://doi.org/10.1037/h0042519) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 6 (Deep Feedforward Networks). [deeplearningbook.org/contents/mlp.html](https://www.deeplearningbook.org/contents/mlp.html) — uso: desarrollo extendido del tema
+- Bishop, C. (2006). *Pattern Recognition and Machine Learning*, cap. 4 (Linear Models for Classification). [PDF oficial gratuito](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/) — uso: referencia consultada en su fuente original
+- Documentación de PyTorch: [`torch.nn.Linear`](https://pytorch.org/docs/stable/generated/torch.nn.Linear.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

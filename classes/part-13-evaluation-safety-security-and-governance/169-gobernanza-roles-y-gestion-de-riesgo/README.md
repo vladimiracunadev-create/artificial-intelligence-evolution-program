@@ -225,11 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework)
-- [NIST AI RMF 1.0 — documento completo (NIST AI 100-1, PDF)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf)
-- [IIA (2020), *The IIA's Three Lines Model* (tres líneas de defensa)](https://www.theiia.org/en/content/position-papers/2020/the-iias-three-lines-model-an-update-of-the-three-lines-of-defense/)
-- [ISO/IEC 23894:2023 — Gestión del riesgo de la IA](https://www.iso.org/standard/77304.html)
-- [ISO 31000:2018 — Gestión del riesgo (principios y directrices)](https://www.iso.org/standard/65694.html)
+- [NIST AI Risk Management Framework (AI RMF 1.0)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [NIST AI RMF 1.0 — documento completo (NIST AI 100-1, PDF)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) — uso: marco normativo de referencia
+- [IIA (2020), *The IIA's Three Lines Model* (tres líneas de defensa)](https://www.theiia.org/en/content/position-papers/2020/the-iias-three-lines-model-an-update-of-the-three-lines-of-defense/) — uso: referencia consultada en su fuente original
+- [ISO/IEC 23894:2023 — Gestión del riesgo de la IA](https://www.iso.org/standard/77304.html) — uso: marco normativo de referencia
+- [ISO 31000:2018 — Gestión del riesgo (principios y directrices)](https://www.iso.org/standard/65694.html) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

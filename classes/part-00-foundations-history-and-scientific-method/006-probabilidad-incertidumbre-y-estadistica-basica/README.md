@@ -231,11 +231,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., caps. 12-13 (quantifying uncertainty)](https://aima.cs.berkeley.edu/)
-- [Deisenroth, Faisal & Ong. *Mathematics for Machine Learning*, cap. 6 (PDF oficial gratuito)](https://mml-book.github.io/)
-- [Goodfellow, Bengio & Courville. *Deep Learning*, cap. 3: Probability and Information Theory](https://www.deeplearningbook.org/)
-- [Seeing Theory — visualizaciones interactivas de probabilidad (Brown University)](https://seeing-theory.brown.edu/)
-- [Ioannidis, J. (2005). Why Most Published Research Findings Are False. *PLoS Medicine*](https://doi.org/10.1371/journal.pmed.0020124)
+- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., caps. 12-13 (quantifying uncertainty)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Deisenroth, Faisal & Ong. *Mathematics for Machine Learning*, cap. 6 (PDF oficial gratuito)](https://mml-book.github.io/) — uso: referencia consultada en su fuente original
+- [Goodfellow, Bengio & Courville. *Deep Learning*, cap. 3: Probability and Information Theory](https://www.deeplearningbook.org/) — uso: desarrollo extendido del tema
+- [Seeing Theory — visualizaciones interactivas de probabilidad (Brown University)](https://seeing-theory.brown.edu/) — uso: referencia consultada en su fuente original
+- [Ioannidis, J. (2005). Why Most Published Research Findings Are False. *PLoS Medicine*](https://doi.org/10.1371/journal.pmed.0020124) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

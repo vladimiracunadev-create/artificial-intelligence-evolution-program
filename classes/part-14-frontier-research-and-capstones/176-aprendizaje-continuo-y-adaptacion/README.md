@@ -232,11 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kirkpatrick, J. et al. (2017). *Overcoming catastrophic forgetting in neural networks*. PNAS 114(13). [DOI 10.1073/pnas.1611835114](https://doi.org/10.1073/pnas.1611835114) · [arXiv:1612.00796](https://arxiv.org/abs/1612.00796)
-- Parisi, G. I. et al. (2019). *Continual Lifelong Learning with Neural Networks: A Review*. Neural Networks 113. [arXiv:1802.07569](https://arxiv.org/abs/1802.07569)
-- Goodfellow, I. J. et al. (2013). *An Empirical Investigation of Catastrophic Forgetting in Gradient-Based Neural Networks*. [arXiv:1312.6211](https://arxiv.org/abs/1312.6211)
-- Lopez-Paz, D. y Ranzato, M. (2017). *Gradient Episodic Memory for Continual Learning*. NeurIPS 2017. [arXiv:1706.08840](https://arxiv.org/abs/1706.08840)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (optimización). [deeplearningbook.org](https://www.deeplearningbook.org/)
+- Kirkpatrick, J. et al. (2017). *Overcoming catastrophic forgetting in neural networks*. PNAS 114(13). [DOI 10.1073/pnas.1611835114](https://doi.org/10.1073/pnas.1611835114) · [arXiv:1612.00796](https://arxiv.org/abs/1612.00796) — uso: fuente primaria del mecanismo estudiado
+- Parisi, G. I. et al. (2019). *Continual Lifelong Learning with Neural Networks: A Review*. Neural Networks 113. [arXiv:1802.07569](https://arxiv.org/abs/1802.07569) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I. J. et al. (2013). *An Empirical Investigation of Catastrophic Forgetting in Gradient-Based Neural Networks*. [arXiv:1312.6211](https://arxiv.org/abs/1312.6211) — uso: fuente primaria del mecanismo estudiado
+- Lopez-Paz, D. y Ranzato, M. (2017). *Gradient Episodic Memory for Continual Learning*. NeurIPS 2017. [arXiv:1706.08840](https://arxiv.org/abs/1706.08840) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 8 (optimización). [deeplearningbook.org](https://www.deeplearningbook.org/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

@@ -230,11 +230,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Ji et al. (2023), *Survey of Hallucination in Natural Language Generation*, arXiv:2202.03629](https://arxiv.org/abs/2202.03629)
-- [Geifman & El-Yaniv (2017), *Selective Classification for Deep Neural Networks*, arXiv:1705.08500](https://arxiv.org/abs/1705.08500)
-- [Rashkin et al. (2021), *Measuring Attribution in Natural Language Generation Models* (AIS), arXiv:2112.12870](https://arxiv.org/abs/2112.12870)
-- [Lewis et al. (2020), *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*, arXiv:2005.11401](https://arxiv.org/abs/2005.11401)
-- [OWASP Top 10 for LLM Applications — LLM09: Overreliance](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Ji et al. (2023), *Survey of Hallucination in Natural Language Generation*, arXiv:2202.03629](https://arxiv.org/abs/2202.03629) — uso: fuente primaria del mecanismo estudiado
+- [Geifman & El-Yaniv (2017), *Selective Classification for Deep Neural Networks*, arXiv:1705.08500](https://arxiv.org/abs/1705.08500) — uso: fuente primaria del mecanismo estudiado
+- [Rashkin et al. (2021), *Measuring Attribution in Natural Language Generation Models* (AIS), arXiv:2112.12870](https://arxiv.org/abs/2112.12870) — uso: fuente primaria del mecanismo estudiado
+- [Lewis et al. (2020), *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*, arXiv:2005.11401](https://arxiv.org/abs/2005.11401) — uso: fuente primaria del mecanismo estudiado
+- [OWASP Top 10 for LLM Applications — LLM09: Overreliance](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

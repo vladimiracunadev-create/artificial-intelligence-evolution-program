@@ -214,11 +214,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM), arXiv:2211.09110](https://arxiv.org/abs/2211.09110)
-- [Hendrycks et al. (2020), *Measuring Massive Multitask Language Understanding* (MMLU), arXiv:2009.03300](https://arxiv.org/abs/2009.03300)
-- [Raji et al. (2021), *AI and the Everything in the Whole Wide World Benchmark*, arXiv:2111.15366](https://arxiv.org/abs/2111.15366)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, arXiv:2306.05685](https://arxiv.org/abs/2306.05685)
+- [Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM), arXiv:2211.09110](https://arxiv.org/abs/2211.09110) — uso: fuente primaria del mecanismo estudiado
+- [Hendrycks et al. (2020), *Measuring Massive Multitask Language Understanding* (MMLU), arXiv:2009.03300](https://arxiv.org/abs/2009.03300) — uso: fuente primaria del mecanismo estudiado
+- [Raji et al. (2021), *AI and the Everything in the Whole Wide World Benchmark*, arXiv:2111.15366](https://arxiv.org/abs/2111.15366) — uso: fuente primaria del mecanismo estudiado
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*, arXiv:2306.05685](https://arxiv.org/abs/2306.05685) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

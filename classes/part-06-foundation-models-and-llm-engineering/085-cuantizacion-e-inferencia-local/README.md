@@ -226,11 +226,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Dettmers et al. (2022), *LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale*: <https://arxiv.org/abs/2208.07339>
-- Frantar et al. (2022), *GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers*: <https://arxiv.org/abs/2210.17323>
-- Lin et al. (2023), *AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration*: <https://arxiv.org/abs/2306.00978>
-- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs* (NF4): <https://arxiv.org/abs/2305.14314>
-- llama.cpp (formato GGUF y runtime local): <https://github.com/ggerganov/llama.cpp>
+- Dettmers et al. (2022), *LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale*: <https://arxiv.org/abs/2208.07339> — uso: fuente primaria del mecanismo estudiado
+- Frantar et al. (2022), *GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers*: <https://arxiv.org/abs/2210.17323> — uso: fuente primaria del mecanismo estudiado
+- Lin et al. (2023), *AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration*: <https://arxiv.org/abs/2306.00978> — uso: fuente primaria del mecanismo estudiado
+- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs* (NF4): <https://arxiv.org/abs/2305.14314> — uso: fuente primaria del mecanismo estudiado
+- llama.cpp (formato GGUF y runtime local): <https://github.com/ggerganov/llama.cpp> — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

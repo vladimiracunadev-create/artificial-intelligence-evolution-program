@@ -234,11 +234,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Copet, J. et al. (2023). *Simple and Controllable Music Generation* (MusicGen). [arXiv:2306.05284](https://arxiv.org/abs/2306.05284)
-- Défossez, A., Copet, J., Synnaeve, G. y Adi, Y. (2022). *High Fidelity Neural Audio Compression* (EnCodec). [arXiv:2210.13438](https://arxiv.org/abs/2210.13438)
-- Zeghidour, N. et al. (2021). *SoundStream: An End-to-End Neural Audio Codec*. [arXiv:2107.03312](https://arxiv.org/abs/2107.03312)
-- Borsos, Z. et al. (2022). *AudioLM: a Language Modeling Approach to Audio Generation*. [arXiv:2209.03143](https://arxiv.org/abs/2209.03143)
-- van den Oord, A. et al. (2016). *WaveNet: A Generative Model for Raw Audio*. [arXiv:1609.03499](https://arxiv.org/abs/1609.03499)
+- Copet, J. et al. (2023). *Simple and Controllable Music Generation* (MusicGen). [arXiv:2306.05284](https://arxiv.org/abs/2306.05284) — uso: fuente primaria del mecanismo estudiado
+- Défossez, A., Copet, J., Synnaeve, G. y Adi, Y. (2022). *High Fidelity Neural Audio Compression* (EnCodec). [arXiv:2210.13438](https://arxiv.org/abs/2210.13438) — uso: fuente primaria del mecanismo estudiado
+- Zeghidour, N. et al. (2021). *SoundStream: An End-to-End Neural Audio Codec*. [arXiv:2107.03312](https://arxiv.org/abs/2107.03312) — uso: fuente primaria del mecanismo estudiado
+- Borsos, Z. et al. (2022). *AudioLM: a Language Modeling Approach to Audio Generation*. [arXiv:2209.03143](https://arxiv.org/abs/2209.03143) — uso: fuente primaria del mecanismo estudiado
+- van den Oord, A. et al. (2016). *WaveNet: A Generative Model for Raw Audio*. [arXiv:1609.03499](https://arxiv.org/abs/1609.03499) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

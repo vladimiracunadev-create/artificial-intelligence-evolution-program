@@ -226,7 +226,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [OpenAI Agents SDK — Handoffs](https://openai.github.io/openai-agents-python/handoffs/): implementación de referencia del patrón handoff entre agentes.
 - [A2A Protocol](https://a2a-protocol.org/latest/): transferencia de tareas y artefactos entre agentes de distintos proveedores.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): conversaciones multiagente con traspaso de turno programable.
-- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009, caps. de comunicación y cooperación: actos de habla y protocolos de interacción.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009, caps. de comunicación y cooperación: actos de habla y protocolos de interacción. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

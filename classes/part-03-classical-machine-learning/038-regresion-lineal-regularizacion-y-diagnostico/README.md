@@ -232,11 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [James, Witten, Hastie, Tibshirani — *An Introduction to Statistical Learning* (2e), cap. 3 (regresión lineal) y 6 (regularización), PDF oficial](https://www.statlearning.com/)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 3 "Linear Methods for Regression", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [Tibshirani (1996), "Regression Shrinkage and Selection via the Lasso", JRSS B. DOI 10.1111/j.2517-6161.1996.tb02080.x](https://doi.org/10.1111/j.2517-6161.1996.tb02080.x)
-- [Hoerl & Kennard (1970), "Ridge Regression: Biased Estimation for Nonorthogonal Problems", Technometrics. DOI 10.1080/00401706.1970.10488634](https://doi.org/10.1080/00401706.1970.10488634)
-- [scikit-learn User Guide — Linear Models](https://scikit-learn.org/stable/modules/linear_model.html)
+- [James, Witten, Hastie, Tibshirani — *An Introduction to Statistical Learning* (2e), cap. 3 (regresión lineal) y 6 (regularización), PDF oficial](https://www.statlearning.com/) — uso: desarrollo extendido del tema
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 3 "Linear Methods for Regression", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [Tibshirani (1996), "Regression Shrinkage and Selection via the Lasso", JRSS B. DOI 10.1111/j.2517-6161.1996.tb02080.x](https://doi.org/10.1111/j.2517-6161.1996.tb02080.x) — uso: fuente primaria del mecanismo estudiado
+- [Hoerl & Kennard (1970), "Ridge Regression: Biased Estimation for Nonorthogonal Problems", Technometrics. DOI 10.1080/00401706.1970.10488634](https://doi.org/10.1080/00401706.1970.10488634) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn User Guide — Linear Models](https://scikit-learn.org/stable/modules/linear_model.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

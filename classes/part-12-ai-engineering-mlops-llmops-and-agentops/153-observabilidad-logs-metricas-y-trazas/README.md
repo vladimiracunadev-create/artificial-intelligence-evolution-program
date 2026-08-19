@@ -236,11 +236,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
-- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/)
-- [Prometheus Documentation — tipos de métricas](https://prometheus.io/docs/)
-- [Google SRE Book — Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
-- [Dean & Barroso (2013), "The Tail at Scale", CACM](https://research.google/pubs/pub40801/)
+- [OpenTelemetry Documentation](https://opentelemetry.io/docs/) — uso: marco normativo de referencia
+- [OpenTelemetry — Semantic Conventions for Generative AI](https://opentelemetry.io/docs/specs/semconv/gen-ai/) — uso: marco normativo de referencia
+- [Prometheus Documentation — tipos de métricas](https://prometheus.io/docs/) — uso: referencia consultada en su fuente original
+- [Google SRE Book — Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/) — uso: referencia consultada en su fuente original
+- [Dean & Barroso (2013), "The Tail at Scale", CACM](https://research.google/pubs/pub40801/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

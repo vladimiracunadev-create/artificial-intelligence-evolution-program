@@ -218,7 +218,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 - [Nii, H. P., *The Blackboard Model of Problem Solving and the Evolution of Blackboard Architectures*, AI Magazine 7(2), 1986](https://doi.org/10.1609/aimag.v7i2.537): el survey clásico de la arquitectura.
 - [Erman et al., *The Hearsay-II Speech-Understanding System*, ACM Computing Surveys 12(2), 1980](https://doi.org/10.1145/356810.356816): el sistema que originó el patrón.
-- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: coordinación indirecta y entornos compartidos.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: coordinación indirecta y entornos compartidos. — uso: desarrollo extendido del tema
 - [LangGraph — Graph API (estado compartido)](https://docs.langchain.com/oss/python/langgraph/graph-api): el *state* tipado como blackboard moderno entre nodos.
 - [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): memoria y artefactos compartidos entre lead y subagentes.
 

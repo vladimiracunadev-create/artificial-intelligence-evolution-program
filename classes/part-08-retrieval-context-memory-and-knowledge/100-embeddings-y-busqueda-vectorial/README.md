@@ -217,12 +217,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Malkov, Y. & Yashunin, D. (2016). *Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs*. [arXiv:1603.09320](https://arxiv.org/abs/1603.09320)
-- Reimers, N. & Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)
-- Johnson, J., Douze, M. & Jégou, H. (2017). *Billion-scale similarity search with GPUs* (faiss). [arXiv:1702.08734](https://arxiv.org/abs/1702.08734)
-- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. "Vector Semantics and Embeddings". [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
-- Documentación oficial de faiss: [https://faiss.ai/](https://faiss.ai/)
-- Documentación oficial de Qdrant: [https://qdrant.tech/documentation/](https://qdrant.tech/documentation/)
+- Malkov, Y. & Yashunin, D. (2016). *Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs*. [arXiv:1603.09320](https://arxiv.org/abs/1603.09320) — uso: fuente primaria del mecanismo estudiado
+- Reimers, N. & Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084) — uso: fuente primaria del mecanismo estudiado
+- Johnson, J., Douze, M. & Jégou, H. (2017). *Billion-scale similarity search with GPUs* (faiss). [arXiv:1702.08734](https://arxiv.org/abs/1702.08734) — uso: fuente primaria del mecanismo estudiado
+- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. "Vector Semantics and Embeddings". [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Documentación oficial de faiss: [https://faiss.ai/](https://faiss.ai/) — uso: referencia consultada en su fuente original
+- Documentación oficial de Qdrant: [https://qdrant.tech/documentation/](https://qdrant.tech/documentation/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

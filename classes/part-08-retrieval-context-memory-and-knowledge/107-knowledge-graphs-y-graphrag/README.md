@@ -229,12 +229,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Edge, D. et al. (2024). *From Local to Global: A Graph RAG Approach to Query-Focused Summarization*. [arXiv:2404.16130](https://arxiv.org/abs/2404.16130)
-- Hogan, A. et al. (2021). *Knowledge Graphs*. ACM Computing Surveys. [arXiv:2003.02320](https://arxiv.org/abs/2003.02320)
-- Traag, V., Waltman, L. & van Eck, N. (2019). *From Louvain to Leiden: guaranteeing well-connected communities*. [arXiv:1810.08473](https://arxiv.org/abs/1810.08473)
-- Documentación oficial de Microsoft GraphRAG: [https://microsoft.github.io/graphrag/](https://microsoft.github.io/graphrag/)
-- W3C (2014). *RDF 1.1 Concepts and Abstract Syntax*: [https://www.w3.org/TR/rdf11-concepts/](https://www.w3.org/TR/rdf11-concepts/)
-- Documentación de Cypher (Neo4j): [https://neo4j.com/docs/cypher-manual/current/](https://neo4j.com/docs/cypher-manual/current/)
+- Edge, D. et al. (2024). *From Local to Global: A Graph RAG Approach to Query-Focused Summarization*. [arXiv:2404.16130](https://arxiv.org/abs/2404.16130) — uso: fuente primaria del mecanismo estudiado
+- Hogan, A. et al. (2021). *Knowledge Graphs*. ACM Computing Surveys. [arXiv:2003.02320](https://arxiv.org/abs/2003.02320) — uso: fuente primaria del mecanismo estudiado
+- Traag, V., Waltman, L. & van Eck, N. (2019). *From Louvain to Leiden: guaranteeing well-connected communities*. [arXiv:1810.08473](https://arxiv.org/abs/1810.08473) — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Microsoft GraphRAG: [https://microsoft.github.io/graphrag/](https://microsoft.github.io/graphrag/) — uso: referencia consultada en su fuente original
+- W3C (2014). *RDF 1.1 Concepts and Abstract Syntax*: [https://www.w3.org/TR/rdf11-concepts/](https://www.w3.org/TR/rdf11-concepts/) — uso: marco normativo de referencia
+- Documentación de Cypher (Neo4j): [https://neo4j.com/docs/cypher-manual/current/](https://neo4j.com/docs/cypher-manual/current/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

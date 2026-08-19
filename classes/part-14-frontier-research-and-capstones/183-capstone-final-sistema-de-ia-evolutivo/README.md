@@ -264,12 +264,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Sculley, D. et al. (2015). *Hidden Technical Debt in Machine Learning Systems*. NeurIPS 2015. [PDF NeurIPS](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-- Russell, S. y Norvig, P. (2020). *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2 (agentes y entornos) y cap. 27 (futuro de la IA). [aima.cs.berkeley.edu](https://aima.cs.berkeley.edu/)
-- NIST (2023). *AI Risk Management Framework 1.0* — funciones Govern, Map, Measure, Manage. [DOI 10.6028/NIST.AI.100-1](https://doi.org/10.6028/NIST.AI.100-1)
-- Breck, E. et al. (2017). *The ML Test Score: A Rubric for ML Production Readiness*. IEEE Big Data 2017. [DOI 10.1109/BigData.2017.8258038](https://doi.org/10.1109/BigData.2017.8258038)
-- Model Context Protocol — especificación oficial de conexión entre aplicaciones de IA y herramientas. [modelcontextprotocol.io](https://modelcontextprotocol.io/)
-- Amershi, S. et al. (2019). *Software Engineering for Machine Learning: A Case Study*. ICSE-SEIP 2019. [DOI 10.1109/ICSE-SEIP.2019.00042](https://doi.org/10.1109/ICSE-SEIP.2019.00042)
+- Sculley, D. et al. (2015). *Hidden Technical Debt in Machine Learning Systems*. NeurIPS 2015. [PDF NeurIPS](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — uso: referencia consultada en su fuente original
+- Russell, S. y Norvig, P. (2020). *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 2 (agentes y entornos) y cap. 27 (futuro de la IA). [aima.cs.berkeley.edu](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- NIST (2023). *AI Risk Management Framework 1.0* — funciones Govern, Map, Measure, Manage. [DOI 10.6028/NIST.AI.100-1](https://doi.org/10.6028/NIST.AI.100-1) — uso: fuente primaria del mecanismo estudiado
+- Breck, E. et al. (2017). *The ML Test Score: A Rubric for ML Production Readiness*. IEEE Big Data 2017. [DOI 10.1109/BigData.2017.8258038](https://doi.org/10.1109/BigData.2017.8258038) — uso: fuente primaria del mecanismo estudiado
+- Model Context Protocol — especificación oficial de conexión entre aplicaciones de IA y herramientas. [modelcontextprotocol.io](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
+- Amershi, S. et al. (2019). *Software Engineering for Machine Learning: A Case Study*. ICSE-SEIP 2019. [DOI 10.1109/ICSE-SEIP.2019.00042](https://doi.org/10.1109/ICSE-SEIP.2019.00042) — uso: fuente primaria del mecanismo estudiado
 
 ---
 

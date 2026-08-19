@@ -220,12 +220,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §7.10.2 "The Wrong and Right Way to Do Cross-validation", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [Guyon & Elisseeff (2003), "An Introduction to Variable and Feature Selection", JMLR 3 (texto completo oficial)](https://www.jmlr.org/papers/v3/guyon03a.html)
-- [Micci-Barreca (2001), "A Preprocessing Scheme for High-Cardinality Categorical Attributes", SIGKDD Explorations. DOI 10.1145/507533.507538](https://doi.org/10.1145/507533.507538)
-- [scikit-learn User Guide — Preprocessing data](https://scikit-learn.org/stable/modules/preprocessing.html)
-- [scikit-learn User Guide — Feature selection](https://scikit-learn.org/stable/modules/feature_selection.html)
-- [scikit-learn User Guide — Pipelines and composite estimators](https://scikit-learn.org/stable/modules/compose.html)
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §7.10.2 "The Wrong and Right Way to Do Cross-validation", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [Guyon & Elisseeff (2003), "An Introduction to Variable and Feature Selection", JMLR 3 (texto completo oficial)](https://www.jmlr.org/papers/v3/guyon03a.html) — uso: referencia consultada en su fuente original
+- [Micci-Barreca (2001), "A Preprocessing Scheme for High-Cardinality Categorical Attributes", SIGKDD Explorations. DOI 10.1145/507533.507538](https://doi.org/10.1145/507533.507538) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn User Guide — Preprocessing data](https://scikit-learn.org/stable/modules/preprocessing.html) — uso: referencia consultada en su fuente original
+- [scikit-learn User Guide — Feature selection](https://scikit-learn.org/stable/modules/feature_selection.html) — uso: referencia consultada en su fuente original
+- [scikit-learn User Guide — Pipelines and composite estimators](https://scikit-learn.org/stable/modules/compose.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

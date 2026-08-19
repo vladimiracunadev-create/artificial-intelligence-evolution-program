@@ -225,12 +225,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. 6 (Vector Semantics and Embeddings) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
-- Mikolov, T. et al. (2013). "Efficient Estimation of Word Representations in Vector Space" (word2vec) — [arXiv:1301.3781](https://arxiv.org/abs/1301.3781)
-- Pennington, J., Socher, R. y Manning, C. (2014). "GloVe: Global Vectors for Word Representation" — [nlp.stanford.edu/projects/glove](https://nlp.stanford.edu/projects/glove/)
-- Bolukbasi, T. et al. (2016). "Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings" — [arXiv:1607.06520](https://arxiv.org/abs/1607.06520)
-- Reimers, N. y Gurevych, I. (2019). "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks" — [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)
-- Documentación oficial de Sentence-Transformers — [sbert.net](https://www.sbert.net/)
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. 6 (Vector Semantics and Embeddings) — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Mikolov, T. et al. (2013). "Efficient Estimation of Word Representations in Vector Space" (word2vec) — [arXiv:1301.3781](https://arxiv.org/abs/1301.3781) — uso: fuente primaria del mecanismo estudiado
+- Pennington, J., Socher, R. y Manning, C. (2014). "GloVe: Global Vectors for Word Representation" — [nlp.stanford.edu/projects/glove](https://nlp.stanford.edu/projects/glove/) — uso: referencia consultada en su fuente original
+- Bolukbasi, T. et al. (2016). "Man is to Computer Programmer as Woman is to Homemaker? Debiasing Word Embeddings" — [arXiv:1607.06520](https://arxiv.org/abs/1607.06520) — uso: fuente primaria del mecanismo estudiado
+- Reimers, N. y Gurevych, I. (2019). "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks" — [arXiv:1908.10084](https://arxiv.org/abs/1908.10084) — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Sentence-Transformers — [sbert.net](https://www.sbert.net/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

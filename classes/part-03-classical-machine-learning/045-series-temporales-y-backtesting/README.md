@@ -232,11 +232,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Hyndman & Athanasopoulos — *Forecasting: Principles and Practice* (3e), libro completo gratuito en línea](https://otexts.com/fpp3/)
-- [Box, Jenkins, Reinsel & Ljung — *Time Series Analysis: Forecasting and Control* (5e, 2015). DOI 10.1002/9781118619193 (edición 4e)](https://doi.org/10.1002/9781118619193)
-- [Bergmeir & Benítez (2012), "On the Use of Cross-validation for Time Series Predictor Evaluation", *Information Sciences*. DOI 10.1016/j.ins.2011.12.028](https://doi.org/10.1016/j.ins.2011.12.028)
-- [scikit-learn — TimeSeriesSplit (validación con orden temporal)](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)
-- [statsmodels — Time Series Analysis (ARIMA, descomposición, ACF/PACF)](https://www.statsmodels.org/stable/tsa.html)
+- [Hyndman & Athanasopoulos — *Forecasting: Principles and Practice* (3e), libro completo gratuito en línea](https://otexts.com/fpp3/) — uso: referencia consultada en su fuente original
+- [Box, Jenkins, Reinsel & Ljung — *Time Series Analysis: Forecasting and Control* (5e, 2015). DOI 10.1002/9781118619193 (edición 4e)](https://doi.org/10.1002/9781118619193) — uso: fuente primaria del mecanismo estudiado
+- [Bergmeir & Benítez (2012), "On the Use of Cross-validation for Time Series Predictor Evaluation", *Information Sciences*. DOI 10.1016/j.ins.2011.12.028](https://doi.org/10.1016/j.ins.2011.12.028) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn — TimeSeriesSplit (validación con orden temporal)](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html) — uso: referencia consultada en su fuente original
+- [statsmodels — Time Series Analysis (ARIMA, descomposición, ACF/PACF)](https://www.statsmodels.org/stable/tsa.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

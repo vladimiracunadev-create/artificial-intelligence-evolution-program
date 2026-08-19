@@ -225,7 +225,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic — Building effective agents (2024)](https://www.anthropic.com/engineering/building-effective-agents): el workflow *orchestrator-workers*.
 - [Wu et al., *AutoGen* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): patrones de chat en grupo con un manager que coordina agentes.
 - [LangGraph — Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs): supervisores y workers como grafos anidados con estado propio.
-- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: asignación de tareas y cooperación (Contract Net como antecedente).
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: asignación de tareas y cooperación (Contract Net como antecedente). — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

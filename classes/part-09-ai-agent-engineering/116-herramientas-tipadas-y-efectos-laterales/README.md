@@ -259,12 +259,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761 (paper seminal de uso de herramientas por LLMs)](https://arxiv.org/abs/2302.04761)
-- [JSON Schema — especificación oficial (validación de argumentos de herramientas)](https://json-schema.org/specification)
-- [Model Context Protocol — especificación (declaración estándar de tools entre procesos)](https://modelcontextprotocol.io/)
-- [Anthropic Engineering — "Building effective agents" (apéndice: prompt engineering de tools)](https://www.anthropic.com/engineering/building-effective-agents)
-- [RFC 9110 — HTTP Semantics, §9.2.2 "Idempotent Methods" (definición normativa de idempotencia)](https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods)
-- [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: herramientas con más efecto del necesario)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761 (paper seminal de uso de herramientas por LLMs)](https://arxiv.org/abs/2302.04761) — uso: fuente primaria del mecanismo estudiado
+- [JSON Schema — especificación oficial (validación de argumentos de herramientas)](https://json-schema.org/specification) — uso: marco normativo de referencia
+- [Model Context Protocol — especificación (declaración estándar de tools entre procesos)](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
+- [Anthropic Engineering — "Building effective agents" (apéndice: prompt engineering de tools)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [RFC 9110 — HTTP Semantics, §9.2.2 "Idempotent Methods" (definición normativa de idempotencia)](https://www.rfc-editor.org/rfc/rfc9110.html#name-idempotent-methods) — uso: marco normativo de referencia
+- [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: herramientas con más efecto del necesario)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

@@ -219,12 +219,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS 28 (PDF oficial)](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-- [Mitchell et al. (2019), "Model Cards for Model Reporting", ACM FAT*. DOI 10.1145/3287560.3287596](https://doi.org/10.1145/3287560.3287596)
-- [Gebru et al. (2021), "Datasheets for Datasets", CACM 64(12). DOI 10.1145/3458723](https://doi.org/10.1145/3458723)
-- [Pineau et al. (2021), "Improving Reproducibility in Machine Learning Research", JMLR 22 (texto oficial)](https://jmlr.org/papers/v22/20-303.html)
-- [scikit-learn — Common pitfalls and recommended practices](https://scikit-learn.org/stable/common_pitfalls.html)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 (protocolo de evaluación), PDF oficial](https://hastie.su.domains/ElemStatLearn/)
+- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS 28 (PDF oficial)](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — uso: referencia consultada en su fuente original
+- [Mitchell et al. (2019), "Model Cards for Model Reporting", ACM FAT*. DOI 10.1145/3287560.3287596](https://doi.org/10.1145/3287560.3287596) — uso: fuente primaria del mecanismo estudiado
+- [Gebru et al. (2021), "Datasheets for Datasets", CACM 64(12). DOI 10.1145/3458723](https://doi.org/10.1145/3458723) — uso: fuente primaria del mecanismo estudiado
+- [Pineau et al. (2021), "Improving Reproducibility in Machine Learning Research", JMLR 22 (texto oficial)](https://jmlr.org/papers/v22/20-303.html) — uso: referencia consultada en su fuente original
+- [scikit-learn — Common pitfalls and recommended practices](https://scikit-learn.org/stable/common_pitfalls.html) — uso: referencia consultada en su fuente original
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 7 (protocolo de evaluación), PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
 
 ---
 

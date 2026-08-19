@@ -230,12 +230,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 4 "Classification", PDF oficial](https://www.statlearning.com/)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §4.4 "Logistic Regression", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [Bishop — *Pattern Recognition and Machine Learning* (2006), §4.3 "Probabilistic Discriminative Models", PDF oficial de Microsoft Research](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/)
-- [Cox (1958), "The Regression Analysis of Binary Sequences", JRSS B. DOI 10.1111/j.2517-6161.1958.tb00292.x](https://doi.org/10.1111/j.2517-6161.1958.tb00292.x)
-- [scikit-learn User Guide — Logistic regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)
-- [scikit-learn User Guide — Probability calibration](https://scikit-learn.org/stable/modules/calibration.html)
+- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 4 "Classification", PDF oficial](https://www.statlearning.com/) — uso: desarrollo extendido del tema
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), §4.4 "Logistic Regression", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [Bishop — *Pattern Recognition and Machine Learning* (2006), §4.3 "Probabilistic Discriminative Models", PDF oficial de Microsoft Research](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/) — uso: referencia consultada en su fuente original
+- [Cox (1958), "The Regression Analysis of Binary Sequences", JRSS B. DOI 10.1111/j.2517-6161.1958.tb00292.x](https://doi.org/10.1111/j.2517-6161.1958.tb00292.x) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn User Guide — Logistic regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression) — uso: referencia consultada en su fuente original
+- [scikit-learn User Guide — Probability calibration](https://scikit-learn.org/stable/modules/calibration.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

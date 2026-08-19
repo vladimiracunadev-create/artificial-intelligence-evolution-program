@@ -240,11 +240,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Rombach, R., Blattmann, A., Lorenz, D., Esser, P. y Ommer, B. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models* (Stable Diffusion). [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
-- Ho, J. y Salimans, T. (2022). *Classifier-Free Diffusion Guidance*. [arXiv:2207.12598](https://arxiv.org/abs/2207.12598)
-- Radford, A. et al. (2021). *Learning Transferable Visual Models From Natural Language Supervision* (CLIP). [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
-- Ramesh, A. et al. (2022). *Hierarchical Text-Conditional Image Generation with CLIP Latents* (DALL·E 2). [arXiv:2204.06125](https://arxiv.org/abs/2204.06125)
-- Documentación de Hugging Face Diffusers: [Stable Diffusion pipeline](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview)
+- Rombach, R., Blattmann, A., Lorenz, D., Esser, P. y Ommer, B. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models* (Stable Diffusion). [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) — uso: fuente primaria del mecanismo estudiado
+- Ho, J. y Salimans, T. (2022). *Classifier-Free Diffusion Guidance*. [arXiv:2207.12598](https://arxiv.org/abs/2207.12598) — uso: fuente primaria del mecanismo estudiado
+- Radford, A. et al. (2021). *Learning Transferable Visual Models From Natural Language Supervision* (CLIP). [arXiv:2103.00020](https://arxiv.org/abs/2103.00020) — uso: fuente primaria del mecanismo estudiado
+- Ramesh, A. et al. (2022). *Hierarchical Text-Conditional Image Generation with CLIP Latents* (DALL·E 2). [arXiv:2204.06125](https://arxiv.org/abs/2204.06125) — uso: fuente primaria del mecanismo estudiado
+- Documentación de Hugging Face Diffusers: [Stable Diffusion pipeline](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

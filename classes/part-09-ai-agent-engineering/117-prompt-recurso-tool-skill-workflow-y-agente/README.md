@@ -233,12 +233,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Model Context Protocol — especificación oficial (prompts, resources y tools como primitivas con control distinto)](https://modelcontextprotocol.io/)
-- [Anthropic Engineering — "Building effective agents" (workflows vs agentes, patrones de composición)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle que define el nivel agente)](https://arxiv.org/abs/2210.03629)
-- [Schick et al. (2023), "Toolformer", arXiv:2302.04761 (la tool como primitiva model-controlled)](https://arxiv.org/abs/2302.04761)
-- [OWASP Top 10 for LLM Applications (LLM01: contenido de resources como vector de inyección)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [LangGraph — Overview (materialización de workflows y agentes como grafos)](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Model Context Protocol — especificación oficial (prompts, resources y tools como primitivas con control distinto)](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
+- [Anthropic Engineering — "Building effective agents" (workflows vs agentes, patrones de composición)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Yao et al. (2022), "ReAct", arXiv:2210.03629 (el bucle que define el nivel agente)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Schick et al. (2023), "Toolformer", arXiv:2302.04761 (la tool como primitiva model-controlled)](https://arxiv.org/abs/2302.04761) — uso: fuente primaria del mecanismo estudiado
+- [OWASP Top 10 for LLM Applications (LLM01: contenido de resources como vector de inyección)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [LangGraph — Overview (materialización de workflows y agentes como grafos)](https://docs.langchain.com/oss/python/langgraph/overview) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

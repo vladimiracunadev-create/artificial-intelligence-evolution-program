@@ -230,11 +230,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Vaswani, A. et al. (2017). *Attention Is All You Need*. [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
-- Bahdanau, D., Cho, K. y Bengio, Y. (2014). *Neural Machine Translation by Jointly Learning to Align and Translate*. [arXiv:1409.0473](https://arxiv.org/abs/1409.0473)
-- Devlin, J. et al. (2018). *BERT: Pre-training of Deep Bidirectional Transformers*. [arXiv:1810.04805](https://arxiv.org/abs/1810.04805)
-- Rush, A. et al. *The Annotated Transformer* (implementación comentada línea a línea). [nlp.seas.harvard.edu/annotated-transformer](https://nlp.seas.harvard.edu/annotated-transformer/)
-- Jurafsky, D. y Martin, J. *Speech and Language Processing* (3.ª ed., borrador), cap. sobre Transformers. [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
+- Vaswani, A. et al. (2017). *Attention Is All You Need*. [arXiv:1706.03762](https://arxiv.org/abs/1706.03762) — uso: fuente primaria del mecanismo estudiado
+- Bahdanau, D., Cho, K. y Bengio, Y. (2014). *Neural Machine Translation by Jointly Learning to Align and Translate*. [arXiv:1409.0473](https://arxiv.org/abs/1409.0473) — uso: fuente primaria del mecanismo estudiado
+- Devlin, J. et al. (2018). *BERT: Pre-training of Deep Bidirectional Transformers*. [arXiv:1810.04805](https://arxiv.org/abs/1810.04805) — uso: fuente primaria del mecanismo estudiado
+- Rush, A. et al. *The Annotated Transformer* (implementación comentada línea a línea). [nlp.seas.harvard.edu/annotated-transformer](https://nlp.seas.harvard.edu/annotated-transformer/) — uso: referencia consultada en su fuente original
+- Jurafsky, D. y Martin, J. *Speech and Language Processing* (3.ª ed., borrador), cap. sobre Transformers. [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

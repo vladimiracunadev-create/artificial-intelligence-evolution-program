@@ -243,12 +243,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-- [Google, "Rules of Machine Learning" (Martin Zinkevich)](https://developers.google.com/machine-learning/guides/rules-of-ml)
-- [Paleyes, Urma & Lawrence (2022), "Challenges in Deploying Machine Learning", ACM Computing Surveys (arXiv:2011.09926)](https://arxiv.org/abs/2011.09926)
-- [MLflow Documentation](https://mlflow.org/docs/latest/)
-- [Huyen, *Designing Machine Learning Systems* (O'Reilly, 2022)](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — uso: referencia consultada en su fuente original
+- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — uso: referencia consultada en su fuente original
+- [Google, "Rules of Machine Learning" (Martin Zinkevich)](https://developers.google.com/machine-learning/guides/rules-of-ml) — uso: referencia consultada en su fuente original
+- [Paleyes, Urma & Lawrence (2022), "Challenges in Deploying Machine Learning", ACM Computing Surveys (arXiv:2011.09926)](https://arxiv.org/abs/2011.09926) — uso: fuente primaria del mecanismo estudiado
+- [MLflow Documentation](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
+- [Huyen, *Designing Machine Learning Systems* (O'Reilly, 2022)](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

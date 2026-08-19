@@ -242,12 +242,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Zhou, S. et al. (2023). WebArena: A Realistic Web Environment for Building Autonomous Agents. arXiv:2307.13854](https://arxiv.org/abs/2307.13854)
-- [Deng, X. et al. (2023). Mind2Web: Towards a Generalist Agent for the Web. arXiv:2306.06070](https://arxiv.org/abs/2306.06070)
-- [Playwright — documentación oficial (auto-waiting y actionability)](https://playwright.dev/docs/actionability)
-- [Chrome DevTools Protocol — documentación oficial](https://chromedevtools.github.io/devtools-protocol/)
-- [W3C — Accessibility Tree (WAI-ARIA): roles y nombres accesibles](https://www.w3.org/TR/wai-aria-1.2/)
-- [Anthropic — Computer use tool (acciones de navegador y escritorio)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool)
+- [Zhou, S. et al. (2023). WebArena: A Realistic Web Environment for Building Autonomous Agents. arXiv:2307.13854](https://arxiv.org/abs/2307.13854) — uso: fuente primaria del mecanismo estudiado
+- [Deng, X. et al. (2023). Mind2Web: Towards a Generalist Agent for the Web. arXiv:2306.06070](https://arxiv.org/abs/2306.06070) — uso: fuente primaria del mecanismo estudiado
+- [Playwright — documentación oficial (auto-waiting y actionability)](https://playwright.dev/docs/actionability) — uso: referencia consultada en su fuente original
+- [Chrome DevTools Protocol — documentación oficial](https://chromedevtools.github.io/devtools-protocol/) — uso: referencia consultada en su fuente original
+- [W3C — Accessibility Tree (WAI-ARIA): roles y nombres accesibles](https://www.w3.org/TR/wai-aria-1.2/) — uso: marco normativo de referencia
+- [Anthropic — Computer use tool (acciones de navegador y escritorio)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -192,11 +192,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 12 "Quantifying Uncertainty". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Jaynes, E. T. (2003). *Probability Theory: The Logic of Science*. Cambridge University Press.
-- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models*, caps. 2-3. [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)
-- Murphy, K. (2022). *Probabilistic Machine Learning: An Introduction*, cap. 2. [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html)
-- Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann.
+- Russell, S. & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach*, 4.ª ed., cap. 12 "Quantifying Uncertainty". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Jaynes, E. T. (2003). *Probability Theory: The Logic of Science*. Cambridge University Press. — uso: desarrollo extendido del tema
+- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models*, caps. 2-3. [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/) — uso: referencia consultada en su fuente original
+- Murphy, K. (2022). *Probabilistic Machine Learning: An Introduction*, cap. 2. [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html) — uso: desarrollo extendido del tema
+- Pearl, J. (1988). *Probabilistic Reasoning in Intelligent Systems*. Morgan Kaufmann. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

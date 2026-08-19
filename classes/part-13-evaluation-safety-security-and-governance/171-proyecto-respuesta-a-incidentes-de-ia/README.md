@@ -225,11 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST SP 800-61 Rev. 2, *Computer Security Incident Handling Guide*](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
-- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Reglamento (UE) 2024/1689 — EU AI Act (obligaciones de reporte de incidentes graves)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
-- [AI Incident Database — repositorio público de incidentes de IA](https://incidentdatabase.ai/)
+- [NIST SP 800-61 Rev. 2, *Computer Security Incident Handling Guide*](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final) — uso: marco normativo de referencia
+- [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [Reglamento (UE) 2024/1689 — EU AI Act (obligaciones de reporte de incidentes graves)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — uso: marco normativo de referencia
+- [AI Incident Database — repositorio público de incidentes de IA](https://incidentdatabase.ai/) — uso: referencia consultada en su fuente original
 
 ---
 

@@ -217,12 +217,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Sutton, R. y Barto, A. (2018). *Reinforcement Learning: An Introduction* (2.ª ed., PDF oficial gratuito). [incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html)
-- Mnih, V. et al. (2015). *Human-level control through deep reinforcement learning* (DQN). Nature 518. [doi:10.1038/nature14236](https://doi.org/10.1038/nature14236)
-- Mnih, V. et al. (2013). *Playing Atari with Deep Reinforcement Learning*. [arXiv:1312.5602](https://arxiv.org/abs/1312.5602)
-- Schulman, J. et al. (2017). *Proximal Policy Optimization Algorithms*. [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
-- Williams, R. (1992). *Simple statistical gradient-following algorithms for connectionist reinforcement learning* (REINFORCE). [doi:10.1007/BF00992696](https://doi.org/10.1007/BF00992696)
-- Documentación de Gymnasium (entornos estándar de RL). [gymnasium.farama.org](https://gymnasium.farama.org/)
+- Sutton, R. y Barto, A. (2018). *Reinforcement Learning: An Introduction* (2.ª ed., PDF oficial gratuito). [incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
+- Mnih, V. et al. (2015). *Human-level control through deep reinforcement learning* (DQN). Nature 518. [doi:10.1038/nature14236](https://doi.org/10.1038/nature14236) — uso: fuente primaria del mecanismo estudiado
+- Mnih, V. et al. (2013). *Playing Atari with Deep Reinforcement Learning*. [arXiv:1312.5602](https://arxiv.org/abs/1312.5602) — uso: fuente primaria del mecanismo estudiado
+- Schulman, J. et al. (2017). *Proximal Policy Optimization Algorithms*. [arXiv:1707.06347](https://arxiv.org/abs/1707.06347) — uso: fuente primaria del mecanismo estudiado
+- Williams, R. (1992). *Simple statistical gradient-following algorithms for connectionist reinforcement learning* (REINFORCE). [doi:10.1007/BF00992696](https://doi.org/10.1007/BF00992696) — uso: fuente primaria del mecanismo estudiado
+- Documentación de Gymnasium (entornos estándar de RL). [gymnasium.farama.org](https://gymnasium.farama.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

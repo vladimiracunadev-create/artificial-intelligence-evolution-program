@@ -229,11 +229,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Turing, A. M. (1936). On Computable Numbers, with an Application to the Entscheidungsproblem](https://doi.org/10.1112/plms/s2-42.1.230)
-- [Cook, S. (1971). The Complexity of Theorem-Proving Procedures (SAT es NP-completo)](https://doi.org/10.1145/800157.805047)
-- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., caps. 7-8 (agentes lógicos) y apéndice A (complejidad)](https://aima.cs.berkeley.edu/)
-- [Clay Mathematics Institute. P vs NP (problema del milenio)](https://www.claymath.org/millennium/p-vs-np/)
-- [Nilsson, N. (2010). *The Quest for Artificial Intelligence*, caps. sobre razonamiento lógico (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
+- [Turing, A. M. (1936). On Computable Numbers, with an Application to the Entscheidungsproblem](https://doi.org/10.1112/plms/s2-42.1.230) — uso: fuente primaria del mecanismo estudiado
+- [Cook, S. (1971). The Complexity of Theorem-Proving Procedures (SAT es NP-completo)](https://doi.org/10.1145/800157.805047) — uso: fuente primaria del mecanismo estudiado
+- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., caps. 7-8 (agentes lógicos) y apéndice A (complejidad)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Clay Mathematics Institute. P vs NP (problema del milenio)](https://www.claymath.org/millennium/p-vs-np/) — uso: referencia consultada en su fuente original
+- [Nilsson, N. (2010). *The Quest for Artificial Intelligence*, caps. sobre razonamiento lógico (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

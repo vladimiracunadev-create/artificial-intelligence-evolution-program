@@ -203,10 +203,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. y Norvig, P. (2021). *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 3 "Solving Problems by Searching". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Newell, A. y Simon, H. A. (1976). "Computer Science as Empirical Inquiry: Symbols and Search". *Communications of the ACM*, 19(3). [https://doi.org/10.1145/360018.360022](https://doi.org/10.1145/360018.360022)
+- Russell, S. y Norvig, P. (2021). *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 3 "Solving Problems by Searching". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Newell, A. y Simon, H. A. (1976). "Computer Science as Empirical Inquiry: Symbols and Search". *Communications of the ACM*, 19(3). [https://doi.org/10.1145/360018.360022](https://doi.org/10.1145/360018.360022) — uso: fuente primaria del mecanismo estudiado
 - Nilsson, N. J. (1980). *Principles of Artificial Intelligence*. Morgan Kaufmann — caps. 1-2 sobre representación por espacios de estados.
-- Stanford Encyclopedia of Philosophy — "Logic and Artificial Intelligence". [https://plato.stanford.edu/entries/logic-ai/](https://plato.stanford.edu/entries/logic-ai/)
+- Stanford Encyclopedia of Philosophy — "Logic and Artificial Intelligence". [https://plato.stanford.edu/entries/logic-ai/](https://plato.stanford.edu/entries/logic-ai/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

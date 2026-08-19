@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jacob, B. et al. (2017). "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference" — [arXiv:1712.05877](https://arxiv.org/abs/1712.05877)
-- Banbury, C. et al. (2021). "MLPerf Tiny Benchmark" — [arXiv:2106.07597](https://arxiv.org/abs/2106.07597)
-- Warden, P. y Situnayake, D. (2019). *TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers*. O'Reilly.
-- Documentación de LiteRT / TensorFlow Lite (cuantización e inferencia en dispositivo) — [ai.google.dev/edge/litert](https://ai.google.dev/edge/litert)
-- UCI Machine Learning Repository. *Human Activity Recognition Using Smartphones* — [archive.ics.uci.edu/dataset/240](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones)
+- Jacob, B. et al. (2017). "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference" — [arXiv:1712.05877](https://arxiv.org/abs/1712.05877) — uso: fuente primaria del mecanismo estudiado
+- Banbury, C. et al. (2021). "MLPerf Tiny Benchmark" — [arXiv:2106.07597](https://arxiv.org/abs/2106.07597) — uso: fuente primaria del mecanismo estudiado
+- Warden, P. y Situnayake, D. (2019). *TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers*. O'Reilly. — uso: desarrollo extendido del tema
+- Documentación de LiteRT / TensorFlow Lite (cuantización e inferencia en dispositivo) — [ai.google.dev/edge/litert](https://ai.google.dev/edge/litert) — uso: referencia consultada en su fuente original
+- UCI Machine Learning Repository. *Human Activity Recognition Using Smartphones* — [archive.ics.uci.edu/dataset/240](https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -233,11 +233,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Shumailov, I. et al. (2024). *AI models collapse when trained on recursively generated data*. Nature, 631. [doi:10.1038/s41586-024-07566-y](https://doi.org/10.1038/s41586-024-07566-y) · [versión arXiv](https://arxiv.org/abs/2305.17493)
-- Chawla, N. et al. (2002). *SMOTE: Synthetic Minority Over-sampling Technique*. JAIR, 16. [doi:10.1613/jair.953](https://doi.org/10.1613/jair.953)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html)
-- Goodfellow, I. et al. (2014). *Generative Adversarial Networks*. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
-- C2PA (procedencia como mitigación de contaminación, ver clase 098): [especificación 2.2](https://c2pa.org/specifications/specifications/2.2/index.html)
+- Shumailov, I. et al. (2024). *AI models collapse when trained on recursively generated data*. Nature, 631. [doi:10.1038/s41586-024-07566-y](https://doi.org/10.1038/s41586-024-07566-y) · [versión arXiv](https://arxiv.org/abs/2305.17493) — uso: fuente primaria del mecanismo estudiado
+- Chawla, N. et al. (2002). *SMOTE: Synthetic Minority Over-sampling Technique*. JAIR, 16. [doi:10.1613/jair.953](https://doi.org/10.1613/jair.953) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html) — uso: desarrollo extendido del tema
+- Goodfellow, I. et al. (2014). *Generative Adversarial Networks*. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661) — uso: fuente primaria del mecanismo estudiado
+- C2PA (procedencia como mitigación de contaminación, ver clase 098): [especificación 2.2](https://c2pa.org/specifications/specifications/2.2/index.html) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

@@ -258,12 +258,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kingma, D. P. y Welling, M. (2013). *Auto-Encoding Variational Bayes*. Paper seminal del VAE. [arXiv:1312.6114](https://arxiv.org/abs/1312.6114)
-- Kingma, D. P. y Welling, M. (2019). *An Introduction to Variational Autoencoders*. Foundations and Trends in Machine Learning. [arXiv:1906.02691](https://arxiv.org/abs/1906.02691)
-- Doersch, C. (2016). *Tutorial on Variational Autoencoders*. [arXiv:1606.05908](https://arxiv.org/abs/1606.05908)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html)
-- Rezende, D. J., Mohamed, S. y Wierstra, D. (2014). *Stochastic Backpropagation and Approximate Inference in Deep Generative Models*. [arXiv:1401.4082](https://arxiv.org/abs/1401.4082)
-- Documentación de PyTorch: [`torch.distributions.kl.kl_divergence`](https://pytorch.org/docs/stable/distributions.html#torch.distributions.kl.kl_divergence)
+- Kingma, D. P. y Welling, M. (2013). *Auto-Encoding Variational Bayes*. Paper seminal del VAE. [arXiv:1312.6114](https://arxiv.org/abs/1312.6114) — uso: fuente primaria del mecanismo estudiado
+- Kingma, D. P. y Welling, M. (2019). *An Introduction to Variational Autoencoders*. Foundations and Trends in Machine Learning. [arXiv:1906.02691](https://arxiv.org/abs/1906.02691) — uso: fuente primaria del mecanismo estudiado
+- Doersch, C. (2016). *Tutorial on Variational Autoencoders*. [arXiv:1606.05908](https://arxiv.org/abs/1606.05908) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 20 (Deep Generative Models). [deeplearningbook.org/contents/generative_models.html](https://www.deeplearningbook.org/contents/generative_models.html) — uso: desarrollo extendido del tema
+- Rezende, D. J., Mohamed, S. y Wierstra, D. (2014). *Stochastic Backpropagation and Approximate Inference in Deep Generative Models*. [arXiv:1401.4082](https://arxiv.org/abs/1401.4082) — uso: fuente primaria del mecanismo estudiado
+- Documentación de PyTorch: [`torch.distributions.kl.kl_divergence`](https://pytorch.org/docs/stable/distributions.html#torch.distributions.kl.kl_divergence) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

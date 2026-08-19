@@ -274,7 +274,7 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Anthropic — Building effective agents (2024)](https://www.anthropic.com/engineering/building-effective-agents): taxonomía workflow vs. agente y el principio de simplicidad.
 - [Anthropic — How we built our multi-agent research system (2025)](https://www.anthropic.com/engineering/multi-agent-research-system): datos reales de coste (~15×) y lecciones de orquestador-workers.
 - [Wu et al., *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation* (arXiv:2308.08155)](https://arxiv.org/abs/2308.08155): framework seminal de agentes conversables.
-- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: fundamento clásico pre-LLM de agencia y coordinación.
+- Wooldridge, M., *An Introduction to MultiAgent Systems*, 2.ª ed., Wiley, 2009: fundamento clásico pre-LLM de agencia y coordinación. — uso: desarrollo extendido del tema
 - [LangGraph — Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs): implementación de subagentes como grafos anidados.
 - [LangGraph — Overview](https://docs.langchain.com/oss/python/langgraph/overview): grafos de estados con aristas condicionales, checkpointing e interrupciones (graph engineering como abstracción de primera clase).
 - [Andrew Ng — Agentic Design Patterns (The Batch, deeplearning.ai)](https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/): los cuatro patrones — Reflection, Tool use, Planning, Multi-agent collaboration.

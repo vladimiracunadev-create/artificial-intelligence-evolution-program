@@ -236,12 +236,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Pearl, J. & Mackenzie, D. (2018). *The Book of Why: The New Science of Cause and Effect*. Basic Books.
-- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2.ª ed.). Cambridge University Press.
-- Pearl, J. (2009). *Causal inference in statistics: An overview*. Statistics Surveys 3. [doi:10.1214/09-SS057](https://doi.org/10.1214/09-SS057)
-- Peters, J., Janzing, D. & Schölkopf, B. (2017). *Elements of Causal Inference*. MIT Press (acceso abierto). [Página oficial](https://mitpress.mit.edu/9780262037310/elements-of-causal-inference/)
-- Schölkopf, B. et al. (2021). *Toward Causal Representation Learning*. Proceedings of the IEEE. [arXiv:2102.11107](https://arxiv.org/abs/2102.11107)
-- Spirtes, P., Glymour, C. & Scheines, R. (2000). *Causation, Prediction, and Search* (2.ª ed.). MIT Press.
+- Pearl, J. & Mackenzie, D. (2018). *The Book of Why: The New Science of Cause and Effect*. Basic Books. — uso: desarrollo extendido del tema
+- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference* (2.ª ed.). Cambridge University Press. — uso: referencia consultada en su fuente original
+- Pearl, J. (2009). *Causal inference in statistics: An overview*. Statistics Surveys 3. [doi:10.1214/09-SS057](https://doi.org/10.1214/09-SS057) — uso: fuente primaria del mecanismo estudiado
+- Peters, J., Janzing, D. & Schölkopf, B. (2017). *Elements of Causal Inference*. MIT Press (acceso abierto). [Página oficial](https://mitpress.mit.edu/9780262037310/elements-of-causal-inference/) — uso: referencia consultada en su fuente original
+- Schölkopf, B. et al. (2021). *Toward Causal Representation Learning*. Proceedings of the IEEE. [arXiv:2102.11107](https://arxiv.org/abs/2102.11107) — uso: fuente primaria del mecanismo estudiado
+- Spirtes, P., Glymour, C. & Scheines, R. (2000). *Causation, Prediction, and Search* (2.ª ed.). MIT Press. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

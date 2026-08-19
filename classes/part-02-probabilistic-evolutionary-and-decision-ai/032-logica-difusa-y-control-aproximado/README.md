@@ -192,11 +192,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Zadeh, L. A. (1965). "Fuzzy Sets". *Information and Control*, 8(3), 338-353. [https://doi.org/10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X)
-- Mamdani, E. H. & Assilian, S. (1975). "An experiment in linguistic synthesis with a fuzzy logic controller". *Int. J. Man-Machine Studies*, 7(1), 1-13. [https://doi.org/10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373%2875%2980002-2)
-- Takagi, T. & Sugeno, M. (1985). "Fuzzy identification of systems and its applications to modeling and control". *IEEE Trans. SMC*, 15(1), 116-132. [https://doi.org/10.1109/TSMC.1985.6313399](https://doi.org/10.1109/TSMC.1985.6313399)
-- Jang, J.-S. R. (1993). "ANFIS: adaptive-network-based fuzzy inference system". *IEEE Trans. SMC*, 23(3), 665-685. [https://doi.org/10.1109/21.256541](https://doi.org/10.1109/21.256541)
-- Ross, T. J. (2010). *Fuzzy Logic with Engineering Applications*, 3.ª ed. Wiley.
+- Zadeh, L. A. (1965). "Fuzzy Sets". *Information and Control*, 8(3), 338-353. [https://doi.org/10.1016/S0019-9958(65)90241-X](https://doi.org/10.1016/S0019-9958%2865%2990241-X) — uso: fuente primaria del mecanismo estudiado
+- Mamdani, E. H. & Assilian, S. (1975). "An experiment in linguistic synthesis with a fuzzy logic controller". *Int. J. Man-Machine Studies*, 7(1), 1-13. [https://doi.org/10.1016/S0020-7373(75)80002-2](https://doi.org/10.1016/S0020-7373%2875%2980002-2) — uso: fuente primaria del mecanismo estudiado
+- Takagi, T. & Sugeno, M. (1985). "Fuzzy identification of systems and its applications to modeling and control". *IEEE Trans. SMC*, 15(1), 116-132. [https://doi.org/10.1109/TSMC.1985.6313399](https://doi.org/10.1109/TSMC.1985.6313399) — uso: fuente primaria del mecanismo estudiado
+- Jang, J.-S. R. (1993). "ANFIS: adaptive-network-based fuzzy inference system". *IEEE Trans. SMC*, 23(3), 665-685. [https://doi.org/10.1109/21.256541](https://doi.org/10.1109/21.256541) — uso: fuente primaria del mecanismo estudiado
+- Ross, T. J. (2010). *Fuzzy Logic with Engineering Applications*, 3.ª ed. Wiley. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

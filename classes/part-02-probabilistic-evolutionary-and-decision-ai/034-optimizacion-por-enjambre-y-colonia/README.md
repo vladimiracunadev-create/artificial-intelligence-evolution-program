@@ -194,11 +194,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kennedy, J. & Eberhart, R. (1995). "Particle swarm optimization". *Proc. IEEE ICNN*, 1942-1948. [https://doi.org/10.1109/ICNN.1995.488968](https://doi.org/10.1109/ICNN.1995.488968)
-- Dorigo, M., Maniezzo, V. & Colorni, A. (1996). "Ant System: optimization by a colony of cooperating agents". *IEEE Trans. SMC-B*, 26(1), 29-41. [https://doi.org/10.1109/3477.484436](https://doi.org/10.1109/3477.484436)
-- Dorigo, M. & Stützle, T. (2004). *Ant Colony Optimization*. MIT Press. [https://mitpress.mit.edu/9780262042192/ant-colony-optimization/](https://mitpress.mit.edu/9780262042192/ant-colony-optimization/)
-- Clerc, M. & Kennedy, J. (2002). "The particle swarm — explosion, stability, and convergence in a multidimensional complex space". *IEEE Trans. Evolutionary Computation*, 6(1), 58-73. [https://doi.org/10.1109/4235.985692](https://doi.org/10.1109/4235.985692)
-- Bonabeau, E., Dorigo, M. & Theraulaz, G. (1999). *Swarm Intelligence: From Natural to Artificial Systems*. Oxford University Press.
+- Kennedy, J. & Eberhart, R. (1995). "Particle swarm optimization". *Proc. IEEE ICNN*, 1942-1948. [https://doi.org/10.1109/ICNN.1995.488968](https://doi.org/10.1109/ICNN.1995.488968) — uso: fuente primaria del mecanismo estudiado
+- Dorigo, M., Maniezzo, V. & Colorni, A. (1996). "Ant System: optimization by a colony of cooperating agents". *IEEE Trans. SMC-B*, 26(1), 29-41. [https://doi.org/10.1109/3477.484436](https://doi.org/10.1109/3477.484436) — uso: fuente primaria del mecanismo estudiado
+- Dorigo, M. & Stützle, T. (2004). *Ant Colony Optimization*. MIT Press. [https://mitpress.mit.edu/9780262042192/ant-colony-optimization/](https://mitpress.mit.edu/9780262042192/ant-colony-optimization/) — uso: referencia consultada en su fuente original
+- Clerc, M. & Kennedy, J. (2002). "The particle swarm — explosion, stability, and convergence in a multidimensional complex space". *IEEE Trans. Evolutionary Computation*, 6(1), 58-73. [https://doi.org/10.1109/4235.985692](https://doi.org/10.1109/4235.985692) — uso: fuente primaria del mecanismo estudiado
+- Bonabeau, E., Dorigo, M. & Theraulaz, G. (1999). *Swarm Intelligence: From Natural to Artificial Systems*. Oxford University Press. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

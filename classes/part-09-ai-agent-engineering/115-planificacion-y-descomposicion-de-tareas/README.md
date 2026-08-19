@@ -229,12 +229,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Russell y Norvig — *AIMA* (4e), caps. sobre planificación clásica (STRIPS, espacio de estados, metas)](https://aima.cs.berkeley.edu/)
-- [Fikes y Nilsson (1971), "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving", DOI:10.1016/0004-3702(71)90010-5 (formulación fundacional de la planificación)](https://doi.org/10.1016/0004-3702%2871%2990010-5)
-- [Yao et al. (2022), "ReAct" arXiv:2210.03629 (planificación entrelazada con actuación)](https://arxiv.org/abs/2210.03629)
-- [Wang et al. (2023), "Plan-and-Solve Prompting", arXiv:2305.04091 (plan-then-execute con LLMs)](https://arxiv.org/abs/2305.04091)
-- [Anthropic Engineering — "Building effective agents" (orquestador-trabajadores, evaluador-optimizador)](https://www.anthropic.com/engineering/building-effective-agents)
-- [LangGraph — Overview (grafos de control con estado para planes ejecutables)](https://docs.langchain.com/oss/python/langgraph/overview)
+- [Russell y Norvig — *AIMA* (4e), caps. sobre planificación clásica (STRIPS, espacio de estados, metas)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Fikes y Nilsson (1971), "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving", DOI:10.1016/0004-3702(71)90010-5 (formulación fundacional de la planificación)](https://doi.org/10.1016/0004-3702%2871%2990010-5) — uso: fuente primaria del mecanismo estudiado
+- [Yao et al. (2022), "ReAct" arXiv:2210.03629 (planificación entrelazada con actuación)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Wang et al. (2023), "Plan-and-Solve Prompting", arXiv:2305.04091 (plan-then-execute con LLMs)](https://arxiv.org/abs/2305.04091) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic Engineering — "Building effective agents" (orquestador-trabajadores, evaluador-optimizador)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [LangGraph — Overview (grafos de control con estado para planes ejecutables)](https://docs.langchain.com/oss/python/langgraph/overview) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -227,11 +227,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Liu, Ting & Zhou (2008), "Isolation Forest", IEEE ICDM. DOI 10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17)
-- [Breunig, Kriegel, Ng & Sander (2000), "LOF: Identifying Density-Based Local Outliers", ACM SIGMOD. DOI 10.1145/342009.335388](https://doi.org/10.1145/342009.335388)
-- [Chandola, Banerjee & Kumar (2009), "Anomaly Detection: A Survey", ACM Computing Surveys. DOI 10.1145/1541880.1541882](https://doi.org/10.1145/1541880.1541882)
-- [scikit-learn User Guide — Novelty and Outlier Detection](https://scikit-learn.org/stable/modules/outlier_detection.html)
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), PDF oficial (contexto de densidad y vecinos, cap. 13-14)](https://hastie.su.domains/ElemStatLearn/)
+- [Liu, Ting & Zhou (2008), "Isolation Forest", IEEE ICDM. DOI 10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17) — uso: fuente primaria del mecanismo estudiado
+- [Breunig, Kriegel, Ng & Sander (2000), "LOF: Identifying Density-Based Local Outliers", ACM SIGMOD. DOI 10.1145/342009.335388](https://doi.org/10.1145/342009.335388) — uso: fuente primaria del mecanismo estudiado
+- [Chandola, Banerjee & Kumar (2009), "Anomaly Detection: A Survey", ACM Computing Surveys. DOI 10.1145/1541880.1541882](https://doi.org/10.1145/1541880.1541882) — uso: fuente primaria del mecanismo estudiado
+- [scikit-learn User Guide — Novelty and Outlier Detection](https://scikit-learn.org/stable/modules/outlier_detection.html) — uso: referencia consultada en su fuente original
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), PDF oficial (contexto de densidad y vecinos, cap. 13-14)](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

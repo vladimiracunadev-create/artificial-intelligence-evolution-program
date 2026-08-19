@@ -242,11 +242,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [ISO 10218-1:2025 — Robotics: Safety requirements, Part 1 (página oficial ISO)](https://www.iso.org/standard/73933.html)
-- [ISO/TS 15066:2016 — Robots and robotic devices: Collaborative robots (página oficial ISO)](https://www.iso.org/standard/62996.html)
-- [ISO 12100:2010 — Safety of machinery: Risk assessment and risk reduction](https://www.iso.org/standard/51528.html)
-- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — cap. de Physical Human-Robot Interaction](https://link.springer.com/book/10.1007/978-3-319-32552-1)
-- [Villani, V. et al. (2018). Survey on human-robot collaboration in industrial settings. Mechatronics. DOI 10.1016/j.mechatronics.2018.02.009](https://doi.org/10.1016/j.mechatronics.2018.02.009)
+- [ISO 10218-1:2025 — Robotics: Safety requirements, Part 1 (página oficial ISO)](https://www.iso.org/standard/73933.html) — uso: marco normativo de referencia
+- [ISO/TS 15066:2016 — Robots and robotic devices: Collaborative robots (página oficial ISO)](https://www.iso.org/standard/62996.html) — uso: marco normativo de referencia
+- [ISO 12100:2010 — Safety of machinery: Risk assessment and risk reduction](https://www.iso.org/standard/51528.html) — uso: marco normativo de referencia
+- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — cap. de Physical Human-Robot Interaction](https://link.springer.com/book/10.1007/978-3-319-32552-1) — uso: referencia consultada en su fuente original
+- [Villani, V. et al. (2018). Survey on human-robot collaboration in industrial settings. Mechatronics. DOI 10.1016/j.mechatronics.2018.02.009](https://doi.org/10.1016/j.mechatronics.2018.02.009) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

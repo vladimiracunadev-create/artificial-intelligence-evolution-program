@@ -197,11 +197,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2.ª ed. Cambridge University Press. [https://bayes.cs.ucla.edu/BOOK-2K/](https://bayes.cs.ucla.edu/BOOK-2K/)
-- Pearl, J. (1995). "Causal diagrams for empirical research". *Biometrika*, 82(4), 669-688. [https://doi.org/10.1093/biomet/82.4.669](https://doi.org/10.1093/biomet/82.4.669)
-- Pearl, J. & Mackenzie, D. (2018). *The Book of Why*. Basic Books.
-- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models*, cap. 21 (causalidad). [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)
-- Documentación de PyMC. [https://www.pymc.io/](https://www.pymc.io/) · Documentación de Stan. [https://mc-stan.org/](https://mc-stan.org/)
+- Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2.ª ed. Cambridge University Press. [https://bayes.cs.ucla.edu/BOOK-2K/](https://bayes.cs.ucla.edu/BOOK-2K/) — uso: referencia consultada en su fuente original
+- Pearl, J. (1995). "Causal diagrams for empirical research". *Biometrika*, 82(4), 669-688. [https://doi.org/10.1093/biomet/82.4.669](https://doi.org/10.1093/biomet/82.4.669) — uso: fuente primaria del mecanismo estudiado
+- Pearl, J. & Mackenzie, D. (2018). *The Book of Why*. Basic Books. — uso: desarrollo extendido del tema
+- Koller, D. & Friedman, N. (2009). *Probabilistic Graphical Models*, cap. 21 (causalidad). [https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/) — uso: referencia consultada en su fuente original
+- Documentación de PyMC. [https://www.pymc.io/](https://www.pymc.io/) · Documentación de Stan. [https://mc-stan.org/](https://mc-stan.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -219,11 +219,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Vaswani et al. (2017), *Attention Is All You Need*: <https://arxiv.org/abs/1706.03762>
-- Devlin et al. (2018), *BERT: Pre-training of Deep Bidirectional Transformers*: <https://arxiv.org/abs/1810.04805>
-- Raffel et al. (2019), *Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer* (T5): <https://arxiv.org/abs/1910.10683>
-- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3): <https://arxiv.org/abs/2005.14165>
-- Jurafsky y Martin, *Speech and Language Processing* (3.ª ed., borrador): <https://web.stanford.edu/~jurafsky/slp3/>
+- Vaswani et al. (2017), *Attention Is All You Need*: <https://arxiv.org/abs/1706.03762> — uso: fuente primaria del mecanismo estudiado
+- Devlin et al. (2018), *BERT: Pre-training of Deep Bidirectional Transformers*: <https://arxiv.org/abs/1810.04805> — uso: fuente primaria del mecanismo estudiado
+- Raffel et al. (2019), *Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer* (T5): <https://arxiv.org/abs/1910.10683> — uso: fuente primaria del mecanismo estudiado
+- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3): <https://arxiv.org/abs/2005.14165> — uso: fuente primaria del mecanismo estudiado
+- Jurafsky y Martin, *Speech and Language Processing* (3.ª ed., borrador): <https://web.stanford.edu/~jurafsky/slp3/> — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

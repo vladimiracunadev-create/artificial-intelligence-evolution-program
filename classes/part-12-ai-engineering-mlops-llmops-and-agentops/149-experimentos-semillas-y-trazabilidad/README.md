@@ -225,12 +225,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [MLflow Documentation — Tracking y conceptos](https://mlflow.org/docs/latest/)
-- [Pineau et al. (2021), "Improving Reproducibility in Machine Learning Research", JMLR (arXiv:2003.12206)](https://arxiv.org/abs/2003.12206)
-- [Google, "Rules of Machine Learning" — reglas sobre pipelines y métricas](https://developers.google.com/machine-learning/guides/rules-of-ml)
-- [DVC Documentation — versionado de datos](https://dvc.org/doc)
-- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-- [PyTorch — Reproducibility notes](https://pytorch.org/docs/stable/notes/randomness.html)
+- [MLflow Documentation — Tracking y conceptos](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
+- [Pineau et al. (2021), "Improving Reproducibility in Machine Learning Research", JMLR (arXiv:2003.12206)](https://arxiv.org/abs/2003.12206) — uso: fuente primaria del mecanismo estudiado
+- [Google, "Rules of Machine Learning" — reglas sobre pipelines y métricas](https://developers.google.com/machine-learning/guides/rules-of-ml) — uso: referencia consultada en su fuente original
+- [DVC Documentation — versionado de datos](https://dvc.org/doc) — uso: referencia consultada en su fuente original
+- [Sculley et al. (2015), "Hidden Technical Debt in Machine Learning Systems", NeurIPS](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — uso: referencia consultada en su fuente original
+- [PyTorch — Reproducibility notes](https://pytorch.org/docs/stable/notes/randomness.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

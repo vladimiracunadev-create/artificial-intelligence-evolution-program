@@ -233,11 +233,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jumper, J. et al. (2021). *Highly accurate protein structure prediction with AlphaFold*. Nature 596. [DOI 10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2)
-- Lam, R. et al. (2023). *Learning skillful medium-range global weather forecasting* (GraphCast). Science 382(6677). [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336)
-- Wynants, L. et al. (2020). *Prediction models for diagnosis and prognosis of covid-19: systematic review and critical appraisal*. BMJ 369:m1328. [DOI 10.1136/bmj.m1328](https://doi.org/10.1136/bmj.m1328)
-- Zech, J. R. et al. (2018). *Variable generalization performance of a deep learning model to detect pneumonia in chest radiographs*. PLOS Medicine 15(11). [DOI 10.1371/journal.pmed.1002683](https://doi.org/10.1371/journal.pmed.1002683)
-- Collins, G. S. et al. (2024). *TRIPOD+AI statement: updated guidance for reporting clinical prediction models*. BMJ 385:e078378. [DOI 10.1136/bmj-2023-078378](https://doi.org/10.1136/bmj-2023-078378)
+- Jumper, J. et al. (2021). *Highly accurate protein structure prediction with AlphaFold*. Nature 596. [DOI 10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2) — uso: fuente primaria del mecanismo estudiado
+- Lam, R. et al. (2023). *Learning skillful medium-range global weather forecasting* (GraphCast). Science 382(6677). [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336) — uso: fuente primaria del mecanismo estudiado
+- Wynants, L. et al. (2020). *Prediction models for diagnosis and prognosis of covid-19: systematic review and critical appraisal*. BMJ 369:m1328. [DOI 10.1136/bmj.m1328](https://doi.org/10.1136/bmj.m1328) — uso: fuente primaria del mecanismo estudiado
+- Zech, J. R. et al. (2018). *Variable generalization performance of a deep learning model to detect pneumonia in chest radiographs*. PLOS Medicine 15(11). [DOI 10.1371/journal.pmed.1002683](https://doi.org/10.1371/journal.pmed.1002683) — uso: fuente primaria del mecanismo estudiado
+- Collins, G. S. et al. (2024). *TRIPOD+AI statement: updated guidance for reporting clinical prediction models*. BMJ 385:e078378. [DOI 10.1136/bmj-2023-078378](https://doi.org/10.1136/bmj-2023-078378) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

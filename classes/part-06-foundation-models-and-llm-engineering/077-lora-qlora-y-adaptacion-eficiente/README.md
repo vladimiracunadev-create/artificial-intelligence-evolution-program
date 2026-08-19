@@ -215,11 +215,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Hu et al. (2021), *LoRA: Low-Rank Adaptation of Large Language Models*: <https://arxiv.org/abs/2106.09685>
-- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs*: <https://arxiv.org/abs/2305.14314>
-- Aghajanyan et al. (2020), *Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning*: <https://arxiv.org/abs/2012.13255>
-- Documentación oficial de Hugging Face PEFT: <https://huggingface.co/docs/peft>
-- Documentación oficial de bitsandbytes (NF4, 4-bit): <https://huggingface.co/docs/bitsandbytes>
+- Hu et al. (2021), *LoRA: Low-Rank Adaptation of Large Language Models*: <https://arxiv.org/abs/2106.09685> — uso: fuente primaria del mecanismo estudiado
+- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs*: <https://arxiv.org/abs/2305.14314> — uso: fuente primaria del mecanismo estudiado
+- Aghajanyan et al. (2020), *Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning*: <https://arxiv.org/abs/2012.13255> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Hugging Face PEFT: <https://huggingface.co/docs/peft> — uso: referencia consultada en su fuente original
+- Documentación oficial de bitsandbytes (NF4, 4-bit): <https://huggingface.co/docs/bitsandbytes> — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

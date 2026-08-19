@@ -233,12 +233,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Dwork, C., McSherry, F., Nissim, K. y Smith, A. (2006). *Calibrating Noise to Sensitivity in Private Data Analysis*. TCC 2006. [DOI 10.1007/11681878_14](https://doi.org/10.1007/11681878_14)
-- Dwork, C. y Roth, A. (2014). *The Algorithmic Foundations of Differential Privacy*. [PDF oficial](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf)
-- McMahan, H. B. et al. (2017). *Communication-Efficient Learning of Deep Networks from Decentralized Data* (FedAvg). AISTATS 2017. [arXiv:1602.05629](https://arxiv.org/abs/1602.05629)
-- Abadi, M. et al. (2016). *Deep Learning with Differential Privacy* (DP-SGD). CCS 2016. [arXiv:1607.00133](https://arxiv.org/abs/1607.00133)
-- Bonawitz, K. et al. (2017). *Practical Secure Aggregation for Privacy-Preserving Machine Learning*. CCS 2017. [DOI 10.1145/3133956.3133982](https://doi.org/10.1145/3133956.3133982)
-- Zhu, L., Liu, Z. y Han, S. (2019). *Deep Leakage from Gradients*. NeurIPS 2019. [arXiv:1906.08935](https://arxiv.org/abs/1906.08935)
+- Dwork, C., McSherry, F., Nissim, K. y Smith, A. (2006). *Calibrating Noise to Sensitivity in Private Data Analysis*. TCC 2006. [DOI 10.1007/11681878_14](https://doi.org/10.1007/11681878_14) — uso: fuente primaria del mecanismo estudiado
+- Dwork, C. y Roth, A. (2014). *The Algorithmic Foundations of Differential Privacy*. [PDF oficial](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf) — uso: referencia consultada en su fuente original
+- McMahan, H. B. et al. (2017). *Communication-Efficient Learning of Deep Networks from Decentralized Data* (FedAvg). AISTATS 2017. [arXiv:1602.05629](https://arxiv.org/abs/1602.05629) — uso: fuente primaria del mecanismo estudiado
+- Abadi, M. et al. (2016). *Deep Learning with Differential Privacy* (DP-SGD). CCS 2016. [arXiv:1607.00133](https://arxiv.org/abs/1607.00133) — uso: fuente primaria del mecanismo estudiado
+- Bonawitz, K. et al. (2017). *Practical Secure Aggregation for Privacy-Preserving Machine Learning*. CCS 2017. [DOI 10.1145/3133956.3133982](https://doi.org/10.1145/3133956.3133982) — uso: fuente primaria del mecanismo estudiado
+- Zhu, L., Liu, Z. y Han, S. (2019). *Deep Leakage from Gradients*. NeurIPS 2019. [arXiv:1906.08935](https://arxiv.org/abs/1906.08935) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

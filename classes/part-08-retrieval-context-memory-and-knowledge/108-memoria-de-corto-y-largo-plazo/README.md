@@ -246,13 +246,13 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Park, J. S. et al. (2023). *Generative Agents: Interactive Simulacra of Human Behavior*. [arXiv:2304.03442](https://arxiv.org/abs/2304.03442)
-- Packer, C. et al. (2023). *MemGPT: Towards LLMs as Operating Systems*. [arXiv:2310.08560](https://arxiv.org/abs/2310.08560)
-- Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
-- Documentación de LangGraph, *Memory*: [https://langchain-ai.github.io/langgraph/concepts/memory/](https://langchain-ai.github.io/langgraph/concepts/memory/)
-- Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 2 (agentes y estado interno). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Wu, D. et al. (2024). *LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory*. [arXiv:2410.10813](https://arxiv.org/abs/2410.10813)
-- Mem0 — *State of AI Agent Memory 2026* (panorama de benchmarks y arquitecturas de memoria): [https://mem0.ai/blog/state-of-ai-agent-memory-2026](https://mem0.ai/blog/state-of-ai-agent-memory-2026)
+- Park, J. S. et al. (2023). *Generative Agents: Interactive Simulacra of Human Behavior*. [arXiv:2304.03442](https://arxiv.org/abs/2304.03442) — uso: fuente primaria del mecanismo estudiado
+- Packer, C. et al. (2023). *MemGPT: Towards LLMs as Operating Systems*. [arXiv:2310.08560](https://arxiv.org/abs/2310.08560) — uso: fuente primaria del mecanismo estudiado
+- Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172) — uso: fuente primaria del mecanismo estudiado
+- Documentación de LangGraph, *Memory*: [https://langchain-ai.github.io/langgraph/concepts/memory/](https://langchain-ai.github.io/langgraph/concepts/memory/) — uso: referencia consultada en su fuente original
+- Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), cap. 2 (agentes y estado interno). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Wu, D. et al. (2024). *LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory*. [arXiv:2410.10813](https://arxiv.org/abs/2410.10813) — uso: fuente primaria del mecanismo estudiado
+- Mem0 — *State of AI Agent Memory 2026* (panorama de benchmarks y arquitecturas de memoria): [https://mem0.ai/blog/state-of-ai-agent-memory-2026](https://mem0.ai/blog/state-of-ai-agent-memory-2026) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -184,11 +184,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Metropolis, N. & Ulam, S. (1949). "The Monte Carlo Method". *Journal of the American Statistical Association*, 44(247), 335-341. [https://doi.org/10.1080/01621459.1949.10483310](https://doi.org/10.1080/01621459.1949.10483310)
-- Metropolis, N. et al. (1953). "Equation of State Calculations by Fast Computing Machines". *J. Chemical Physics*, 21(6), 1087-1092. [https://doi.org/10.1063/1.1699114](https://doi.org/10.1063/1.1699114)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 13.4 (inferencia aproximada). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Robert, C. & Casella, G. (2004). *Monte Carlo Statistical Methods*, 2.ª ed. Springer. [https://doi.org/10.1007/978-1-4757-4145-2](https://doi.org/10.1007/978-1-4757-4145-2)
-- Sutton, R. S. & Barto, A. G. (2018). *Reinforcement Learning*, cap. 5 (métodos Monte Carlo). [http://incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html)
+- Metropolis, N. & Ulam, S. (1949). "The Monte Carlo Method". *Journal of the American Statistical Association*, 44(247), 335-341. [https://doi.org/10.1080/01621459.1949.10483310](https://doi.org/10.1080/01621459.1949.10483310) — uso: fuente primaria del mecanismo estudiado
+- Metropolis, N. et al. (1953). "Equation of State Calculations by Fast Computing Machines". *J. Chemical Physics*, 21(6), 1087-1092. [https://doi.org/10.1063/1.1699114](https://doi.org/10.1063/1.1699114) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 13.4 (inferencia aproximada). [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Robert, C. & Casella, G. (2004). *Monte Carlo Statistical Methods*, 2.ª ed. Springer. [https://doi.org/10.1007/978-1-4757-4145-2](https://doi.org/10.1007/978-1-4757-4145-2) — uso: fuente primaria del mecanismo estudiado
+- Sutton, R. S. & Barto, A. G. (2018). *Reinforcement Learning*, cap. 5 (métodos Monte Carlo). [http://incompleteideas.net/book/the-book-2nd.html](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

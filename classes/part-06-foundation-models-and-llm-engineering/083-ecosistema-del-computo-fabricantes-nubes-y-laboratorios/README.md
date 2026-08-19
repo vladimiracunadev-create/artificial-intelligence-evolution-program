@@ -261,15 +261,15 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jouppi et al. (2017), *In-Datacenter Performance Analysis of a Tensor Processing Unit*: <https://arxiv.org/abs/1704.04760>
-- Sevilla et al. (2022), *Compute Trends Across Three Eras of Machine Learning*: <https://arxiv.org/abs/2202.05924>
+- Jouppi et al. (2017), *In-Datacenter Performance Analysis of a Tensor Processing Unit*: <https://arxiv.org/abs/1704.04760> — uso: fuente primaria del mecanismo estudiado
+- Sevilla et al. (2022), *Compute Trends Across Three Eras of Machine Learning*: <https://arxiv.org/abs/2202.05924> — uso: fuente primaria del mecanismo estudiado
 - Epoch AI — datos abiertos de cómputo y modelos notables: <https://epoch.ai/data/notable-ai-models>
-- Stanford HAI, *AI Index Report* (capítulo de economía e infraestructura): <https://hai.stanford.edu/ai-index>
+- Stanford HAI, *AI Index Report* (capítulo de economía e infraestructura): <https://hai.stanford.edu/ai-index> — uso: referencia consultada en su fuente original
 - MLCommons, *MLPerf Inference: Datacenter* — reglas y resultados auditados: <https://mlcommons.org/benchmarks/inference-datacenter/>
-- NVIDIA, *Blackwell Architecture*: <https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/>
-- AMD, *Instinct MI300X*: <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>
+- NVIDIA, *Blackwell Architecture*: <https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/> — uso: referencia consultada en su fuente original
+- AMD, *Instinct MI300X*: <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html> — uso: referencia consultada en su fuente original
 - AMD ROCm — documentación oficial: <https://rocm.docs.amd.com/en/latest/>
-- Google Cloud, *TPU system architecture*: <https://cloud.google.com/tpu/docs/system-architecture-tpu-vm>
+- Google Cloud, *TPU system architecture*: <https://cloud.google.com/tpu/docs/system-architecture-tpu-vm> — uso: referencia consultada en su fuente original
 - AWS Neuron (Trainium / Inferentia) — documentación oficial: <https://awsdocs-neuron.readthedocs-hosted.com/en/latest/>
 - Groq — arquitectura de inferencia determinista: <https://groq.com/inference>
 - Cerebras — motor de escala de oblea: <https://www.cerebras.ai/product-chip>

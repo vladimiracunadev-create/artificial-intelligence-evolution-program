@@ -227,12 +227,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Documentación oficial de Tesseract OCR — [tesseract-ocr.github.io](https://tesseract-ocr.github.io/)
-- Graves, A. et al. (2006). "Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks" (ICML 2006) — [cs.toronto.edu/~graves/icml_2006.pdf](https://www.cs.toronto.edu/~graves/icml_2006.pdf)
-- Shi, B. et al. (2015). "An End-to-End Trainable Neural Network for Image-based Sequence Recognition" (CRNN) — [arXiv:1507.05717](https://arxiv.org/abs/1507.05717)
-- Xu, Y. et al. (2019). "LayoutLM: Pre-training of Text and Layout for Document Image Understanding" — [arXiv:1912.13318](https://arxiv.org/abs/1912.13318)
-- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/)
-- Hugging Face Tasks: Document Question Answering — [huggingface.co/tasks/document-question-answering](https://huggingface.co/tasks/document-question-answering)
+- Documentación oficial de Tesseract OCR — [tesseract-ocr.github.io](https://tesseract-ocr.github.io/) — uso: referencia consultada en su fuente original
+- Graves, A. et al. (2006). "Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks" (ICML 2006) — [cs.toronto.edu/~graves/icml_2006.pdf](https://www.cs.toronto.edu/~graves/icml_2006.pdf) — uso: referencia consultada en su fuente original
+- Shi, B. et al. (2015). "An End-to-End Trainable Neural Network for Image-based Sequence Recognition" (CRNN) — [arXiv:1507.05717](https://arxiv.org/abs/1507.05717) — uso: fuente primaria del mecanismo estudiado
+- Xu, Y. et al. (2019). "LayoutLM: Pre-training of Text and Layout for Document Image Understanding" — [arXiv:1912.13318](https://arxiv.org/abs/1912.13318) — uso: fuente primaria del mecanismo estudiado
+- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/) — uso: desarrollo extendido del tema
+- Hugging Face Tasks: Document Question Answering — [huggingface.co/tasks/document-question-answering](https://huggingface.co/tasks/document-question-answering) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -241,12 +241,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic Engineering — "Building effective agents" (la guía de diseño que este proyecto materializa)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
-- [Model Context Protocol — especificación (contratos de tools/resources/prompts para integrarse con ecosistema real)](https://modelcontextprotocol.io/)
-- [OWASP Top 10 for LLM Applications (checklist de riesgos que el proyecto debe cubrir)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [NIST AI Risk Management Framework (AI RMF 1.0) (gobernanza del sistema completo)](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Russell y Norvig — *AIMA* (4e), cap. 2 (la definición de agente con la que empezó la parte)](https://aima.cs.berkeley.edu/)
+- [Anthropic Engineering — "Building effective agents" (la guía de diseño que este proyecto materializa)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Model Context Protocol — especificación (contratos de tools/resources/prompts para integrarse con ecosistema real)](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
+- [OWASP Top 10 for LLM Applications (checklist de riesgos que el proyecto debe cubrir)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [NIST AI Risk Management Framework (AI RMF 1.0) (gobernanza del sistema completo)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Russell y Norvig — *AIMA* (4e), cap. 2 (la definición de agente con la que empezó la parte)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 
 ---
 

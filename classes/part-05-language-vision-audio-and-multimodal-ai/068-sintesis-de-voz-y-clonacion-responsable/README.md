@@ -228,12 +228,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- van den Oord, A. et al. (2016). "WaveNet: A Generative Model for Raw Audio" — [arXiv:1609.03499](https://arxiv.org/abs/1609.03499)
-- Shen, J. et al. (2018). "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions" (Tacotron 2) — [arXiv:1712.05884](https://arxiv.org/abs/1712.05884)
-- Jia, Y. et al. (2018). "Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis" (SV2TTS) — [arXiv:1806.04558](https://arxiv.org/abs/1806.04558)
-- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. de síntesis de voz — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/)
-- W3C. *Speech Synthesis Markup Language (SSML) 1.1* — [w3.org/TR/speech-synthesis11](https://www.w3.org/TR/speech-synthesis11/)
-- Mozilla Common Voice (corpus abierto de voz con licencia y consentimiento explícitos) — [commonvoice.mozilla.org](https://commonvoice.mozilla.org/en/datasets)
+- van den Oord, A. et al. (2016). "WaveNet: A Generative Model for Raw Audio" — [arXiv:1609.03499](https://arxiv.org/abs/1609.03499) — uso: fuente primaria del mecanismo estudiado
+- Shen, J. et al. (2018). "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions" (Tacotron 2) — [arXiv:1712.05884](https://arxiv.org/abs/1712.05884) — uso: fuente primaria del mecanismo estudiado
+- Jia, Y. et al. (2018). "Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis" (SV2TTS) — [arXiv:1806.04558](https://arxiv.org/abs/1806.04558) — uso: fuente primaria del mecanismo estudiado
+- Jurafsky, D. y Martin, J. H. *Speech and Language Processing* (3e), cap. de síntesis de voz — [web.stanford.edu/~jurafsky/slp3](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- W3C. *Speech Synthesis Markup Language (SSML) 1.1* — [w3.org/TR/speech-synthesis11](https://www.w3.org/TR/speech-synthesis11/) — uso: marco normativo de referencia
+- Mozilla Common Voice (corpus abierto de voz con licencia y consentimiento explícitos) — [commonvoice.mozilla.org](https://commonvoice.mozilla.org/en/datasets) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

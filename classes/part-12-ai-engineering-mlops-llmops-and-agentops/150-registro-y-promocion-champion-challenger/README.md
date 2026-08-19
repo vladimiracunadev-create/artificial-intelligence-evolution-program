@@ -219,11 +219,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [MLflow Documentation — Model Registry](https://mlflow.org/docs/latest/)
-- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-- [Huyen, *Designing Machine Learning Systems*, cap. de despliegue y evaluación online](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
-- [Kohavi, Tang & Xu, *Trustworthy Online Controlled Experiments* (Cambridge UP)](https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59)
-- [Breck et al. (2017), "The ML Test Score", IEEE Big Data](https://research.google/pubs/pub46555/)
+- [MLflow Documentation — Model Registry](https://mlflow.org/docs/latest/) — uso: referencia consultada en su fuente original
+- [Google Cloud, "MLOps: Continuous delivery and automation pipelines in machine learning"](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning) — uso: referencia consultada en su fuente original
+- [Huyen, *Designing Machine Learning Systems*, cap. de despliegue y evaluación online](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) — uso: referencia consultada en su fuente original
+- [Kohavi, Tang & Xu, *Trustworthy Online Controlled Experiments* (Cambridge UP)](https://www.cambridge.org/core/books/trustworthy-online-controlled-experiments/D97B26382EB0EB2DC2019A7A7B518F59) — uso: referencia consultada en su fuente original
+- [Breck et al. (2017), "The ML Test Score", IEEE Big Data](https://research.google/pubs/pub46555/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

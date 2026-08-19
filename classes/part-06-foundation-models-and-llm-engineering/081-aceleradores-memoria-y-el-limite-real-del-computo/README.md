@@ -278,14 +278,14 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Williams, Waterman & Patterson (2009), *Roofline: An Insightful Visual Performance Model for Multicore Architectures*, CACM 52(4). [doi:10.1145/1498765.1498785](https://doi.org/10.1145/1498765.1498785) · [PDF](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
-- Wulf & McKee (1995), *Hitting the Memory Wall: Implications of the Obvious*: [doi:10.1145/216585.216588](https://doi.org/10.1145/216585.216588)
-- Gholami et al. (2024), *AI and Memory Wall*, IEEE Micro: <https://arxiv.org/abs/2403.14123>
-- Pope et al. (2022), *Efficiently Scaling Transformer Inference* (aritmética del decode y del paralelismo): <https://arxiv.org/abs/2211.05102>
-- Dao et al. (2022), *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*: <https://arxiv.org/abs/2205.14135>
-- NVIDIA, *H100 Tensor Core GPU Datasheet* (cifras densas y con dispersión): <https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet>
-- NVIDIA, *Blackwell Architecture*: <https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/>
-- Jouppi et al. (2017), *In-Datacenter Performance Analysis of a Tensor Processing Unit* (roofline aplicado a un acelerador real): <https://arxiv.org/abs/1704.04760>
+- Williams, Waterman & Patterson (2009), *Roofline: An Insightful Visual Performance Model for Multicore Architectures*, CACM 52(4). [doi:10.1145/1498765.1498785](https://doi.org/10.1145/1498765.1498785) · [PDF](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf) — uso: fuente primaria del mecanismo estudiado
+- Wulf & McKee (1995), *Hitting the Memory Wall: Implications of the Obvious*: [doi:10.1145/216585.216588](https://doi.org/10.1145/216585.216588) — uso: fuente primaria del mecanismo estudiado
+- Gholami et al. (2024), *AI and Memory Wall*, IEEE Micro: <https://arxiv.org/abs/2403.14123> — uso: fuente primaria del mecanismo estudiado
+- Pope et al. (2022), *Efficiently Scaling Transformer Inference* (aritmética del decode y del paralelismo): <https://arxiv.org/abs/2211.05102> — uso: fuente primaria del mecanismo estudiado
+- Dao et al. (2022), *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*: <https://arxiv.org/abs/2205.14135> — uso: fuente primaria del mecanismo estudiado
+- NVIDIA, *H100 Tensor Core GPU Datasheet* (cifras densas y con dispersión): <https://resources.nvidia.com/en-us-tensor-core/nvidia-tensor-core-gpu-datasheet> — uso: referencia consultada en su fuente original
+- NVIDIA, *Blackwell Architecture*: <https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/> — uso: referencia consultada en su fuente original
+- Jouppi et al. (2017), *In-Datacenter Performance Analysis of a Tensor Processing Unit* (roofline aplicado a un acelerador real): <https://arxiv.org/abs/1704.04760> — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

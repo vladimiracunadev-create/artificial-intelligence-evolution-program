@@ -230,11 +230,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Ross, S., Gordon, G. & Bagnell, J. A. (2011). A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (DAgger). AISTATS. arXiv:1011.0686](https://arxiv.org/abs/1011.0686)
-- [Pomerleau, D. (1988). ALVINN: An Autonomous Land Vehicle in a Neural Network. NeurIPS — el BC seminal de conducción](https://proceedings.neurips.cc/paper/1988/hash/812b4ba287f5ee0bc9d43bbf5bbe87fb-Abstract.html)
-- [Chi, C. et al. (2023). Diffusion Policy: Visuomotor Policy Learning via Action Diffusion. arXiv:2303.04137](https://arxiv.org/abs/2303.04137)
-- [Zhao, T. et al. (2023). Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA/ACT). arXiv:2304.13705](https://arxiv.org/abs/2304.13705)
-- [Sutton, R. & Barto, A. Reinforcement Learning: An Introduction, 2e — para contrastar con la señal de recompensa](http://incompleteideas.net/book/the-book-2nd.html)
+- [Ross, S., Gordon, G. & Bagnell, J. A. (2011). A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (DAgger). AISTATS. arXiv:1011.0686](https://arxiv.org/abs/1011.0686) — uso: fuente primaria del mecanismo estudiado
+- [Pomerleau, D. (1988). ALVINN: An Autonomous Land Vehicle in a Neural Network. NeurIPS — el BC seminal de conducción](https://proceedings.neurips.cc/paper/1988/hash/812b4ba287f5ee0bc9d43bbf5bbe87fb-Abstract.html) — uso: referencia consultada en su fuente original
+- [Chi, C. et al. (2023). Diffusion Policy: Visuomotor Policy Learning via Action Diffusion. arXiv:2303.04137](https://arxiv.org/abs/2303.04137) — uso: fuente primaria del mecanismo estudiado
+- [Zhao, T. et al. (2023). Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware (ALOHA/ACT). arXiv:2304.13705](https://arxiv.org/abs/2304.13705) — uso: fuente primaria del mecanismo estudiado
+- [Sutton, R. & Barto, A. Reinforcement Learning: An Introduction, 2e — para contrastar con la señal de recompensa](http://incompleteideas.net/book/the-book-2nd.html) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

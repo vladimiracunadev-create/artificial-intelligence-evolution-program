@@ -253,11 +253,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [NIST AI Risk Management Framework (AI RMF 1.0) (supervisión humana efectiva como control de gobernanza)](https://www.nist.gov/itl/ai-risk-management-framework)
-- [Anthropic Engineering — "Building effective agents" (checkpoints humanos y guardrails en agentes)](https://www.anthropic.com/engineering/building-effective-agents)
-- [LangGraph — Human-in-the-loop (interrupt/resume sobre checkpoints persistentes)](https://docs.langchain.com/oss/python/langgraph/interrupts)
-- [Amershi et al. (2014), "Power to the People: The Role of Humans in Interactive Machine Learning", DOI:10.1609/aimag.v35i4.2513](https://doi.org/10.1609/aimag.v35i4.2513)
-- [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: la aprobación como mitigación)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [NIST AI Risk Management Framework (AI RMF 1.0) (supervisión humana efectiva como control de gobernanza)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
+- [Anthropic Engineering — "Building effective agents" (checkpoints humanos y guardrails en agentes)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [LangGraph — Human-in-the-loop (interrupt/resume sobre checkpoints persistentes)](https://docs.langchain.com/oss/python/langgraph/interrupts) — uso: referencia consultada en su fuente original
+- [Amershi et al. (2014), "Power to the People: The Role of Humans in Interactive Machine Learning", DOI:10.1609/aimag.v35i4.2513](https://doi.org/10.1609/aimag.v35i4.2513) — uso: fuente primaria del mecanismo estudiado
+- [OWASP Top 10 for LLM Applications (LLM06 Excessive Agency: la aprobación como mitigación)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

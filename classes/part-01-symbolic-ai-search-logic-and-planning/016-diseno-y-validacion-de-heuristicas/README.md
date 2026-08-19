@@ -194,10 +194,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.6 "Heuristic Functions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), §3.6 "Heuristic Functions". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 - Pearl, J. (1984). *Heuristics: Intelligent Search Strategies for Computer Problem Solving*. Addison-Wesley — el tratado clásico sobre heurísticas admisibles y su análisis.
-- Culberson, J. C. y Schaeffer, J. (1998). "Pattern Databases". *Computational Intelligence*, 14(3). [https://doi.org/10.1111/0824-7935.00065](https://doi.org/10.1111/0824-7935.00065)
-- Felner, A., Korf, R. E. y Hanan, S. (2004). "Additive Pattern Database Heuristics". *JAIR*, 22. [https://doi.org/10.1613/jair.1480](https://doi.org/10.1613/jair.1480)
+- Culberson, J. C. y Schaeffer, J. (1998). "Pattern Databases". *Computational Intelligence*, 14(3). [https://doi.org/10.1111/0824-7935.00065](https://doi.org/10.1111/0824-7935.00065) — uso: fuente primaria del mecanismo estudiado
+- Felner, A., Korf, R. E. y Hanan, S. (2004). "Additive Pattern Database Heuristics". *JAIR*, 22. [https://doi.org/10.1613/jair.1480](https://doi.org/10.1613/jair.1480) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

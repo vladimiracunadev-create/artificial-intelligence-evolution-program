@@ -246,11 +246,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Documentación oficial de `venv` (Python)](https://docs.python.org/3/library/venv.html)
-- [Documentación oficial de `random` — nota sobre semillas y determinismo](https://docs.python.org/3/library/random.html)
-- [Pro Git (Chacon & Straub) — libro oficial gratuito](https://git-scm.com/book/en/v2)
-- [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research](https://doi.org/10.1371/journal.pcbi.1003285)
-- [Pineau et al. (2021). Improving Reproducibility in Machine Learning Research (checklist NeurIPS)](https://arxiv.org/abs/2003.12206)
+- [Documentación oficial de `venv` (Python)](https://docs.python.org/3/library/venv.html) — uso: referencia consultada en su fuente original
+- [Documentación oficial de `random` — nota sobre semillas y determinismo](https://docs.python.org/3/library/random.html) — uso: referencia consultada en su fuente original
+- [Pro Git (Chacon & Straub) — libro oficial gratuito](https://git-scm.com/book/en/v2) — uso: referencia consultada en su fuente original
+- [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research](https://doi.org/10.1371/journal.pcbi.1003285) — uso: fuente primaria del mecanismo estudiado
+- [Pineau et al. (2021). Improving Reproducibility in Machine Learning Research (checklist NeurIPS)](https://arxiv.org/abs/2003.12206) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

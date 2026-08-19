@@ -226,11 +226,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Gama et al. (2014), "A Survey on Concept Drift Adaptation", ACM Computing Surveys](https://doi.org/10.1145/2523813)
-- [Evidently AI Documentation — monitoreo de deriva](https://docs.evidentlyai.com/)
-- [Huyen, *Designing Machine Learning Systems* — cap. de distribution shifts y monitoreo](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
-- [Breck et al. (2017), "The ML Test Score", IEEE Big Data — tests de monitoreo](https://research.google/pubs/pub46555/)
-- [Google, "Rules of Machine Learning" — reglas de monitoreo (parte III)](https://developers.google.com/machine-learning/guides/rules-of-ml)
+- [Gama et al. (2014), "A Survey on Concept Drift Adaptation", ACM Computing Surveys](https://doi.org/10.1145/2523813) — uso: fuente primaria del mecanismo estudiado
+- [Evidently AI Documentation — monitoreo de deriva](https://docs.evidentlyai.com/) — uso: referencia consultada en su fuente original
+- [Huyen, *Designing Machine Learning Systems* — cap. de distribution shifts y monitoreo](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) — uso: referencia consultada en su fuente original
+- [Breck et al. (2017), "The ML Test Score", IEEE Big Data — tests de monitoreo](https://research.google/pubs/pub46555/) — uso: referencia consultada en su fuente original
+- [Google, "Rules of Machine Learning" — reglas de monitoreo (parte III)](https://developers.google.com/machine-learning/guides/rules-of-ml) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -194,11 +194,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 7 "Logical Agents". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Davis, M., Logemann, G. y Loveland, D. (1962). "A machine program for theorem-proving". *Communications of the ACM*, 5(7). [https://doi.org/10.1145/368273.368557](https://doi.org/10.1145/368273.368557)
-- Robinson, J. A. (1965). "A Machine-Oriented Logic Based on the Resolution Principle". *Journal of the ACM*, 12(1). [https://doi.org/10.1145/321250.321253](https://doi.org/10.1145/321250.321253)
-- Cook, S. A. (1971). "The complexity of theorem-proving procedures". *Proc. STOC '71*. [https://doi.org/10.1145/800157.805047](https://doi.org/10.1145/800157.805047)
-- Biere, A., Heule, M., van Maaren, H. y Walsh, T. (eds.) (2021). *Handbook of Satisfiability* (2.ª ed.). IOS Press.
+- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), cap. 7 "Logical Agents". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Davis, M., Logemann, G. y Loveland, D. (1962). "A machine program for theorem-proving". *Communications of the ACM*, 5(7). [https://doi.org/10.1145/368273.368557](https://doi.org/10.1145/368273.368557) — uso: fuente primaria del mecanismo estudiado
+- Robinson, J. A. (1965). "A Machine-Oriented Logic Based on the Resolution Principle". *Journal of the ACM*, 12(1). [https://doi.org/10.1145/321250.321253](https://doi.org/10.1145/321250.321253) — uso: fuente primaria del mecanismo estudiado
+- Cook, S. A. (1971). "The complexity of theorem-proving procedures". *Proc. STOC '71*. [https://doi.org/10.1145/800157.805047](https://doi.org/10.1145/800157.805047) — uso: fuente primaria del mecanismo estudiado
+- Biere, A., Heule, M., van Maaren, H. y Walsh, T. (eds.) (2021). *Handbook of Satisfiability* (2.ª ed.). IOS Press. — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

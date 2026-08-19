@@ -224,11 +224,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Deisenroth, Faisal & Ong. *Mathematics for Machine Learning*, caps. 2-3 (PDF oficial gratuito)](https://mml-book.github.io/)
-- [Goodfellow, Bengio & Courville. *Deep Learning*, cap. 2: Linear Algebra](https://www.deeplearningbook.org/)
-- [3Blue1Brown. *Essence of Linear Algebra* (serie visual)](https://www.3blue1brown.com/topics/linear-algebra)
-- [Strang, G. MIT OCW 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
-- [NumPy: documentación oficial de álgebra lineal](https://numpy.org/doc/stable/reference/routines.linalg.html)
+- [Deisenroth, Faisal & Ong. *Mathematics for Machine Learning*, caps. 2-3 (PDF oficial gratuito)](https://mml-book.github.io/) — uso: referencia consultada en su fuente original
+- [Goodfellow, Bengio & Courville. *Deep Learning*, cap. 2: Linear Algebra](https://www.deeplearningbook.org/) — uso: desarrollo extendido del tema
+- [3Blue1Brown. *Essence of Linear Algebra* (serie visual)](https://www.3blue1brown.com/topics/linear-algebra) — uso: referencia consultada en su fuente original
+- [Strang, G. MIT OCW 18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) — uso: referencia consultada en su fuente original
+- [NumPy: documentación oficial de álgebra lineal](https://numpy.org/doc/stable/reference/routines.linalg.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

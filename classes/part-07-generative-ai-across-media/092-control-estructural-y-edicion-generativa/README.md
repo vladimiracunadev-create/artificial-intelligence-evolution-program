@@ -244,11 +244,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Zhang, L., Rao, A. y Agrawala, M. (2023). *Adding Conditional Control to Text-to-Image Diffusion Models* (ControlNet). [arXiv:2302.05543](https://arxiv.org/abs/2302.05543)
-- Meng, C. et al. (2022). *SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations*. [arXiv:2108.01073](https://arxiv.org/abs/2108.01073)
-- Lugmayr, A. et al. (2022). *RePaint: Inpainting using Denoising Diffusion Probabilistic Models*. [arXiv:2201.09865](https://arxiv.org/abs/2201.09865)
-- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
-- Documentación de Hugging Face Diffusers: [ControlNet](https://huggingface.co/docs/diffusers/api/pipelines/controlnet)
+- Zhang, L., Rao, A. y Agrawala, M. (2023). *Adding Conditional Control to Text-to-Image Diffusion Models* (ControlNet). [arXiv:2302.05543](https://arxiv.org/abs/2302.05543) — uso: fuente primaria del mecanismo estudiado
+- Meng, C. et al. (2022). *SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations*. [arXiv:2108.01073](https://arxiv.org/abs/2108.01073) — uso: fuente primaria del mecanismo estudiado
+- Lugmayr, A. et al. (2022). *RePaint: Inpainting using Denoising Diffusion Probabilistic Models*. [arXiv:2201.09865](https://arxiv.org/abs/2201.09865) — uso: fuente primaria del mecanismo estudiado
+- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) — uso: fuente primaria del mecanismo estudiado
+- Documentación de Hugging Face Diffusers: [ControlNet](https://huggingface.co/docs/diffusers/api/pipelines/controlnet) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

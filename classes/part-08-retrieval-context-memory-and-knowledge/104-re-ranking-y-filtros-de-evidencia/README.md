@@ -218,11 +218,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Nogueira, R. & Cho, K. (2019). *Passage Re-ranking with BERT*. [arXiv:1901.04085](https://arxiv.org/abs/1901.04085)
-- Carbonell, J. & Goldstein, J. (1998). *The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries*. SIGIR '98. [DOI 10.1145/290941.291025](https://doi.org/10.1145/290941.291025)
-- Khattab, O. & Zaharia, M. (2020). *ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT*. [arXiv:2004.12832](https://arxiv.org/abs/2004.12832)
-- Reimers, N. & Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084)
-- Documentación de cross-encoders en sentence-transformers: [https://www.sbert.net/examples/applications/cross-encoder/README.html](https://www.sbert.net/examples/applications/cross-encoder/README.html)
+- Nogueira, R. & Cho, K. (2019). *Passage Re-ranking with BERT*. [arXiv:1901.04085](https://arxiv.org/abs/1901.04085) — uso: fuente primaria del mecanismo estudiado
+- Carbonell, J. & Goldstein, J. (1998). *The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries*. SIGIR '98. [DOI 10.1145/290941.291025](https://doi.org/10.1145/290941.291025) — uso: fuente primaria del mecanismo estudiado
+- Khattab, O. & Zaharia, M. (2020). *ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT*. [arXiv:2004.12832](https://arxiv.org/abs/2004.12832) — uso: fuente primaria del mecanismo estudiado
+- Reimers, N. & Gurevych, I. (2019). *Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks*. [arXiv:1908.10084](https://arxiv.org/abs/1908.10084) — uso: fuente primaria del mecanismo estudiado
+- Documentación de cross-encoders en sentence-transformers: [https://www.sbert.net/examples/applications/cross-encoder/README.html](https://www.sbert.net/examples/applications/cross-encoder/README.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

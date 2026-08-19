@@ -254,14 +254,14 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Anthropic Engineering — "Building effective agents" (bloques de construcción: augmented LLM, tools, memoria)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Anthropic — documentación oficial: agentes, tool use y salida estructurada](https://docs.claude.com)
-- [Model Context Protocol — especificación (contratos de tools, resources y prompts)](https://modelcontextprotocol.io/)
-- [JSON Schema — especificación oficial (validación de parámetros y salidas)](https://json-schema.org/specification)
-- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
-- [Russell y Norvig — *AIMA* (4e), cap. 2 (estructura de agentes: programa + arquitectura)](https://aima.cs.berkeley.edu/)
-- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/)
-- ["Harness Engineering for Agentic AI Coding Tools: An Exploratory Study", arXiv:2602.14690](https://arxiv.org/abs/2602.14690)
+- [Anthropic Engineering — "Building effective agents" (bloques de construcción: augmented LLM, tools, memoria)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Anthropic — documentación oficial: agentes, tool use y salida estructurada](https://docs.claude.com) — uso: referencia consultada en su fuente original
+- [Model Context Protocol — especificación (contratos de tools, resources y prompts)](https://modelcontextprotocol.io/) — uso: marco normativo de referencia
+- [JSON Schema — especificación oficial (validación de parámetros y salidas)](https://json-schema.org/specification) — uso: marco normativo de referencia
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Russell y Norvig — *AIMA* (4e), cap. 2 (estructura de agentes: programa + arquitectura)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [OpenAI — "Harness engineering: leveraging Codex in an agent-first world" (2026)](https://openai.com/index/harness-engineering/) — uso: referencia consultada en su fuente original
+- ["Harness Engineering for Agentic AI Coding Tools: An Exploratory Study", arXiv:2602.14690](https://arxiv.org/abs/2602.14690) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

@@ -221,11 +221,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Hochreiter, S. y Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation 9(8). [doi:10.1162/neco.1997.9.8.1735](https://doi.org/10.1162/neco.1997.9.8.1735)
-- Bengio, Y., Simard, P. y Frasconi, P. (1994). *Learning long-term dependencies with gradient descent is difficult*. IEEE Trans. Neural Networks. [doi:10.1109/72.279181](https://doi.org/10.1109/72.279181)
-- Cho, K. et al. (2014). *Learning Phrase Representations using RNN Encoder-Decoder* (GRU). [arXiv:1406.1078](https://arxiv.org/abs/1406.1078)
-- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 10 (Sequence Modeling). [deeplearningbook.org/contents/rnn.html](https://www.deeplearningbook.org/contents/rnn.html)
-- Documentación de PyTorch: [`torch.nn.LSTM`](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html)
+- Hochreiter, S. y Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation 9(8). [doi:10.1162/neco.1997.9.8.1735](https://doi.org/10.1162/neco.1997.9.8.1735) — uso: fuente primaria del mecanismo estudiado
+- Bengio, Y., Simard, P. y Frasconi, P. (1994). *Learning long-term dependencies with gradient descent is difficult*. IEEE Trans. Neural Networks. [doi:10.1109/72.279181](https://doi.org/10.1109/72.279181) — uso: fuente primaria del mecanismo estudiado
+- Cho, K. et al. (2014). *Learning Phrase Representations using RNN Encoder-Decoder* (GRU). [arXiv:1406.1078](https://arxiv.org/abs/1406.1078) — uso: fuente primaria del mecanismo estudiado
+- Goodfellow, I., Bengio, Y. y Courville, A. (2016). *Deep Learning*, cap. 10 (Sequence Modeling). [deeplearningbook.org/contents/rnn.html](https://www.deeplearningbook.org/contents/rnn.html) — uso: desarrollo extendido del tema
+- Documentación de PyTorch: [`torch.nn.LSTM`](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

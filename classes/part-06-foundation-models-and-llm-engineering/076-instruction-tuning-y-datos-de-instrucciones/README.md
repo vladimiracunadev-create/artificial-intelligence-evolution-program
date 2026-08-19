@@ -218,12 +218,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Wei et al. (2021), *Finetuned Language Models Are Zero-Shot Learners* (FLAN): <https://arxiv.org/abs/2109.01652>
-- Chung et al. (2022), *Scaling Instruction-Finetuned Language Models* (FLAN-T5/PaLM): <https://arxiv.org/abs/2210.11416>
-- Wang et al. (2022), *Self-Instruct: Aligning Language Models with Self-Generated Instructions*: <https://arxiv.org/abs/2212.10560>
-- Ouyang et al. (2022), *Training language models to follow instructions with human feedback* (InstructGPT): <https://arxiv.org/abs/2203.02155>
-- Zhou et al. (2023), *LIMA: Less Is More for Alignment*: <https://arxiv.org/abs/2305.11206>
-- Documentación oficial de Hugging Face TRL (SFTTrainer): <https://huggingface.co/docs/trl>
+- Wei et al. (2021), *Finetuned Language Models Are Zero-Shot Learners* (FLAN): <https://arxiv.org/abs/2109.01652> — uso: fuente primaria del mecanismo estudiado
+- Chung et al. (2022), *Scaling Instruction-Finetuned Language Models* (FLAN-T5/PaLM): <https://arxiv.org/abs/2210.11416> — uso: fuente primaria del mecanismo estudiado
+- Wang et al. (2022), *Self-Instruct: Aligning Language Models with Self-Generated Instructions*: <https://arxiv.org/abs/2212.10560> — uso: fuente primaria del mecanismo estudiado
+- Ouyang et al. (2022), *Training language models to follow instructions with human feedback* (InstructGPT): <https://arxiv.org/abs/2203.02155> — uso: fuente primaria del mecanismo estudiado
+- Zhou et al. (2023), *LIMA: Less Is More for Alignment*: <https://arxiv.org/abs/2305.11206> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Hugging Face TRL (SFTTrainer): <https://huggingface.co/docs/trl> — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

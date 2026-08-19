@@ -217,11 +217,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Lighthill, J. (1973). Artificial Intelligence: A General Survey (informe al Science Research Council)](http://www.chilton-computing.org.uk/inf/literature/reports/lighthill_report/p001.htm)
-- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., cap. 1.3 (historia de la IA)](https://aima.cs.berkeley.edu/)
-- [Nilsson, N. (2010). *The Quest for Artificial Intelligence*, caps. sobre auge y colapso (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
-- [Gartner Hype Cycle (metodología, para uso crítico)](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle)
-- [McCulloch & Pitts → perceptrón: contexto en Goodfellow et al., *Deep Learning*, cap. 1](https://www.deeplearningbook.org/)
+- [Lighthill, J. (1973). Artificial Intelligence: A General Survey (informe al Science Research Council)](http://www.chilton-computing.org.uk/inf/literature/reports/lighthill_report/p001.htm) — uso: referencia consultada en su fuente original
+- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., cap. 1.3 (historia de la IA)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Nilsson, N. (2010). *The Quest for Artificial Intelligence*, caps. sobre auge y colapso (PDF oficial)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf) — uso: referencia consultada en su fuente original
+- [Gartner Hype Cycle (metodología, para uso crítico)](https://www.gartner.com/en/research/methodologies/gartner-hype-cycle) — uso: referencia consultada en su fuente original
+- [McCulloch & Pitts → perceptrón: contexto en Goodfellow et al., *Deep Learning*, cap. 1](https://www.deeplearningbook.org/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

@@ -231,11 +231,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Baltrušaitis, T., Ahuja, C. y Morency, L.-P. (2017). "Multimodal Machine Learning: A Survey and Taxonomy" — [arXiv:1705.09406](https://arxiv.org/abs/1705.09406)
-- Vaswani, A. et al. (2017). "Attention Is All You Need" — [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
-- Alayrac, J.-B. et al. (2022). "Flamingo: a Visual Language Model for Few-Shot Learning" — [arXiv:2204.14198](https://arxiv.org/abs/2204.14198)
-- Liu, H. et al. (2023). "Visual Instruction Tuning" (LLaVA) — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485)
-- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
+- Baltrušaitis, T., Ahuja, C. y Morency, L.-P. (2017). "Multimodal Machine Learning: A Survey and Taxonomy" — [arXiv:1705.09406](https://arxiv.org/abs/1705.09406) — uso: fuente primaria del mecanismo estudiado
+- Vaswani, A. et al. (2017). "Attention Is All You Need" — [arXiv:1706.03762](https://arxiv.org/abs/1706.03762) — uso: fuente primaria del mecanismo estudiado
+- Alayrac, J.-B. et al. (2022). "Flamingo: a Visual Language Model for Few-Shot Learning" — [arXiv:2204.14198](https://arxiv.org/abs/2204.14198) — uso: fuente primaria del mecanismo estudiado
+- Liu, H. et al. (2023). "Visual Instruction Tuning" (LLaVA) — [arXiv:2304.08485](https://arxiv.org/abs/2304.08485) — uso: fuente primaria del mecanismo estudiado
+- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

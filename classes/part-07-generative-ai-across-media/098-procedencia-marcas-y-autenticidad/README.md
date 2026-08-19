@@ -235,10 +235,10 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- C2PA. *Content Credentials: C2PA Technical Specification 2.2*. [c2pa.org/specifications/specifications/2.2/index.html](https://c2pa.org/specifications/specifications/2.2/index.html)
-- Kirchenbauer, J. et al. (2023). *A Watermark for Large Language Models*. ICML 2023. [arXiv:2301.10226](https://arxiv.org/abs/2301.10226)
-- Dathathri, S. et al. (2024). *Scalable watermarking for identifying large language model outputs* (SynthID-Text). Nature, 634. [doi:10.1038/s41586-024-08025-4](https://doi.org/10.1038/s41586-024-08025-4)
-- Content Credentials (implementación de C2PA para usuarios finales): [contentcredentials.org](https://contentcredentials.org/)
+- C2PA. *Content Credentials: C2PA Technical Specification 2.2*. [c2pa.org/specifications/specifications/2.2/index.html](https://c2pa.org/specifications/specifications/2.2/index.html) — uso: marco normativo de referencia
+- Kirchenbauer, J. et al. (2023). *A Watermark for Large Language Models*. ICML 2023. [arXiv:2301.10226](https://arxiv.org/abs/2301.10226) — uso: fuente primaria del mecanismo estudiado
+- Dathathri, S. et al. (2024). *Scalable watermarking for identifying large language model outputs* (SynthID-Text). Nature, 634. [doi:10.1038/s41586-024-08025-4](https://doi.org/10.1038/s41586-024-08025-4) — uso: fuente primaria del mecanismo estudiado
+- Content Credentials (implementación de C2PA para usuarios finales): [contentcredentials.org](https://contentcredentials.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -264,12 +264,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Ho, J., Jain, A. y Abbeel, P. (2020). *Denoising Diffusion Probabilistic Models*. Paper seminal de DDPM. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239)
-- Sohl-Dickstein, J. et al. (2015). *Deep Unsupervised Learning using Nonequilibrium Thermodynamics*. Origen del marco de difusión. [arXiv:1503.03585](https://arxiv.org/abs/1503.03585)
-- Song, J., Meng, C. y Ermon, S. (2020). *Denoising Diffusion Implicit Models* (DDIM). [arXiv:2010.02502](https://arxiv.org/abs/2010.02502)
-- Song, Y. et al. (2020). *Score-Based Generative Modeling through Stochastic Differential Equations*. [arXiv:2011.13456](https://arxiv.org/abs/2011.13456)
-- Rombach, R. et al. (2021). *High-Resolution Image Synthesis with Latent Diffusion Models* (Stable Diffusion). [arXiv:2112.10752](https://arxiv.org/abs/2112.10752)
-- Documentación de Hugging Face Diffusers: [`DDPMScheduler`](https://huggingface.co/docs/diffusers/api/schedulers/ddpm)
+- Ho, J., Jain, A. y Abbeel, P. (2020). *Denoising Diffusion Probabilistic Models*. Paper seminal de DDPM. [arXiv:2006.11239](https://arxiv.org/abs/2006.11239) — uso: fuente primaria del mecanismo estudiado
+- Sohl-Dickstein, J. et al. (2015). *Deep Unsupervised Learning using Nonequilibrium Thermodynamics*. Origen del marco de difusión. [arXiv:1503.03585](https://arxiv.org/abs/1503.03585) — uso: fuente primaria del mecanismo estudiado
+- Song, J., Meng, C. y Ermon, S. (2020). *Denoising Diffusion Implicit Models* (DDIM). [arXiv:2010.02502](https://arxiv.org/abs/2010.02502) — uso: fuente primaria del mecanismo estudiado
+- Song, Y. et al. (2020). *Score-Based Generative Modeling through Stochastic Differential Equations*. [arXiv:2011.13456](https://arxiv.org/abs/2011.13456) — uso: fuente primaria del mecanismo estudiado
+- Rombach, R. et al. (2021). *High-Resolution Image Synthesis with Latent Diffusion Models* (Stable Diffusion). [arXiv:2112.10752](https://arxiv.org/abs/2112.10752) — uso: fuente primaria del mecanismo estudiado
+- Documentación de Hugging Face Diffusers: [`DDPMScheduler`](https://huggingface.co/docs/diffusers/api/schedulers/ddpm) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

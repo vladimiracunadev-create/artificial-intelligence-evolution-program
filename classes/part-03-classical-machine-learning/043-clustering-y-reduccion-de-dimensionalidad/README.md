@@ -234,12 +234,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 14 "Unsupervised Learning", PDF oficial](https://hastie.su.domains/ElemStatLearn/)
-- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 12 "Unsupervised Learning", PDF oficial](https://www.statlearning.com/)
-- [Lloyd (1982), "Least Squares Quantization in PCM", IEEE Trans. Information Theory. DOI 10.1109/TIT.1982.1056489](https://doi.org/10.1109/TIT.1982.1056489)
-- [Arthur & Vassilvitskii (2007), "k-means++: The Advantages of Careful Seeding", SODA (PDF oficial de Stanford)](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf)
-- [scikit-learn User Guide — Clustering](https://scikit-learn.org/stable/modules/clustering.html)
-- [scikit-learn User Guide — Decomposing signals: PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)
+- [Hastie, Tibshirani, Friedman — *The Elements of Statistical Learning* (2e), cap. 14 "Unsupervised Learning", PDF oficial](https://hastie.su.domains/ElemStatLearn/) — uso: desarrollo extendido del tema
+- [James et al. — *An Introduction to Statistical Learning* (2e), cap. 12 "Unsupervised Learning", PDF oficial](https://www.statlearning.com/) — uso: desarrollo extendido del tema
+- [Lloyd (1982), "Least Squares Quantization in PCM", IEEE Trans. Information Theory. DOI 10.1109/TIT.1982.1056489](https://doi.org/10.1109/TIT.1982.1056489) — uso: fuente primaria del mecanismo estudiado
+- [Arthur & Vassilvitskii (2007), "k-means++: The Advantages of Careful Seeding", SODA (PDF oficial de Stanford)](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf) — uso: referencia consultada en su fuente original
+- [scikit-learn User Guide — Clustering](https://scikit-learn.org/stable/modules/clustering.html) — uso: referencia consultada en su fuente original
+- [scikit-learn User Guide — Decomposing signals: PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -202,11 +202,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kaplan et al. (2020), *Scaling Laws for Neural Language Models*: <https://arxiv.org/abs/2001.08361>
-- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (Chinchilla): <https://arxiv.org/abs/2203.15556>
-- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3): <https://arxiv.org/abs/2005.14165>
-- Wei et al. (2022), *Emergent Abilities of Large Language Models*: <https://arxiv.org/abs/2206.07682>
-- Schaeffer et al. (2023), *Are Emergent Abilities of Large Language Models a Mirage?*: <https://arxiv.org/abs/2304.15004>
+- Kaplan et al. (2020), *Scaling Laws for Neural Language Models*: <https://arxiv.org/abs/2001.08361> — uso: fuente primaria del mecanismo estudiado
+- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (Chinchilla): <https://arxiv.org/abs/2203.15556> — uso: fuente primaria del mecanismo estudiado
+- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3): <https://arxiv.org/abs/2005.14165> — uso: fuente primaria del mecanismo estudiado
+- Wei et al. (2022), *Emergent Abilities of Large Language Models*: <https://arxiv.org/abs/2206.07682> — uso: fuente primaria del mecanismo estudiado
+- Schaeffer et al. (2023), *Are Emergent Abilities of Large Language Models a Mirage?*: <https://arxiv.org/abs/2304.15004> — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

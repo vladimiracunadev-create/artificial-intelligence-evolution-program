@@ -213,11 +213,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Rabiner, L. R. (1989). "A tutorial on hidden Markov models and selected applications in speech recognition". *Proceedings of the IEEE*, 77(2), 257-286. [https://doi.org/10.1109/5.18626](https://doi.org/10.1109/5.18626)
-- Viterbi, A. (1967). "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm". *IEEE Trans. Information Theory*, 13(2), 260-269. [https://doi.org/10.1109/TIT.1967.1054010](https://doi.org/10.1109/TIT.1967.1054010)
-- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 14 "Probabilistic Reasoning over Time". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Jurafsky, D. & Martin, J. H. *Speech and Language Processing*, 3.ª ed. (draft), apéndice sobre HMM. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
-- Bishop, C. (2006). *Pattern Recognition and Machine Learning*, cap. 13. [https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/)
+- Rabiner, L. R. (1989). "A tutorial on hidden Markov models and selected applications in speech recognition". *Proceedings of the IEEE*, 77(2), 257-286. [https://doi.org/10.1109/5.18626](https://doi.org/10.1109/5.18626) — uso: fuente primaria del mecanismo estudiado
+- Viterbi, A. (1967). "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm". *IEEE Trans. Information Theory*, 13(2), 260-269. [https://doi.org/10.1109/TIT.1967.1054010](https://doi.org/10.1109/TIT.1967.1054010) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. (2020). *AIMA*, 4.ª ed., cap. 14 "Probabilistic Reasoning over Time". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Jurafsky, D. & Martin, J. H. *Speech and Language Processing*, 3.ª ed. (draft), apéndice sobre HMM. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Bishop, C. (2006). *Pattern Recognition and Machine Learning*, cap. 13. [https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/](https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

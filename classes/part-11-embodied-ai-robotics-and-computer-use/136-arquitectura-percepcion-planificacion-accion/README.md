@@ -237,12 +237,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Brooks, R. (1986). A Robust Layered Control System for a Mobile Robot. IEEE J. Robotics and Automation. DOI 10.1109/JRA.1986.1087032](https://doi.org/10.1109/JRA.1986.1087032)
-- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — caps. de arquitecturas robóticas](https://link.springer.com/book/10.1007/978-3-319-32552-1)
-- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — cap. 1 (introducción al lazo percepción-acción)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/)
-- [Russell, S. & Norvig, P. AIMA 4e — cap. 26, Robotics](https://aima.cs.berkeley.edu/)
-- [ROS 2 Documentation](https://docs.ros.org/en/rolling/)
-- [Nav2 (Navigation2) Documentation](https://docs.nav2.org/)
+- [Brooks, R. (1986). A Robust Layered Control System for a Mobile Robot. IEEE J. Robotics and Automation. DOI 10.1109/JRA.1986.1087032](https://doi.org/10.1109/JRA.1986.1087032) — uso: fuente primaria del mecanismo estudiado
+- [Siciliano, B. & Khatib, O. (eds.). Springer Handbook of Robotics, 2e — caps. de arquitecturas robóticas](https://link.springer.com/book/10.1007/978-3-319-32552-1) — uso: referencia consultada en su fuente original
+- [Thrun, S., Burgard, W. & Fox, D. Probabilistic Robotics — cap. 1 (introducción al lazo percepción-acción)](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/) — uso: referencia consultada en su fuente original
+- [Russell, S. & Norvig, P. AIMA 4e — cap. 26, Robotics](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [ROS 2 Documentation](https://docs.ros.org/en/rolling/) — uso: referencia consultada en su fuente original
+- [Nav2 (Navigation2) Documentation](https://docs.nav2.org/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -244,12 +244,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e), caps. de reconocimiento — [szeliski.org/Book](http://szeliski.org/Book/)
-- Goodfellow, I., Bengio, Y. y Courville, A. *Deep Learning*, cap. 9 (redes convolucionales) — [deeplearningbook.org](https://www.deeplearningbook.org/)
-- Krizhevsky, A., Sutskever, I. y Hinton, G. (2012). "ImageNet Classification with Deep Convolutional Neural Networks" (AlexNet) — [NeurIPS 2012](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
-- He, K. et al. (2015). "Deep Residual Learning for Image Recognition" (ResNet) — [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
-- Dosovitskiy, A. et al. (2020). "An Image is Worth 16x16 Words" (ViT) — [arXiv:2010.11929](https://arxiv.org/abs/2010.11929)
-- Documentación oficial de torchvision (modelos y transformaciones) — [pytorch.org/vision](https://pytorch.org/vision/stable/index.html)
+- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e), caps. de reconocimiento — [szeliski.org/Book](http://szeliski.org/Book/) — uso: desarrollo extendido del tema
+- Goodfellow, I., Bengio, Y. y Courville, A. *Deep Learning*, cap. 9 (redes convolucionales) — [deeplearningbook.org](https://www.deeplearningbook.org/) — uso: desarrollo extendido del tema
+- Krizhevsky, A., Sutskever, I. y Hinton, G. (2012). "ImageNet Classification with Deep Convolutional Neural Networks" (AlexNet) — [NeurIPS 2012](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html) — uso: referencia consultada en su fuente original
+- He, K. et al. (2015). "Deep Residual Learning for Image Recognition" (ResNet) — [arXiv:1512.03385](https://arxiv.org/abs/1512.03385) — uso: fuente primaria del mecanismo estudiado
+- Dosovitskiy, A. et al. (2020). "An Image is Worth 16x16 Words" (ViT) — [arXiv:2010.11929](https://arxiv.org/abs/2010.11929) — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de torchvision (modelos y transformaciones) — [pytorch.org/vision](https://pytorch.org/vision/stable/index.html) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

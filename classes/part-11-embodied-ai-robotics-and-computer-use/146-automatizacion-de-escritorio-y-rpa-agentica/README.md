@@ -239,11 +239,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [van der Aalst, W., Bichler, M. & Heinzl, A. (2018). Robotic Process Automation. Business & Information Systems Engineering. DOI 10.1007/s12599-018-0542-4](https://doi.org/10.1007/s12599-018-0542-4)
-- [UiPath — documentación oficial de selectores (anatomía y fragilidad)](https://docs.uipath.com/studio/standalone/latest/user-guide/about-selectors)
-- [Playwright — documentación oficial (la alternativa moderna de automatización web)](https://playwright.dev/docs/intro)
-- [Xie, T. et al. (2024). OSWorld: Benchmarking Multimodal Agents in Real Computer Environments. arXiv:2404.07972](https://arxiv.org/abs/2404.07972)
-- [Anthropic — Computer use tool (documentación oficial)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool)
+- [van der Aalst, W., Bichler, M. & Heinzl, A. (2018). Robotic Process Automation. Business & Information Systems Engineering. DOI 10.1007/s12599-018-0542-4](https://doi.org/10.1007/s12599-018-0542-4) — uso: fuente primaria del mecanismo estudiado
+- [UiPath — documentación oficial de selectores (anatomía y fragilidad)](https://docs.uipath.com/studio/standalone/latest/user-guide/about-selectors) — uso: referencia consultada en su fuente original
+- [Playwright — documentación oficial (la alternativa moderna de automatización web)](https://playwright.dev/docs/intro) — uso: referencia consultada en su fuente original
+- [Xie, T. et al. (2024). OSWorld: Benchmarking Multimodal Agents in Real Computer Environments. arXiv:2404.07972](https://arxiv.org/abs/2404.07972) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic — Computer use tool (documentación oficial)](https://docs.claude.com/en/docs/agents-and-tools/tool-use/computer-use-tool) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

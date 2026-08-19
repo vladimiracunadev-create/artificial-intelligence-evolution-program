@@ -230,11 +230,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Jiang, H. et al. (2023). *LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models*. [arXiv:2310.05736](https://arxiv.org/abs/2310.05736)
-- Jiang, H. et al. (2023). *LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression*. [arXiv:2310.06839](https://arxiv.org/abs/2310.06839)
-- Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172)
-- Documentación de Anthropic, *Prompt caching*: [https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
-- Documentación de GPTCache: [https://gptcache.readthedocs.io/](https://gptcache.readthedocs.io/)
+- Jiang, H. et al. (2023). *LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models*. [arXiv:2310.05736](https://arxiv.org/abs/2310.05736) — uso: fuente primaria del mecanismo estudiado
+- Jiang, H. et al. (2023). *LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression*. [arXiv:2310.06839](https://arxiv.org/abs/2310.06839) — uso: fuente primaria del mecanismo estudiado
+- Liu, N. et al. (2023). *Lost in the Middle: How Language Models Use Long Contexts*. [arXiv:2307.03172](https://arxiv.org/abs/2307.03172) — uso: fuente primaria del mecanismo estudiado
+- Documentación de Anthropic, *Prompt caching*: [https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching) — uso: referencia consultada en su fuente original
+- Documentación de GPTCache: [https://gptcache.readthedocs.io/](https://gptcache.readthedocs.io/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

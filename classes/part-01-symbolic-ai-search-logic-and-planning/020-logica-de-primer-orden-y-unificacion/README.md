@@ -207,11 +207,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), caps. 8-9 "First-Order Logic" e "Inference in First-Order Logic". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
-- Robinson, J. A. (1965). "A Machine-Oriented Logic Based on the Resolution Principle". *Journal of the ACM*, 12(1). [https://doi.org/10.1145/321250.321253](https://doi.org/10.1145/321250.321253)
+- Russell, S. y Norvig, P. (2021). *AIMA* (4.ª ed.), caps. 8-9 "First-Order Logic" e "Inference in First-Order Logic". [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- Robinson, J. A. (1965). "A Machine-Oriented Logic Based on the Resolution Principle". *Journal of the ACM*, 12(1). [https://doi.org/10.1145/321250.321253](https://doi.org/10.1145/321250.321253) — uso: fuente primaria del mecanismo estudiado
 - Kowalski, R. (1974). "Predicate Logic as Programming Language". *IFIP Congress* — el puente entre FOL y Prolog.
-- SWI-Prolog — implementación libre de referencia: [https://www.swi-prolog.org/](https://www.swi-prolog.org/)
-- Stanford Encyclopedia of Philosophy — "Classical Logic": [https://plato.stanford.edu/entries/logic-classical/](https://plato.stanford.edu/entries/logic-classical/)
+- SWI-Prolog — implementación libre de referencia: [https://www.swi-prolog.org/](https://www.swi-prolog.org/) — uso: referencia consultada en su fuente original
+- Stanford Encyclopedia of Philosophy — "Classical Logic": [https://plato.stanford.edu/entries/logic-classical/](https://plato.stanford.edu/entries/logic-classical/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -237,11 +237,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Ribeiro, Singh & Guestrin (2016), *"Why Should I Trust You?": Explaining the Predictions of Any Classifier* (LIME), arXiv:1602.04938](https://arxiv.org/abs/1602.04938)
-- [Lundberg & Lee (2017), *A Unified Approach to Interpreting Model Predictions* (SHAP), arXiv:1705.07874](https://arxiv.org/abs/1705.07874)
-- [Guo et al. (2017), *On Calibration of Modern Neural Networks*, arXiv:1706.04599](https://arxiv.org/abs/1706.04599)
-- [Molnar, *Interpretable Machine Learning* (libro abierto)](https://christophm.github.io/interpretable-ml-book/)
-- [Kendall & Gal (2017), *What Uncertainties Do We Need in Bayesian Deep Learning?*, arXiv:1703.04977](https://arxiv.org/abs/1703.04977)
+- [Ribeiro, Singh & Guestrin (2016), *"Why Should I Trust You?": Explaining the Predictions of Any Classifier* (LIME), arXiv:1602.04938](https://arxiv.org/abs/1602.04938) — uso: fuente primaria del mecanismo estudiado
+- [Lundberg & Lee (2017), *A Unified Approach to Interpreting Model Predictions* (SHAP), arXiv:1705.07874](https://arxiv.org/abs/1705.07874) — uso: fuente primaria del mecanismo estudiado
+- [Guo et al. (2017), *On Calibration of Modern Neural Networks*, arXiv:1706.04599](https://arxiv.org/abs/1706.04599) — uso: fuente primaria del mecanismo estudiado
+- [Molnar, *Interpretable Machine Learning* (libro abierto)](https://christophm.github.io/interpretable-ml-book/) — uso: referencia consultada en su fuente original
+- [Kendall & Gal (2017), *What Uncertainties Do We Need in Bayesian Deep Learning?*, arXiv:1703.04977](https://arxiv.org/abs/1703.04977) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

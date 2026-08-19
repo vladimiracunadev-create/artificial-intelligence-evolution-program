@@ -225,11 +225,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM): <https://arxiv.org/abs/2211.09110>
-- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (costo entrenamiento vs inferencia): <https://arxiv.org/abs/2203.15556>
-- Documentación oficial de Claude (modelos, precios y capacidades): <https://docs.claude.com>
-- Documentación oficial de vLLM (serving de modelos abiertos): <https://docs.vllm.ai>
-- Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*: <https://arxiv.org/abs/2306.05685>
+- Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM): <https://arxiv.org/abs/2211.09110> — uso: fuente primaria del mecanismo estudiado
+- Hoffmann et al. (2022), *Training Compute-Optimal Large Language Models* (costo entrenamiento vs inferencia): <https://arxiv.org/abs/2203.15556> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Claude (modelos, precios y capacidades): <https://docs.claude.com> — uso: referencia consultada en su fuente original
+- Documentación oficial de vLLM (serving de modelos abiertos): <https://docs.vllm.ai> — uso: referencia consultada en su fuente original
+- Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*: <https://arxiv.org/abs/2306.05685> — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

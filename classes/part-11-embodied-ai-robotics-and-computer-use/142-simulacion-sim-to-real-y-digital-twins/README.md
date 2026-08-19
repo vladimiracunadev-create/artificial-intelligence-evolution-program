@@ -228,12 +228,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Tobin, J. et al. (2017). Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS. arXiv:1703.06907](https://arxiv.org/abs/1703.06907)
-- [Peng, X. B. et al. (2018). Sim-to-Real Transfer of Robotic Control with Dynamics Randomization. ICRA. arXiv:1710.06537](https://arxiv.org/abs/1710.06537)
-- [OpenAI et al. (2019). Solving Rubik's Cube with a Robot Hand (automatic domain randomization). arXiv:1910.07113](https://arxiv.org/abs/1910.07113)
-- [Todorov, E., Erez, T. & Tassa, Y. (2012). MuJoCo: A physics engine for model-based control. IROS. DOI 10.1109/IROS.2012.6386109](https://doi.org/10.1109/IROS.2012.6386109)
-- [MuJoCo — documentación oficial](https://mujoco.readthedocs.io/en/stable/overview.html)
-- [Gazebo — documentación oficial](https://gazebosim.org/docs)
+- [Tobin, J. et al. (2017). Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World. IROS. arXiv:1703.06907](https://arxiv.org/abs/1703.06907) — uso: fuente primaria del mecanismo estudiado
+- [Peng, X. B. et al. (2018). Sim-to-Real Transfer of Robotic Control with Dynamics Randomization. ICRA. arXiv:1710.06537](https://arxiv.org/abs/1710.06537) — uso: fuente primaria del mecanismo estudiado
+- [OpenAI et al. (2019). Solving Rubik's Cube with a Robot Hand (automatic domain randomization). arXiv:1910.07113](https://arxiv.org/abs/1910.07113) — uso: fuente primaria del mecanismo estudiado
+- [Todorov, E., Erez, T. & Tassa, Y. (2012). MuJoCo: A physics engine for model-based control. IROS. DOI 10.1109/IROS.2012.6386109](https://doi.org/10.1109/IROS.2012.6386109) — uso: fuente primaria del mecanismo estudiado
+- [MuJoCo — documentación oficial](https://mujoco.readthedocs.io/en/stable/overview.html) — uso: referencia consultada en su fuente original
+- [Gazebo — documentación oficial](https://gazebosim.org/docs) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

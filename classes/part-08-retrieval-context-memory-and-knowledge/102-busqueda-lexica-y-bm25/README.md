@@ -219,11 +219,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Robertson, S. & Zaragoza, H. (2009). *The Probabilistic Relevance Framework: BM25 and Beyond*. Foundations and Trends in Information Retrieval, 3(4). [DOI 10.1561/1500000019](https://doi.org/10.1561/1500000019)
-- Robertson, S. et al. (1994). *Okapi at TREC-3* — origen del esquema BM25 en las campañas TREC: [https://trec.nist.gov/pubs/trec3/t3_proceedings.html](https://trec.nist.gov/pubs/trec3/t3_proceedings.html)
-- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. de recuperación de información. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/)
-- Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval* (libro gratuito oficial): [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/)
-- Documentación oficial de Apache Lucene (implementación de referencia de BM25): [https://lucene.apache.org/core/](https://lucene.apache.org/core/)
+- Robertson, S. & Zaragoza, H. (2009). *The Probabilistic Relevance Framework: BM25 and Beyond*. Foundations and Trends in Information Retrieval, 3(4). [DOI 10.1561/1500000019](https://doi.org/10.1561/1500000019) — uso: fuente primaria del mecanismo estudiado
+- Robertson, S. et al. (1994). *Okapi at TREC-3* — origen del esquema BM25 en las campañas TREC: [https://trec.nist.gov/pubs/trec3/t3_proceedings.html](https://trec.nist.gov/pubs/trec3/t3_proceedings.html) — uso: referencia consultada en su fuente original
+- Jurafsky, D. & Martin, J. H. *Speech and Language Processing* (3.ª ed., borrador), cap. de recuperación de información. [https://web.stanford.edu/~jurafsky/slp3/](https://web.stanford.edu/~jurafsky/slp3/) — uso: desarrollo extendido del tema
+- Manning, C., Raghavan, P. & Schütze, H. *Introduction to Information Retrieval* (libro gratuito oficial): [https://nlp.stanford.edu/IR-book/](https://nlp.stanford.edu/IR-book/) — uso: referencia consultada en su fuente original
+- Documentación oficial de Apache Lucene (implementación de referencia de BM25): [https://lucene.apache.org/core/](https://lucene.apache.org/core/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

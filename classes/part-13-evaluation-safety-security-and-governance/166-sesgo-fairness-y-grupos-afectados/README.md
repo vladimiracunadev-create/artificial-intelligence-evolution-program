@@ -223,11 +223,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Kleinberg, Mullainathan & Raghavan (2016), *Inherent Trade-Offs in the Fair Determination of Risk Scores*, arXiv:1609.05807](https://arxiv.org/abs/1609.05807)
-- [Hardt, Price & Srebro (2016), *Equality of Opportunity in Supervised Learning*, arXiv:1610.02413](https://arxiv.org/abs/1610.02413)
-- [Barocas, Hardt & Narayanan, *Fairness and Machine Learning* (libro abierto)](https://fairmlbook.org/)
-- [Mehrabi et al. (2021), *A Survey on Bias and Fairness in Machine Learning*, arXiv:1908.09635](https://arxiv.org/abs/1908.09635)
-- [U.S. EEOC — Uniform Guidelines on Employee Selection Procedures (regla del 80 %)](https://www.eeoc.gov/laws/guidance/questions-and-answers-clarify-and-provide-common-interpretation-uniform-guidelines)
+- [Kleinberg, Mullainathan & Raghavan (2016), *Inherent Trade-Offs in the Fair Determination of Risk Scores*, arXiv:1609.05807](https://arxiv.org/abs/1609.05807) — uso: fuente primaria del mecanismo estudiado
+- [Hardt, Price & Srebro (2016), *Equality of Opportunity in Supervised Learning*, arXiv:1610.02413](https://arxiv.org/abs/1610.02413) — uso: fuente primaria del mecanismo estudiado
+- [Barocas, Hardt & Narayanan, *Fairness and Machine Learning* (libro abierto)](https://fairmlbook.org/) — uso: referencia consultada en su fuente original
+- [Mehrabi et al. (2021), *A Survey on Bias and Fairness in Machine Learning*, arXiv:1908.09635](https://arxiv.org/abs/1908.09635) — uso: fuente primaria del mecanismo estudiado
+- [U.S. EEOC — Uniform Guidelines on Employee Selection Procedures (regla del 80 %)](https://www.eeoc.gov/laws/guidance/questions-and-answers-clarify-and-provide-common-interpretation-uniform-guidelines) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

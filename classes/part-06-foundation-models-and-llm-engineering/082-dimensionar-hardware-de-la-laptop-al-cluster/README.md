@@ -255,16 +255,16 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs*: <https://arxiv.org/abs/2305.14314>
-- Hu et al. (2021), *LoRA: Low-Rank Adaptation of Large Language Models*: <https://arxiv.org/abs/2106.09685>
-- Rajbhandari et al. (2019), *ZeRO: Memory Optimizations Toward Training Trillion Parameter Models* (de dónde salen los 16 B/parámetro): <https://arxiv.org/abs/1910.02054>
-- Kwon et al. (2023), *Efficient Memory Management for LLM Serving with PagedAttention*: <https://arxiv.org/abs/2309.06180>
+- Dettmers et al. (2023), *QLoRA: Efficient Finetuning of Quantized LLMs*: <https://arxiv.org/abs/2305.14314> — uso: fuente primaria del mecanismo estudiado
+- Hu et al. (2021), *LoRA: Low-Rank Adaptation of Large Language Models*: <https://arxiv.org/abs/2106.09685> — uso: fuente primaria del mecanismo estudiado
+- Rajbhandari et al. (2019), *ZeRO: Memory Optimizations Toward Training Trillion Parameter Models* (de dónde salen los 16 B/parámetro): <https://arxiv.org/abs/1910.02054> — uso: fuente primaria del mecanismo estudiado
+- Kwon et al. (2023), *Efficient Memory Management for LLM Serving with PagedAttention*: <https://arxiv.org/abs/2309.06180> — uso: fuente primaria del mecanismo estudiado
 - llama.cpp — formatos GGUF y ejecución en CPU/memoria unificada: <https://github.com/ggml-org/llama.cpp>
 - Ollama — runtime local de modelos abiertos: <https://ollama.com>
 - LM Studio — entorno local con interfaz gráfica: <https://lmstudio.ai>
 - MLX — framework de Apple para memoria unificada: <https://github.com/ml-explore/mlx>
-- Hugging Face, *GPU inference* (huella de memoria y optimizaciones): <https://huggingface.co/docs/transformers/main/en/perf_infer_gpu_one>
-- Documentación oficial de vLLM (`gpu_memory_utilization`, dimensionado del KV cache): <https://docs.vllm.ai>
+- Hugging Face, *GPU inference* (huella de memoria y optimizaciones): <https://huggingface.co/docs/transformers/main/en/perf_infer_gpu_one> — uso: referencia consultada en su fuente original
+- Documentación oficial de vLLM (`gpu_memory_utilization`, dimensionado del KV cache): <https://docs.vllm.ai> — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

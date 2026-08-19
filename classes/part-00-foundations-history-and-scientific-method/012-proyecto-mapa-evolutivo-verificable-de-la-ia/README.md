@@ -228,11 +228,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Turing, A. M. (1950). Computing Machinery and Intelligence. *Mind*, LIX(236)](https://doi.org/10.1093/mind/LIX.236.433)
-- [McCarthy, Minsky, Rochester & Shannon (1955). Propuesta de Dartmouth (documento original)](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf)
-- [Lighthill, J. (1973). Artificial Intelligence: A General Survey](http://www.chilton-computing.org.uk/inf/literature/reports/lighthill_report/p001.htm)
-- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., §1.1 (historia, para contraste secundario)](https://aima.cs.berkeley.edu/)
-- [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial gratuito)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf)
+- [Turing, A. M. (1950). Computing Machinery and Intelligence. *Mind*, LIX(236)](https://doi.org/10.1093/mind/LIX.236.433) — uso: fuente primaria del mecanismo estudiado
+- [McCarthy, Minsky, Rochester & Shannon (1955). Propuesta de Dartmouth (documento original)](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf) — uso: referencia consultada en su fuente original
+- [Lighthill, J. (1973). Artificial Intelligence: A General Survey](http://www.chilton-computing.org.uk/inf/literature/reports/lighthill_report/p001.htm) — uso: referencia consultada en su fuente original
+- [Russell, S. & Norvig, P. *AIMA*, 4.ª ed., §1.1 (historia, para contraste secundario)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [Nilsson, N. (2010). *The Quest for Artificial Intelligence* (PDF oficial gratuito)](https://ai.stanford.edu/~nilsson/QAI/qai.pdf) — uso: referencia consultada en su fuente original
 
 ---
 

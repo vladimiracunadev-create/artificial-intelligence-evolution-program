@@ -231,12 +231,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3, in-context learning): <https://arxiv.org/abs/2005.14165>
-- Wei et al. (2022), *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*: <https://arxiv.org/abs/2201.11903>
-- Wang et al. (2022), *Self-Consistency Improves Chain of Thought Reasoning*: <https://arxiv.org/abs/2203.11171>
-- Kojima et al. (2022), *Large Language Models are Zero-Shot Reasoners* ("pensemos paso a paso"): <https://arxiv.org/abs/2205.11916>
-- Documentación oficial de Claude (prompting y salidas estructuradas): <https://docs.claude.com>
-- Especificación JSON Schema: <https://json-schema.org>
+- Brown et al. (2020), *Language Models are Few-Shot Learners* (GPT-3, in-context learning): <https://arxiv.org/abs/2005.14165> — uso: fuente primaria del mecanismo estudiado
+- Wei et al. (2022), *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*: <https://arxiv.org/abs/2201.11903> — uso: fuente primaria del mecanismo estudiado
+- Wang et al. (2022), *Self-Consistency Improves Chain of Thought Reasoning*: <https://arxiv.org/abs/2203.11171> — uso: fuente primaria del mecanismo estudiado
+- Kojima et al. (2022), *Large Language Models are Zero-Shot Reasoners* ("pensemos paso a paso"): <https://arxiv.org/abs/2205.11916> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Claude (prompting y salidas estructuradas): <https://docs.claude.com> — uso: referencia consultada en su fuente original
+- Especificación JSON Schema: <https://json-schema.org> — uso: marco normativo de referencia
 
 <!-- papers:inicio -->
 

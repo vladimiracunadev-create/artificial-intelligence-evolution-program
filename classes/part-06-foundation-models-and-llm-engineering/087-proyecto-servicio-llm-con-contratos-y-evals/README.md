@@ -228,12 +228,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM): <https://arxiv.org/abs/2211.09110>
-- Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*: <https://arxiv.org/abs/2306.05685>
-- Documentación oficial de Claude (tool use, salidas estructuradas, buenas prácticas): <https://docs.claude.com>
-- Documentación oficial de vLLM (serving): <https://docs.vllm.ai>
-- Especificación JSON Schema (contratos de salida): <https://json-schema.org>
-- Ouyang et al. (2022), *Training language models to follow instructions with human feedback*: <https://arxiv.org/abs/2203.02155>
+- Liang et al. (2022), *Holistic Evaluation of Language Models* (HELM): <https://arxiv.org/abs/2211.09110> — uso: fuente primaria del mecanismo estudiado
+- Zheng et al. (2023), *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*: <https://arxiv.org/abs/2306.05685> — uso: fuente primaria del mecanismo estudiado
+- Documentación oficial de Claude (tool use, salidas estructuradas, buenas prácticas): <https://docs.claude.com> — uso: referencia consultada en su fuente original
+- Documentación oficial de vLLM (serving): <https://docs.vllm.ai> — uso: referencia consultada en su fuente original
+- Especificación JSON Schema (contratos de salida): <https://json-schema.org> — uso: marco normativo de referencia
+- Ouyang et al. (2022), *Training language models to follow instructions with human feedback*: <https://arxiv.org/abs/2203.02155> — uso: fuente primaria del mecanismo estudiado
 
 ---
 

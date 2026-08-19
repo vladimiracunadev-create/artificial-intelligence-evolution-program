@@ -250,11 +250,11 @@ evidencia y límites. Ese contraste es el ejercicio.
 
 ## 🔗 Referencias
 
-- [Keshav, S. (2007). How to Read a Paper (método de tres pasadas)](https://doi.org/10.1145/1273445.1273458)
-- [Dodge et al. (2019). Show Your Work: Improved Reporting of Experimental Results](https://arxiv.org/abs/1909.03004)
-- [Pineau et al. (2021). Improving Reproducibility in ML Research (checklist NeurIPS)](https://arxiv.org/abs/2003.12206)
-- [Kapoor, S. & Narayanan, A. (2023). Leakage and the Reproducibility Crisis in ML-based Science](https://arxiv.org/abs/2207.07048)
-- [Ioannidis, J. (2005). Why Most Published Research Findings Are False](https://doi.org/10.1371/journal.pmed.0020124)
+- [Keshav, S. (2007). How to Read a Paper (método de tres pasadas)](https://doi.org/10.1145/1273445.1273458) — uso: fuente primaria del mecanismo estudiado
+- [Dodge et al. (2019). Show Your Work: Improved Reporting of Experimental Results](https://arxiv.org/abs/1909.03004) — uso: fuente primaria del mecanismo estudiado
+- [Pineau et al. (2021). Improving Reproducibility in ML Research (checklist NeurIPS)](https://arxiv.org/abs/2003.12206) — uso: fuente primaria del mecanismo estudiado
+- [Kapoor, S. & Narayanan, A. (2023). Leakage and the Reproducibility Crisis in ML-based Science](https://arxiv.org/abs/2207.07048) — uso: fuente primaria del mecanismo estudiado
+- [Ioannidis, J. (2005). Why Most Published Research Findings Are False](https://doi.org/10.1371/journal.pmed.0020124) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

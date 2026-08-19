@@ -214,12 +214,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020)
-- van den Oord, A. et al. (2018). "Representation Learning with Contrastive Predictive Coding" (InfoNCE) — [arXiv:1807.03748](https://arxiv.org/abs/1807.03748)
-- Antol, S. et al. (2015). "VQA: Visual Question Answering" — [arXiv:1505.00468](https://arxiv.org/abs/1505.00468)
-- Alayrac, J.-B. et al. (2022). "Flamingo: a Visual Language Model for Few-Shot Learning" — [arXiv:2204.14198](https://arxiv.org/abs/2204.14198)
-- Repositorio oficial de CLIP (OpenAI) — [github.com/openai/CLIP](https://github.com/openai/CLIP)
-- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/)
+- Radford, A. et al. (2021). "Learning Transferable Visual Models From Natural Language Supervision" (CLIP) — [arXiv:2103.00020](https://arxiv.org/abs/2103.00020) — uso: fuente primaria del mecanismo estudiado
+- van den Oord, A. et al. (2018). "Representation Learning with Contrastive Predictive Coding" (InfoNCE) — [arXiv:1807.03748](https://arxiv.org/abs/1807.03748) — uso: fuente primaria del mecanismo estudiado
+- Antol, S. et al. (2015). "VQA: Visual Question Answering" — [arXiv:1505.00468](https://arxiv.org/abs/1505.00468) — uso: fuente primaria del mecanismo estudiado
+- Alayrac, J.-B. et al. (2022). "Flamingo: a Visual Language Model for Few-Shot Learning" — [arXiv:2204.14198](https://arxiv.org/abs/2204.14198) — uso: fuente primaria del mecanismo estudiado
+- Repositorio oficial de CLIP (OpenAI) — [github.com/openai/CLIP](https://github.com/openai/CLIP) — uso: referencia consultada en su fuente original
+- Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 

@@ -230,11 +230,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Popper, K. — entrada en la Stanford Encyclopedia of Philosophy (falsabilidad y demarcación)](https://plato.stanford.edu/entries/popper/)
-- [Ioannidis, J. (2005). Why Most Published Research Findings Are False. *PLoS Medicine*](https://doi.org/10.1371/journal.pmed.0020124)
-- [Kapoor, S. & Narayanan, A. (2023). Leakage and the Reproducibility Crisis in ML-based Science](https://arxiv.org/abs/2207.07048)
-- [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research. *PLoS Comp Bio*](https://doi.org/10.1371/journal.pcbi.1003285)
-- [Pineau et al. (2021). Improving Reproducibility in Machine Learning Research](https://arxiv.org/abs/2003.12206)
+- [Popper, K. — entrada en la Stanford Encyclopedia of Philosophy (falsabilidad y demarcación)](https://plato.stanford.edu/entries/popper/) — uso: referencia consultada en su fuente original
+- [Ioannidis, J. (2005). Why Most Published Research Findings Are False. *PLoS Medicine*](https://doi.org/10.1371/journal.pmed.0020124) — uso: fuente primaria del mecanismo estudiado
+- [Kapoor, S. & Narayanan, A. (2023). Leakage and the Reproducibility Crisis in ML-based Science](https://arxiv.org/abs/2207.07048) — uso: fuente primaria del mecanismo estudiado
+- [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research. *PLoS Comp Bio*](https://doi.org/10.1371/journal.pcbi.1003285) — uso: fuente primaria del mecanismo estudiado
+- [Pineau et al. (2021). Improving Reproducibility in Machine Learning Research](https://arxiv.org/abs/2003.12206) — uso: fuente primaria del mecanismo estudiado
 
 <!-- papers:inicio -->
 

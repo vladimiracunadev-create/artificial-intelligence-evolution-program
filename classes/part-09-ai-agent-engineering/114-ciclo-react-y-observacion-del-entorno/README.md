@@ -256,13 +256,13 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629 (paper seminal del patrón)](https://arxiv.org/abs/2210.03629)
-- [Wei et al. (2022), "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", arXiv:2201.11903 (el baseline de solo razonamiento que ReAct extiende)](https://arxiv.org/abs/2201.11903)
-- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761 (aprendizaje del uso de herramientas)](https://arxiv.org/abs/2302.04761)
-- [Anthropic Engineering — "Building effective agents" (el bucle agéntico en la práctica)](https://www.anthropic.com/engineering/building-effective-agents)
-- [Russell y Norvig — *AIMA* (4e), cap. 2 (agente, percepción, entorno, ciclo percibir-actuar)](https://aima.cs.berkeley.edu/)
-- [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection: observaciones como vector de ataque)](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Addy Osmani — "Loop Engineering" (arquitectura de cinco partes para bucles de agentes, 2026)](https://addyo.substack.com/p/loop-engineering)
+- [Yao et al. (2022), "ReAct: Synergizing Reasoning and Acting in Language Models", arXiv:2210.03629 (paper seminal del patrón)](https://arxiv.org/abs/2210.03629) — uso: fuente primaria del mecanismo estudiado
+- [Wei et al. (2022), "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", arXiv:2201.11903 (el baseline de solo razonamiento que ReAct extiende)](https://arxiv.org/abs/2201.11903) — uso: fuente primaria del mecanismo estudiado
+- [Schick et al. (2023), "Toolformer: Language Models Can Teach Themselves to Use Tools", arXiv:2302.04761 (aprendizaje del uso de herramientas)](https://arxiv.org/abs/2302.04761) — uso: fuente primaria del mecanismo estudiado
+- [Anthropic Engineering — "Building effective agents" (el bucle agéntico en la práctica)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original
+- [Russell y Norvig — *AIMA* (4e), cap. 2 (agente, percepción, entorno, ciclo percibir-actuar)](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
+- [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection: observaciones como vector de ataque)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [Addy Osmani — "Loop Engineering" (arquitectura de cinco partes para bucles de agentes, 2026)](https://addyo.substack.com/p/loop-engineering) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

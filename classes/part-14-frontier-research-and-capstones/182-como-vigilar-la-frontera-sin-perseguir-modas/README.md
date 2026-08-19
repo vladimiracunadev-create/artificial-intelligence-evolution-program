@@ -245,11 +245,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - Directorio `frontier/` de este repositorio: [`frontier/README.md`](../../../frontier/README.md) y [`frontier/current-topics.yaml`](../../../frontier/current-topics.yaml) — registro con `maturity`, `reviewed` y `source` por tema.
-- Stanford HAI (anual). *AI Index Report* — datos longitudinales sobre capacidades, cómputo y adopción. [aiindex.stanford.edu](https://aiindex.stanford.edu/report/)
-- Sculley, D. et al. (2015). *Hidden Technical Debt in Machine Learning Systems*. NeurIPS 2015. [PDF NeurIPS](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-- Lipton, Z. C. y Steinhardt, J. (2019). *Troubling Trends in Machine Learning Scholarship*. [arXiv:1807.03341](https://arxiv.org/abs/1807.03341)
-- Ioannidis, J. P. A. (2005). *Why Most Published Research Findings Are False*. PLOS Medicine 2(8). [DOI 10.1371/journal.pmed.0020124](https://doi.org/10.1371/journal.pmed.0020124)
-- Kapoor, S. y Narayanan, A. (2023). *Leakage and the reproducibility crisis in machine-learning-based science*. Patterns 4(9). [DOI 10.1016/j.patter.2023.100804](https://doi.org/10.1016/j.patter.2023.100804)
+- Stanford HAI (anual). *AI Index Report* — datos longitudinales sobre capacidades, cómputo y adopción. [aiindex.stanford.edu](https://aiindex.stanford.edu/report/) — uso: referencia consultada en su fuente original
+- Sculley, D. et al. (2015). *Hidden Technical Debt in Machine Learning Systems*. NeurIPS 2015. [PDF NeurIPS](https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html) — uso: referencia consultada en su fuente original
+- Lipton, Z. C. y Steinhardt, J. (2019). *Troubling Trends in Machine Learning Scholarship*. [arXiv:1807.03341](https://arxiv.org/abs/1807.03341) — uso: fuente primaria del mecanismo estudiado
+- Ioannidis, J. P. A. (2005). *Why Most Published Research Findings Are False*. PLOS Medicine 2(8). [DOI 10.1371/journal.pmed.0020124](https://doi.org/10.1371/journal.pmed.0020124) — uso: fuente primaria del mecanismo estudiado
+- Kapoor, S. y Narayanan, A. (2023). *Leakage and the reproducibility crisis in machine-learning-based science*. Patterns 4(9). [DOI 10.1016/j.patter.2023.100804](https://doi.org/10.1016/j.patter.2023.100804) — uso: fuente primaria del mecanismo estudiado
 
 ---
 

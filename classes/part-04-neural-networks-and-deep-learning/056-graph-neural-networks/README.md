@@ -218,11 +218,11 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kipf, T. y Welling, M. (2016). *Semi-Supervised Classification with Graph Convolutional Networks*. [arXiv:1609.02907](https://arxiv.org/abs/1609.02907)
-- Veličković, P. et al. (2017). *Graph Attention Networks*. [arXiv:1710.10903](https://arxiv.org/abs/1710.10903)
-- Gilmer, J. et al. (2017). *Neural Message Passing for Quantum Chemistry*. [arXiv:1704.01212](https://arxiv.org/abs/1704.01212)
-- Sánchez-Lengeling, B. et al. (2021). *A Gentle Introduction to Graph Neural Networks*. Distill. [distill.pub/2021/gnn-intro](https://distill.pub/2021/gnn-intro/)
-- Documentación de PyTorch Geometric. [pytorch-geometric.readthedocs.io](https://pytorch-geometric.readthedocs.io/)
+- Kipf, T. y Welling, M. (2016). *Semi-Supervised Classification with Graph Convolutional Networks*. [arXiv:1609.02907](https://arxiv.org/abs/1609.02907) — uso: fuente primaria del mecanismo estudiado
+- Veličković, P. et al. (2017). *Graph Attention Networks*. [arXiv:1710.10903](https://arxiv.org/abs/1710.10903) — uso: fuente primaria del mecanismo estudiado
+- Gilmer, J. et al. (2017). *Neural Message Passing for Quantum Chemistry*. [arXiv:1704.01212](https://arxiv.org/abs/1704.01212) — uso: fuente primaria del mecanismo estudiado
+- Sánchez-Lengeling, B. et al. (2021). *A Gentle Introduction to Graph Neural Networks*. Distill. [distill.pub/2021/gnn-intro](https://distill.pub/2021/gnn-intro/) — uso: referencia consultada en su fuente original
+- Documentación de PyTorch Geometric. [pytorch-geometric.readthedocs.io](https://pytorch-geometric.readthedocs.io/) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->
 

@@ -242,12 +242,12 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- Kautz, H. (2022). *The Third AI Summer: AAAI Robert S. Engelmore Memorial Lecture*. AI Magazine, 43(1). [doi:10.1002/aaai.12036](https://doi.org/10.1002/aaai.12036)
-- Manhaeve, R. et al. (2018). *DeepProbLog: Neural Probabilistic Logic Programming*. NeurIPS 2018. [arXiv:1805.10872](https://arxiv.org/abs/1805.10872)
-- Mao, J. et al. (2019). *The Neuro-Symbolic Concept Learner*. ICLR 2019. [arXiv:1904.12584](https://arxiv.org/abs/1904.12584)
-- Trinh, T. et al. (2024). *Solving olympiad geometry without human demonstrations* (AlphaGeometry). Nature 625. [doi:10.1038/s41586-023-06747-5](https://doi.org/10.1038/s41586-023-06747-5)
-- Garcez, A. & Lamb, L. (2020). *Neurosymbolic AI: The 3rd Wave*. [arXiv:2012.05876](https://arxiv.org/abs/2012.05876)
-- Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), caps. 7-10 (lógica) como base simbólica. [Sitio oficial](https://aima.cs.berkeley.edu/)
+- Kautz, H. (2022). *The Third AI Summer: AAAI Robert S. Engelmore Memorial Lecture*. AI Magazine, 43(1). [doi:10.1002/aaai.12036](https://doi.org/10.1002/aaai.12036) — uso: fuente primaria del mecanismo estudiado
+- Manhaeve, R. et al. (2018). *DeepProbLog: Neural Probabilistic Logic Programming*. NeurIPS 2018. [arXiv:1805.10872](https://arxiv.org/abs/1805.10872) — uso: fuente primaria del mecanismo estudiado
+- Mao, J. et al. (2019). *The Neuro-Symbolic Concept Learner*. ICLR 2019. [arXiv:1904.12584](https://arxiv.org/abs/1904.12584) — uso: fuente primaria del mecanismo estudiado
+- Trinh, T. et al. (2024). *Solving olympiad geometry without human demonstrations* (AlphaGeometry). Nature 625. [doi:10.1038/s41586-023-06747-5](https://doi.org/10.1038/s41586-023-06747-5) — uso: fuente primaria del mecanismo estudiado
+- Garcez, A. & Lamb, L. (2020). *Neurosymbolic AI: The 3rd Wave*. [arXiv:2012.05876](https://arxiv.org/abs/2012.05876) — uso: fuente primaria del mecanismo estudiado
+- Russell, S. & Norvig, P. *Artificial Intelligence: A Modern Approach* (4.ª ed.), caps. 7-10 (lógica) como base simbólica. [Sitio oficial](https://aima.cs.berkeley.edu/) — uso: desarrollo extendido del tema
 
 <!-- papers:inicio -->
 
