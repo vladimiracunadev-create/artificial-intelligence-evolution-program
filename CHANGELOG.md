@@ -19,6 +19,60 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.16.0 — 2026-08-19
+
+### Además del paper, el libro: bibliografía de apoyo en las 183 clases
+
+La 0.15.0 dejó el registro de fuentes montado y verificado, pero lo que llegaba al lector era una
+tabla de contadores. Un contador no dice con qué se estudia. Esta versión convierte el registro en
+lo que tiene que ser: **la bibliografía que sostiene el contenido**.
+
+**Cada clase muestra su bibliografía de apoyo.** Bloque generado en las 183 clases, entre
+marcadores, junto al de papers:
+
+- las **obras que la clase cita**, con autoría, edición, localizador y el capítulo cuando la
+  propia cita lo indica;
+- la **obra de referencia de su parte**, para que ninguna clase se quede solo con papers;
+- las **normas y documentación oficial** que aplica, cuando las hay.
+
+Los papers dicen de dónde salió el mecanismo; estas obras lo desarrollan con el espacio que una
+clase no tiene. 103 de las 183 clases ya citaban al menos un libro; las
+80 restantes lo reciben de [`sources/support_map.json`](sources/support_map.json).
+
+**El mapa parte → obra.** `support_map.json` es el único fichero curado a mano del directorio, y
+no contiene ni un ISBN ni un título: solo identificadores del registro, el alcance y por qué esa
+obra sostiene esa parte. El criterio es mapear el manual que las clases de esa parte ya citan;
+donde no había ninguno —evaluación, seguridad y gobernanza— se mapea el texto de referencia del
+área y la nota dice qué cubre. El verificador rechaza cualquier obra del mapa sin ISBN-13 con
+dígito de control válido.
+
+**El README ya no muestra un panel de estadísticas**, sino qué obra sostiene cada una de las 15
+partes, con su ISBN enlazado. Las cifras del registro se van a
+[`sources/BIBLIOGRAFIA.md`](sources/BIBLIOGRAFIA.md), que es donde una cifra de bibliografía
+significa algo, y siguen generándose desde el registro: no se escriben a mano.
+
+**Nuevas obras y datos que aporta el catálogo, no la memoria:**
+
+- se añade Manning, Raghavan y Schütze, *Introduction to Information Retrieval* —que las clases ya
+  citaban— como obra de referencia de la parte de recuperación y memoria;
+- los ISBN que las editoriales publican **en la ruta de la URL** (MIT Press, O'Reilly) se toman de
+  ahí, se les comprueba el dígito de control y se resuelven en Open Library: 6 obras
+  ganan localizador por esa vía;
+- autoría, editorial y año de los libros se rellenan **desde la ficha de Open Library**, no desde
+  la memoria de nadie; para las pocas obras cuya ficha no trae autoría hay una tabla declarada en
+  `scripts/build_sources.py`, que nunca toca el localizador;
+- dos obras que se citaban con dos títulos distintos —*The Book of Why* y *Probabilistic Reasoning
+  in Intelligent Systems*— pasan a ser una sola entrada con las dos formas como alias.
+
+**Verificación.** `scripts/link_sources_to_classes.py` genera el bloque y lo comprueba con
+`--check` en CI; `scripts/verify-sources` añade tres controles que bloquean: que toda parte declare
+obra de referencia, que esa obra exista en el registro con ISBN-13 válido, y que el bloque de cada
+clase coincida con el registro. Ninguna clase puede quedarse sin bibliografía de apoyo sin que CI
+lo diga.
+
+Estado del registro: **615 entradas**, 585 verificadas contra su autoridad y
+30 pendientes con motivo declarado.
+
 ## 0.15.0 — 2026-08-19
 
 ### El registro general de fuentes: de qué idea viene cada clase, a qué fuente sostiene cada afirmación
