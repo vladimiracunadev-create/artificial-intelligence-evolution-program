@@ -30,5 +30,6 @@ jobs:
       - run: python scripts/link_papers_to_classes.py --check
       - run: python scripts/build_sources.py --check
       - run: python scripts/annotate_class_sources.py --check
+      - run: python scripts/link_sources_to_classes.py --check
       - run: python scripts/verify-sources
       - run: python -m compileall -q src scripts classes apps

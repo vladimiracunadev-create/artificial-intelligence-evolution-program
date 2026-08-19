@@ -21,11 +21,13 @@ papers-check:
 sources:
 	python scripts/build_sources.py
 	python scripts/annotate_class_sources.py
+	python scripts/link_sources_to_classes.py
 	python scripts/verify-sources --write
 
 sources-check:
 	python scripts/build_sources.py --check
 	python scripts/annotate_class_sources.py --check
+	python scripts/link_sources_to_classes.py --check
 	python scripts/verify-sources
 
 sources-refresh:

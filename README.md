@@ -14,11 +14,11 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Security](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/security.yml)
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
-[![Version](https://img.shields.io/badge/version-0.15.0-orange?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.16.0-orange?style=for-the-badge)](CHANGELOG.md)
 [![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-148%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 <!-- sources-badge:inicio -->
-[![Fuentes](https://img.shields.io/badge/fuentes-617%20registradas-0b7285?style=for-the-badge)](sources/bibliography.json)
+[![Bibliografía](https://img.shields.io/badge/bibliograf%C3%ADa-libros%20%C2%B7%20normas%20%C2%B7%20documentaci%C3%B3n-0b7285?style=for-the-badge)](sources/BIBLIOGRAFIA.md)
 <!-- sources-badge:fin -->
 [![Notebooks](https://img.shields.io/badge/notebooks-609-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
@@ -67,7 +67,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 | Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
 | Laboratorios | ✅ 183 entrypoints que reutilizan 20 motores didácticos ejecutables |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
-| Fuentes | ✅ registro general en [`sources/bibliography.json`](sources/bibliography.json): libros, artículos, normas y documentación, con localizador resoluble o motivo declarado |
+| Bibliografía | ✅ cada clase declara su bibliografía de apoyo —libro, edición y localizador— desde [`sources/bibliography.json`](sources/bibliography.json); lo que no resuelve queda marcado con motivo |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
 | Sitio | ✅ PWA estática, búsqueda, filtros, progreso local y 163 páginas del eje de papers |
 | Escritorio | ✅ visor Tkinter; se publica en 4 formatos (instalador, MSI, portable, exe único) |
@@ -221,56 +221,56 @@ de consulta, y no redistribuir material con copyright — solo enlazar.
 > se busca** (Google Scholar, Semantic Scholar), y por qué OpenReview es el sitio más
 > infravalorado para aprender a leer con criterio.
 
-## 🧾 Registro de fuentes
+## 📚 Bibliografía de apoyo
 
-El [eje de papers](papers/README.md) responde **de dónde viene cada idea**. El registro de
-fuentes responde algo distinto: **de dónde viene cada afirmación**. Son dos cifras y ambas
-son ciertas — los papers fundacionales son el canon histórico; el registro recoge además los
-libros de texto, las normas, la documentación oficial y los conjuntos de datos que las clases
-citan de hecho.
+El [eje de papers](papers/README.md) dice **de dónde salió** cada idea. Esta bibliografía dice
+**con qué se estudia**: además del paper, la obra que desarrolla el contenido con el espacio que
+una clase no tiene —teoría completa, demostraciones y ejercicios—.
 
-- Fuente única: [`sources/bibliography.json`](sources/bibliography.json), que **incluye por
-  referencia** el catálogo [`papers/catalog/papers.json`](papers/catalog/papers.json) sin
-  modificarlo.
-- Cada entrada necesita un **localizador resoluble**: ISBN-13 (libro), DOI (artículo) o URL
-  https de la fuente primaria con fecha de consulta (norma y documentación).
-- Lo que no resuelve se marca **`pendiente` con motivo**. No se borra ni se completa por
-  intuición: un hueco declarado es información; un hueco rellenado a ojo es una invención con
-  formato de bibliografía.
-- Cada cita de cada clase declara **el uso que esa clase hace de la fuente**, no solo la obra.
+Cada una de las 183 clases lleva su propio bloque de **bibliografía de apoyo**: los libros que la
+clase cita —con el capítulo, cuando la cita lo indica—, la obra de referencia de su parte y, donde
+aplica, las normas oficiales. Nada de eso se escribe a mano: sale de
+[`sources/bibliography.json`](sources/bibliography.json), donde cada obra tiene un **localizador
+resoluble** —ISBN-13 para libros, DOI para artículos, URL del organismo para normas— y lo que no
+resuelve se queda marcado `pendiente` con su motivo. Un hueco declarado es información; un hueco
+rellenado a ojo es una invención con formato de bibliografía.
 
 <!-- sources:inicio -->
 
-| Registro de fuentes | Valor |
-|---|---:|
-| Entradas | **617** |
-| Verificadas | **584** |
-| Pendientes | **33** |
-| Libros · artículos · normas · documentación · datos | **35 · 344 · 34 · 204 · 0** |
-| Citas en clases | **999** en 183 clases |
-| Fuentes usadas (enlaces + obras) | **973** (608 + 365) |
-| Cobertura del registro | **100.0 %** |
-| ISBN-13 · DOI | **28 · 331** |
-| Última resolución en red | **2026-08-19** |
+| Parte | Obra que la sostiene |
+|---|---|
+| **00** · Fundamentos, historia y método científico | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) |
+| **01** · IA simbólica, búsqueda, lógica y planificación | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/)<br>Nilsson, N. J. — *Principles of Artificial Intelligence* — [ISBN 9780387113401](https://openlibrary.org/isbn/9780387113401) |
+| **02** · IA probabilística, evolutiva y de decisión | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/)<br>Koller, Daphne y Friedman, Nir — *Probabilistic Graphical Models: Principles and Techniques* — [ISBN 9780262013192](https://openlibrary.org/isbn/9780262013192) · [web de la obra](https://mitpress.mit.edu/9780262013192/probabilistic-graphical-models/)<br>Pearl, J. — *Probabilistic Reasoning in Intelligent Systems* — [ISBN 9780080514895](https://openlibrary.org/isbn/9780080514895) |
+| **03** · Machine learning clásico | Hastie, Trevor, Tibshirani, Robert y Friedman, Jerome — *The Elements of Statistical Learning* — [ISBN 9780387848570](https://openlibrary.org/isbn/9780387848570) · [web de la obra](https://hastie.su.domains/ElemStatLearn/)<br>James, Gareth et al. — *An Introduction to Statistical Learning* — [ISBN 9783031387470](https://openlibrary.org/isbn/9783031387470) · [web de la obra](https://www.statlearning.com/)<br>Murphy, Kevin P. — *Probabilistic Machine Learning* — [ISBN 9780262046824](https://openlibrary.org/isbn/9780262046824) · [web de la obra](https://probml.github.io/pml-book/) |
+| **04** · Redes neuronales y deep learning | Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* — [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/)<br>Murphy, Kevin P. — *Probabilistic Machine Learning* — [ISBN 9780262046824](https://openlibrary.org/isbn/9780262046824) · [web de la obra](https://probml.github.io/pml-book/) |
+| **05** · Lenguaje, visión, audio e IA multimodal | Jurafsky, Daniel y Martin, James H. — *Speech and Language Processing* — [ISBN 9780131873216](https://openlibrary.org/isbn/9780131873216) · [web de la obra](https://web.stanford.edu/~jurafsky/slp3/) |
+| **06** · Modelos fundacionales e ingeniería de LLM | Jurafsky, Daniel y Martin, James H. — *Speech and Language Processing* — [ISBN 9780131873216](https://openlibrary.org/isbn/9780131873216) · [web de la obra](https://web.stanford.edu/~jurafsky/slp3/)<br>Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* — [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/) |
+| **07** · IA generativa para texto, imagen, audio, video y 3D | Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* — [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/) |
+| **08** · Recuperación, contexto, memoria y conocimiento | Manning, Christopher D., Raghavan, Prabhakar y Schütze, Hinrich — *Introduction to Information Retrieval* — [ISBN 9780521865715](https://openlibrary.org/isbn/9780521865715) · [web de la obra](https://nlp.stanford.edu/IR-book/)<br>Jurafsky, Daniel y Martin, James H. — *Speech and Language Processing* — [ISBN 9780131873216](https://openlibrary.org/isbn/9780131873216) · [web de la obra](https://web.stanford.edu/~jurafsky/slp3/) |
+| **09** · Ingeniería de agentes de IA | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/)<br>Michael J. Wooldridge — *An Introduction to MultiAgent Systems* — [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) |
+| **10** · Sistemas multiagente e interoperabilidad | Michael J. Wooldridge — *An Introduction to MultiAgent Systems* — [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915)<br>Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) |
+| **11** · IA encarnada, robótica y uso de computadores | Sebastian Thrun — *Probabilistic Robotics* — [ISBN 9780262201629](https://openlibrary.org/isbn/9780262201629) · [web de la obra](https://mitpress.mit.edu/9780262201629/probabilistic-robotics/) |
+| **12** · Ingeniería de IA, MLOps, LLMOps y AgentOps | Huyen, Chip — *Designing Machine Learning Systems* — [ISBN 9781098107956](https://openlibrary.org/isbn/9781098107956) · [web de la obra](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) · _pendiente de confirmar en su catálogo_ |
+| **13** · Evaluación, seguridad y gobernanza | Huyen, Chip — *Designing Machine Learning Systems* — [ISBN 9781098107956](https://openlibrary.org/isbn/9781098107956) · [web de la obra](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) · _pendiente de confirmar en su catálogo_<br>Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) |
+| **14** · Frontera, investigación y proyectos integradores | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* — [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/)<br>Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* — [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/) |
 
 <!-- sources:fin -->
 
-> Las cifras de esta tabla las escribe `python scripts/verify-sources --write`. No se editan a
-> mano: si alguien las toca, el verificador falla.
+[📚 **Bibliografía completa**](sources/BIBLIOGRAFIA.md) — todas las obras, normas y
+especificaciones con su localizador ·
+[🧾 Cómo se verifica](sources/README.md) ·
+[🗺️ Mapa parte → obra](sources/support_map.json)
 
-| Herramienta | Qué hace | Dónde corre |
-|---|---|---|
-| `python scripts/verify-sources` | Esquema, dígito de control del ISBN-13, forma canónica del localizador, cobertura de lo que las clases usan, entradas huérfanas, bloques de fuentes repetidos y cifras del README | **CI, y bloquea** — sin red, determinista |
-| `python scripts/refresh-sources` | Resuelve ISBN contra Open Library y DOI contra Crossref y el sistema de handles, comprueba cada URL y actualiza `verified_on` y `accessed` | Manual o programado — **nunca en CI**: la red en CI vuelve el CI inestable y acaba ignorándose |
-| `python scripts/build_sources.py` | Reconstruye el registro desde lo que las clases citan, conservando lo ya verificado | Local y CI (`--check`) |
-| `python scripts/annotate_class_sources.py` | Declara en cada clase el uso de cada fuente | Local y CI (`--check`) |
+> Esa tabla la escribe `python scripts/verify-sources --write` desde el registro. No se edita a
+> mano: si alguien la toca, CI falla.
 
-Los tres libros de texto rectores del programa —AIMA, *Deep Learning* y *Speech and Language
-Processing*— van con ISBN-13 y URL del autor. NIST AI RMF va como norma con su versión (**1.0**)
-y fecha de consulta; OWASP Top 10 for LLM Applications va como norma con fecha de consulta, y
-**sin número de versión**: la portada del proyecto no lo declara y no se le inventa uno. La
-documentación de proveedores de modelos va como referencia volátil, con `accessed` obligatorio.
-El detalle está en [`sources/README.md`](sources/README.md).
+El registro se comprueba en dos capas que no se mezclan: `scripts/verify-sources` es **offline y
+determinista y bloquea CI** —esquema, dígito de control del ISBN-13, forma canónica del
+localizador, cobertura de todo lo que las clases citan y coincidencia de lo publicado con el
+registro—, y `scripts/refresh-sources` es la capa **en red**, manual, que resuelve ISBN contra Open
+Library y DOI contra Crossref y el sistema de handles. Si la red entrara en CI, el CI se volvería
+inestable y se acabaría ignorando.
 
 ## 🚀 Inicio rápido
 

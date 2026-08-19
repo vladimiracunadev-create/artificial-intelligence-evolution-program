@@ -97,6 +97,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 | `scripts/validate_repository.py` | contrato completo de ambos ejes | `--strict` en CI |
 | `scripts/build_sources.py` | registro general de fuentes desde lo que citan las clases | `--check` en CI |
 | `scripts/annotate_class_sources.py` | uso declarado de cada fuente en su clase | `--check` en CI |
+| `scripts/link_sources_to_classes.py` | bloque de bibliografía de apoyo en cada clase | `--check` en CI |
 | `scripts/verify-sources` | esquema, localizadores, cobertura y cifras del README del registro | offline, **bloquea CI** |
 | `scripts/refresh-sources` | resolución en red del registro (ISBN, DOI, URL) | manual, **nunca en CI** |
 
