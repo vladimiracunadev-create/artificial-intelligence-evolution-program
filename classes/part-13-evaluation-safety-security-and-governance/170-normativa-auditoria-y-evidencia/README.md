@@ -59,10 +59,11 @@ obligaciones propias, más estrictas si presentan riesgo sistémico.
 
 ### 🗓️ Aplicación escalonada
 
-El Reglamento entró en vigor en 2024 y se aplica por fases: las prohibiciones primero, luego las
-reglas de GPAI, y las obligaciones de alto riesgo con plazos posteriores. El detalle de fechas se
-consulta en el texto oficial; lo relevante conceptualmente es que el cumplimiento es gradual y
-exige preparar evidencia antes de la fecha aplicable.
+El Reglamento entró en vigor en 2024. Las prohibiciones y alfabetización aplican desde
+2025-02-02; gobernanza y GPAI desde 2025-08-02; la aplicación general comenzó
+2026-08-02. Tras el AI Omnibus, los casos de alto riesgo del Anexo III aplican desde
+2027-12-02 y los sistemas integrados en productos del Anexo I desde 2028-08-02.
+La fecha no es una nota editorial: determina cuándo debe existir la evidencia.
 
 ### 🃏 Model cards
 
@@ -194,9 +195,9 @@ establece el marco legal, los artefactos y el mapeo de evidencia.
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("governance")`. Clasifica un uso de
+selección laboral, activa el calendario correspondiente y construye un paquete de
+evidencia por obligación. Es material pedagógico y no asesoría legal.
 
 ### 🔍 Evidencia esperada
 

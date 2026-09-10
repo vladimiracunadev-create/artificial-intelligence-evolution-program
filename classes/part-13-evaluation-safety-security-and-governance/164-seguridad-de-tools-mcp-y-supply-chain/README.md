@@ -161,9 +161,11 @@ flowchart TD
 En operación: catálogo de servidores MCP aprobados con revisión de descripciones y credenciales
 efímeras de alcance mínimo por tool, aislamiento entre servidores de distinta confianza, generación
 y almacenamiento de SBOM (SPDX/CycloneDX) integrados en CI con escaneo de CVE, pinning con
-verificación de integridad, y detección de cambios (rug pull) que re-dispara aprobación. La clase
-solo establece las amenazas y las defensas conceptuales; el OWASP LLM Top 10 (LLM03 supply chain,
-LLM07 plugins inseguros) detalla el catálogo.
+verificación de integridad, y detección de cambios (rug pull) que re-dispara aprobación. El
+**OWASP Top 10 for Agentic Applications 2026** separa goal hijack, tool misuse, abuso de identidad,
+supply chain agentic, ejecución inesperada, envenenamiento de memoria, comunicación insegura,
+fallos en cascada, explotación de confianza humana y agentes fuera de control. El LLM Top 10 2026
+lo complementa; una taxonomía orienta el threat model, no lo reemplaza.
 
 ## 🧪 Laboratorio
 
@@ -171,9 +173,10 @@ LLM07 plugins inseguros) detalla el catálogo.
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("agent_security")`. Cuatro ataques
+se clasifican por riesgo agentic y se deciden con dos controles independientes:
+confianza de la fuente y mínimo privilegio. Así se observa qué defensa bloqueó qué
+acción, en lugar de usar un filtro genérico de palabras.
 
 ### 🔍 Evidencia esperada
 
@@ -223,7 +226,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
+- [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/) — uso: taxonomía actual de riesgos de sistemas que actúan
+- [OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) — uso: riesgos complementarios de aplicaciones generativas
 - [Model Context Protocol — Especificación oficial](https://modelcontextprotocol.io/specification) — uso: marco normativo de referencia
 - [Hardt (2012), *The OAuth 2.0 Authorization Framework*, RFC 6749 (delegación de autoridad y confused deputy)](https://www.rfc-editor.org/rfc/rfc6749) — uso: marco normativo de referencia
 - [CISA & NCSC (2023), *Guidelines for Secure AI System Development*](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development) — uso: marco normativo de referencia
@@ -258,7 +262,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Huyen, Chip — *Designing Machine Learning Systems* | 2022 | [ISBN 9781098107956](https://openlibrary.org/isbn/9781098107956) · [web de la obra](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) · _pendiente de confirmar en su catálogo_ | obra de referencia de la parte 13 · capítulos de evaluación y monitorización |
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 13 · capítulo de filosofía, ética y seguridad de la IA |
 
-**Normas y documentación oficial que aplica esta clase:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [Model Context Protocol](https://modelcontextprotocol.io/specification) · [The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749) · [Guidelines for Secure AI System Development](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development) · [NIST SP 800-218 / SBOM](https://www.cisa.gov/sbom)
+**Normas y documentación oficial que aplica esta clase:** [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/) · [OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) · [Model Context Protocol](https://modelcontextprotocol.io/specification) · [The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749) · [Guidelines for Secure AI System Development](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development)
 <!-- bibliografia:fin -->
 
 ---

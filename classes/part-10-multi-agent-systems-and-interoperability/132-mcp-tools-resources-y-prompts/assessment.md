@@ -3,28 +3,24 @@
 
 ## ❓ Preguntas
 
-1. Define mcp: tools, resources y prompts sin usar una marca o framework como definición.
-2. Explica la relación entre MCP, tools, resources, prompts.
-3. Ejecuta `lab.py` dos veces con la misma semilla. ¿Qué debe conservarse?
-4. Identifica una afirmación permitida y una afirmación exagerada sobre el resultado.
-5. Propón una prueba negativa o un caso límite.
+1. Contrasta el handshake de 2025 con una petición stateless de 2026-07-28.
+2. ¿Qué información debe viajar en `_meta` y qué autorizan `Mcp-Method`/`Mcp-Name`?
+3. Valida el `inputSchema` de `buscar_clase` antes de ejecutar `tools/call`.
+4. Explica cuándo `server/discover` aporta valor y por qué no es obligatorio.
+5. Diseña una prueba negativa para una tool desconocida y otra para versión incompatible.
 
 ## 🏆 Reto verificable
 
-Amplía el resultado del laboratorio con una clave `student_extension` que incluya:
-
-- el supuesto que estás probando;
-- una medición o comprobación;
-- la conclusión;
-- una limitación.
+Añade una segunda tool de sólo lectura, ordena el catálogo de manera determinista y
+demuestra que dos respuestas `tools/list` equivalentes producen la misma clave de caché.
 
 ## ✅ Criterio de aceptación
 
 - [ ] `lab.py` termina con código 0.
 - [ ] El resultado contiene `kind`, `seed`, `evidence` y `limitations`.
-- [ ] La extensión no modifica el comportamiento de otras clases.
-- [ ] La interpretación referencia datos impresos por el laboratorio.
-- [ ] Se declara al menos un riesgo o condición de no uso.
+- [ ] No introduce `initialize`, sesiones implícitas ni estado global.
+- [ ] Rechaza argumentos que no satisfacen el schema.
+- [ ] Distingue núcleo, extensión y política del host.
 
 ---
 

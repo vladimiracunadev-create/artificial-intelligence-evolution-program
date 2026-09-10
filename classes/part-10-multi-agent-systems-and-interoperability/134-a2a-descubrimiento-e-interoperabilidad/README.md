@@ -33,8 +33,10 @@ Con MCP (132) un agente habla con sus herramientas; falta el otro eje: agentes d
 *distintos proveedores y organizaciones* colaborando sin compartir framework, modelo
 ni memoria. El protocolo **Agent2Agent (A2A)** — anunciado por Google en abril de
 2025 con decenas de socios y donado después a la Linux Foundation — estandariza ese
-eje: descubrimiento por Agent Card, tareas con ciclo de vida y artefactos como
-resultados. Junto con los contratos (131), MCP (132) y los skills (133), completa el
+eje. **A2A 1.0**, estable desde marzo de 2026, añade negociación de versión,
+bindings múltiples, operación stateless, multi-tenancy y Agent Cards firmadas al
+descubrimiento por card, tareas con ciclo de vida y artefactos como resultados. Junto
+con los contratos (131), MCP (132) y los skills (133), completa el
 stack de interoperabilidad que el proyecto integrador (135) ensambla.
 
 ## 📖 Fundamentos
@@ -51,6 +53,8 @@ capacidades y esquemas de autenticación:
   "description": "Evalúa la preparación de repositorios para publicación",
   "url": "https://agents.example.com/a2a/v1",
   "version": "1.2.0",
+  "protocolVersions": ["1.0", "0.3"],
+  "preferredTransport": "HTTP+JSON",
   "capabilities": {"streaming": true, "pushNotifications": false},
   "skills": [{
     "id": "repo-readiness",
@@ -63,14 +67,15 @@ capacidades y esquemas de autenticación:
 }
 ```
 
-La Agent Card es el contrato de la clase 131 hecho protocolo: un agente cliente la
-lee, decide si el remoto sirve para su subtarea, negocia autenticación y sabe qué
-formatos puede intercambiar — todo *antes* del primer mensaje.
+La Agent Card es el contrato de la clase 131 hecho protocolo. En 1.0 también puede
+estar firmada: el cliente verifica identidad e integridad, negocia un binding y envía
+`A2A-Version: 1.0`; leer un JSON sin verificarlo no establece confianza.
 
 ### 🔄 Tareas, mensajes y artefactos
 
-A2A modela la colaboración como **tareas** (tasks) con ciclo de vida explícito, sobre
-JSON-RPC 2.0/HTTP (con streaming vía SSE para tareas largas):
+A2A modela la colaboración como **tareas** con ciclo de vida explícito sobre bindings
+estándar —HTTP+JSON, JSON-RPC y gRPC según lo anunciado por la card— sin confundir la
+semántica de Task con un transporte particular:
 
 ```text
 message/send  →  crea o continúa una tarea
@@ -187,9 +192,10 @@ en la Agent Card sin verificar".
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("multiagent")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("a2a")`: negocia versión, verifica
+la integridad de una Agent Card, recorre una tarea que requiere información y entrega
+un Artifact separado. La firma HMAC es deliberadamente didáctica; producción requiere
+identidad y firma asimétrica entre organizaciones.
 
 ### 🔍 Evidencia esperada
 

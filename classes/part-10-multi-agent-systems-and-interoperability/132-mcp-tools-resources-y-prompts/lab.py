@@ -10,5 +10,5 @@ sys.path.insert(0, str(ROOT / "src"))
 from ai_evolution.labs import run_lab
 
 if __name__ == "__main__":
-    result = run_lab("workflow", seed=132)
+    result = run_lab("mcp", seed=132)
     print(json.dumps(result, ensure_ascii=False, indent=2))

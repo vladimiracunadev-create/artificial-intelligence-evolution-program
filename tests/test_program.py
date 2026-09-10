@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import json
+import io
 import re
 import sys
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 import yaml
@@ -60,6 +62,36 @@ class LabTests(unittest.TestCase):
             payload = json.loads((folder / name).read_text(encoding="utf-8"))
             self.assertEqual(payload["nbformat"], 4)
             self.assertGreaterEqual(len(payload["cells"]), 4)
+
+    def test_all_executable_class_notebooks_run(self):
+        """Recorridos y soluciones son código ejecutable; estudiantes contienen TODOs."""
+        for lesson in lessons():
+            folder = ROOT / lesson.path
+            for name in ("notebook.ipynb", "notebook_solution.ipynb"):
+                with self.subTest(lesson=lesson.id, notebook=name):
+                    payload = json.loads((folder / name).read_text(encoding="utf-8"))
+                    namespace = {"__name__": "__notebook_test__"}
+                    with redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
+                        for index, cell in enumerate(payload["cells"]):
+                            if cell["cell_type"] == "code":
+                                source = "".join(cell["source"])
+                                exec(compile(source, f"{lesson.id}/{name}:cell-{index}", "exec"), namespace)
+
+    def test_fast_moving_classes_have_specific_engines(self):
+        expected = {
+            "087": ("llm_service", "eval_gate"),
+            "122": ("agent_evaluation", "first_divergence_causes"),
+            "132": ("mcp", "server_discover"),
+            "134": ("a2a", "agent_card"),
+            "164": ("agent_security", "decisions"),
+            "170": ("governance", "evidence_pack"),
+        }
+        by_id = {lesson.id: lesson for lesson in lessons()}
+        for lesson_id, (kind, required_result) in expected.items():
+            with self.subTest(lesson=lesson_id):
+                self.assertEqual(by_id[lesson_id].lab_kind, kind)
+                result = run_lab(kind, seed=int(lesson_id))
+                self.assertIn(required_result, result["result"])
 
 
 class VersionCoherenceTests(unittest.TestCase):

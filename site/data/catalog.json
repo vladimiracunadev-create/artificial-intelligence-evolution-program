@@ -1,5 +1,5 @@
 {
-  "version": "0.16.0",
+  "version": "0.17.0",
   "lesson_count": 183,
   "parts": [
     {
@@ -1538,7 +1538,7 @@
           "number": 87,
           "title": "Proyecto: servicio LLM con contratos y evals",
           "path": "classes/part-06-foundation-models-and-llm-engineering/087-proyecto-servicio-llm-con-contratos-y-evals",
-          "lab_kind": "capstone",
+          "lab_kind": "llm_service",
           "keywords": [
             "LLM",
             "API",
@@ -2165,7 +2165,7 @@
           "number": 122,
           "title": "Evaluación y depuración de agentes",
           "path": "classes/part-09-ai-agent-engineering/122-evaluacion-y-depuracion-de-agentes",
-          "lab_kind": "evaluation",
+          "lab_kind": "agent_evaluation",
           "keywords": [
             "trajectory",
             "tool calls",
@@ -2346,7 +2346,7 @@
           "number": 132,
           "title": "MCP: tools, resources y prompts",
           "path": "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts",
-          "lab_kind": "workflow",
+          "lab_kind": "mcp",
           "keywords": [
             "MCP",
             "tools",
@@ -2380,7 +2380,7 @@
           "number": 134,
           "title": "A2A, descubrimiento e interoperabilidad",
           "path": "classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad",
-          "lab_kind": "multiagent",
+          "lab_kind": "a2a",
           "keywords": [
             "A2A",
             "discovery",
@@ -2920,7 +2920,7 @@
           "number": 164,
           "title": "Seguridad de tools, MCP y supply chain",
           "path": "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain",
-          "lab_kind": "safety",
+          "lab_kind": "agent_security",
           "keywords": [
             "tools",
             "MCP",
@@ -3022,7 +3022,7 @@
           "number": 170,
           "title": "Normativa, auditoría y evidencia",
           "path": "classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia",
-          "lab_kind": "safety",
+          "lab_kind": "governance",
           "keywords": [
             "AI Act",
             "audit",

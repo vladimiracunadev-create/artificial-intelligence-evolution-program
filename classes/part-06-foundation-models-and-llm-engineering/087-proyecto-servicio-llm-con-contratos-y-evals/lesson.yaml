@@ -4,7 +4,7 @@ title: 'Proyecto: servicio LLM con contratos y evals'
 part: '06'
 level: avanzado
 estimated_hours: 10
-lab_kind: capstone
+lab_kind: llm_service
 keywords:
 - LLM
 - API

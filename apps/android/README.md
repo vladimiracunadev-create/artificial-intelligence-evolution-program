@@ -18,7 +18,7 @@ funciona offline; los diagramas mermaid requieren conexión (se renderizan desde
 
 Ejecuta el workflow **Android build** (`workflow_dispatch`). Pasos que realiza:
 
-1. Genera el sitio (`python scripts/generate_site.py`) → `site/` con sus 266 páginas.
+1. Genera el sitio (`python scripts/generate_site.py`) → `site/` con sus 362 páginas HTML.
 2. Copia `site/` a `apps/android/www/`.
 3. `npm ci && npx cap add android && npx capacitor-assets generate --android`
    (icono y splash desde `resources/`).
@@ -28,7 +28,10 @@ Ejecuta el workflow **Android build** (`workflow_dispatch`). Pasos que realiza:
 
 ## Build local
 
-Requiere Node 20+, JDK 17+ y Android SDK:
+Requiere Node 22+, JDK 17+, Android Studio 2025.2.1 o posterior y Android SDK 36:
+
+Estos mínimos siguen la [configuración oficial de entorno de Capacitor 8](https://capacitorjs.com/docs/getting-started/environment-setup)
+y su [guía de migración a 8.0](https://capacitorjs.com/docs/updating/8-0).
 
 ```bash
 python scripts/generate_site.py

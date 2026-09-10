@@ -8,13 +8,13 @@
 
 | Superficie | Verdad verificable |
 |---|---|
-| Versión | **0.11.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
+| Versión | **0.17.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
 | Programa | 15 partes · 183 clases · 549 notebooks de clase |
 | Eje de papers | 148 fichas · 156 notebooks · 148 motores · 5 anexos · 148 PDFs |
-| Motores didácticos | 20 de clases + 148 de papers |
+| Motores didácticos | 26 de clases + 148 de papers |
 | PDFs | 165: 17 del programa (15 partes + completo + eje) y 148 individuales, uno por paper |
 | Aplicaciones | Windows en 4 formatos (instalador, MSI, portable, exe único) y APK de Android, con checksums |
-| Tests | 39 |
+| Tests | 60 métodos, incluida ejecución de los 366 notebooks de recorrido y solución |
 
 ## ✅ 0.1.0 — Programa maestro inicial (entregado)
 

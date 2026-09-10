@@ -19,6 +19,28 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## 0.17.0 — 2026-09-10
+
+### Clases sensibles al cambio tecnológico con ingeniería propia
+
+- Las clases 087, 122, 132, 134, 164 y 170 dejan de reutilizar simulaciones
+  genéricas: ahora tienen motores específicos para ciclo de vida de servicios LLM,
+  evaluación de agentes, MCP, A2A, seguridad agéntica y evidencia de gobernanza.
+- Sus notebooks, evaluaciones y prácticas se alinean con el problema explicado en
+  cada clase y conservan el contrato reproducible `result`/`evidence`/`limitations`.
+- MCP se actualiza a la especificación 2026-07-28; A2A, a 1.0; seguridad, a OWASP
+  Agentic 2026; y gobernanza incorpora las fechas de aplicación del AI Act europeo.
+
+### Mantenimiento verificable de la frontera y runtimes
+
+- `frontier/current-topics.yaml` registra versión de especificación, madurez y
+  fecha de revisión; `scripts/check_frontier.py` impide que ese conocimiento rápido
+  caduque silenciosamente y ahora forma parte de CI y del pre-push.
+- CI amplía Python hasta 3.14. Android migra a Capacitor 8, Node 22–26 y builds
+  reproducibles con `npm ci`; el lockfile queda libre de vulnerabilidades conocidas.
+- La suite ejecuta los 366 notebooks de recorrido y solución, además de comprobar
+  que las seis clases rápidas usan sus motores especializados.
+
 ## 0.16.0 — 2026-08-19
 
 ### Además del paper, el libro: bibliografía de apoyo en las 183 clases

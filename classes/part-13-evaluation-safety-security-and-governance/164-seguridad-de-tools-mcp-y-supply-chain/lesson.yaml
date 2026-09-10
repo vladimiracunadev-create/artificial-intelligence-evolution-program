@@ -4,7 +4,7 @@ title: Seguridad de tools, MCP y supply chain
 part: '13'
 level: experto
 estimated_hours: 6
-lab_kind: safety
+lab_kind: agent_security
 keywords:
 - tools
 - MCP

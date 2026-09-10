@@ -4,7 +4,7 @@ title: Evaluación y depuración de agentes
 part: 09
 level: avanzado
 estimated_hours: 6
-lab_kind: evaluation
+lab_kind: agent_evaluation
 keywords:
 - trajectory
 - tool calls

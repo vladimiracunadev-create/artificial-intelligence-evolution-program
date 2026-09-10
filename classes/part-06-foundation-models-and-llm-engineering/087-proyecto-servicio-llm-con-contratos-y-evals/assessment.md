@@ -3,28 +3,24 @@
 
 ## ❓ Preguntas
 
-1. Define proyecto: servicio llm con contratos y evals sin usar una marca o framework como definición.
-2. Explica la relación entre LLM, API, evals, observabilidad.
-3. Ejecuta `lab.py` dos veces con la misma semilla. ¿Qué debe conservarse?
-4. Identifica una afirmación permitida y una afirmación exagerada sobre el resultado.
-5. Propón una prueba negativa o un caso límite.
+1. Separa contrato HTTP, contrato estructurado del modelo y reglas de negocio.
+2. ¿Qué evita la clave de idempotencia cuando una solicitud durable se reintenta?
+3. Fuerza una salida sin `citations`: ¿por qué debe cerrar el gate aun si el texto parece bueno?
+4. Define qué estados son terminales y cómo se recupera un trabajo interrumpido.
+5. Propón métricas de costo, latencia y calidad que permitan comparar dos proveedores.
 
 ## 🏆 Reto verificable
 
-Amplía el resultado del laboratorio con una clave `student_extension` que incluya:
-
-- el supuesto que estás probando;
-- una medición o comprobación;
-- la conclusión;
-- una limitación.
+Añade un caso fallido al lifecycle, una respuesta degradada honesta y una prueba que
+demuestre que repetir el mismo `request_id` no duplica el trabajo.
 
 ## ✅ Criterio de aceptación
 
 - [ ] `lab.py` termina con código 0.
 - [ ] El resultado contiene `kind`, `seed`, `evidence` y `limitations`.
-- [ ] La extensión no modifica el comportamiento de otras clases.
-- [ ] La interpretación referencia datos impresos por el laboratorio.
-- [ ] Se declara al menos un riesgo o condición de no uso.
+- [ ] Valida schema y evidencia antes de promover.
+- [ ] El lifecycle distingue fallo, cancelación y finalización.
+- [ ] La solución permanece independiente de un proveedor concreto.
 
 ---
 

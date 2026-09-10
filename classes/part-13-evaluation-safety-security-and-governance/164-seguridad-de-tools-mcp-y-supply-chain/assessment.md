@@ -3,28 +3,24 @@
 
 ## ❓ Preguntas
 
-1. Define seguridad de tools, mcp y supply chain sin usar una marca o framework como definición.
-2. Explica la relación entre tools, MCP, supply chain, permissions.
-3. Ejecuta `lab.py` dos veces con la misma semilla. ¿Qué debe conservarse?
-4. Identifica una afirmación permitida y una afirmación exagerada sobre el resultado.
-5. Propón una prueba negativa o un caso límite.
+1. Mapea A1–A4 a la taxonomía OWASP Agentic 2026 y justifica cada control.
+2. ¿Por qué una fuente confiable no convierte `publish` en una acción permitida?
+3. ¿Qué diferencia tool poisoning, rug pull y abuso de identidad?
+4. Diseña una política para lectura, escritura y borrado con ámbitos distintos.
+5. Explica qué evidencia exigirías para aprobar una actualización de servidor MCP.
 
 ## 🏆 Reto verificable
 
-Amplía el resultado del laboratorio con una clave `student_extension` que incluya:
-
-- el supuesto que estás probando;
-- una medición o comprobación;
-- la conclusión;
-- una limitación.
+Añade una acción permitida y confiable, una denegada sólo por permiso y otra denegada
+sólo por confianza. Demuestra que los dos controles son independientes.
 
 ## ✅ Criterio de aceptación
 
 - [ ] `lab.py` termina con código 0.
 - [ ] El resultado contiene `kind`, `seed`, `evidence` y `limitations`.
-- [ ] La extensión no modifica el comportamiento de otras clases.
-- [ ] La interpretación referencia datos impresos por el laboratorio.
-- [ ] Se declara al menos un riesgo o condición de no uso.
+- [ ] La política es deny-by-default.
+- [ ] Cada decisión conserva riesgo, acción, confianza y razones.
+- [ ] Se declara qué control requiere aislamiento real fuera de la miniatura.
 
 ---
 

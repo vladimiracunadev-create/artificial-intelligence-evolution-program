@@ -3,28 +3,24 @@
 
 ## ❓ Preguntas
 
-1. Define normativa, auditoría y evidencia sin usar una marca o framework como definición.
-2. Explica la relación entre AI Act, audit, evidence, compliance.
-3. Ejecuta `lab.py` dos veces con la misma semilla. ¿Qué debe conservarse?
-4. Identifica una afirmación permitida y una afirmación exagerada sobre el resultado.
-5. Propón una prueba negativa o un caso límite.
+1. Clasifica el uso de selección laboral y cita el anexo y fecha aplicables.
+2. Distingue aplicación general, obligaciones GPAI, Anexo III y Anexo I.
+3. Relaciona cada obligación del laboratorio con un artefacto verificable.
+4. ¿Por qué una model card no basta como expediente de cumplimiento?
+5. Cambia el caso a filtro de spam y explica qué obligaciones dejan de activarse.
 
 ## 🏆 Reto verificable
 
-Amplía el resultado del laboratorio con una clave `student_extension` que incluya:
-
-- el supuesto que estás probando;
-- una medición o comprobación;
-- la conclusión;
-- una limitación.
+Construye una matriz rol × obligación × evidencia × responsable × fecha para proveedor
+y deployer. Marca explícitamente lo que requiere revisión jurídica.
 
 ## ✅ Criterio de aceptación
 
 - [ ] `lab.py` termina con código 0.
 - [ ] El resultado contiene `kind`, `seed`, `evidence` y `limitations`.
-- [ ] La extensión no modifica el comportamiento de otras clases.
-- [ ] La interpretación referencia datos impresos por el laboratorio.
-- [ ] Se declara al menos un riesgo o condición de no uso.
+- [ ] No presenta la miniatura como asesoría legal.
+- [ ] Las fechas coinciden con el calendario oficial vigente.
+- [ ] Cada obligación tiene dueño, evidencia y criterio de actualización.
 
 ---
 

@@ -7,9 +7,10 @@ industriales ni entrenamientos a gran escala.
 from __future__ import annotations
 
 import json
+import hashlib
+import hmac
 import math
 import random
-import time
 from collections import Counter, deque
 from dataclasses import dataclass
 from typing import Any, Callable
@@ -342,18 +343,18 @@ def _robotics(seed: int) -> dict[str, Any]:
 
 
 def _observability(seed: int) -> dict[str, Any]:
-    start = time.perf_counter()
     spans = []
     token_costs = [120, 80, 40]
     for index, tokens in enumerate(token_costs, start=1):
         spans.append({"span": f"step-{index}", "tokens": tokens, "status": "ok"})
-    duration_ms = (time.perf_counter() - start) * 1000
+    # Latencia simulada: conserva reproducibilidad sin fingir una medición real.
+    duration_ms = sum(token_costs) / 60 + (seed % 7) / 10
     return _base(
         "observability",
         seed,
         {"trace_id": f"trace-{seed:04d}", "spans": spans, "total_tokens": sum(token_costs), "duration_ms": round(duration_ms, 4)},
         ["Cada paso tiene nombre, costo y estado.", f"Tokens contabilizados: {sum(token_costs)}."],
-        ["Los tokens son valores de demostración.", "No se exportan spans a un collector real."],
+        ["Tokens y latencia son valores simulados.", "No se exportan spans a un collector real."],
     )
 
 
@@ -371,6 +372,161 @@ def _evaluation(seed: int) -> dict[str, Any]:
         {"tp": tp, "fp": fp, "fn": fn, "precision": precision, "recall": recall},
         [f"Precision: {precision:.3f}.", f"Recall: {recall:.3f}.", "Los errores están desagregados."],
         ["Ocho ejemplos no estiman desempeño real.", "Falta análisis por grupos y costo."],
+    )
+
+
+def _agent_evaluation(seed: int) -> dict[str, Any]:
+    """Evalúa resultados y trayectorias; no reduce un agente a un clasificador."""
+    cases = [
+        {"id": "T1", "outcome": True, "process": True, "cause": None, "cost": 0.08},
+        {"id": "T2", "outcome": True, "process": False, "cause": "policy_bypass", "cost": 0.05},
+        {"id": "T3", "outcome": False, "process": True, "cause": "environment", "cost": 0.11},
+        {"id": "T4", "outcome": False, "process": False, "cause": "tool_arguments", "cost": 0.09},
+        {"id": "T5", "outcome": True, "process": True, "cause": None, "cost": 0.07},
+        {"id": "T6", "outcome": False, "process": False, "cause": "planning", "cost": 0.13},
+    ]
+    outcome_success = sum(case["outcome"] for case in cases)
+    honest_success = sum(case["outcome"] and case["process"] for case in cases)
+    causes = Counter(case["cause"] for case in cases if case["cause"])
+    return _base(
+        "agent_evaluation",
+        seed,
+        {
+            "tasks": cases,
+            "outcome_success_rate": outcome_success / len(cases),
+            "honest_success_rate": honest_success / len(cases),
+            "cost_per_honest_success": round(sum(case["cost"] for case in cases) / honest_success, 3),
+            "first_divergence_causes": dict(sorted(causes.items())),
+            "release_gate": honest_success >= 5 and not causes.get("policy_bypass"),
+        },
+        [
+            f"El resultado aislado contaría {outcome_success}/6 éxitos; resultado+proceso conserva {honest_success}/6.",
+            "Cada fallo conserva su primera divergencia y su costo.",
+            "El bypass de política bloquea la promoción aunque el resultado final parezca correcto.",
+        ],
+        ["Seis tareas sólo demuestran el método de evaluación.", "Las causas fueron etiquetadas por una rúbrica humana simulada."],
+    )
+
+
+def _mcp(seed: int) -> dict[str, Any]:
+    """Miniatura del núcleo stateless de MCP 2026-07-28."""
+    protocol_version = "2026-07-28"
+    request_meta = {"protocolVersion": protocol_version, "client": {"name": "curso-host", "version": "1.0"}}
+    discovery = {
+        "server": {"name": "biblioteca-docente", "version": "1.0"},
+        "capabilities": {"tools": True, "resources": True, "prompts": False},
+        "extensions": ["tasks"],
+    }
+    tools = [{"name": "buscar_clase", "inputSchema": {"type": "object", "required": ["consulta"]}}]
+    call = {"name": "buscar_clase", "arguments": {"consulta": "evaluación de agentes"}}
+    result = {"content": [{"type": "text", "text": "Clase 122 — Evaluación y depuración de agentes"}], "isError": False}
+    return _base(
+        "mcp",
+        seed,
+        {
+            "stateless": True,
+            "request_meta": request_meta,
+            "routing_headers": {"Mcp-Method": "tools/call", "Mcp-Name": call["name"]},
+            "server_discover": discovery,
+            "tools_list": {"tools": tools, "cacheable": True},
+            "tools_call": {"request": call, "response": result},
+            "session_id": None,
+        },
+        [
+            "Cada petición declara versión, identidad y capacidades: no depende de una sesión previa.",
+            "El host valida el schema antes de ejecutar la herramienta.",
+            "La lista ordenada de tools puede cachearse sin alterar su significado.",
+        ],
+        ["El transporte HTTP está representado como datos, no abre un puerto.", "No implementa OAuth, MRTR ni un SDK completo."],
+    )
+
+
+def _a2a(seed: int) -> dict[str, Any]:
+    """Miniatura A2A 1.0 con negociación, card verificable y tarea durable."""
+    card = {
+        "name": "agente-revisor-docente",
+        "protocolVersions": ["1.0", "0.3"],
+        "preferredTransport": "HTTP+JSON",
+        "additionalInterfaces": [{"transport": "gRPC", "url": "https://agents.example/grpc"}],
+        "skills": [{"id": "revisar-evidencia", "inputModes": ["application/json"], "outputModes": ["application/json"]}],
+    }
+    canonical = json.dumps(card, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    signature = hmac.new(b"clave-didactica-no-productiva", canonical, hashlib.sha256).hexdigest()
+    states = ["submitted", "working", "input-required", "working", "completed"]
+    task = {
+        "id": f"task-{seed}",
+        "contextId": "curso-ia",
+        "states": states,
+        "artifact": {"name": "informe", "parts": [{"kind": "data", "data": {"evidencia_valida": True}}]},
+    }
+    return _base(
+        "a2a",
+        seed,
+        {
+            "negotiated_version": "1.0",
+            "request_headers": {"A2A-Version": "1.0"},
+            "agent_card": {**card, "signature": signature, "signature_valid": hmac.compare_digest(signature, hmac.new(b"clave-didactica-no-productiva", canonical, hashlib.sha256).hexdigest())},
+            "task": task,
+        },
+        ["Cliente y agente negocian A2A 1.0 explícitamente.", "La Agent Card se verifica antes de delegar.", "El artefacto queda separado del historial de mensajes."],
+        ["HMAC sólo ilustra integridad; entre organizaciones se requiere identidad y firma asimétrica.", "No se realiza una llamada de red real."],
+    )
+
+
+def _llm_service(seed: int) -> dict[str, Any]:
+    request = {"request_id": f"req-{seed}", "input": "Resume con evidencia", "schema": {"answer": "string", "citations": "array"}}
+    lifecycle = ["queued", "in_progress", "completed"]
+    response = {"answer": "Resultado verificable", "citations": ["source-1"]}
+    schema_ok = isinstance(response["answer"], str) and isinstance(response["citations"], list)
+    return _base(
+        "llm_service",
+        seed,
+        {"request": request, "background": True, "lifecycle": lifecycle, "response": response, "schema_ok": schema_ok, "eval_gate": schema_ok and bool(response["citations"]), "idempotency_key": request["request_id"]},
+        ["La salida satisface el contrato estructurado.", "El estado durable puede consultarse sin repetir el trabajo.", "La promoción exige schema y evidencia."],
+        ["No llama a un proveedor ni mide calidad lingüística.", "Autenticación, cuotas y almacenamiento durable quedan fuera de la miniatura."],
+    )
+
+
+def _agent_security(seed: int) -> dict[str, Any]:
+    attempts = [
+        {"id": "A1", "risk": "ASI01_goal_hijack", "action": "read", "trusted": False},
+        {"id": "A2", "risk": "ASI02_tool_misuse", "action": "publish", "trusted": True},
+        {"id": "A3", "risk": "ASI04_supply_chain", "action": "install_tool", "trusted": False},
+        {"id": "A4", "risk": "ASI06_memory_poisoning", "action": "write_memory", "trusted": False},
+    ]
+    allowed_actions = {"read"}
+    decisions = []
+    for attempt in attempts:
+        reasons = []
+        if attempt["action"] not in allowed_actions:
+            reasons.append("least_privilege")
+        if not attempt["trusted"]:
+            reasons.append("untrusted_source")
+        decisions.append({**attempt, "decision": "allow" if not reasons else "deny", "reasons": reasons})
+    return _base(
+        "agent_security",
+        seed,
+        {"policy": {"allowed_actions": sorted(allowed_actions), "default": "deny"}, "decisions": decisions, "blocked": sum(item["decision"] == "deny" for item in decisions)},
+        ["Cada decisión enlaza riesgo, acción y control aplicado.", "La política deniega por defecto y separa confianza de permiso."],
+        ["La taxonomía no sustituye threat modeling del sistema concreto.", "No existe aislamiento real del proceso."],
+    )
+
+
+def _governance(seed: int) -> dict[str, Any]:
+    system = {"use": "selección de candidatos", "region": "UE", "decision_impact": "empleo"}
+    obligations = ["risk_management", "data_governance", "technical_documentation", "logging", "human_oversight", "accuracy_robustness_cybersecurity"]
+    timeline = {
+        "general_application": "2026-08-02",
+        "annex_iii_high_risk": "2027-12-02",
+        "annex_i_product_safety": "2028-08-02",
+    }
+    evidence_pack = {item: f"evidence/{item}.json" for item in obligations}
+    return _base(
+        "governance",
+        seed,
+        {"system": system, "classification": "high-risk/Annex-III", "timeline": timeline, "obligations": obligations, "evidence_pack": evidence_pack, "ready": len(evidence_pack) == len(obligations)},
+        ["La clasificación activa obligaciones concretas y fechas explícitas.", "Cada obligación tiene un artefacto de evidencia esperado."],
+        ["Es una miniatura pedagógica, no asesoría legal.", "La clasificación final requiere revisar el caso, rol y jurisdicción reales."],
     )
 
 
@@ -445,6 +601,12 @@ RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "robotics": _robotics,
     "observability": _observability,
     "evaluation": _evaluation,
+    "agent_evaluation": _agent_evaluation,
+    "mcp": _mcp,
+    "a2a": _a2a,
+    "llm_service": _llm_service,
+    "agent_security": _agent_security,
+    "governance": _governance,
     "safety": _safety,
     "frontier": _frontier,
     "capstone": _capstone,

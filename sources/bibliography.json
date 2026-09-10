@@ -15604,6 +15604,28 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "blog-modelcontextprotocol-io-posts-2026-07-28",
+      "type": "reference",
+      "authors": [],
+      "title": "MCP",
+      "published": "2026",
+      "authority": "blog.modelcontextprotocol.io",
+      "locator": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+      "volatile": false,
+      "status": "pendiente",
+      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "container": null,
+      "url_keys": [
+        "blog.modelcontextprotocol.io/posts/2026-07-28"
+      ],
+      "aliases": [],
+      "used_in": [
+        "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
+      ],
+      "uses": 1,
+      "citation": "[MCP — revisión 2026-07-28](https://blog.modelcontextprotocol.io/posts/2026-07-28/): cambios incompatibles, migración y SDKs Tier 1."
+    },
+    {
       "id": "cambridge-org-core-books-trustworthy-online-controlled-experiments-d97",
       "type": "reference",
       "authors": [],
@@ -21414,6 +21436,28 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "genai-owasp-org-agentic-top-10",
+      "type": "standard",
+      "authors": [],
+      "title": "OWASP Top 10 for Agentic Applications 2026",
+      "published": "2026",
+      "authority": "Open Worldwide Application Security Project (OWASP)",
+      "locator": "https://genai.owasp.org/agentic-top-10/",
+      "volatile": false,
+      "status": "pendiente",
+      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "container": null,
+      "url_keys": [
+        "genai.owasp.org/agentic-top-10"
+      ],
+      "aliases": [],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md"
+      ],
+      "uses": 1,
+      "citation": "[OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/)"
+    },
+    {
       "id": "genai-owasp-org-llmrisk-llm01-prompt-injection",
       "type": "standard",
       "authors": [],
@@ -21442,6 +21486,28 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "genai-owasp-org-resource-owasp-genai-llm-top-10-2026",
+      "type": "standard",
+      "authors": [],
+      "title": "OWASP LLM Top 10 2026",
+      "published": "2026",
+      "authority": "Open Worldwide Application Security Project (OWASP)",
+      "locator": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "volatile": false,
+      "status": "pendiente",
+      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "container": null,
+      "url_keys": [
+        "genai.owasp.org/resource/owasp-genai-llm-top-10-2026"
+      ],
+      "aliases": [],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md"
+      ],
+      "uses": 1,
+      "citation": "[OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)"
     },
     {
       "id": "iso-org-standard-51528-html",
@@ -21734,39 +21800,6 @@
       "accessed": "2026-08-19"
     },
     {
-      "id": "modelcontextprotocol-io-specification-2025-06-18",
-      "type": "standard",
-      "authors": [
-        "MCP — especificación"
-      ],
-      "title": "MCP",
-      "published": "2025",
-      "version": "2025-06-18",
-      "authority": "Model Context Protocol",
-      "locator": "https://modelcontextprotocol.io/specification/2025-06-18",
-      "volatile": false,
-      "status": "verificada",
-      "container": null,
-      "url_keys": [
-        "modelcontextprotocol.io/specification/2025-06-18"
-      ],
-      "aliases": [],
-      "used_in": [
-        "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
-      ],
-      "uses": 1,
-      "citation": "[MCP — especificación (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18): arquitectura, ciclo de vida, primitivas y requisitos de seguridad.",
-      "checked": {
-        "last_check": "2026-08-19",
-        "method": "http",
-        "ok": true,
-        "http_status": 200,
-        "page_title": "",
-        "detail": ""
-      },
-      "accessed": "2026-08-19"
-    },
-    {
       "id": "modelcontextprotocol-io-specification-2025-06-18-server-tools",
       "type": "standard",
       "authors": [],
@@ -21778,16 +21811,13 @@
       "status": "verificada",
       "container": null,
       "url_keys": [
-        "modelcontextprotocol.io/specification/2025-06-18/server/prompts",
-        "modelcontextprotocol.io/specification/2025-06-18/server/resources",
         "modelcontextprotocol.io/specification/2025-06-18/server/tools"
       ],
       "aliases": [],
       "used_in": [
-        "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md",
-        "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
+        "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md"
       ],
-      "uses": 2,
+      "uses": 1,
       "citation": "[Model Context Protocol — Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools): tools como contratos de capacidad con input/output schema.",
       "checked": {
         "last_check": "2026-08-19",
@@ -21798,6 +21828,31 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "modelcontextprotocol-io-specification-2026-07-28",
+      "type": "standard",
+      "authors": [
+        "MCP — especificación"
+      ],
+      "title": "MCP",
+      "published": "2026",
+      "version": "2026-07-28",
+      "authority": "Model Context Protocol",
+      "locator": "https://modelcontextprotocol.io/specification/2026-07-28",
+      "volatile": false,
+      "status": "pendiente",
+      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "container": null,
+      "url_keys": [
+        "modelcontextprotocol.io/specification/2026-07-28"
+      ],
+      "aliases": [],
+      "used_in": [
+        "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
+      ],
+      "uses": 1,
+      "citation": "[MCP — especificación (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28): núcleo stateless, primitivas, extensiones y requisitos de seguridad."
     },
     {
       "id": "nist-gov-cyberframework",
@@ -22002,12 +22057,11 @@
         "classes/part-09-ai-agent-engineering/123-proyecto-agente-individual-operativo/README.md",
         "classes/part-13-evaluation-safety-security-and-governance/162-red-teaming-y-abuso/README.md",
         "classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md",
-        "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md",
         "classes/part-13-evaluation-safety-security-and-governance/165-privacidad-secretos-y-minimizacion-de-datos/README.md",
         "classes/part-13-evaluation-safety-security-and-governance/168-alucinacion-grounding-y-abstencion/README.md",
         "classes/part-13-evaluation-safety-security-and-governance/171-proyecto-respuesta-a-incidentes-de-ia/README.md"
       ],
-      "uses": 14,
+      "uses": 13,
       "citation": "[OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)",
       "checked": {
         "last_check": "2026-08-19",

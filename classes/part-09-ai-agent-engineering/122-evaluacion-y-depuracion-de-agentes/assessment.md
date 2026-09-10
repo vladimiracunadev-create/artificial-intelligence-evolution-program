@@ -3,28 +3,24 @@
 
 ## ❓ Preguntas
 
-1. Define evaluación y depuración de agentes sin usar una marca o framework como definición.
-2. Explica la relación entre trajectory, tool calls, success, regression.
-3. Ejecuta `lab.py` dos veces con la misma semilla. ¿Qué debe conservarse?
-4. Identifica una afirmación permitida y una afirmación exagerada sobre el resultado.
-5. Propón una prueba negativa o un caso límite.
+1. ¿Por qué T2 es éxito de resultado y fracaso de proceso?
+2. Calcula a mano `outcome_success_rate`, `honest_success_rate` y costo por éxito honesto.
+3. Localiza la primera divergencia de cada fallo y justifica la taxonomía asignada.
+4. Explica por qué `policy_bypass` debe cerrar el gate aunque aumente la tasa de resultado.
+5. Añade una tarea donde el entorno falle sin que el agente sea responsable.
 
 ## 🏆 Reto verificable
 
-Amplía el resultado del laboratorio con una clave `student_extension` que incluya:
-
-- el supuesto que estás probando;
-- una medición o comprobación;
-- la conclusión;
-- una limitación.
+Implementa una comparación baseline/candidato que rechace el candidato si mejora el
+resultado global pero introduce una violación o una regresión por categoría.
 
 ## ✅ Criterio de aceptación
 
 - [ ] `lab.py` termina con código 0.
 - [ ] El resultado contiene `kind`, `seed`, `evidence` y `limitations`.
-- [ ] La extensión no modifica el comportamiento de otras clases.
-- [ ] La interpretación referencia datos impresos por el laboratorio.
-- [ ] Se declara al menos un riesgo o condición de no uso.
+- [ ] Recalcula las métricas desde las tareas, no desde constantes copiadas.
+- [ ] Reporta primera divergencia, causa, costo y violaciones.
+- [ ] El gate tiene al menos una prueba positiva y una negativa.
 
 ---
 

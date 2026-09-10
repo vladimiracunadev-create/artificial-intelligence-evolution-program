@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ["3.11", "3.12", "3.13"]
+        python: ["3.11", "3.12", "3.13", "3.14"]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     steps:
@@ -32,4 +32,5 @@ jobs:
       - run: python scripts/annotate_class_sources.py --check
       - run: python scripts/link_sources_to_classes.py --check
       - run: python scripts/verify-sources
+      - run: python scripts/check_frontier.py
       - run: python -m compileall -q src scripts classes apps

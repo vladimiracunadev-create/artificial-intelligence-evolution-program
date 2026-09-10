@@ -97,6 +97,15 @@ evals continuos sobre muestra de tráfico. El principio del curso aplica al
 servicio completo: **la respuesta honesta incluye sus limitaciones** — un campo
 `confianza` y una ruta a humano valen más que una respuesta siempre segura.
 
+### ⏳ Ejecución durable y estado explícito
+
+Los runtimes contemporáneos separan crear trabajo de esperar su resultado: una
+solicitud puede quedar `queued`, pasar a `in_progress` y terminar, fallar o cancelarse.
+El servicio conserva un identificador idempotente, permite consultar o reanudar el
+estado y compacta contexto sólo en hitos definidos. Catálogos grandes de herramientas
+se cargan bajo demanda; el presupuesto de tool calls forma parte del contrato. Estas
+capacidades no eliminan la orquestación: hacen observables sus estados y límites.
+
 ## 🧮 Ejemplo trabajado
 
 Eval de regresión de un clasificador de tickets (golden set de 200 casos) al pasar
@@ -176,9 +185,9 @@ como el circuito completo que lo rodea.
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("capstone")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("llm_service")`. Modela una
+solicitud durable, clave de idempotencia, estados, salida estructurada y gate de eval.
+No mezcla este proyecto con el capstone global ni finge una llamada comercial.
 
 ### 🔍 Evidencia esperada
 

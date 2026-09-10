@@ -192,9 +192,10 @@ tabla comparativa del eval, no una opinión.
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("evaluation")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("agent_evaluation")`. Ejecuta seis
+tareas con resultado, calidad del proceso, costo y primera divergencia; demuestra por
+qué un éxito obtenido saltándose la política no puede promoverse. El laboratorio
+genérico de precision/recall queda para clasificación, no para representar agentes.
 
 ### 🔍 Evidencia esperada
 

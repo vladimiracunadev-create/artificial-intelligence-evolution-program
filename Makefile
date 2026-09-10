@@ -1,4 +1,4 @@
-.PHONY: validate test site desktop zip papers papers-check sources sources-check sources-refresh pdf pdf-papers all-checks hooks
+.PHONY: validate test site desktop zip papers papers-check sources sources-check sources-refresh frontier-check pdf pdf-papers all-checks hooks
 
 hooks:
 	git config core.hooksPath .githooks
@@ -33,6 +33,9 @@ sources-check:
 sources-refresh:
 	python scripts/refresh-sources
 
+frontier-check:
+	python scripts/check_frontier.py
+
 pdf:
 	python scripts/generate_pdfs.py
 
@@ -49,5 +52,5 @@ desktop:
 zip:
 	python scripts/package_release.py
 
-all-checks: test validate papers-check sources-check
+all-checks: test validate papers-check sources-check frontier-check
 	python -m compileall -q src scripts classes apps

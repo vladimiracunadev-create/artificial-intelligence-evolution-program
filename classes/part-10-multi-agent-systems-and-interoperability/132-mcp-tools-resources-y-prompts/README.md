@@ -43,15 +43,19 @@ contratos de la clase 131, y el complemento "agente↔herramientas" del A2A
 
 - **Host**: la aplicación LLM (Claude Desktop, un IDE, tu agente) que orquesta y
   aplica las políticas de seguridad y consentimiento.
-- **Cliente MCP**: componente dentro del host que mantiene una conexión 1:1 con cada
-  servidor.
+- **Cliente MCP**: componente dentro del host que traduce capacidades y aplica el
+  contrato de transporte con cada servidor; en el núcleo 2026 no necesita conservar
+  una sesión para que la siguiente petición tenga significado.
 - **Servidor MCP**: programa que expone capacidades (tools, resources, prompts) sobre
   una fuente concreta: un sistema de archivos, GitHub, una base de datos.
 
-La capa de mensajes es **JSON-RPC 2.0** con un ciclo de vida explícito:
-`initialize` (negociación de versión y capacidades: cada lado declara qué soporta) →
-operación (requests/responses y notificaciones) → cierre. Transportes estándar:
-**stdio** (proceso local) y **HTTP con streaming** (remoto).
+La revisión **2026-07-28** cambió el modelo operativo: el núcleo es *stateless* y
+cada petición lleva versión, identidad y capacidades en `_meta`. Se retiraron el
+intercambio `initialize`/`initialized` y `Mcp-Session-Id`; `server/discover` permite
+descubrir capacidades, pero es opcional. En HTTP, `Mcp-Method` y `Mcp-Name` permiten
+que gateways enruten y autoricen sin inspeccionar el cuerpo. Sampling y elicitation
+multi-turno se modelan mediante **MRTR**, y Tasks, MCP Apps y autorización empresarial
+viven como extensiones formales. `stdio` sigue siendo apropiado para procesos locales.
 
 ### 🧰 Las tres primitivas del servidor
 
@@ -86,12 +90,11 @@ revisión de servidores de terceros antes de conectarlos.
 
 ## 🧮 Ejemplo trabajado
 
-Flujo completo host ↔ servidor de archivos (mensajes abreviados):
+Flujo stateless host ↔ servidor docente (mensajes abreviados):
 
 ```text
-→ initialize        {protocolVersion, capabilities: {tools: {}, resources: {}}}
-← initialize.result {serverInfo: "fs-server", capabilities: {tools: {listChanged}, resources: {}}}
-→ notifications/initialized
+→ server/discover   {_meta: {protocolVersion: "2026-07-28", client: {...}}}
+← {server, capabilities: {tools: true, resources: true}, extensions: ["tasks"]}
 
 → tools/list
 ← [{name: "read_file",
@@ -159,12 +162,10 @@ prompts: /review_pr]
 
 ## 🚀 Del aprendizaje a la operación
 
-Operar MCP en serio implica: gestionar el ciclo de vida de los procesos servidor
-(supervisión, reinicio); autenticación y autorización por servidor (OAuth en
-transportes HTTP); presupuestos y auditoría por tool (quién invocó qué, con qué
-argumentos); revisión de seguridad de cada servidor de terceros antes de habilitarlo;
-y versionado — la spec evoluciona por fechas (p. ej. 2025-06-18) y la negociación de
-`initialize` debe manejar clientes y servidores en versiones distintas.
+Operar MCP en serio implica: procesos supervisados; autenticación con validación de
+issuer; autorización por método y tool; presupuestos y auditoría; revisión de cada
+servidor de terceros; cachés invalidados de forma explícita; compatibilidad durante la
+ventana de deprecación; y pruebas separadas del núcleo y de cada extensión negociada.
 
 ## 🧪 Laboratorio
 
@@ -172,9 +173,9 @@ y versionado — la spec evoluciona por fechas (p. ej. 2025-06-18) y la negociac
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("workflow")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("mcp")` y materializa una petición
+stateless: discovery opcional, lista cacheable, headers de routing, validación de
+schema y `tools/call`. No abre un servidor real; la limitación queda explícita.
 
 ### 🔍 Evidencia esperada
 
@@ -225,8 +226,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 ## 🔗 Referencias
 
 - [Model Context Protocol — introducción](https://modelcontextprotocol.io/): documentación oficial del protocolo.
-- [MCP — especificación (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18): arquitectura, ciclo de vida, primitivas y requisitos de seguridad.
-- [MCP — Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools), [Resources](https://modelcontextprotocol.io/specification/2025-06-18/server/resources) y [Prompts](https://modelcontextprotocol.io/specification/2025-06-18/server/prompts): las tres primitivas del servidor.
+- [MCP — especificación (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28): núcleo stateless, primitivas, extensiones y requisitos de seguridad.
+- [MCP — revisión 2026-07-28](https://blog.modelcontextprotocol.io/posts/2026-07-28/): cambios incompatibles, migración y SDKs Tier 1.
 - [Anthropic — Introducing the Model Context Protocol (2024)](https://www.anthropic.com/news/model-context-protocol): anuncio y motivación m×n → m+n.
 - [JSON-RPC 2.0](https://www.jsonrpc.org/specification): la capa de mensajes sobre la que se define MCP.
 
@@ -259,7 +260,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Michael J. Wooldridge — *An Introduction to MultiAgent Systems* | 2009 | [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) | obra de referencia de la parte 10 · toda la parte |
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 10 · decisión multiagente y teoría de juegos |
 
-**Normas y documentación oficial que aplica esta clase:** [Model Context Protocol](https://modelcontextprotocol.io) · [MCP](https://modelcontextprotocol.io/specification/2025-06-18) · [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)
+**Normas y documentación oficial que aplica esta clase:** [Model Context Protocol](https://modelcontextprotocol.io) · [MCP](https://modelcontextprotocol.io/specification/2026-07-28)
 <!-- bibliografia:fin -->
 
 ---

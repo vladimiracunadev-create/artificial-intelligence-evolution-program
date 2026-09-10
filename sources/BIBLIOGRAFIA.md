@@ -168,17 +168,19 @@ cada parte con el espacio que una clase no tiene.
 | ISO/IEC 23894:2023 | 23894:2023 | [International Organization for Standardization (ISO)](https://www.iso.org/standard/77304.html) | 1 |
 | ISO/TS 15066:2016 | — | [International Organization for Standardization (ISO)](https://www.iso.org/standard/62996.html) | 2 |
 | JSON Schema | — | [JSON Schema](https://json-schema.org/specification) | 3 |
-| MCP | 2025-06-18 | [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18) | 1 |
+| MCP | 2026-07-28 | [Model Context Protocol](https://modelcontextprotocol.io/specification/2026-07-28) | 1 |
 | Model Context Protocol | — | [Model Context Protocol](https://modelcontextprotocol.io) | 12 |
 | Model Context Protocol | — | [Model Context Protocol](https://modelcontextprotocol.io/specification) | 1 |
-| Model Context Protocol | — | [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/server/tools) | 2 |
+| Model Context Protocol | — | [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/server/tools) | 1 |
 | NIST AI RMF 1.0 | 1.0 | [National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) | 1 |
 | nist.gov/cyberframework | — | [National Institute of Standards and Technology (NIST)](https://www.nist.gov/cyberframework) | 1 |
 | NIST SP 800-218 / SBOM | — | [Cybersecurity and Infrastructure Security Agency (CISA)](https://www.cisa.gov/sbom) | 1 |
 | OpenTelemetry | — | [OpenTelemetry (CNCF)](https://opentelemetry.io/docs/specs/semconv/gen-ai/) | 3 |
 | OpenTelemetry Documentation | — | [OpenTelemetry (CNCF)](https://opentelemetry.io/docs/) | 5 |
 | OWASP | — | [Open Worldwide Application Security Project (OWASP)](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) | 1 |
-| OWASP Top 10 for LLM Applications | — | [Open Worldwide Application Security Project (OWASP)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | 14 |
+| OWASP LLM Top 10 2026 | — | [Open Worldwide Application Security Project (OWASP)](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) | 1 |
+| OWASP Top 10 for Agentic Applications 2026 | — | [Open Worldwide Application Security Project (OWASP)](https://genai.owasp.org/agentic-top-10/) | 1 |
+| OWASP Top 10 for LLM Applications | — | [Open Worldwide Application Security Project (OWASP)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | 13 |
 | Reglamento (UE) 2016/679 | 2016/679 | [Unión Europea — EUR-Lex](https://eur-lex.europa.eu/eli/reg/2016/679/oj) | 1 |
 | Reglamento (UE) 2024/1689 | 2024/1689 | [Unión Europea — EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) | 3 |
 | The OAuth 2.0 Authorization Framework | — | [RFC Editor](https://www.rfc-editor.org/rfc/rfc6749) | 1 |
@@ -189,8 +191,8 @@ cada parte con el espacio que una clase no tiene.
 
 ## Estado del registro
 
-- Obras registradas: **615** (34 libros, 344 artículos, 34 normas, 203 documentos de referencia).
-- Con localizador resuelto contra su autoridad: **585**; pendientes con motivo declarado: **30**.
+- Obras registradas: **618** (34 libros, 344 artículos, 36 normas, 204 documentos de referencia).
+- Con localizador resuelto contra su autoridad: **584**; pendientes con motivo declarado: **34**.
 - Clases sin bibliografía de apoyo: **0**.
 - Última resolución en red: **2026-08-19** (`python scripts/refresh-sources`).
 

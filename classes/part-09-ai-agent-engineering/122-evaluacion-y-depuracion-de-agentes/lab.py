@@ -10,5 +10,5 @@ sys.path.insert(0, str(ROOT / "src"))
 from ai_evolution.labs import run_lab
 
 if __name__ == "__main__":
-    result = run_lab("evaluation", seed=122)
+    result = run_lab("agent_evaluation", seed=122)
     print(json.dumps(result, ensure_ascii=False, indent=2))
