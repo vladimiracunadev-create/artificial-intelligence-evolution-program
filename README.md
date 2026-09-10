@@ -345,6 +345,9 @@ sha256sum -c SHA256SUMS-windows.txt
 
 Las tres se compilan desde el mismo repositorio con
 [`desktop.yml`](.github/workflows/desktop.yml) y [`android.yml`](.github/workflows/android.yml).
+Al publicar un tag `vX.Y.Z`, [`release.yml`](.github/workflows/release.yml) exige que coincida con
+la versión canónica, construye los cinco binarios, verifica ambos ficheros `SHA256SUMS` y solo
+entonces crea la release. Un fallo de compilación o de checksum impide publicar una entrega parcial.
 Las capturas se regeneran con `python scripts/generate_screenshots.py --escritorio`.
 
 ### 🌐 El sitio y el eje de papers

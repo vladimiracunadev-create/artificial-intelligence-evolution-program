@@ -41,6 +41,16 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - La suite ejecuta los 366 notebooks de recorrido y solución, además de comprobar
   que las seis clases rápidas usan sus motores especializados.
 
+### Publicación coherente
+
+- GitHub Pages deriva de la versión canónica tanto la versión visible de la portada
+  como la clave de caché de la PWA; una prueba evita publicar portada, catálogo y
+  service worker con versiones distintas.
+- El tag `v0.17.0` activa un único flujo de release que construye las aplicaciones
+  Windows y Android, verifica sus siete entregables y checksums y publica la release
+  solo si el conjunto está completo.
+- Las Actions de checkout, Node, Java y Pages quedan actualizadas y fijadas por SHA.
+
 ## 0.16.0 — 2026-08-19
 
 ### Además del paper, el libro: bibliografía de apoyo en las 183 clases

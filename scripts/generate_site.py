@@ -103,6 +103,38 @@ def write_lf(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8", newline="\n")
 
 
+def sync_site_version(version: str) -> None:
+    """Mantiene visibles y cacheables los artefactos web en la versión canónica.
+
+    La portada y el service worker se versionan desde ``curriculum.yaml`` para
+    que Pages, la PWA instalada y el repositorio no puedan anunciar estados
+    distintos después de un release.
+    """
+    index_path = ROOT / "site" / "index.html"
+    index = index_path.read_text(encoding="utf-8")
+    index = re.sub(
+        r'<meta name="application-version" content="[^"]+">',
+        f'<meta name="application-version" content="{version}">',
+        index,
+    )
+    index = re.sub(
+        r'<span class="eyebrow">Programa evolutivo(?: · v[^<]+)? · 2026</span>',
+        f'<span class="eyebrow">Programa evolutivo · v{version} · 2026</span>',
+        index,
+    )
+    write_lf(index_path, index)
+
+    worker_path = ROOT / "site" / "service-worker.js"
+    worker = worker_path.read_text(encoding="utf-8")
+    worker = re.sub(
+        r'^const CACHE = "ai-evolution-[^"]+";',
+        f'const CACHE = "ai-evolution-v{version}";',
+        worker,
+        count=1,
+    )
+    write_lf(worker_path, worker)
+
+
 def rewrite_class_links(text: str, lesson_path: str) -> str:
     # clase → clase (nav superior y pie), mismo o distinto part
     text = re.sub(
@@ -355,8 +387,10 @@ def build_paper_pages(out_dir: Path) -> int:
 
 def main() -> None:
     curriculum = yaml.safe_load((ROOT / "curriculum.yaml").read_text(encoding="utf-8"))
+    version = str(curriculum["version"])
+    sync_site_version(version)
     payload = {
-        "version": curriculum["version"],
+        "version": version,
         "lesson_count": sum(len(part["lessons"]) for part in curriculum["parts"]),
         "parts": curriculum["parts"],
     }

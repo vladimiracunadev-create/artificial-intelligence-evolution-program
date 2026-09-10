@@ -91,7 +91,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 | Script | Qué produce | Verificación |
 |---|---|---|
 | `scripts/generate_papers.py` | índice, 156 notebooks, aula y manifiesto del eje | `--check` en CI |
-| `scripts/generate_site.py` | PWA: 198 páginas de clase + 163 del eje de papers + portada (362 HTML) y los dos JSON | `pages.yml` |
+| `scripts/generate_site.py` | PWA: 198 páginas de clase + 163 del eje de papers + portada (362 HTML), dos JSON y versión visible/cacheable | `pages.yml` + prueba de coherencia |
 | `scripts/generate_pdfs.py` | 165 PDFs: 17 del programa + 148 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
 | `scripts/generate_assets.py` | recursos derivados | — |
 | `scripts/validate_repository.py` | contrato completo de ambos ejes | `--strict` en CI |

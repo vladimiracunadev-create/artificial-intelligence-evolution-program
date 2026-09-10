@@ -135,6 +135,18 @@ class VersionCoherenceTests(unittest.TestCase):
         changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
         self.assertIn(f"## {esperada} — ", changelog)
 
+    def test_pages_surface_matches_current_version(self):
+        esperada = self.canonical()
+        index = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
+        worker = (ROOT / "site" / "service-worker.js").read_text(encoding="utf-8")
+        catalog = json.loads(
+            (ROOT / "site" / "data" / "catalog.json").read_text(encoding="utf-8")
+        )
+        self.assertIn(f'application-version" content="{esperada}"', index)
+        self.assertIn(f"Programa evolutivo · v{esperada}", index)
+        self.assertIn(f'const CACHE = "ai-evolution-v{esperada}";', worker)
+        self.assertEqual(str(catalog["version"]), esperada)
+
 
 if __name__ == "__main__":
     unittest.main()

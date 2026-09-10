@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  desktop:
+    uses: ./.github/workflows/desktop.yml
+
+  android:
+    uses: ./.github/workflows/android.yml
+
+  publish:
+    needs: [desktop, android]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: AI-Evolution-Program-*
+          path: dist
+          merge-multiple: true
+      - name: Verificar versión, entregables y checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#v}"
+          CANONICAL="$(grep -m1 '^version = ' pyproject.toml | cut -d'"' -f2)"
+          test "$VERSION" = "$CANONICAL"
+          for asset in \
+            "AI-Evolution-Program-$VERSION-android.apk" \
+            "AI-Evolution-Program-$VERSION-portable-windows-x64.zip" \
+            "AI-Evolution-Program-$VERSION-setup-windows-x64.exe" \
+            "AI-Evolution-Program-$VERSION-windows-x64.exe" \
+            "AI-Evolution-Program-$VERSION-windows-x64.msi" \
+            "SHA256SUMS-android.txt" \
+            "SHA256SUMS-windows.txt"; do
+            test -s "dist/$asset"
+          done
+          cd dist
+          sha256sum -c SHA256SUMS-android.txt
+          sha256sum -c SHA256SUMS-windows.txt
+      - name: Publicar release verificable
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: >-
+          gh release create "$GITHUB_REF_NAME" dist/*
+          --verify-tag
+          --title "$GITHUB_REF_NAME — aplicaciones y programa pedagógico"
+          --generate-notes
