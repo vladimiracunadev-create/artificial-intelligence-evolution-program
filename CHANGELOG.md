@@ -52,6 +52,9 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Las Actions de checkout, Node, Java, preparación del SDK Android y Pages quedan
   actualizadas y fijadas por SHA. El SDK 36 ya no depende de que `sdkmanager`
   venga preinstalado incidentalmente en la imagen del runner.
+- El workflow y la guía pasan a JDK 21, que exige el compilador de Capacitor 8.5.
+  El CLI permanece deliberadamente en 8.4.3 porque 8.5.1 incorpora una cadena
+  vulnerable (`xcode` → `uuid`); `npm audit` vuelve a cero vulnerabilidades.
 
 ## 0.16.0 — 2026-08-19
 

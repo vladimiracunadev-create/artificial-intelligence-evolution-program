@@ -28,7 +28,7 @@ Ejecuta el workflow **Android build** (`workflow_dispatch`). Pasos que realiza:
 
 ## Build local
 
-Requiere Node 22+, JDK 17+, Android Studio 2025.2.1 o posterior y Android SDK 36:
+Requiere Node 22+, JDK 21+, Android Studio 2025.2.1 o posterior y Android SDK 36:
 
 Estos mínimos siguen la [configuración oficial de entorno de Capacitor 8](https://capacitorjs.com/docs/getting-started/environment-setup)
 y su [guía de migración a 8.0](https://capacitorjs.com/docs/updating/8-0).
