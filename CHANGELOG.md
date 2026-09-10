@@ -49,7 +49,9 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - El tag `v0.17.0` activa un único flujo de release que construye las aplicaciones
   Windows y Android, verifica sus siete entregables y checksums y publica la release
   solo si el conjunto está completo.
-- Las Actions de checkout, Node, Java y Pages quedan actualizadas y fijadas por SHA.
+- Las Actions de checkout, Node, Java, preparación del SDK Android y Pages quedan
+  actualizadas y fijadas por SHA. El SDK 36 ya no depende de que `sdkmanager`
+  venga preinstalado incidentalmente en la imagen del runner.
 
 ## 0.16.0 — 2026-08-19
 
