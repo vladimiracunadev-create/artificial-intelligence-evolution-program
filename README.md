@@ -23,7 +23,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Notebooks](https://img.shields.io/badge/notebooks-705-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
-[![License](https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/license-mixed-3fb950?style=for-the-badge)](#-licencias)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13%20·%203.14-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
 [![Jupyter](https://img.shields.io/badge/Jupyter-705%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
@@ -39,7 +39,8 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [🏗️ Arquitectura](docs/ARCHITECTURE.md) ·
 [🗺️ Roadmap](ROADMAP.md) ·
 [🤝 Contribuir](CONTRIBUTING.md) ·
-[🔐 Seguridad](SECURITY.md)
+[🔐 Seguridad](SECURITY.md) ·
+[⚖️ Licencias](#-licencias)
 
 <br>
 
@@ -518,10 +519,25 @@ python -m compileall -q src scripts classes apps
 python scripts/validate_repository.py --strict
 ```
 
-## 📄 Licencia
+## 📄 Licencias
 
-Código y documentación original bajo [MIT](LICENSE). Datasets, papers, modelos y
-servicios externos conservan sus propias licencias y términos.
+Este es un repositorio público, gratuito y de **licencia mixta**. No se aplica una
+licencia general a datasets, pesos, activos o materiales de terceros.
+
+| Material | Licencia o registro |
+|---|---|
+| Código original, scripts, configuración y código de notebooks | [MIT](LICENSE) |
+| Currículo, clases, tutoriales, ejercicios, rutas, documentación pedagógica y prompts originales | [CC BY-NC-SA 4.0](LICENSE-CONTENT.md) |
+| Datasets | [Registro por dataset](DATA_LICENSES.md) |
+| Modelos y pesos | [Registro por modelo](MODEL_LICENSES.md) |
+| Imágenes, iconos, capturas y PDFs generados | [Registro de activos](ASSET_LICENSES.md) |
+| Dependencias, citas y otros terceros | [Avisos de terceros](THIRD_PARTY_NOTICES.md) |
+| Nombres y marcas | [Política de marcas](TRADEMARKS.md) |
+
+Las revisiones históricas publicadas bajo MIT conservan esa concesión; no se
+retira ni se limita retroactivamente. Consulte el [historial](docs/LICENSING_HISTORY.md),
+la [guía para contribuir](docs/LICENSING_GUIDE.md) y la
+[auditoría](LICENSING_AUDIT.md).
 
 ---
 

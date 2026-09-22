@@ -1,3 +1,16 @@
+SCOPE NOTICE
+
+This MIT License applies to the original software code, scripts, configuration,
+and code portions of notebooks in this repository, unless a file or directory
+states a different license. It does not apply to datasets, model weights,
+third-party materials, trademarks, or the original educational content covered
+by LICENSE-CONTENT.md.
+
+Historical preservation: every revision published before the first commit that
+contains this scope notice remains available under the MIT grant that accompanied
+that revision. Nothing in this notice withdraws, limits, or revokes rights already
+granted for those historical revisions. See docs/LICENSING_HISTORY.md.
+
 MIT License
 
 Copyright (c) 2026 Vladimir Acuña

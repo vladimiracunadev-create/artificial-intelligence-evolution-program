@@ -8,6 +8,8 @@ version = "0.17.0"
 description = "Programa evolutivo de IA: de la IA simbólica a los sistemas agénticos"
 readme = "README.md"
 requires-python = ">=3.11"
+# Licencia del paquete de software. El contenido pedagógico del repositorio usa
+# CC BY-NC-SA 4.0; véanse LICENSE-CONTENT.md y docs/LICENSING_GUIDE.md.
 license = {text = "MIT"}
 authors = [{name = "Vladimir Acuña"}]
 keywords = ["artificial-intelligence", "education", "agents", "machine-learning", "ai-safety"]

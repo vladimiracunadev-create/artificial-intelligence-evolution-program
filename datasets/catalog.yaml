@@ -17,25 +17,25 @@ datasets:
   name: CIFAR-10
   domain: vision
   source: https://www.cs.toronto.edu/~kriz/cifar.html
-  license: verificar términos de la fuente
+  license: no se encontró licencia explícita en la fuente oficial; no redistribuir
   use: CNN, representación y aprendizaje autosupervisado
 - id: fashion-mnist
   name: Fashion-MNIST
   domain: vision-generative
   source: https://github.com/zalandoresearch/fashion-mnist
-  license: MIT para el repositorio; verificar datos
+  license: MIT según el repositorio oficial, que publica también los datos
   use: clasificación, VAE, GAN y difusión
 - id: ag-news
   name: AG News
   domain: text
   source: https://huggingface.co/datasets/fancyzhx/ag_news
-  license: verificar dataset card antes de uso
+  license: unknown en la dataset card; no redistribuir ni usar comercialmente sin aclaración
   use: clasificación, transformers y fine-tuning
 - id: imdb
   name: IMDb Large Movie Review
   domain: text
   source: https://ai.stanford.edu/~amaas/data/sentiment/
-  license: verificar términos de la fuente
+  license: no se encontró licencia explícita; no redistribuir ni usar comercialmente sin permiso
   use: sentimiento, RNN y transformers
 - id: speech-commands
   name: Speech Commands
@@ -47,29 +47,29 @@ datasets:
   name: Common Voice
   domain: speech
   source: https://commonvoice.mozilla.org/en/datasets
-  license: verificar versión y condiciones al descargar
+  license: CC0 1.0 para versiones que así lo indiquen; verificar versión y locale
   use: ASR, diversidad lingüística y evaluación por grupos
 - id: cora
   name: Cora
   domain: graphs
   source: https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.Planetoid.html
-  license: verificar fuente original
+  license: no se encontró licencia explícita del dataset; no hereda la de PyG
   use: GNN y grafos de conocimiento
 - id: swe-bench
   name: SWE-bench
   domain: agents-code
   source: https://www.swebench.com/
-  license: verificar repositorio y datos de la versión usada
+  license: MIT para el repositorio; cada instancia conserva licencias de proyectos fuente
   use: evaluación de agentes de programación
 - id: webarena
   name: WebArena
   domain: agents-web
   source: https://webarena.dev/
-  license: verificar repositorio y sitios de prueba
+  license: Apache-2.0 para el repositorio; revisar datos, dumps y sitios por separado
   use: evaluación de agentes de navegador
 - id: mmlu
   name: MMLU
   domain: llm-evaluation
   source: https://github.com/hendrycks/test
-  license: MIT para el repositorio; revisar cada fuente de preguntas
+  license: MIT declarada por el repositorio; revisar derechos de cada fuente de preguntas
   use: evaluación de conocimiento y límites de benchmarks

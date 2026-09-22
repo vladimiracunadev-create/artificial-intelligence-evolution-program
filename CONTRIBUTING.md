@@ -49,3 +49,12 @@ de hashes queda desfasado y caen los nueve jobs de la matriz. Se arregla con
 
 Usa Conventional Commits. No reescribas hechos históricos del changelog para
 sincronizar el estado actual.
+
+## ⚖️ Licencias de las contribuciones
+
+Al contribuir, declaras que puedes ofrecer tu aporte bajo la licencia que le
+corresponde: MIT para código y CC BY-NC-SA 4.0 para contenido educativo y prompts.
+Datos, modelos, pesos y activos requieren un registro y permiso específicos; no
+los añadas solo porque estén disponibles públicamente. Sigue la
+[guía de licenciamiento](docs/LICENSING_GUIDE.md) y conserva todos los avisos de
+terceros.

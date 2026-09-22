@@ -4,6 +4,10 @@ Prompts reutilizables para mantener y ampliar el repositorio sin romper sus cont
 No son ejemplos decorativos: son las instrucciones reales con las que se construyó y se
 mantiene el [eje de papers](../papers/README.md).
 
+Los prompts originales forman parte del contenido educativo y se ofrecen bajo
+[CC BY-NC-SA 4.0](../LICENSE-CONTENT.md). Los fragmentos de código ejecutable que
+contengan siguen disponibles bajo MIT.
+
 | Prompt | Para qué sirve |
 |---|---|
 | [PROMPT_MAESTRO_PAPERS.md](PROMPT_MAESTRO_PAPERS.md) | Alta o revisión completa de un paper en el eje, con sus 18 secciones y su notebook |
