@@ -85,6 +85,7 @@ class LabTests(unittest.TestCase):
             "134": ("a2a", "agent_card"),
             "164": ("agent_security", "decisions"),
             "170": ("governance", "evidence_pack"),
+            "171": ("capstone", "ai_native_incident"),
         }
         by_id = {lesson.id: lesson for lesson in lessons()}
         for lesson_id, (kind, required_result) in expected.items():

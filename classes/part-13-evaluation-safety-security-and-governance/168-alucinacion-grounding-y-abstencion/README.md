@@ -96,6 +96,18 @@ El error clásico es reportar solo accuracy global: un sistema que responde todo
 puede ser peor, en un dominio crítico, que uno que responde el 60 % con 98 % de acierto y abstiene
 el resto.
 
+### 🧾 Del texto plausible al claim autorizado
+
+La confianza del modelo no verifica una afirmación. Antes de que un claim alcance a
+un cliente debe pasar por: detección de dominio sensible → grounding en un registro
+aprobado → verificación de fuente y vigencia → política GREEN/YELLOW/RED → gate humano
+cuando corresponda. Si falta cualquiera de esas pruebas, el sistema se abstiene.
+
+El [caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md) separa hechos
+regulatorios, alegaciones periodísticas, respuesta empresarial e interpretación. Es
+también un ejemplo de cómo un precio o producto inventado por soporte puede tener
+confianza alta y seguir siendo un claim no verificado.
+
 ## 🧮 Ejemplo trabajado: curva riesgo-cobertura
 
 Un QA médico produce 20 respuestas, cada una con una confianza y si fue correcta. Evaluamos dos

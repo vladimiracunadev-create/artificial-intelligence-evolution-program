@@ -37,6 +37,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [📖 Glosario](docs/GLOSSARY.md) ·
 [📕 PDFs](docs/pdf/) ·
 [🏗️ Arquitectura](docs/ARCHITECTURE.md) ·
+[🧭 Caso MEDVi y empresa AI-native](docs/case-studies/MEDVI_AI_NATIVE.md) ·
 [🗺️ Roadmap](ROADMAP.md) ·
 [🤝 Contribuir](CONTRIBUTING.md) ·
 [🔐 Seguridad](SECURITY.md) ·
@@ -548,6 +549,7 @@ la [guía para contribuir](docs/LICENSING_GUIDE.md) y la
 [⬆️ Empezar por la clase 001](classes/part-00-foundations-history-and-scientific-method/001-que-es-inteligencia-artificial-y-que-no-es/README.md) ·
 [🌐 Sitio de estudio](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/) ·
 [📖 Glosario](docs/GLOSSARY.md) ·
+[🧭 Caso MEDVi y empresa AI-native](docs/case-studies/MEDVI_AI_NATIVE.md) ·
 [📕 Programa completo en PDF](docs/pdf/programa-completo.pdf) ·
 [🗺️ Roadmap](ROADMAP.md)
 

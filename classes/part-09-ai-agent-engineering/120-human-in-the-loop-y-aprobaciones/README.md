@@ -110,6 +110,21 @@ dataset valiosísimo: los rechazos con motivo son ejemplos etiquetados de "acci�
 parecía correcta y no lo era" — insumo directo para las evaluaciones de la clase 122
 y para recalibrar la matriz de la 116.
 
+### 🚦 Autonomía GREEN / YELLOW / RED
+
+La aprobación se decide por el efecto de la acción, no por lo convincente que sea el
+modelo ni por el nombre del agente:
+
+| Nivel | Regla | Ejemplos |
+|---|---|---|
+| **GREEN** | reversible, bajo riesgo, acotada y observable: ejecución automática | borrador interno, resumen de fuentes, clasificación de tickets |
+| **YELLOW** | exige límites, grounding, verificación o revisión por muestreo | respuesta de catálogo, cambio pequeño de presupuesto, publicación no sanitaria preaprobada |
+| **RED** | aprobación humana previa, identidad fuerte y evidencia suficiente | claims médicos, decisiones clínicas, publicidad sanitaria, contratos, movimientos financieros significativos, cambios regulatorios, identidades profesionales y acciones irreversibles |
+
+**AI CAN EXECUTE. AI CANNOT OWN ACCOUNTABILITY.** La IA puede proponer y ejecutar;
+la persona y la organización conservan la responsabilidad. El [caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md)
+muestra por qué un proveedor o afiliado adicional no borra esa asignación.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de comunicación que prepara el aviso de una interrupción de servicio.

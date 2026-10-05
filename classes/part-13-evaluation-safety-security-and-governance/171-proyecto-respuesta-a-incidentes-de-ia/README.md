@@ -96,6 +96,22 @@ Evidencia     <- logs de trazabilidad y model card/datasheet (170)
 Prevención    <- el caso se añade al golden set de regresión (161) y a la matriz de riesgo (169)
 ```
 
+### 💥 Error amplification y blast radius
+
+La automatización reduce `TIME TO EXECUTE`, pero puede aumentar `POTENTIAL BLAST
+RADIUS`. El incidente se reconstruye desde el error de origen hasta cada ejecución
+descendiente, destinatario, proveedor y sistema alcanzado. Dos métricas mínimas son:
+
+```text
+error_amplification = ejecuciones_erróneas_descendentes / errores_de_origen
+automation_blast_radius = alcance potencial o real antes de contener
+```
+
+No basta con corregir el claim: hay que detener reintentos y campañas, revocar
+artefactos, verificar proveedores, preservar el audit trail y convertir el incidente
+en una regresión. El [caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md) aporta
+el contexto real; el laboratorio usa solo una compañía y productos ficticios.
+
 ## 🧮 Ejemplo trabajado: exfiltración por inyección indirecta
 
 Un asistente que resume correos empieza a reenviar información a un dominio externo. Aplicamos el ciclo.
@@ -173,9 +189,12 @@ exige ensayo, herramientas de observabilidad y coordinación legal reales.
 python lab.py
 ```
 
-El laboratorio llama a `ai_evolution.labs.run_lab("capstone")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
-propio, pero los motores didácticos se prueban como una biblioteca común.
+El laboratorio llama a `ai_evolution.labs.run_lab("capstone")` y ejecuta el incidente
+de **SaludNova Labs**, una compañía completamente ficticia que no es farmacia y usa
+productos igualmente ficticios. Un agente genera un claim comercial incorrecto con
+confianza alta. El estudiante debe demostrar detección, threshold, grounding,
+verificación de fuente, política, escalada humana, circuit breaker, kill switch,
+rollback, audit trail y reconstrucción. No se construye ni simula una farmacia real.
 
 ### 🔍 Evidencia esperada
 
@@ -184,6 +203,10 @@ propio, pero los motores didácticos se prueban como una biblioteca común.
 - resultado estructurado;
 - lista `evidence` con hechos que pueden inspeccionarse;
 - lista `limitations` que impide presentar la demo como producción.
+- claim no verificado bloqueado antes de alcanzar clientes;
+- métricas de autonomía, escalada, violaciones, amplificación, detección, contención y
+  blast radius con denominador y unidad;
+- secuencia auditable suficiente para reconstruir causa, control y responsabilidad.
 
 ## 📓 Notebooks
 

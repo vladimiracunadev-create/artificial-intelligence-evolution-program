@@ -79,6 +79,30 @@ La clave es la **independencia creciente**: la 2ª línea no depende de quien co
 depende de la 2ª. Un red team dentro del equipo de producto es 1ª línea; solo es aseguramiento si es
 independiente. Confundir las líneas (que quien construye se autoaudite) anula el control.
 
+### 🏗️ Arquitectura de responsabilidad para una empresa AI-native
+
+```text
+OWNER HUMANO / ORGANIZACIÓN
+            ↓
+EXECUTIVE ORCHESTRATOR
+            ↓
+SPECIALIZED AGENTS
+            ↓
+       TOOLS / APIs
+            ↓
+ EXTERNAL PROVIDERS
+```
+
+Policy engine, permission boundaries, source verification, human gates, audit log,
+observability, budget limits, regulatory rules, circuit breaker y kill switch cruzan
+todas las capas. Externalizar una función cambia quién ejecuta, no quién debe demostrar
+control sobre el resultado. Por eso rige: **AI CAN EXECUTE. AI CANNOT OWN
+ACCOUNTABILITY.**
+
+El [caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md) aplica la arquitectura a
+la cadena humano → IA → agentes → automatización → APIs → proveedores → cliente y
+obliga a distinguir capacidad, autonomía, automatización y responsabilidad.
+
 ### 📊 Gestión de riesgo: identificar, evaluar, tratar
 
 ```text

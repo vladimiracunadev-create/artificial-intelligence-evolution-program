@@ -72,6 +72,27 @@ Cuando el criterio no es un predicado simple (¿el resumen es fiel?), se usa
 **LLM-as-judge** con rúbrica explícita — útil y escalable, pero es un evaluador con
 sesgos que debe calibrarse contra juicio humano en una muestra.
 
+### 📡 Métricas de autonomía y amplificación
+
+El success rate no muestra cuánto control cedió el sistema ni cuánto daño podía
+propagar un error. Para sistemas AI-native se añade una familia operativa:
+
+| Métrica | Numerador / denominador o reloj |
+|---|---|
+| autonomy rate | acciones elegibles completadas sin intervención / acciones elegibles |
+| human escalation rate | propuestas escaladas / propuestas totales |
+| policy violation rate | propuestas que infringen política / propuestas evaluadas |
+| unverified claim rate | claims sin evidencia suficiente / claims generados |
+| error amplification | ejecuciones erróneas descendentes / errores de origen |
+| time to detect | primera señal válida − primer efecto o intento |
+| time to contain | bloqueo efectivo en todos los canales − detección |
+| automation blast radius | personas, sistemas o transacciones alcanzables antes de contener |
+
+Cada valor declara unidad, ventana y población elegible. Optimizar autonomy rate sin
+vigilar claims y blast radius solo automatiza más rápido el error. El
+[caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md) aplica esta lectura a una
+empresa con agentes, proveedores y distribución comercial.
+
 ### 🔬 Depuración: leer trayectorias
 
 La depuración de agentes es análisis de trazas. Método sistemático:

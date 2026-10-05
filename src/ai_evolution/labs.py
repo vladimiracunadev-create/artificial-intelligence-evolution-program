@@ -570,16 +570,153 @@ def _frontier(seed: int) -> dict[str, Any]:
     )
 
 
+def _ai_native_incident(seed: int) -> dict[str, Any]:
+    """Incidente ficticio: un claim de alta confianza no adquiere autoridad por repetirse."""
+    company = {
+        "name": "SaludNova Labs",
+        "fictitious": True,
+        "is_pharmacy": False,
+        "products": ["VitaFlux-7", "Equilibria-Q"],
+    }
+    approved_claims = {
+        "C-001": "VitaFlux-7 es un material educativo ficticio sobre hábitos.",
+        "C-002": "La demo no diagnostica, prescribe ni trata condiciones médicas.",
+    }
+    generated_claim = {
+        "id": "C-003",
+        "text": "VitaFlux-7 cura la resistencia a la insulina en 14 días.",
+        "confidence": 0.97,
+        "source_id": None,
+        "proposed_channels": ["website", "affiliate-a", "affiliate-b", "affiliate-c"],
+        "potential_recipients": 1200,
+    }
+
+    sensitive_terms = {"cura", "insulina", "diagnostica", "prescribe", "trata"}
+    detected_terms = sorted(term for term in sensitive_terms if term in generated_claim["text"].lower())
+    confidence_threshold_passed = generated_claim["confidence"] >= 0.90
+    grounded = generated_claim["text"] in approved_claims.values()
+    source_verified = generated_claim["source_id"] in approved_claims
+    autonomy_level = "RED" if detected_terms else "YELLOW"
+    policy_reasons = []
+    if autonomy_level == "RED":
+        policy_reasons.append("medical_claim_requires_prior_human_approval")
+    if not grounded:
+        policy_reasons.append("claim_not_in_approved_registry")
+    if not source_verified:
+        policy_reasons.append("missing_verified_source")
+
+    human_verdict = {
+        "approver_role": "responsible_operations_owner",
+        "decision": "reject",
+        "reason": "claim médico sin fuente ni grounding",
+    }
+    claim_hash = hashlib.sha256(generated_claim["text"].encode("utf-8")).hexdigest()[:16]
+    audit_trail = [
+        {"minute": 0, "actor": "marketing_agent", "event": "claim_generated", "claim_hash": claim_hash},
+        {"minute": 1, "actor": "claim_detector", "event": "sensitive_domain_detected", "terms": detected_terms},
+        {"minute": 2, "actor": "source_verifier", "event": "verification_failed", "source_id": None},
+        {"minute": 3, "actor": "policy_engine", "event": "classified_RED", "reasons": policy_reasons},
+        {"minute": 4, "actor": "human_gate", "event": "escalated", "verdict": human_verdict},
+        {"minute": 5, "actor": "circuit_breaker", "event": "publishing_disabled", "channels": generated_claim["proposed_channels"]},
+        {"minute": 6, "actor": "rollback", "event": "staged_artifacts_revoked", "artifacts": 4},
+    ]
+
+    proposed_actions = 6
+    automatically_completed_eligible_actions = 4
+    eligible_actions = 5
+    total_claims = len(approved_claims) + 1
+    originating_errors = 1
+    potential_downstream_executions = generated_claim["potential_recipients"]
+    metrics = {
+        "autonomy_rate": round(automatically_completed_eligible_actions / eligible_actions, 4),
+        "human_escalation_rate": round(1 / proposed_actions, 4),
+        "policy_violation_rate": round(1 / proposed_actions, 4),
+        "unverified_claim_rate": round(1 / total_claims, 4),
+        "error_amplification_without_controls": potential_downstream_executions / originating_errors,
+        "time_to_detect_minutes": 1,
+        "time_to_contain_minutes": 4,
+        "automation_blast_radius": {
+            "unit": "potential_recipients",
+            "without_controls": potential_downstream_executions,
+            "with_controls_actual": 0,
+        },
+        "denominators": {
+            "eligible_actions": eligible_actions,
+            "proposed_actions": proposed_actions,
+            "claims": total_claims,
+            "originating_errors": originating_errors,
+        },
+    }
+
+    return {
+        "company": company,
+        "principle": "AI CAN EXECUTE. AI CANNOT OWN ACCOUNTABILITY.",
+        "generated_claim": generated_claim,
+        "controls": {
+            "detection": {"triggered": bool(detected_terms), "terms": detected_terms},
+            "confidence_threshold": {
+                "passed": confidence_threshold_passed,
+                "authorizes_publication": False,
+                "lesson": "confidence is not evidence",
+            },
+            "grounding": {"passed": grounded, "registry": approved_claims},
+            "source_verification": {"passed": source_verified},
+            "policy_validation": {
+                "level": autonomy_level,
+                "passed": not policy_reasons,
+                "reasons": policy_reasons,
+            },
+            "human_escalation": {"required": True, **human_verdict},
+            "circuit_breaker": {"state": "open", "scope": "all_outbound_marketing"},
+            "kill_switch": {
+                "available": True,
+                "activated": False,
+                "authority": "responsible_operations_owner",
+            },
+            "rollback": {"completed": True, "revoked_staged_artifacts": 4},
+        },
+        "release_decision": "blocked_before_external_effect",
+        "audit_trail": audit_trail,
+        "incident_reconstruction": {
+            "first_divergence": "unsupported_medical_claim_generated",
+            "root_cause": "free-form generation without a required source contract",
+            "amplifiers": ["four outbound channels", "1,200 potential recipients", "high model confidence"],
+            "containment": "policy gate + human rejection + circuit breaker + rollback",
+            "regression_case": "C-003 must remain blocked for every channel and affiliate",
+        },
+        "accountability": {
+            "owner": "responsible_operations_owner",
+            "ai_can_own_accountability": False,
+            "third_party_execution_transfers_accountability": False,
+        },
+        "metrics": metrics,
+    }
+
+
 def _capstone(seed: int) -> dict[str, Any]:
     retrieval = _retrieval(seed)["result"]
     safety = _safety(seed)["result"]
     agent = _agent(seed)["result"]
+    incident = _ai_native_incident(seed)
     return _base(
         "capstone",
         seed,
-        {"retrieval": retrieval, "agent": agent, "safety": safety, "release_gate": "human_review_required"},
-        ["Integra recuperación, agente y política.", "El gate final exige revisión humana."],
-        ["Es una integración didáctica local.", "No existe persistencia, autenticación ni SLO."],
+        {
+            "retrieval": retrieval,
+            "agent": agent,
+            "safety": safety,
+            "ai_native_incident": incident,
+            "release_gate": "human_review_required",
+        },
+        [
+            "Integra recuperación, agente y política.",
+            "El gate final exige revisión humana.",
+            "El claim ficticio queda bloqueado antes de alcanzar clientes y deja un audit trail reproducible.",
+        ],
+        [
+            "Es una integración didáctica local con compañía y productos ficticios.",
+            "No existe persistencia, autenticación, farmacia, campaña real ni SLO.",
+        ],
     )
 
 
