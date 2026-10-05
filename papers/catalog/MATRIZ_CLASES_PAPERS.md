@@ -3,7 +3,7 @@
 > Generado por `python scripts/generate_papers.py`. No editar a mano.
 > La fuente es el campo `clases_del_programa` de [`papers.json`](papers.json).
 
-**148 papers** · **171 clases enlazadas** de 183 · **251 enlaces** · cada enlace se escribe en las dos direcciones y CI falla si alguna se desincroniza.
+**148 papers** · **171 clases enlazadas** de 184 · **251 enlaces** · cada enlace se escribe en las dos direcciones y CI falla si alguna se desincroniza.
 
 ## 📜 De paper a clase
 
@@ -352,7 +352,7 @@
 | 11 · IA encarnada, robótica y uso de computadores | 12 `████████████` | 12 |
 | 12 · Ingeniería de IA, MLOps, LLMOps y AgentOps | 12 `████████████` | 12 |
 | 13 · Evaluación, seguridad y gobernanza | 11 `███████████·` | 12 |
-| 14 · Frontera, investigación y proyectos integradores | 10 `██████████··` | 12 |
+| 14 · Frontera, investigación y proyectos integradores | 10 `██████████···` | 13 |
 
 > [!NOTE]
 > Las partes con menos cobertura —MLOps, robótica, generativa por medios— lo están porque

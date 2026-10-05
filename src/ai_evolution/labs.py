@@ -1,5 +1,5 @@
 
-"""Motores didácticos deterministas para las 183 clases.
+"""Motores didácticos deterministas para las 184 clases.
 
 Cada motor enseña un contrato o patrón pequeño. No pretende sustituir frameworks
 industriales ni entrenamientos a gran escala.
@@ -570,6 +570,83 @@ def _frontier(seed: int) -> dict[str, Any]:
     )
 
 
+def _confidential_inference(seed: int) -> dict[str, Any]:
+    """Verifica una política de attestation sin fingir que ejecuta un TEE real."""
+    trusted_measurement = hashlib.sha256(
+        b"runtime=inference-v1;debug=false;model=approved-model-v3"
+    ).hexdigest()
+    policy = {
+        "trusted_measurements": [trusted_measurement],
+        "allowed_regions": ["cl-santiago-1"],
+        "require_debug_disabled": True,
+        "require_zero_retention": True,
+    }
+    requests = [
+        {
+            "id": "R1",
+            "region": "cl-santiago-1",
+            "measurement": trusted_measurement,
+            "debug": False,
+            "zero_retention": True,
+        },
+        {
+            "id": "R2",
+            "region": "cl-santiago-1",
+            "measurement": hashlib.sha256(b"runtime=unknown-debug-image").hexdigest(),
+            "debug": True,
+            "zero_retention": True,
+        },
+    ]
+    decisions = []
+    for request in requests:
+        reasons = []
+        if request["measurement"] not in policy["trusted_measurements"]:
+            reasons.append("untrusted_runtime_measurement")
+        if request["region"] not in policy["allowed_regions"]:
+            reasons.append("region_not_allowed")
+        if policy["require_debug_disabled"] and request["debug"]:
+            reasons.append("debug_mode_enabled")
+        if policy["require_zero_retention"] and not request["zero_retention"]:
+            reasons.append("retention_policy_failed")
+        decisions.append(
+            {
+                **request,
+                "attestation_verified": not reasons,
+                "key_release": "allow" if not reasons else "deny",
+                "reasons": reasons,
+            }
+        )
+    return _base(
+        "confidential_inference",
+        seed,
+        {
+            "policy": policy,
+            "decisions": decisions,
+            "release_decision": "allow_only_verified_attestation",
+            "guarantees": [
+                "runtime identity checked before key release",
+                "data-in-use boundary represented explicitly",
+                "retention and region checked independently",
+            ],
+            "out_of_scope": [
+                "side-channel resistance",
+                "model output privacy",
+                "provider hardware trust",
+                "real remote attestation",
+            ],
+        },
+        [
+            "La solicitud R1 libera la clave solo después de satisfacer cuatro controles independientes.",
+            "La solicitud R2 se bloquea por measurement desconocido y modo debug.",
+            "El resultado separa garantías declaradas de propiedades fuera de alcance.",
+        ],
+        [
+            "La evidencia de attestation es simulada; no se contacta hardware ni un verificador remoto.",
+            "Un TEE reduce el operador de confianza, pero no prueba corrección del modelo ni elimina side channels.",
+        ],
+    )
+
+
 def _ai_native_incident(seed: int) -> dict[str, Any]:
     """Incidente ficticio: un claim de alta confianza no adquiere autoridad por repetirse."""
     company = {
@@ -746,6 +823,7 @@ RUNNERS: dict[str, Callable[[int], dict[str, Any]]] = {
     "governance": _governance,
     "safety": _safety,
     "frontier": _frontier,
+    "confidential_inference": _confidential_inference,
     "capstone": _capstone,
 }
 

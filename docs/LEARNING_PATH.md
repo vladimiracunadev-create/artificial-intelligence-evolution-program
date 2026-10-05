@@ -7,7 +7,7 @@ flowchart TD
     Q -->|"Construir agentes"| AG["🤖 Ruta para agentes<br/>00 · 01 · 06 · 08 · 09<br/>10 · 12 · 13 · capstone"]
     Q -->|"Entrenar y servir modelos"| MOD["⚙️ Ruta de ingeniería de modelos<br/>00 · 03 · 04 · 05 · 06<br/>07 · 12 · 13"]
     Q -->|"Producto y gobernanza"| PROD["📦 Ruta de producto<br/>00 · 03 · 06 · 09<br/>12 · 13 + proyectos"]
-    FULL --> CAP(["🏁 Capstone 183"])
+    FULL --> CAP(["🏁 Capstone 184"])
     AG --> CAP
     MOD --> SPEC(["🔗 Especializaciones<br/>conectadas"])
     PROD --> CAP
@@ -30,7 +30,8 @@ por semana, incluyendo proyectos.
 6. Parte 10 completa.
 7. Parte 12: observabilidad, AgentOps, costos y resiliencia.
 8. Parte 13: seguridad, evals y gobernanza.
-9. Capstone 183.
+9. Clase 183: inferencia privada, computación confidencial y attestation.
+10. Capstone 184.
 
 ## ⚙️ Ruta para ingeniería de modelos
 

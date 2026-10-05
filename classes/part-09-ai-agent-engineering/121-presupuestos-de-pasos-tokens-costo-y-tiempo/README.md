@@ -90,6 +90,14 @@ el backoff exponencial acota el tiempo total: `t_total ≤ Σ t_i · 2^(k-1)` pa
 reintentos. Regla: el número de reintentos y su costo forman parte del presupuesto de
 la sub-tarea, no son "gratis" por ser fallos.
 
+### 📅 Presupuestos para trabajo continuo
+
+En un agente programado, el límite por ejecución no basta: cien despertares «baratos» pueden
+acumular un coste o impacto grande. El contrato añade presupuesto por ventana temporal, máximo de
+wakeups, edad máxima del objetivo, número de efectos externos, deadline y latencia de cancelación.
+Cada reanudación debe comprobar política y credenciales de nuevo; si el presupuesto, el mandato o
+la evidencia expiraron, el agente pausa y escala en vez de reutilizar una autorización histórica.
+
 ## 🧮 Ejemplo trabajado
 
 Presupuesto a mano para un agente que revisa un pull request (plan de 3 sub-tareas),
@@ -178,7 +186,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("observability")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

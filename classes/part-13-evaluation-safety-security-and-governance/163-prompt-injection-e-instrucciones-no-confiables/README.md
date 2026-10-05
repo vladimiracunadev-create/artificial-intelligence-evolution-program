@@ -103,6 +103,18 @@ user > contenido) para resistir la anulación. Ayuda, pero no es garantía: es u
 probabilística del propio modelo, exactamente la capa que un atacante intenta romper. Por eso
 nunca se apoya la seguridad *solo* en que el modelo "obedezca su jerarquía".
 
+### 🔁 Artefactos de razonamiento como entrada no confiable
+
+Los resúmenes, blobs de razonamiento, estados compactados y salidas de otro modelo también son datos
+externos. Reproducirlos en otra conversación o pedir a un modelo que «descifre» contenido oculto puede
+convertir un artefacto portable en canal de extracción. Nunca se promociona automáticamente un blob
+opaco a instrucción privilegiada: se valida origen, audiencia, integridad, expiración y necesidad.
+
+Un informe de OpenAI de septiembre de 2026 describe intentos coordinados de extraer razonamiento
+protegido mediante interacciones entre conversaciones y compaction. Las cifras publicadas corresponden
+a intentos observados, no necesariamente exitosos; se usa como caso de amenaza reportado por el
+proveedor y no como medición independiente de toda la industria.
+
 ## 🧮 Ejemplo trabajado
 
 Asistente que resume correos y puede reenviarlos (tiene tool `send_email`).
@@ -173,7 +185,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -223,6 +235,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- [OpenAI (2026), *Disrupting a coordinated model-distillation campaign*](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/) — uso: informe primario del proveedor sobre extracción de razonamiento y replay entre contextos
 
 - [Greshake et al. (2023), *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*, arXiv:2302.12173](https://arxiv.org/abs/2302.12173) — uso: fuente primaria del mecanismo estudiado
 - [OWASP Top 10 for LLM Applications — LLM01: Prompt Injection](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia

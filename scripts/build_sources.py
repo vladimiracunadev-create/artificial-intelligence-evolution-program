@@ -1,6 +1,6 @@
 """Construye `sources/bibliography.json` a partir de lo que las clases citan.
 
-Es determinista y offline: agrupa las citas de las 183 clases en entradas,
+Es determinista y offline: agrupa las citas de las 184 clases en entradas,
 deriva el localizador cuando la propia cita lo contiene (DOI, arXiv, URL) y
 deja pendiente todo lo que no se puede derivar sin inventar.
 

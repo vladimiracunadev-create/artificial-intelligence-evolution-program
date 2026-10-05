@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_on": "2026-08-19",
+  "verified_on": "2026-10-05",
   "policy": "Toda afirmación del programa se apoya en una entrada de este registro. Ninguna entrada se acepta sin localizador verificable. Lo que no resuelve se marca pendiente con motivo; no se borra ni se completa por intuición.",
   "includes": [
     {
@@ -439,7 +439,7 @@
       "uses": 2,
       "citation": "Pearl, J. (1984). *Heuristics: Intelligent Search Strategies for Computer Problem Solving*. Addison-Wesley — análisis formal de A* y sus variantes.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary-search",
         "ok": false,
         "http_status": 200,
@@ -684,7 +684,7 @@
       "uses": 6,
       "citation": "Huyen — *Designing Machine Learning Systems* (O'Reilly, 2022): <https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/>",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary",
         "ok": false,
         "http_status": 404,
@@ -1004,7 +1004,7 @@
       "uses": 1,
       "citation": "Jaynes, E. T. (2003). *Probability Theory: The Logic of Science*. Cambridge University Press.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary-search",
         "ok": false,
         "http_status": 200,
@@ -1074,7 +1074,7 @@
         "classes/part-11-embodied-ai-robotics-and-computer-use/136-arquitectura-percepcion-planificacion-accion/README.md",
         "classes/part-11-embodied-ai-robotics-and-computer-use/139-planificacion-de-movimiento-y-navegacion/README.md",
         "classes/part-14-frontier-research-and-capstones/172-ia-neuro-simbolica/README.md",
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 39,
       "citation": "[Russell, S. & Norvig, P. AIMA 4e — cap. 26, Robotics](https://aima.cs.berkeley.edu/)",
@@ -1169,7 +1169,7 @@
       "uses": 1,
       "citation": "Bonabeau, E., Dorigo, M. & Theraulaz, G. (1999). *Swarm Intelligence: From Natural to Artificial Systems*. Oxford University Press.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary-search",
         "ok": false,
         "http_status": 200,
@@ -1205,7 +1205,7 @@
       "uses": 4,
       "citation": "Szeliski, R. *Computer Vision: Algorithms and Applications* (2e) — [szeliski.org/Book](http://szeliski.org/Book/)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary-search",
         "ok": false,
         "http_status": 200,
@@ -1385,7 +1385,7 @@
       "uses": 1,
       "citation": "Warden, P. y Situnayake, D. (2019). *TinyML: Machine Learning with TensorFlow Lite on Arduino and Ultra-Low-Power Microcontrollers*. O'Reilly.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "openlibrary-search",
         "ok": false,
         "http_status": 200,
@@ -11674,7 +11674,7 @@
         "the ml test score: a rubric for ml production readiness"
       ],
       "used_in": [
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 1,
       "citation": "Breck, E. et al. (2017). *The ML Test Score: A Rubric for ML Production Readiness*. IEEE Big Data 2017. [DOI 10.1109/BigData.2017.8258038](https://doi.org/10.1109/BigData.2017.8258038)",
@@ -11843,7 +11843,7 @@
         "software engineering for machine learning: a case study"
       ],
       "used_in": [
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 1,
       "citation": "Amershi, S. et al. (2019). *Software Engineering for Machine Learning: A Case Study*. ICSE-SEIP 2019. [DOI 10.1109/ICSE-SEIP.2019.00042](https://doi.org/10.1109/ICSE-SEIP.2019.00042)",
@@ -14438,7 +14438,7 @@
         "ai risk management framework 1.0"
       ],
       "used_in": [
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 1,
       "citation": "NIST (2023). *AI Risk Management Framework 1.0* — funciones Govern, Map, Measure, Manage. [DOI 10.6028/NIST.AI.100-1](https://doi.org/10.6028/NIST.AI.100-1)",
@@ -14478,7 +14478,7 @@
       "uses": 1,
       "citation": "Kowalski, R. (1974). \"Predicate Logic as Programming Language\". *IFIP Congress* — el puente entre FOL y Prolog.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14507,7 +14507,7 @@
       "uses": 1,
       "citation": "Cormen, T. H. et al. (2022). *Introduction to Algorithms* (4.ª ed.), cap. 20 \"Elementary Graph Algorithms\" — BFS/DFS con análisis formal.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14537,7 +14537,7 @@
       "uses": 1,
       "citation": "Srivastava, N. et al. (2014). *Dropout: A Simple Way to Prevent Neural Networks from Overfitting*. JMLR 15. [jmlr.org/papers/v15/srivastava14a.html](https://jmlr.org/papers/v15/srivastava14a.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14567,7 +14567,7 @@
       "uses": 1,
       "citation": "[Pineau et al. (2021), \"Improving Reproducibility in Machine Learning Research\", JMLR 22 (texto oficial)](https://jmlr.org/papers/v22/20-303.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14598,7 +14598,7 @@
       "uses": 1,
       "citation": "[Guyon & Elisseeff (2003), \"An Introduction to Variable and Feature Selection\", JMLR 3 (texto completo oficial)](https://www.jmlr.org/papers/v3/guyon03a.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14630,7 +14630,7 @@
       "uses": 1,
       "citation": "[Bellman, R. (1957) — \"A Markovian Decision Process\", *Journal of Mathematics and Mechanics*](https://www.jstor.org/stable/24900506)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14660,7 +14660,7 @@
       "uses": 1,
       "citation": "LeCun, Y. (2022). *A Path Towards Autonomous Machine Intelligence*. [OpenReview](https://openreview.net/forum?id=BZ5a1r-kVsf)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14688,7 +14688,7 @@
       "uses": 1,
       "citation": "Krizhevsky, A., Sutskever, I. y Hinton, G. (2012). \"ImageNet Classification with Deep Convolutional Neural Networks\" (AlexNet) — [NeurIPS 2012](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14721,12 +14721,12 @@
         "classes/part-12-ai-engineering-mlops-llmops-and-agentops/149-experimentos-semillas-y-trazabilidad/README.md",
         "classes/part-12-ai-engineering-mlops-llmops-and-agentops/159-proyecto-plataforma-de-ia-observable/README.md",
         "classes/part-14-frontier-research-and-capstones/182-como-vigilar-la-frontera-sin-perseguir-modas/README.md",
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 6,
       "citation": "Sculley et al. (2015) — *Hidden Technical Debt in Machine Learning Systems*, NeurIPS 28: <https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html>",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14754,7 +14754,7 @@
       "uses": 1,
       "citation": "Shannon, C. E. (1950). \"Programming a Computer for Playing Chess\". *Philosophical Magazine*, 41(314) — el paper fundacional del ajedrez computacional.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14784,7 +14784,7 @@
       "uses": 1,
       "citation": "Glorot, X. y Bengio, Y. (2010). *Understanding the difficulty of training deep feedforward neural networks*. AISTATS. [proceedings.mlr.press/v9/glorot10a.html](https://proceedings.mlr.press/v9/glorot10a.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14814,7 +14814,7 @@
       "uses": 1,
       "citation": "[Pomerleau, D. (1988). ALVINN: An Autonomous Land Vehicle in a Neural Network. NeurIPS — el BC seminal de conducción](https://proceedings.neurips.cc/paper/1988/hash/812b4ba287f5ee0bc9d43bbf5bbe87fb-Abstract.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -14842,7 +14842,7 @@
       "uses": 1,
       "citation": "Moore, E. F. (1959). \"The shortest path through a maze\". *Proceedings of the International Symposium on the Theory of Switching* — origen de BFS para caminos mínimos.",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "ninguno",
         "ok": false,
         "detail": "artículo sin DOI localizado"
@@ -15094,7 +15094,7 @@
       "uses": 1,
       "citation": "AMD, *Instinct MI300X*: <https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html>",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 0,
@@ -15354,6 +15354,38 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "anthropic-com-research-automated-researchers-mitigate-alignment-failur",
+      "type": "reference",
+      "authors": [],
+      "title": "anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "published": "2026",
+      "authority": "Anthropic",
+      "locator": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "anthropic.com/research/automated-researchers-mitigate-alignment-failures"
+      ],
+      "aliases": [
+        "automated researchers can reliably mitigate alignment failures"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md"
+      ],
+      "uses": 1,
+      "citation": "Anthropic (2026). *Automated researchers can reliably mitigate alignment failures*. [anthropic.com/research/automated-researchers-mitigate-alignment-failures](https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures)",
+      "checked": {
+        "last_check": "2026-09-22",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-09-22"
+    },
+    {
       "id": "anthropic-com-research-building-effective-agents",
       "type": "reference",
       "authors": [],
@@ -15382,6 +15414,73 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "anthropic-com-research-global-workspace",
+      "type": "reference",
+      "authors": [],
+      "title": "anthropic.com/research/global-workspace",
+      "published": "2026",
+      "authority": "Anthropic",
+      "locator": "https://www.anthropic.com/research/global-workspace",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "anthropic.com/research/global-workspace"
+      ],
+      "aliases": [
+        "a global workspace in language models"
+      ],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md"
+      ],
+      "uses": 1,
+      "citation": "Anthropic (2026). *A global workspace in language models*. [anthropic.com/research/global-workspace](https://www.anthropic.com/research/global-workspace)",
+      "checked": {
+        "last_check": "2026-09-22",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-09-22"
+    },
+    {
+      "id": "anthropic-com-research-project-swap",
+      "type": "reference",
+      "authors": [
+        "Anthropic"
+      ],
+      "title": "Project Swap: What happens when agents trade for us?",
+      "published": "2026",
+      "authority": "Anthropic",
+      "locator": "https://www.anthropic.com/research/project-swap",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "anthropic.com/research/project-swap"
+      ],
+      "aliases": [
+        "project swap: what happens when agents trade for us?"
+      ],
+      "used_in": [
+        "classes/part-09-ai-agent-engineering/120-human-in-the-loop-y-aprobaciones/README.md",
+        "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md"
+      ],
+      "uses": 2,
+      "citation": "[Anthropic (2026), *Project Swap: What happens when agents trade for us?*](https://www.anthropic.com/research/project-swap)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "archive-ics-uci-edu-dataset-240-human-activity-recognition-using-smart",
@@ -15612,8 +15711,7 @@
       "authority": "blog.modelcontextprotocol.io",
       "locator": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
       "volatile": false,
-      "status": "pendiente",
-      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "status": "verificada",
       "container": null,
       "url_keys": [
         "blog.modelcontextprotocol.io/posts/2026-07-28"
@@ -15623,7 +15721,16 @@
         "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
       ],
       "uses": 1,
-      "citation": "[MCP — revisión 2026-07-28](https://blog.modelcontextprotocol.io/posts/2026-07-28/): cambios incompatibles, migración y SDKs Tier 1."
+      "citation": "[MCP — revisión 2026-07-28](https://blog.modelcontextprotocol.io/posts/2026-07-28/): cambios incompatibles, migración y SDKs Tier 1.",
+      "checked": {
+        "last_check": "2026-09-22",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "The 2026-07-28 Specification | Model Context Protocol Blog",
+        "detail": ""
+      },
+      "accessed": "2026-09-22"
     },
     {
       "id": "cambridge-org-core-books-trustworthy-online-controlled-experiments-d97",
@@ -16062,6 +16169,38 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "confidentialcomputing-io-about",
+      "type": "reference",
+      "authors": [],
+      "title": "About Confidential Computing",
+      "published": null,
+      "authority": "confidentialcomputing.io",
+      "locator": "https://confidentialcomputing.io/about/",
+      "volatile": false,
+      "status": "pendiente",
+      "pending_reason": "la URL de la fuente primaria no responde: HTTP 404",
+      "container": null,
+      "url_keys": [
+        "confidentialcomputing.io/about"
+      ],
+      "aliases": [
+        "about confidential computing"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md"
+      ],
+      "uses": 1,
+      "citation": "[Confidential Computing Consortium, *About Confidential Computing*](https://confidentialcomputing.io/about/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": false,
+        "http_status": 404,
+        "page_title": "",
+        "detail": "HTTP 404"
+      }
+    },
+    {
       "id": "contentcredentials-org",
       "type": "reference",
       "authors": [],
@@ -16214,6 +16353,40 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "deepmind-google-blog-advancing-private-ai-compute-with-secure-server-s",
+      "type": "reference",
+      "authors": [
+        "Google DeepMind"
+      ],
+      "title": "Advancing Private AI Compute with secure, server-side memory",
+      "published": "2026",
+      "authority": "Google DeepMind",
+      "locator": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory"
+      ],
+      "aliases": [
+        "advancing private ai compute with secure, server-side memory"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md"
+      ],
+      "uses": 1,
+      "citation": "[Google DeepMind (2026), *Advancing Private AI Compute with secure, server-side memory*](https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "Advancing Private AI Compute with secure, server-side memory — Google DeepMind",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "developers-google-com-machine-learning-guides-rules-of-ml",
@@ -17061,8 +17234,7 @@
       "authority": "dspace.mit.edu",
       "locator": "https://dspace.mit.edu/handle/1721.1/6089",
       "volatile": false,
-      "status": "pendiente",
-      "pending_reason": "la URL de la fuente primaria no responde: HTTP 405",
+      "status": "verificada",
       "container": null,
       "url_keys": [
         "dspace.mit.edu/handle/1721.1/6089"
@@ -17074,13 +17246,14 @@
       "uses": 1,
       "citation": "Minsky, M. (1974). \"A Framework for Representing Knowledge\". MIT AI Memo 306. [https://dspace.mit.edu/handle/1721.1/6089](https://dspace.mit.edu/handle/1721.1/6089)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-09-22",
         "method": "http",
-        "ok": false,
-        "http_status": 405,
-        "page_title": "",
-        "detail": "HTTP 405"
-      }
+        "ok": true,
+        "http_status": 200,
+        "page_title": "A Framework for Representing Knowledge",
+        "detail": ""
+      },
+      "accessed": "2026-09-22"
     },
     {
       "id": "dvc-org-doc",
@@ -18109,7 +18282,7 @@
       "uses": 3,
       "citation": "[McCarthy, Minsky, Rochester & Shannon (1955). Propuesta de Dartmouth (documento original)](http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 0,
@@ -18139,7 +18312,7 @@
       "uses": 1,
       "citation": "[McCarthy, J. What is Artificial Intelligence?](http://jmc.stanford.edu/artificial-intelligence/what-is-ai/index.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 0,
@@ -18959,6 +19132,77 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "openai-com-index-devday-2026-recap",
+      "type": "reference",
+      "authors": [
+        "OpenAI"
+      ],
+      "title": "DevDay 2026 Recap",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/devday-2026-recap/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/devday-2026-recap"
+      ],
+      "aliases": [
+        "devday 2026 recap"
+      ],
+      "used_in": [
+        "classes/part-09-ai-agent-engineering/118-memoria-contexto-y-continuidad/README.md",
+        "classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md"
+      ],
+      "uses": 2,
+      "citation": "[OpenAI (2026), *DevDay 2026 Recap*](https://openai.com/index/devday-2026-recap/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": "openai-com-index-disrupting-a-coordinated-model-distillation-campaign",
+      "type": "reference",
+      "authors": [
+        "OpenAI"
+      ],
+      "title": "Disrupting a coordinated model-distillation campaign",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/",
+      "volatile": true,
+      "status": "pendiente",
+      "pending_reason": "el servidor rechaza clientes automatizados (HTTP 403): el recurso no se puede comprobar desde aquí",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/disrupting-a-coordinated-model-distillation-campaign"
+      ],
+      "aliases": [
+        "disrupting a coordinated model-distillation campaign"
+      ],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/163-prompt-injection-e-instrucciones-no-confiables/README.md",
+        "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md",
+        "classes/part-13-evaluation-safety-security-and-governance/165-privacidad-secretos-y-minimizacion-de-datos/README.md"
+      ],
+      "uses": 3,
+      "citation": "[OpenAI (2026), *Disrupting a coordinated model-distillation campaign*](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": false,
+        "http_status": 403,
+        "page_title": "",
+        "detail": "HTTP 403"
+      }
+    },
+    {
       "id": "openai-com-index-harness-engineering",
       "type": "reference",
       "authors": [
@@ -19025,6 +19269,134 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "openai-com-index-model-misalignment-reporting-framework",
+      "type": "reference",
+      "authors": [],
+      "title": "openai.com/index/model-misalignment-reporting-framework",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/model-misalignment-reporting-framework/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/model-misalignment-reporting-framework"
+      ],
+      "aliases": [
+        "our framework for reporting model misalignment"
+      ],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia/README.md"
+      ],
+      "uses": 1,
+      "citation": "OpenAI (2026). *Our framework for reporting model misalignment*. [openai.com/index/model-misalignment-reporting-framework](https://openai.com/index/model-misalignment-reporting-framework/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": "openai-com-index-navier-stokes-solution",
+      "type": "reference",
+      "authors": [],
+      "title": "openai.com/index/navier-stokes-solution",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/navier-stokes-solution/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/navier-stokes-solution"
+      ],
+      "aliases": [
+        "on the navier–stokes millennium prize problem"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md"
+      ],
+      "uses": 1,
+      "citation": "OpenAI (2026). *On the Navier–Stokes Millennium Prize Problem*. [openai.com/index/navier-stokes-solution](https://openai.com/index/navier-stokes-solution/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": "openai-com-index-reasoning-models-chain-of-thought-controllability",
+      "type": "reference",
+      "authors": [],
+      "title": "openai.com/index/reasoning-models-chain-of-thought-controllability",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/reasoning-models-chain-of-thought-controllability/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/reasoning-models-chain-of-thought-controllability"
+      ],
+      "aliases": [
+        "reasoning models struggle to control their chains of thought, and that's good"
+      ],
+      "used_in": [
+        "classes/part-13-evaluation-safety-security-and-governance/167-explicabilidad-incertidumbre-y-calibracion/README.md"
+      ],
+      "uses": 1,
+      "citation": "OpenAI (2026). *Reasoning models struggle to control their chains of thought, and that's good*. [openai.com/index/reasoning-models-chain-of-thought-controllability](https://openai.com/index/reasoning-models-chain-of-thought-controllability/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": "openai-com-index-research-acceleration-view-inside-openai",
+      "type": "reference",
+      "authors": [],
+      "title": "openai.com/index/research-acceleration-view-inside-openai",
+      "published": "2026",
+      "authority": "OpenAI",
+      "locator": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "volatile": true,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "openai.com/index/research-acceleration-view-inside-openai"
+      ],
+      "aliases": [
+        "research acceleration: the view inside openai"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/178-ia-para-programacion-y-modernizacion/README.md"
+      ],
+      "uses": 1,
+      "citation": "OpenAI (2026). *Research acceleration: The view inside OpenAI*. [openai.com/index/research-acceleration-view-inside-openai](https://openai.com/index/research-acceleration-view-inside-openai/)",
+      "checked": {
+        "last_check": "2026-09-22",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-09-22"
     },
     {
       "id": "openai-github-io-openai-agents-python-handoffs",
@@ -19110,7 +19482,7 @@
       "uses": 1,
       "citation": "Feathers, M. (2004). *Working Effectively with Legacy Code*. Prentice Hall. [Ficha editorial](https://www.oreilly.com/library/view/working-effectively-with/0131177052/)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21211,6 +21583,40 @@
       "accessed": "2026-08-19"
     },
     {
+      "id": "a2a-protocol-org-latest-roadmap",
+      "type": "standard",
+      "authors": [
+        "A2A Project"
+      ],
+      "title": "A2A protocol roadmap",
+      "published": "2026",
+      "authority": "A2A Protocol",
+      "locator": "https://a2a-protocol.org/latest/roadmap/",
+      "volatile": false,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "a2a-protocol.org/latest/roadmap"
+      ],
+      "aliases": [
+        "a2a protocol roadmap"
+      ],
+      "used_in": [
+        "classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad/README.md"
+      ],
+      "uses": 1,
+      "citation": "[A2A Project (2026), *A2A protocol roadmap*](https://a2a-protocol.org/latest/roadmap/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "Roadmap - A2A Protocol",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
       "id": "c2pa-org-specifications-specifications-2-2-index-html",
       "type": "standard",
       "authors": [],
@@ -21270,7 +21676,7 @@
       "uses": 1,
       "citation": "[CISA & NCSC (2023), *Guidelines for Secure AI System Development*](https://www.cisa.gov/resources-tools/resources/guidelines-secure-ai-system-development)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21300,7 +21706,7 @@
       "uses": 1,
       "citation": "[NIST SP 800-218 / SBOM (formatos SPDX y CycloneDX)](https://www.cisa.gov/sbom)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21340,6 +21746,41 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "digital-strategy-ec-europa-eu-en-news-commission-publishes-code-practi",
+      "type": "standard",
+      "authors": [
+        "Comisión Europea"
+      ],
+      "title": "Code of Practice on marking and labelling of AI-generated content",
+      "published": "2026",
+      "authority": "digital-strategy.ec.europa.eu",
+      "locator": "https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content",
+      "volatile": false,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content"
+      ],
+      "aliases": [
+        "code of practice on marking and labelling of ai-generated content"
+      ],
+      "used_in": [
+        "classes/part-07-generative-ai-across-media/098-procedencia-marcas-y-autenticidad/README.md",
+        "classes/part-13-evaluation-safety-security-and-governance/170-normativa-auditoria-y-evidencia/README.md"
+      ],
+      "uses": 2,
+      "citation": "[Comisión Europea (2026), *Code of Practice on marking and labelling of AI-generated content*](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "digital-strategy-ec-europa-eu-en-policies-regulatory-framework-ai",
@@ -21445,7 +21886,7 @@
       "locator": "https://genai.owasp.org/agentic-top-10/",
       "volatile": false,
       "status": "pendiente",
-      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "pending_reason": "la URL de la fuente primaria no responde: HTTP 404",
       "container": null,
       "url_keys": [
         "genai.owasp.org/agentic-top-10"
@@ -21455,7 +21896,15 @@
         "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md"
       ],
       "uses": 1,
-      "citation": "[OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/)"
+      "citation": "[OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": false,
+        "http_status": 404,
+        "page_title": "",
+        "detail": "HTTP 404"
+      }
     },
     {
       "id": "genai-owasp-org-llmrisk-llm01-prompt-injection",
@@ -21496,8 +21945,7 @@
       "authority": "Open Worldwide Application Security Project (OWASP)",
       "locator": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
       "volatile": false,
-      "status": "pendiente",
-      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "status": "verificada",
       "container": null,
       "url_keys": [
         "genai.owasp.org/resource/owasp-genai-llm-top-10-2026"
@@ -21507,7 +21955,16 @@
         "classes/part-13-evaluation-safety-security-and-governance/164-seguridad-de-tools-mcp-y-supply-chain/README.md"
       ],
       "uses": 1,
-      "citation": "[OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)"
+      "citation": "[OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "iso-org-standard-51528-html",
@@ -21564,7 +22021,7 @@
       "uses": 2,
       "citation": "[ISO/TS 15066:2016 — Robots and robotic devices: Collaborative robots (página oficial ISO)](https://www.iso.org/standard/62996.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21594,7 +22051,7 @@
       "uses": 1,
       "citation": "[ISO 31000:2018 — Gestión del riesgo (principios y directrices)](https://www.iso.org/standard/65694.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21624,7 +22081,7 @@
       "uses": 1,
       "citation": "[ISO 10218-1:2025 — Robotics: Safety requirements, Part 1 (página oficial ISO)](https://www.iso.org/standard/73933.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21655,7 +22112,7 @@
       "uses": 1,
       "citation": "[ISO/IEC 23894:2023 — Gestión del riesgo de la IA](https://www.iso.org/standard/77304.html)",
       "checked": {
-        "last_check": "2026-08-19",
+        "last_check": "2026-10-05",
         "method": "http",
         "ok": false,
         "http_status": 403,
@@ -21755,7 +22212,7 @@
         "classes/part-10-multi-agent-systems-and-interoperability/134-a2a-descubrimiento-e-interoperabilidad/README.md",
         "classes/part-10-multi-agent-systems-and-interoperability/135-proyecto-sistema-multiagente-durable/README.md",
         "classes/part-12-ai-engineering-mlops-llmops-and-agentops/156-agentops-y-analisis-de-trayectorias/README.md",
-        "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md"
+        "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo/README.md"
       ],
       "uses": 12,
       "citation": "[Model Context Protocol](https://modelcontextprotocol.io/): el eje complementario agente↔herramientas.",
@@ -21841,8 +22298,7 @@
       "authority": "Model Context Protocol",
       "locator": "https://modelcontextprotocol.io/specification/2026-07-28",
       "volatile": false,
-      "status": "pendiente",
-      "pending_reason": "URL tomada de la cita; falta comprobar que responde",
+      "status": "verificada",
       "container": null,
       "url_keys": [
         "modelcontextprotocol.io/specification/2026-07-28"
@@ -21852,7 +22308,49 @@
         "classes/part-10-multi-agent-systems-and-interoperability/132-mcp-tools-resources-y-prompts/README.md"
       ],
       "uses": 1,
-      "citation": "[MCP — especificación (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28): núcleo stateless, primitivas, extensiones y requisitos de seguridad."
+      "citation": "[MCP — especificación (2026-07-28)](https://modelcontextprotocol.io/specification/2026-07-28): núcleo stateless, primitivas, extensiones y requisitos de seguridad.",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": "nist-gov-artificial-intelligence-ai-agent-standards-initiative",
+      "type": "standard",
+      "authors": [],
+      "title": "AI Agent Standards Initiative",
+      "published": "2026",
+      "authority": "National Institute of Standards and Technology (NIST)",
+      "locator": "https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative",
+      "volatile": false,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "nist.gov/artificial-intelligence/ai-agent-standards-initiative"
+      ],
+      "aliases": [
+        "ai agent standards initiative"
+      ],
+      "used_in": [
+        "classes/part-09-ai-agent-engineering/119-permisos-sandbox-y-minimo-privilegio/README.md",
+        "classes/part-10-multi-agent-systems-and-interoperability/131-contratos-de-roles-capacidades-y-resultados/README.md"
+      ],
+      "uses": 2,
+      "citation": "[NIST (2026), *AI Agent Standards Initiative*](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "nist-gov-cyberframework",
@@ -22136,6 +22634,38 @@
         "detail": ""
       },
       "accessed": "2026-08-19"
+    },
+    {
+      "id": "rfc-editor-org-rfc-rfc9334-html",
+      "type": "standard",
+      "authors": [],
+      "title": "Remote ATtestation procedureS (RATS) Architecture",
+      "published": null,
+      "authority": "RFC Editor",
+      "locator": "https://www.rfc-editor.org/rfc/rfc9334.html",
+      "volatile": false,
+      "status": "verificada",
+      "container": null,
+      "url_keys": [
+        "rfc-editor.org/rfc/rfc9334.html"
+      ],
+      "aliases": [
+        "remote attestation procedures (rats) architecture"
+      ],
+      "used_in": [
+        "classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md"
+      ],
+      "uses": 1,
+      "citation": "[IETF RFC 9334, *Remote ATtestation procedureS (RATS) Architecture*](https://www.rfc-editor.org/rfc/rfc9334.html)",
+      "checked": {
+        "last_check": "2026-10-05",
+        "method": "http",
+        "ok": true,
+        "http_status": 200,
+        "page_title": "RFC 9334: Remote ATtestation procedureS (RATS) Architecture",
+        "detail": ""
+      },
+      "accessed": "2026-10-05"
     },
     {
       "id": "w3-org-tr-owl2-overview",

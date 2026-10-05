@@ -153,8 +153,11 @@ cada parte con el espacio que una clase no tiene.
 | Norma | Versión | Fuente | Clases |
 |---|---|---|---:|
 | A2A Protocol | — | [A2A Protocol](https://a2a-protocol.org/latest/) | 3 |
+| A2A protocol roadmap | — | [A2A Protocol](https://a2a-protocol.org/latest/roadmap/) | 1 |
+| AI Agent Standards Initiative | — | [National Institute of Standards and Technology (NIST)](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) | 2 |
 | AI Risk Management Framework | 1.0 | [National Institute of Standards and Technology (NIST)](https://www.nist.gov/itl/ai-risk-management-framework) | 15 |
 | c2pa.org/specifications | — | [Coalition for Content Provenance and Authenticity (C2PA)](https://c2pa.org/specifications/specifications/2.2/index.html) | 4 |
+| Code of Practice on marking and labelling of AI-generated content | — | [digital-strategy.ec.europa.eu](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content) | 2 |
 | Comisión Europea | — | [digital-strategy.ec.europa.eu](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) | 1 |
 | Computer Security Incident Handling Guide | 2 | [National Institute of Standards and Technology (NIST)](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final) | 1 |
 | Especificación JSON Schema | — | [JSON Schema](https://json-schema.org) | 3 |
@@ -183,6 +186,7 @@ cada parte con el espacio que una clase no tiene.
 | OWASP Top 10 for LLM Applications | — | [Open Worldwide Application Security Project (OWASP)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | 13 |
 | Reglamento (UE) 2016/679 | 2016/679 | [Unión Europea — EUR-Lex](https://eur-lex.europa.eu/eli/reg/2016/679/oj) | 1 |
 | Reglamento (UE) 2024/1689 | 2024/1689 | [Unión Europea — EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) | 3 |
+| Remote ATtestation procedureS (RATS) Architecture | — | [RFC Editor](https://www.rfc-editor.org/rfc/rfc9334.html) | 1 |
 | The OAuth 2.0 Authorization Framework | — | [RFC Editor](https://www.rfc-editor.org/rfc/rfc6749) | 1 |
 | w3.org/TR/speech-synthesis11 | — | [World Wide Web Consortium (W3C)](https://www.w3.org/TR/speech-synthesis11/) | 1 |
 | w3.org/TR/WCAG22 | — | [World Wide Web Consortium (W3C)](https://www.w3.org/TR/WCAG22/) | 1 |
@@ -191,10 +195,10 @@ cada parte con el espacio que una clase no tiene.
 
 ## Estado del registro
 
-- Obras registradas: **618** (34 libros, 344 artículos, 36 normas, 204 documentos de referencia).
-- Con localizador resuelto contra su autoridad: **584**; pendientes con motivo declarado: **34**.
+- Obras registradas: **633** (34 libros, 344 artículos, 40 normas, 215 documentos de referencia).
+- Con localizador resuelto contra su autoridad: **601**; pendientes con motivo declarado: **32**.
 - Clases sin bibliografía de apoyo: **0**.
-- Última resolución en red: **2026-08-19** (`python scripts/refresh-sources`).
+- Última resolución en red: **2026-10-05** (`python scripts/refresh-sources`).
 
 El detalle por entrada, con el motivo de cada pendiente, está en
 [`bibliography.json`](bibliography.json); el método, en [`README.md`](README.md).

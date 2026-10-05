@@ -104,6 +104,17 @@ federado (los datos no viajan) + **agregación segura** (el servidor solo ve la 
 cifrada de actualizaciones, Bonawitz et al. 2017) + **DP** (ruido sobre la
 actualización agregada, garantía formal). Cada pieza cubre un ataque distinto.
 
+### 🧱 Lo que estas técnicas no protegen: datos en uso
+
+Privacidad diferencial limita cuánto revela un mecanismo sobre la contribución de una persona;
+aprendizaje federado evita centralizar datos crudos. Ninguno impide por sí mismo que el host lea
+memoria durante una inferencia o agregación. Secure aggregation protege la suma distribuida, pero
+no equivale a aislar todo el runtime.
+
+La clase 183 añade el control que falta en esa dimensión: TEE, medición y remote attestation antes
+de liberar claves. La arquitectura completa combina técnicas según amenaza; no las presenta como
+sinónimos intercambiables de «privacidad».
+
 ## 🧮 Ejemplo trabajado
 
 Un hospital publica el conteo de pacientes con cierta condición: `f(D) = 42`.
@@ -182,7 +193,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

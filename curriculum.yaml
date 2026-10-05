@@ -1,10 +1,10 @@
 name: Artificial Intelligence Evolution Program
 version: 0.17.0
-updated: '2026-09-10'
+updated: '2026-10-05'
 language: es
 part_count: 15
-lesson_count: 183
-notebook_count: 549
+lesson_count: 184
+notebook_count: 552
 parts:
 - id: '00'
   slug: foundations-history-and-scientific-method
@@ -2862,8 +2862,24 @@ parts:
     maturity: frontier
   - id: '183'
     number: 183
+    title: Inferencia privada, computación confidencial y attestation
+    path: classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation
+    lab_kind: confidential_inference
+    keywords:
+    - confidential computing
+    - private inference
+    - TEE
+    - remote attestation
+    - data in use
+    estimated_hours: 6
+    summary: Estudia inferencia privada, computación confidencial y attestation mediante una política
+      reproducible de verificación, liberación condicionada de claves y análisis de límites.
+    status: EXECUTABLE_CORE
+    maturity: frontier
+  - id: '184'
+    number: 184
     title: 'Capstone final: sistema de IA evolutivo'
-    path: classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo
+    path: classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo
     lab_kind: capstone
     keywords:
     - portfolio

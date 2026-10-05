@@ -2,7 +2,7 @@
 # 🔭 Parte 14 — Frontera, investigación y proyectos integradores
 
 **Nivel:** frontera · **Duración sugerida:** 8–12 semanas ·
-**Clases:** 12
+**Clases:** 13
 
 Integra todo el programa y mantiene una zona explícita para temas emergentes, distinguiendo evidencia consolidada de prototipos y expectativas.
 
@@ -21,7 +21,8 @@ flowchart LR
     L180["180<br/>IA para educación<br/>y aprendizaje adaptativo"]
     L181["181<br/>IA para ciencia,<br/>clima y salud<br/>responsable"]
     L182["182<br/>Cómo vigilar la<br/>frontera sin perseguir<br/>modas"]
-    L183["183<br/>Capstone final: sistema<br/>de IA evolutivo"]
+    L183["183<br/>Inferencia privada y<br/>computación confidencial"]
+    L184["184<br/>Capstone final: sistema<br/>de IA evolutivo"]
     L172 --> L173
     L173 --> L174
     L174 --> L175
@@ -33,6 +34,7 @@ flowchart LR
     L180 --> L181
     L181 --> L182
     L182 --> L183
+    L183 --> L184
 ```
 
 ## 📚 Clases
@@ -50,7 +52,8 @@ flowchart LR
 | 180 | [IA para educación y aprendizaje adaptativo](180-ia-para-educacion-y-aprendizaje-adaptativo/README.md) | `agent` | 6 |
 | 181 | [IA para ciencia, clima y salud responsable](181-ia-para-ciencia-clima-y-salud-responsable/README.md) | `evaluation` | 6 |
 | 182 | [Cómo vigilar la frontera sin perseguir modas](182-como-vigilar-la-frontera-sin-perseguir-modas/README.md) | `evaluation` | 6 |
-| 183 | [Capstone final: sistema de IA evolutivo](183-capstone-final-sistema-de-ia-evolutivo/README.md) | `capstone` | 10 |
+| 183 | [Inferencia privada, computación confidencial y attestation](183-inferencia-privada-computacion-confidencial-y-attestation/README.md) | `confidential_inference` | 6 |
+| 184 | [Capstone final: sistema de IA evolutivo](184-capstone-final-sistema-de-ia-evolutivo/README.md) | `capstone` | 10 |
 
 ## 📝 Evaluación de la parte
 

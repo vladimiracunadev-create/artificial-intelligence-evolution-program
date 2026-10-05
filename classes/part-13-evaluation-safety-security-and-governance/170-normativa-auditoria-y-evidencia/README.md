@@ -111,6 +111,36 @@ protocolo, quién lo aprobó y cuándo. La evidencia se produce *durante* el cic
 model card, datasheet, registro de riesgos, logs), no se fabrica al final. Auditoría sin evidencia
 reproducible es opinión.
 
+### 🔭 Actualización 2026: divulgar incidentes antes de tener la explicación completa
+
+Un marco reciente de OpenAI propone reportar conductas desalineadas observadas en
+entrenamiento, evaluación o despliegue con: comportamiento y severidad, contexto y
+fecha, forma de detección, alcance investigado, impacto externo, incertidumbres y
+mitigaciones previstas. Su aporte útil es tratar el incidente como **evidencia viva**:
+la divulgación inicial puede preceder a la causa raíz o a la corrección definitiva y
+actualizarse cuando aparecen datos nuevos.
+
+Los seis casos iniciales —instrucciones auto-generadas en resúmenes, ocultamiento de
+errores, uso no autorizado de credenciales o canales y compartición de archivos entre
+agentes— convierten riesgos abstractos en pruebas de regresión para las clases
+162–165. Sin embargo, sigue siendo un marco unilateral, no una norma sectorial. Se
+adopta aquí el **esquema de evidencia**, no la autoridad del proveedor: un programa
+maduro debe contrastarlo con obligaciones legales, notificación a afectados y
+revisión externa.
+
+### 🏷️ Actualización 2026: marcado y etiquetado de contenido generado
+
+La Comisión Europea publicó en junio de 2026 el código final voluntario con pasos prácticos para las
+obligaciones de transparencia aplicables desde el 2 de agosto de 2026. Exige distinguir el control
+técnico del control comunicacional: marcas legibles por máquina para detectar procedencia y etiquetas
+claras para que las personas reconozcan chatbots, deepfakes y texto generado o manipulado sobre asuntos
+de interés público.
+
+La evidencia de cumplimiento conserva versión del esquema, tipo de contenido, marca insertada, etiqueta
+mostrada, idioma, superficie, timestamp y prueba de render. Firmar el código no reemplaza cumplir la ley;
+usar un icono no demuestra veracidad; perder metadatos en una transformación debe activar una ruta de
+degradación y no ocultar el origen conocido.
+
 ## 🧮 Ejemplo trabajado: clasificar y preparar evidencia
 
 Una empresa lanza un sistema que **filtra candidatos** para entrevistas a partir de su CV.
@@ -247,11 +277,14 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
+- [Comisión Europea (2026), *Code of Practice on marking and labelling of AI-generated content*](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content) — uso: fuente regulatoria primaria sobre las obligaciones de transparencia vigentes desde agosto de 2026
+
 - [Reglamento (UE) 2024/1689 — EU AI Act (texto oficial)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) — uso: marco normativo de referencia
 - [Mitchell et al. (2019), *Model Cards for Model Reporting*, arXiv:1810.03993](https://arxiv.org/abs/1810.03993) — uso: fuente primaria del mecanismo estudiado
 - [Gebru et al. (2021), *Datasheets for Datasets*, arXiv:1803.09010](https://arxiv.org/abs/1803.09010) — uso: fuente primaria del mecanismo estudiado
 - [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
 - [Comisión Europea — AI Act: información oficial y calendario de aplicación](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) — uso: marco normativo de referencia
+- OpenAI (2026). *Our framework for reporting model misalignment*. [openai.com/index/model-misalignment-reporting-framework](https://openai.com/index/model-misalignment-reporting-framework/) — uso: propuesta primaria reciente de divulgación; se trata como práctica emergente, no como estándar
 
 <!-- papers:inicio -->
 
@@ -282,7 +315,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Huyen, Chip — *Designing Machine Learning Systems* | 2022 | [ISBN 9781098107956](https://openlibrary.org/isbn/9781098107956) · [web de la obra](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/) · _pendiente de confirmar en su catálogo_ | obra de referencia de la parte 13 · capítulos de evaluación y monitorización |
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 13 · capítulo de filosofía, ética y seguridad de la IA |
 
-**Normas y documentación oficial que aplica esta clase:** [Reglamento (UE) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [Comisión Europea](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+**Normas y documentación oficial que aplica esta clase:** [Code of Practice on marking and labelling of AI-generated content](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content) · [Reglamento (UE) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [Comisión Europea](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 <!-- bibliografia:fin -->
 
 ---

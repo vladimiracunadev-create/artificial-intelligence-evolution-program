@@ -97,6 +97,19 @@ Cada herramienta debe recibir el permiso más estrecho que permita la tarea: alc
 acción (leer vs escribir vs borrar), límites (monto, tasa, destino) y duración (credenciales
 efímeras). Un token de solo lectura no puede exfiltrar por escritura aunque el modelo sea engañado.
 
+### 🧬 Destilación adversarial y extracción de capacidades
+
+La cadena de suministro también puede ser atacada **desde la interfaz de inferencia**. En la
+destilación adversarial, un actor coordina cuentas, prompts y variantes para obtener respuestas o
+razonamientos que sirvan como datos de entrenamiento de otro modelo. El objetivo no es robar un peso
+directamente, sino transferir capacidad a escala y eludir salvaguardas o inversión original.
+
+El threat model incluye creación masiva de cuentas, distribución temporal, proveedores intermediarios,
+replay de artefactos cifrados, extracción mediante tool outputs y combinación de señales débiles. Las
+defensas son capas: identidad y reputación, rate limits por entidad correlacionada, detección de campañas,
+protección de razonamiento, controles sobre streaming y compaction, coordinación con proveedores y
+preservación de evidencia. Un límite por API key aislada no detecta una campaña distribuida.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de DevOps con dos servidores MCP: `repo` (oficial, revisado) y `helper-fmt` (de un tercero,
@@ -225,6 +238,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- [OpenAI (2026), *Disrupting a coordinated model-distillation campaign*](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/) — uso: reporte de incidente del proveedor para modelar extracción coordinada y defensas por capas
 
 - [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/agentic-top-10/) — uso: taxonomía actual de riesgos de sistemas que actúan
 - [OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) — uso: riesgos complementarios de aplicaciones generativas

@@ -9,7 +9,7 @@ python apps/desktop/main.py
 Lee el mismo catálogo que la PWA.
 
 <div align="center">
-<img src="../../docs/screenshots/app-escritorio.png" alt="Catálogo de las 183 clases con el detalle de la clase 055" width="720">
+<img src="../../docs/screenshots/app-escritorio.png" alt="Catálogo de las 184 clases con el detalle de la clase 055" width="720">
 </div>
 
 ## Binarios

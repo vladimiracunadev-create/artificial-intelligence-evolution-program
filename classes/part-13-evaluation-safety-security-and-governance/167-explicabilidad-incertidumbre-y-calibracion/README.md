@@ -93,6 +93,28 @@ Un **diagrama de fiabilidad** grafica acc vs conf por bin: la diagonal es calibr
 por debajo = sobreconfianza. Técnicas de recalibración: **temperature scaling** (dividir los
 logits por una temperatura T aprendida), Platt scaling e isotonic regression.
 
+### 🔭 Actualización 2026: salida visible, traza y estado interno no son lo mismo
+
+En modelos de razonamiento hay tres objetos distintos que suelen confundirse:
+
+| Capa | Qué observamos | Límite |
+|---|---|---|
+| Salida | respuesta final | puede ocultar cómo se obtuvo |
+| Traza verbal | cadena de razonamiento emitida | puede ser incompleta o racionalizada |
+| Activaciones | estado interno distribuido | requiere instrumentos específicos y no tiene semántica garantizada |
+
+Dos líneas recientes hacen operacional esta distinción. CoT-Control encontró que
+los modelos evaluados controlaban mal propiedades impuestas a sus trazas, una señal
+favorable para monitorizarlas hoy, pero usando un proxy y no intentos naturales de
+evasión. En paralelo, la *J-lens* de Anthropic identificó en una familia de modelos
+un subespacio pequeño asociado a conceptos de razonamiento; intervenirlo cambió
+respuestas, aportando evidencia causal más fuerte que una visualización correlativa.
+
+Ninguno de los resultados autoriza a llamar “pensamiento completo” a la traza ni
+“consciencia” al espacio latente. La lección estable es metodológica: una explicación
+debe declarar **qué capa mide**, probar intervención cuando afirma causalidad y
+mantener supervisión por conducta y resultados aunque exista acceso interno.
+
 ## 🧮 Ejemplo trabajado: ECE con 3 bins
 
 Un clasificador binario produce 10 predicciones. Para cada una: confianza declarada y si acertó.
@@ -186,7 +208,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("evaluation")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -242,6 +264,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - [Guo et al. (2017), *On Calibration of Modern Neural Networks*, arXiv:1706.04599](https://arxiv.org/abs/1706.04599) — uso: fuente primaria del mecanismo estudiado
 - [Molnar, *Interpretable Machine Learning* (libro abierto)](https://christophm.github.io/interpretable-ml-book/) — uso: referencia consultada en su fuente original
 - [Kendall & Gal (2017), *What Uncertainties Do We Need in Bayesian Deep Learning?*, arXiv:1703.04977](https://arxiv.org/abs/1703.04977) — uso: fuente primaria del mecanismo estudiado
+- OpenAI (2026). *Reasoning models struggle to control their chains of thought, and that's good*. [openai.com/index/reasoning-models-chain-of-thought-controllability](https://openai.com/index/reasoning-models-chain-of-thought-controllability/) — uso: evaluación primaria de monitorizabilidad con las limitaciones de su proxy
+- Anthropic (2026). *A global workspace in language models*. [anthropic.com/research/global-workspace](https://www.anthropic.com/research/global-workspace) — uso: evidencia primaria reciente de intervención causal sobre representaciones internas; no prueba consciencia
 
 <!-- papers:inicio -->
 

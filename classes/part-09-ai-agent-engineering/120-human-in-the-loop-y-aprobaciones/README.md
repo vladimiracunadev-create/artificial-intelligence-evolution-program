@@ -125,6 +125,20 @@ modelo ni por el nombre del agente:
 la persona y la organización conservan la responsabilidad. El [caso MEDVi](../../../docs/case-studies/MEDVI_AI_NATIVE.md)
 muestra por qué un proveedor o afiliado adicional no borra esa asignación.
 
+### 🤝 Representar preferencias no es recibir aprobación
+
+Cuando un agente negocia o compra en nombre de alguien, el humano no solo aprueba una acción:
+delega una **preferencia** incompleta. El principal-agent risk aparece si el sistema optimiza una
+representación incorrecta, antigua o demasiado simple de lo que la persona quiere. El gate debe
+mostrar resultado propuesto, coste de oportunidad, incertidumbre sobre preferencias y alternativa
+de no actuar.
+
+Project Swap observó en un experimento empresarial de intercambio de libros que la mayor parte de
+la brecha frente al óptimo provenía de representar imperfectamente preferencias humanas, más que
+del mecanismo de negociación. Es evidencia del estudio del propio emisor, no una ley universal;
+se convierte aquí en un caso para exigir confirmación, actualización de preferencias, cancelación
+y reconstrucción posterior.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de comunicación que prepara el aviso de una interrupción de servicio.
@@ -217,7 +231,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("workflow")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -267,6 +281,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- [Anthropic (2026), *Project Swap: What happens when agents trade for us?*](https://www.anthropic.com/research/project-swap) — uso: caso empresarial primario sobre fidelidad de preferencias y riesgo principal–agente
 
 - [NIST AI Risk Management Framework (AI RMF 1.0) (supervisión humana efectiva como control de gobernanza)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
 - [Anthropic Engineering — "Building effective agents" (checkpoints humanos y guardrails en agentes)](https://www.anthropic.com/engineering/building-effective-agents) — uso: referencia consultada en su fuente original

@@ -22,7 +22,7 @@ jobs:
       - run: test -s site/index.html
       - run: test -s site/data/catalog.json
       - run: test -s site/classes/001.html
-      - run: test -s site/classes/183.html
+      - run: test -s site/classes/184.html
       - run: test -s site/classes/part-14.html
       - run: test -s site/data/papers.json
       - run: test -s site/papers/index.html

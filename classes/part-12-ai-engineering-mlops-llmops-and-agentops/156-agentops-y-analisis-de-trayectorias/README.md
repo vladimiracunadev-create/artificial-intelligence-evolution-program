@@ -94,6 +94,17 @@ verificables, ejecutada ante cada cambio de prompt, herramienta o modelo base. L
 de Anthropic sobre agentes efectivos insiste en el prerequisito: empezar simple e
 **instrumentar desde el primer día** — un agente sin trazas es indepurable por diseño.
 
+### 🌙 Observabilidad de agentes siempre activos
+
+Un agente que trabaja sin una sesión humana abierta necesita métricas adicionales: horizonte sin
+supervisión, wakeups intentados/exitosos, edad del objetivo, rechazos por autorización vencida,
+latencia de cancelación, gasto por periodo, efectos externos por ejecución y tiempo hasta que una
+persona reconoce una escalación. La unidad de análisis pasa de una trayectoria aislada a la cadena
+`evento -> reanudación -> decisión -> efecto -> notificación`.
+
+Las ejecuciones programadas deben compartir un correlation ID estable y producir un checkpoint
+auditable, pero no conservar secretos o prompts completos solo para facilitar debugging.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de soporte, semana de 1 000 tareas:
@@ -182,7 +193,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("observability")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

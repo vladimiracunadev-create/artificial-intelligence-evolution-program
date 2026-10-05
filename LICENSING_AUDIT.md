@@ -75,19 +75,19 @@ crear una expectativa jurídica falsa.
 
 - `python -m unittest discover -s tests -v`: **61 tests OK**, incluida la
   ejecución de notebooks y motores.
-- `python scripts/validate_repository.py --strict`: **OK**, 15 partes, 183
-  clases, 549 notebooks de clase, 148 papers y 156 notebooks de papers.
+- `python scripts/validate_repository.py --strict`: **OK**, 15 partes, 184
+  clases, 552 notebooks de clase, 148 papers y 156 notebooks de papers.
 - `python scripts/generate_papers.py --check`: artefactos al día.
 - `python scripts/link_papers_to_classes.py --check`: 171 enlaces de vuelta al día.
 - `python -m compileall -q src scripts classes apps`: **OK**.
-- `python scripts/verify-sources --json`: **OK**, 618 entradas y 100 % de
+- `python scripts/verify-sources --json`: **OK**, 633 entradas y 100 % de
   cobertura registrada.
-- `python scripts/check_external_links.py`: inventario de **1059** URLs externas;
+- `python scripts/check_external_links.py`: inventario de **1086** URLs externas;
   las nuevas URLs jurídicas y fuentes primarias se abrieron durante la auditoría.
   El script del proyecto, deliberadamente, no convierte fallos de red en fallos de
   CI local.
-- Comprobación temporal de enlaces Markdown locales en los documentos tocados:
-  **91 enlaces resueltos, 0 rotos**.
+- La validación estricta recorre los enlaces Markdown locales del repositorio y
+  falla ante cualquier destino inexistente.
 - Búsqueda final de `MIT`: las coincidencias restantes son alcance del código,
   licencias específicas de terceros o referencias históricas expresamente
   preservadas; no queda la afirmación vigente “código y documentación bajo MIT”.

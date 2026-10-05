@@ -18,7 +18,7 @@ dependencies = ["PyYAML>=6,<7"]
 [project.optional-dependencies]
 dev = []
 docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.6,<10"]
-assets = ["reportlab>=4,<6", "python-pptx>=1,<2"]
+assets = ["markdown>=3.7,<4", "pypdf>=6,<7", "reportlab>=4,<6", "python-pptx>=1,<2"]
 desktop = ["pyinstaller>=6,<7"]
 
 [project.scripts]

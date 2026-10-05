@@ -1,0 +1,22 @@
+id: '183'
+number: 183
+title: Inferencia privada, computación confidencial y attestation
+part: '14'
+level: frontera
+estimated_hours: 6
+lab_kind: confidential_inference
+keywords:
+- confidential computing
+- private inference
+- TEE
+- remote attestation
+- data in use
+status: EXECUTABLE_CORE
+maturity: frontier
+artifacts:
+- lab_result.json
+- attestation_policy.json
+- threat_model.md
+prerequisites:
+- '177'
+- '182'

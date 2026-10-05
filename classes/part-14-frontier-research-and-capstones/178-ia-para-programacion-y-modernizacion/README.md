@@ -131,6 +131,29 @@ La IA acelera los pasos 1-2; el riesgo es traducir "lo que parece que hace" en l
 de "lo que hace": una migración sin tests de caracterización no es modernización,
 es reescritura con esperanza.
 
+### 🔭 Actualización 2026: del agente de código al agente investigador
+
+El siguiente salto no es un autocompletado mejor, sino **delegar ciclos de trabajo
+largos y verificables**. OpenAI reportó agentes que, bajo dirección humana, ejecutan
+tareas de investigación acotadas que tomarían días a una persona: navegan código,
+modifican experimentos, los ejecutan y comparan resultados. Anthropic publicó un
+caso complementario en alineación: el agente buscó literatura, propuso datos y
+métodos, entrenó modelos y evaluó diez clases de fallo, con pruebas retenidas y un
+agente monitor.
+
+Esto amplía el bucle de esta clase:
+
+```text
+issue → parche → tests
+pregunta → hipótesis → experimento → resultado → crítica → siguiente experimento
+```
+
+La continuidad es el **verificador**. Los tests se convierten en benchmarks,
+protocolos experimentales y criterios de parada; el repositorio se convierte en
+cuaderno de laboratorio. Lo que todavía no cambia es la responsabilidad: las
+fuentes son autoestudios de los propios laboratorios, las tareas estaban acotadas y
+las personas siguieron fijando prioridades y juzgando qué resultados perseguir.
+
 ## 🧮 Ejemplo trabajado
 
 Un modelo genera `n = 5` soluciones para un problema; `c = 2` pasan los tests.
@@ -203,7 +226,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("agent")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -260,6 +283,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 - Feathers, M. (2004). *Working Effectively with Legacy Code*. Prentice Hall. [Ficha editorial](https://www.oreilly.com/library/view/working-effectively-with/0131177052/) — uso: referencia consultada en su fuente original
 - Austin, J. et al. (2021). *Program Synthesis with Large Language Models* (MBPP). [arXiv:2108.07732](https://arxiv.org/abs/2108.07732) — uso: fuente primaria del mecanismo estudiado
 - OpenAI (2026). *Harness engineering: leveraging Codex in an agent-first world*. [openai.com/index/harness-engineering](https://openai.com/index/harness-engineering/) — uso: referencia consultada en su fuente original
+- OpenAI (2026). *Research acceleration: The view inside OpenAI*. [openai.com/index/research-acceleration-view-inside-openai](https://openai.com/index/research-acceleration-view-inside-openai/) — uso: evidencia primaria reciente, tratada como frontera y no como validación independiente
+- Anthropic (2026). *Automated researchers can reliably mitigate alignment failures*. [anthropic.com/research/automated-researchers-mitigate-alignment-failures](https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures) — uso: segundo caso de ciclo experimental agéntico con límites declarados
 - GitHub — *Spec Kit* (toolkit de spec-driven development para agentes de código). [github.com/github/spec-kit](https://github.com/github/spec-kit) — uso: referencia consultada en su fuente original
 
 <!-- papers:inicio -->

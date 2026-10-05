@@ -1,6 +1,6 @@
 {
   "version": "0.17.0",
-  "lesson_count": 183,
+  "lesson_count": 184,
   "parts": [
     {
       "id": "00",
@@ -3251,8 +3251,26 @@
         {
           "id": "183",
           "number": 183,
+          "title": "Inferencia privada, computación confidencial y attestation",
+          "path": "classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation",
+          "lab_kind": "confidential_inference",
+          "keywords": [
+            "confidential computing",
+            "private inference",
+            "TEE",
+            "remote attestation",
+            "data in use"
+          ],
+          "estimated_hours": 6,
+          "summary": "Estudia inferencia privada, computación confidencial y attestation mediante una política reproducible de verificación, liberación condicionada de claves y análisis de límites.",
+          "status": "EXECUTABLE_CORE",
+          "maturity": "frontier"
+        },
+        {
+          "id": "184",
+          "number": 184,
           "title": "Capstone final: sistema de IA evolutivo",
-          "path": "classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo",
+          "path": "classes/part-14-frontier-research-and-capstones/184-capstone-final-sistema-de-ia-evolutivo",
           "lab_kind": "capstone",
           "keywords": [
             "portfolio",

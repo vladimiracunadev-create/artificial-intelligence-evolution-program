@@ -28,7 +28,7 @@ jobs:
         run: |
           python -m pip install PyYAML markdown
           python scripts/generate_site.py
-          test -s site/classes/183.html
+          test -s site/classes/184.html
       - name: Preparar proyecto Capacitor
         working-directory: apps/android
         run: |

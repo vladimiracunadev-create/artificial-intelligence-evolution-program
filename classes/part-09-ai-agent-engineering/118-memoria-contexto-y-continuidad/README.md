@@ -106,6 +106,22 @@ convierte en persistente. Reglas mínimas: distinguir procedencia (¿lo dijo el 
 lo observó una tool, lo dedujo el modelo?), no persistir secretos, y tratar la memoria
 recuperada como dato no confiable de baja procedencia (clase 119).
 
+### ⏰ Continuidad de agentes persistentes y proactivos
+
+Un agente que despierta por horario o evento no es solo una conversación larga. Entre dos
+ejecuciones pueden cambiar permisos, políticas, datos y objetivo. Su checkpoint debe separar:
+
+- estado del trabajo y evidencia ya producida;
+- versión de instrucciones y política;
+- identidad delegada y vencimiento de credenciales;
+- próximo evento permitido, presupuesto restante y deadline;
+- canal de cancelación, revocación y escalamiento humano.
+
+Al reanudar, el runtime debe revalidar esas condiciones; **resume no significa autorizar con
+el contexto antiguo**. Los anuncios de agentes con responsabilidades continuas muestran la
+relevancia del patrón, pero la capacidad comercial no demuestra que una tarea concreta deba
+operar sin supervisión.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de migración de 40 archivos; presupuesto de contexto: 8.000 tokens; cada terna
@@ -193,7 +209,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("agent")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -243,6 +259,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- [OpenAI (2026), *DevDay 2026 Recap*](https://openai.com/index/devday-2026-recap/) — uso: fuente empresarial para el cambio hacia agentes persistentes; se usa como señal de producto, no como garantía de seguridad
 
 - [Anthropic Engineering — "Effective context engineering for AI agents" (compactación, notas estructuradas, presupuesto de contexto)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — uso: referencia consultada en su fuente original
 - [Liu et al. (2023), "Lost in the Middle: How Language Models Use Long Contexts", arXiv:2307.03172 (degradación de atención en contextos largos)](https://arxiv.org/abs/2307.03172) — uso: fuente primaria del mecanismo estudiado

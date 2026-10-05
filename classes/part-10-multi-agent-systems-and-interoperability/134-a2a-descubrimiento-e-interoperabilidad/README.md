@@ -103,6 +103,18 @@ que le encargas la reparación). MCP integra capacidades dentro de un agente; A2
 delega tareas entre agentes soberanos. Un mismo agente típicamente implementa ambos:
 consume tools por MCP y ofrece sus servicios por A2A.
 
+### 🧭 Hoja de ruta A2A 1.1: señal, no contrato estable
+
+La especificación estable estudiada arriba sigue siendo A2A 1.0. La hoja de ruta publicada el
+15 de septiembre de 2026 propone para 1.1 timelines de tareas, filtrado de eventos, mensajes durante
+estado `working`, streaming bidireccional, elicitation humana estructurada y negociación de varias
+rondas. También aparecen dos superficies de validación: **A2A Inspector** y un Technology
+Compatibility Kit (TCK).
+
+Hasta que esas funciones entren en una especificación versionada, un sistema no debe anunciarlas
+como interoperabilidad garantizada. Se implementan tras feature negotiation, con fallback explícito,
+tests de conformidad y límites de backpressure, cancelación y reanudación.
+
 ## 🧮 Ejemplo trabajado
 
 Un agente orquestador de contrataciones delega la verificación de antecedentes a un
@@ -245,6 +257,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
+- [A2A Project (2026), *A2A protocol roadmap*](https://a2a-protocol.org/latest/roadmap/) — uso: hoja de ruta oficial; las funciones 1.1 se tratan como propuestas hasta su publicación estable
+
 - [A2A Protocol — sitio y especificación](https://a2a-protocol.org/latest/): Agent Cards, tasks, messages y artifacts.
 - [Google Developers Blog — A2A: A New Era of Agent Interoperability (2025)](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/): anuncio, motivación y principios de diseño.
 - [Linux Foundation — Agent2Agent Protocol Project (2025)](https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents): gobernanza abierta del protocolo.
@@ -280,7 +294,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Michael J. Wooldridge — *An Introduction to MultiAgent Systems* | 2009 | [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) | obra de referencia de la parte 10 · toda la parte |
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 10 · decisión multiagente y teoría de juegos |
 
-**Normas y documentación oficial que aplica esta clase:** [A2A Protocol](https://a2a-protocol.org/latest/) · [Model Context Protocol](https://modelcontextprotocol.io)
+**Normas y documentación oficial que aplica esta clase:** [A2A protocol roadmap](https://a2a-protocol.org/latest/roadmap/) · [A2A Protocol](https://a2a-protocol.org/latest/) · [Model Context Protocol](https://modelcontextprotocol.io)
 <!-- bibliografia:fin -->
 
 ---

@@ -104,6 +104,24 @@ Los tres dominios comparten el criterio que separa ciencia de demo: **evaluació
 ciega, prospectiva y externa**, incertidumbre reportada, y un desenlace que le
 importe a alguien fuera del paper.
 
+### 🔭 Actualización 2026: agentes científicos y prueba formal
+
+Un resultado reciente llevó ese patrón a matemáticas: un sistema de agentes produjo
+una solución analítica para Navier–Stokes y una formalización en Lean. La novedad
+pedagógica no es memorizar el modelo utilizado, sino separar tres capas de evidencia:
+
+1. **Descubrimiento**: miles de agentes exploran y comparten enfoques.
+2. **Formalización**: un asistente de pruebas comprueba cada paso contra reglas.
+3. **Validación científica**: especialistas independientes revisan enunciado,
+   supuestos, correspondencia entre prueba informal y formal y alcance del resultado.
+
+Lean reduce drásticamente una clase de error lógico, pero no valida por sí solo que
+se formalizó el teorema correcto ni convierte cualquier salida en ciencia. Además,
+el emisor reporta un costo aproximado de 10 000 agentes, 130 mil millones de tokens
+de salida y más de cien horas entre búsqueda y formalización: es un hito de frontera,
+no una receta eficiente o general. Por eso se registra en `frontier/` como
+`emerging` y no como paper fundacional.
+
 ## 🧮 Ejemplo trabajado
 
 Un modelo de cribado detecta una condición con prevalencia 1 % en la población
@@ -182,7 +200,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("evaluation")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -232,6 +250,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- OpenAI (2026). *On the Navier–Stokes Millennium Prize Problem*. [openai.com/index/navier-stokes-solution](https://openai.com/index/navier-stokes-solution/) — uso: resultado primario reciente con prueba Lean enlazada; se trata como frontera pendiente de validación independiente
 
 - Jumper, J. et al. (2021). *Highly accurate protein structure prediction with AlphaFold*. Nature 596. [DOI 10.1038/s41586-021-03819-2](https://doi.org/10.1038/s41586-021-03819-2) — uso: fuente primaria del mecanismo estudiado
 - Lam, R. et al. (2023). *Learning skillful medium-range global weather forecasting* (GraphCast). Science 382(6677). [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336) — uso: fuente primaria del mecanismo estudiado

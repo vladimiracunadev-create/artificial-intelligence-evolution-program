@@ -100,6 +100,15 @@ capacidades, otros deciden si me usan — la Agent Card de A2A) y **negociación
 Contract Net Protocol de Smith, 1980: anuncio de tarea → pujas → adjudicación),
 antecedente directo de la asignación de tareas en marketplaces de agentes.
 
+### 🧑‍💼 Contrato de representación y mandato
+
+Un contrato entre agentes queda incompleto si solo declara schema y SLA. Cuando uno actúa por una
+persona u organización debe transportar, sin revelar más datos de los necesarios: identidad del
+principal, identidad del delegado, propósito, capacidades autorizadas, límites económicos,
+versión de preferencias, vigencia, posibilidad de revocación y procedencia de cada subdelegación.
+El receptor valida el mandato además del formato; una Agent Card anuncia capacidad, pero no concede
+autoridad para ejercerla sobre recursos del principal.
+
 ## 🧮 Ejemplo trabajado
 
 El contrato del worker del laboratorio, y su verificación:
@@ -182,7 +191,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("multiagent")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -233,6 +242,9 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
+- [NIST (2026), *AI Agent Standards Initiative*](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) — uso: referencia institucional para identidad y autorización de agentes empresariales
+- [Anthropic (2026), *Project Swap: What happens when agents trade for us?*](https://www.anthropic.com/research/project-swap) — uso: caso primario para evaluar fidelidad del mandato y resultados respecto de preferencias humanas
+
 - [JSON Schema — especificación](https://json-schema.org/specification): el lenguaje estándar de los contratos de datos.
 - [Model Context Protocol — Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools): tools como contratos de capacidad con input/output schema.
 - [A2A Protocol — Agent Cards](https://a2a-protocol.org/latest/): publicación de capacidades para descubrimiento entre agentes.
@@ -269,7 +281,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Michael J. Wooldridge — *An Introduction to MultiAgent Systems* | 2009 | [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) | obra de referencia de la parte 10 · toda la parte |
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 10 · decisión multiagente y teoría de juegos |
 
-**Normas y documentación oficial que aplica esta clase:** [JSON Schema](https://json-schema.org/specification) · [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/server/tools) · [A2A Protocol](https://a2a-protocol.org/latest/)
+**Normas y documentación oficial que aplica esta clase:** [AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) · [JSON Schema](https://json-schema.org/specification) · [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/server/tools) · [A2A Protocol](https://a2a-protocol.org/latest/)
 <!-- bibliografia:fin -->
 
 ---

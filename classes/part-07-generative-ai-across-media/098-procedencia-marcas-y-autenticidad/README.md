@@ -112,6 +112,21 @@ el **lavado de marca** (regenerar el contenido con otro modelo sin marca) la eli
 y quitar un manifiesto C2PA es trivial — la garantía es unidireccional: presencia
 válida ⇒ procedencia verificada; ausencia ⇏ contenido humano.
 
+### 🏷️ De la procedencia al etiquetado exigible
+
+La procedencia técnica y la divulgación al público son controles distintos. Un manifiesto
+C2PA o una marca legible por máquina ayuda a herramientas a reconocer origen y edición;
+una **etiqueta visible** ayuda a la persona a entender que interactúa con IA o que un
+contenido fue generado o manipulado. Ninguna de las dos demuestra que el contenido sea
+verdadero.
+
+El código europeo final de 2026 ofrece pasos voluntarios para cumplir las obligaciones de
+transparencia del AI Act aplicables desde el 2 de agosto de 2026. Destaca tres superficies:
+chatbots, deepfakes y texto generado o manipulado sobre asuntos de interés público. El
+diseño correcto combina marca legible por máquina, aviso visible y cadena de procedencia;
+si una transformación elimina el metadato, debe quedar una estrategia de degradación y no
+una falsa afirmación de autenticidad.
+
 ## 🧮 Ejemplo trabajado
 
 Test de una marca tipo greenlist con γ = 0.5 sobre un texto de **T = 100 tokens** en el
@@ -184,7 +199,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -235,6 +250,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
+- [Comisión Europea (2026), *Code of Practice on marking and labelling of AI-generated content*](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content) — uso: fuente regulatoria primaria para etiquetas, EU Icons y obligaciones de transparencia
+
 - C2PA. *Content Credentials: C2PA Technical Specification 2.2*. [c2pa.org/specifications/specifications/2.2/index.html](https://c2pa.org/specifications/specifications/2.2/index.html) — uso: marco normativo de referencia
 - Kirchenbauer, J. et al. (2023). *A Watermark for Large Language Models*. ICML 2023. [arXiv:2301.10226](https://arxiv.org/abs/2301.10226) — uso: fuente primaria del mecanismo estudiado
 - Dathathri, S. et al. (2024). *Scalable watermarking for identifying large language model outputs* (SynthID-Text). Nature, 634. [doi:10.1038/s41586-024-08025-4](https://doi.org/10.1038/s41586-024-08025-4) — uso: fuente primaria del mecanismo estudiado
@@ -268,7 +285,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 |---|---|---|---|
 | Goodfellow, Ian, Bengio, Yoshua y Courville, Aaron — *Deep Learning* | 2016 | [ISBN 9780262035613](https://openlibrary.org/isbn/9780262035613) · [web de la obra](https://www.deeplearningbook.org/) | obra de referencia de la parte 07 · capítulos de modelos generativos |
 
-**Normas y documentación oficial que aplica esta clase:** [c2pa.org/specifications](https://c2pa.org/specifications/specifications/2.2/index.html)
+**Normas y documentación oficial que aplica esta clase:** [Code of Practice on marking and labelling of AI-generated content](https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content) · [c2pa.org/specifications](https://c2pa.org/specifications/specifications/2.2/index.html)
 <!-- bibliografia:fin -->
 
 ---

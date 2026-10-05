@@ -9,12 +9,53 @@
 | Superficie | Verdad verificable |
 |---|---|
 | Versión | **0.17.0** (`pyproject.toml`, sincronizada en los cinco manifests) |
-| Programa | 15 partes · 183 clases · 549 notebooks de clase |
+| Programa | 15 partes · 184 clases · 552 notebooks de clase |
 | Eje de papers | 148 fichas · 156 notebooks · 148 motores · 5 anexos · 148 PDFs |
-| Motores didácticos | 26 de clases + 148 de papers |
+| Motores didácticos | 27 de clases + 148 de papers |
 | PDFs | 165: 17 del programa (15 partes + completo + eje) y 148 individuales, uno por paper |
 | Aplicaciones | Windows en 4 formatos (instalador, MSI, portable, exe único) y APK de Android, con checksums |
-| Tests | 60 métodos, incluida ejecución de los 366 notebooks de recorrido y solución |
+| Tests | 61 métodos, incluida ejecución de los 368 notebooks de recorrido y solución |
+
+## ✅ Actualización de frontera — 2026-10-05 (entregada)
+
+Esta actualización parte del corte anterior del 22 de septiembre. No convierte cada
+lanzamiento en materia: incorpora solo cambios que modifican una decisión de arquitectura,
+seguridad, interoperabilidad o cumplimiento.
+
+| Cambio observado | Integración en el programa | Evidencia de aceptación | Estado |
+|---|---|---|---|
+| Inferencia privada y datos en uso | Nueva clase **183** sobre TEE, remote attestation, key release, ZDR y threat modeling; capstone renumerado a 184 | Motor `confidential_inference`, tres notebooks, evaluación y prueba negativa fail-closed | ✅ Entregado |
+| Destilación adversarial y extracción de razonamiento | Clases 163–165: artefactos opacos, campañas coordinadas, replay, identidad y monitoreo | Riesgo separado de extracción de datos personales; fuente del proveedor identificada como tal | ✅ Entregado |
+| Identidad y autorización de agentes | Clases 119 y 131: principal, workload, mandato, audiencia, vigencia, subdelegación y revocación | Contrato diferencia autenticación, autorización y capacidad anunciada | ✅ Entregado |
+| A2A 1.1 | Clase 134: timelines, filtrado, BiDi, elicitation, negociación, Inspector y TCK | Se conserva 1.0 como estable y 1.1 como roadmap negociable, nunca como contrato publicado | ✅ Entregado |
+| Etiquetado europeo de contenido de IA | Clases 098 y 170: marca legible por máquina, aviso visible, deepfakes, chatbots, texto de interés público y evidencia de render | Diferencia procedencia, etiqueta y veracidad; fecha regulatoria explícita | ✅ Entregado |
+| Agentes persistentes y proactivos | Clases 118, 121, 156 y 159: reanudación, wakeups, presupuesto temporal, revocación, cancelación y pruebas de lifecycle | Gate de release cubre política o credencial vencida, evento duplicado y efecto irreversible | ✅ Entregado |
+| Fidelidad de preferencias | Clases 120 y 131: riesgo principal–agente, mandato y confirmación humana | El caso empresarial se presenta como evidencia del emisor, no como ley general | ✅ Entregado |
+| Radar y trazabilidad | `frontier/current-topics.yaml`, registro de fuentes, changelog, catálogo y sitio | Fecha, madurez, fuente y razón por tema; ruido de modelo separado | ✅ Entregado |
+
+### Criterios de cierre de esta entrega
+
+- [x] La nueva materia mantiene las 15 partes y termina en un capstone único.
+- [x] Cada afirmación reciente distingue fuente regulatoria, institucional o empresarial.
+- [x] La clase 183 ejecuta localmente y no finge hardware confidencial real.
+- [x] Conteos, navegación, catálogo, aplicaciones y CI quedan sincronizados a 184 clases.
+- [x] Validación estricta, tests, compilación y generación del sitio pasan antes de publicar.
+
+### Próxima revisión de frontera
+
+Debe ejecutarse **antes del 2 de febrero de 2027** o antes si ocurre uno de estos
+eventos verificables:
+
+- [ ] A2A publica una especificación 1.1 estable y un TCK versionado: entonces se actualiza
+      el laboratorio, no solo el texto.
+- [ ] NIST convierte el trabajo de identidad/autorización de agentes en guía o perfil final:
+      entonces se fijan controles y referencias normativas concretas.
+- [ ] Aparece evaluación independiente de private inference o memoria confidencial:
+      entonces se revisa la madurez y el threat model de la clase 183.
+- [ ] La Comisión Europea modifica iconos, guías o enforcement de transparencia:
+      entonces se actualizan clases 098 y 170 conservando la fecha histórica de este corte.
+- [ ] Estudios independientes replican agentes económicos con preferencias humanas:
+      entonces se decide si el caso asciende de `emerging`.
 
 ## ✅ 0.1.0 — Programa maestro inicial (entregado)
 

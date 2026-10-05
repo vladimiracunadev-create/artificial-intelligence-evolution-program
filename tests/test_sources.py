@@ -82,7 +82,7 @@ class ExtractionTests(unittest.TestCase):
 
     def test_every_class_has_references(self):
         classes = {item.class_path for item in self.items}
-        self.assertEqual(len(classes), 183)
+        self.assertEqual(len(classes), 184)
 
     def test_every_citation_declares_its_use(self):
         sin_uso = [f"{i.class_path}:{i.line_no}" for i in self.items if not i.declares_use]

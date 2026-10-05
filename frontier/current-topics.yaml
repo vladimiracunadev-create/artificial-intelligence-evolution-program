@@ -1,4 +1,30 @@
-version: '2026-09-10'
+version: '2026-10-05'
+review:
+  period_start: '2026-09-22'
+  period_end: '2026-10-05'
+  state_changes: []
+  state_change_reason: >-
+    No se promovio ni degrado ningun tema previo: trece dias no aportan
+    replicacion independiente suficiente para cambiar su madurez.
+  discarded_noise:
+  - name: Lanzamientos GPT-6 Sol y Luna
+    source: https://openai.com/index/introducing-gpt-6-sol-and-luna/
+    reason: >-
+      Cambian la frontera de producto, costo y capacidad, pero un nombre de modelo
+      y sus benchmarks de proveedor no constituyen por si solos un mecanismo
+      pedagogico nuevo. Se revisaran cuando exista evaluacion externa comparable.
+  - name: GPT-Live-1 y nuevas funciones de voz
+    source: https://openai.com/index/introducing-gpt-live-1-in-the-api/
+    reason: >-
+      La conversacion full-duplex, las voces personalizadas y la telefonia son una
+      integracion de producto sobre contenidos ya cubiertos en ASR, TTS y sistemas
+      multimodales; no justifican reestructurar el nucleo.
+  - name: GPT-6.1 Sol y tier Ultrafast
+    source: https://openai.com/index/devday-2026-recap/
+    reason: >-
+      Mejoran capacidad, precio y latencia de productos concretos. Se registran
+      como senal operativa, pero no cambian los mecanismos de seleccion de modelo,
+      serving, presupuestos o evaluacion que ya ensena el programa.
 topics:
 - id: mcp
   name: Model Context Protocol
@@ -91,3 +117,118 @@ topics:
   reason: >-
     P22 funciona porque la respuesta se puede comprobar. Extenderlo a dominios
     sin verificador barato es la pregunta abierta que deja el paper.
+
+# Revision 2026-09-22. Son resultados recientes del emisor o marcos aun sin
+# consenso; enriquecen clases existentes, pero no ascienden al eje fundacional.
+- id: automated-research-agents
+  name: Agentes para investigacion automatizada supervisada
+  category: agentic-science
+  maturity: emerging
+  reviewed: '2026-09-22'
+  source: https://openai.com/index/research-acceleration-view-inside-openai/
+  corroborating_source: https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures
+  reason: >-
+    Dos laboratorios reportan agentes que ejecutan ciclos largos de busqueda,
+    experimentacion y evaluacion. Demuestra utilidad en tareas acotadas con
+    verificadores; no demuestra investigacion autonoma general ni elimina la
+    seleccion humana de problemas, metodos y conclusiones.
+- id: formal-verification-ai-science
+  name: Descubrimiento matematico asistido por agentes con verificacion formal
+  category: ai-for-science
+  maturity: emerging
+  reviewed: '2026-09-22'
+  source: https://openai.com/index/navier-stokes-solution/
+  reason: >-
+    Un sistema multiagente produjo una prueba analitica y un artefacto Lean para
+    un problema abierto. La prueba formal hace verificable el objeto matematico,
+    pero el resultado es reciente, de enorme costo y no establece capacidad
+    cientifica general ni validacion independiente de todo el proceso.
+- id: latent-workspace-interpretability
+  name: Espacios latentes de trabajo para interpretar razonamiento interno
+  category: interpretability
+  maturity: emerging
+  reviewed: '2026-09-22'
+  source: https://www.anthropic.com/research/global-workspace
+  reason: >-
+    Intervenciones causales sobre un subespacio interno relacionan conceptos
+    latentes con razonamiento de varios pasos y permiten observar señales que no
+    aparecen en la salida. Es evidencia en una familia de modelos, no una lectura
+    completa del pensamiento ni evidencia de consciencia.
+- id: misalignment-incident-reporting
+  name: Divulgacion estructurada de incidentes de desalineacion
+  category: governance
+  maturity: emerging
+  reviewed: '2026-09-22'
+  source: https://openai.com/index/model-misalignment-reporting-framework/
+  reason: >-
+    Propone campos, criterios y plazos para investigar y publicar conductas no
+    autorizadas durante entrenamiento, evaluacion y despliegue. Aporta casos
+    operativos utiles para auditoria, pero sigue siendo un marco unilateral y no
+    un estandar sectorial.
+
+# Revision 2026-10-05. Cambios posteriores al corte anterior que alteran una
+# decision de arquitectura, seguridad, interoperabilidad o cumplimiento.
+- id: confidential-private-inference
+  name: Inferencia privada y computacion confidencial verificable
+  category: privacy-and-systems
+  maturity: emerging
+  reviewed: '2026-10-05'
+  source: https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/
+  corroborating_source: https://openai.com/index/devday-2026-recap/
+  reason: >-
+    Dos proveedores describen computo remoto aislado, controles verificables y
+    memoria cifrada para reducir acceso del operador a datos en uso. La direccion
+    justifica una clase sobre TEE y attestation; las implementaciones concretas
+    siguen siendo anuncios del emisor y requieren evidencia independiente.
+- id: adversarial-model-distillation
+  name: Destilacion adversarial y extraccion coordinada de razonamiento
+  category: security
+  maturity: emerging
+  reviewed: '2026-10-05'
+  source: https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/
+  reason: >-
+    Un proveedor reporta una campana distribuida para extraer razonamiento y
+    transferir capacidades mediante salidas autorizadas. Amplia el threat model
+    desde robo de datos a robo de capacidad; las cifras describen intentos y no
+    equivalen a extracciones exitosas ni a prevalencia sectorial.
+- id: agent-identity-and-delegated-authorization
+  name: Identidad de agentes y autorizacion delegada
+  category: agent-security
+  maturity: emerging
+  reviewed: '2026-10-05'
+  source: https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative
+  reason: >-
+    NIST impulsa identidad, autenticacion y autorizacion para interacciones
+    humano-agente y multiagente. La necesidad operativa es actual; los perfiles
+    y estandares concretos todavia estan en desarrollo.
+- id: a2a-1-1-roadmap
+  name: A2A 1.1, streaming bidireccional y elicitation estructurada
+  category: agent-interoperability
+  maturity: emerging
+  reviewed: '2026-10-05'
+  source: https://a2a-protocol.org/latest/roadmap/
+  reason: >-
+    La hoja de ruta propone timelines, filtrado, BiDi, negociacion multironda,
+    HITL estructurado, Inspector y TCK. No se marca como estandar hasta existir
+    especificacion estable y pruebas de conformidad versionadas.
+- id: eu-ai-content-labeling
+  name: Marcado y etiquetado europeo de contenido generado por IA
+  category: governance
+  maturity: current
+  reviewed: '2026-10-05'
+  source: https://digital-strategy.ec.europa.eu/en/news/commission-publishes-code-practice-marking-and-labelling-ai-generated-content
+  reason: >-
+    El codigo final ofrece pasos para obligaciones de transparencia aplicables
+    desde agosto de 2026: avisos de chatbot, etiquetas de deepfakes y texto de
+    interes publico, marcas legibles por maquina e iconos europeos.
+- id: preference-fidelity-economic-agents
+  name: Fidelidad de preferencias en agentes economicos
+  category: human-agent-interaction
+  maturity: emerging
+  reviewed: '2026-10-05'
+  source: https://www.anthropic.com/research/project-swap
+  reason: >-
+    Un experimento empresarial de negociacion muestra que representar mal las
+    preferencias humanas puede explicar mas perdida que el protocolo de mercado.
+    Es un resultado del emisor en un dominio acotado, util para disenar gates,
+    cancelacion y evaluacion principal-agente, no una ley general.

@@ -94,6 +94,13 @@ diff de métricas canary vs. champion, traza del rollback). Una plataforma
 donde las decisiones de release no dejan evidencia no es observable, por más
 dashboards que tenga.
 
+### 🔁 Gate de release para agentes durables
+
+La plataforma debe probar además reinicio, reanudación idempotente, evento duplicado, credencial
+revocada, política modificada entre checkpoints, presupuesto periódico agotado y cancelación mientras
+una tool está en vuelo. El release falla si un agente reanudado puede usar permisos antiguos, repetir
+un efecto irreversible o quedar activo sin owner y sin deadline.
+
 ## 🧮 Ejemplo trabajado
 
 Se quiere promover el prompt `v12` sobre el champion `v11` en un asistente con
@@ -172,7 +179,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("capstone")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada

@@ -103,6 +103,18 @@ aplicar bien.
 - **Detección de PII en logs**: escaneo de prompts/salidas contra patrones y clasificadores.
 - **Exposición en contexto**: cuántos campos sensibles innecesarios llegan al modelo por petición.
 
+### 🧠 Privacidad de personas vs extracción del modelo
+
+La extracción de datos de entrenamiento busca información sobre personas o secretos presentes en el
+corpus. La **extracción de razonamiento o capacidad** busca reproducir activos y comportamiento del
+modelo mediante consultas. Pueden compartir técnicas de prompting, correlación y alta escala, pero
+tienen sujetos afectados, evidencia y mitigaciones distintas.
+
+El registro debe distinguir contenido del usuario, salida visible, razonamiento protegido, artefactos
+de compaction y metadatos. Minimizar retención reduce material disponible, pero no detiene por sí sola
+una campaña que obtiene salidas autorizadas de miles de cuentas. Para esa amenaza se añaden controles
+de identidad, detección de coordinación y límites por organización descritos en la clase 164.
+
 ## 🧮 Ejemplo trabajado
 
 Auditamos memorización con canarios en un modelo fine-tuneado.
@@ -180,7 +192,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -230,6 +242,8 @@ seguridad, observabilidad, pruebas y operación.
 Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
+
+- [OpenAI (2026), *Disrupting a coordinated model-distillation campaign*](https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign/) — uso: caso primario para separar privacidad de usuarios, razonamiento protegido y extracción de capacidades
 
 - [Carlini et al. (2021), *Extracting Training Data from Large Language Models*, arXiv:2012.07805](https://arxiv.org/abs/2012.07805) — uso: fuente primaria del mecanismo estudiado
 - [Carlini et al. (2022), *Quantifying Memorization Across Neural Language Models*, arXiv:2202.07646](https://arxiv.org/abs/2202.07646) — uso: fuente primaria del mecanismo estudiado

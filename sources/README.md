@@ -6,7 +6,7 @@
 
 El eje de papers responde **de dónde salió cada idea**. Este registro responde
 **con qué se estudia**: además de los artículos fundacionales incluye los libros de
-texto, las normas, la documentación oficial y los conjuntos de datos que las 183
+texto, las normas, la documentación oficial y los conjuntos de datos que las 184
 clases citan de hecho.
 
 De aquí salen tres cosas que nadie escribe a mano:

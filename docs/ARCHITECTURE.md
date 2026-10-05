@@ -11,7 +11,7 @@ flowchart TD
     CUR[("📄 curriculum.yaml<br/>fuente de verdad · clases")] --> CLASSES["📚 classes/<br/>contenido + notebooks + entrypoints"]
     CUR --> SRC["🐍 src/ai_evolution/<br/>catálogo · CLI · validación"]
     CUR --> SITE["🌐 site/<br/>PWA generada"]
-    SRC --> LABS["🧪 labs.py<br/>26 motores de clases"]
+    SRC --> LABS["🧪 labs.py<br/>27 motores de clases"]
     CLASSES -->|"lab.py llama a"| LABS
 
     PAP[("📄 papers/catalog/papers.json<br/>fuente de verdad · papers")] --> FICHAS["📜 papers/foundational/<br/>148 fichas de 18 secciones"]
@@ -38,7 +38,7 @@ curriculum.yaml                    fuente de verdad del eje de clases
       │
       ├── classes/                 contenido humano + notebooks + entrypoints
       ├── src/ai_evolution/        catálogo, CLI, validación y motores
-      │      ├── labs.py           26 motores de clases
+      │      ├── labs.py           27 motores de clases
       │      ├── papers.py         contrato y validación del eje de papers
       │      └── papers_lab.py     148 motores de papers
       ├── site/                    PWA generada
@@ -62,7 +62,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 1. `curriculum.yaml` es la fuente única de conteos y rutas del eje de clases;
    `papers/catalog/papers.json` lo es del eje de papers.
 2. Cada clase es autocontenida, pero no duplica algoritmos centrales.
-3. Los 26 motores de clases viven en `src/ai_evolution/labs.py` y los 148 motores
+3. Los 27 motores de clases viven en `src/ai_evolution/labs.py` y los 148 motores
    de papers en `src/ai_evolution/papers_lab.py`. Ambos son deterministas, de
    Python estándar y devuelven el mismo contrato: `result`, `evidence` y
    `limitations`.
@@ -92,7 +92,7 @@ papers/catalog/papers.json         fuente de verdad del eje de papers
 |---|---|---|
 | `scripts/generate_papers.py` | índice, 156 notebooks, aula y manifiesto del eje | `--check` en CI |
 | `scripts/generate_site.py` | PWA: 198 páginas de clase + 163 del eje de papers + portada (362 HTML), dos JSON y versión visible/cacheable | `pages.yml` + prueba de coherencia |
-| `scripts/generate_pdfs.py` | 165 PDFs: 17 del programa + 148 por paper (`--papers` / `--clases` / `--por-paper` para acotar) | tamaño mínimo del PDF |
+| `scripts/generate_pdfs.py` | 165 PDFs: 17 del programa + 148 por paper (`--papers` / `--clases` / `--por-paper` para acotar); el volumen completo se ensambla desde las 15 partes para evitar degradación en documentos de más de mil páginas | tamaño mínimo del PDF y composición determinista |
 | `scripts/generate_assets.py` | recursos derivados | — |
 | `scripts/validate_repository.py` | contrato completo de ambos ejes | `--strict` en CI |
 | `scripts/build_sources.py` | registro general de fuentes desde lo que citan las clases | `--check` en CI |

@@ -1,5 +1,5 @@
-id: '183'
-number: 183
+id: '184'
+number: 184
 title: 'Capstone final: sistema de IA evolutivo'
 part: '14'
 level: frontera
@@ -18,4 +18,4 @@ artifacts:
 - student_extension
 - risk_and_limitations.md
 prerequisites:
-- '182'
+- '183'

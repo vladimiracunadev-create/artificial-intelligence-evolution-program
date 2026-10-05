@@ -19,6 +19,33 @@ Este proyecto sigue Versionado Semántico y conserva hechos históricos.
 - Los conteos que aparecen en cada entrada son los de **esa** versión. Para el
   estado actual, mira el [roadmap](ROADMAP.md) o ejecuta `ai-evolution validate`.
 
+## Sin publicar
+
+### Actualización tecnológica y de privacidad — 2026-10-05
+
+- El programa pasa a **184 clases y 552 notebooks de clase**. La nueva clase 183
+  cubre inferencia privada, computación confidencial, TEE, remote attestation y
+  liberación condicionada de claves; el capstone final pasa a ser la clase 184.
+- Un motor `confidential_inference` contrasta una evidencia aprobada con una imagen
+  alterada y falla cerrado, declarando que no ejecuta hardware confidencial real.
+- Se amplían identidad y autorización de agentes, presupuestos temporales, agentes
+  persistentes, observabilidad de wakeups, fidelidad de preferencias y A2A 1.1.
+- Seguridad incorpora destilación adversarial y extracción coordinada de razonamiento;
+  gobernanza incorpora el código europeo final de marcado y etiquetado de contenido IA.
+- El roadmap separa trabajo entregado de señales que solo deben promoverse cuando
+  exista especificación estable, guía final o replicación independiente.
+
+### La frontera de 2026 entra sin deformar el núcleo
+
+- La vigilancia del 22 de septiembre incorpora investigación automatizada
+  supervisada, ciencia con verificación formal, interpretabilidad de espacios
+  latentes e informes estructurados de desalineación como temas `emerging`.
+- Las clases 167, 170, 178 y 181 conectan esos resultados con explicabilidad,
+  auditoría, agentes de código e IA para ciencia, dejando explícito que son
+  resultados recientes del emisor y no conocimiento consolidado.
+- Los lanzamientos de modelos y funciones de voz se registran como ruido
+  descartado: cambian productos, no los mecanismos pedagógicos del programa.
+
 ## 0.17.0 — 2026-09-10
 
 ### Clases sensibles al cambio tecnológico con ingeniería propia

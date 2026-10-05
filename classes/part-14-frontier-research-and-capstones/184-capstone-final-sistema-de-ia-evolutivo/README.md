@@ -1,7 +1,7 @@
 
-# 183 — Capstone final: sistema de IA evolutivo
+# 184 — Capstone final: sistema de IA evolutivo
 
-> [← Clase anterior](../../../classes/part-14-frontier-research-and-capstones/182-como-vigilar-la-frontera-sin-perseguir-modas/README.md) · [Índice de la parte](../README.md) · Fin del programa
+> [← Clase anterior](../../../classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md) · [Índice de la parte](../README.md) · Fin del programa
 
 **Parte:** 14 — Frontera, investigación y proyectos integradores  
 **Nivel:** frontera · **Horas estimadas:** 10  
@@ -213,7 +213,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("capstone")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -293,7 +293,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 
 ## ⬅️ Clase anterior
 
-[182 — Cómo vigilar la frontera sin perseguir modas](../../part-14-frontier-research-and-capstones/182-como-vigilar-la-frontera-sin-perseguir-modas/README.md)
+[183 — Inferencia privada, computación confidencial y attestation](../../part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md)
 
 ## ➡️ Siguiente clase
 

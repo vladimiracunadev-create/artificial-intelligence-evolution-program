@@ -3,7 +3,7 @@
 
 # 🧠 Artificial Intelligence Evolution Program
 
-## **15 partes · 183 clases · 148 papers fundacionales · de la IA simbólica a los sistemas agénticos**
+## **15 partes · 184 clases · 148 papers fundacionales · de la IA simbólica a los sistemas agénticos**
 
 **Programa evolutivo y verificable para comprender e implementar la historia completa
 de la inteligencia artificial: lógica, búsqueda, sistemas expertos, probabilidad,
@@ -15,18 +15,18 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 [![Pages](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/vladimiracunadev-create/artificial-intelligence-evolution-program/actions/workflows/pages.yml)
 
 [![Version](https://img.shields.io/badge/version-0.17.0-orange?style=for-the-badge)](CHANGELOG.md)
-[![Classes](https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
+[![Classes](https://img.shields.io/badge/classes-184%20·%2015%20partes-7c5cff?style=for-the-badge)](classes/)
 [![Papers](https://img.shields.io/badge/papers-148%20fundacionales-c9184a?style=for-the-badge)](papers/README.md)
 <!-- sources-badge:inicio -->
 [![Bibliografía](https://img.shields.io/badge/bibliograf%C3%ADa-libros%20%C2%B7%20normas%20%C2%B7%20documentaci%C3%B3n-0b7285?style=for-the-badge)](sources/BIBLIOGRAFIA.md)
 <!-- sources-badge:fin -->
-[![Notebooks](https://img.shields.io/badge/notebooks-705-2e8b57?style=for-the-badge)](classes/)
+[![Notebooks](https://img.shields.io/badge/notebooks-708-2e8b57?style=for-the-badge)](classes/)
 [![Nivel](https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge)](docs/LEARNING_PATH.md)
 [![Idioma](https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge)](classes/)
 [![License](https://img.shields.io/badge/license-mixed-3fb950?style=for-the-badge)](#-licencias)
 
 [![Python](https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13%20·%203.14-3776AB?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Jupyter](https://img.shields.io/badge/Jupyter-705%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-708%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white)](classes/)
 [![Docker](https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white)](compose.yaml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white)](https://vladimiracunadev-create.github.io/artificial-intelligence-evolution-program/)
 
@@ -47,7 +47,7 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | 📘 Clases | 📓 Notebooks | 🧪 Laboratorios | 🧩 Partes | 📜 Papers | 🧰 Motores didácticos | 📕 PDFs |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **183** | **549 + 156** | **183** | **15** | **148** | **26 + 148** | **17 + 148** |
+| **184** | **552 + 156** | **184** | **15** | **148** | **27 + 148** | **17 + 148** |
 
 </div>
 
@@ -64,10 +64,10 @@ agentes, multiagentes, robótica, MLOps, seguridad y frontera.**
 
 | Superficie | Estado |
 |---|---|
-| Currículo | ✅ 183/183 clases documentadas |
+| Currículo | ✅ 184/184 clases documentadas |
 | Papers | ✅ 148 fichas de 18 secciones + 156 notebooks + 148 motores + 5 anexos + un PDF por paper + enlaces de vuelta en 171 clases |
-| Notebooks | ✅ 183 recorridos + 183 estudiantes + 183 soluciones |
-| Laboratorios | ✅ 183 entrypoints que reutilizan 26 motores de clase; las seis superficies rápidas tienen motor específico |
+| Notebooks | ✅ 184 recorridos + 184 estudiantes + 184 soluciones |
+| Laboratorios | ✅ 184 entrypoints que reutilizan 27 motores de clase; las siete superficies rápidas tienen motor específico |
 | Datasets | ✅ catálogo de fuentes públicas reales; sin fallback sintético silencioso |
 | Bibliografía | ✅ cada clase declara su bibliografía de apoyo —libro, edición y localizador— desde [`sources/bibliography.json`](sources/bibliography.json); lo que no resuelve queda marcado con motivo |
 | CLI | ✅ `ai-evolution catalog`, `run`, `validate`, `frontier`, `progress`, `papers`, `paper`, `paper-lab` |
@@ -111,7 +111,7 @@ flowchart LR
 ## 🗂️ Las 15 partes, en 6 etapas evolutivas
 
 Cada parte tiene su **propio README** con la secuencia de sus clases —12 en
-todas, salvo la parte 06 que tiene 15. Las etapas siguen la evolución histórica
+todas, salvo la parte 06 que tiene 15 y la parte 14 que tiene 13. Las etapas siguen la evolución histórica
 del campo: lo que cada una enseña es el prerrequisito real de la siguiente.
 
 ### 🟢 Etapa 1 — Fundamentos e IA clásica
@@ -229,7 +229,7 @@ El [eje de papers](papers/README.md) dice **de dónde salió** cada idea. Esta b
 **con qué se estudia**: además del paper, la obra que desarrolla el contenido con el espacio que
 una clase no tiene —teoría completa, demostraciones y ejercicios—.
 
-Cada una de las 183 clases lleva su propio bloque de **bibliografía de apoyo**: los libros que la
+Cada una de las 184 clases lleva su propio bloque de **bibliografía de apoyo**: los libros que la
 clase cita —con el capítulo, cuando la cita lo indica—, la obra de referencia de su parte y, donde
 aplica, las normas oficiales. Nada de eso se escribe a mano: sale de
 [`sources/bibliography.json`](sources/bibliography.json), donde cada obra tiene un **localizador
@@ -315,8 +315,8 @@ sin cuenta.
 
 | 🖥️ Escritorio (Windows) | 📱 Android · 🌐 PWA |
 |:---:|:---:|
-| <img src="docs/screenshots/app-escritorio.png" alt="App de escritorio: catálogo de las 183 clases con el detalle de la clase 055" width="520"> | <img src="docs/screenshots/app-movil-clase.png" alt="App móvil: la clase 055 en la interfaz del WebView" width="230"> |
-| Visor nativo del catálogo: busca, navega las 15 partes y abre el README o el sitio de cada clase | La app Android y la PWA cargan el mismo sitio: 183 clases, 148 papers y progreso local |
+| <img src="docs/screenshots/app-escritorio.png" alt="App de escritorio: catálogo de las 184 clases con el detalle de la clase 055" width="520"> | <img src="docs/screenshots/app-movil-clase.png" alt="App móvil: la clase 055 en la interfaz del WebView" width="230"> |
+| Visor nativo del catálogo: busca, navega las 15 partes y abre el README o el sitio de cada clase | La app Android y la PWA cargan el mismo sitio: 184 clases, 148 papers y progreso local |
 
 </div>
 
@@ -367,7 +367,7 @@ Las capturas se regeneran con `python scripts/generate_screenshots.py --escritor
 El mismo contenido de las clases, listo para imprimir o leer offline
 (generado desde la fuente markdown con `python scripts/generate_pdfs.py`):
 
-- [📕 Programa completo (1 178 páginas)](docs/pdf/programa-completo.pdf)
+- [📕 Programa completo (1 343 páginas)](docs/pdf/programa-completo.pdf)
 - [📜 Papers fundacionales (1 230 páginas)](docs/pdf/papers-fundacionales.pdf) — las 148 fichas,
   las 5 guías, los 5 anexos matemáticos, la matriz clase ↔ paper y las 148 evaluaciones del eje
   (`python scripts/generate_pdfs.py --papers`)
@@ -397,7 +397,7 @@ classes/part-XX-slug/NNN-topic/
 
 ```text
 papers/
-├── catalog/papers.json          ← fuente de verdad (16 entradas validadas)
+├── catalog/papers.json          ← fuente de verdad (148 entradas validadas)
 ├── catalog/sources.yaml         ← venues y repositorios primarios
 ├── foundational/PXX_slug/       ← ficha de 18 secciones
 ├── guides/                      ← cómo leer, 5 pasadas, plantilla, glosario, fuentes
@@ -482,9 +482,9 @@ extiende**.
 
 ### ✅ Lo que sí es
 
-- 🧬 un **mapa evolutivo completo** de la IA: 183 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
+- 🧬 un **mapa evolutivo completo** de la IA: 184 clases de la lógica simbólica a los sistemas agénticos, donde cada etapa explica la siguiente;
 - 📜 un **eje de 148 papers fundacionales** que ancla ese mapa en sus fuentes primarias, de Pearson (1901) a DeepSeek-R1 (2025), con bloques de fundamentos, IA simbólica, machine learning clásico, representación, agentes y multiagente, con fichas verificables, miniaturas ejecutables y anexos matemáticos;
-- 🧪 material **ejecutable y verificable**: 705 notebooks (549 de clase + 156 de papers), 183 laboratorios locales y 174 motores deterministas (26 de clase + 148 de papers) con contratos JSON que declaran `evidence` y `limitations`;
+- 🧪 material **ejecutable y verificable**: 708 notebooks (552 de clase + 156 de papers), 184 laboratorios locales y 175 motores deterministas (27 de clase + 148 de papers) con contratos JSON que declaran `evidence` y `limitations`;
 - 📖 contenido **abierto y gratuito en español**, legible en GitHub, en un sitio PWA instalable o en 165 PDFs imprimibles;
 - 🗣️ un temario **alineado al vocabulario 2026** de la industria: harness, loop, graph, context engineering y compañía, con glosario propio;
 - 🔍 material **honesto sobre sus límites**: cada laboratorio declara qué demuestra y qué no.

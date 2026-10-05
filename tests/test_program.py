@@ -24,7 +24,7 @@ class CurriculumTests(unittest.TestCase):
     def test_counts(self):
         curriculum = load_curriculum()
         self.assertEqual(len(curriculum["parts"]), 15)
-        self.assertEqual(len(lessons()), 183)
+        self.assertEqual(len(lessons()), 184)
 
     def test_unique_ids_and_paths(self):
         all_lessons = lessons()
@@ -38,7 +38,7 @@ class CurriculumTests(unittest.TestCase):
     def test_repository_contract(self):
         result = validate_repository(strict=True)
         self.assertTrue(result["ok"], result["errors"][:10])
-        self.assertEqual(result["notebooks"], 549)
+        self.assertEqual(result["notebooks"], 552)
 
 
 class LabTests(unittest.TestCase):
@@ -86,6 +86,7 @@ class LabTests(unittest.TestCase):
             "164": ("agent_security", "decisions"),
             "170": ("governance", "evidence_pack"),
             "171": ("capstone", "ai_native_incident"),
+            "183": ("confidential_inference", "release_decision"),
         }
         by_id = {lesson.id: lesson for lesson in lessons()}
         for lesson_id, (kind, required_result) in expected.items():

@@ -93,6 +93,20 @@ junto al código y revisada como el código. Decisiones posibles: `allow`
 deriva de la clase de efecto (116): pura → allow; reversible → allow con registro o
 ask; irreversible → ask o deny; externa distribuida → ask con doble control.
 
+### 🪪 Identidad no humana y autorización delegada
+
+Un agente persistente necesita una identidad verificable distinta de la cuenta humana que lo
+creó y del servicio que ejecuta cada tool. **Autenticación** responde quién actúa;
+**autorización** responde qué puede hacer ahora, sobre qué recurso y en nombre de quién.
+
+El mandato mínimo debe incluir principal humano u organizacional, identidad del workload,
+audiencia, recursos, acciones, purpose, vigencia y cadena de delegación. Se prefieren tokens
+efímeros y ligados al canal o workload, intercambio de tokens en cada frontera y revocación
+central; copiar la credencial amplia del usuario rompe atribución y convierte al agente en un
+confused deputy duradero. NIST ya trata identidad, autenticación y autorización de agentes como
+una línea específica de estandarización; el detalle continúa emergiendo y no se presenta aquí
+como estándar terminado.
+
 ## 🧮 Ejemplo trabajado
 
 Agente de soporte que responde tickets con acceso a documentación y facturas. Matriz
@@ -182,7 +196,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("safety")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -233,6 +247,8 @@ Revisa las especializaciones enlazadas en el README raíz y la ruta siguiente.
 
 ## 🔗 Referencias
 
+- [NIST (2026), *AI Agent Standards Initiative*](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) — uso: fuente institucional primaria sobre identidad, autenticación, autorización e interoperabilidad de agentes
+
 - [Saltzer y Schroeder (1975), "The Protection of Information in Computer Systems", DOI:10.1109/PROC.1975.9939 (formulación original de least privilege)](https://doi.org/10.1109/PROC.1975.9939) — uso: fuente primaria del mecanismo estudiado
 - [OWASP Top 10 for LLM Applications (LLM01 Prompt Injection, LLM06 Excessive Agency)](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — uso: marco normativo de referencia
 - [NIST AI Risk Management Framework (AI RMF 1.0) (gobernanza y contención de sistemas de IA)](https://www.nist.gov/itl/ai-risk-management-framework) — uso: marco normativo de referencia
@@ -269,7 +285,7 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 | Russell, Stuart J. y Norvig, Peter — *Artificial Intelligence: A Modern Approach* | 4.ª · 2020 | [ISBN 9780134610993](https://openlibrary.org/isbn/9780134610993) · [web de la obra](https://aima.cs.berkeley.edu/) | obra de referencia de la parte 09 · capítulo de agentes racionales |
 | Michael J. Wooldridge — *An Introduction to MultiAgent Systems* | 2009 | [ISBN 9780471496915](https://openlibrary.org/isbn/9780471496915) | obra de referencia de la parte 09 · arquitecturas de agente |
 
-**Normas y documentación oficial que aplica esta clase:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [Model Context Protocol](https://modelcontextprotocol.io)
+**Normas y documentación oficial que aplica esta clase:** [AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) · [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) · [AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) · [Model Context Protocol](https://modelcontextprotocol.io)
 <!-- bibliografia:fin -->
 
 ---

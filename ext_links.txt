@@ -441,13 +441,13 @@ https://huggingface.co/docs/trl
 https://huggingface.co/tasks/document-question-answering
 https://img.shields.io/badge/Docker-compose%20listo-2496ED?style=flat-square&logo=docker&logoColor=white
 https://img.shields.io/badge/GitHub%20Pages-sitio%20vivo-222?style=flat-square&logo=githubpages&logoColor=white
-https://img.shields.io/badge/Jupyter-549%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white
+https://img.shields.io/badge/Jupyter-708%20notebooks-F37626?style=flat-square&logo=jupyter&logoColor=white
 https://img.shields.io/badge/Python-3.11%20·%203.12%20·%203.13-3776AB?style=flat-square&logo=python&logoColor=white
-https://img.shields.io/badge/classes-183%20·%2015%20partes-7c5cff?style=for-the-badge
+https://img.shields.io/badge/classes-184%20·%2015%20partes-7c5cff?style=for-the-badge
 https://img.shields.io/badge/idioma-español-1f6feb?style=for-the-badge
 https://img.shields.io/badge/license-MIT-3fb950?style=for-the-badge
 https://img.shields.io/badge/nivel-fundamentos%20→%20frontera-8957e5?style=for-the-badge
-https://img.shields.io/badge/notebooks-549-2e8b57?style=for-the-badge
+https://img.shields.io/badge/notebooks-708-2e8b57?style=for-the-badge
 https://img.shields.io/badge/version-0.3.0-orange?style=for-the-badge
 https://img.shields.io/github/followers/vladimiracunadev-create?style=social&label=Follow
 https://img.shields.io/github/forks/vladimiracunadev-create/artificial-intelligence-evolution-program?style=social

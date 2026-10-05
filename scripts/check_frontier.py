@@ -19,6 +19,33 @@ def validate(max_age_days: int = 120) -> list[str]:
     errors: list[str] = []
     ids: set[str] = set()
     today = date.today()
+    try:
+        version_date = date.fromisoformat(str(payload["version"]))
+    except (KeyError, ValueError):
+        errors.append("version de frontera inválida")
+        version_date = None
+    else:
+        if version_date > today:
+            errors.append("version de frontera futura")
+
+    review = payload.get("review")
+    if review is not None:
+        try:
+            period_start = date.fromisoformat(str(review["period_start"]))
+            period_end = date.fromisoformat(str(review["period_end"]))
+        except (KeyError, ValueError):
+            errors.append("review: periodo inválido")
+        else:
+            if period_start > period_end:
+                errors.append("review: period_start posterior a period_end")
+            if version_date is not None and period_end != version_date:
+                errors.append("review: period_end debe coincidir con version")
+        for index, item in enumerate(review.get("discarded_noise", []), start=1):
+            if not item.get("name") or not item.get("reason"):
+                errors.append(f"discarded_noise #{index}: falta nombre o razón")
+            if not str(item.get("source", "")).startswith("https://"):
+                errors.append(f"discarded_noise #{index}: falta fuente https")
+
     for topic in payload.get("topics", []):
         topic_id = topic.get("id")
         if not topic_id or topic_id in ids:
@@ -28,6 +55,9 @@ def validate(max_age_days: int = 120) -> list[str]:
             errors.append(f"{topic_id}: maturity inválida")
         if not str(topic.get("source", "")).startswith("https://"):
             errors.append(f"{topic_id}: falta fuente https")
+        corroborating_source = topic.get("corroborating_source")
+        if corroborating_source and not str(corroborating_source).startswith("https://"):
+            errors.append(f"{topic_id}: corroborating_source debe ser https")
         try:
             reviewed = date.fromisoformat(str(topic["reviewed"]))
         except (KeyError, ValueError):

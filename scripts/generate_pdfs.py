@@ -2,7 +2,8 @@ from __future__ import annotations
 
 """Genera PDFs imprimibles del programa: uno por parte, uno general y el eje de papers.
 
-Requiere: pip install markdown PyYAML, y Chrome o Edge instalado (impresión headless).
+Requiere: pip install markdown PyYAML pypdf, y Chrome o Edge instalado
+(impresión headless).
 
 Salida:
     docs/pdf/parte-NN.pdf (15)
@@ -26,6 +27,7 @@ from pathlib import Path
 
 import markdown
 import yaml
+from pypdf import PdfWriter
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "docs" / "pdf"
@@ -153,6 +155,29 @@ def print_pdf(browser: str, html_path: Path, pdf_path: Path) -> None:
         raise SystemExit(f"PDF sospechosamente pequeño o ausente: {pdf_path}")
 
 
+def merge_pdfs(inputs: list[Path], output: Path) -> None:
+    """Ensambla PDFs ya maquetados y evita imprimir un HTML monolítico enorme.
+
+    Chromium puede acumular errores de fragmentación o coordenadas al imprimir más
+    de mil páginas en una sola operación. Cada parte se valida visualmente de forma
+    aislada; el programa completo conserva exactamente esas páginas al concatenarlas.
+    """
+    writer = PdfWriter()
+    for source in inputs:
+        writer.append(source)
+    writer.add_metadata(
+        {
+            "/Title": "Artificial Intelligence Evolution Program — completo",
+            "/Author": "Vladimir Acuña",
+            "/Subject": "Programa completo de evolución de la inteligencia artificial",
+        }
+    )
+    with output.open("wb") as stream:
+        writer.write(stream)
+    if not output.exists() or output.stat().st_size < 10_000:
+        raise SystemExit(f"PDF combinado sospechosamente pequeño o ausente: {output}")
+
+
 def strip_paper_nav(md_text: str) -> str:
     """Como strip_nav, más el pie de navegación propio de las fichas de papers."""
     md_text = re.sub(r"\n---\n+\[⬅️.*$", "", md_text, flags=re.DOTALL)
@@ -273,7 +298,7 @@ def main() -> None:
     if not hacer_clases:
         return
 
-    all_bodies: list[str] = []
+    part_pdfs: list[Path] = []
     for part in curriculum["parts"]:
         part_dir = Path(part["lessons"][0]["path"]).parent.name
         part_id = part_dir.split("-")[1]
@@ -283,18 +308,19 @@ def main() -> None:
         pdf_path = OUT_DIR / f"parte-{part_id}.pdf"
         print_pdf(browser, html_path, pdf_path)
         print(f"parte-{part_id}.pdf → {pdf_path.stat().st_size // 1024} kB")
-        all_bodies.append(html.split("<body>", 1)[1].rsplit("<script", 1)[0])
+        part_pdfs.append(pdf_path)
 
     cover = (
         '<div class="portada"><h1>🧠 Artificial Intelligence Evolution Program</h1>'
-        '<p class="sub">15 partes · 183 clases · de la IA simbólica a los sistemas agénticos</p>'
+        '<p class="sub">15 partes · 184 clases · de la IA simbólica a los sistemas agénticos</p>'
         '<p class="sub">Programa completo — materia, ejemplos trabajados y evaluaciones</p></div>'
     )
-    general = html_page("AI Evolution Program — completo", cover + "".join(all_bodies))
-    general_path = tmp / "programa-completo.html"
-    general_path.write_text(general, encoding="utf-8")
+    cover_path = tmp / "portada-programa.html"
+    cover_path.write_text(html_page("AI Evolution Program — completo", cover), encoding="utf-8")
+    cover_pdf = tmp / "portada-programa.pdf"
+    print_pdf(browser, cover_path, cover_pdf)
     pdf_general = OUT_DIR / "programa-completo.pdf"
-    print_pdf(browser, general_path, pdf_general)
+    merge_pdfs([cover_pdf, *part_pdfs], pdf_general)
     print(f"programa-completo.pdf → {pdf_general.stat().st_size // 1024} kB")
 
 

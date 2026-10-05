@@ -10,7 +10,7 @@ ai-evolution validate
 ```
 
 Requiere Python 3.11 o superior. La única dependencia del núcleo es `PyYAML`:
-las 183 clases y los 148 papers se ejecutan con la biblioteca estándar.
+las 184 clases y los 148 papers se ejecutan con la biblioteca estándar.
 
 ## 📜 Eje de papers
 
@@ -31,7 +31,10 @@ python scripts/generate_papers.py --check
 
 ## 📕 Regenerar PDFs
 
-Requiere Chrome o Edge instalado (impresión headless) y `pip install markdown`.
+Requiere Chrome o Edge instalado (impresión headless). Las dependencias de
+generación se instalan con `pip install -e ".[assets]"` e incluyen Markdown y
+PyPDF para maquetar cada parte y ensamblar el programa completo sin degradar las
+páginas al crecer el corpus.
 
 ```bash
 python scripts/generate_pdfs.py --papers   # solo el eje de papers

@@ -1,7 +1,7 @@
 
 # 182 — Cómo vigilar la frontera sin perseguir modas
 
-> [← Clase anterior](../../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md) · [Índice de la parte](../README.md) · [Clase siguiente →](../../../classes/part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md)
+> [← Clase anterior](../../../classes/part-14-frontier-research-and-capstones/181-ia-para-ciencia-clima-y-salud-responsable/README.md) · [Índice de la parte](../README.md) · [Clase siguiente →](../../../classes/part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md)
 
 **Parte:** 14 — Frontera, investigación y proyectos integradores  
 **Nivel:** frontera · **Horas estimadas:** 6  
@@ -92,7 +92,7 @@ El propio repositorio implementa el patrón: el directorio `frontier/` mantiene
 `maturity`, `reviewed` (fecha) y `source` (enlace verificable) más una `reason` de
 por qué está ahí. El diseño tiene tres propiedades importantes:
 
-- **Separación física**: la frontera vive fuera de las 183 clases, así que su
+- **Separación física**: la frontera vive fuera de las 184 clases, así que su
   caducidad no contamina el núcleo. El README de `frontier/` lo dice explícitamente:
   no sustituyen el núcleo estable.
 - **Fecha de revisión obligatoria**: un tema sin `reviewed` reciente es una
@@ -193,7 +193,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("evaluation")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
@@ -275,4 +275,4 @@ Los papers dicen **de dónde salió** el mecanismo. Estas obras lo **desarrollan
 
 ## ➡️ Siguiente clase
 
-[183 — Capstone final: sistema de IA evolutivo](../../part-14-frontier-research-and-capstones/183-capstone-final-sistema-de-ia-evolutivo/README.md)
+[183 — Inferencia privada, computación confidencial y attestation](../../part-14-frontier-research-and-capstones/183-inferencia-privada-computacion-confidencial-y-attestation/README.md)

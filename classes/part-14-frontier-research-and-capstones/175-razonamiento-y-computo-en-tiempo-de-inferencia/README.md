@@ -179,7 +179,7 @@ python lab.py
 ```
 
 El laboratorio llama a `ai_evolution.labs.run_lab("frontier")`. Esta
-decisión evita 183 implementaciones divergentes: cada clase tiene un entrypoint
+decisión evita una implementación divergente por clase: cada una conserva un entrypoint
 propio, pero los motores didácticos se prueban como una biblioteca común.
 
 ### 🔍 Evidencia esperada
